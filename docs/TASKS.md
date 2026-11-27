@@ -62,11 +62,12 @@ Statuses: `Done` · `In progress` · `Blocked` · `Not started`.
 | P2B-11 | Live engine integration runs (script) | Done | 6 live runs (yen ×4, oil ×1) surfaced FX-direction, superlative, translation-logic and wrong-dataset errors — all fixed with tests (D-033) |
 | P2B-12 | Acceptance test A (yen) through the studio UI | Not started | |
 | P2B-13 | Acceptance test B (crude oil) through the studio UI | Not started | No code changes between A and B |
-| P2B-14 | Commit, push, deploy; completion report | In progress | `8a72660` deployed; usage/temporary features follow |
+| P2B-14 | Commit, push, deploy; completion report | Done | `8a72660`, `673944f`, `c3a51d7` deployed |
 | P2B-15 | EIA API key for oil inventories/production + electricity | Done | Petroleum verified; electricity endpoints down at EIA during testing (D-034) |
 | P2B-16 | Tiingo licence review before public publishing | Not started | Free tier = internal use only (D-025); gate for 2C |
 | P2B-18 | Usage ledger per service & key; temporary drafts; /admin/usage | Done | D-035; migration 20261127090000 |
-| P2B-19 | Product-owner test drafts: US housing; AI data centers & electricity | In progress | Temporary drafts via generate-draft.ts (D-036); delete on request |
+| P2B-19 | Product-owner test drafts: US housing; AI data centers & electricity | Done — awaiting review | v2 drafts adf41c39… (housing, needs attention: 1 invalid token + flagged superlatives) and 8629779e… (AI power); v1 drafts kept as "[Superseded v1]"; all temporary — delete on request |
+| P2B-20 | EIA electricity endpoints | Blocked (external) | HTTP 504/timeouts at EIA 26–27 Nov; re-test with `npm run studio:check-registry` |
 | P2B-12b | Acceptance A/B through the browser UI | Blocked | Needs the product owner to sign in to /admin in Chrome (assistant may not type passwords) |
 | P2B-17 | Disable public sign-ups in Supabase Auth | Not started | Product owner deferred ("fine for proto"); RLS allow-list already blocks non-editors |
 
