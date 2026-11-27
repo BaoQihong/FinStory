@@ -40,7 +40,7 @@ Statuses: `Done` · `In progress` · `Blocked` · `Not started`.
 | P2A-07 | Pages: home, story, previews, sections, about, 404 | Done | All statically prerendered |
 | P2A-08 | Tests: unit + data validation + lint + typecheck + build | Done | `npm run verify`; see `docs/TESTING.md` |
 | P2A-09 | Visual QA desktop + 375px mobile | Done | No horizontal overflow on any page; label collisions fixed |
-| P2A-10 | Commit, push, Vercel deploy | In progress | |
+| P2A-10 | Commit, push, Vercel deploy | Done | Commit `5c2884f`; production https://financialstoryteller.vercel.app (all routes 200, unknown route 404) |
 | P2A-11 | Product owner visual & product review | Not started | Next milestone; gate for Phase 2B |
 | P2A-12 | Editorial review of demonstration copy | Not started | Copy written by Claude Code as a stand-in for human editorial work |
 | P2A-13 | Social/OG image (typographic, generated from data) | Not started | Optional polish; no AI imagery |
