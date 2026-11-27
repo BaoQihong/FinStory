@@ -111,7 +111,7 @@ Superseded by Phase 3A (D-043).
 | P3B-12 | Decide: correct the live article's byline role / watch-list wording (needs republish) | Not started | Product-owner decision; article untouched |
 | P3B-13 | Browser acceptance of studio changes (Publish links, byline, Polish) by a signed-in editor | Blocked | Assistant may not type passwords |
 | P3B-14 | Decide data licensing for public display (UMich, S&P via FRED; Tiingo; snapshot scope) | Not started | `docs/DATA_LICENSING.md` (D-051) |
-| P3B-15 | Commit, push, deploy 3B | In progress | Committed locally; push + Vercel deploy await product-owner approval |
+| P3B-15 | Commit, push, deploy 3B | Done | Deployed with 3C (P3C-10) |
 
 ## Phase 3C — editorial homepage (active) → Seshat v0.1, Editorial MVP
 
@@ -126,7 +126,7 @@ Superseded by Phase 3A (D-043).
 | P3C-07 | Browser QA desktop + 375 px (0 / 1 / several stories) | Done | Temporary fixtures removed; empty state via a reverted local edit |
 | P3C-08 | Code review | Done | `updated_by` readable by anon → fixed by column grant; invalid featured snapshot → next story leads; masthead UTC date removed |
 | P3C-09 | Browser acceptance of the studio Feature control by a signed-in editor | Blocked | Assistant may not type passwords |
-| P3C-10 | Commit, push, deploy 3B + 3C | In progress | Awaiting product-owner approval to push/deploy (3B is not yet deployed either) |
+| P3C-10 | Commit, push, deploy 3B + 3C | Done | `9c235fc` + `50cee01` pushed 2026-11-27; Vercel production live. Production checks: home 9/10, route 9/10 — the only failure in each was the cache-header assertion (Vercel sends "public, max-age=0, must-revalidate" for the prerendered shell; data is per request, proven by the lifecycle steps). Assertion relaxed in a follow-up commit; production re-run pending |
 | P3C-11 | Decide: retire or keep the delisted Phase 2A prototype routes | Not started | Product-owner decision; currently reachable by URL only |
 
 Note: during documentation work a shell-quoting mistake ran `publish:home-check` once against the production URL (2026-11-27). It used fixtures only, cleaned them up and restored the (empty) feature; production did not yet serve the new homepage, so nothing reached readers.

@@ -110,7 +110,8 @@ try {
     assert.equal(r.status, 200);
     assert.ok(r.html.includes(`href="/story/${BASELINE}"`), 'no link to the live article');
     assert.match(r.html, /Why Your Wallet Feels Broke/);
-    assert.ok(/no-store/.test(r.cache), `cache-control: ${r.cache}`);
+    // Local: no-store. Vercel: shell cached "public, max-age=0, must-revalidate", data per request (steps C-I prove freshness).
+    assert.ok(/no-store/.test(r.cache) || (/max-age=0/.test(r.cache) && /must-revalidate/.test(r.cache)), `cache-control: ${r.cache}`);
     for (const s of ['/stories/the-bond-comeback', 'In preparation', '/section/']) assert.ok(!r.html.includes(s), `prototype content listed: ${s}`);
   });
 

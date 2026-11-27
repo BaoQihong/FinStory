@@ -78,6 +78,10 @@ async function publish(id: string, expected: number, slug: string | null) {
   assert.ifError(error);
 }
 const noStore = (c: string) => /no-store/.test(c);
+// A live page must never be served stale. Locally Next sends no-store; on Vercel the
+// partially prerendered shell is CDN-cached with "public, max-age=0, must-revalidate"
+// while the story data is streamed per request (freshness is proven by steps D-H).
+const fresh = (c: string) => noStore(c) || (/max-age=0/.test(c) && /must-revalidate/.test(c));
 
 console.log(`base ${BASE}`);
 try {
@@ -87,7 +91,7 @@ try {
     assert.match(title(r.html), /Why Your Wallet Feels Broke/);
     for (const s of ['The story in 30 seconds', 'Sources &amp; method', 'Illustrative scenarios', 'Prepared with AI assistance']) assert.ok(r.html.includes(s), `missing "${s}"`);
     for (const s of ['Needs editorial attention', 'Draft preview', '/admin/', 'quoteVerified', 'Qwen']) assert.ok(!r.html.includes(s), `leaked "${s}"`);
-    assert.ok(noStore(r.cache), `cache-control: ${r.cache}`);
+    assert.ok(fresh(r.cache), `cache-control: ${r.cache}`);
   });
 
   const id = await newArticle('Route check headline one');
