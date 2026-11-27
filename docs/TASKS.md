@@ -89,7 +89,7 @@ Superseded by Phase 3A (D-043).
 | P3A-05 | Phase 3B public data contract | Done | `lib/publishing/public.ts` (`getPublishedStory`, `listPublishedStories`) |
 | P3A-06 | Tests: unit + live integration (`npm run publish:check`) | Done | 9 unit tests; 12/12 integration checks against Supabase |
 | P3A-07 | Browser check of the publishing UI | Blocked | Needs the product owner signed in to /admin (assistant may not type passwords) |
-| P3A-08 | Commit, push, deploy | In progress | Committed locally; push/deploy awaits approval |
+| P3A-08 | Commit, push, deploy | Done | `b1cdb61` pushed; Vercel production Ready (all public routes 200, `/admin` → login, `/story/*` 404 until 3B) |
 | P3A-09 | Decide: Tiingo licence before wide distribution | Not started | Currently a non-blocking warning (P2B-16) |
 | P3A-10 | Optional: bind the snapshot to the draft inside the database (hash/derivation) | Not started | Accepted trade-off for now (D-045) |
 
