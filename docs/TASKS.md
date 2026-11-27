@@ -72,6 +72,7 @@ Statuses: `Done` · `In progress` · `Blocked` · `Not started`.
 | P2B-21 | Final reliability pass: quantities, references, counter-evidence, outages, editorial checks | Done | D-037–D-041; 41 tests |
 | P2B-22 | Frozen-code acceptance: housing + AI electricity through the studio UI | Blocked | Needs the product owner to sign in to /admin in Chrome |
 | P2B-17 | Disable public sign-ups in Supabase Auth | Not started | Product owner deferred ("fine for proto"); RLS allow-list already blocks non-editors |
+| P2B-23 | AI-assisted editorial brief builder (Develop Editorial Brief → review → Research & Generate) | Done — awaiting product-owner review | D-042; quick path unchanged; live-probed on Japan equities + copper (1 attempt, ~12–16 s, ~900 tokens each); UI check needs the product owner signed in to /admin |
 
 ## Phase 2C
 

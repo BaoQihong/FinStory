@@ -3,6 +3,11 @@
 Notable changes to this project. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/). Newest entries first.
 
+## 0.3.3 — 2026-11-27 (Phase 2B enhancement: editorial brief builder)
+
+- **Develop Editorial Brief** on /admin/new: AI-suggested angle, questions, markets and indicators, outlook focus and premise to verify, all editable; regeneration keeps edited fields; per-field “Suggest again”; quick path (prompt → Research & Generate) unchanged (D-042).
+- New optional brief fields `indicators`, `outlook`, `premise` reach every pipeline stage via the brief block; the draft page shows the brief; /admin/usage lists brief suggestions separately.
+
 ## 0.3.2 — 2026-11-27 (Phase 2B final reliability pass — frozen for acceptance)
 
 - Structured quantity metadata + claims ledger (D-037); reference integrity (D-038); counter-checks, candidate screening, dispersion, all Case-Shiller metros (D-039); circuit breaker + explicit evidence gaps (D-040); verified superlatives, duplicate words, severity ordering (D-041).

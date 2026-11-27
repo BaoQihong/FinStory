@@ -33,7 +33,7 @@ export function dateLines(dates: Record<string, { date: string; datePrecision?: 
 export function briefBlock(b: StoryBrief): string {
   const opt = (label: string, v?: string) => (v ? `\n${label}: ${v}` : '');
   return `EDITOR'S BRIEF
-Prompt: ${b.prompt}${opt('Proposed headline', b.headline)}${opt('Intended audience', b.audience)}${opt('Editorial angle', b.angle)}${opt('Questions to investigate', b.questions)}${opt('Relevant assets/securities', b.assets)}${opt('Additional research instructions', b.instructions)}`;
+Prompt: ${b.prompt}${opt('Proposed headline', b.headline)}${opt('Intended audience', b.audience)}${opt('Editorial angle', b.angle)}${opt('Questions to investigate', b.questions)}${opt('Relevant assets/securities', b.assets)}${opt('Markets and indicators to consider (suggestions only — not verified datasets)', b.indicators)}${opt('Outlook focus', b.outlook)}${opt('Premise to verify (UNCONFIRMED hypothesis — first establish whether the evidence supports it; if it does not, say so rather than building the story on it)', b.premise)}${opt('Additional research instructions', b.instructions)}`;
 }
 
 export function factLines(facts: Record<string, Fact>, limit = 220): string {

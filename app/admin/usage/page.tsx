@@ -6,6 +6,7 @@ export const metadata = { title: 'API usage' };
 
 type Row = {
   article_id: string | null;
+  stage: string;
   service: string;
   key_fingerprint: string;
   model: string | null;
@@ -33,7 +34,7 @@ export default function UsagePage() {
       <p className="kicker text-gold-700">Seshat studio</p>
       <h1 className="mt-1 font-display text-4xl font-semibold text-navy-900">API usage</h1>
       <p className="mt-2 max-w-3xl text-ink-soft">
-        Every generation stage records what it consumed, per service and per API key. Keys are identified by a fingerprint (the first 12 characters of their SHA-256
+        Every generation stage (and every editorial-brief suggestion) records what it consumed, per service and per API key. Keys are identified by a fingerprint (the first 12 characters of their SHA-256
         hash) — the keys themselves are never stored here. History is kept when drafts are deleted.
       </p>
       <Suspense fallback={<p className="mt-8 text-muted">Loading usage…</p>}>
@@ -46,7 +47,7 @@ export default function UsagePage() {
 async function Usage() {
   const { db } = await requireEditor();
   const [{ data: rows }, { data: arts }] = await Promise.all([
-    db.from('api_usage').select('article_id, service, key_fingerprint, model, prompt_tokens, completion_tokens, credits, calls, created_at').order('created_at', { ascending: false }).limit(5000),
+    db.from('api_usage').select('article_id, stage, service, key_fingerprint, model, prompt_tokens, completion_tokens, credits, calls, created_at').order('created_at', { ascending: false }).limit(5000),
     db.from('articles').select('id, working_title, is_temporary'),
   ]);
   const usage = (rows ?? []) as Row[];
@@ -75,7 +76,7 @@ async function Usage() {
   const titles = new Map((arts ?? []).map((a) => [a.id as string, { title: a.working_title as string, temp: a.is_temporary as boolean }]));
   const perDraft = new Map<string, { arli: number; tavily: number; data: number }>();
   for (const r of usage) {
-    const id = r.article_id ?? 'deleted';
+    const id = r.article_id ?? (r.stage === 'brief' ? 'brief' : 'deleted');
     const d = perDraft.get(id) ?? { arli: 0, tavily: 0, data: 0 };
     if (r.service === 'arli') d.arli += r.prompt_tokens + r.completion_tokens;
     else if (r.service === 'tavily') d.tavily += Number(r.credits);
@@ -147,6 +148,8 @@ async function Usage() {
                         <Link href={`/admin/drafts/${id}`} className="font-semibold text-navy-800 underline decoration-gold-500 underline-offset-2">
                           {t.title}
                         </Link>
+                      ) : id === 'brief' ? (
+                        <span className="text-ink">Editorial brief suggestions</span>
                       ) : (
                         <span className="text-muted">Deleted draft</span>
                       )}

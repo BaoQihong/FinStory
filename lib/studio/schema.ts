@@ -240,6 +240,11 @@ export const StoryBrief = z.object({
   angle: z.string().trim().max(600).optional(),
   questions: z.string().trim().max(1500).optional(),
   assets: z.string().trim().max(600).optional(),
+  /** Markets and indicators worth investigating — suggestions, not verified datasets. */
+  indicators: z.string().trim().max(800).optional(),
+  outlook: z.string().trim().max(800).optional(),
+  /** Assumptions in the prompt that research must establish or refute — a hypothesis, never a finding. */
+  premise: z.string().trim().max(800).optional(),
   instructions: z.string().trim().max(1500).optional(),
 });
 export type StoryBrief = z.infer<typeof StoryBrief>;

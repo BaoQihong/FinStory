@@ -98,6 +98,7 @@ export function DraftWorkspace(props: {
           <p className="mt-2 text-sm text-ink-soft">
             <span className="font-semibold">Prompt:</span> {props.brief.prompt}
           </p>
+          <BriefDetails brief={props.brief} />
         </div>
         <div className="flex flex-wrap items-center gap-2">
           {props.temporary ? <span className="rounded-full bg-cream-200 px-2.5 py-1 text-xs font-semibold text-ink-soft">Temporary</span> : null}
@@ -406,5 +407,35 @@ function HistoryPanel({ revisions, job }: { revisions: { revision: number; origi
         </div>
       ) : null}
     </section>
+  );
+}
+
+const BRIEF_LABELS: [keyof StoryBrief, string][] = [
+  ['headline', 'Proposed headline'],
+  ['audience', 'Intended audience'],
+  ['angle', 'Editorial angle'],
+  ['questions', 'Questions to investigate'],
+  ['indicators', 'Markets and indicators'],
+  ['outlook', 'Outlook focus'],
+  ['premise', 'Premise to verify'],
+  ['assets', 'Asset classes or securities'],
+  ['instructions', 'Additional instructions'],
+];
+
+function BriefDetails({ brief }: { brief: StoryBrief }) {
+  const rows = BRIEF_LABELS.filter(([k]) => brief[k]);
+  if (!rows.length) return null;
+  return (
+    <details className="mt-2 max-w-3xl text-sm text-ink-soft">
+      <summary className="cursor-pointer text-xs font-semibold text-muted hover:text-ink">Editorial brief ({rows.length} {rows.length === 1 ? 'field' : 'fields'})</summary>
+      <dl className="mt-2 space-y-2 rounded-lg border border-cream-300 bg-white/60 p-3">
+        {rows.map(([k, label]) => (
+          <div key={k}>
+            <dt className="text-xs font-semibold text-ink">{label}</dt>
+            <dd className="whitespace-pre-line">{brief[k]}</dd>
+          </div>
+        ))}
+      </dl>
+    </details>
   );
 }

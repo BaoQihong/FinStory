@@ -3,10 +3,12 @@
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { getEditor } from '@/lib/studio/auth';
-import { DAILY_JOB_LIMIT, missingConfig } from '@/lib/studio/deps';
+import { DAILY_JOB_LIMIT, fingerprint, missingConfig } from '@/lib/studio/deps';
 import { SECTION_ORDER, SeshatArticleV1, StoryBrief, type ValidationIssue } from '@/lib/studio/schema';
 import { validateArticle } from '@/lib/studio/validate';
 import { supabaseServer } from '@/lib/supabase/server';
+import { CONTEXT_FIELDS, suggestBrief, type BriefSuggestion, type ContextField } from '@/lib/studio/brief';
+import { arliLlm, LlmError } from '@/lib/studio/llm';
 
 export type FormState = { error?: string; fieldErrors?: Record<string, string> } | undefined;
 
@@ -36,7 +38,7 @@ export async function signOut() {
 export async function createStory(_prev: FormState, form: FormData): Promise<FormState> {
   const ed = await getEditor();
   if (!ed) return { error: 'Your session has expired. Sign in again.' };
-  const raw = Object.fromEntries(['prompt', 'headline', 'audience', 'angle', 'questions', 'assets', 'instructions'].map((k) => [k, String(form.get(k) ?? '').trim() || undefined]));
+  const raw = Object.fromEntries(['prompt', 'headline', 'audience', 'angle', 'questions', 'assets', 'indicators', 'outlook', 'premise', 'instructions'].map((k) => [k, String(form.get(k) ?? '').trim() || undefined]));
   const parsed = StoryBrief.safeParse(raw);
   if (!parsed.success) {
     const fieldErrors: Record<string, string> = {};
@@ -64,6 +66,52 @@ export async function createStory(_prev: FormState, form: FormData): Promise<For
   }
   revalidatePath('/admin');
   redirect(`/admin/drafts/${article.id}`);
+}
+
+// ── Editorial brief builder ──────────────────────────────────────────────
+// One lightweight Arli call that suggests brief fields from the story idea.
+// No search, no data, no pipeline: see lib/studio/brief.ts.
+export type BriefResult = { ok: true; fields: BriefSuggestion } | { ok: false; error: string };
+const DAILY_BRIEF_LIMIT = 60;
+
+export async function developBrief(input: { prompt: string; context?: Partial<Record<string, string>> }): Promise<BriefResult> {
+  const ed = await getEditor();
+  if (!ed) return { ok: false, error: 'Your session has expired. Sign in again (your text is still in this tab).' };
+  const prompt = String(input?.prompt ?? '').trim();
+  if (prompt.length < 20) return { ok: false, error: 'Describe the story in at least a sentence (20+ characters) first.' };
+  if (prompt.length > 4000) return { ok: false, error: 'The story prompt is too long (4,000 characters maximum).' };
+  const context: Partial<Record<ContextField, string>> = {};
+  for (const k of CONTEXT_FIELDS) {
+    const v = String(input?.context?.[k] ?? '').trim();
+    if (v) context[k] = v.slice(0, 1500);
+  }
+  const env = process.env;
+  if (!env.ARLI_API_KEY || !env.ARLI_BASE_URL || !env.ARLI_MODEL) return { ok: false, error: 'The AI model is not configured on this server.' };
+
+  const { db } = ed;
+  // Arli allows one request at a time (D-010): never run beside a generation job.
+  const { data: active } = await db.from('generation_jobs').select('id').in('status', ['queued', 'running']).limit(1);
+  if (active?.length) return { ok: false, error: 'A story is being generated and is using the AI model. Develop the brief when it has finished — or write the guidance yourself.' };
+  const since = new Date(Date.now() - 24 * 3600 * 1000).toISOString();
+  const { count } = await db.from('api_usage').select('id', { count: 'exact', head: true }).eq('stage', 'brief').gte('created_at', since);
+  if ((count ?? 0) >= DAILY_BRIEF_LIMIT) return { ok: false, error: `Daily brief limit reached (${DAILY_BRIEF_LIMIT} per 24 hours). You can still write the guidance yourself.` };
+
+  const llm = arliLlm({ baseUrl: env.ARLI_BASE_URL, apiKey: env.ARLI_API_KEY, model: env.ARLI_MODEL, timeoutMs: 90_000 });
+  const record = (u: { promptTokens: number; completionTokens: number }, calls: number) =>
+    u.promptTokens || u.completionTokens
+      ? db
+          .from('api_usage')
+          .insert({ job_id: null, article_id: null, stage: 'brief', service: 'arli', key_fingerprint: fingerprint(env.ARLI_API_KEY), model: env.ARLI_MODEL, prompt_tokens: u.promptTokens, completion_tokens: u.completionTokens, credits: 0, calls })
+          .then(() => undefined, () => undefined)
+      : undefined;
+  try {
+    const r = await suggestBrief(llm, { prompt, context });
+    await record(r.usage, r.attempts);
+    return { ok: true, fields: r.fields };
+  } catch (e) {
+    if (e instanceof LlmError) await record(e.usage, 2);
+    return { ok: false, error: `Seshat could not develop the brief this time (${(e as Error).message.slice(0, 160)}). Try again, or go straight to Research & Generate.` };
+  }
 }
 
 // ── Editorial saves ──────────────────────────────────────────────────────
