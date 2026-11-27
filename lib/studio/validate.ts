@@ -6,12 +6,14 @@
 // supplied) recomputation of every fact from the stored observations.
 import type { Fact } from '../data/display.ts';
 import { SECTION_ORDER, SeshatArticleV1, type SectionId, type SeshatArticle, type ValidationIssue } from './schema.ts';
-import { checkTokens, findBareNumbers, findCliches, findUnsupportedSuperlatives, stringLeaves } from './numbers.ts';
+import { checkTokens, classifySuperlatives, findBareNumbers, findCliches, findDuplicateWords, stringLeaves } from './numbers.ts';
+import { checkText, type ClaimRecord, type QuantityFact } from './quantity.ts';
+import { resolveTokensSafe } from '../content/tokens.ts';
 
 const TOKEN_KEYS = /\{([a-zA-Z0-9]+)(?:\.date)?(?::(?:short|abs))?\}/g;
 const tokenKeys = (s: string) => [...s.matchAll(TOKEN_KEYS)].map((m) => m[1]);
 
-export type ValidationResult = { ok: boolean; issues: ValidationIssue[]; article?: SeshatArticle };
+export type ValidationResult = { ok: boolean; issues: ValidationIssue[]; claims: ClaimRecord[]; article?: SeshatArticle };
 
 export function validateArticle(input: unknown, opts: { today: string; recomputedFacts?: Record<string, Fact> } = { today: new Date().toISOString().slice(0, 10) }): ValidationResult {
   const parsed = SeshatArticleV1.safeParse(input);
@@ -25,6 +27,7 @@ export function validateArticle(input: unknown, opts: { today: string; recompute
         message: `${i.path.join('.')}: ${i.message}`,
         path: i.path.join('.'),
       })),
+      claims: [],
     };
   }
   const a = parsed.data;
@@ -33,6 +36,8 @@ export function validateArticle(input: unknown, opts: { today: string; recompute
     issues.push({ level, section, code, message, path });
   const { facts, dates, charts } = a.data;
   const indicatorKeys = new Set((a.data.indicators as { key: string }[]).map((c) => c.key));
+  const claims: ClaimRecord[] = [];
+  const resolve = (t: string) => resolveTokensSafe(t, { facts: facts as never, dates: dates as never });
 
   // 1. Tokens and bare numbers in every text field of the four sections + methodology
   for (const section of [...SECTION_ORDER, 'methodology'] as const) {
@@ -42,8 +47,18 @@ export function validateArticle(input: unknown, opts: { today: string; recompute
       const s = section === 'methodology' ? 'evidence' : section;
       for (const p of checkTokens(text, facts, dates)) add('error', s, 'unknown-token', `${p.token}: ${p.reason}`, path);
       for (const b of findBareNumbers(text)) add('warning', s, 'bare-number', `"${b.match}" (${b.why}) is not tied to a data value or verified source figure`, path);
-      for (const w of findUnsupportedSuperlatives(text)) add('warning', s, 'unsupported-superlative', `"${w}" is not backed by a high/low or "since" fact in the same sentence`, path);
+      for (const w of classifySuperlatives(text, facts as Record<string, { value: number; date?: string }>))
+        if (w.verdict === 'contradicted') add('error', s, 'superlative-contradicted', `"${w.word}" contradicts the data: the latest value is not the extreme of the retrieved history`, path);
+        else add('warning', s, 'unsupported-superlative', `"${w.word}" is not backed by a high/low or "since" fact in the same sentence`, path);
       for (const c of findCliches(text)) add('info', s, 'style', `Cliché: "${c}"`, path);
+      // Cosmetic checks run on the text as the reader sees it (tokens resolved).
+      for (const d of findDuplicateWords(resolve(text))) add('info', s, 'duplicate-word', `Repeated word: "${d}"`, path);
+      // Numerical claims: every figure-bearing sentence is checked against its facts' quantity metadata.
+      if (section === 'methodology') continue;
+      for (const c of checkText(path, text, facts as Record<string, QuantityFact>, resolve)) {
+        claims.push(c);
+        for (const i of c.issues) add(i.severity, s, `quantity:${i.code}`, `${i.message} — "${c.sentence.slice(0, 160)}"`, path);
+      }
     }
   }
 
@@ -66,6 +81,18 @@ export function validateArticle(input: unknown, opts: { today: string; recompute
         add('warning', r.section, 'chart-claim-mismatch', `Caption of "${r.chartId}" cites {${k}}, which is not plotted in that chart`, r.path);
     }
   }
+  // Every plotted series must be backed by a dataset listed in the article's sources.
+  const sourceIds = new Set((a.data.sources as { key?: string; seriesId: string }[]).flatMap((x) => [x.key ?? x.seriesId, x.seriesId]));
+  // Drafts generated before dataset keys were recorded on sources cannot be checked this way.
+  const keyed = (a.data.sources as { key?: string }[]).some((x) => x.key);
+  if (keyed) for (const [id, ch] of Object.entries(charts as Record<string, { series?: { sourceSeriesIds: string[] }[] }>))
+    for (const sid of (ch.series ?? []).flatMap((x) => x.sourceSeriesIds))
+      if (!sourceIds.has(sid)) add('error', 'data', 'dataset-missing', `Chart "${id}" plots ${sid}, which is not among the article's datasets`);
+  // Quoted figures and findings must point at research sources that exist.
+  const citeRefs = new Set(a.evidence.citations.map((c) => c.ref));
+  for (const [k, f] of Object.entries(facts))
+    for (const ref of f.sourceRefs ?? []) if (!citeRefs.has(ref)) add('error', 'evidence', 'source-missing', `Figure {${k}} cites ${ref}, which is not among the research sources`);
+  for (const fd of a.evidence.findings) for (const ref of fd.sourceRefs) if (!citeRefs.has(ref)) add('warning', 'evidence', 'source-missing', `Finding ${fd.ref} cites ${ref}, which is not among the research sources`);
   a.macro.indicators.forEach((n, i) => {
     if (!indicatorKeys.has(n.key)) add('error', 'macro', 'unknown-indicator', `Indicator "${n.key}" has no data behind it`, `macro.indicators[${i}]`);
   });
@@ -101,14 +128,18 @@ export function validateArticle(input: unknown, opts: { today: string; recompute
     }
   }
 
-  return { ok: !issues.some((i) => i.level === 'error'), issues, article: a };
+  // Substantive problems first, cosmetic last.
+  const rank = { error: 0, warning: 1, info: 2 } as const;
+  issues.sort((x, y) => rank[x.level] - rank[y.level]);
+  return { ok: !issues.some((i) => i.level === 'error'), issues, claims, article: a };
 }
 
 /** Fold validation issues into each section's attention flag (keeps LLM/editor-set reasons). */
 export function applyAttention(a: SeshatArticle, issues: ValidationIssue[]): SeshatArticle {
   const out = structuredClone(a);
   for (const s of SECTION_ORDER) {
-    const mine = issues.filter((i) => i.section === s && i.level !== 'info');
+    // Errors before warnings, so financial problems are never buried under cosmetic ones.
+    const mine = issues.filter((i) => i.section === s && i.level !== 'info').sort((x, y) => (x.level === y.level ? 0 : x.level === 'error' ? -1 : 1));
     if (!mine.length) continue;
     const reasons = new Set(out[s].attention.reasons);
     for (const i of mine.slice(0, 6)) reasons.add(i.message.slice(0, 380));

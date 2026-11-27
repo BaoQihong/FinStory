@@ -1,7 +1,7 @@
 // FRED (Federal Reserve Bank of St. Louis) — series search, metadata and
 // observations through the official API. Missing values (".") become null.
 import { createHash } from 'node:crypto';
-import { fetchJson, type FetchLike } from './http.ts';
+import { fetchJson, ProviderError, type FetchLike } from './http.ts';
 import type { DataProvider, SeriesData, SeriesMeta } from './types.ts';
 
 type FredSeries = {
@@ -50,7 +50,10 @@ export function fredProvider(apiKey: string | undefined, fetchImpl?: FetchLike):
       try {
         const { data } = await fetchJson<{ seriess?: FredSeries[] }>(q('series', { series_id: id }), { label: 'FRED series', fetchImpl, retries: 1 });
         return data.seriess?.[0] ? toMeta(data.seriess[0]) : null;
-      } catch {
+      } catch (e) {
+        // Not found → null. A service failure (timeout / 5xx / 429) is rethrown so callers can
+        // tell an outage from a missing series (circuit breaker + evidence gaps).
+        if (e instanceof ProviderError && e.retryable) throw e;
         return null;
       }
     },

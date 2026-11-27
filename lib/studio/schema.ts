@@ -135,6 +135,26 @@ const FactSchema = z.object({
   seriesIds: z.array(z.string()),
   sourceRefs: z.array(z.string()).optional(),
   method: z.string().max(600),
+  /** What the number is (see lib/studio/quantity.ts) — used to check every claim that cites it. */
+  quantity: z
+    .object({
+      kind: z.enum(['level', 'change', 'rate']),
+      window: z.enum(['1y', '5y', 'other']).optional(),
+      unit: z.string().max(80),
+      denominator: z.string().max(40).optional(),
+      measure: z.enum(['stock', 'flow', 'price', 'rate', 'index', 'ratio', 'count', 'other']),
+      temporal: z.enum(['historical', 'forecast', 'estimate', 'target']),
+      period: z.string().max(40).optional(),
+    })
+    .optional(),
+  quantityNotes: z.array(z.string().max(200)).max(6).optional(),
+});
+export const ClaimRecordSchema = z.object({
+  path: z.string(),
+  sentence: z.string(),
+  tokens: z.array(z.string()),
+  status: z.enum(['ok', 'flagged']),
+  issues: z.array(z.object({ code: z.string(), message: z.string(), severity: z.enum(['error', 'warning']) })),
 });
 const DateFactSchema = z.object({
   date: z.string(),
@@ -180,6 +200,10 @@ export const SeshatArticleV1 = z.strictObject({
   methodology: z.array(text(600)).max(12),
   evidence: z.object({
     citations: z.array(Citation),
+    /** Evidence the research needed but could not obtain (never filled with substitutes). */
+    gaps: z
+      .array(z.object({ need: z.string().max(300), reason: z.enum(['provider-unavailable', 'no-dataset', 'stale-data']), provider: z.string().max(80).optional(), detail: z.string().max(300).optional() }))
+      .optional(),
     findings: z.array(
       z.object({ ref: z.string(), claim: z.string(), kind: EvidenceKind, sourceRefs: z.array(z.string()), quoteVerified: z.boolean() }),
     ),
@@ -192,7 +216,12 @@ export const SeshatArticleV1 = z.strictObject({
     indicators: z.array(z.any()),
     sources: z.array(z.any()),
   }),
-  validation: z.object({ checkedAt: z.string(), issues: z.array(ValidationIssue) }),
+  validation: z.object({
+    checkedAt: z.string(),
+    issues: z.array(ValidationIssue),
+    /** Every figure-bearing sentence and the result of its quantity checks. */
+    claims: z.array(ClaimRecordSchema).optional(),
+  }),
   generation: z.object({
     jobId: z.string(),
     model: z.string(),

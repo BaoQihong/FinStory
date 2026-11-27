@@ -10,7 +10,7 @@
 // can be slow (20–45 s observed), so timeouts are generous and the pipeline
 // fetches datasets in parallel.
 import { createHash } from 'node:crypto';
-import { fetchJson, type FetchLike } from './http.ts';
+import { fetchJson, ProviderError, type FetchLike } from './http.ts';
 import type { DataProvider, SeriesData, SeriesMeta } from './types.ts';
 
 type Row = Record<string, string | number | null> & { period: string };
@@ -88,17 +88,20 @@ export function eiaProvider(apiKey: string | undefined, fetchImpl?: FetchLike): 
     async meta(id) {
       if (!apiKey) return null;
       try {
-        const { data } = await fetchJson<EiaResp>(url(id, `&length=1${sort}`), { label: 'EIA meta', fetchImpl, retries: parseNativeId(id) ? 0 : 1, timeoutMs: parseNativeId(id) ? 25_000 : 40_000 });
+        const { data } = await fetchJson<EiaResp>(url(id, `&length=1${sort}`), { label: 'EIA meta', fetchImpl, retries: 1, timeoutMs: parseNativeId(id) ? 20_000 : 40_000 });
         const row = data.response?.data?.[0];
         if (!row) return null;
         return { provider: 'eia', id, ...describe(id, row, data), seasonalAdjustment: null, observationStart: '', observationEnd: isoPeriod(row.period), notes: (data.response?.description ?? '').slice(0, 300), popularity: null } satisfies SeriesMeta;
-      } catch {
+      } catch (e) {
+        // Not found → null. A service failure (timeout / 5xx / 429) is rethrown so callers can
+        // tell an outage from a missing series (circuit breaker + evidence gaps).
+        if (e instanceof ProviderError && e.retryable) throw e;
         return null;
       }
     },
     async fetch(id, start): Promise<SeriesData> {
       if (!apiKey) throw new Error('EIA_API_KEY not configured');
-      const { data, ms, calls } = await fetchJson<EiaResp>(url(id, `&start=${start.slice(0, 7)}&length=5000${sort}`), { label: 'EIA data', fetchImpl, timeoutMs: 90_000, retries: 0 });
+      const { data, ms, calls } = await fetchJson<EiaResp>(url(id, `&start=${start.slice(0, 7)}&length=5000${sort}`), { label: 'EIA data', fetchImpl, timeoutMs: 60_000, retries: 1 });
       const rows = (data.response?.data ?? []).slice().reverse();
       if (!rows.length) throw new Error(`EIA series ${id} returned no data`);
       const meta: SeriesMeta = {

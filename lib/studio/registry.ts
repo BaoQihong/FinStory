@@ -38,10 +38,27 @@ export const REGISTRY: RegistryEntry[] = [
   fred('FIXHAI', 'Housing affordability index (NAR)', 'housing affordability buyers income mortgage'),
   fred('MDSP', 'Mortgage debt service as % of disposable income', 'mortgage debt service household affordability burden'),
   fred('RHORUSQ156N', 'Homeownership rate', 'homeownership housing owners renters'),
-  fred('SFXRSA', 'Case-Shiller San Francisco home price index', 'housing regional prices san francisco california west'),
-  fred('LXXRSA', 'Case-Shiller Los Angeles home price index', 'housing regional prices los angeles california west'),
-  fred('MIXRSA', 'Case-Shiller Miami home price index', 'housing regional prices miami florida south'),
-  fred('PHXRNSA', 'Case-Shiller Phoenix home price index', 'housing regional prices phoenix arizona sunbelt'),
+  // Case-Shiller metro indices (seasonally adjusted) — regional coverage, including counterexamples
+  fred('ATXRSA', 'Case-Shiller Atlanta home price index', 'housing regional metro city home prices atlanta georgia south sunbelt'),
+  fred('BOXRSA', 'Case-Shiller Boston home price index', 'housing regional metro city home prices boston massachusetts northeast'),
+  fred('CRXRSA', 'Case-Shiller Charlotte home price index', 'housing regional metro city home prices charlotte north carolina south sunbelt'),
+  fred('CHXRSA', 'Case-Shiller Chicago home price index', 'housing regional metro city home prices chicago illinois midwest'),
+  fred('CEXRSA', 'Case-Shiller Cleveland home price index', 'housing regional metro city home prices cleveland ohio midwest'),
+  fred('DAXRSA', 'Case-Shiller Dallas home price index', 'housing regional metro city home prices dallas texas south sunbelt'),
+  fred('DNXRSA', 'Case-Shiller Denver home price index', 'housing regional metro city home prices denver colorado mountain west'),
+  fred('DEXRSA', 'Case-Shiller Detroit home price index', 'housing regional metro city home prices detroit michigan midwest'),
+  fred('LVXRSA', 'Case-Shiller Las Vegas home price index', 'housing regional metro city home prices las vegas nevada west sunbelt'),
+  fred('LXXRSA', 'Case-Shiller Los Angeles home price index', 'housing regional metro city home prices los angeles california west coast'),
+  fred('MIXRSA', 'Case-Shiller Miami home price index', 'housing regional metro city home prices miami florida south sunbelt'),
+  fred('MNXRSA', 'Case-Shiller Minneapolis home price index', 'housing regional metro city home prices minneapolis minnesota midwest'),
+  fred('NYXRSA', 'Case-Shiller New York home price index', 'housing regional metro city home prices new york new york northeast'),
+  fred('PHXRSA', 'Case-Shiller Phoenix home price index', 'housing regional metro city home prices phoenix arizona west sunbelt'),
+  fred('POXRSA', 'Case-Shiller Portland home price index', 'housing regional metro city home prices portland oregon west coast'),
+  fred('SDXRSA', 'Case-Shiller San Diego home price index', 'housing regional metro city home prices san diego california west coast'),
+  fred('SFXRSA', 'Case-Shiller San Francisco home price index', 'housing regional metro city home prices san francisco california west coast'),
+  fred('SEXRSA', 'Case-Shiller Seattle home price index', 'housing regional metro city home prices seattle washington west coast'),
+  fred('TPXRSA', 'Case-Shiller Tampa home price index', 'housing regional metro city home prices tampa florida south sunbelt'),
+  fred('WDXRSA', 'Case-Shiller Washington DC home price index', 'housing regional metro city home prices washington dc district columbia northeast'),
   // Electricity (FRED)
   fred('APU000072610', 'Average US electricity price per kWh (BLS)', 'electricity price consumers bills power kwh'),
   fred('CUSR0000SEHF01', 'CPI: electricity (index)', 'electricity inflation consumer bills power prices'),
@@ -109,8 +126,15 @@ export const REGISTRY: RegistryEntry[] = [
 
 const words = (s: string) => s.toLowerCase().split(/[^a-z0-9&]+/).filter((w) => w.length > 1);
 
-/** Registry entries ranked by keyword overlap with a requirement description. */
+const REGIONAL = /\b(regional|regions?|metros?|metropolitan|cities|city|states?|geograph\w*|local|counterexamples?|across the country)\b/i;
+
+/**
+ * Registry entries ranked by keyword overlap with a requirement description. Regional
+ * requirements get many more matches so that discovery sees the whole geographic spread
+ * (and its counterexamples), not just the first few hits.
+ */
 export function registryMatches(query: string, limit = 4): RegistryEntry[] {
+  if (REGIONAL.test(query)) limit = Math.max(limit, 20);
   const q = new Set(words(query));
   return REGISTRY.map((e) => ({ e, score: [...e.tags, ...words(e.title)].filter((t) => q.has(t)).length }))
     .filter((x) => x.score > 0)

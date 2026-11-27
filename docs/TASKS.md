@@ -69,6 +69,8 @@ Statuses: `Done` · `In progress` · `Blocked` · `Not started`.
 | P2B-19 | Product-owner test drafts: US housing; AI data centers & electricity | Done — awaiting review | v2 drafts adf41c39… (housing, needs attention: 1 invalid token + flagged superlatives) and 8629779e… (AI power); v1 drafts kept as "[Superseded v1]"; all temporary — delete on request |
 | P2B-20 | EIA electricity endpoints | Blocked (external) | HTTP 504/timeouts at EIA 26–27 Nov; re-test with `npm run studio:check-registry` |
 | P2B-12b | Acceptance A/B through the browser UI | Blocked | Needs the product owner to sign in to /admin in Chrome (assistant may not type passwords) |
+| P2B-21 | Final reliability pass: quantities, references, counter-evidence, outages, editorial checks | Done | D-037–D-041; 41 tests |
+| P2B-22 | Frozen-code acceptance: housing + AI electricity through the studio UI | Blocked | Needs the product owner to sign in to /admin in Chrome |
 | P2B-17 | Disable public sign-ups in Supabase Auth | Not started | Product owner deferred ("fine for proto"); RLS allow-list already blocks non-editors |
 
 ## Phase 2C

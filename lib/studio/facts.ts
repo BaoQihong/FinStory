@@ -10,6 +10,7 @@ import { asOf, between, difference, extreme, lastAtOrAbove, latest, monthlyAvera
 import { fmtMonthShort } from '../format.ts';
 import { formatDate, formatFact } from '../content/tokens.ts';
 import { frequencyClass, fxQuote, sameAxis, unitInfo, type UnitInfo } from './units.ts';
+import { normDenominator, type Measure, type Quantity, type QuantityFact } from './quantity.ts';
 
 export type Dataset = {
   key: string;
@@ -70,6 +71,7 @@ const precisionFor = (freq: string): 'day' | 'month' | 'quarter' | 'year' => {
 export function sourceRefOf(d: Dataset): SourceRef {
   const pts = nonNull(d.observations);
   return {
+    key: d.key,
     seriesId: d.seriesId,
     name: d.name,
     provider: d.provider,
@@ -201,6 +203,32 @@ export function deriveSeries(datasets: Dataset[], specs: DerivedSpec[]): { serie
 }
 
 /** Unit info for a series; a difference of rates is in percentage points. */
+/** What a series' values are: level vs growth rate, measure (stock/flow/price…), unit and denominator. */
+export function seriesQuantity(s: Series): Quantity {
+  const u = seriesUnit(s);
+  const units = s.units.toLowerCase();
+  const isGrowth = u.kind === 'rate' && /change|growth|chg/.test(units);
+  const fx = fxQuote(s.units);
+  let measure: Measure = 'other';
+  let denominator: string | undefined;
+  if (u.kind === 'rate') measure = 'rate';
+  else if (u.kind === 'index') measure = 'index';
+  else if (fx) {
+    measure = 'price';
+    denominator = normDenominator(fx.base.split(' ').at(-1));
+  } else {
+    const per = /(?:\bper\b|\/)\s*([a-z][a-z-]*(?:\s+btu)?)/i.exec(u.label) ?? /(?:\bper\b|\ba\b)\s+([a-z][a-z-]*)/i.exec(u.display.suffix);
+    if (/months'? supply/.test(units)) measure = 'ratio';
+    else if (per) {
+      denominator = normDenominator(per[1]);
+      measure = denominator === 'day' || denominator === 'month' || denominator === 'year' ? 'flow' : 'price';
+    } else if (/kilowatt|megawatt|units|sold|sales|starts|production/.test(units)) measure = 'flow';
+    else if (/^level$|count|persons|people|barrels|stocks|inventor/.test(units)) measure = 'stock';
+    else if (/dollars?$|^u\.?s\.? \$|^\$/.test(units)) measure = 'price';
+  }
+  return { kind: isGrowth ? 'rate' : 'level', unit: u.label, denominator, measure, temporal: 'historical' };
+}
+
 function seriesUnit(s: Series): UnitInfo {
   if (s.units === 'Percentage points') return { kind: 'rate', display: { prefix: '', suffix: ' pp' }, label: 'percentage points', decimals: 2 };
   return unitInfo(s.units);
@@ -313,6 +341,16 @@ export function factsForSeries(s: Series): { facts: Record<string, Fact>; dates:
   dates[`${s.key}HistoryStart`] = { date: pts[0].date, datePrecision: precisionFor(s.frequency), seriesIds: s.inputs, method: `First observation retrieved for ${s.label}.` };
   // Event/flow series (e.g. currency interventions) are mostly zero: percent changes are meaningless.
   if (isMostlyZero(s)) for (const k of Object.keys(facts)) if (/Chg(1y|5y)$/.test(k)) delete facts[k];
+  // Structured quantity metadata (what each number IS) for claim checking.
+  const base = seriesQuantity(s);
+  for (const [k, f] of Object.entries(facts)) {
+    const suffix = k.slice(s.key.length);
+    const m = /Chg(1y|5y)$/.exec(suffix);
+    const q: Quantity = m
+      ? { ...base, kind: 'change', window: m[1] as '1y' | '5y', unit: f.format === 'pp' ? 'pp' : '%', denominator: undefined, measure: base.measure, period: f.date }
+      : { ...base, period: f.date };
+    (f as QuantityFact).quantity = q;
+  }
   // Never let a non-finite number (e.g. division by a zero base) become a fact.
   for (const [k, f] of Object.entries(facts)) if (!Number.isFinite(f.value)) delete facts[k];
   return { facts, dates };
@@ -432,6 +470,27 @@ export function describeSeries(s: Series, facts: Record<string, Fact>, dates: Re
   return out;
 }
 
+/** For groups of 3+ comparable series (same unit, levels): the spread of their one-year changes. */
+export function dispersion(series: Series[], facts: Record<string, Fact>): string[] {
+  const groups = new Map<string, Series[]>();
+  for (const s of series) {
+    const q = seriesQuantity(s);
+    if (q.kind !== 'level' || !facts[`${s.key}Chg1y`]) continue;
+    const g = `${q.unit}|${q.measure}`;
+    groups.set(g, [...(groups.get(g) ?? []), s]);
+  }
+  const out: string[] = [];
+  for (const members of groups.values()) {
+    if (members.length < 3) continue;
+    const ch = members.map((s) => ({ s, f: facts[`${s.key}Chg1y`] })).sort((a, b) => a.f.value - b.f.value);
+    const fell = ch.filter((x) => x.f.value < 0);
+    out.push(
+      `Across ${members.length} comparable series, one-year changes range from {${ch[0].s.key}Chg1y} (${ch[0].s.label}) to {${ch[ch.length - 1].s.key}Chg1y} (${ch[ch.length - 1].s.label}); ${fell.length} of ${members.length} fell${fell.length ? `: ${fell.map((x) => x.s.label).join(', ')}` : ''}.`,
+    );
+  }
+  return out;
+}
+
 export function buildDataProducts(datasets: Dataset[], derived: DerivedSpec[], charts: ChartSpecInput[]): DataProducts {
   const { series, issues } = deriveSeries(datasets, derived);
   const sourcesByKey = Object.fromEntries(datasets.map((d) => [d.key, sourceRefOf(d)]));
@@ -450,6 +509,7 @@ export function buildDataProducts(datasets: Dataset[], derived: DerivedSpec[], c
     if (card) indicators.push(card);
     else issues.push(`Series "${s.key}" has too few observations for an indicator card.`);
   }
+  observations.push(...dispersion(Object.values(series), facts));
   const chartOut: Record<string, ChartData> = {};
   for (const c of charts) {
     const r = buildChart(c, series, sourcesByKey);

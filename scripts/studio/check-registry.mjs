@@ -11,8 +11,9 @@ for (const e of entries) {
   if (e.provider === 'eia') {
     if (!env.EIA_API_KEY) { console.log(`skip eia:${e.id} — EIA_API_KEY not configured`); continue; }
     const { eiaProvider } = await import('../../lib/studio/providers/eia.ts');
-    const m = await eiaProvider(env.EIA_API_KEY).meta(e.id);
-    ok = !!m; info = m ? `${m.units} last ${m.observationEnd} | ${m.title.slice(0, 60)}` : 'no response (EIA timeout?)';
+    let m = null, err = '';
+    try { m = await eiaProvider(env.EIA_API_KEY).meta(e.id); } catch (x) { err = x.message.slice(0, 80); }
+    ok = !!m; info = m ? `${m.units} last ${m.observationEnd} | ${m.title.slice(0, 60)}` : `unavailable (${err || 'not found'})`;
   } else if (e.provider === 'fred') {
     const r = await fetch(`https://api.stlouisfed.org/fred/series?series_id=${e.id}&api_key=${env.FRED_API_KEY}&file_type=json`);
     const j = await r.json(); const s = j.seriess?.[0];

@@ -54,4 +54,6 @@ export type SourceRef = {
   lastObservation: string;
   /** Short provider label for attributions ("FRED", "Tiingo"). Omitted = "FRED". */
   short?: string;
+  /** Dataset key in a generated article (what chart series and facts reference). */
+  key?: string;
 };

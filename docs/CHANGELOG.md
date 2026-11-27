@@ -3,6 +3,10 @@
 Notable changes to this project. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/). Newest entries first.
 
+## 0.3.2 — 2026-11-27 (Phase 2B final reliability pass — frozen for acceptance)
+
+- Structured quantity metadata + claims ledger (D-037); reference integrity (D-038); counter-checks, candidate screening, dispersion, all Case-Shiller metros (D-039); circuit breaker + explicit evidence gaps (D-040); verified superlatives, duplicate words, severity ordering (D-041).
+
 ## 0.3.1 — 2026-11-27
 
 - EIA provider (petroleum series; electricity via native v2 routes, fail-fast), housing/electricity/power-equity registry additions (D-034).

@@ -7,6 +7,9 @@ import { z } from 'zod';
 import type { DateFact, Fact } from '../../data/display.ts';
 import { resolveTokensSafe } from '../../content/tokens.ts';
 import { stringLeaves } from '../numbers.ts';
+import { verifyQuotedQuantity } from '../quantity.ts';
+import { createBreaker, type Gap, type ProviderOutage } from './breaker.ts';
+import { ProviderError } from '../providers/http.ts';
 import { shiftMonths } from '../../data/transforms.ts';
 import { buildDataProducts, type ChartSpecInput, type DataProducts, type Dataset, type DerivedSpec } from '../facts.ts';
 import { registryMatches } from '../registry.ts';
@@ -56,6 +59,8 @@ export const PlanOut = z.object({
   questions: z.array(t(300)).min(2).max(6),
   searches: z.array(z.object({ query: t(200), purpose: t(200), recent: z.boolean() })).min(3).max(LIMITS.searches),
   dataNeeds: z.array(z.object({ need: t(200), why: t(300), searchText: t(120) })).min(2).max(9),
+  /** Evidence that could CONTRADICT the premise — researched deliberately, not only supporting data. */
+  counterChecks: z.array(z.object({ premise: t(200), contradictingEvidence: t(300), searchText: t(120) })).min(1).max(4),
   storyboardConcern: z.string().max(400),
 });
 export type PlanOut = z.infer<typeof PlanOut>;
@@ -73,6 +78,7 @@ Plan the research for this story:
 - questions: what the research must answer.
 - searches: ${LIMITS.searches} or fewer web searches. Mix recent developments (recent=true, e.g. latest central-bank decisions, announcements) and background/mechanism explainers (recent=false). Favour queries that surface primary sources (central banks, statistical agencies, official agencies) and credible financial journalism.
 - dataNeeds: the economic/market time series that would let readers see the story in numbers. Include a need for EVERY measurable thing the brief explicitly asks about (e.g. "regional price differences" → regional/metro price indices; "consumer electricity prices" → a retail electricity price series) (e.g. an exchange rate, policy rates, bond yields, commodity prices, inventories, an equity benchmark). For each give searchText: a short phrase to search an economic-data catalogue (like FRED), e.g. "Japan 10-year government bond yield".
+- counterChecks: 1–4 ways the premise could be WRONG and the data that would show it (e.g. "prices are resilient" → "metros where prices fell" with searchText "home price index metro"; "data centers raise bills" → "states with fast data-center growth but flat prices"). For geographically diverse subjects always include a regional check.
 - storyboardConcern: empty string if the prompt suits a four-section financial story (story, macro numbers, analytics, outlook); otherwise explain the problem.`;
   const r = await deps.llm.complete({ stage: 'plan', system: SYSTEM, user, schema: PlanOut, maxTokens: 1800, temperature: 0.3 });
   ctx.metric({ llm: { ...r.usage, attempts: r.attempts } });
@@ -163,8 +169,21 @@ async function search(ctx: StageContext): Promise<SearchOut> {
 }
 
 // ── C. Discover (application code: provider catalogues + registry) ─────────
-export type Candidate = SeriesMeta & { cid: string; forNeeds: number[] };
-export type DiscoverOut = { candidates: Candidate[]; needsWithoutCandidates: string[]; disabledProviders: string[] };
+export type Candidate = SeriesMeta & { cid: string; forNeeds: number[]; recent?: string };
+
+/** "latest 158.8 · 1y +0.9%" (or "+0.25 pp" for rates) from a short observation window. */
+export function recentChange(obs: { date: string; value: number | null }[], units: string): string {
+  const pts = obs.filter((o): o is { date: string; value: number } => o.value !== null);
+  if (pts.length < 2) return 'n/a';
+  const last = pts[pts.length - 1];
+  const target = shiftMonths(last.date, -12);
+  const prior = [...pts].reverse().find((p) => p.date <= target);
+  if (!prior) return `latest ${last.value} (${last.date})`;
+  const rate = /percent|^pct|%/i.test(units);
+  const ch = rate ? `${(last.value - prior.value >= 0 ? '+' : '')}${(last.value - prior.value).toFixed(2)} pp` : prior.value === 0 ? 'n/a' : `${last.value >= prior.value ? '+' : ''}${(100 * (last.value / prior.value - 1)).toFixed(1)}%`;
+  return `latest ${last.value} (${last.date}) · 1y ${ch}`;
+}
+export type DiscoverOut = { candidates: Candidate[]; needsWithoutCandidates: string[]; disabledProviders: string[]; gaps?: Gap[]; outages?: ProviderOutage[] };
 
 function freshEnough(m: SeriesMeta, today: string): boolean {
   if (!m.observationEnd) return true;
@@ -189,33 +208,39 @@ async function discover(ctx: StageContext): Promise<DiscoverOut> {
     } else if (byKey.size < LIMITS.maxCandidates) byKey.set(k, { ...m, cid: '', forNeeds: [need] });
   };
   const without: string[] = [];
+  const breaker = createBreaker();
+  const triedFor: Set<string>[] = [];
   // Network lookups run concurrently (EIA can take 20–45 s per call); results are
   // merged afterwards in need order so candidate numbering stays deterministic.
   const fred = providers.fred;
+  // Counter-checks are researched as data needs in their own right.
+  const needs = [...p.dataNeeds, ...(p.counterChecks ?? []).map((c) => ({ need: `Counter-check: ${c.contradictingEvidence}`, why: `Tests the premise "${c.premise}"`, searchText: c.searchText }))];
+  (p as { dataNeeds: typeof needs }).dataNeeds = needs;
   const lookups = await Promise.all(
-    p.dataNeeds.map(async (need) => {
+    needs.map(async (need) => {
       const out: SeriesMeta[] = [];
+      const tried = new Set<string>();
       if (fred?.enabled && fred.search) {
-        try {
-          count('fred');
-          const found = await fred.search(need.searchText, 12);
-          out.push(...found.filter((m) => !/discontinued/i.test(m.title) && freshEnough(m, today)).slice(0, LIMITS.candidatesPerNeed));
-        } catch (e) {
-          ctx.warn(`FRED search failed for "${need.searchText}": ${(e as Error).message}`);
-        }
+        tried.add('fred');
+        count('fred');
+        const found = await breaker.run('fred', () => fred.search!(need.searchText, 12));
+        if (found) out.push(...found.filter((m) => !/discontinued/i.test(m.title) && freshEnough(m, today)).slice(0, LIMITS.candidatesPerNeed));
       }
       const reg = registryMatches(`${need.need} ${need.searchText}`, 3).filter((r) => providers[r.provider]?.enabled);
       const metas = await Promise.all(
         reg.map((r) => {
+          tried.add(r.provider);
+          if (breaker.isOpen(r.provider)) return undefined;
           count(r.provider);
-          return providers[r.provider].meta(r.id);
+          return breaker.run(r.provider, () => providers[r.provider].meta(r.id));
         }),
       );
       for (const m of metas) if (m && freshEnough(m, today)) out.push(m);
-      return out;
+      return { out, tried };
     }),
   );
-  lookups.forEach((metas, i) => {
+  lookups.forEach(({ out: metas, tried }, i) => {
+    triedFor[i] = tried;
     for (const m of metas) add(byKey.get(`${m.provider}:${m.id}`) ?? m, i);
     if (![...byKey.values()].some((c) => c.forNeeds.includes(i))) without.push(p.dataNeeds[i].need);
   });
@@ -225,17 +250,41 @@ async function discover(ctx: StageContext): Promise<DiscoverOut> {
     for (const tk of (ctx.article.brief.assets.match(/\b[A-Z]{2,5}\b/g) ?? []).slice(0, 4)) {
       if (byKey.has(`tiingo:${tk}`)) continue;
       count('tiingo');
-      const m = await tiingo.meta(tk);
+      const m = await breaker.run('tiingo', () => tiingo.meta(tk));
       if (m) add(m, -1);
     }
   }
   const candidates = [...byKey.values()];
   candidates.forEach((c, i) => (c.cid = `C${i + 1}`));
-  for (const n of without) ctx.warn(`No current dataset found for: ${n}`);
+  // Screen candidates against their own recent data so selection can see counterexamples
+  // (e.g. which metros fell) instead of guessing from titles. FRED only; bounded concurrency.
+  const toScreen = candidates.filter((c) => c.provider === 'fred').slice(0, 40);
+  const since = `${Number(today.slice(0, 4)) - 2}-01-01`;
+  for (let i = 0; i < toScreen.length; i += 8) {
+    await Promise.all(
+      toScreen.slice(i, i + 8).map(async (c) => {
+        count('fred');
+        const r = await breaker.run('fred', () => fred!.fetch(c.id, since));
+        c.recent = r ? recentChange(r.observations, c.units) : 'n/a';
+      }),
+    );
+  }
+  // Explicit evidence gaps: an outage is named as such (recoverable later), never papered over.
+  const outages = breaker.outages();
+  const nameOf = (id: string) => providers[id]?.name ?? id;
+  const gaps: Gap[] = without.map((need) => {
+    const i = p.dataNeeds.findIndex((n) => n.need === need);
+    const failed = [...(triedFor[i] ?? [])].filter((id) => breaker.failedFor(id));
+    return failed.length
+      ? { need, reason: 'provider-unavailable' as const, provider: failed.map(nameOf).join(', '), detail: outages.find((o) => o.provider === failed[0])?.lastError }
+      : { need, reason: 'no-dataset' as const };
+  });
+  for (const g of gaps) ctx.warn(g.reason === 'provider-unavailable' ? `Missing evidence — ${g.need}: ${g.provider} unavailable (${g.detail ?? 'service error'}); re-run later to fill.` : `No current dataset found for: ${g.need}`);
+  for (const o of outages) ctx.warn(`${nameOf(o.provider)} failed ${o.failures}× during discovery (${o.lastError}); ${breaker.isOpen(o.provider) ? 'treated as unavailable for this job' : 'continuing'}.`);
   const disabled = deps.data.filter((d) => !d.enabled).map((d) => d.name);
   if (disabled.length) ctx.warn(`Data providers not configured: ${disabled.join(', ')}`);
   ctx.metric({ calls });
-  return { candidates, needsWithoutCandidates: without, disabledProviders: disabled };
+  return { candidates, needsWithoutCandidates: without, disabledProviders: disabled, gaps, outages };
 }
 
 // ── D. Select (LLM chooses among verified candidates) ──────────────────────
@@ -257,19 +306,19 @@ async function select(ctx: StageContext): Promise<SelectOut> {
   const d = ctx.outputs.discover as DiscoverOut;
   if (!d.candidates.length) throw Object.assign(new Error('No candidate datasets were discovered for any data need'), { retryable: false });
   const list = d.candidates
-    .map((c) => `${c.cid} | ${c.provider.toUpperCase()} ${c.id} | ${c.title} | units: ${c.units} | ${c.frequency}${c.seasonalAdjustment ? `, ${c.seasonalAdjustment}` : ''} | ${c.observationStart || '?'} → ${c.observationEnd} | needs: ${c.forNeeds.map((n) => (n < 0 ? 'editor-named' : n + 1)).join(',')}`)
+    .map((c) => `${c.cid} | ${c.provider.toUpperCase()} ${c.id} | ${c.title} | units: ${c.units} | ${c.frequency}${c.seasonalAdjustment ? `, ${c.seasonalAdjustment}` : ''} | ${c.observationStart || '?'} → ${c.observationEnd} | needs: ${c.forNeeds.map((n) => (n < 0 ? 'editor-named' : n + 1)).join(',')}${c.recent ? ` | recent: ${c.recent}` : ''}`)
     .join('\n');
   const user = `${briefBlock(ctx.article.brief)}
 
 Central question: ${p.centralQuestion}
-Data needs:
+Data needs (including counter-checks of the premise):
 ${p.dataNeeds.map((n, i) => `${i + 1}. ${n.need} — ${n.why}`).join('\n')}
 
 CANDIDATE DATASETS (metadata reported by the data providers; choose ONLY from these):
 ${list}
 
 Choose the datasets for this story:
-- series: up to ${LIMITS.maxSeries} candidates that best answer the data needs. Cover every data need that has a suitable candidate before adding a second series for any one need — explicit requests in the brief (e.g. regional comparisons: pick 2–4 contrasting regions) come first. CHECK THE UNITS AND TITLE match the need: an exchange rate has units like 'Japanese Yen to One U.S. Dollar'; a policy or market rate is in Percent; intervention amounts, flows, issuance or counts are NOT prices or rates — never use them as one. Prefer current, frequently updated, headline measures; avoid near-duplicates. Give each a short camelCase key (e.g. usdjpy, japan10y, wti) and a reader-friendly label (e.g. "Yen per US dollar").
+- series: up to ${LIMITS.maxSeries} candidates that best answer the data needs. Do NOT pick only series that support the premise: "recent" shows each candidate's latest one-year change — for counter-checks and regional comparisons include contrasting cases (e.g. regions that fell as well as ones that rose). Cover every data need that has a suitable candidate before adding a second series for any one need — explicit requests in the brief (e.g. regional comparisons: pick 2–4 contrasting regions) come first. CHECK THE UNITS AND TITLE match the need: an exchange rate has units like 'Japanese Yen to One U.S. Dollar'; a policy or market rate is in Percent; intervention amounts, flows, issuance or counts are NOT prices or rates — never use them as one. Prefer current, frequently updated, headline measures; avoid near-duplicates. Give each a short camelCase key (e.g. usdjpy, japan10y, wti) and a reader-friendly label (e.g. "Yen per US dollar").
 - derived: optional calculations the application will perform: "difference" (inputs [a, b] → a minus b; both must have the SAME units, e.g. two interest rates → a yield differential); "yoy" (inputs [x] → year-over-year % change of an index or price; never of a rate); "convert" (inputs [asset, fxRate] → an asset priced in a foreign currency re-expressed in the exchange rate's base currency, e.g. a Japanese stock index in US-dollar terms using yen-per-dollar — use it whenever the story concerns foreign assets held by investors in another currency). Use series keys as inputs.
 - charts: 1–5 charts, each answering one editorial question. seriesKeys (series or derived keys) in one chart MUST share the same units; at most 4. from = start date (YYYY-MM-DD), usually 3–10 years before today (${ctx.deps.today()}).
 - unmetNeeds: data needs none of the candidates can meet (do not force an unrelated series).`;
@@ -287,7 +336,7 @@ Choose the datasets for this story:
 }
 
 // ── E. Fetch observations + deterministic products ─────────────────────────
-export type FetchOut = { products: DataProducts; datasetKeys: string[]; asOf: string };
+export type FetchOut = { products: DataProducts; datasetKeys: string[]; asOf: string; gaps?: Gap[] };
 
 export function datasetFromRow(r: DatasetRow, providers: DataProvider[]): Dataset {
   const p = providers.find((x) => x.id === r.provider);
@@ -330,6 +379,7 @@ async function fetchData(ctx: StageContext): Promise<FetchOut> {
   const sel = ctx.outputs.select as SelectOut;
   const start = `${Number(deps.today().slice(0, 4)) - LIMITS.historyYears}-01-01`;
   const rows: DatasetRow[] = [];
+  const fetchGaps: Gap[] = [];
   const calls: Record<string, number> = {};
   // Fetch all selected series concurrently (bounded by the selection size, ≤ 8).
   const fetched = await Promise.all(
@@ -340,14 +390,16 @@ async function fetchData(ctx: StageContext): Promise<FetchOut> {
       try {
         return { s, c, prov, r: await prov.fetch(c.id, start) };
       } catch (e) {
-        return { s, c, error: (e as Error).message };
+        return { s, c, error: (e as Error).message, outage: e instanceof ProviderError ? e.retryable : true, provider: prov.name };
       }
     }),
   );
   for (const f of fetched) {
     const { s, c } = f;
     if (!('r' in f) || !f.r || !f.prov) {
-      ctx.warn(`Could not retrieve ${c.id} (${s.label}): ${'error' in f ? f.error : 'unknown error'}`);
+      const outage = 'outage' in f && f.outage;
+      ctx.warn(`Could not retrieve ${c.id} (${s.label}): ${'error' in f ? f.error : 'unknown error'}${outage ? ' — recorded as missing evidence; re-run later to fill' : ''}`);
+      fetchGaps.push({ need: s.label, reason: outage ? 'provider-unavailable' : 'no-dataset', provider: 'provider' in f ? f.provider : undefined, detail: 'error' in f ? String(f.error).slice(0, 200) : undefined });
       continue;
     }
     const { r, prov } = f;
@@ -384,7 +436,7 @@ async function fetchData(ctx: StageContext): Promise<FetchOut> {
   for (const i of products.issues) ctx.warn(i);
   ctx.metric({ calls });
   const asOf = rows.map((r) => r.observation_end!).sort().at(-1)!;
-  return { products, datasetKeys: rows.map((r) => r.key), asOf };
+  return { products, datasetKeys: rows.map((r) => r.key), asOf, gaps: fetchGaps };
 }
 
 // ── F. Synthesize evidence (LLM) + deterministic quote verification ────────
@@ -396,7 +448,22 @@ export const SynthOut = z.object({
     .min(2)
     .max(16),
   sourceFigures: z
-    .array(z.object({ key: KEY, figure: t(80), quote: t(400), sourceRef: z.string().regex(/^S\d+$/), about: t(200) }))
+    .array(
+      z.object({
+        key: KEY,
+        figure: t(80),
+        quote: t(400),
+        sourceRef: z.string().regex(/^S\d+$/),
+        about: t(200),
+        // What the number IS — checked against the quote by verifyQuotedQuantity().
+        kind: z.enum(['level', 'change', 'rate']),
+        measure: z.enum(['stock', 'flow', 'price', 'rate', 'index', 'ratio', 'count', 'other']),
+        unit: z.string().max(40),
+        denominator: z.string().max(40),
+        temporal: z.enum(['historical', 'forecast', 'estimate', 'target']),
+        period: z.string().max(40),
+      }),
+    )
     .max(10),
   conflicts: z.array(z.object({ description: t(400), sourceRefs: z.array(z.string()).max(4) })).max(5),
   gaps: z.array(t(300)).max(6),
@@ -433,7 +500,7 @@ ${blocks.join('\n\n')}
 Build the evidence package:
 - thesis: the article's central argument in 2–3 sentences, supported by the evidence.
 - findings: key evidence points. claim in your own words; kind = documented / context / interpretation; sourceRefs = the S-refs supporting it ([] if it rests only on the data facts); quote = a short exact excerpt (≤ 300 chars, copied verbatim) from the source that supports it, or "".
-- sourceFigures: important figures stated in the sources that the datasets do not cover (e.g. an announced production cut, a policy rate decision, an inventory change). figure = the exact text as written in the source (e.g. "2.2 million barrels per day"); quote = the exact sentence containing it, copied verbatim; key = camelCase name. Only figures you can quote verbatim.
+- sourceFigures: important figures stated in the sources that the datasets do not cover (e.g. an announced production cut, a policy rate decision, an inventory change). figure = the exact text as written in the source (e.g. "2.2 million barrels per day"); quote = the exact sentence containing it, copied verbatim; key = camelCase name. Only figures you can quote verbatim. Describe each figure precisely: kind (level = an amount or price at a time; change = a difference between two times; rate = a growth rate or percentage), measure (stock = amount at a point in time e.g. inventories, backlog, debt; flow = amount per period e.g. production, sales, spending; price = cost per unit; rate; index; ratio; count; other), unit (e.g. "US$", "gigawatts", "barrels per day", "%"), denominator (what it is per, e.g. "MW", "kWh", "barrel", "year"; "" if none), temporal (historical = already happened; forecast/estimate/target = projected, estimated or planned), period (the year, quarter or date it refers to; "" if unstated).
 - conflicts: where sources disagree, or are stale relative to the data.
 - gaps: what the evidence cannot establish.
 - sectionSupport: how well the evidence supports each of the four sections.`;
@@ -456,6 +523,8 @@ Build the evidence package:
       continue;
     }
     const key = `src${sf.key[0].toUpperCase()}${sf.key.slice(1)}`;
+    const verified = verifyQuotedQuantity(sf.figure, sf.quote, sf);
+    if (verified.notes.length) ctx.warn(`Source figure "${sf.figure}" (${sf.sourceRef}): ${verified.notes.join(' ')}`);
     sourceFacts[key] = {
       value: leadingNumber(sf.figure) ?? 0,
       format: 'text',
@@ -463,8 +532,10 @@ Build the evidence package:
       decimals: 0,
       seriesIds: [],
       sourceRefs: [sf.sourceRef],
-      method: `Quoted from ${sf.sourceRef} (${s!.publisher}${s!.published_at ? ', ' + s!.published_at : ''}): "${sf.quote.slice(0, 300)}" — ${sf.about}`,
-    };
+      method: `Quoted from ${sf.sourceRef} (${s!.publisher}${s!.published_at ? ', ' + s!.published_at : ''}): "${sf.quote.slice(0, 300)}" — ${sf.about}. Quantity: ${verified.quantity.kind}, ${verified.quantity.measure}, ${verified.quantity.unit}${verified.quantity.denominator ? ' per ' + verified.quantity.denominator : ''}, ${verified.quantity.temporal}${verified.quantity.period ? ' (' + verified.quantity.period + ')' : ''}.`.slice(0, 600),
+      quantity: verified.quantity,
+      quantityNotes: verified.notes.length ? verified.notes.map((n) => n.slice(0, 200)).slice(0, 6) : undefined,
+    } as Fact;
   }
   await deps.store.replaceFindings(ctx.job.id, ctx.article.id, findings);
   for (const c of r.data.conflicts) ctx.warn(`Conflicting evidence: ${c.description}`);
@@ -593,7 +664,7 @@ ${ATTENTION_RULE}`;
 // ── Assembly (shared by repair + assemble + partial drafts) ────────────────
 const PLACEHOLDER = (stage: string) => `[Not generated — the ${stage} stage did not complete. Write this section or retry generation.]`;
 
-export function assembleArticle(ctx: StageContext, fixes: { path: string; text: string }[] = []): SeshatArticle {
+export function assembleArticle(ctx: StageContext, fixes: { path: string; text: string }[] = [], notes?: string[]): SeshatArticle {
   const { deps, outputs } = ctx;
   const p = outputs.plan as PlanOut | undefined;
   const f = outputs.fetch as FetchOut | undefined;
@@ -638,10 +709,12 @@ export function assembleArticle(ctx: StageContext, fixes: { path: string; text: 
       ...(f ? Object.values(f.products.series).map((x) => `${x.label}: ${x.derivation}`.slice(0, 600)) : []),
       'Every figure in this article is computed by Seshat’s application code from the datasets listed above, or quoted verbatim from a cited source; none is produced by the language model. Missing observations are left as gaps, never estimated.',
       'Charts show daily series as every fifth observation when the window exceeds roughly two and a half years; the underlying table lists the plotted points.',
+      ...gapNotes(outputs),
     ].slice(0, 12),
     evidence: {
       citations: (srch?.sources ?? []).map((x) => ({ ref: x.ref, title: x.title, url: x.url, publisher: x.publisher, sourceType: x.source_type, publishedAt: x.published_at })),
       findings: (s?.verifiedFindings ?? []).map((x) => ({ ref: x.ref, claim: x.claim, kind: x.evidence_kind, sourceRefs: x.source_refs, quoteVerified: x.quote_verified })),
+      gaps: evidenceGaps(outputs),
     },
     data: {
       facts: { ...(f?.products.facts ?? {}), ...(s?.sourceFacts ?? {}) },
@@ -662,6 +735,7 @@ export function assembleArticle(ctx: StageContext, fixes: { path: string; text: 
   // Deep copy: stage outputs are shared objects and must never be mutated by fixes.
   const article: SeshatArticle = structuredClone(built);
   for (const fx of fixes) setPath(article, fx.path, fx.text);
+  for (const k of resolveBareSeriesRefs(article)) notes?.push(k);
   dedupeUnits(article);
   fixSignWords(article);
   // Drop references to charts / indicators that do not exist (validator reports them first).
@@ -672,6 +746,30 @@ export function assembleArticle(ctx: StageContext, fixes: { path: string; text: 
   const ind = new Set((article.data.indicators as { key: string }[]).map((i) => i.key));
   article.macro.indicators = article.macro.indicators.filter((i) => ind.has(i.key));
   return article;
+}
+
+/**
+ * A token naming a series rather than one of its facts ({caseShillerSF}) is resolved to that
+ * series' latest value ({caseShillerSFLatest}). Any other unknown reference stays and is flagged
+ * by the validator as an error, so a broken figure never passes silently.
+ */
+export function resolveBareSeriesRefs(article: SeshatArticle): string[] {
+  const facts = article.data.facts as Record<string, Fact>;
+  const dates = article.data.dates as Record<string, unknown>;
+  const resolved: string[] = [];
+  const walk = (v: unknown): unknown => {
+    if (typeof v === 'string')
+      return v.replace(/\{([a-zA-Z0-9]+)(\.date)?\}/g, (m: string, key: string, date: string | undefined) => {
+        if (facts[key] || dates[key] || !facts[`${key}Latest`]) return m;
+        resolved.push(key);
+        return `{${key}Latest${date ?? ''}}`;
+      });
+    if (Array.isArray(v)) return v.map(walk);
+    if (v && typeof v === 'object') return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, walk(x)]));
+    return v;
+  };
+  for (const sec of SECTION_ORDER) (article as Record<string, unknown>)[sec] = walk(article[sec]);
+  return resolved;
 }
 
 const esc = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -745,6 +843,27 @@ export function qualifyEvidence(article: SeshatArticle): string[] {
   return changed;
 }
 
+/** Every piece of evidence the research needed but could not obtain, with the reason. */
+/** Reader-facing method notes for missing evidence (outages are named, not hidden). */
+function gapNotes(outputs: StageContext['outputs']): string[] {
+  const gaps = evidenceGaps(outputs);
+  const down = gaps.filter((g) => g.reason === 'provider-unavailable');
+  const none = gaps.filter((g) => g.reason === 'no-dataset');
+  const out: string[] = [];
+  if (down.length) out.push(`Data not available for this draft because the provider was unreachable (${[...new Set(down.map((g) => g.provider))].join(', ')}): ${down.map((g) => g.need).join('; ')}. These gaps were not filled with substitute data.`.slice(0, 600));
+  if (none.length) out.push(`No suitable public dataset was found for: ${none.map((g) => g.need).join('; ')}.`.slice(0, 600));
+  return out;
+}
+
+export function evidenceGaps(outputs: StageContext['outputs']): Gap[] {
+  const d = outputs.discover as DiscoverOut | undefined;
+  const f = outputs.fetch as FetchOut | undefined;
+  const sel = outputs.select as SelectOut | undefined;
+  const all: Gap[] = [...(d?.gaps ?? []), ...(f?.gaps ?? []), ...(sel?.unmetNeeds ?? []).map((u) => ({ need: u.need, reason: 'no-dataset' as const, detail: u.why.slice(0, 300) }))];
+  const seen = new Set<string>();
+  return all.filter((g) => (seen.has(g.need) ? false : (seen.add(g.need), true))).map((g) => ({ ...g, need: g.need.slice(0, 300), detail: g.detail?.slice(0, 300), provider: g.provider?.slice(0, 80) }));
+}
+
 /** Set a string at a path like "story.blocks[2].text" (only existing string leaves). */
 export function setPath(obj: unknown, path: string, value: string): boolean {
   const parts = path.replace(/\[(\d+)\]/g, '.$1').split('.').filter(Boolean);
@@ -811,9 +930,9 @@ export const RepairOut = z.object({ fixes: z.array(z.object({ path: z.string().m
 async function repair(ctx: StageContext) {
   const draft = assembleArticle(ctx);
   const v = validateArticle(draft, { today: ctx.deps.today() });
-  const REPAIRABLE = ['bare-number', 'unknown-token', 'unsupported-superlative', 'style'];
+  const REPAIRABLE = ['bare-number', 'unknown-token', 'unsupported-superlative', 'superlative-contradicted', 'style', 'duplicate-word'];
   const flagged = v.issues
-    .filter((i) => REPAIRABLE.includes(i.code) && i.path && !i.path.startsWith('methodology'))
+    .filter((i) => (REPAIRABLE.includes(i.code) || i.code.startsWith('quantity:')) && i.path && !i.path.startsWith('methodology'))
     .map((i) => ({ path: i.path!, message: i.message }));
   for (const p of (ctx.outputs.review as ReviewOut | undefined)?.problems ?? []) flagged.push({ path: p.path, message: `Fact-check (${p.kind}): ${p.problem}` });
   const paths = [...new Set(flagged.map((i) => i.path))].slice(0, 30);
@@ -821,11 +940,12 @@ async function repair(ctx: StageContext) {
   const items = paths
     .map((path) => {
       const why = flagged.filter((i) => i.path === path).map((i) => i.message).join('; ');
-      return `PATH ${path}\nPROBLEM ${why}\nTEXT ${String(getPath(draft, path))}`;
+      const text = String(getPath(draft, path));
+      return `PATH ${path}\nMAX LENGTH ${Math.max(120, Math.round(text.length * 1.15))} characters\nPROBLEM ${why}\nTEXT ${text}`;
     })
     .join('\n\n');
   const f = ctx.outputs.fetch as FetchOut | undefined;
-  const user = `Some passages in a Seshat draft were flagged by Seshat's validator or fact-checking editor: numbers that are not fact tokens, tokens that do not exist, superlatives ("highest", "five-year low", "above average"…) not backed by a data fact, clichés, or factual/logical problems.
+  const user = `Some passages in a Seshat draft were flagged by Seshat's validator or fact-checking editor: numbers that are not fact tokens, tokens that do not exist, superlatives ("highest", "five-year low", "above average"…) not backed by a data fact, clichés, repeated words, figures used as the wrong kind of quantity (a level presented as a change, a per-unit cost presented as an annual increase, a forecast stated as an outcome, the wrong period or unit), or factual/logical problems.
 
 FACT TOKENS AVAILABLE:
 ${factLines(draft.data.facts as Record<string, Fact>)}
@@ -837,7 +957,7 @@ ${(f?.products.observations ?? []).join('\n')}
 FLAGGED TEXT:
 ${items}
 
-For each PATH, return the full corrected text: fix each factual or logical problem (correct it using the data and observations, or remove/qualify the claim); replace each flagged figure with the matching fact token if one exists, otherwise rewrite without that number; make each superlative either cite the matching high/low/since token in the same sentence or remove it if the observations do not support it; replace clichés with plain words. Keep everything else the same. Return {"fixes": [{"path": "...", "text": "..."}]}.`;
+For each PATH, return the full corrected text (within its MAX LENGTH): use each figure only as what its description says it is (level vs change, its unit and denominator, its period, forecast vs historical); fix each factual or logical problem (correct it using the data and observations, or remove/qualify the claim); replace each flagged figure with the matching fact token if one exists, otherwise rewrite without that number; make each superlative either cite the matching high/low/since token in the same sentence or remove it if the observations do not support it; replace clichés with plain words. Keep everything else the same. Return {"fixes": [{"path": "...", "text": "..."}]}.`;
   const r = await ctx.deps.llm.complete({ stage: 'repair', system: SYSTEM, user, schema: RepairOut, maxTokens: 3000, temperature: 0.1 });
   ctx.metric({ llm: { ...r.usage, attempts: r.attempts } });
   return { fixes: r.data.fixes.filter((f) => paths.includes(f.path)), skipped: false };
@@ -847,7 +967,8 @@ For each PATH, return the full corrected text: fix each factual or logical probl
 export async function finalizeDraft(ctx: StageContext, opts: { partial: boolean }) {
   const { deps } = ctx;
   const fixes = ((ctx.outputs.repair as { fixes?: { path: string; text: string }[] } | undefined)?.fixes ?? []).slice();
-  let article = assembleArticle(ctx, fixes);
+  const resolvedRefs: string[] = [];
+  let article = assembleArticle(ctx, fixes, resolvedRefs);
   // A repair rewrite that breaks a field's schema limits (e.g. too long) is discarded:
   // the original text is kept and the editor is told, rather than failing the draft.
   const rejectedFixes: string[] = [];
@@ -863,6 +984,12 @@ export async function finalizeDraft(ctx: StageContext, opts: { partial: boolean 
   }
   for (const path of rejectedFixes) ctx.warn(`A fact-check rewrite of ${path} broke the field's limits and was discarded; the original text was kept — please review it.`);
   const requalified = qualifyEvidence(article);
+  const outageGaps = (article.evidence.gaps ?? []).filter((g) => g.reason === 'provider-unavailable');
+  if (outageGaps.length)
+    article.macro.attention = {
+      required: true,
+      reasons: [...article.macro.attention.reasons, `Missing evidence (provider unavailable): ${outageGaps.map((g) => g.need).join('; ')}`.slice(0, 380)].slice(0, 10),
+    };
   // Recompute every data fact from the stored datasets — what is displayed is what is validated.
   let recomputed: Record<string, Fact> | undefined;
   const sel = ctx.outputs.select as SelectOut | undefined;
@@ -874,9 +1001,11 @@ export async function finalizeDraft(ctx: StageContext, opts: { partial: boolean 
   article = applyAttention(v.article ?? article, v.issues);
   for (const p of (ctx.outputs.review as ReviewOut | undefined)?.problems ?? [])
     v.issues.push({ level: 'info', section: (SECTION_ORDER as readonly string[]).includes(p.path.split('.')[0]) ? (p.path.split('.')[0] as 'story') : 'evidence', code: 'review-revised', message: `Fact-check flagged and the passage was revised — please confirm: ${p.problem}`, path: p.path });
+  for (const k of [...new Set(resolvedRefs)])
+    v.issues.push({ level: 'info', section: 'evidence', code: 'reference-resolved', message: `{${k}} named a dataset rather than a figure; it was read as its latest value {${k}Latest} — please confirm` });
   for (const path of requalified)
     v.issues.push({ level: 'info', section: path.startsWith('macro') ? 'macro' : 'analytics', code: 'evidence-qualified', message: 'Relabelled from "In the data" to "Established link": it cites no data value', path });
-  article.validation = { checkedAt: deps.now().toISOString(), issues: v.issues };
+  article.validation = { checkedAt: deps.now().toISOString(), issues: v.issues, claims: v.claims };
   if (!v.article) throw Object.assign(new Error(`Assembled article failed schema validation: ${v.issues.map((i) => i.message).join('; ').slice(0, 400)}`), { retryable: false });
   const needs = opts.partial || SECTION_ORDER.some((sec) => article[sec].attention.required) || v.issues.some((i) => i.level === 'error');
   const current = await deps.store.getArticle(ctx.article.id);

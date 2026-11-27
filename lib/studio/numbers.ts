@@ -61,7 +61,10 @@ export function findBareNumbers(text: string): BareNumber[] {
 }
 
 // Superlatives and comparisons that need a data fact behind them in the same sentence.
-const SUPERLATIVE = /\b(record[- ](?:high|low)|all-time|(?:\w+-)?(?:year|month|decade)[- ](?:high|low)|highest|lowest|strongest|weakest|steepest|sharpest|biggest|largest|smallest|(?:above|below) (?:its|the) (?:\w+[- ])?(?:year )?average)\b/i;
+// Only data-claim superlatives: "highest level/since/in…", "X-year high", "record", "all-time",
+// "largest increase/drop…" and comparisons with an average. Descriptive uses such as
+// "the largest economy" or "the biggest risk" are not flagged (fewer false positives).
+const SUPERLATIVE = /\b(record[- ](?:high|low)s?|all-time|(?:\w+-)?(?:year|month|decade)[- ](?:high|low)s?|(?:highest|lowest|strongest|weakest)(?=\s+(?:level|reading|value|rate|price|point|close|since|in|on record|of|for|ever|yet))|(?:biggest|largest|smallest|steepest|sharpest)\s+(?:increase|rise|gain|jump|drop|decline|fall|move|rally|selloff|sell-off|annual|monthly|weekly|daily|one-day|quarterly)|(?:above|below) (?:its|the) (?:\w+[- ])?(?:year )?average)\b/i;
 const EXTREME_TOKEN = /\{[a-zA-Z0-9]*(?:High|Low)(?:1y|5y|All)(?:\.date)?(?::(?:short|abs))?\}|\{[a-zA-Z0-9]*(?:HighestSince|LowestSince)\}/;
 
 /** Sentences making a superlative/average claim without an extreme-value fact token in the same sentence. */
@@ -70,6 +73,45 @@ export function findUnsupportedSuperlatives(text: string): string[] {
     .split(/(?<=[.!?])\s+/)
     .filter((s) => SUPERLATIVE.test(s) && (!EXTREME_TOKEN.test(s) || /\b(all-time|record)\b/i.test(s)))
     .map((s) => (SUPERLATIVE.exec(s)?.[0] ?? '').toLowerCase());
+}
+
+type Ext = { value: number; date?: string };
+/**
+ * Superlatives verified against the data instead of merely pattern-matched:
+ *  - backed by an extreme/"since" token → supported (as before);
+ *  - "highest … since {xHistoryStart}" → TRUE only if xLatest equals xHighAll (lowest: xLowAll);
+ *    false ones are reported as contradicting the data;
+ *  - otherwise → unsupported.
+ */
+export function classifySuperlatives(text: string, facts: Record<string, Ext>): { word: string; verdict: 'unsupported' | 'contradicted' }[] {
+  const out: { word: string; verdict: 'unsupported' | 'contradicted' }[] = [];
+  for (const s of text.split(/(?<=[.!?])\s+/)) {
+    const m = SUPERLATIVE.exec(s);
+    if (!m) continue;
+    const word = m[0].toLowerCase();
+    if (/\b(all-time|record)\b/i.test(s)) {
+      out.push({ word, verdict: 'unsupported' });
+      continue;
+    }
+    if (EXTREME_TOKEN.test(s)) continue;
+    const hs = /\{([a-zA-Z0-9]+)HistoryStart\}/.exec(s);
+    if (hs) {
+      const low = /\b(lowest|weakest|smallest|low)\b/i.test(word);
+      const latest = facts[`${hs[1]}Latest`];
+      const ext = facts[`${hs[1]}${low ? 'LowAll' : 'HighAll'}`];
+      if (latest && ext && latest.value === ext.value && latest.date === ext.date) continue; // verified true
+      out.push({ word, verdict: latest && ext ? 'contradicted' : 'unsupported' });
+      continue;
+    }
+    out.push({ word, verdict: 'unsupported' });
+  }
+  return out;
+}
+
+/** Immediately repeated words ("over over"), as the reader would see them. */
+const OK_REPEATS = new Set(['that', 'had', 'is', 'do']);
+export function findDuplicateWords(resolvedText: string): string[] {
+  return [...resolvedText.matchAll(/\b([A-Za-z]+)\s+\1\b/gi)].map((m) => m[1].toLowerCase()).filter((w) => !OK_REPEATS.has(w));
 }
 
 const CLICHES = /\b(navigat(?:e|ing|es)|delve|landscape|rollercoaster|in today's|fast-paced|game[- ]changer|perfect storm|tip of the iceberg|only time will tell|buckle up|it remains to be seen|in conclusion|ultimately,)/i;

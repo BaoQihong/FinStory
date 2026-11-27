@@ -49,7 +49,7 @@ function fakeData(calls: string[]): DataProvider {
     id: 'fred', name: 'FRED, Federal Reserve Bank of St. Louis', short: 'FRED', enabled: true,
     async search() { calls.push('search'); return Object.values(META); },
     async meta(id) { return META[id] ?? null; },
-    async fetch(id) { calls.push(`fetch:${id}`); return { meta: META[id], observations: OBS[id], transformations: [], retrievedAt: '2026-11-26T00:00:00Z', sha256: 'x', calls: 1, ms: 1 }; },
+    async fetch(id, start) { calls.push(`fetch:${id}:${start}`); return { meta: META[id], observations: OBS[id], transformations: [], retrievedAt: '2026-11-26T00:00:00Z', sha256: 'x', calls: 1, ms: 1 }; },
   };
 }
 
@@ -70,9 +70,9 @@ function fakeSearch(opts: { fail?: boolean } = {}): SearchProvider {
 
 const attention = { required: false, reasons: [] };
 const scripted: Record<string, () => unknown> = {
-  plan: () => ({ workingTitle: 'Test story', section: 'markets', centralQuestion: 'Why did the test currency weaken?', angle: 'Rate gap', whyReadersCare: 'Prices', questions: ['Q1?', 'Q2?'], searches: [{ query: 'q1', purpose: 'p', recent: true }, { query: 'q2', purpose: 'p', recent: false }, { query: 'q3', purpose: 'p', recent: false }], dataNeeds: [{ need: 'exchange rate', why: 'core', searchText: 'yen dollar' }, { need: 'rates', why: 'gap', searchText: 'rates' }], storyboardConcern: '' }),
+  plan: () => ({ workingTitle: 'Test story', section: 'markets', centralQuestion: 'Why did the test currency weaken?', angle: 'Rate gap', whyReadersCare: 'Prices', questions: ['Q1?', 'Q2?'], searches: [{ query: 'q1', purpose: 'p', recent: true }, { query: 'q2', purpose: 'p', recent: false }, { query: 'q3', purpose: 'p', recent: false }], dataNeeds: [{ need: 'exchange rate', why: 'core', searchText: 'yen dollar' }, { need: 'rates', why: 'gap', searchText: 'rates' }], storyboardConcern: '', counterChecks: [{ premise: 'The currency is weak', contradictingEvidence: 'periods when it strengthened', searchText: 'yen dollar' }] }),
   select: () => ({ series: [{ candidate: 'C1', key: 'fx', label: 'Currency per dollar', reason: 'r' }, { candidate: 'C2', key: 'rateA', label: 'Rate A', reason: 'r' }, { candidate: 'C3', key: 'rateB', label: 'Rate B', reason: 'r' }], derived: [{ key: 'gap', op: 'difference', inputs: ['rateA', 'rateB'], label: 'Rate gap', reason: 'r' }], charts: [{ id: 'fxChart', seriesKeys: ['fx'], from: '2021-01-01', purpose: 'p' }, { id: 'gapChart', seriesKeys: ['rateA', 'rateB'], from: '2019-01-01', purpose: 'p' }, { id: 'badChart', seriesKeys: ['fx', 'rateA'], from: '2019-01-01', purpose: 'mixed units' }], unmetNeeds: [] }),
-  synthesize: () => ({ thesis: 'The gap drove the move.', findings: [{ claim: 'Bank held', kind: 'documented', sourceRefs: ['S1'], quote: 'The central bank held its policy rate on Tuesday.' }, { claim: 'Invented', kind: 'context', sourceRefs: ['S2'], quote: 'This sentence is not in any source at all.' }], sourceFigures: [{ key: 'cut', figure: '2.2 million barrels per day', quote: 'Officials said the cut amounted to 2.2 million barrels per day of output', sourceRef: 'S1', about: 'cut size' }, { key: 'fake', figure: '9.9 million', quote: 'Officials said the cut amounted to 2.2 million barrels per day of output', sourceRef: 'S1', about: 'mismatch' }], conflicts: [], gaps: [], sectionSupport: { story: 'supported', macro: 'supported', analytics: 'supported', outlook: 'thin' } }),
+  synthesize: () => ({ thesis: 'The gap drove the move.', findings: [{ claim: 'Bank held', kind: 'documented', sourceRefs: ['S1'], quote: 'The central bank held its policy rate on Tuesday.' }, { claim: 'Invented', kind: 'context', sourceRefs: ['S2'], quote: 'This sentence is not in any source at all.' }], sourceFigures: [{ key: 'cut', figure: '2.2 million barrels per day', quote: 'Officials said the cut amounted to 2.2 million barrels per day of output', sourceRef: 'S1', about: 'cut size', kind: 'change', measure: 'flow', unit: 'barrels per day', denominator: 'day', temporal: 'historical', period: '' }, { key: 'fake', figure: '9.9 million', quote: 'Officials said the cut amounted to 2.2 million barrels per day of output', sourceRef: 'S1', about: 'mismatch', kind: 'change', measure: 'flow', unit: 'barrels per day', denominator: 'day', temporal: 'historical', period: '' }], conflicts: [], gaps: [], sectionSupport: { story: 'supported', macro: 'supported', analytics: 'supported', outlook: 'thin' } }),
   story: () => ({ kicker: 'Currencies', headline: 'A test headline', dek: 'The currency hit {fxLatest} as the gap reached {gapLatest}.', keyPoints: ['One {fxChg1y}', 'Two', 'Three'], blocks: [
     { type: 'p', text: 'The currency stood at {fxLatest} on {fxLatest.date}.' },
     { type: 'p', text: 'It was {fxYearAgo} a year earlier, a change of {fxChg1y}.' },
@@ -168,7 +168,8 @@ test('invalid LLM output fails only that stage; retry resumes without re-running
   assert.equal(job.status, 'succeeded');
   assert.equal(llmCalls.filter((s) => s === 'story').length, 2);
   assert.equal(llmCalls.filter((s) => s === 'plan').length, 1);
-  assert.equal(dataCalls.filter((s) => s.startsWith('fetch:')).length, 3); // no duplicate data retrieval
+  // Full history is retrieved exactly once per series (screening uses a short recent window).
+  assert.equal(dataCalls.filter((s) => s.startsWith('fetch:') && s.endsWith(':2014-01-01')).length, 3);
   assert.ok(store.runs.some((r) => r.stage === 'story' && r.status === 'failed'));
 });
 
@@ -380,4 +381,132 @@ test('words repeated around a quoted source figure are removed', () => {
   const a = { story: { dek: 'The queue holds over {q} gigawatts; it is {q}.' }, macro: {}, analytics: {}, outlook: {}, data: { facts: { q: { value: 220, format: 'text', text: 'over 220 gigawatts', decimals: 0, seriesIds: [], sourceRefs: ['S1'], method: '' } } } };
   dedupeUnits(a as never);
   assert.equal(a.story.dek, 'The queue holds {q}; it is {q}.');
+});
+
+test('the mocked draft has no false reference errors and a claims ledger', async () => {
+  const { store, deps, jobId, articleId } = setup();
+  await runToEnd(deps, jobId);
+  const c = (await store.getArticle(articleId))!.content as SeshatArticle & { validation: { claims?: { status: string }[] } };
+  assert.ok(!c.validation.issues.some((i) => i.code === 'dataset-missing' || i.code === 'source-missing'), JSON.stringify(c.validation.issues.filter((i) => /missing/.test(i.code))));
+  assert.ok((c.validation.claims ?? []).length > 3);
+});
+
+// ── Quantity metadata and numerical-claim checks ─────────────────────────
+import { checkText, verifyQuotedQuantity, type QuantityFact } from '../../lib/studio/quantity.ts';
+
+const qf = (q: Partial<QuantityFact['quantity']> & object, extra: Partial<QuantityFact> = {}): QuantityFact => ({
+  value: 1, format: 'pct', decimals: 1, seriesIds: [], method: '', ...extra,
+  quantity: { kind: 'level', unit: '%', measure: 'rate', temporal: 'historical', ...q } as QuantityFact['quantity'],
+});
+const F: Record<string, QuantityFact> = {
+  capexPerMw: qf({ kind: 'level', unit: 'US$', denominator: 'mw', measure: 'price' }, { format: 'text', text: '$15 million–$20 million per MW' }),
+  ratesChg5y: qf({ kind: 'change', window: '5y', unit: 'pp' }, { format: 'pp' }),
+  ratesChg1y: qf({ kind: 'change', window: '1y', unit: 'pp' }, { format: 'pp' }),
+  ratesLatest: qf({ kind: 'level', unit: '%', period: '2026-11-25' }, { date: '2026-11-25' }),
+  priceLatest: qf({ kind: 'level', unit: 'US$', measure: 'price', period: '2026-10-01' }, { format: 'level', date: '2026-10-01' }),
+  demand2030: qf({ kind: 'level', unit: 'TWh', measure: 'flow', temporal: 'forecast', period: '2030' }, { format: 'text', text: '1,000 terawatt-hours' }),
+  inventories: qf({ kind: 'level', unit: 'thousand barrels', measure: 'stock' }, { format: 'level' }),
+};
+const issuesOf = (text: string) => checkText('p', text, F, (s) => s).flatMap((c) => c.issues.map((i) => i.code));
+
+test('claim check: a per-MW cost presented as a year-over-year increase is rejected', () => {
+  const codes = issuesOf('Spending on substations has jumped by {capexPerMw} year-over-year.');
+  assert.ok(codes.includes('level-as-change'));
+  assert.ok(codes.includes('rate-framing'));
+  assert.ok(issuesOf('Each megawatt of new capacity needs {capexPerMw} per megawatt of grid work.').length === 0);
+  assert.ok(issuesOf('Grid work costs {capexPerMw} per kWh.').includes('unit-mismatch'));
+});
+
+test('claim check: change/level confusion, period mismatch, forecasts, comparisons, stocks and dates', () => {
+  assert.ok(issuesOf('Mortgage rates reached {ratesChg5y} this year.').includes('change-as-level'));
+  assert.ok(issuesOf('Rates are up {ratesChg5y} year-over-year.').includes('period-mismatch'));
+  assert.ok(issuesOf('Demand reached {demand2030} last year.').includes('forecast-as-fact'));
+  assert.ok(issuesOf('Rates moved from {ratesLatest} to {ratesChg1y}.').includes('dimension-mismatch'));
+  assert.ok(issuesOf('Inventories hold {inventories} per day.').includes('stock-as-flow'));
+  assert.ok(issuesOf('In 2024, mortgage rates were {ratesLatest}.').includes('date-mismatch'));
+});
+
+test('claim check: correct sentences are not flagged (false-positive guard)', () => {
+  for (const ok of [
+    'Mortgage rates have risen {ratesChg5y} over five years to {ratesLatest}.',
+    'Rates rose {ratesChg1y} over the past year.',
+    'The EIA expects demand to reach {demand2030} by 2030.',
+    'The median price stands at {priceLatest}.',
+    'In 2026, rates were {ratesLatest}.',
+    'Rates moved from {ratesLatest} to {ratesLatest}.',
+    'Commercial inventories were {inventories}.',
+  ]) assert.deepEqual(issuesOf(ok), [], ok);
+});
+
+test('quoted figures: forecast language, missing denominators and fake changes are corrected from the quote', () => {
+  const a = verifyQuotedQuantity('1,000 terawatt-hours', 'Consumption will reach 1,000 terawatt-hours by 2030.', { kind: 'level', measure: 'flow', unit: 'TWh', denominator: '', temporal: 'historical', period: '2030' });
+  assert.equal(a.quantity.temporal, 'forecast');
+  const b = verifyQuotedQuantity('$15 million–$20 million per MW', 'Grid upgrades cost $15 million–$20 million per MW of new load.', { kind: 'change', measure: 'price', unit: 'US$', denominator: 'megawatt', temporal: 'historical', period: '' });
+  assert.equal(b.quantity.denominator, 'mw');
+  assert.equal(b.quantity.kind, 'level'); // no change language in the quote
+  const c = verifyQuotedQuantity('220 gigawatts', 'The queue holds 220 gigawatts.', { kind: 'level', measure: 'stock', unit: 'GW', denominator: 'year', temporal: 'historical', period: '' });
+  assert.equal(c.quantity.denominator, undefined); // "per year" is not in the quote
+});
+
+import { resolveBareSeriesRefs } from '../../lib/studio/pipeline/stages.ts';
+test('bare series references resolve to the latest value; other unknown references stay (and are flagged)', () => {
+  const a = { story: { dek: 'SF is {caseShillerSF} ({caseShillerSF.date}); {nope} stays.' }, macro: {}, analytics: {}, outlook: {}, data: { facts: { caseShillerSFLatest: { value: 1, format: 'num', decimals: 0, seriesIds: [], method: '', date: '2026-09-01' } }, dates: {} } };
+  assert.deepEqual(resolveBareSeriesRefs(a as never), ['caseShillerSF', 'caseShillerSF']);
+  assert.equal(a.story.dek, 'SF is {caseShillerSFLatest} ({caseShillerSFLatest.date}); {nope} stays.');
+});
+
+// ── Coverage: counterexamples ────────────────────────────────────────────
+import { registryMatches } from '../../lib/studio/registry.ts';
+import { recentChange } from '../../lib/studio/pipeline/stages.ts';
+
+test('coverage: dispersion across comparable series names the ones that fell', () => {
+  const mk = (key: string, a: number, b: number) => ds(key, 'Index Jan 2000=100', 'Monthly', [{ date: '2025-09-01', value: a }, { date: '2026-09-01', value: b }]);
+  const p = buildDataProducts([mk('dallas', 300, 297), mk('nyc', 300, 317), mk('seattle', 380, 373), mk('chicago', 200, 214)], [], []);
+  const line = p.observations.find((o) => o.startsWith('Across 4 comparable series'))!;
+  assert.match(line, /2 of 4 fell: (dallas, seattle|seattle, dallas)/);
+});
+
+test('coverage: candidate screening reports the latest one-year change; regional needs reach all metros', () => {
+  assert.equal(recentChange([{ date: '2025-09-01', value: 200 }, { date: '2026-09-01', value: 196 }], 'Index'), 'latest 196 (2026-09-01) · 1y -2.0%');
+  assert.equal(recentChange([{ date: '2025-11-01', value: 6.5 }, { date: '2026-11-01', value: 7.25 }], 'Percent'), 'latest 7.25 (2026-11-01) · 1y +0.75 pp');
+  const m = registryMatches('regional metro home price differences', 4).filter((e) => e.tags.includes('regional'));
+  assert.equal(m.length, 20);
+});
+
+// ── Provider outage handling ─────────────────────────────────────────────
+import { ProviderError } from '../../lib/studio/providers/http.ts';
+test('provider outage: bounded calls, job completes, missing evidence is named (never substituted)', async () => {
+  const { store, deps, articleId, jobId } = setup();
+  let eiaCalls = 0;
+  const downEia: DataProvider = {
+    id: 'eia', name: 'US Energy Information Administration (EIA)', short: 'EIA', enabled: true,
+    async meta() { eiaCalls++; throw new ProviderError('EIA meta: HTTP 504 from https://api.eia.gov/v2/', true, 504); },
+    async fetch() { eiaCalls++; throw new ProviderError('EIA data: HTTP 504', true, 504); },
+  };
+  const fredFake = deps.data[0];
+  const fred: DataProvider = { ...fredFake, search: async (q) => (/inventor|electric/i.test(q) ? [] : fredFake.search!(q, 12)), meta: fredFake.meta, fetch: fredFake.fetch };
+  deps.data = [fred, downEia];
+  const orig = scripted.plan;
+  scripted.plan = () => ({ ...(orig() as object), dataNeeds: [{ need: 'exchange rate', why: 'core', searchText: 'yen dollar' }, { need: 'US crude oil inventories', why: 'supply', searchText: 'crude oil inventories stocks' }, { need: 'US electricity sales', why: 'demand', searchText: 'electricity consumption sales' }] });
+  try {
+    const job = await runToEnd(deps, jobId);
+    assert.equal(job.status, 'succeeded');
+    assert.ok(eiaCalls <= 3, `EIA called ${eiaCalls} times`); // breaker opens after 2 failures
+    const c = (await store.getArticle(articleId))!.content as SeshatArticle;
+    const gaps = c.evidence.gaps ?? [];
+    assert.ok(gaps.some((g) => g.reason === 'provider-unavailable' && /EIA/.test(g.provider ?? '')), JSON.stringify(gaps));
+    assert.ok(c.macro.attention.required && c.macro.attention.reasons.some((r) => /Missing evidence/.test(r)));
+    assert.ok(c.methodology.some((m) => /provider was unreachable/.test(m)));
+    assert.ok(!Object.keys(c.data.facts).some((k) => /inventor|electric/i.test(k))); // nothing invented
+  } finally {
+    scripted.plan = orig;
+  }
+});
+
+import { classifySuperlatives } from '../../lib/studio/numbers.ts';
+test('superlatives "since the start of the data" are verified against the data, true or false', () => {
+  const facts = { aLatest: { value: 5, date: '2026-10-01' }, aHighAll: { value: 5, date: '2026-10-01' }, bLatest: { value: 4, date: '2026-10-01' }, bHighAll: { value: 6, date: '2022-01-01' } };
+  assert.deepEqual(classifySuperlatives('Supply is {aLatest}, the highest level since {aHistoryStart}.', facts), []);
+  assert.deepEqual(classifySuperlatives('Prices are {bLatest}, the highest level since {bHistoryStart}.', facts), [{ word: 'highest', verdict: 'contradicted' }]);
+  assert.deepEqual(classifySuperlatives('The largest economy has the biggest risk.', facts), []); // descriptive use: not flagged
 });

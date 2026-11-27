@@ -2,7 +2,7 @@
 // adjusted close (splits and dividends). Free tier is licensed for internal
 // use only: fine for private drafts; review before public publishing (2C).
 import { createHash } from 'node:crypto';
-import { fetchJson, type FetchLike } from './http.ts';
+import { fetchJson, ProviderError, type FetchLike } from './http.ts';
 import type { DataProvider, SeriesData, SeriesMeta } from './types.ts';
 
 type TMeta = { ticker: string; name: string; description?: string; startDate: string; endDate: string; exchangeCode?: string };
@@ -33,7 +33,10 @@ export function tiingoProvider(token: string | undefined, fetchImpl?: FetchLike)
           sourceUrl: `https://www.tiingo.com/${data.ticker.toLowerCase()}/overview`,
           popularity: null,
         } satisfies SeriesMeta;
-      } catch {
+      } catch (e) {
+        // Not found → null. A service failure (timeout / 5xx / 429) is rethrown so callers can
+        // tell an outage from a missing series (circuit breaker + evidence gaps).
+        if (e instanceof ProviderError && e.retryable) throw e;
         return null;
       }
     },

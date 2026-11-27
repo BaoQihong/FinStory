@@ -150,9 +150,9 @@ export function DraftWorkspace(props: {
               {tab === 'macro' ? <MacroEditor value={draft.macro} onChange={(v) => update('macro', v)} ctx={ctx} charts={charts} indicators={indicators} disabled={generating} /> : null}
               {tab === 'analytics' ? <AnalyticsEditor value={draft.analytics} onChange={(v) => update('analytics', v)} ctx={ctx} charts={charts} indicators={indicators} disabled={generating} /> : null}
               {tab === 'outlook' ? <OutlookEditor value={draft.outlook} onChange={(v) => update('outlook', v)} ctx={ctx} charts={charts} indicators={indicators} disabled={generating} /> : null}
-              {tab === 'research' ? <ResearchPanel sources={props.sources} findings={props.findings} warnings={props.job?.warnings ?? []} /> : null}
+              {tab === 'research' ? <ResearchPanel sources={props.sources} findings={props.findings} warnings={props.job?.warnings ?? []} gaps={draft.evidence.gaps ?? []} /> : null}
               {tab === 'data' ? <DataPanel datasets={props.datasets} draft={draft} /> : null}
-              {tab === 'checks' ? <ChecksPanel issues={issues} /> : null}
+              {tab === 'checks' ? <ChecksPanel issues={issues} claims={draft.validation.claims ?? []} /> : null}
               {tab === 'history' ? <HistoryPanel revisions={props.revisions} job={props.job} /> : null}
             </div>
             <aside className="space-y-4 lg:sticky lg:top-4 lg:self-start">
@@ -165,9 +165,27 @@ export function DraftWorkspace(props: {
   );
 }
 
-function ResearchPanel({ sources, findings, warnings }: { sources: SourceView[]; findings: FindingView[]; warnings: { stage: string; message: string }[] }) {
+type GapView = { need: string; reason: string; provider?: string; detail?: string };
+function ResearchPanel({ sources, findings, warnings, gaps }: { sources: SourceView[]; findings: FindingView[]; warnings: { stage: string; message: string }[]; gaps: GapView[] }) {
   return (
     <div className="space-y-8">
+      {gaps.length ? (
+        <section>
+          <h2 className="font-display text-2xl font-semibold text-navy-900">Missing evidence</h2>
+          <p className="mt-1 text-sm text-muted">Evidence the research needed but could not obtain. Nothing was substituted for it.</p>
+          <ul className="mt-3 space-y-2 text-sm">
+            {gaps.map((g, i) => (
+              <li key={i} className="rounded-lg border border-[#c2410c]/30 bg-[#fff4ec] px-3 py-2">
+                <span className="font-semibold text-ink">{g.need}</span>
+                <span className="block text-xs text-ink-soft">
+                  {g.reason === 'provider-unavailable' ? `Provider unavailable${g.provider ? ` (${g.provider})` : ''} — re-run later to fill` : g.reason === 'stale-data' ? 'Only stale data available' : 'No suitable public dataset found'}
+                  {g.detail ? ` · ${g.detail}` : ''}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
       <section>
         <h2 className="font-display text-2xl font-semibold text-navy-900">Findings</h2>
         <p className="mt-1 text-sm text-muted">The evidence package the draft was written from. “Quote verified” means the quoted text was found verbatim in the retrieved source.</p>
@@ -281,10 +299,47 @@ function DataPanel({ datasets, draft }: { datasets: DatasetMeta[]; draft: Seshat
   );
 }
 
-function ChecksPanel({ issues }: { issues: ValidationIssue[] }) {
+type ClaimView = { path: string; sentence: string; tokens: string[]; status: string; issues: { code: string; message: string; severity: string }[] };
+function ClaimsLedger({ claims }: { claims: ClaimView[] }) {
+  const flagged = claims.filter((c) => c.status === 'flagged');
+  return (
+    <section className="mt-10">
+      <h2 className="font-display text-2xl font-semibold text-navy-900">Numerical claims</h2>
+      <p className="mt-1 text-sm text-muted">
+        {claims.length} sentence{claims.length === 1 ? '' : 's'} stating figures were checked against each figure&apos;s metadata (level vs change, period, unit and denominator, stock vs flow, forecast vs historical); {flagged.length} flagged.
+      </p>
+      <ul className="mt-3 space-y-2 text-sm">
+        {flagged.map((c, i) => (
+          <li key={i} className="rounded-lg border border-[#9f1239]/30 bg-[#fbe9e7] px-3 py-2">
+            <span className="text-xs text-muted">{c.path}</span>
+            <span className="block text-ink">“{c.sentence}”</span>
+            <ul className="mt-1 list-disc pl-5 text-xs text-ink-soft">
+              {c.issues.map((x, j) => (
+                <li key={j}>{x.message}</li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
+      <details className="group mt-3 text-sm">
+        <summary className="inline-flex items-center gap-1 text-xs font-medium text-navy-700">Show all checked claims</summary>
+        <ul className="mt-2 space-y-1 text-xs text-ink-soft">
+          {claims.map((c, i) => (
+            <li key={i}>
+              <span className={c.status === 'ok' ? 'text-ev-documented' : 'text-[#9f1239]'}>{c.status === 'ok' ? '✓' : '!'}</span> {c.sentence}
+            </li>
+          ))}
+        </ul>
+      </details>
+    </section>
+  );
+}
+
+function ChecksPanel({ issues, claims }: { issues: ValidationIssue[]; claims: ClaimView[] }) {
   const order = { error: 0, warning: 1, info: 2 };
   const sorted = [...issues].sort((a, b) => order[a.level] - order[b.level]);
   return (
+    <>
     <section>
       <h2 className="font-display text-2xl font-semibold text-navy-900">Validation checks</h2>
       <p className="mt-1 text-sm text-muted">Run on generation and on every save: schema, the four-section storyboard, fact tokens, untokenized numbers, chart references and captions, evidence labels, data freshness.</p>
@@ -304,6 +359,8 @@ function ChecksPanel({ issues }: { issues: ValidationIssue[] }) {
         ))}
       </ul>
     </section>
+    <ClaimsLedger claims={claims} />
+    </>
   );
 }
 

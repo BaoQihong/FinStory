@@ -88,7 +88,7 @@ export async function saveDraft(articleId: string, expectedRevision: number, con
   const prev = current.content as { data?: unknown } | null;
   const next = { ...parsed.data, data: prev?.data ?? parsed.data.data, meta: { ...parsed.data.meta, updatedAt: new Date().toISOString() } };
   const v = validateArticle(next, { today: new Date().toISOString().slice(0, 10) });
-  next.validation = { checkedAt: new Date().toISOString(), issues: v.issues };
+  next.validation = { checkedAt: new Date().toISOString(), issues: v.issues, claims: v.claims };
   const needs = SECTION_ORDER.some((s) => next[s].attention.required) || v.issues.some((i) => i.level === 'error');
   const status = needs ? 'needs_attention' : 'draft';
   const revision = expectedRevision + 1;
