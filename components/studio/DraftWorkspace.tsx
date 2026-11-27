@@ -13,6 +13,7 @@ import { AnalyticsEditor, MacroEditor, OutlookEditor, StoryEditor } from './Sect
 import { FactPalette } from './fields';
 import { StatusBadge } from './StatusBadge';
 import { PublicationBadge, PublishPanel, type PublicationView } from './PublishPanel';
+import { PolishPanel } from './PolishPanel';
 
 export type SourceView = { ref: string; url: string; title: string; publisher: string; source_type: string; published_at: string | null; stale: boolean; query: string; snippet: string | null };
 export type FindingView = { ref: string; claim: string; evidence_kind: string; source_refs: string[]; quote: string | null; quote_verified: boolean };
@@ -154,6 +155,38 @@ export function DraftWorkspace(props: {
           </div>
           <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
             <div role="tabpanel" className="min-w-0">
+              {(SECTION_ORDER as readonly string[]).includes(tab) ? (
+                <PolishPanel
+                  key={tab}
+                  articleId={props.articleId}
+                  revision={revision}
+                  section={tab as (typeof SECTION_ORDER)[number]}
+                  dirty={dirty}
+                  generating={generating}
+                  ctx={ctx}
+                  onApplied={(r) => {
+                    setDraft(r.content);
+                    setRevision(r.revision);
+                    setStatus(r.status);
+                    setIssues(r.issues);
+                    setDirty(false);
+                    setMessage({ kind: 'ok', text: r.message });
+                  }}
+                />
+              ) : null}
+              {tab === 'story' ? (
+                <fieldset className="studio-card mb-6 grid gap-3 p-4 sm:grid-cols-2" disabled={generating}>
+                  <legend className="px-1 text-xs font-semibold uppercase tracking-wider text-muted">Byline (shown to readers)</legend>
+                  <label className="block text-sm">
+                    <span className="font-semibold text-ink">Author</span>
+                    <input className="studio-input mt-1" maxLength={80} value={draft.meta.author.name} onChange={(e) => update('meta', { ...draft.meta, author: { ...draft.meta.author, name: e.target.value } })} />
+                  </label>
+                  <label className="block text-sm">
+                    <span className="font-semibold text-ink">Role</span>
+                    <input className="studio-input mt-1" maxLength={80} value={draft.meta.author.role} onChange={(e) => update('meta', { ...draft.meta, author: { ...draft.meta.author, role: e.target.value } })} />
+                  </label>
+                </fieldset>
+              ) : null}
               {tab === 'story' ? <StoryEditor value={draft.story} onChange={(v) => update('story', v)} ctx={ctx} charts={charts} indicators={indicators} disabled={generating} /> : null}
               {tab === 'macro' ? <MacroEditor value={draft.macro} onChange={(v) => update('macro', v)} ctx={ctx} charts={charts} indicators={indicators} disabled={generating} /> : null}
               {tab === 'analytics' ? <AnalyticsEditor value={draft.analytics} onChange={(v) => update('analytics', v)} ctx={ctx} charts={charts} indicators={indicators} disabled={generating} /> : null}
@@ -434,6 +467,8 @@ function HistoryPanel({ revisions, job, publications }: { revisions: { revision:
 }
 
 const BRIEF_LABELS: [keyof StoryBrief, string][] = [
+  ['argument', 'Your argument'],
+  ['voice', 'Tone and voice'],
   ['headline', 'Proposed headline'],
   ['audience', 'Intended audience'],
   ['angle', 'Editorial angle'],

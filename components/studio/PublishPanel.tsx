@@ -14,9 +14,6 @@ export type PublicationView = {
   unpublishedAt: string | null;
 };
 
-/** The public route arrives in Phase 3B; until then links are shown but not opened. */
-export const PUBLIC_ROUTE_LIVE = false;
-
 const STATE_STYLE: Record<PublicationState, string> = {
   never: 'bg-cream-200 text-ink-soft',
   live: 'bg-[#e3f1ec] text-ev-documented',
@@ -97,15 +94,16 @@ export function PublishPanel({ articleId, revision, dirty, generating, pub }: { 
           <button type="button" className="studio-btn-quiet" onClick={copy}>
             {copied ? 'Copied' : 'Copy'}
           </button>
-          {PUBLIC_ROUTE_LIVE && pub.state !== 'unpublished' && pub.state !== 'never' ? (
-            <a className="studio-btn-quiet" href={url ?? '#'} target="_blank" rel="noopener noreferrer">
-              Open
+          {pub.state === 'live' || pub.state === 'live_changed' ? (
+            <a className="studio-btn-quiet" href={`/story/${pub.slug}`} target="_blank" rel="noopener noreferrer">
+              View published article
             </a>
           ) : (
             <span className="text-xs text-muted">
-              Permanent address · the public story page arrives in Phase 3B{pub.state === 'unpublished' ? '; currently unpublished' : ''}, so this link does not open a page yet.
+              Permanent address{pub.state === 'unpublished' ? ' · currently unpublished, so readers get “page not found” until you republish' : ''}.
             </span>
           )}
+          {pub.state === 'live_changed' ? <span className="text-xs text-muted">Readers see publication {pub.publishedRevision}, not your latest edits.</span> : null}
         </div>
       ) : null}
       {lockReason && pub.state !== 'live' ? <p className="mt-2 text-xs text-muted">{lockReason}</p> : null}

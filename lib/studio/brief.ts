@@ -16,7 +16,7 @@ export type SuggestedField = (typeof SUGGESTED_FIELDS)[number];
 export type BriefSuggestion = Record<SuggestedField, string>;
 
 /** Context the editor has already written; passed to the model so suggestions stay consistent with it. */
-export const CONTEXT_FIELDS = ['headline', 'audience', 'assets', 'instructions', ...SUGGESTED_FIELDS] as const;
+export const CONTEXT_FIELDS = ['headline', 'audience', 'assets', 'instructions', 'argument', ...SUGGESTED_FIELDS] as const;
 export type ContextField = (typeof CONTEXT_FIELDS)[number];
 
 export const BRIEF_MAX_TOKENS = 1200;
@@ -63,6 +63,7 @@ export function briefUserPrompt(prompt: string, context: Partial<Record<ContextF
     audience: 'Intended audience',
     assets: 'Relevant asset classes or securities',
     instructions: 'Additional instructions',
+    argument: "The author's own argument (keep the suggestions consistent with it; do not restate it)",
     angle: 'Editorial angle',
     questions: 'Questions to investigate',
     indicators: 'Markets and indicators',

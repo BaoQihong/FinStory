@@ -57,6 +57,11 @@ export function ArticleView({ article, data, sectionName, readingMinutes, mode =
             </span>
             <span aria-hidden="true" className="hidden h-4 w-px bg-white/25 sm:block" />
             <time dateTime={article.date}>{fmtDay(article.date)}</time>
+            {article.updated ? (
+              <span>
+                Updated <time dateTime={article.updated}>{fmtDay(article.updated)}</time>
+              </span>
+            ) : null}
             <span>{readingMinutes} min read</span>
             <span className="text-cream-200/70">Data to {fmtDay(article.dataCutoff)}</span>
           </div>

@@ -10,6 +10,9 @@ financial storytelling publication that turns human-authored editorial
 content into visually compelling narratives, macroeconomic insights,
 quantitative analytics and conditional market scenarios.
 "The presentation is the product. Analytics is the infrastructure."
+Public articles live at `/story/[slug]`; generated and polished prose follows
+the editorial style guide in `lib/editorial/style-guide.ts`
+(`docs/EDITORIAL_STYLE_GUIDE.md`).
 
 Binding product rules: real data only (never fabricate or silently fill
 missing values), every number in copy is a fact token validated against
@@ -29,8 +32,9 @@ no invented probabilities (D-019). Run `npm run verify` before committing.
 - The project runs in three phases (see `docs/ROADMAP.md`):
   1. Project preparation and infrastructure configuration (complete)
   2. Product design and interactive visual prototyping (2A done, 2B delivered)
-  3. Application development, deployment and operations ← **current: 3A
-     (publishing engine) only**; 3B.1/3B.2 need separate approval
+  3. Application development, deployment and operations ← **current: 3B
+     (3B.1 public article, 3B.2 editorial quality; approved 2026-11-27)**;
+     3C (homepage/discovery) and 3D (polish/optimisation) need separate approval
 - **Do not begin work belonging to a later phase without explicit product
   owner approval.**
 

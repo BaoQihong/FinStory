@@ -31,6 +31,8 @@ const PATTERNS: { re: RegExp; why: string }[] = [
   { re: /[$€£¥]\s?\d[\d,]*(?:\.\d+)?(?:\s?(?:k|m|bn|million|billion|trillion))?/gi, why: 'currency amount' },
   { re: new RegExp(`\\b\\d[\\d,]*(?:\\.\\d+)?\\s?${UNIT}`, 'gi'), why: 'number with a unit' },
   { re: new RegExp(`\\b${WORD_NUM}(?:[- ]${WORD_NUM})?\\s+(?:percentage points?|per ?cent|basis points?|million barrels|billion)`, 'gi'), why: 'spelled-out figure' },
+  // Multiples are figures too (Phase 3B.2 evaluation: "rates have quadrupled" for 3.10% → 7.21%).
+  { re: /\b(?:doubled|tripled|quadrupled|halved|(?:more than |nearly |almost |roughly )?(?:twice|double|triple|three times|four times|tenfold|ten times)(?= (?:as|the|what|that|higher|larger|more|bigger|faster)))\b/gi, why: 'multiple stated without a fact token' },
   { re: /\b\d+\.\d+\b/g, why: 'decimal number' },
   { re: /\b\d{1,3}(?:,\d{3})+\b/g, why: 'large number' },
 ];
@@ -120,9 +122,50 @@ export function findCliches(text: string): string[] {
   return m ? [m[0]] : [];
 }
 
+// Formulaic contrast (Phase 3B.2 style guide): "X is not just A; it is B", "This isn't about A — it's B",
+// "not merely A, but B", "the question is no longer whether…". Sentence-local; reported as a style note
+// that the repair stage reworks (no extra calls). A single honest contrast is fine; the habit is the problem.
+const CONTRASTS = [
+  /\b(?:is|are|was|were)\s+not\s+(?:just\s+|only\s+|merely\s+|simply\s+|about\s+)?[^.;:—!?]{0,70}[;:—]\s*(?:it|they|this|that)(?:'s|\s+is|\s+are|\s+was)\b/gi,
+  /\b(?:isn't|aren't|wasn't|weren't)\s+(?:just\s+|only\s+|merely\s+|simply\s+|about\s+)?[^.;:—!?]{0,70}[;:—]\s*(?:it|they|this|that)(?:'s|\s+is|\s+are|\s+was)\b/gi,
+  /\bnot\s+(?:just|only|merely|simply)\s+[^.;:!?]{1,70},\s+but\b/gi,
+  /\b(?:isn't|is\s+not)\s+that\b[^.;:!?]{1,70},\s+but\b/gi,
+  /\bthe\s+(?:real\s+)?(?:question|issue|problem|point|story)\s+is\s+no\s+longer\s+whether\b/gi,
+  /\bthe\s+(?:real\s+)?(?:question|issue|problem|point|story)\s+(?:isn't|is\s+not)\b[^.;!?]{0,70}[;,—]\s*(?:it's|it\s+is|but)\b/gi,
+];
+export function findFormulaicContrasts(text: string): string[] {
+  const out: string[] = [];
+  for (const re of CONTRASTS) for (const m of text.matchAll(re)) out.push(m[0].slice(0, 80));
+  return out;
+}
+
 /** Walk any JSON value and yield [path, string] for each string leaf. */
 export function* stringLeaves(v: unknown, path = ''): Generator<[string, string]> {
   if (typeof v === 'string') yield [path, v];
   else if (Array.isArray(v)) for (const [i, x] of v.entries()) yield* stringLeaves(x, `${path}[${i}]`);
   else if (v && typeof v === 'object') for (const [k, x] of Object.entries(v)) yield* stringLeaves(x, path ? `${path}.${k}` : k);
+}
+
+// Verbatim reuse across sections (Phase 3B.2 evaluation: Macro/Analytics copied Story sentences when
+// given the full Story text). Reports the first shared run of REUSE_WORDS consecutive words per sentence.
+const REUSE_WORDS = 9;
+const normWords = (t: string) => t.toLowerCase().replace(/[^a-z0-9{}.:'\s-]/g, ' ').split(/\s+/).filter(Boolean);
+export function findReusedWording(earlierTexts: string[], text: string): string[] {
+  const seen = new Set<string>();
+  for (const e of earlierTexts) {
+    const w = normWords(e);
+    for (let i = 0; i + REUSE_WORDS <= w.length; i++) seen.add(w.slice(i, i + REUSE_WORDS).join(' '));
+  }
+  const out: string[] = [];
+  for (const sentence of text.split(/(?<=[.!?])\s+/)) {
+    const w = normWords(sentence);
+    for (let i = 0; i + REUSE_WORDS <= w.length; i++) {
+      const g = w.slice(i, i + REUSE_WORDS).join(' ');
+      if (seen.has(g)) {
+        out.push(g.slice(0, 90));
+        break;
+      }
+    }
+  }
+  return out;
 }

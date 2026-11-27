@@ -7,6 +7,7 @@ import type { ChartData, DateFact, Fact, IndicatorCard } from '../data/display.t
 import type { AssetImplication, ChainStep, ChartBlock, Citation, Evidence, Explainer, IndicatorNote, ProseBlock, PublishedArticle, Scenario, SectionKey } from './types.ts';
 import type { BondComebackData } from '../stories/bond-comeback/build.ts';
 import type { SeshatArticle } from '../studio/schema.ts';
+import type { PublishedStory } from '../publishing/snapshot.ts';
 
 type ChartRef = Omit<ChartBlock, 'type'>;
 type Attention = { required: boolean; reasons: string[] };
@@ -21,6 +22,8 @@ export type RenderArticle = {
   byline: { name: string; role: string };
   /** Date shown in the header: publication date, or last-saved date for drafts. */
   date: string;
+  /** Public stories only: date of the latest republication, when it differs from `date`. */
+  updated?: string;
   dataCutoff: string;
   keyPoints: string[];
   story: { id: 'story'; label: string; title: string; blocks: ProseBlock[]; attention?: Attention };
@@ -101,25 +104,60 @@ export function fromPublished(a: PublishedArticle, data: BondComebackData): { ar
 
 const LABELS = { story: 'The Story', macro: 'Macro', analytics: 'Analytics', outlook: 'Outlook' } as const;
 
+export const DRAFT_FOOTER =
+  'Draft preview — not published. Generated with AI assistance from the sources and data listed above, for review and editing by a human editor. General information and education, not investment advice.';
+export const PUBLIC_FOOTER =
+  'Prepared with AI assistance from the sources and data listed above, then reviewed, edited and approved for publication by a human editor. Figures are computed from the retrieved data as of the date shown. General information and education, not investment advice.';
+
 /** Generated / edited draft (SeshatArticleV1) → render model. */
 export function fromDraft(c: SeshatArticle): { article: RenderArticle; data: RenderData } {
+  return fromContent({ ...c, citations: c.evidence.citations }, { date: c.meta.updatedAt.slice(0, 10), footerNote: DRAFT_FOOTER, attention: true });
+}
+
+/**
+ * Published snapshot (PublishedStoryV1, Phase 3A) → render model. The same
+ * mapping as fromDraft(), so the public page and the editorial preview render
+ * identical content identically (WYSIWYG); only the header dates and the
+ * footer note differ, and snapshots carry no attention notes.
+ */
+export function fromSnapshot(s: PublishedStory, pub: { firstPublishedAt: string; publishedAt: string }): { article: RenderArticle; data: RenderData } {
+  const first = pub.firstPublishedAt.slice(0, 10);
+  const latest = pub.publishedAt.slice(0, 10);
+  return fromContent(s, { date: first, updated: latest !== first ? latest : undefined, footerNote: PUBLIC_FOOTER, attention: false });
+}
+
+type RenderableContent = Pick<SeshatArticle, 'methodology' | 'data'> & {
+  meta: Pick<SeshatArticle['meta'], 'section' | 'author' | 'asOf'>;
+  story: Omit<SeshatArticle['story'], 'attention'> & { attention?: Attention };
+  macro: Omit<SeshatArticle['macro'], 'attention'> & { attention?: Attention };
+  analytics: Omit<SeshatArticle['analytics'], 'attention'> & { attention?: Attention };
+  outlook: Omit<SeshatArticle['outlook'], 'attention'> & { attention?: Attention };
+  citations: SeshatArticle['evidence']['citations'];
+};
+
+function fromContent(c: RenderableContent, o: { date: string; updated?: string; footerNote: string; attention: boolean }): { article: RenderArticle; data: RenderData } {
+  const att = (a?: Attention) => (o.attention ? a : undefined);
+  const { attention: sa, ...story } = c.story;
+  const { attention: ma, ...macro } = c.macro;
+  const { attention: aa, ...analytics } = c.analytics;
+  const { attention: oa, ...outlook } = c.outlook;
   return {
     article: {
       section: c.meta.section,
-      headline: c.story.headline,
-      dek: c.story.dek,
+      headline: story.headline,
+      dek: story.dek,
       byline: c.meta.author,
-      date: c.meta.updatedAt.slice(0, 10),
+      date: o.date,
+      ...(o.updated ? { updated: o.updated } : {}),
       dataCutoff: c.meta.asOf,
-      keyPoints: c.story.keyPoints,
-      story: { id: 'story', label: LABELS.story, title: c.story.headline, blocks: c.story.blocks, attention: c.story.attention },
-      macro: { id: 'macro', label: LABELS.macro, ...c.macro },
-      analytics: { id: 'analytics', label: LABELS.analytics, ...c.analytics, charts: c.analytics.charts, comparisons: c.analytics.comparisons },
-      outlook: { id: 'outlook', label: LABELS.outlook, ...c.outlook },
+      keyPoints: story.keyPoints,
+      story: { id: 'story', label: LABELS.story, title: story.headline, blocks: story.blocks, ...(att(sa) ? { attention: sa } : {}) },
+      macro: { id: 'macro', label: LABELS.macro, ...macro, ...(att(ma) ? { attention: ma } : {}) },
+      analytics: { id: 'analytics', label: LABELS.analytics, ...analytics, ...(att(aa) ? { attention: aa } : {}) },
+      outlook: { id: 'outlook', label: LABELS.outlook, ...outlook, ...(att(oa) ? { attention: oa } : {}) },
       methodology: c.methodology,
-      citations: c.evidence.citations.map((x) => ({ label: x.title, url: x.url, note: x.ref, publisher: x.publisher, publishedAt: x.publishedAt })),
-      footerNote:
-        'Draft preview — not published. Generated with AI assistance from the sources and data listed above, for review and editing by a human editor. General information and education, not investment advice.',
+      citations: c.citations.map((x) => ({ label: x.title, url: x.url, note: x.ref, publisher: x.publisher, publishedAt: x.publishedAt })),
+      footerNote: o.footerNote,
     },
     data: {
       facts: c.data.facts as Record<string, Fact>,

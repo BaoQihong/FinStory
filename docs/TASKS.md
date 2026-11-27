@@ -93,6 +93,26 @@ Superseded by Phase 3A (D-043).
 | P3A-09 | Decide: Tiingo licence before wide distribution | Not started | Currently a non-blocking warning (P2B-16) |
 | P3A-10 | Optional: bind the snapshot to the draft inside the database (hash/derivation) | Not started | Accepted trade-off for now (D-045) |
 
-## Phase 3B and later
+## Phase 3B — public article experience (3B.1) and editorial quality (3B.2) (active)
 
-3B.1 public renderer, 3B.2 editorial quality: not started, need approval. 3C and 3D deferred.
+| ID | Task | Status | Notes |
+|----|------|--------|-------|
+| P3B-01 | Context recovery, plan | Done | Plan reported in session; ArticleView already shared, so 3B.1 = adapter + route |
+| P3B-02 | `fromSnapshot()` / shared `fromContent()` mapping; "Updated" date; public footer | Done | WYSIWYG unit tests |
+| P3B-03 | `/story/[slug]` route, metadata, proxy 404 check, no-store | Done | D-047 |
+| P3B-04 | Studio: View published article, copy URL, preview banner link, remove 3A notice | Done | |
+| P3B-05 | Live route lifecycle check (`npm run publish:route-check`) | Done | 10/10 locally (production build) |
+| P3B-06 | Browser check desktop + mobile; indicator-card overflow fix | Done | 5 px overflow at 375 px fixed with `min-w-0` (also in the preview) |
+| P3B-07 | Pipeline audit with concrete examples | Done | `docs/editorial/PIPELINE_AUDIT.md` |
+| P3B-08 | Style guide (versioned) + prompt restructure + author argument/voice | Done | D-048 |
+| P3B-09 | Editorial Polish (actions, review UI, protected-content checks) | Done | D-049; UI check needs a signed-in editor |
+| P3B-10 | Controlled editorial evaluation (3 articles) | Done — awaiting product-owner judgment | `docs/editorial/EVALUATION.md` |
+| P3B-11 | Byline editable; default role "Editorial team" | Done | D-050 |
+| P3B-12 | Decide: correct the live article's byline role / watch-list wording (needs republish) | Not started | Product-owner decision; article untouched |
+| P3B-13 | Browser acceptance of studio changes (Publish links, byline, Polish) by a signed-in editor | Blocked | Assistant may not type passwords |
+| P3B-14 | Decide data licensing for public display (UMich, S&P via FRED; Tiingo; snapshot scope) | Not started | `docs/DATA_LICENSING.md` (D-051) |
+| P3B-15 | Commit, push, deploy 3B | In progress | Committed locally; push + Vercel deploy await product-owner approval |
+
+## Phase 3C / 3D
+
+Deferred: homepage and discovery (3C); production polish, tag-based caching of public pages, SEO/social (3D).

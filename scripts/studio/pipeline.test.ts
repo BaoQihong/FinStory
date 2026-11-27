@@ -72,7 +72,7 @@ const attention = { required: false, reasons: [] };
 const scripted: Record<string, () => unknown> = {
   plan: () => ({ workingTitle: 'Test story', section: 'markets', centralQuestion: 'Why did the test currency weaken?', angle: 'Rate gap', whyReadersCare: 'Prices', questions: ['Q1?', 'Q2?'], searches: [{ query: 'q1', purpose: 'p', recent: true }, { query: 'q2', purpose: 'p', recent: false }, { query: 'q3', purpose: 'p', recent: false }], dataNeeds: [{ need: 'exchange rate', why: 'core', searchText: 'yen dollar' }, { need: 'rates', why: 'gap', searchText: 'rates' }], storyboardConcern: '', counterChecks: [{ premise: 'The currency is weak', contradictingEvidence: 'periods when it strengthened', searchText: 'yen dollar' }] }),
   select: () => ({ series: [{ candidate: 'C1', key: 'fx', label: 'Currency per dollar', reason: 'r' }, { candidate: 'C2', key: 'rateA', label: 'Rate A', reason: 'r' }, { candidate: 'C3', key: 'rateB', label: 'Rate B', reason: 'r' }], derived: [{ key: 'gap', op: 'difference', inputs: ['rateA', 'rateB'], label: 'Rate gap', reason: 'r' }], charts: [{ id: 'fxChart', seriesKeys: ['fx'], from: '2021-01-01', purpose: 'p' }, { id: 'gapChart', seriesKeys: ['rateA', 'rateB'], from: '2019-01-01', purpose: 'p' }, { id: 'badChart', seriesKeys: ['fx', 'rateA'], from: '2019-01-01', purpose: 'mixed units' }], unmetNeeds: [] }),
-  synthesize: () => ({ thesis: 'The gap drove the move.', findings: [{ claim: 'Bank held', kind: 'documented', sourceRefs: ['S1'], quote: 'The central bank held its policy rate on Tuesday.' }, { claim: 'Invented', kind: 'context', sourceRefs: ['S2'], quote: 'This sentence is not in any source at all.' }], sourceFigures: [{ key: 'cut', figure: '2.2 million barrels per day', quote: 'Officials said the cut amounted to 2.2 million barrels per day of output', sourceRef: 'S1', about: 'cut size', kind: 'change', measure: 'flow', unit: 'barrels per day', denominator: 'day', temporal: 'historical', period: '' }, { key: 'fake', figure: '9.9 million', quote: 'Officials said the cut amounted to 2.2 million barrels per day of output', sourceRef: 'S1', about: 'mismatch', kind: 'change', measure: 'flow', unit: 'barrels per day', denominator: 'day', temporal: 'historical', period: '' }], conflicts: [], gaps: [], sectionSupport: { story: 'supported', macro: 'supported', analytics: 'supported', outlook: 'thin' } }),
+  synthesize: () => ({ thesis: 'The gap drove the move.', findings: [{ claim: 'Bank held', kind: 'documented', sourceRefs: ['S1'], quote: 'The central bank held its policy rate on Tuesday.' }, { claim: 'Invented', kind: 'context', sourceRefs: ['S2'], quote: 'This sentence is not in any source at all.' }], sourceFigures: [{ key: 'cut', figure: '2.2 million barrels per day', quote: 'Officials said the cut amounted to 2.2 million barrels per day of output', sourceRef: 'S1', about: 'cut size', kind: 'change', measure: 'flow', unit: 'barrels per day', denominator: 'day', temporal: 'historical', period: '' }, { key: 'fake', figure: '9.9 million', quote: 'Officials said the cut amounted to 2.2 million barrels per day of output', sourceRef: 'S1', about: 'mismatch', kind: 'change', measure: 'flow', unit: 'barrels per day', denominator: 'day', temporal: 'historical', period: '' }], conflicts: [], gaps: [], sectionSupport: { story: 'supported', macro: 'supported', analytics: 'supported', outlook: 'thin' }, authorArgument: { status: 'not-provided', note: '' } }),
   story: () => ({ kicker: 'Currencies', headline: 'A test headline', dek: 'The currency hit {fxLatest} as the gap reached {gapLatest}.', keyPoints: ['One {fxChg1y}', 'Two', 'Three'], blocks: [
     { type: 'p', text: 'The currency stood at {fxLatest} on {fxLatest.date}.' },
     { type: 'p', text: 'It was {fxYearAgo} a year earlier, a change of {fxChg1y}.' },
@@ -91,11 +91,12 @@ const scripted: Record<string, () => unknown> = {
   repair: () => ({ fixes: [{ path: 'story.blocks[2].text', text: 'Producers announced a cut of {srcCut}, and the currency moved sharply within a week.' }, { path: 'story.blocks[1].text', text: 'A year earlier it was {fxYearAgo}; the change since is {fxChg1y}.' }] }),
 };
 
-function fakeLlm(calls: string[], failOnce: Set<string> = new Set()): Llm {
+function fakeLlm(calls: string[], failOnce: Set<string> = new Set(), prompts: Record<string, string> = {}): Llm {
   return {
     model: 'fake-model',
     async complete<T>(req: LlmRequest<T>) {
       calls.push(req.stage);
+      prompts[req.stage] = req.user;
       if (failOnce.has(req.stage)) {
         failOnce.delete(req.stage);
         throw new LlmError(`${req.stage}: model output failed validation after 2 attempts`, true, { promptTokens: 10, completionTokens: 5 });
@@ -106,14 +107,15 @@ function fakeLlm(calls: string[], failOnce: Set<string> = new Set()): Llm {
   };
 }
 
-function setup(opts: { failSearch?: boolean; failOnce?: string[] } = {}) {
+function setup(opts: { failSearch?: boolean; failOnce?: string[]; brief?: Record<string, string> } = {}) {
   const store = new MemoryStore();
   const llmCalls: string[] = [];
   const dataCalls: string[] = [];
-  const deps: Deps = { store, llm: fakeLlm(llmCalls, new Set(opts.failOnce)), search: fakeSearch({ fail: opts.failSearch }), data: [fakeData(dataCalls)], keyFingerprints: { arli: 'arlikey00001', tavily: 'tavkey000001', fred: 'fredkey00001' }, today: () => TODAY, now: () => new Date('2026-11-26T12:00:00Z') };
-  const brief = StoryBrief.parse({ prompt: 'Why is the test currency weakening, and what does it mean for investors?' });
+  const prompts: Record<string, string> = {};
+  const deps: Deps = { store, llm: fakeLlm(llmCalls, new Set(opts.failOnce), prompts), search: fakeSearch({ fail: opts.failSearch }), data: [fakeData(dataCalls)], keyFingerprints: { arli: 'arlikey00001', tavily: 'tavkey000001', fred: 'fredkey00001' }, today: () => TODAY, now: () => new Date('2026-11-26T12:00:00Z') };
+  const brief = StoryBrief.parse({ prompt: 'Why is the test currency weakening, and what does it mean for investors?', ...opts.brief });
   const { articleId, jobId } = store.createArticleAndJob({ working_title: 'Test', brief });
-  return { store, deps, articleId, jobId, llmCalls, dataCalls };
+  return { store, deps, articleId, jobId, llmCalls, dataCalls, prompts };
 }
 
 async function runToEnd(deps: Deps, jobId: string, max = 40) {
@@ -509,4 +511,46 @@ test('superlatives "since the start of the data" are verified against the data, 
   assert.deepEqual(classifySuperlatives('Supply is {aLatest}, the highest level since {aHistoryStart}.', facts), []);
   assert.deepEqual(classifySuperlatives('Prices are {bLatest}, the highest level since {bHistoryStart}.', facts), [{ word: 'highest', verdict: 'contradicted' }]);
   assert.deepEqual(classifySuperlatives('The largest economy has the biggest risk.', facts), []); // descriptive use: not flagged
+});
+
+// ── Phase 3B.2: editorial intent and whole-article awareness reach the writing stages ──
+test('author argument, voice and style guide reach the writing stages; later stages see earlier sections', async () => {
+  const { deps, jobId, prompts } = setup({ brief: { argument: 'AUTHOR-ARGUMENT-MARKER: the weakness is mostly about rates.', voice: 'VOICE-MARKER: dry, sceptical.' } });
+  await runToEnd(deps, jobId);
+  for (const stage of ['synthesize', 'story', 'macro_analytics', 'outlook']) {
+    assert.match(prompts[stage], /AUTHOR-ARGUMENT-MARKER/, `${stage} lost the author's argument`);
+    assert.match(prompts[stage], /EDITORIAL INTENT/);
+  }
+  for (const stage of ['story', 'macro_analytics', 'outlook']) {
+    assert.match(prompts[stage], /VOICE-MARKER/);
+    assert.match(prompts[stage], /SESHAT EDITORIAL STYLE GUIDE/, `${stage} lacks the style guide`);
+  }
+  const story = scripted.story() as { blocks: { type: string; text?: string }[] };
+  const firstParagraph = story.blocks.find((b) => b.type === 'p')!.text!;
+  assert.ok(prompts.macro_analytics.includes(firstParagraph), 'macro/analytics must see the full Story text');
+  assert.ok(prompts.outlook.includes('THE ARTICLE SO FAR') && prompts.outlook.includes('Mechanism:'), 'outlook must see the earlier sections');
+  assert.match(prompts.repair ?? 'no repair', /keep the author's voice|no repair/);
+});
+
+test('formulaic "not X; it is Y" contrasts are detected (style note for repair), ordinary negation is not', async () => {
+  const { findFormulaicContrasts } = await import('../../lib/studio/numbers.ts');
+  for (const s of ['The gap is not a statistical error; it is a structural lag.', 'This disconnect is not merely statistical; it is psychological.', "The primary concern isn't that the technology doesn't work, but how it is being paid for.", 'the question is no longer whether AI is a trend, but whether'])
+    assert.ok(findFormulaicContrasts(s).length, s);
+  for (const s of ['Prices are not falling. Wages are rising slowly.', 'It was not the Fed that moved first; markets did.', 'Rates are not high by historical standards, but they are rising.'])
+    assert.equal(findFormulaicContrasts(s).length, 0, s);
+});
+
+test('spelled-out multiples ("quadrupled", "more than double") count as figures that need a fact token', async () => {
+  const { findBareNumbers } = await import('../../lib/studio/numbers.ts');
+  for (const s of ['Mortgage rates have quadrupled since 2021.', 'The payment is now more than double what it was.', 'Payments are twice as high.'])
+    assert.ok(findBareNumbers(s).length, s);
+  for (const s of ['The Fed may double down on its stance.', 'Rates rose {mortgageChg5y} over five years.'])
+    assert.equal(findBareNumbers(s).length, 0, s);
+});
+
+test('wording copied verbatim from an earlier section is reported for repair; short shared phrases are not', async () => {
+  const { findReusedWording } = await import('../../lib/studio/numbers.ts');
+  const story = ['Housing and medical care have kept rising, meaning the categories that matter most to household stability have not cooled at the same pace.'];
+  assert.equal(findReusedWording(story, 'Sticky costs: the categories that matter most to household stability have not cooled at the same pace as the index.').length, 1);
+  assert.equal(findReusedWording(story, 'Housing and medical care are the sticky part of the index.').length, 0);
 });

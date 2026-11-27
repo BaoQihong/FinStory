@@ -9,6 +9,8 @@ import { publicationState, type PublicationColumns } from '@/lib/publishing/rule
 
 // Private, per-request studio route: render on the server at request time (no static shell).
 export const instant = false;
+// Editorial Polish runs one Arli call inside a server action on this page (≈30–120 s).
+export const maxDuration = 300;
 
 export const metadata = { title: 'Draft' };
 

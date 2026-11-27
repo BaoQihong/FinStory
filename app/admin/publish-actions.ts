@@ -137,6 +137,7 @@ export async function publishArticle(input: { articleId: string; expectedRevisio
   if (error) return { ok: false, error: dbError(error.message) };
   const row = (Array.isArray(data) ? data[0] : data) as { outcome: 'published' | 'unchanged'; slug: string; published_revision: number; published_source_revision: number } | undefined;
   if (!row) return { ok: false, error: 'Publishing returned no result.' };
+  revalidatePath(`/story/${row.slug}`);
   revalidatePath(`/admin/drafts/${a.id}`);
   revalidatePath('/admin');
   return { ok: true, outcome: row.outcome, slug: row.slug, publication: row.published_revision, sourceRevision: row.published_source_revision };
@@ -149,9 +150,12 @@ export async function unpublishArticle(articleId: string): Promise<UnpublishResu
   const ed = await getEditor();
   if (!ed) return { ok: false, error: 'Your session has expired. Sign in again.' };
   if (!/^[0-9a-f-]{36}$/.test(String(articleId))) return { ok: false, error: 'Draft not found.' };
+  const { data: art } = await ed.db.from('articles').select('slug').eq('id', articleId).maybeSingle();
   const { data, error } = await ed.db.rpc('unpublish_article', { p_article: articleId });
   if (error) return { ok: false, error: dbError(error.message) };
   const row = (Array.isArray(data) ? data[0] : data) as { outcome: 'unpublished' | 'unchanged' } | undefined;
+  // The public page is rendered per request (D-047); this also clears any future route cache.
+  if (art?.slug) revalidatePath(`/story/${art.slug}`);
   revalidatePath(`/admin/drafts/${articleId}`);
   revalidatePath('/admin');
   return { ok: true, outcome: row?.outcome ?? 'unchanged' };

@@ -30,7 +30,8 @@ import {
 import { classifySource, figureInQuote, isStale, isoDate, leadingNumber, publisherOf, quoteAppears, rankSources } from '../sources.ts';
 import { frequencyClass } from '../units.ts';
 import { applyAttention, validateArticle } from '../validate.ts';
-import { ATTENTION_RULE, STORYBOARD, SYSTEM, VOICE, briefBlock, dateLines, factLines, untrusted } from './prompts.ts';
+import { ATTENTION_RULE, STORYBOARD, STYLE, SYSTEM, briefBlock, dateLines, factLines, untrusted } from './prompts.ts';
+import { REVISION_PRINCIPLES } from '../../editorial/style-guide.ts';
 import type { DatasetRow, FindingRow, SourceRow, Stage, StageContext } from './types.ts';
 
 // ── Limits (cost and runtime guards) ────────────────────────────────────────
@@ -468,6 +469,8 @@ export const SynthOut = z.object({
   conflicts: z.array(z.object({ description: t(400), sourceRefs: z.array(z.string()).max(4) })).max(5),
   gaps: z.array(t(300)).max(6),
   sectionSupport: z.object({ story: SupportLevel, macro: SupportLevel, analytics: SupportLevel, outlook: SupportLevel }),
+  /** Phase 3B.2: how the evidence bears on the author's own argument (brief.argument). Absent in outputs stored before 3B.2. */
+  authorArgument: z.object({ status: z.enum(['supported', 'partly-supported', 'contradicted', 'untested', 'not-provided']), note: z.string().max(500) }),
 });
 export type SynthOut = z.infer<typeof SynthOut>;
 export type SynthResult = SynthOut & { verifiedFindings: FindingRow[]; sourceFacts: Record<string, Fact> };
@@ -498,7 +501,8 @@ RETRIEVED SOURCES:
 ${blocks.join('\n\n')}
 
 Build the evidence package:
-- thesis: the article's central argument in 2–3 sentences, supported by the evidence.
+- authorArgument: if the EDITORIAL INTENT states an Author's argument, assess it honestly against the evidence: status = supported / partly-supported / contradicted / untested (the evidence neither supports nor refutes it); note = 1–2 sentences on what supports it and what complicates it. If no Author's argument is given, status = "not-provided" and note = "".
+- thesis: the article's central argument in 2–3 sentences. When an Author's argument is given, the thesis IS that argument, sharpened by the evidence (and qualified where the evidence complicates it) — do not replace it with a safer, more neutral one. When none is given, build it from the editorial angle and the strongest evidence. A thesis states a view someone could disagree with, not a topic.
 - findings: key evidence points. claim in your own words; kind = documented / context / interpretation; sourceRefs = the S-refs supporting it ([] if it rests only on the data facts); quote = a short exact excerpt (≤ 300 chars, copied verbatim) from the source that supports it, or "".
 - sourceFigures: important figures stated in the sources that the datasets do not cover (e.g. an announced production cut, a policy rate decision, an inventory change). figure = the exact text as written in the source (e.g. "2.2 million barrels per day"); quote = the exact sentence containing it, copied verbatim; key = camelCase name. Only figures you can quote verbatim. Describe each figure precisely: kind (level = an amount or price at a time; change = a difference between two times; rate = a growth rate or percentage), measure (stock = amount at a point in time e.g. inventories, backlog, debt; flow = amount per period e.g. production, sales, spending; price = cost per unit; rate; index; ratio; count; other), unit (e.g. "US$", "gigawatts", "barrels per day", "%"), denominator (what it is per, e.g. "MW", "kWh", "barrel", "year"; "" if none), temporal (historical = already happened; forecast/estimate/target = projected, estimated or planned), period (the year, quarter or date it refers to; "" if unstated).
 - conflicts: where sources disagree, or are stale relative to the data.
@@ -539,6 +543,7 @@ Build the evidence package:
   }
   await deps.store.replaceFindings(ctx.job.id, ctx.article.id, findings);
   for (const c of r.data.conflicts) ctx.warn(`Conflicting evidence: ${c.description}`);
+  if (r.data.authorArgument?.status === 'contradicted') ctx.warn(`The evidence contradicts the author's argument: ${r.data.authorArgument.note}`);
   return { ...r.data, verifiedFindings: findings, sourceFacts };
 }
 
@@ -555,12 +560,17 @@ function writingContext(ctx: StageContext): { facts: Record<string, Fact>; text:
   const findings = s.verifiedFindings
     .map((x) => `${x.ref} [${x.evidence_kind}${x.source_refs.length ? ' · ' + x.source_refs.join(',') : ''}${x.quote && !x.quote_verified ? ' · quote unverified' : ''}] ${x.claim}`)
     .join('\n');
+  const arg = s.authorArgument && s.authorArgument.status !== 'not-provided' ? `
+How the evidence bears on the author's argument: ${s.authorArgument.status}${s.authorArgument.note ? ` — ${s.authorArgument.note}` : ''}` : '';
   const text = `${briefBlock(ctx.article.brief)}
 
+EDITORIAL CORE (the argument this article makes)
+Thesis: ${s.thesis}${arg}
 Central question: ${p.centralQuestion}
 Angle: ${p.angle}
 Why readers care: ${p.whyReadersCare}
-Thesis: ${s.thesis}
+
+EVIDENCE (what is established; write nothing that goes beyond it)
 Evidence support by section: ${Object.entries(s.sectionSupport).map(([k, v]) => `${k}=${v}`).join(', ')}
 Gaps: ${s.gaps.join(' | ') || 'none noted'}
 
@@ -590,15 +600,24 @@ async function story(ctx: StageContext) {
   const user = `${w.text}
 
 ${STORYBOARD}
-Write THE STORY — "What happened, and why should I care?"
-${VOICE}
+
+${STYLE}
+
+TASK: write THE STORY — the article's argument, told as narrative.
+How to build it:
+- Decide first what the one thing is that a reader should understand after reading, in the author's terms (EDITORIAL CORE). Every paragraph serves that.
+- Open with the most interesting specific thing you have: a striking fact token, an event, a contradiction, or a plain statement of the argument. Not background, not definitions, not the state of the world.
+- Then develop the argument: what is going on, why it is happening in a sentence or two (the full mechanism belongs to Analytics), who it affects and how, what the common view gets wrong or misses, and the strongest evidence that complicates the argument — handled honestly, not buried.
+- Use only the few figures that carry the argument; Macro will present the rest. A paragraph built around one well-chosen number beats one that lists four.
+- End on an implication, an open question or the thing that would change the picture — not a recap, not advice.
+Output fields:
 - kicker: 1–3 words naming the beat (e.g. "Currencies", "Energy").
-- headline: compelling, concise, specific; no clickbait, no question marks unless essential.
-- dek: a one- or two-sentence summary of the central development.
-- keyPoints: three short takeaways a reader should leave with ("the story in 30 seconds").
-- blocks: the narrative — 6 to 10 paragraphs, each making a distinct point (never repeat a sentence or the key points verbatim) ({"type":"p"}), optionally one {"type":"h3"} subhead, at most one {"type":"pullquote"} and at most one {"type":"chart"} referencing an AVAILABLE chart with a question (chart title) and takeaway. Cover what happened, the relevant history and context, and why it matters to readers. The narrative must make sense without the chart.
-- Use fact tokens for every figure. Keep the Story to the central argument; save mechanisms and scenarios for later sections.
-${ATTENTION_RULE}`;
+- headline: specific and honest; it should make the argument or the tension clear. No clickbait; a question only if it is the real question.
+- dek: one or two sentences that give the reader a reason to keep going — the argument or the surprise, not a summary of the topic.
+- keyPoints: three short takeaways ("the story in 30 seconds"), each a distinct claim; do not copy sentences from the narrative.
+- blocks: the narrative in roughly 5 to 9 {"type":"p"} paragraphs of varied length (a short one is fine when it lands a point). Subheads ({"type":"h3"}) only if the piece genuinely changes direction — usually none. At most one {"type":"pullquote"} (a line from your own text, never a fabricated quote) and at most one {"type":"chart"} referencing an AVAILABLE chart with a question (chart title) and takeaway; the narrative must make sense without it.
+- Use fact tokens for every figure.
+${ATTENTION_RULE} If the evidence contradicts the author's argument, write what the evidence supports, say plainly where it departs from the author's view, and set attention with that reason so the editor decides.`;
   const r = await ctx.deps.llm.complete({ stage: 'story', system: SYSTEM, user, schema: StorySection, maxTokens: 3600, temperature: 0.6 });
   ctx.metric({ llm: { ...r.usage, attempts: r.attempts } });
   return r.data;
@@ -612,25 +631,32 @@ async function macroAnalytics(ctx: StageContext) {
   const st = ctx.outputs.story as z.infer<typeof StorySection>;
   const user = `${w.text}
 
-The Story has been written with the headline "${st.headline}". Its summary: ${st.dek}
+THE STORY, ALREADY WRITTEN (the reader has just read this — build on it; do not restate its points, figures or phrasing):
+Headline: ${st.headline}
+Dek: ${st.dek}
+${st.blocks.map((b) => (b.type === 'chart' ? `[chart ${b.chartId}: ${b.question}]` : b.text)).join('\n')}
 
 ${STORYBOARD}
+
+${STYLE}
+
 Write two sections as {"macro": {...}, "analytics": {...}}.
 
-MACRO — "What do the economic and market numbers tell us?"
-- title: an editorial heading; intro: 2–3 sentences connecting the numbers to the story.
-- indicators: 2–4 AVAILABLE indicator keys with a one-sentence note each explaining why that number matters here.
+MACRO — the evidence that matters, interpreted for this argument.
+- title: an editorial heading that says something (not "The numbers" or "Key indicators").
+- intro: 2–3 sentences on what the numbers show that the Story could only assert — what a reader should notice, and why.
+- indicators: 2–4 AVAILABLE indicator keys with a one-sentence note each saying why that number matters to THIS argument (not a definition of the indicator).
 - charts: 1–3 AVAILABLE charts (not the one already used in the Story, if any). For each: question = the specific editorial question it answers (chart title); takeaway = the one sentence a reader should leave with, citing only facts about the series in that chart.
 - explainers: 2–3 short "what changed" notes (title, text, evidence).
 
-ANALYTICS — "Why is this happening, and what are the consequences?"
-- title, intro.
-- chain: a transmission mechanism of 3–5 steps (e.g. policy gap → capital flows → currency → import prices). Each step: title, text, evidence (documented / context / interpretation).
+ANALYTICS — the mechanism: why this is happening and what it does next.
+- title, intro (the causal question this section answers, and your answer in brief).
+- chain: a transmission mechanism of 3–5 steps (e.g. policy gap → capital flows → currency → import prices). Each step: title, text, evidence (documented / context / interpretation). Each step explains a link the reader has not yet been given; say where a link is weak or contested.
 - charts: 0–2 AVAILABLE charts that support the analysis (do not repeat charts used above).
 - comparisons: 0–3 historical comparisons or context notes, only where evidence supports them.
 - implications: title, intro, and 2–6 items (asset classes, businesses or household wealth). If the brief names specific groups (e.g. "first-time buyers, banks, homebuilders" or "utilities, independent power producers, grid-equipment makers"), include ONE item for EACH named group, up to 6. For each: asset name; icon (bonds / cash / stocks / property / currency / commodities); shows = what the data or sources show, with showsEvidence; couldMean = a careful interpretation.
 - Never invent correlations, regression results, attribution percentages or backtests. Mark relationships honestly.
-${VOICE}
+- Macro and Analytics must not repeat each other or the Story: each figure is interpreted once, in the place it matters most. Never copy a sentence or clause from the Story; if a Story point is needed, refer to it in a few words and add what is new.
 ${ATTENTION_RULE} (Apply it to each section's own attention field.)`;
   const r = await ctx.deps.llm.complete({ stage: 'macro_analytics', system: SYSTEM, user, schema: MacroAnalyticsOut, maxTokens: 5200, temperature: 0.45 });
   ctx.metric({ llm: { ...r.usage, attempts: r.attempts } });
@@ -645,16 +671,24 @@ export const OUTLOOK_DISCLAIMER =
 async function outlook(ctx: StageContext) {
   const w = writingContext(ctx);
   const ma = ctx.outputs.macro_analytics as z.infer<typeof MacroAnalyticsOut>;
+  const st = ctx.outputs.story as z.infer<typeof StorySection> | undefined;
   const user = `${w.text}
 
-Analytics mechanism already described: ${ma.analytics.chain.steps.map((s) => s.title).join(' → ')}
+THE ARTICLE SO FAR (the reader has read all of this — do not restate it; the Outlook starts where it ends):
+Story: ${st ? `${st.headline} — ${st.dek} Key points: ${st.keyPoints.join(' / ')}` : '(not available)'}
+Macro: ${ma.macro.title} — ${ma.macro.intro}
+Analytics: ${ma.analytics.title} — ${ma.analytics.intro}
+Mechanism: ${ma.analytics.chain.steps.map((s) => `${s.title}: ${s.text}`).join(' → ')}
 
 ${STORYBOARD}
-Write the OUTLOOK — "What could happen next, and what should investors watch?"
-- title, intro (2–3 sentences).
-- scenarios: 2–3 conditional scenarios in a consistent format. Exactly one has role "central" (the path current evidence leans towards, NOT a probability); others "alternative". Each: key (short slug), name, summary, conditions (what would cause it), whyItMatters, assets (asset → plausible effect, conditional language), watch (specific indicators or events to monitor — name real indicators, ideally ones in this article), uncertainties (key counterarguments or unknowns).
-- No probabilities, odds, confidence scores, price or rate targets, and no new numbers beyond fact tokens.
-${VOICE}
+
+${STYLE}
+
+TASK: write the OUTLOOK — conditional paths from here, and how a reader would know which one is unfolding.
+- title: says something about the choice ahead, not "What's next".
+- intro (2–3 sentences): the open question the article leaves, in the author's terms. No recap, no generic stakes.
+- scenarios: 2–3 conditional scenarios in a consistent format. Exactly one has role "central" (the path current evidence leans towards, NOT a probability); others "alternative" — at least one should be a path the author's argument would NOT predict. Each: key (short slug), name, summary, conditions (the specific developments that would produce it), whyItMatters (for whom, concretely — not "investors should stay alert"), assets (asset → plausible effect, conditional language), watch (specific signposts that would distinguish THIS scenario from the others — real indicators or events, ideally ones in this article; not a generic list), uncertainties (the strongest counterarguments or unknowns).
+- No probabilities, odds, confidence scores, price or rate targets, no investment advice, and no new numbers beyond fact tokens.
 ${ATTENTION_RULE}`;
   const r = await ctx.deps.llm.complete({ stage: 'outlook', system: SYSTEM, user, schema: OutlookOut, maxTokens: 3800, temperature: 0.5 });
   ctx.metric({ llm: { ...r.usage, attempts: r.attempts } });
@@ -681,7 +715,7 @@ export function assembleArticle(ctx: StageContext, fixes: { path: string; text: 
     meta: {
       workingTitle: (ctx.article.brief.headline || p?.workingTitle || ctx.article.working_title).slice(0, 200),
       section: p?.section ?? 'markets',
-      author: { name: 'Seshat Editorial', role: 'Draft for editorial review' },
+      author: { name: 'Seshat Editorial', role: 'Editorial team' },
       asOf: f?.asOf ?? deps.today(),
       createdAt: ctx.job.created_at,
       updatedAt: now,
@@ -957,7 +991,7 @@ ${(f?.products.observations ?? []).join('\n')}
 FLAGGED TEXT:
 ${items}
 
-For each PATH, return the full corrected text (within its MAX LENGTH): use each figure only as what its description says it is (level vs change, its unit and denominator, its period, forecast vs historical); fix each factual or logical problem (correct it using the data and observations, or remove/qualify the claim); replace each flagged figure with the matching fact token if one exists, otherwise rewrite without that number; make each superlative either cite the matching high/low/since token in the same sentence or remove it if the observations do not support it; replace clichés with plain words. Keep everything else the same. Return {"fixes": [{"path": "...", "text": "..."}]}.`;
+For each PATH, return the full corrected text (within its MAX LENGTH): use each figure only as what its description says it is (level vs change, its unit and denominator, its period, forecast vs historical); fix each factual or logical problem (correct it using the data and observations, or remove/qualify the claim); replace each flagged figure with the matching fact token if one exists, otherwise rewrite without that number; make each superlative either cite the matching high/low/since token in the same sentence or remove it if the observations do not support it; replace clichés with plain, specific words (rework the sentence; do not swap in a synonym). Keep everything else the same. ${REVISION_PRINCIPLES} Return {"fixes": [{"path": "...", "text": "..."}]}.`;
   const r = await ctx.deps.llm.complete({ stage: 'repair', system: SYSTEM, user, schema: RepairOut, maxTokens: 3000, temperature: 0.1 });
   ctx.metric({ llm: { ...r.usage, attempts: r.attempts } });
   return { fixes: r.data.fixes.filter((f) => paths.includes(f.path)), skipped: false };

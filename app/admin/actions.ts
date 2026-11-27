@@ -4,11 +4,18 @@ import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { getEditor } from '@/lib/studio/auth';
 import { DAILY_JOB_LIMIT, fingerprint, missingConfig } from '@/lib/studio/deps';
-import { SECTION_ORDER, SeshatArticleV1, StoryBrief, type ValidationIssue } from '@/lib/studio/schema';
+import { SECTION_ORDER, SeshatArticleV1, StoryBrief, type SeshatArticle, type ValidationIssue } from '@/lib/studio/schema';
 import { validateArticle } from '@/lib/studio/validate';
 import { supabaseServer } from '@/lib/supabase/server';
 import { CONTEXT_FIELDS, suggestBrief, type BriefSuggestion, type ContextField } from '@/lib/studio/brief';
 import { arliLlm, LlmError } from '@/lib/studio/llm';
+
+
+/** An Editorial Polish call is using the AI model (reservation row, see polish-actions.ts). */
+async function polishInFlight(db: Awaited<ReturnType<typeof supabaseServer>>) {
+  const { data } = await db.from('api_usage').select('id').eq('stage', 'polish').eq('calls', 0).gte('created_at', new Date(Date.now() - 300_000).toISOString()).limit(1);
+  return !!data?.length;
+}
 
 export type FormState = { error?: string; fieldErrors?: Record<string, string> } | undefined;
 
@@ -38,7 +45,7 @@ export async function signOut() {
 export async function createStory(_prev: FormState, form: FormData): Promise<FormState> {
   const ed = await getEditor();
   if (!ed) return { error: 'Your session has expired. Sign in again.' };
-  const raw = Object.fromEntries(['prompt', 'headline', 'audience', 'angle', 'questions', 'assets', 'indicators', 'outlook', 'premise', 'instructions'].map((k) => [k, String(form.get(k) ?? '').trim() || undefined]));
+  const raw = Object.fromEntries(['prompt', 'headline', 'audience', 'angle', 'questions', 'assets', 'indicators', 'outlook', 'premise', 'instructions', 'argument', 'voice'].map((k) => [k, String(form.get(k) ?? '').trim() || undefined]));
   const parsed = StoryBrief.safeParse(raw);
   if (!parsed.success) {
     const fieldErrors: Record<string, string> = {};
@@ -51,6 +58,7 @@ export async function createStory(_prev: FormState, form: FormData): Promise<For
   const { db } = ed;
   const { data: active } = await db.from('generation_jobs').select('id, article_id').in('status', ['queued', 'running']).limit(1);
   if (active?.length) return { error: 'Another story is being generated. Wait for it to finish (or cancel it) before starting a new one.' };
+  if (await polishInFlight(db)) return { error: 'Editorial Polish is using the AI model right now. Start the generation when it has finished.' };
   const since = new Date(Date.now() - 24 * 3600 * 1000).toISOString();
   const { count } = await db.from('generation_jobs').select('id', { count: 'exact', head: true }).gte('created_at', since);
   if ((count ?? 0) >= DAILY_JOB_LIMIT) return { error: `Daily generation limit reached (${DAILY_JOB_LIMIT} per 24 hours). This protects API costs; try again later.` };
@@ -92,6 +100,7 @@ export async function developBrief(input: { prompt: string; context?: Partial<Re
   // Arli allows one request at a time (D-010): never run beside a generation job.
   const { data: active } = await db.from('generation_jobs').select('id').in('status', ['queued', 'running']).limit(1);
   if (active?.length) return { ok: false, error: 'A story is being generated and is using the AI model. Develop the brief when it has finished — or write the guidance yourself.' };
+  if (await polishInFlight(db)) return { ok: false, error: 'Editorial Polish is using the AI model right now. Try again in a minute.' };
   const since = new Date(Date.now() - 24 * 3600 * 1000).toISOString();
   const { count } = await db.from('api_usage').select('id', { count: 'exact', head: true }).eq('stage', 'brief').gte('created_at', since);
   if ((count ?? 0) >= DAILY_BRIEF_LIMIT) return { ok: false, error: `Daily brief limit reached (${DAILY_BRIEF_LIMIT} per 24 hours). You can still write the guidance yourself.` };
@@ -115,7 +124,7 @@ export async function developBrief(input: { prompt: string; context?: Partial<Re
 }
 
 // ── Editorial saves ──────────────────────────────────────────────────────
-export type SaveResult = { ok: true; revision: number; issues: ValidationIssue[]; status: string } | { ok: false; error: string; issues?: ValidationIssue[] };
+export type SaveResult = { ok: true; revision: number; issues: ValidationIssue[]; status: string; content: SeshatArticle } | { ok: false; error: string; issues?: ValidationIssue[] };
 
 export async function saveDraft(articleId: string, expectedRevision: number, content: unknown, note?: string): Promise<SaveResult> {
   const ed = await getEditor();
@@ -134,7 +143,7 @@ export async function saveDraft(articleId: string, expectedRevision: number, con
   }
   // Data products are application-owned: editors change copy and placement, never values.
   const prev = current.content as { data?: unknown } | null;
-  const next = { ...parsed.data, data: prev?.data ?? parsed.data.data, meta: { ...parsed.data.meta, updatedAt: new Date().toISOString() } };
+  const next: SeshatArticle = { ...parsed.data, data: (prev?.data as SeshatArticle['data'] | undefined) ?? parsed.data.data, meta: { ...parsed.data.meta, updatedAt: new Date().toISOString() } };
   const v = validateArticle(next, { today: new Date().toISOString().slice(0, 10) });
   next.validation = { checkedAt: new Date().toISOString(), issues: v.issues, claims: v.claims };
   const needs = SECTION_ORDER.some((s) => next[s].attention.required) || v.issues.some((i) => i.level === 'error');
@@ -145,7 +154,7 @@ export async function saveDraft(articleId: string, expectedRevision: number, con
   const { error: uErr } = await db.from('articles').update({ content: next, revision, status, working_title: next.meta.workingTitle, as_of: next.meta.asOf }).eq('id', articleId).eq('revision', expectedRevision);
   if (uErr) return { ok: false, error: uErr.message };
   revalidatePath(`/admin/drafts/${articleId}`);
-  return { ok: true, revision, issues: v.issues, status };
+  return { ok: true, revision, issues: v.issues, status, content: next };
 }
 
 // ── Job control ──────────────────────────────────────────────────────────

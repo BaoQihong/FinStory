@@ -246,5 +246,9 @@ export const StoryBrief = z.object({
   /** Assumptions in the prompt that research must establish or refute — a hypothesis, never a finding. */
   premise: z.string().trim().max(800).optional(),
   instructions: z.string().trim().max(1500).optional(),
+  /** Phase 3B.2: the author's own argument / view — preserved through generation, flagged (not flattened) if the evidence contradicts it. */
+  argument: z.string().trim().max(1500).optional(),
+  /** Phase 3B.2: tone and voice notes, optionally with a short writing sample (register and rhythm only). */
+  voice: z.string().trim().max(2000).optional(),
 });
 export type StoryBrief = z.infer<typeof StoryBrief>;

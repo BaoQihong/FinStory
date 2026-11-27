@@ -4,6 +4,7 @@
 import type { Fact } from '../../data/display.ts';
 import { formatDate, formatFact } from '../../content/tokens.ts';
 import type { StoryBrief } from '../schema.ts';
+import { STYLE_GUIDE } from '../../editorial/style-guide.ts';
 
 export const SYSTEM = `You are the research and writing engine of Seshat, an independent financial storytelling magazine for curious everyday readers and engaged retail investors. A human editor commissions every story and has final authority.
 
@@ -22,7 +23,8 @@ Binding rules:
 6b. Superlatives and comparisons ("highest since", "five-year low", "record", "above average", "weakest") are only allowed when the DATA OBSERVATIONS say so, and the sentence must include the matching High…/Low…/…HighestSince/…LowestSince token.
 7. Reply with one JSON object that follows the provided schema. No markdown, no HTML.`;
 
-export const VOICE = `Voice: a knowledgeable, engaging finance writer at a premium magazine — clear, concrete, confident, warm. Short purposeful paragraphs (2–4 sentences). Plain words; explain any necessary jargon in passing. Lead with what happened and why a reader should care. One coherent argument, not a summary of every finding. No clichés ("in today's fast-paced world", "navigating", "delve", "landscape", "rollercoaster", "ultimately"), no hype, no clickbait, no hedging in every sentence, no listicle tone. End on a concrete, specific point — never a generic summary or "for investors, understanding X is essential" paragraph.`;
+/** The editorial style guide (lib/editorial/style-guide.ts) — read by every writing stage. */
+export const STYLE = STYLE_GUIDE;
 
 export function dateLines(dates: Record<string, { date: string; datePrecision?: 'day' | 'month' | 'quarter' | 'year'; method: string }>): string {
   return Object.entries(dates)
@@ -32,8 +34,11 @@ export function dateLines(dates: Record<string, { date: string; datePrecision?: 
 
 export function briefBlock(b: StoryBrief): string {
   const opt = (label: string, v?: string) => (v ? `\n${label}: ${v}` : '');
-  return `EDITOR'S BRIEF
-Prompt: ${b.prompt}${opt('Proposed headline', b.headline)}${opt('Intended audience', b.audience)}${opt('Editorial angle', b.angle)}${opt('Questions to investigate', b.questions)}${opt('Relevant assets/securities', b.assets)}${opt('Markets and indicators to consider (suggestions only — not verified datasets)', b.indicators)}${opt('Outlook focus', b.outlook)}${opt('Premise to verify (UNCONFIRMED hypothesis — first establish whether the evidence supports it; if it does not, say so rather than building the story on it)', b.premise)}${opt('Additional research instructions', b.instructions)}`;
+  const intent = `${opt("Author's argument (the editor's own view: the spine of the article — keep it unless the evidence contradicts it, and then say so plainly instead of quietly neutralising it)", b.argument)}${opt('Editorial angle', b.angle)}${opt('Intended audience', b.audience)}${opt('Proposed headline', b.headline)}${opt("Tone and voice notes from the author (follow the tone; if a writing sample is included, match its register and rhythm, never copy its sentences or claims)", b.voice)}`;
+  return `EDITORIAL INTENT (from the human editor; this is what the article is for)
+Idea: ${b.prompt}${intent}
+
+RESEARCH DIRECTION${opt('Questions to investigate', b.questions)}${opt('Relevant assets/securities', b.assets)}${opt('Markets and indicators to consider (suggestions only — not verified datasets)', b.indicators)}${opt('Outlook focus', b.outlook)}${opt('Premise to verify (UNCONFIRMED hypothesis — first establish whether the evidence supports it; if it does not, say so rather than building the story on it)', b.premise)}${opt('Additional research instructions', b.instructions)}`;
 }
 
 export function factLines(facts: Record<string, Fact>, limit = 220): string {
@@ -50,6 +55,6 @@ export function factLines(facts: Record<string, Fact>, limit = 220): string {
 export const untrusted = (ref: string, meta: string, body: string) =>
   `<untrusted_source ref="${ref}" ${meta}>\n${body.replace(/<\/?untrusted_source[^>]*>/gi, '')}\n</untrusted_source>`;
 
-export const STORYBOARD = `Every Seshat article has exactly four sections in this order: THE STORY (what happened, why should I care?) → MACRO (what do the numbers tell us?) → ANALYTICS (why is this happening, what are the consequences?) → OUTLOOK (what could happen next, what should investors watch?). You write only the section you are asked for.`;
+export const STORYBOARD = `Every Seshat article has exactly four sections in this order, each with its own job: THE STORY (the argument, told as narrative: what is happening and why a reader should care) → MACRO (the evidence that matters, interpreted) → ANALYTICS (the mechanism: causes, consequences, and where the causal case is weak) → OUTLOOK (conditional paths and the signposts that would tell them apart). You write only the section you are asked for, and you build on — never repeat — what earlier sections already said.`;
 
 export const ATTENTION_RULE = `If the evidence is too thin to support part of this section, write only what is supported, and set attention.required = true with short reasons for the editor. Never pad or invent to fill the structure. Otherwise set attention to {"required": false, "reasons": []}.`;

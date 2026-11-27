@@ -14,7 +14,7 @@ export function IndicatorCard({ card, note }: { card: Card; note?: string }) {
   const up = ch && ch.value > 0;
   const flat = ch && ch.value === 0;
   return (
-    <article className="flex flex-col rounded-xl border border-cream-300 bg-cream-50 p-5 shadow-[0_1px_0_rgba(15,29,56,0.04)]">
+    <article className="flex min-w-0 flex-col rounded-xl border border-cream-300 bg-cream-50 p-5 shadow-[0_1px_0_rgba(15,29,56,0.04)]">
       <header>
         <h3 className="text-sm font-semibold leading-snug text-ink">{card.label}</h3>
         <p className="mt-0.5 text-xs text-muted">{formatDate(card.asOf, card.asOfPrecision)}</p>
@@ -34,7 +34,7 @@ export function IndicatorCard({ card, note }: { card: Card; note?: string }) {
             </>
           )}
         </p>
-        <Sparkline points={card.spark} color={SPARK_COLOR[card.key] ?? '#243b66'} className="h-10 w-28" />
+        <Sparkline points={card.spark} color={SPARK_COLOR[card.key] ?? '#243b66'} className="h-10 w-28 shrink-0" />
       </div>
       {ch ? (
         <p className="mt-3 text-xs text-ink-soft">

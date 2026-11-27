@@ -260,9 +260,7 @@ The public route is `/story/[slug]`. The Phase 2A demonstration stays at
 `SeshatArticleV1`'s section shapes without `attention`, so a
 `fromSnapshot()` sibling of `fromDraft()` is a thin adapter. Use
 `firstPublishedAt` and `publishedAt` for the header dates, plus a public
-footer note. Until 3B ships, the studio shows the permanent URL with a
-copy button but no "Open" link (`PUBLIC_ROUTE_LIVE = false` in
-`components/studio/PublishPanel.tsx`).
+footer note. Since 3B.1 the studio shows the permanent URL with Copy and **View published article** (see below).
 
 ## Studio interface
 
@@ -282,8 +280,7 @@ copy button but no "Open" link (`PUBLIC_ROUTE_LIVE = false` in
 
 ## Limitations and deferred work
 
-- There is no public renderer yet (3B). Live snapshots exist in the
-  database but have no page.
+- ~~There is no public renderer yet (3B).~~ Shipped in 3B.1: see below.
 - There is no revision comparison or rollback UI. The history is stored
   for it.
 - There is one editor today. `published_by_name` comes from
@@ -292,3 +289,102 @@ copy button but no "Open" link (`PUBLIC_ROUTE_LIVE = false` in
   delete" operation would need its own decision.
 - The snapshot is re-validated when read; a future schema change needs a
   `schemaVersion` 2 reader.
+
+# Phase 3B.1 — public article experience
+
+## Request path
+
+```
+GET /story/<slug>
+  │
+  proxy.ts ── slug fails ^[a-z0-9]+(-[a-z0-9]+)*$ or > 80 chars ──────────▶ 404 (no-store)
+  │          REST: published_stories?select=slug&slug=eq.<slug> (anon, 4 s)
+  │            ├─ no row ───────────────────────────────────────────────▶ 404 (no-store)
+  │            ├─ row    → continue
+  │            └─ error  → continue (fail open: the page decides)
+  ▼
+app/story/[slug]/page.tsx   (instant = false; per request; no data cache)
+  getPublishedStory(slug)   lib/publishing/public.ts: anon client, re-validates PublishedStoryV1
+  → null: notFound()        (only reachable if the row vanished between proxy and page)
+  → fromSnapshot(snapshot, {firstPublishedAt, publishedAt})
+  → <ArticleView mode="public"/>      ← the same component the preview uses
+```
+
+- **Only the live snapshot is reachable.** The anon role can read `published_stories` and nothing else (D-044), so working drafts, history, briefs, findings and editor notes cannot be reached by URL. A draft's UUID, an unpublished slug or a deleted article all return 404 (tested).
+- **Freshness and caching:** HTML is `private, no-cache, no-store`, and the data is read per request. Republishing replaces the row, so the next request shows the new content at the same URL. Unpublishing deletes the row, so the next request is a 404. Nothing has to be invalidated. The publish and unpublish actions also call `revalidatePath('/story/<slug>')`, ready for tag caching in Phase 3D (D-047).
+- **Metadata:** `<title>` = headline, description = dek, canonical `/story/<slug>`, author. The 404 page gets `noindex`. Social cards and full SEO are deferred (3D).
+
+## Shared renderer (WYSIWYG)
+
+```
+SeshatArticleV1 (working draft) ── fromDraft() ───┐
+                                                  ├─ fromContent() ─▶ RenderArticle ─▶ ArticleView
+PublishedStoryV1 (live snapshot) ─ fromSnapshot() ┘
+```
+
+`fromContent()` holds the single mapping. The only differences: the header date
+(draft: last saved; public: first published, plus "Updated" after a
+republication), the footer note (`DRAFT_FOOTER` / `PUBLIC_FOOTER`), and
+attention notes, which only the preview shows. `ArticleView mode="public"`
+also links the section badge and resolves tokens strictly. Publication blocks
+unknown tokens, so preview and public output are identical for publishable
+content. `scripts/publishing/publishing.test.ts` asserts that the two render
+models are equal apart from those fields, and that `fromDraft()` is unchanged
+from Phase 2B.
+
+## Studio integration
+
+- The publication panel shows the permanent URL with **Copy** and **View published article** (live states). Unpublished articles say readers get "page not found".
+- The preview banner links to the live article when there is one, and still states whether the draft matches it.
+- The Story tab has a **Byline** editor (D-050).
+
+# Phase 3B.2 — editorial quality
+
+## Generation prompts (D-048)
+
+Each writing stage's prompt is built in this order:
+
+```
+EDITORIAL INTENT    idea · author's argument · angle · audience · headline · tone/voice   (briefBlock)
+RESEARCH DIRECTION  questions · assets · indicators · outlook focus · premise · instructions
+EDITORIAL CORE      thesis (built from the author's argument) · argument assessment · central question
+EVIDENCE            support levels · gaps · findings
+DATA                fact tokens · date tokens · deterministic observations · charts · indicator cards
+ALREADY WRITTEN     macro_analytics: the full Story · outlook: Story/Macro/Analytics summaries + mechanism
+STORYBOARD          the four section jobs
+STYLE GUIDE         lib/editorial/style-guide.ts (versioned)
+TASK + OUTPUT       section-specific instructions and JSON fields
+```
+
+The system prompt's factual rules (tokens only, no invented data, evidence
+levels) are unchanged. The article schema is unchanged, and the brief gains two
+optional fields.
+
+## Editorial Polish (D-049)
+
+```
+Draft tab "Polish <Section>…" (saved revision N, not dirty, no job running)
+  → proposePolish(article, N, section)            app/admin/polish-actions.ts
+      reads draft + brief from DB (RLS) · rate limit · one Arli call (stage "polish")
+      polishPrompt(): style guide + revision principles + intent + WHOLE article (read-only)
+                      + token glossary + the section's whitelisted fields
+      buildProposal(): drop unknown/duplicate/unchanged paths · checkRevision() per field
+  ← proposal {baseRevision N, items[before, after, check], concerns}   (nothing written)
+Editor reviews side by side, ticks fields (clean = pre-ticked, flagged = opt-in, rejected = locked)
+  → applyPolish(article, N, section, accepted[path, before, after])
+      revision still N? each field still == before? re-run checks (rejects blocked)
+      applyRevisions() on a copy → saveDraft(N, content, note)  → revision N+1 (origin editor)
+```
+
+The pure module `lib/editorial/polish.ts` holds the whitelist, prompt, checks and
+apply logic, and is unit-tested in `scripts/studio/polish.test.ts`. A Polish
+request never writes the draft, and an accepted Polish never publishes: a live
+article shows "unpublished changes" until the editor republishes.
+
+## Cost
+
+| Operation | Calls | Typical tokens (Qwen3.8-27B, measured) |
+|---|---|---|
+| Generation (unchanged count) | 8 | The writing-stage prompts grow by about 1.5k tokens each (style guide) plus about 1–2k for earlier-section context |
+| Editorial Polish, per section | 1 | ≈6–9.5k prompt + 0.6–1.1k completion tokens; 30–60 s typical |
+| Evaluation script (manual) | ≈15 | Recorded as `api_usage.stage = 'evaluation'` |

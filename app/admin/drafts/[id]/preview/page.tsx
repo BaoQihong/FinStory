@@ -25,7 +25,7 @@ async function Preview({ params }: { params: PageProps<'/admin/drafts/[id]/previ
   const { id } = await params;
   if (!/^[0-9a-f-]{36}$/.test(id)) notFound();
   const { db } = await requireEditor();
-  const { data } = await db.from('articles').select('content, revision, is_temporary, is_live, published_revision, published_source_revision').eq('id', id).maybeSingle();
+  const { data } = await db.from('articles').select('content, revision, is_temporary, slug, is_live, published_revision, published_source_revision').eq('id', id).maybeSingle();
   const parsed = SeshatArticleV1.safeParse(data?.content);
   if (!data || !parsed.success) notFound();
   const model = fromDraft(parsed.data);
@@ -39,9 +39,16 @@ async function Preview({ params }: { params: PageProps<'/admin/drafts/[id]/previ
             Working draft revision {data.revision} ·{' '}
             {data.is_live ? (data.published_source_revision === data.revision ? `same as live publication ${data.published_revision}` : `differs from live publication ${data.published_revision} (draft rev ${data.published_source_revision})`) : 'not publicly available'} · visible only to signed-in editors
           </span>
-          <Link href={`/admin/drafts/${id}`} className="ml-auto font-semibold text-navy-800 underline decoration-gold-500 underline-offset-2">
-            Back to editing
-          </Link>
+          <span className="ml-auto flex flex-wrap gap-4">
+            {data.is_live && data.slug ? (
+              <a href={`/story/${data.slug}`} target="_blank" rel="noopener noreferrer" className="font-semibold text-navy-800 underline decoration-gold-500 underline-offset-2">
+                View published article
+              </a>
+            ) : null}
+            <Link href={`/admin/drafts/${id}`} className="font-semibold text-navy-800 underline decoration-gold-500 underline-offset-2">
+              Back to editing
+            </Link>
+          </span>
         </div>
       </div>
       <ArticleView article={model.article} data={model.data} sectionName={sectionName(model.article.section)} readingMinutes={minutes} mode="preview" />

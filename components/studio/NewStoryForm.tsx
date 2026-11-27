@@ -17,6 +17,8 @@ const SUGGESTED: Record<SuggestedField, Field> = {
 };
 // Written by the editor only.
 const OTHER: Field[] = [
+  { name: 'argument', label: 'Your argument', hint: 'Optional. What you think is going on and want the piece to argue — in your own words. Seshat keeps it as the spine of the article and tells you plainly if the evidence contradicts it.', rows: 3 },
+  { name: 'voice', label: 'Tone and voice', hint: 'Optional. e.g. “dry and sceptical, short sentences, no jargon”. You can paste a short sample of your own writing; Seshat matches its register, never copies it.', rows: 3 },
   { name: 'headline', label: 'Proposed headline', hint: 'A working headline, if you have one in mind.' },
   { name: 'audience', label: 'Intended audience', hint: 'e.g. “US retail investors with some market knowledge”.' },
   { name: 'assets', label: 'Asset classes or securities', hint: 'e.g. “Japanese equities, US Treasuries, EWJ”. Tickers are looked up automatically.' },

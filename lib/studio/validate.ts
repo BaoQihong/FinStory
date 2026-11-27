@@ -6,7 +6,7 @@
 // supplied) recomputation of every fact from the stored observations.
 import type { Fact } from '../data/display.ts';
 import { SECTION_ORDER, SeshatArticleV1, type SectionId, type SeshatArticle, type ValidationIssue } from './schema.ts';
-import { checkTokens, classifySuperlatives, findBareNumbers, findCliches, findDuplicateWords, stringLeaves } from './numbers.ts';
+import { checkTokens, classifySuperlatives, findBareNumbers, findCliches, findDuplicateWords, findFormulaicContrasts, findReusedWording, stringLeaves } from './numbers.ts';
 import { checkText, type ClaimRecord, type QuantityFact } from './quantity.ts';
 import { resolveTokensSafe } from '../content/tokens.ts';
 
@@ -51,6 +51,7 @@ export function validateArticle(input: unknown, opts: { today: string; recompute
         if (w.verdict === 'contradicted') add('error', s, 'superlative-contradicted', `"${w.word}" contradicts the data: the latest value is not the extreme of the retrieved history`, path);
         else add('warning', s, 'unsupported-superlative', `"${w.word}" is not backed by a high/low or "since" fact in the same sentence`, path);
       for (const c of findCliches(text)) add('info', s, 'style', `Cliché: "${c}"`, path);
+      for (const c of findFormulaicContrasts(text)) add('info', s, 'style', `Formulaic contrast ("not X; it is Y"): "${c}" — state the point directly`, path);
       // Cosmetic checks run on the text as the reader sees it (tokens resolved).
       for (const d of findDuplicateWords(resolve(text))) add('info', s, 'duplicate-word', `Repeated word: "${d}"`, path);
       // Numerical claims: every figure-bearing sentence is checked against its facts' quantity metadata.
@@ -60,6 +61,19 @@ export function validateArticle(input: unknown, opts: { today: string; recompute
         for (const i of c.issues) add(i.severity, s, `quantity:${i.code}`, `${i.message} — "${c.sentence.slice(0, 160)}"`, path);
       }
     }
+  }
+
+  // 1b. Wording reused verbatim from an EARLIER section (Phase 3B.2): each section should build on the
+  // previous ones, not copy them. Style note → the repair stage rewrites the later passage.
+  const earlier: string[] = [];
+  for (const section of SECTION_ORDER) {
+    const own: string[] = [];
+    for (const [path, text] of stringLeaves(a[section], section)) {
+      if (/\.attention\.|\.(chartId|key|icon|evidence|showsEvidence|role|kicker|headline)$/.test(path) || path.endsWith('.type')) continue;
+      if (earlier.length) for (const r of findReusedWording(earlier, text)) add('info', section, 'style', `Repeats wording from an earlier section: "${r}…" — make the point once, or build on it`, path);
+      own.push(text);
+    }
+    earlier.push(...own);
   }
 
   // 2. Chart and indicator references

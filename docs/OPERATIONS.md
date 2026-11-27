@@ -89,6 +89,17 @@ Check with `npx supabase migration list --remote`. Applied so far:
 - Published articles cannot be deleted (FK restrict, D-044).
 - `npm run publish:check` is safe to run against production. It uses uniquely named fixtures and removes them.
 
+## Public articles (Phase 3B.1)
+
+- Public URL: `https://financialstoryteller.vercel.app/story/<slug>`. Rendered per request from `published_stories` (no cache), so unpublishing takes effect immediately.
+- If public pages return 404 for live stories, check `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` on Vercel: the proxy existence check uses them. A Supabase *outage* fails open to the page, which then errors (500) rather than showing a false 404.
+- After a deploy: `npm run publish:route-check -- --base https://financialstoryteller.vercel.app` (creates and removes its own fixture articles).
+
+## Editorial Polish (Phase 3B.2)
+
+- Usage appears in `/admin/usage` as stage `polish` (evaluation runs as `evaluation`). Limit: 40 Polish requests per 24 h; refused while a generation job runs (single Arli concurrency).
+- A Polish request on Vercel can take up to about 2 min; the draft page sets `maxDuration = 300`.
+
 ## Incident and maintenance runbooks
 
 Phase 3 placeholder.

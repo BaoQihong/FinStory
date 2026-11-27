@@ -50,6 +50,14 @@ Manual / browser checks performed for 2A (repeat after visual changes):
 - Criterion 13 (Phase 2 unchanged): the full `npm run verify`.
 - The studio UI is checked manually by a signed-in editor (see the Phase 3A handover).
 
+## Phase 3B — public article and editorial quality
+
+- `npm test` adds: render-model equality between preview and public (WYSIWYG), no attention notes in public, `fromDraft` unchanged (publishing.test.ts); the author's argument, voice and style guide reaching every writing stage, and later stages seeing earlier sections (pipeline.test.ts); Editorial Polish whitelist, checks, stale refusal and apply isolation (polish.test.ts).
+- `npm run publish:route-check -- --base <url>` (live HTTP + Supabase, fixtures only): baseline article loads anonymously without private fields; never-published draft by slug and by id → 404; unknown or malformed slugs → 404 with `no-store`; publish → 200; editing the draft leaves the public page unchanged; republish updates the same URL; unpublish → immediate 404; republish restores; deleted article → 404. Run it against `npm run build && npx next start -p 3217` locally, or against production after deploy.
+- `npm run editorial:eval`: controlled before/after editorial comparison (live Arli, about 15 calls, no draft writes); output in `docs/editorial/evaluation/results.json`, summarised in `docs/editorial/EVALUATION.md`.
+- Browser: desktop (1280) and mobile (375, measured in a same-origin iframe because the window could not be resized) checks of the public article: no horizontal overflow after the indicator-card fix, charts, tables and scenarios render.
+- **Not automatable here:** the studio UI (Publish panel links, byline editor, Editorial Polish review) needs a signed-in editor; the assistant may not type passwords. Server-action logic is covered by the pure-module unit tests above.
+
 ## Principles (to expand in later phases)
 
 - Test user-visible behavior first (editorial pipeline correctness).

@@ -3,6 +3,23 @@
 Notable changes to this project. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/). Newest entries first.
 
+## 0.5.0 — 2026-11-27 (Phase 3B: public article experience and editorial quality)
+
+### 3B.1 — public article
+- Public article page `/story/[slug]`: the live published snapshot rendered through the same ArticleView as the editorial preview (shared render mapping, WYSIWYG), with first-published and updated dates, a public footer note, and title/description metadata (D-047).
+- Real HTTP 404 (never cached) for unknown, unpublished and deleted stories via a slug-only proxy check; pages are rendered per request, so republish and unpublish take effect immediately.
+- Studio: **View published article** and copy URL in the publication panel; a live-article link in the preview banner; the Phase 3A notice removed; byline editable on the Story tab, and new drafts default to role "Editorial team" (D-050).
+- Fix: indicator cards no longer overflow the viewport by 5 px on 375 px screens.
+- `npm run publish:route-check`: live HTTP lifecycle check with fixtures.
+
+### 3B.2 — editorial quality
+- Pipeline audit with concrete examples (`docs/editorial/PIPELINE_AUDIT.md`).
+- Versioned editorial style guide (`lib/editorial/style-guide.ts`, `docs/EDITORIAL_STYLE_GUIDE.md`) used by every writing stage and by Polish.
+- Prompts restructured: editorial intent vs research direction; new optional brief fields **Your argument** and **Tone and voice**; the thesis is built from the author's argument, with an honest supported/contradicted assessment; later sections see what earlier sections said; a stricter Outlook. No additional generation calls (D-048).
+- **Editorial Polish**: per-section line edit with side-by-side review, per-field acceptance, deterministic protection of figures, dates, quotations, references and certainty wording, stale-proposal refusal, usage tracking; never publishes (D-049).
+- Controlled before/after evaluation (`npm run editorial:eval`, `docs/editorial/EVALUATION.md`) and prose diagnostics (`lib/editorial/signals.ts`).
+- Data licensing review of the public path (`docs/DATA_LICENSING.md`, D-051): flagged, nothing changed.
+
 ## 0.4.0 — 2026-11-27 (Phase 3A: publishing engine)
 
 - Publish, republish and unpublish from the draft page, with a confirmation dialog showing the draft revision and publication number, blocking errors, warnings, the slug and a note. Duplicate submissions are prevented (D-043–D-046).

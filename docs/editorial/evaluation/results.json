@@ -1,0 +1,1679 @@
+{
+  "meta": {
+    "abRun": {
+      "abRun": {
+        "generatedAt": "2026-11-27T11:11:02.586Z",
+        "baselineCommit": "b1cdb61",
+        "styleGuideVersion": "2026-11-27.1",
+        "model": "Qwen3.8-27B",
+        "note": "Single samples per variant (temperature as in production); differences within one sample are indicative, not statistically established. Signals are diagnostics, not quality or AI-detection scores.",
+        "ledger": [
+          {
+            "label": "Inflation (published article) / original prompts",
+            "stage": "story",
+            "promptTokens": 12853,
+            "completionTokens": 1187,
+            "seconds": 119
+          },
+          {
+            "label": "Inflation (published article) / original prompts",
+            "stage": "macro_analytics",
+            "promptTokens": 13098,
+            "completionTokens": 2088,
+            "seconds": 102
+          },
+          {
+            "label": "Inflation (published article) / original prompts",
+            "stage": "outlook",
+            "promptTokens": 12801,
+            "completionTokens": 1295,
+            "seconds": 159
+          },
+          {
+            "label": "Inflation (published article) / revised prompts",
+            "stage": "story",
+            "promptTokens": 14176,
+            "completionTokens": 1085,
+            "seconds": 41
+          },
+          {
+            "label": "Inflation (published article) / revised prompts",
+            "stage": "macro_analytics",
+            "promptTokens": 15019,
+            "completionTokens": 1712,
+            "seconds": 78
+          },
+          {
+            "label": "Inflation (published article) / revised prompts",
+            "stage": "outlook",
+            "promptTokens": 14422,
+            "completionTokens": 1525,
+            "seconds": 47
+          },
+          {
+            "label": "Inflation (published article) / polish story",
+            "stage": "polish",
+            "promptTokens": 7985,
+            "completionTokens": 1099,
+            "seconds": 183
+          },
+          {
+            "label": "Inflation (published article) / polish outlook",
+            "stage": "polish",
+            "promptTokens": 7183,
+            "completionTokens": 645,
+            "seconds": 27
+          },
+          {
+            "label": "US housing / original prompts",
+            "stage": "story",
+            "promptTokens": 10872,
+            "completionTokens": 1266,
+            "seconds": 118
+          },
+          {
+            "label": "US housing / revised prompts",
+            "stage": "story",
+            "promptTokens": 12195,
+            "completionTokens": 1334,
+            "seconds": 79
+          },
+          {
+            "label": "US housing / polish story",
+            "stage": "polish",
+            "promptTokens": 9525,
+            "completionTokens": 1084,
+            "seconds": 49
+          },
+          {
+            "label": "Nvidia and the AI bubble / original prompts",
+            "stage": "story",
+            "promptTokens": 3033,
+            "completionTokens": 1170,
+            "seconds": 105
+          },
+          {
+            "label": "Nvidia and the AI bubble / revised prompts",
+            "stage": "story",
+            "promptTokens": 4356,
+            "completionTokens": 1011,
+            "seconds": 38
+          },
+          {
+            "label": "Nvidia and the AI bubble / revised prompts + stand-in author argument",
+            "stage": "story",
+            "promptTokens": 4453,
+            "completionTokens": 945,
+            "seconds": 36
+          },
+          {
+            "label": "Nvidia and the AI bubble / polish story",
+            "stage": "polish",
+            "promptTokens": 6609,
+            "completionTokens": 789,
+            "seconds": 32
+          }
+        ],
+        "totals": {
+          "calls": 15,
+          "promptTokens": 148580,
+          "completionTokens": 18235,
+          "seconds": 1213
+        }
+      },
+      "polishOnly": true,
+      "generatedAt": "2026-11-27T11:18:32.750Z",
+      "baselineCommit": "b1cdb61",
+      "styleGuideVersion": "2026-11-27.1",
+      "model": "Qwen3.8-27B",
+      "note": "Single samples per variant (temperature as in production); differences within one sample are indicative, not statistically established. Signals are diagnostics, not quality or AI-detection scores.",
+      "ledger": [
+        {
+          "label": "Inflation (published article) / polish story",
+          "stage": "polish",
+          "promptTokens": 8101,
+          "completionTokens": 991,
+          "seconds": 31
+        },
+        {
+          "label": "Inflation (published article) / polish outlook",
+          "stage": "polish",
+          "promptTokens": 7322,
+          "completionTokens": 637,
+          "seconds": 32
+        },
+        {
+          "label": "US housing / polish story",
+          "stage": "polish",
+          "promptTokens": 9709,
+          "completionTokens": 1218,
+          "seconds": 161
+        },
+        {
+          "label": "Nvidia and the AI bubble / polish story",
+          "stage": "polish",
+          "promptTokens": 6787,
+          "completionTokens": 1002,
+          "seconds": 58
+        }
+      ],
+      "totals": {
+        "calls": 4,
+        "promptTokens": 31919,
+        "completionTokens": 3848,
+        "seconds": 282
+      }
+    },
+    "redo": [
+      "revised",
+      "polish"
+    ],
+    "generatedAt": "2026-11-27T11:32:03.798Z",
+    "baselineCommit": "b1cdb61",
+    "styleGuideVersion": "2026-11-27.2",
+    "model": "Qwen3.8-27B",
+    "note": "Single samples per variant (temperature as in production); differences within one sample are indicative, not statistically established. Signals are diagnostics, not quality or AI-detection scores.",
+    "ledger": [
+      {
+        "label": "Inflation (published article) / revised prompts",
+        "stage": "story",
+        "promptTokens": 14225,
+        "completionTokens": 1072,
+        "seconds": 177
+      },
+      {
+        "label": "Inflation (published article) / revised prompts",
+        "stage": "macro_analytics",
+        "promptTokens": 15028,
+        "completionTokens": 1850,
+        "seconds": 99
+      },
+      {
+        "label": "Inflation (published article) / revised prompts",
+        "stage": "outlook",
+        "promptTokens": 14607,
+        "completionTokens": 1560,
+        "seconds": 53
+      },
+      {
+        "label": "Inflation (published article) / polish story",
+        "stage": "polish",
+        "promptTokens": 8150,
+        "completionTokens": 986,
+        "seconds": 43
+      },
+      {
+        "label": "Inflation (published article) / polish outlook",
+        "stage": "polish",
+        "promptTokens": 7371,
+        "completionTokens": 636,
+        "seconds": 22
+      },
+      {
+        "label": "US housing / revised prompts",
+        "stage": "story",
+        "promptTokens": 12244,
+        "completionTokens": 1158,
+        "seconds": 122
+      },
+      {
+        "label": "US housing / polish story",
+        "stage": "polish",
+        "promptTokens": 9758,
+        "completionTokens": 1181,
+        "seconds": 78
+      },
+      {
+        "label": "Nvidia and the AI bubble / revised prompts",
+        "stage": "story",
+        "promptTokens": 4405,
+        "completionTokens": 1068,
+        "seconds": 42
+      },
+      {
+        "label": "Nvidia and the AI bubble / revised prompts + stand-in author argument",
+        "stage": "story",
+        "promptTokens": 4502,
+        "completionTokens": 1118,
+        "seconds": 99
+      },
+      {
+        "label": "Nvidia and the AI bubble / polish story",
+        "stage": "polish",
+        "promptTokens": 6836,
+        "completionTokens": 1014,
+        "seconds": 33
+      }
+    ],
+    "totals": {
+      "calls": 10,
+      "promptTokens": 97126,
+      "completionTokens": 11643,
+      "seconds": 768
+    }
+  },
+  "results": [
+    {
+      "id": "cfd2cbb8-435b-45ae-9b96-e90fb1d70bf5",
+      "label": "Inflation (published article)",
+      "category": "Consumer-oriented macro storytelling",
+      "revision": 3,
+      "brief": {
+        "prompt": "Inflation is coming down, so why does everything still feel so expensive? And what does this mean for ordinary people trying to build wealth?",
+        "angle": "The story should investigate the disconnect between falling headline inflation rates and the persistent perception of high prices, focusing on how this divergence impacts consumer sentiment and long-term wealth accumulation strategies."
+      },
+      "currentArticle": {
+        "headline": "Why Your Wallet Feels Broke Even When Inflation Is Falling",
+        "dek": "Official price growth has slowed, but the cumulative cost of living has outpaced household income, leaving consumers feeling squeezed and skeptical of the economic data.",
+        "paragraphs": [
+          "Walk into a grocery store or a hardware shop and the sticker prices tell a story that the news headlines are struggling to match. While official measures of inflation have decelerated from their recent peaks, the cumulative effect of five years of price increases has left many households feeling financially stretched. This disconnect between the slowing rate of inflation and the persistent high level of prices is creating a significant friction point in the American economy.",
+          "The data confirms that price growth has indeed slowed. Headline CPI rose by 4.1% over the past year, while core PCE rose by 3.3%. These figures represent a clear moderation from the 2022 highs. However, for the average consumer, the rate of change is less relevant than the total cost of maintaining their standard of living. The price level itself remains at a historic high, with the CPI index at 337.5, the highest in the data since 2014.",
+          "The core of the problem lies in the gap between prices and paychecks. Over the last five years, core CPI has risen by 20.7%. In the same period, real median household income grew by only 4.6%. This means that while nominal wages have increased, the purchasing power of the median household has not kept pace with the cost of goods and services. The result is a quiet erosion of household wealth that is difficult to reverse quickly.",
+          "This financial squeeze is visible in consumer behavior. The University of Michigan Consumer Sentiment Index has fallen by 33.1% over five years, reaching 48.0 in October 2026. This is the lowest level in the data since 2014. Sentiment is now more closely tied to perceptions of high prices than to income growth, suggesting that consumers are reacting to their lived experience rather than the official statistics.",
+          "Certain categories of spending are particularly sticky. Housing and medical care remain key drivers of persistent inflation, with monthly increases in these areas often outpacing the broader index. For many families, these are not discretionary purchases but necessities that dominate their monthly budget. When these specific costs continue to rise, the overall decline in headline inflation feels abstract and irrelevant.",
+          "The impact on wealth accumulation is also becoming apparent. The S&P 500's year-over-year real return has fallen by 3.75 percentage points over the last year, now standing at 9.93%. This compression in real returns reduces the effectiveness of traditional wealth-building strategies, making it harder for households to build a financial cushion against future shocks.",
+          "Consumers are responding by altering their spending habits, trading down and reducing discretionary purchases. This is a structural shift that complicates the return to pre-inflation consumption norms. Even as official inflation rates trend downward, the perception of expense remains high because the baseline cost of living has fundamentally shifted upward."
+        ],
+        "signals": {
+          "words": 461,
+          "sentences": 27,
+          "meanSentenceWords": 17.1,
+          "sentenceLengthCV": 0.38,
+          "paragraphLengthCV": 0.16,
+          "emDashesPer1000Words": 0,
+          "formulaicContrasts": 0,
+          "stockPhrases": 1,
+          "stockPhraseList": [
+            "key drivers"
+          ],
+          "rhetoricalQuestions": 0,
+          "tripletLists": 1
+        }
+      },
+      "original": {
+        "label": "original prompts",
+        "story": {
+          "headline": "The Price Gap: Why Your Wallet Feels Heavier Than the Headlines",
+          "dek": "Official inflation rates have cooled from their 2022 peaks, yet the cumulative cost of living has risen far faster than median household income, leaving consumers feeling financially squeezed despite improving nominal data.",
+          "keyPoints": [
+            "Core prices have risen 20.7% over five years, while real median household income grew only 4.6%, creating a persistent affordability gap.",
+            "Consumer sentiment has fallen 33.1% over the same period, tracking price perceptions more closely than income growth.",
+            "Sticky costs in housing and medical care continue to drive spending, complicating the return to pre-inflation consumption norms."
+          ],
+          "paragraphs": [
+            "There is a growing disconnect between what the inflation data says and what the average American feels at the checkout counter. Headline inflation has moderated from its peaks, with the Consumer Price Index (CPI) rising 4.1% over the past year. Yet, for many households, the sense of financial tightness has not abated. This divergence is not a matter of perception alone; it is a structural reality of how prices and wages have evolved over the last half-decade.",
+            "The core issue is the cumulative effect of inflation on purchasing power. Over the past five years, the Core CPI, which excludes volatile food and energy prices, has climbed 20.7%. In the same period, real median household income—adjusted for inflation—increased by only 4.6%. This means that while prices have surged, the typical household’s ability to buy goods and services has not kept pace, resulting in a significant loss of real wealth for the median earner.",
+            "This gap is particularly pronounced in essential categories. Housing and medical care remain key drivers of persistent inflation, with owners' equivalent rent and medical services posting monthly increases that outpace the broader index. For a family paying a mortgage or managing healthcare costs, the 'headline' drop in inflation is often irrelevant because their biggest expenses are still rising. The 30-year fixed mortgage rate, for instance, stands at 7.21%, a level that locks in high borrowing costs for new buyers and discourages refinancing for existing ones.",
+            "The cumulative price increase over the past five years has significantly outpaced the growth in real median household income, creating a persistent perception gap.",
+            "Consumer sentiment reflects this squeeze. The University of Michigan Consumer Sentiment Index has fallen -33.1% over five years, reaching a recent low of 44.8 in May 2026. This deterioration is more closely correlated with perceptions of high prices than with income growth, indicating a psychological disconnect from official data. When people see their bills rising faster than their paychecks, trust in the economic narrative erodes, regardless of what the CPI says.",
+            "The impact on wealth accumulation is equally significant. Real returns on equities have compressed, with the S&P 500’s year-over-year real return falling by -3.75 percentage points over the last year. The index’s real return is now 9.93%, the lowest since April 2025. For investors relying on stock market gains to build wealth, the era of easy real returns may be over, at least until inflation fully stabilizes and wages catch up to price levels.",
+            "Consumers are already responding to this reality by altering their spending habits. There is a documented shift toward trading down and reducing discretionary purchases, a structural change that complicates the return to pre-inflation consumption norms. This is not just a temporary pause in spending; it is a recalibration of expectations. When the cost of living feels permanently elevated, households tighten their belts, affecting demand across the economy.",
+            "For the everyday reader, the takeaway is clear: the 'inflation is coming down' narrative is incomplete. While the rate of price increases has slowed, the level of prices is still high, and the lag in wage growth means the median household is still catching up. Understanding this gap is essential for making informed decisions about saving, spending, and investing in an environment where real wealth is being eroded by sticky costs."
+          ],
+          "subheads": 0
+        },
+        "macroAnalytics": {
+          "macroTitle": "The Divergence in the Data",
+          "macroIntro": "The numbers tell a story of two different economies: one where inflation is cooling but remains stubbornly high, and another where real incomes have barely kept pace with the cost of living. This gap is the engine behind the persistent feeling of financial squeeze, even as headline rates drop.",
+          "analyticsTitle": "The Mechanics of the Squeeze",
+          "analyticsIntro": "The persistence of high costs is not just a statistical artifact; it is the result of structural shifts in housing and services that are decoupling from the broader disinflationary trend. Understanding this transmission mechanism is key to seeing why the 'inflation is over' narrative feels false to so many.",
+          "chain": [
+            "Sticky Service Inflation: Housing and medical care, which make up a large portion of the consumer basket, have shown monthly increases that outpace the broader index. These categories are slow to adjust, creating a floor under overall price levels.",
+            "Wage Catch-Up Lag: Real median income has only recently reached its highest point in the retrieved history, at 87,460.00 (2025 C-CPI-U Dollars). However, this level is still significantly below what it would have been if wage growth had matched the 20.7% rise in core prices over the same period.",
+            "Sentiment Erosion: As the gap between price levels and real income persists, consumer sentiment has deteriorated to 48.0. This psychological shift leads to a 'trade-down' in consumption, where households cut back on discretionary items to protect their core budget.",
+            "Investment Return Compression: With inflation still at 4.1%, the real return on equities has compressed to 9.93%. This reduces the effectiveness of standard investment portfolios, as nominal gains are increasingly consumed by the cost of living.",
+            "Structural Spending Shift: The combination of high housing costs and eroded real income is driving a structural shift away from discretionary spending. This is not a temporary dip but a recalibration of household budgets that complicates the return to pre-inflation consumption norms."
+          ]
+        },
+        "outlook": {
+          "title": "The Great Recalibration: Will the Price Gap Close or Persist?",
+          "intro": "The divergence between official inflation metrics and the lived experience of high costs is not merely a statistical artifact; it is a structural break in the relationship between earnings and living standards. As base effects fade and wages attempt to catch up, the market faces a binary choice: a gradual convergence where sentiment recovers, or a persistent squeeze where structural costs keep real returns compressed. For households, the next few years will determine whether the current era of 'expensive stability' is a temporary blip or the new normal.",
+          "scenarios": [
+            {
+              "name": "The Wage-Cost Convergence",
+              "summary": "In this scenario, the lag in wage growth resolves as nominal incomes rise faster than the remaining inflation drag. The 'perception gap' narrows not because prices crash, but because the pain of the initial price hikes is outpaced by income growth. Consumer sentiment, currently at 48.0, begins a steady climb as the psychological disconnect from official data fades.",
+              "whyItMatters": "This path suggests that the current sentiment low is a temporary overreaction to the cumulative price shock of the last five years. If wages catch up, the 'expensive' feeling dissipates, allowing discretionary spending to normalize and supporting the equity market's recovery from its recent real-return compression.",
+              "watch": [
+                "The gap between 2.9% and 2.6% to see if the wage catch-up is accelerating.",
+                "Monthly increases in owners' equivalent rent and medical services, which have outpaced the broader index in recent months.",
+                "The University of Michigan Consumer Sentiment Index, specifically its correlation with price perceptions versus income growth."
+              ]
+            },
+            {
+              "name": "The Persistent Squeeze",
+              "summary": "In this alternative, the 'expensive' feeling is justified because the cost of living has structurally reset. Housing and medical care remain sticky, and wage growth plateaus, leaving real incomes stagnant. The perception gap does not close; it becomes the new baseline reality for median-income households.",
+              "whyItMatters": "If this path materializes, the 'trading down' behavior observed in consumer spending becomes a permanent structural shift. Households may permanently reduce discretionary spending, complicating the return to pre-inflation consumption norms and potentially capping corporate earnings growth.",
+              "watch": [
+                "The divergence between 4.1% and 2.9% to identify if specific categories are driving the persistence.",
+                "Changes in the personal saving rate, currently at 3.8 percent, to see if households are hoarding cash in response to uncertainty.",
+                "The 10-Year Treasury Yield, which has risen by 3.27 percentage points over five years, to monitor if rising rates are a response to persistent inflation or structural factors."
+              ]
+            }
+          ]
+        },
+        "signals": {
+          "story": {
+            "words": 544,
+            "sentences": 28,
+            "meanSentenceWords": 19.4,
+            "sentenceLengthCV": 0.37,
+            "paragraphLengthCV": 0.26,
+            "emDashesPer1000Words": 3.7,
+            "formulaicContrasts": 1,
+            "stockPhrases": 1,
+            "stockPhraseList": [
+              "key drivers"
+            ],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 1
+          },
+          "laterSections": {
+            "words": 864,
+            "sentences": 41,
+            "meanSentenceWords": 21.1,
+            "sentenceLengthCV": 0.24,
+            "paragraphLengthCV": 0.35,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 2,
+            "stockPhrases": 0,
+            "stockPhraseList": [],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 0
+          }
+        },
+        "repetition": {
+          "macroAnalyticsVsStory": 0.041,
+          "outlookVsEarlier": 0.032,
+          "factTokensRestatedAcrossSections": 7
+        },
+        "numberDiscipline": {
+          "unknownTokens": [],
+          "bareNumbers": [
+            "20.7%",
+            "4.6%",
+            "33.1%",
+            "2%",
+            "20.7",
+            "4.6",
+            "33.1"
+          ]
+        }
+      },
+      "revised": {
+        "label": "revised prompts",
+        "story": {
+          "headline": "Inflation Is Falling, But Your Wallet Doesn't Know It",
+          "dek": "Official measures show prices slowing, yet the cumulative cost of living has outpaced real wage growth for the median household, creating a persistent gap between economic data and daily experience.",
+          "keyPoints": [
+            "Core prices have risen significantly faster than real median household income over the past five years.",
+            "Consumer sentiment has fallen sharply, driven more by price perceptions than by actual income changes.",
+            "The divergence between headline inflation trends and the cumulative cost of sticky services like housing keeps the financial squeeze alive despite slowing rates."
+          ],
+          "paragraphs": [
+            "The news is that inflation is coming down. The reality is that everything still feels expensive. This disconnect is not a matter of perception versus fact; it is a mathematical consequence of how inflation compounds while wages struggle to keep up. For the median household, the last five years have been a period where the cost of basic survival rose much faster than the purchasing power of their paycheck.",
+            "Headline inflation has moderated from its peaks, with the Consumer Price Index rising 4.1% over the past year. But the rate of change is a snapshot, not the bill. Over the same five-year span, core prices have climbed 20.7%, while real median household income has grown by only 4.6%. That gap is the engine of the current financial squeeze. It means that even as the annual rate of price increases slows, the total amount of money required to maintain the same standard of living has expanded far beyond what typical wages have delivered.",
+            "The rate of change is a snapshot, not the bill.",
+            "This is where the common narrative breaks down. Many economic commentaries focus on the monthly deceleration of inflation, treating it as a signal that the pain is over. But for consumers, the pain is structural, not cyclical. Housing and medical care, the two heaviest items in the budget for most families, have remained sticky. Owners' equivalent rent and medical services have continued to post monthly increases that outpace the broader index, meaning the categories that matter most to household stability have not cooled at the same pace as the headline number suggests.",
+            "The psychological toll of this divergence is visible in consumer sentiment. The University of Michigan Consumer Sentiment Index has fallen -33.1% over the past five years, a drop that is more closely correlated with perceptions of high prices than with income growth. This indicates a psychological disconnect: people are not just reacting to the current rate of inflation, but to the accumulated loss of purchasing power. When the official data says the storm is passing, but the water in the basement is still rising, trust in the data erodes.",
+            "For those trying to build wealth, the implications are stark. The real return on equities, the traditional engine of household asset growth, has compressed significantly. The S&P 500's year-over-year real return has fallen by -3.75 percentage points over the last year, leaving the current real return at 9.93%. This reduction in real returns means that the effort required to grow wealth has increased, even as the nominal value of portfolios may appear healthy. The combination of sticky costs and lower real returns creates a double bind for savers: they need to save more to maintain their lifestyle, but the returns on that saving are less effective at offsetting the inflationary drag.",
+            "Consumers are already responding to this gap, shifting toward trading down and reducing discretionary purchases. This is not a temporary dip in confidence but a structural adjustment to a higher cost base. The question for the coming months is not whether inflation will continue to fall, but whether wages will finally catch up to the cumulative price increases of the last half-decade. Until that happens, the feeling of being squeezed will persist, regardless of what the monthly CPI report says."
+          ],
+          "subheads": 0
+        },
+        "macroAnalytics": {
+          "macroTitle": "The Cumulative Deficit: Why the Rate of Change Misleads",
+          "macroIntro": "The Story argues that the pain is structural, not cyclical. The data confirms this by showing a widening gap between the cost of living and the purchasing power of the median paycheck. While annual inflation rates have cooled, the five-year cumulative price increase has significantly outpaced real income growth, creating a persistent deficit in household budgets that monthly CPI reports fail to capture.",
+          "analyticsTitle": "The Mechanics of the Squeeze: Sticky Costs and Diminishing Returns",
+          "analyticsIntro": "The causal question is why the perception of high costs persists despite falling inflation rates. The answer lies in the transmission of sticky service and housing costs, which maintain high price levels even as the rate of change decelerates, combined with a reduction in the real returns on common wealth-building assets.",
+          "chain": [
+            "Sticky Service and Housing Costs: Housing and medical care remain key drivers of persistent inflation. Owners' equivalent rent and medical services have continued to post monthly increases that outpace the broader index, meaning the categories that matter most to household stability have not cooled at the same pace as the headline number suggests.",
+            "Wage Lag: Real median household income has grown by only 4.6% over the past five years, significantly lagging the 20.7% rise in core prices. This gap means that even as the annual rate of price increases slows, the total amount of money required to maintain the same standard of living has expanded far beyond what typical wages have delivered.",
+            "Psychological Disconnect: Consumer sentiment has deteriorated sharply, falling -33.1% over five years. This drop is more closely correlated with perceptions of high prices than with income growth, indicating a psychological disconnect where consumers react to the accumulated loss of purchasing power rather than the current rate of inflation.",
+            "Reduced Real Returns: The real return on equities has compressed significantly, with the S&P 500's year-over-year real return falling by -3.75 percentage points over the last year. This reduction in real returns means that the effort required to grow wealth has increased, even as the nominal value of portfolios may appear healthy.",
+            "Structural Spending Shift: Consumers are altering spending habits by trading down and reducing discretionary purchases. This is not a temporary dip in confidence but a structural adjustment to a higher cost base, complicating the return to pre-inflation consumption norms."
+          ]
+        },
+        "outlook": {
+          "title": "The Great Rebalancing: Will Prices Catch Up to Wages, or Wages to Prices?",
+          "intro": "The central tension of the current economic moment is not whether inflation will stop rising, but whether the cumulative deficit in household purchasing power will be repaired. The data suggests a divergence between the slowing rate of price increases and the persistent gap between what things cost and what people earn. The path forward depends on whether this gap narrows through wage growth or persists as a structural feature of the cost of living.",
+          "scenarios": [
+            {
+              "name": "The Wage Recovery",
+              "summary": "Real median household income continues its upward trajectory, gradually closing the gap with cumulative price increases. As wages catch up, the perception of financial squeeze eases, and consumer sentiment stabilizes.",
+              "whyItMatters": "For the median household, this scenario means the end of the 'expensive everything' feeling. It allows for a return to normal saving and spending habits, as the real purchasing power of wages recovers. For investors, it signals a healthier consumer base, which supports corporate earnings and equity markets.",
+              "watch": [
+                "A sustained increase in the US Real Median Household Income index over the next two quarters.",
+                "A rise in the University of Michigan Consumer Sentiment index that decouples from the level of the Core CPI.",
+                "A narrowing of the gap between the 5-year change in core CPI and the 5-year change in real median income."
+              ]
+            },
+            {
+              "name": "The Permanent Squeeze",
+              "summary": "The gap between prices and wages persists because the cost of living has structurally increased. Consumers adapt by trading down and reducing discretionary spending, leading to a lower-growth equilibrium where real income growth is flat.",
+              "whyItMatters": "For households, this means a permanent adjustment to a higher cost base, with less disposable income for saving or investment. For the economy, it signals a shift in consumer behavior that could dampen long-term growth. For investors, it implies a more defensive market environment where quality and value outperform growth.",
+              "watch": [
+                "A flat or declining trend in the US Real Median Household Income index despite nominal wage growth.",
+                "A persistent divergence where the Core CPI remains at or near its 5-year high while the Real Median Income index fails to reach its 5-year high.",
+                "A continued decline in the personal saving rate as consumers exhaust their buffers to cover higher living costs."
+              ]
+            },
+            {
+              "name": "The Second Wave",
+              "summary": "Inflation re-accelerates due to a new shock, widening the gap between prices and wages further. This scenario would likely trigger a more aggressive monetary policy response, leading to a sharper economic slowdown.",
+              "whyItMatters": "For households, this means a renewed squeeze on budgets, with potential job losses and higher borrowing costs. For investors, it signals a risk-off environment, with equities under pressure and fixed income becoming a more attractive safe haven. It would validate the fear that the current disinflation is fragile.",
+              "watch": [
+                "A reversal in the 1-year change of the Core CPI, moving from a low single-digit to a higher single-digit or double-digit percentage.",
+                "A sharp rise in the 10-Year Treasury Yield, exceeding its 5-year high.",
+                "A significant drop in the S&P 500 Index, reflecting a loss of investor confidence in the inflation outlook."
+              ]
+            }
+          ]
+        },
+        "signals": {
+          "story": {
+            "words": 544,
+            "sentences": 28,
+            "meanSentenceWords": 19.4,
+            "sentenceLengthCV": 0.47,
+            "paragraphLengthCV": 0.39,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 2,
+            "stockPhrases": 0,
+            "stockPhraseList": [],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 0
+          },
+          "laterSections": {
+            "words": 950,
+            "sentences": 44,
+            "meanSentenceWords": 21.6,
+            "sentenceLengthCV": 0.37,
+            "paragraphLengthCV": 0.29,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 0,
+            "stockPhrases": 1,
+            "stockPhraseList": [
+              "key drivers"
+            ],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 0
+          }
+        },
+        "repetition": {
+          "macroAnalyticsVsStory": 0.279,
+          "outlookVsEarlier": 0.015,
+          "factTokensRestatedAcrossSections": 5
+        },
+        "numberDiscipline": {
+          "unknownTokens": [],
+          "bareNumbers": [
+            "roughly four times"
+          ]
+        }
+      },
+      "polish": [
+        {
+          "section": "story",
+          "fields": 11,
+          "changed": 2,
+          "ok": 2,
+          "flagged": 0,
+          "rejected": 0,
+          "discarded": 9,
+          "concerns": [],
+          "items": [
+            {
+              "path": "story.blocks[0].text",
+              "label": "Paragraph 1",
+              "status": "ok",
+              "reasons": [],
+              "before": "Walk into a grocery store or a hardware shop and the sticker prices tell a story that the news headlines are struggling to match. While official measures of inflation have decelerated from their recent peaks, the cumulative effect of five years of price increases has left many households feeling financially stretched. This disconnect between the slowing rate of inflation and the persistent high level of prices is creating a significant friction point in the American economy.",
+              "after": "Walk into a grocery store or a hardware shop, and the sticker prices tell a story the headlines are struggling to match. Official inflation measures have decelerated from their recent peaks, yet the cumulative effect of five years of price increases has left many households financially stretched. This disconnect between the slowing rate of inflation and the persistent high level of prices is creating a significant friction point in the American economy."
+            },
+            {
+              "path": "story.blocks[5].text",
+              "label": "Paragraph 5",
+              "status": "ok",
+              "reasons": [],
+              "before": "Certain categories of spending are particularly sticky. Housing and medical care remain key drivers of persistent inflation, with monthly increases in these areas often outpacing the broader index. For many families, these are not discretionary purchases but necessities that dominate their monthly budget. When these specific costs continue to rise, the overall decline in headline inflation feels abstract and irrelevant.",
+              "after": "Certain categories of spending are particularly sticky. Housing and medical care continue to drive persistent inflation, with monthly increases in these areas often outpacing the broader index. For many families, these are not discretionary purchases but necessities that dominate their monthly budget. When these specific costs continue to rise, the overall decline in headline inflation feels abstract and irrelevant."
+            }
+          ],
+          "signalsBefore": {
+            "words": 461,
+            "sentences": 27,
+            "meanSentenceWords": 17.1,
+            "sentenceLengthCV": 0.38,
+            "paragraphLengthCV": 0.16,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 0,
+            "stockPhrases": 1,
+            "stockPhraseList": [
+              "key drivers"
+            ],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 1
+          },
+          "signalsAfter": {
+            "words": 456,
+            "sentences": 27,
+            "meanSentenceWords": 16.9,
+            "sentenceLengthCV": 0.37,
+            "paragraphLengthCV": 0.16,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 0,
+            "stockPhrases": 0,
+            "stockPhraseList": [],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 1
+          }
+        },
+        {
+          "section": "outlook",
+          "fields": 7,
+          "changed": 2,
+          "ok": 2,
+          "flagged": 0,
+          "rejected": 0,
+          "discarded": 5,
+          "concerns": [],
+          "items": [
+            {
+              "path": "outlook.intro",
+              "label": "Introduction",
+              "status": "ok",
+              "reasons": [],
+              "before": "The gap between official inflation data and the lived experience of high costs is not a statistical error; it is a structural lag. As base effects fade and wages attempt to catch up, the next twelve months will determine whether this divergence narrows into relief or calcifies into a new, higher-cost normal. For households, the stakes involve more than just sentiment—they hinge on whether real returns on savings can finally outpace the erosion of purchasing power.",
+              "after": "The gap between official inflation data and the lived experience of high costs is a structural lag, not a statistical error. As base effects fade and wages attempt to catch up, the next twelve months will determine whether this divergence narrows into relief or calcifies into a new, higher-cost normal. For households, the question is whether real returns on savings can finally outpace the erosion of purchasing power."
+            },
+            {
+              "path": "outlook.scenarios[0].summary",
+              "label": "Scenario “The Convergence Path”: summary",
+              "status": "ok",
+              "reasons": [],
+              "before": "Inflation continues its gradual descent toward the Federal Reserve's target while real wage growth stabilizes, allowing the perception gap to narrow. This scenario assumes that the 'sticky' components of inflation—housing and services—will eventually yield to monetary policy and base effects.",
+              "after": "Inflation continues its gradual descent toward the Federal Reserve's target while real wage growth stabilizes, allowing the perception gap to narrow. This scenario assumes that the 'sticky' components of inflation, housing and services, will eventually yield to monetary policy and base effects."
+            }
+          ],
+          "signalsBefore": {
+            "words": 353,
+            "sentences": 18,
+            "meanSentenceWords": 19.6,
+            "sentenceLengthCV": 0.3,
+            "paragraphLengthCV": 0.24,
+            "emDashesPer1000Words": 8.5,
+            "formulaicContrasts": 1,
+            "stockPhrases": 1,
+            "stockPhraseList": [
+              "the stakes"
+            ],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 1
+          },
+          "signalsAfter": {
+            "words": 347,
+            "sentences": 18,
+            "meanSentenceWords": 19.3,
+            "sentenceLengthCV": 0.3,
+            "paragraphLengthCV": 0.19,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 0,
+            "stockPhrases": 1,
+            "stockPhraseList": [
+              "for households, the question"
+            ],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 2
+          }
+        }
+      ],
+      "revisedPrevious": {
+        "label": "revised prompts",
+        "story": {
+          "headline": "Inflation is cooling, but your wallet hasn't noticed",
+          "dek": "Official price growth has slowed from its 2022 peaks, yet the cumulative cost of living has risen far faster than median household income, leaving consumers financially squeezed despite improving nominal figures.",
+          "keyPoints": [
+            "Headline inflation has decelerated but remains well above the Federal Reserve's 2% target, with core measures showing similar persistence.",
+            "Over the past five years, core prices have risen significantly more than real median household income, creating a measurable gap between official data and personal experience.",
+            "Consumer sentiment has fallen sharply and is now more closely tied to perceptions of high prices than to income growth, indicating a psychological disconnect from official metrics."
+          ],
+          "paragraphs": [
+            "The headline number suggests the worst is over. Inflation rates have moderated from their 2022 peaks, and the pace of price increases has slowed. But for the median household, the math doesn't add up. While the annual rate of inflation has dropped, the cumulative price increases of the last five years have significantly outpaced real wage growth, creating a persistent perception gap that official metrics fail to capture.",
+            "Consider the scale of the divergence. Over the past five years, the core Consumer Price Index, which excludes volatile food and energy, rose by 20.7%. In the same period, real median household income grew by only 4.6%. That gap is not a rounding error; it is the difference between a family whose budget keeps up and one that is quietly shrinking. Even as the annual inflation rate cools to 4.1% for headline CPI and 3.3% for core PCE, both figures remain well above the Federal Reserve's 2% target, meaning prices are still climbing faster than the economy's long-run goal.",
+            "This disconnect is not merely statistical; it is psychological. Consumer sentiment has deteriorated sharply, falling by -33.1% over five years. The data suggests that this decline is now more closely correlated with perceptions of high prices than with income growth. In other words, people are not reacting to the *rate* of inflation slowing down; they are reacting to the *level* of prices they have already absorbed. The pain of a 20% cumulative price increase does not vanish just because the annual pace has slowed to 4%.",
+            "The persistence of high costs is driven by sticky categories that dominate household budgets. Housing and medical care, in particular, continue to post monthly increases that outpace the broader index. For a family trying to buy a home, the 30-year fixed mortgage rate sits at 7.21%, a level that has been elevated for years compared to the pre-pandemic norm. This structural cost increase means that even if goods inflation were to vanish tomorrow, the housing and healthcare components would keep the overall cost of living high.",
+            "The consequence for wealth accumulation is tangible. Real returns on equities have compressed, with the S&P 500's year-over-year real return falling by -3.75 percentage points over the last year. For investors relying on traditional asset allocation, the gap between nominal growth and real purchasing power has narrowed. The perception that one is 'building wealth' can coexist with the reality that the purchasing power of that wealth is eroding faster than it is being created.",
+            "The common narrative that 'inflation is coming down, so things are getting better' misses this nuance. It conflates the *velocity* of price change with the *level* of prices. For the median household, the level is the problem. Until real income growth catches up to the cumulative price increases of the last five years, the feeling of financial squeeze will persist, regardless of what the monthly CPI print says.",
+            "This is not a sign of economic failure, but it is a sign that the transition from high inflation to price stability is not painless. The challenge for policymakers and households alike is that the 'cooling' of inflation is not uniform. It is cooling in some categories while remaining stubborn in others. For the individual, the task is to distinguish between temporary price shocks and structural cost increases, and to adjust saving and spending strategies accordingly, rather than reacting to misleading headline numbers."
+          ],
+          "subheads": 0
+        },
+        "macroAnalytics": {
+          "macroTitle": "The Cumulative Gap: Why the Rate Doesn't Matter When the Level Does",
+          "macroIntro": "The official inflation rate is down, but the price index itself is at its highest point in the retrieved history. This distinction is critical: a slower rate of increase does not reverse the accumulated cost of the last five years, which is where the median household's budget actually lives.",
+          "analyticsTitle": "Sticky Costs and the Erosion of Real Returns",
+          "analyticsIntro": "The mechanism behind the squeeze is not a uniform rise in all prices, but a divergence where essential, high-weight categories like housing and healthcare continue to climb even as goods inflation cools. This structural stickiness prevents the 'cooling' from translating into relief for the median household.",
+          "chain": [
+            "Structural Cost Persistence: Housing and medical care, which dominate household budgets, continue to post monthly increases that outpace the broader index. This is documented in recent monthly data where these categories lead the inflation print.",
+            "Wage Growth Mismatch: Real median income has grown, but not enough to offset the cumulative price increases in these sticky categories. The result is a shrinking real budget for discretionary spending and savings.",
+            "Investment Return Compression: As prices remain high, the real return on equities has compressed. The S&P 500's year-over-year real return is at its lowest since April 2025, meaning that even successful nominal investment is losing purchasing power faster than before.",
+            "Behavioral Adjustment: Consumers are responding by trading down and reducing discretionary purchases. This is a structural shift in spending habits that complicates the return to pre-inflation consumption norms, as documented by recent consumer behavior trends."
+          ]
+        },
+        "outlook": {
+          "title": "The Base Effect Test: Will the Gap Close or Harden?",
+          "intro": "The central question is whether the current squeeze is a temporary lag in wage catch-up or a structural realignment of costs that outpaces income permanently. The data suggests the former is possible but the latter is gaining ground. The next twelve months will reveal which dynamic dominates.",
+          "scenarios": [
+            {
+              "name": "The Lag Closes",
+              "summary": "Inflation continues to decelerate toward target while real wage growth accelerates, narrowing the gap between price levels and purchasing power. Consumer sentiment recovers as the 'sticker shock' fades and base effects from 2022-2023 drop out of the calculation.",
+              "whyItMatters": "For the median household, this path means the 'expensive' feeling is a memory rather than a current state. It allows for a return to discretionary spending and savings rates that were suppressed during the peak inflation period, potentially boosting consumer confidence indices back toward pre-2022 levels.",
+              "watch": [
+                "The divergence between 4.1% and 2.6% narrows significantly.",
+                "Consumer sentiment index rises above 55, breaking the recent low range.",
+                "Monthly increases in housing and medical care fall below the overall CPI monthly rate."
+              ]
+            },
+            {
+              "name": "The New Normal",
+              "summary": "Inflation settles at a level persistently above the Fed's 2% target, driven by structural increases in housing and healthcare. Real wage growth remains flat or negative, meaning the cumulative price level gap widens or stays static. The 'expensive' feeling becomes the baseline economic reality.",
+              "whyItMatters": "For savers and investors, this path implies a permanent reduction in real purchasing power. The strategy of 'waiting it out' fails; instead, households must adjust their long-term financial plans to account for a higher cost of living that does not reverse. This could lead to a sustained decline in consumer confidence and a structural shift in spending habits that does not revert when rates fall.",
+              "watch": [
+                "The gap between 20.7% and 4.6% continues to widen or fails to narrow.",
+                "Consumer sentiment remains below 50, indicating persistent pessimism.",
+                "Housing and medical care categories continue to post monthly increases that outpace the broader index, as seen in recent data."
+              ]
+            },
+            {
+              "name": "The Perception Trap",
+              "summary": "Official inflation metrics improve and wages grow, but consumer sentiment does not recover because the psychological impact of the 2022-2023 price shock has altered spending behavior permanently. The 'gap' is not just in the data but in the mindset; consumers remain cautious, saving more and spending less, regardless of the headline numbers.",
+              "whyItMatters": "This path is critical for policymakers and businesses because it suggests that economic recovery may be stalled not by lack of purchasing power, but by a lack of willingness to spend. It complicates the return to pre-inflation norms, as the 'trade-down' behavior becomes a habit rather than a temporary response.",
+              "watch": [
+                "Divergence between improving 2.6% and stagnant or falling 48.0.",
+                "Personal saving rate remains high, as indicated by recent data, despite income growth.",
+                "Lack of recovery in discretionary spending categories despite overall economic expansion."
+              ]
+            }
+          ]
+        },
+        "signals": {
+          "story": {
+            "words": 564,
+            "sentences": 30,
+            "meanSentenceWords": 18.8,
+            "sentenceLengthCV": 0.46,
+            "paragraphLengthCV": 0.13,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 1,
+            "stockPhrases": 0,
+            "stockPhraseList": [],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 1
+          },
+          "laterSections": {
+            "words": 863,
+            "sentences": 43,
+            "meanSentenceWords": 20.1,
+            "sentenceLengthCV": 0.33,
+            "paragraphLengthCV": 0.25,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 1,
+            "stockPhrases": 0,
+            "stockPhraseList": [],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 1
+          }
+        },
+        "repetition": {
+          "macroAnalyticsVsStory": 0.063,
+          "outlookVsEarlier": 0.009,
+          "factTokensRestatedAcrossSections": 4
+        },
+        "numberDiscipline": {
+          "unknownTokens": [],
+          "bareNumbers": [
+            "2%",
+            "20%",
+            "4%",
+            "20.7%",
+            "20.7"
+          ]
+        }
+      },
+      "polishPrevious": [
+        {
+          "section": "story",
+          "fields": 11,
+          "changed": 1,
+          "ok": 1,
+          "flagged": 0,
+          "rejected": 0,
+          "discarded": 10,
+          "concerns": [],
+          "items": [
+            {
+              "path": "story.blocks[5].text",
+              "label": "Paragraph 5",
+              "status": "ok",
+              "reasons": [],
+              "before": "Certain categories of spending are particularly sticky. Housing and medical care remain key drivers of persistent inflation, with monthly increases in these areas often outpacing the broader index. For many families, these are not discretionary purchases but necessities that dominate their monthly budget. When these specific costs continue to rise, the overall decline in headline inflation feels abstract and irrelevant.",
+              "after": "Certain categories of spending are particularly sticky. Housing and medical care remain the primary engines of persistent inflation, with monthly increases in these areas often outpacing the broader index. For many families, these are not discretionary purchases but necessities that dominate their monthly budget. When these specific costs continue to rise, the overall decline in headline inflation feels abstract and irrelevant."
+            }
+          ],
+          "signalsBefore": {
+            "words": 461,
+            "sentences": 27,
+            "meanSentenceWords": 17.1,
+            "sentenceLengthCV": 0.38,
+            "paragraphLengthCV": 0.16,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 0,
+            "stockPhrases": 1,
+            "stockPhraseList": [
+              "key drivers"
+            ],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 1
+          },
+          "signalsAfter": {
+            "words": 462,
+            "sentences": 27,
+            "meanSentenceWords": 17.1,
+            "sentenceLengthCV": 0.38,
+            "paragraphLengthCV": 0.16,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 0,
+            "stockPhrases": 0,
+            "stockPhraseList": [],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 1
+          }
+        },
+        {
+          "section": "outlook",
+          "fields": 7,
+          "changed": 3,
+          "ok": 3,
+          "flagged": 0,
+          "rejected": 0,
+          "discarded": 4,
+          "concerns": [],
+          "items": [
+            {
+              "path": "outlook.intro",
+              "label": "Introduction",
+              "status": "ok",
+              "reasons": [],
+              "before": "The gap between official inflation data and the lived experience of high costs is not a statistical error; it is a structural lag. As base effects fade and wages attempt to catch up, the next twelve months will determine whether this divergence narrows into relief or calcifies into a new, higher-cost normal. For households, the stakes involve more than just sentiment—they hinge on whether real returns on savings can finally outpace the erosion of purchasing power.",
+              "after": "The gap between official inflation data and the lived experience of high costs is not a statistical error; it is a structural lag. As base effects fade and wages attempt to catch up, the next twelve months will determine whether this divergence narrows into relief or calcifies into a new, higher-cost normal. For households, the outcome hinges on whether real returns on savings can finally outpace the erosion of purchasing power."
+            },
+            {
+              "path": "outlook.scenarios[0].summary",
+              "label": "Scenario “The Convergence Path”: summary",
+              "status": "ok",
+              "reasons": [],
+              "before": "Inflation continues its gradual descent toward the Federal Reserve's target while real wage growth stabilizes, allowing the perception gap to narrow. This scenario assumes that the 'sticky' components of inflation—housing and services—will eventually yield to monetary policy and base effects.",
+              "after": "Inflation continues its gradual descent toward the Federal Reserve's target while real wage growth stabilizes, allowing the perception gap to narrow. This scenario assumes that the 'sticky' components of inflation, housing and services, will eventually yield to monetary policy and base effects."
+            },
+            {
+              "path": "outlook.scenarios[0].whyItMatters",
+              "label": "Scenario “The Convergence Path”: why it matters",
+              "status": "ok",
+              "reasons": [],
+              "before": "A convergence path would validate the traditional wealth-building playbook. If inflation stabilizes and real returns on equities and fixed income become predictable again, households can resume long-term saving strategies without the drag of constant purchasing power loss. It signals that the 'squeeze' is a temporary shock rather than a permanent structural shift.",
+              "after": "A convergence path would validate the traditional wealth-building playbook. If inflation stabilizes and real returns on equities and fixed income become predictable again, households can resume long-term saving strategies without the drag of constant purchasing power loss. It signals that the squeeze is a temporary shock rather than a permanent structural shift."
+            }
+          ],
+          "signalsBefore": {
+            "words": 353,
+            "sentences": 18,
+            "meanSentenceWords": 19.6,
+            "sentenceLengthCV": 0.3,
+            "paragraphLengthCV": 0.24,
+            "emDashesPer1000Words": 8.5,
+            "formulaicContrasts": 1,
+            "stockPhrases": 1,
+            "stockPhraseList": [
+              "the stakes"
+            ],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 1
+          },
+          "signalsAfter": {
+            "words": 350,
+            "sentences": 18,
+            "meanSentenceWords": 19.4,
+            "sentenceLengthCV": 0.3,
+            "paragraphLengthCV": 0.2,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 1,
+            "stockPhrases": 0,
+            "stockPhraseList": [],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "adf41c39-4aa7-4219-97a1-a81a7a09fcb2",
+      "label": "US housing",
+      "category": "Market / asset-specific analysis",
+      "revision": 1,
+      "brief": {
+        "prompt": "US mortgage rates have remained elevated, making homeownership increasingly expensive. Yet home prices haven't experienced the nationwide collapse many expected.\n\nInvestigate why. Examine mortgage rates, housing supply, existing-home inventory, household affordability, the lock-in effect of older low-rate mortgages, and regional price differences.\n\nExplain who benefits and who suffers: first-time buyers, existing homeowners, banks, homebuilders and residential real estate investors.\n\nUse actual historical data to determine whether the premise is supported. If nationwide prices or regional markets have materially declined, address that rather than assuming prices are universally resilient.\n\nConclude with conditional scenarios for the US housing market over the next 12–24 months."
+      },
+      "currentArticle": {
+        "headline": "The Mortgage Gap: Why Home Prices Aren't Falling",
+        "dek": "Despite the 30-year fixed rate sitting near 7.21%, the national home price index has hit a new peak. The 'lock-in effect' is freezing the market, creating a bifurcation where existing owners are protected while new buyers face a widening affordability gap.",
+        "paragraphs": [
+          "For the first time in years, the US housing market is facing a paradox. The cost of borrowing has skyrocketed, with the 30-year fixed mortgage rate reaching 7.21%, a level that would have been unthinkable during the pandemic-era boom. Yet, the expected nationwide collapse in home prices has not materialized. Instead, the Case-Shiller 20-City Composite Home Price Index has hit 346.9, the highest level in the retrieved data history since January 2014. This divergence between soaring borrowing costs and resilient asset values is the defining feature of the current housing market.",
+          "To understand why prices aren't falling, one must look at the plumbing of the mortgage market. Five years ago, the 30-year rate was 3.10%. Today, it is 7.21%. That is a difference of 4.11 percentage points. For a typical buyer, this translates to a monthly payment increase that is difficult to absorb without a significant income jump. In a normal market, this price shock would lead to a glut of distressed sales and a subsequent crash in values. That is not happening. The reason lies in the behavior of the people who already own homes.",
+          "The 'lock-in effect' is not just a theory; it is a structural barrier to supply that keeps prices elevated even as demand cools.",
+          "This is the 'lock-in effect.' Millions of Americans bought or refinanced their homes when rates were near historic lows. Selling their home now would mean taking on a mortgage rate that is more than double what they currently pay. For many, the financial penalty of moving is simply too high. As a result, these homeowners are staying put, effectively removing their properties from the market. This behavior has kept existing home inventory at 5.1 months' supply, the highest level in the retrieved window since October 2025, but still far below the levels seen in the 2010s. The market is not flooded with supply; it is merely less starved than it was two years ago.",
+          "The consequence of this supply freeze is a bifurcated market. On one side, existing homeowners are sitting on significant equity. Their homes have appreciated by 23.7% over the past five years, and their low mortgage payments mean they are not under pressure to sell. On the other side, new buyers are facing a median listing price of $415,000. The gap between what a buyer can afford and what a seller is willing to accept has widened, creating a stalemate that keeps prices from falling but also prevents the market from booming.",
+          "This dynamic is not uniform across the country. In high-cost coastal markets, the effect is particularly pronounced. The Case-Shiller index for San Francisco is at 367.9, the highest since July 2022, while Los Angeles stands at 446.2. These regions have seen price growth of 7.9% and 21.7% respectively over five years. Even in these markets, where affordability is most strained, the lack of supply is keeping prices from correcting. The national trend, however, shows a deceleration in momentum, with year-over-year price growth slowing to 2.09%.",
+          "For the average reader, the stakes are high. Homeownership remains the primary vehicle for wealth building for most households. The current market means that the path to the first home is significantly more expensive than it was a decade ago, not just because of price, but because of the cost of financing. Meanwhile, those who already own are seeing their net worth grow, but their mobility is constrained. This is a market where the winners are those who bought early, and the losers are those trying to enter the market now.",
+          "The data suggests that this state of affairs is not a temporary glitch but a structural shift. The 10-year Treasury yield, which underpins mortgage rates, has risen by 3.27 percentage points over five years, reaching 4.91%. Until the supply of existing homes increases significantly, or rates fall to a level that makes moving financially viable for a large portion of the population, the market will remain in this high-price, low-turnover equilibrium. The question is not whether prices will fall, but how long it will take for the supply constraints to ease enough to allow for a normal market."
+        ],
+        "signals": {
+          "words": 688,
+          "sentences": 40,
+          "meanSentenceWords": 17.2,
+          "sentenceLengthCV": 0.45,
+          "paragraphLengthCV": 0.29,
+          "emDashesPer1000Words": 0,
+          "formulaicContrasts": 4,
+          "stockPhrases": 1,
+          "stockPhraseList": [
+            "the stakes"
+          ],
+          "rhetoricalQuestions": 0,
+          "tripletLists": 0
+        }
+      },
+      "original": {
+        "label": "original prompts",
+        "story": {
+          "headline": "The Mortgage Rate Trap: Why Home Prices Stayed High While Affordability Broke",
+          "dek": "US home prices have held firm despite mortgage rates rising by more than four percentage points in five years, creating a market where existing owners are protected by legacy rates while new buyers face a steep cost barrier.",
+          "keyPoints": [
+            "The 30-year fixed mortgage rate is currently 7.21%, up from 3.10% five years ago, making monthly payments significantly more expensive for new buyers.",
+            "The Case-Shiller 20-City Home Price Index is at its highest level in the retrieved data history, indicating that home values have not collapsed despite the rate shock.",
+            "Existing home inventory has increased to 5.1 months of supply, the highest level in the retrieved window, yet remains tight enough to prevent a price crash."
+          ],
+          "paragraphs": [
+            "For most of the past decade, buying a home in the United States was a straightforward arithmetic problem: low interest rates meant manageable monthly payments, and rising incomes kept pace with prices. That equation has broken. The 30-year fixed mortgage rate now stands at 7.21%, a level that would have been unthinkable to buyers in 2021, when the same loan cost 3.10%. This is not a minor adjustment; it is a fundamental shift in the cost of entry for the average household.",
+            "The intuitive expectation was that such a sharp rise in borrowing costs would trigger a nationwide price collapse. If a home costs the same but the monthly payment jumps by thousands of dollars, demand should crater, forcing sellers to slash prices. Yet the data tells a different story. The Case-Shiller 20-City Composite Home Price Index, which tracks value across major metropolitan areas, is at 346.9, its highest point in the retrieved history since January 2014. Prices have not fallen; they have merely stopped rising at the breakneck pace of the pandemic era.",
+            "This resilience is not a sign of a healthy, balanced market. It is the result of a specific structural quirk known as the 'lock-in effect.' Millions of homeowners bought or refinanced their homes when rates were near historic lows. For these individuals, selling their home and buying a new one at current rates would mean taking on a significantly higher monthly payment for a similar amount of debt. Many are choosing to stay put, effectively removing their properties from the market.",
+            "The market is bifurcated: existing owners are protected by low legacy rates, while new buyers face a significant affordability gap.",
+            "This creates a strange dynamic for new buyers. They are competing for a shrinking pool of available homes, but they are doing so with a much higher cost of capital than their predecessors. The median listing price in the United States is currently $415,000. While this is down from its peak, it remains well above the five-year low of $369,158. The gap between what a home costs and what a new buyer can afford to pay each month has widened dramatically, squeezing first-time buyers out of the market.",
+            "Inventory levels offer a glimpse into the mechanics of this standoff. The months of supply for existing homes reached 5.1 months' supply in October 2026, the highest level in the retrieved data window. While this is an improvement from the severe shortages of the past, it is not enough to signal a buyer's market. The supply is growing, but it is growing from a very low base, and the rate of new listings is constrained by the very homeowners who are refusing to sell.",
+            "For the average reader, the stakes are personal. Homeownership remains the primary vehicle for wealth accumulation for most families. If you are an existing homeowner with a low-rate mortgage, you are effectively sitting on an asset that is appreciating in value while your debt cost remains fixed. You are the winner in this scenario. If you are a prospective buyer, however, you are facing a market where the price of entry is high, and the cost of financing that entry is at a level that makes the total monthly outlay difficult to sustain.",
+            "The divergence between mortgage costs and asset values is the defining feature of the current housing cycle. It is a market where the asset is strong, but the access to it is restricted. This is not a crash; it is a freeze. The prices are resilient because the supply is artificially constrained by the financial incentives of those who already own. Until those incentives change, the gap between the price of a home and the affordability of a mortgage will remain the central tension in the US housing market."
+          ],
+          "subheads": 0
+        },
+        "signals": {
+          "story": {
+            "words": 629,
+            "sentences": 33,
+            "meanSentenceWords": 19.1,
+            "sentenceLengthCV": 0.45,
+            "paragraphLengthCV": 0.29,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 0,
+            "stockPhrases": 1,
+            "stockPhraseList": [
+              "the stakes"
+            ],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 1
+          }
+        },
+        "numberDiscipline": {
+          "unknownTokens": [],
+          "bareNumbers": [
+            "7.21%",
+            "3.10%",
+            "four percentage points",
+            "7.21",
+            "3.10",
+            "5.1"
+          ]
+        }
+      },
+      "revised": {
+        "label": "revised prompts",
+        "story": {
+          "headline": "The $415,000 Paradox: Why High Mortgage Rates Haven't Broken Home Prices",
+          "dek": "Thirty-year fixed rates are near five-year highs, yet the median listing price has barely moved from its peak. The lock-in effect is freezing the market, creating a bifurcation where existing owners are protected while new buyers are priced out.",
+          "keyPoints": [
+            "Mortgage rates have risen by over four percentage points in five years, yet home prices remain near their highest levels in the data.",
+            "The 'lock-in effect' is suppressing inventory, keeping months of supply at a five-year high but still below the level needed for a balanced market.",
+            "Regional markets are diverging, with some areas seeing continued growth while national momentum slows, signaling a market that is expensive but not collapsing."
+          ],
+          "paragraphs": [
+            "The 30-year fixed mortgage rate stands at 7.21%, a level that would have been unthinkable to the buyer who locked in a rate near 3.05% just five years ago. Yet, despite this sharp increase in the cost of borrowing, the median listing price in the United States is $415,000, a figure that is only modestly below the five-year high of $449,000. This is the central contradiction of the current housing market: the most expensive borrowing in a generation has not triggered the price collapse that many economists and commentators predicted.",
+            "The reason is not that home prices are immune to interest rates, but that the supply side of the market has effectively frozen. Existing homeowners who secured mortgages at historically low rates have little financial incentive to sell and refinance into the current 7.21% environment. This 'lock-in effect' has reduced the number of homes available for sale, creating a structural shortage that keeps prices elevated even as demand from new buyers is constrained by affordability.",
+            "The data confirms this tension. While national price growth has decelerated sharply from the pandemic-era highs, the Case-Shiller 20-City Composite Home Price Index reached 346.9 in September 2026, its highest level in the retrieved data history. Simultaneously, the months of supply for existing homes hit 5.1 months' supply in October 2026, the highest level in the five-year window. However, this is a high relative to the severe shortage of the previous year, not a signal of a balanced market. The inventory has increased, but not enough to offset the drop in buyer demand caused by high rates.",
+            "The market is not collapsing; it is bifurcating. Existing owners are protected by low legacy rates, while new buyers face a widening affordability gap.",
+            "This dynamic has created a two-tier market. For existing homeowners, the asset value of their homes has remained resilient, preserving their wealth. For first-time buyers and investors, the entry price has not dropped in proportion to the rise in mortgage payments. The result is a market where ownership is increasingly concentrated among those who already own, and where the dream of homeownership for new entrants is becoming a financial calculation that simply does not work.",
+            "Regional differences further complicate the picture. While the national trend is one of slowing momentum, some markets continue to see positive growth. The Case-Shiller San Francisco Home Price Index, for instance, rose by 3.7% year-over-year, while Los Angeles saw a 1.0% increase. These areas, driven by different local supply and demand dynamics, are not experiencing the same pressure as the national median. This suggests that the 'resilience' of home prices is not a uniform phenomenon but a patchwork of local conditions.",
+            "The question that remains is not whether home prices will fall, but how long the lock-in effect can hold. If mortgage rates remain elevated, the supply of homes will stay constrained, and prices will likely remain high. But if rates fall, or if the economic pressure on buyers becomes too great, the frozen supply could suddenly thaw. The market is currently in a state of suspended animation, and the next move could be either a gradual normalization or a sharper correction."
+          ],
+          "subheads": 0
+        },
+        "signals": {
+          "story": {
+            "words": 523,
+            "sentences": 26,
+            "meanSentenceWords": 20.1,
+            "sentenceLengthCV": 0.38,
+            "paragraphLengthCV": 0.29,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 2,
+            "stockPhrases": 0,
+            "stockPhraseList": [],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 0
+          }
+        },
+        "numberDiscipline": {
+          "unknownTokens": [],
+          "bareNumbers": [
+            "$415,000",
+            "four percentage points",
+            "415,000"
+          ]
+        }
+      },
+      "polish": [
+        {
+          "section": "story",
+          "fields": 12,
+          "changed": 8,
+          "ok": 6,
+          "flagged": 2,
+          "rejected": 0,
+          "discarded": 1,
+          "concerns": [],
+          "items": [
+            {
+              "path": "story.dek",
+              "label": "Dek",
+              "status": "ok",
+              "reasons": [],
+              "before": "Despite the 30-year fixed rate sitting near 7.21%, the national home price index has hit a new peak. The 'lock-in effect' is freezing the market, creating a bifurcation where existing owners are protected while new buyers face a widening affordability gap.",
+              "after": "With the 30-year fixed rate near 7.21%, the national home price index has hit a new peak. The 'lock-in effect' is freezing the market, creating a bifurcation where existing owners are protected while new buyers face a widening affordability gap."
+            },
+            {
+              "path": "story.blocks[0].text",
+              "label": "Paragraph 1",
+              "status": "ok",
+              "reasons": [],
+              "before": "For the first time in years, the US housing market is facing a paradox. The cost of borrowing has skyrocketed, with the 30-year fixed mortgage rate reaching 7.21%, a level that would have been unthinkable during the pandemic-era boom. Yet, the expected nationwide collapse in home prices has not materialized. Instead, the Case-Shiller 20-City Composite Home Price Index has hit 346.9, the highest level in the retrieved data history since January 2014. This divergence between soaring borrowing costs and resilient asset values is the defining feature of the current housing market.",
+              "after": "The US housing market is facing a paradox. The cost of borrowing has skyrocketed, with the 30-year fixed mortgage rate reaching 7.21%, a level that would have been unthinkable during the pandemic-era boom. Yet the expected nationwide collapse in home prices has not materialized. Instead, the Case-Shiller 20-City Composite Home Price Index has hit 346.9, the highest level in the retrieved data history since January 2014. This divergence between soaring borrowing costs and resilient asset values is the defining feature of the current housing market."
+            },
+            {
+              "path": "story.blocks[1].text",
+              "label": "Paragraph 2",
+              "status": "flagged",
+              "reasons": [
+                "check: Certainty or negation wording changed (−“must”): check the claim still says the same thing."
+              ],
+              "before": "To understand why prices aren't falling, one must look at the plumbing of the mortgage market. Five years ago, the 30-year rate was 3.10%. Today, it is 7.21%. That is a difference of 4.11 percentage points. For a typical buyer, this translates to a monthly payment increase that is difficult to absorb without a significant income jump. In a normal market, this price shock would lead to a glut of distressed sales and a subsequent crash in values. That is not happening. The reason lies in the behavior of the people who already own homes.",
+              "after": "Why prices aren't falling comes down to the plumbing of the mortgage market. Five years ago, the 30-year rate was 3.10%. Today, it is 7.21%. That is a difference of 4.11 percentage points. For a typical buyer, this translates to a monthly payment increase that is difficult to absorb without a significant income jump. In a normal market, this price shock would lead to a glut of distressed sales and a subsequent crash in values. That is not happening. The reason lies in the behavior of the people who already own homes."
+            },
+            {
+              "path": "story.blocks[2].text",
+              "label": "Pull quote",
+              "status": "ok",
+              "reasons": [],
+              "before": "The 'lock-in effect' is not just a theory; it is a structural barrier to supply that keeps prices elevated even as demand cools.",
+              "after": "The 'lock-in effect' acts as a structural barrier to supply, keeping prices elevated even as demand cools."
+            },
+            {
+              "path": "story.blocks[3].text",
+              "label": "Paragraph 3",
+              "status": "ok",
+              "reasons": [],
+              "before": "This is the 'lock-in effect.' Millions of Americans bought or refinanced their homes when rates were near historic lows. Selling their home now would mean taking on a mortgage rate that is more than double what they currently pay. For many, the financial penalty of moving is simply too high. As a result, these homeowners are staying put, effectively removing their properties from the market. This behavior has kept existing home inventory at 5.1 months' supply, the highest level in the retrieved window since October 2025, but still far below the levels seen in the 2010s. The market is not flooded with supply; it is merely less starved than it was two years ago.",
+              "after": "Millions of Americans bought or refinanced their homes when rates were near historic lows. Selling their home now would mean taking on a mortgage rate that is more than double what they currently pay. For many, the financial penalty of moving is simply too high. As a result, these homeowners are staying put, effectively removing their properties from the market. This behavior has kept existing home inventory at 5.1 months' supply, the highest level in the retrieved window since October 2025, but still far below the levels seen in the 2010s. The market is not flooded with supply; it is merely less starved than it was two years ago."
+            },
+            {
+              "path": "story.blocks[5].text",
+              "label": "Paragraph 4",
+              "status": "ok",
+              "reasons": [],
+              "before": "The consequence of this supply freeze is a bifurcated market. On one side, existing homeowners are sitting on significant equity. Their homes have appreciated by 23.7% over the past five years, and their low mortgage payments mean they are not under pressure to sell. On the other side, new buyers are facing a median listing price of $415,000. The gap between what a buyer can afford and what a seller is willing to accept has widened, creating a stalemate that keeps prices from falling but also prevents the market from booming.",
+              "after": "The consequence of this supply freeze is a bifurcated market. Existing homeowners are sitting on significant equity. Their homes have appreciated by 23.7% over the past five years, and their low mortgage payments mean they are not under pressure to sell. New buyers, meanwhile, are facing a median listing price of $415,000. The gap between what a buyer can afford and what a seller is willing to accept has widened, creating a stalemate that keeps prices from falling but also prevents the market from booming."
+            },
+            {
+              "path": "story.blocks[7].text",
+              "label": "Paragraph 6",
+              "status": "ok",
+              "reasons": [],
+              "before": "For the average reader, the stakes are high. Homeownership remains the primary vehicle for wealth building for most households. The current market means that the path to the first home is significantly more expensive than it was a decade ago, not just because of price, but because of the cost of financing. Meanwhile, those who already own are seeing their net worth grow, but their mobility is constrained. This is a market where the winners are those who bought early, and the losers are those trying to enter the market now.",
+              "after": "Homeownership remains the primary vehicle for wealth building for most households. The current market means that the path to the first home is significantly more expensive than it was a decade ago, driven by both price and the cost of financing. Those who already own are seeing their net worth grow, but their mobility is constrained. This is a market where the winners are those who bought early, and the losers are those trying to enter the market now."
+            },
+            {
+              "path": "story.blocks[8].text",
+              "label": "Paragraph 7",
+              "status": "flagged",
+              "reasons": [
+                "check: Certainty or negation wording changed (−“will”): check the claim still says the same thing."
+              ],
+              "before": "The data suggests that this state of affairs is not a temporary glitch but a structural shift. The 10-year Treasury yield, which underpins mortgage rates, has risen by 3.27 percentage points over five years, reaching 4.91%. Until the supply of existing homes increases significantly, or rates fall to a level that makes moving financially viable for a large portion of the population, the market will remain in this high-price, low-turnover equilibrium. The question is not whether prices will fall, but how long it will take for the supply constraints to ease enough to allow for a normal market.",
+              "after": "The data suggests that this state of affairs is not a temporary glitch but a structural shift. The 10-year Treasury yield, which underpins mortgage rates, has risen by 3.27 percentage points over five years, reaching 4.91%. Until the supply of existing homes increases significantly, or rates fall to a level that makes moving financially viable for a large portion of the population, the market will remain in this high-price, low-turnover equilibrium. The question is how long it will take for the supply constraints to ease enough to allow for a normal market."
+            }
+          ],
+          "signalsBefore": {
+            "words": 688,
+            "sentences": 40,
+            "meanSentenceWords": 17.2,
+            "sentenceLengthCV": 0.45,
+            "paragraphLengthCV": 0.29,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 4,
+            "stockPhrases": 1,
+            "stockPhraseList": [
+              "the stakes"
+            ],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 0
+          },
+          "signalsAfter": {
+            "words": 644,
+            "sentences": 39,
+            "meanSentenceWords": 16.5,
+            "sentenceLengthCV": 0.46,
+            "paragraphLengthCV": 0.32,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 1,
+            "stockPhrases": 0,
+            "stockPhraseList": [],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 0
+          }
+        }
+      ],
+      "revisedPrevious": {
+        "label": "revised prompts",
+        "story": {
+          "headline": "The $1,000 Mortgage: Why US Home Prices Refused to Crash",
+          "dek": "Mortgage rates have quadrupled since 2021, yet home prices are at their highest levels in the data. The market isn't broken; it's frozen, and the people holding the keys are not the same as the people trying to buy.",
+          "keyPoints": [
+            "The 30-year fixed mortgage rate has risen by 4.11 percentage points over the past five years, reaching 7.21% this month.",
+            "Despite this cost shock, the Case-Shiller 20-City Home Price Index hit 346.9 in September 2026, its highest point in the retrieved history.",
+            "Existing home inventory is at 5.1 months' supply months of supply, the highest level in the data window, signaling a thaw in the 'lock-in' effect that has kept sellers off the market."
+          ],
+          "paragraphs": [
+            "Five years ago, a family buying a median-priced US home was signing a 30-year mortgage at roughly 3.10%. Today, that same family faces a rate of 7.21%. The monthly payment on a $415,000 house is now more than double what it was in 2021. By any standard economic logic, a doubling of the cost of capital should crush the asset's price. Yet the Case-Shiller 20-City Home Price Index, which tracks prices in the largest US metros, closed September 2026 at 346.9. That is the highest level in the entire dataset, which begins in January 2014.",
+            "This is the central contradiction of the current housing market. We are not in a bubble burst. We are in a market where the price tag has not moved, but the ticket to buy it has become significantly more expensive. The common narrative suggests that high rates should have triggered a nationwide collapse in values. The data says otherwise. Prices have slowed, yes. The year-over-year growth rate for the national index has decelerated to 2.09%, down from the 20.77% peak in March 2022. But they have not reversed. They have held.",
+            "The reason is not that buyers are suddenly wealthier. It is that sellers have largely stopped selling. The 'lock-in effect' is the quiet engine behind this resilience. Millions of homeowners bought or refinanced during the pandemic era, locking in rates near 3.05%. For them, selling a home today means trading a 3% mortgage for a 7% one. It is a financial penalty that makes staying put the rational choice. This reluctance to sell has drained the market of the inventory needed to push prices down.",
+            "The data shows this constraint clearly. Existing home inventory, measured in months of supply, has risen to 5.1 months' supply as of October 2026. That is the highest level in the retrieved data, which starts in October 2025. It is a sign that the freeze is beginning to crack. More homes are hitting the market than they were a year ago, when supply was just 4.4 months' supply months. But it is not a flood. It is a trickle. Enough to keep prices from plummeting, not enough to make them affordable for new buyers.",
+            "The market isn't broken; it's frozen, and the people holding the keys are not the same as the people trying to buy.",
+            "This creates a bifurcated reality. For existing homeowners, the high rates are a shield. Their low legacy rates protect their monthly payments, and their home equity continues to grow, even if slowly. For first-time buyers, the high rates are a wall. The median listing price of $415,000 is the lowest it has been since February 2026, but it is still 10.7% higher than in October 2021. The affordability gap has not closed; it has widened. The people who are winning are those who already own. The people who are losing are those who have to buy.",
+            "The question is not whether prices will fall. They have not fallen. The question is what happens when the lock-in effect finally breaks. As mortgage rates remain elevated, the pool of homeowners who can afford to sell shrinks. But as rates eventually decline, or as life events force sales, that inventory could surge. The market is currently balancing on a knife's edge between a supply shortage that keeps prices high and an affordability crisis that caps demand. The next move will be determined by who blinks first: the sellers who need to move, or the buyers who can no longer afford to wait."
+          ],
+          "subheads": 0
+        },
+        "signals": {
+          "story": {
+            "words": 586,
+            "sentences": 46,
+            "meanSentenceWords": 12.7,
+            "sentenceLengthCV": 0.49,
+            "paragraphLengthCV": 0.31,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 1,
+            "stockPhrases": 1,
+            "stockPhraseList": [
+              "knife's edge"
+            ],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 0
+          }
+        },
+        "numberDiscipline": {
+          "unknownTokens": [],
+          "bareNumbers": [
+            "$1,000 M",
+            "3%",
+            "7%",
+            "1,000"
+          ]
+        }
+      },
+      "polishPrevious": [
+        {
+          "section": "story",
+          "fields": 12,
+          "changed": 9,
+          "ok": 3,
+          "flagged": 6,
+          "rejected": 0,
+          "discarded": 1,
+          "concerns": [],
+          "items": [
+            {
+              "path": "story.dek",
+              "label": "Dek",
+              "status": "ok",
+              "reasons": [],
+              "before": "Despite the 30-year fixed rate sitting near 7.21%, the national home price index has hit a new peak. The 'lock-in effect' is freezing the market, creating a bifurcation where existing owners are protected while new buyers face a widening affordability gap.",
+              "after": "With the 30-year fixed rate near 7.21%, the national home price index has hit a new peak. The 'lock-in effect' is freezing the market, protecting existing owners while new buyers face a widening affordability gap."
+            },
+            {
+              "path": "story.keyPoints[1]",
+              "label": "Key point 2",
+              "status": "ok",
+              "reasons": [],
+              "before": "Existing home inventory is at 5.1 months' supply, the highest level in the retrieved window since October 2025, signaling a shift from severe shortage to a tighter, more balanced market.",
+              "after": "Existing home inventory has reached 5.1 months' supply, the highest level in the retrieved window since October 2025, signaling a shift from severe shortage toward a tighter, more balanced market."
+            },
+            {
+              "path": "story.blocks[0].text",
+              "label": "Paragraph 1",
+              "status": "flagged",
+              "reasons": [
+                "check: Certainty or negation wording changed (−“would”): check the claim still says the same thing."
+              ],
+              "before": "For the first time in years, the US housing market is facing a paradox. The cost of borrowing has skyrocketed, with the 30-year fixed mortgage rate reaching 7.21%, a level that would have been unthinkable during the pandemic-era boom. Yet, the expected nationwide collapse in home prices has not materialized. Instead, the Case-Shiller 20-City Composite Home Price Index has hit 346.9, the highest level in the retrieved data history since January 2014. This divergence between soaring borrowing costs and resilient asset values is the defining feature of the current housing market.",
+              "after": "The US housing market is facing a paradox. The cost of borrowing has skyrocketed, with the 30-year fixed mortgage rate reaching 7.21%, a level unthinkable during the pandemic-era boom. Yet the expected nationwide collapse in home prices has not materialized. Instead, the Case-Shiller 20-City Composite Home Price Index has hit 346.9, the highest level in the retrieved data since January 2014. This divergence between soaring borrowing costs and resilient asset values defines the current market."
+            },
+            {
+              "path": "story.blocks[1].text",
+              "label": "Paragraph 2",
+              "status": "flagged",
+              "reasons": [
+                "check: Certainty or negation wording changed (−“must”): check the claim still says the same thing."
+              ],
+              "before": "To understand why prices aren't falling, one must look at the plumbing of the mortgage market. Five years ago, the 30-year rate was 3.10%. Today, it is 7.21%. That is a difference of 4.11 percentage points. For a typical buyer, this translates to a monthly payment increase that is difficult to absorb without a significant income jump. In a normal market, this price shock would lead to a glut of distressed sales and a subsequent crash in values. That is not happening. The reason lies in the behavior of the people who already own homes.",
+              "after": "To understand why prices aren't falling, look at the plumbing of the mortgage market. Five years ago, the 30-year rate was 3.10%. Today, it is 7.21%. That is a difference of 4.11 percentage points. For a typical buyer, this translates to a monthly payment increase that is difficult to absorb without a significant income jump. In a normal market, this price shock would lead to a glut of distressed sales and a subsequent crash in values. That is not happening. The reason lies in the behavior of the people who already own homes."
+            },
+            {
+              "path": "story.blocks[2].text",
+              "label": "Pull quote",
+              "status": "flagged",
+              "reasons": [
+                "check: Certainty or negation wording changed (−“not”): check the claim still says the same thing."
+              ],
+              "before": "The 'lock-in effect' is not just a theory; it is a structural barrier to supply that keeps prices elevated even as demand cools.",
+              "after": "The 'lock-in effect' is a structural barrier to supply that keeps prices elevated even as demand cools."
+            },
+            {
+              "path": "story.blocks[3].text",
+              "label": "Paragraph 3",
+              "status": "flagged",
+              "reasons": [
+                "check: Certainty or negation wording changed (−“not”): check the claim still says the same thing."
+              ],
+              "before": "This is the 'lock-in effect.' Millions of Americans bought or refinanced their homes when rates were near historic lows. Selling their home now would mean taking on a mortgage rate that is more than double what they currently pay. For many, the financial penalty of moving is simply too high. As a result, these homeowners are staying put, effectively removing their properties from the market. This behavior has kept existing home inventory at 5.1 months' supply, the highest level in the retrieved window since October 2025, but still far below the levels seen in the 2010s. The market is not flooded with supply; it is merely less starved than it was two years ago.",
+              "after": "Millions of Americans bought or refinanced their homes when rates were near historic lows. Selling their home now would mean taking on a mortgage rate that is more than double what they currently pay. For many, the financial penalty of moving is simply too high. As a result, these homeowners are staying put, effectively removing their properties from the market. This behavior has kept existing home inventory at 5.1 months' supply, the highest level in the retrieved window since October 2025, but still far below the levels seen in the 2010s. The market is merely less starved than it was two years ago."
+            },
+            {
+              "path": "story.blocks[5].text",
+              "label": "Paragraph 4",
+              "status": "ok",
+              "reasons": [],
+              "before": "The consequence of this supply freeze is a bifurcated market. On one side, existing homeowners are sitting on significant equity. Their homes have appreciated by 23.7% over the past five years, and their low mortgage payments mean they are not under pressure to sell. On the other side, new buyers are facing a median listing price of $415,000. The gap between what a buyer can afford and what a seller is willing to accept has widened, creating a stalemate that keeps prices from falling but also prevents the market from booming.",
+              "after": "The consequence of this supply freeze is a bifurcated market. Existing homeowners are sitting on significant equity. Their homes have appreciated by 23.7% over the past five years, and their low mortgage payments mean they are not under pressure to sell. New buyers, meanwhile, face a median listing price of $415,000. The gap between what a buyer can afford and what a seller is willing to accept has widened, creating a stalemate that keeps prices from falling but also prevents the market from booming."
+            },
+            {
+              "path": "story.blocks[7].text",
+              "label": "Paragraph 6",
+              "status": "flagged",
+              "reasons": [
+                "check: Certainty or negation wording changed (−“not”): check the claim still says the same thing."
+              ],
+              "before": "For the average reader, the stakes are high. Homeownership remains the primary vehicle for wealth building for most households. The current market means that the path to the first home is significantly more expensive than it was a decade ago, not just because of price, but because of the cost of financing. Meanwhile, those who already own are seeing their net worth grow, but their mobility is constrained. This is a market where the winners are those who bought early, and the losers are those trying to enter the market now.",
+              "after": "Homeownership remains the primary vehicle for wealth building for most households. The current market means that the path to the first home is significantly more expensive than it was a decade ago, driven by both price and the cost of financing. Meanwhile, those who already own are seeing their net worth grow, but their mobility is constrained. The winners are those who bought early; the losers are those trying to enter the market now."
+            },
+            {
+              "path": "story.blocks[8].text",
+              "label": "Paragraph 7",
+              "status": "flagged",
+              "reasons": [
+                "check: Certainty or negation wording changed (−“not”, −“will”): check the claim still says the same thing."
+              ],
+              "before": "The data suggests that this state of affairs is not a temporary glitch but a structural shift. The 10-year Treasury yield, which underpins mortgage rates, has risen by 3.27 percentage points over five years, reaching 4.91%. Until the supply of existing homes increases significantly, or rates fall to a level that makes moving financially viable for a large portion of the population, the market will remain in this high-price, low-turnover equilibrium. The question is not whether prices will fall, but how long it will take for the supply constraints to ease enough to allow for a normal market.",
+              "after": "The data suggests this state of affairs is a structural shift, not a temporary glitch. The 10-year Treasury yield, which underpins mortgage rates, has risen by 3.27 percentage points over five years, reaching 4.91%. Until the supply of existing homes increases significantly, or rates fall to a level that makes moving financially viable for a large portion of the population, the market will remain in this high-price, low-turnover equilibrium. The key question is how long it will take for supply constraints to ease enough to allow for a normal market."
+            }
+          ],
+          "signalsBefore": {
+            "words": 688,
+            "sentences": 40,
+            "meanSentenceWords": 17.2,
+            "sentenceLengthCV": 0.45,
+            "paragraphLengthCV": 0.29,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 4,
+            "stockPhrases": 1,
+            "stockPhraseList": [
+              "the stakes"
+            ],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 0
+          },
+          "signalsAfter": {
+            "words": 621,
+            "sentences": 39,
+            "meanSentenceWords": 15.9,
+            "sentenceLengthCV": 0.47,
+            "paragraphLengthCV": 0.32,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 0,
+            "stockPhrases": 0,
+            "stockPhraseList": [],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "1ea0ea22-492a-49e5-a29b-89be7ab5ce7a",
+      "label": "Nvidia and the AI bubble",
+      "category": "Opinionated financial commentary",
+      "revision": 2,
+      "brief": {
+        "prompt": "What's going on with Nvidia and the row with Jensen?",
+        "angle": "Talk about the AI industry being a bubble",
+        "audience": "US retail investors"
+      },
+      "argumentVariant": "TEST STAND-IN (written for this evaluation, not by the author): The AI boom is not a dot-com rerun because the money is real, but the way it is financed — suppliers funding their own customers — is exactly how bubbles hide. The risk is the plumbing, not the technology.",
+      "currentArticle": {
+        "headline": "Nvidia's $115.8 billion Quarter and the AI Bubble Debate",
+        "dek": "Nvidia is generating record profits while the Federal Reserve warns that the financing structures underpinning the AI boom could pose systemic risks.",
+        "paragraphs": [
+          "Nvidia just reported a quarter that defies the usual logic of market cycles. The company brought in $115.8 billion in revenue, a figure that anchors the broader AI trade and distinguishes it from the revenue-less companies of the dot-com era. For investors, this is the central tension: the company is generating massive, tangible cash flow, yet the market is increasingly worried about how that cash flow is being funded and sustained.",
+          "The S&P 500 has climbed 7.4% over the past year, reaching 7201.1 as of late November. This rally is heavily weighted toward technology, with Nvidia maintaining a commanding market share of 80% in the GPU market. However, the industry is not a monolith; it is a complex web of hyperscalers, chipmakers, and smaller startups, all interconnected by a flow of capital that regulators are now scrutinizing.",
+          "The primary concern isn't that the technology doesn't work, but how it is being paid for. The Federal Reserve has identified 'circular financing' as a financial stability risk. In this model, large tech companies and GPU makers invest in smaller firms, which then use that capital to purchase hardware from the original investors. It is a closed loop where the demand for the product is partly manufactured by the product's own supplier.",
+          "This structure is not unique to AI, but the scale is unprecedented. Hyperscaler capital expenditure is growing at 72% a year, a pace that is significantly outpacing the cash flow generated by the businesses being funded. The math is becoming a race: infrastructure spending is projected to outstrip the cash flow used to fund it, with the two lines expected to cross in late 2026.",
+          "Amidst this financial scrutiny, CEO Jensen Huang has faced his own 'row.' While the market focuses on margins, US officials have reportedly identified Huang as a target of a Chinese government spy operation. This adds a geopolitical layer to the investment case, suggesting that the AI supply chain is not just a business model but a point of international friction.",
+          "For the retail investor, the question is no longer whether AI is a trend, but whether the current valuation is supported by the underlying economics. Nvidia's dominance is being challenged by custom silicon from competitors and hyperscalers, yet it maintains superior gross margins. The market is currently pricing in a future where these margins hold, even as the capital required to build the future accelerates faster than the profits can catch up.",
+          "The industry is at an inflection point. The technology is real, and the earnings are real, but the financing structure is fragile. As the gap between spending and cash flow widens, the market will likely look for a catalyst to reset expectations. Until then, the AI trade remains a story of two: the record-breaking profits of the present and the structural risks of the future."
+        ],
+        "signals": {
+          "words": 471,
+          "sentences": 22,
+          "meanSentenceWords": 21.4,
+          "sentenceLengthCV": 0.33,
+          "paragraphLengthCV": 0.06,
+          "emDashesPer1000Words": 0,
+          "formulaicContrasts": 3,
+          "stockPhrases": 2,
+          "stockPhraseList": [
+            "inflection point",
+            "interconnected"
+          ],
+          "rhetoricalQuestions": 0,
+          "tripletLists": 2
+        }
+      },
+      "original": {
+        "label": "original prompts",
+        "story": {
+          "headline": "Nvidia's Earnings vs. The Fed's Warning: The AI Bubble Question",
+          "dek": "While Nvidia posts record profits, the Federal Reserve has flagged 'circular financing' in the AI sector as a stability risk, creating a tension between massive corporate cash flow and speculative market structures.",
+          "keyPoints": [
+            "Nvidia is generating real cash with $115.8 billion in quarterly revenue, unlike the revenue-less firms of the dot-com era.",
+            "The Federal Reserve has identified 'circular financing'—where investors in AI firms also sell them hardware—as a financial stability risk.",
+            "AI infrastructure spending is growing at 72% a year annually, a pace that outpaces the cash flow used to fund it."
+          ],
+          "paragraphs": [
+            "For the average retail investor, the question of whether artificial intelligence is a bubble has shifted from a theoretical debate to a portfolio reality. The S&P 500 Index now stands at 7201.1, a level that reflects a market increasingly priced for the continued success of a handful of technology giants. At the center of this gravity well is Nvidia, a company whose financial performance has become the primary benchmark for the entire AI trade.",
+            "The bull case for the current market is rooted in tangible earnings. Unlike the dot-com era, where many leading firms had no revenue to speak of, Nvidia is posting massive results. The company recently reported $115.8 billion in quarterly revenue, a figure that underscores the sheer scale of the hardware demand being driven by AI adoption. This cash generation is the primary argument that the current surge is a durable economic shift rather than a speculative frenzy.",
+            "However, a significant counter-argument is emerging from the highest levels of financial regulation. The Federal Reserve has explicitly identified 'circular financing' as a financial stability risk. This term describes a loop where large technology companies, or 'hyperscalers,' invest in smaller AI firms, which then use that capital to purchase hardware from the very companies that invested in them. This structure can inflate valuations without a corresponding increase in underlying economic utility, a dynamic that regulators are now watching closely.",
+            "The tension in the AI market is also visible in the physical infrastructure required to support it. Spending on AI data centers and chips is growing at a rate of 72% a year a year. This pace of capital expenditure is currently outpacing the cash flow generated by the companies using that infrastructure. Analysts project that these two lines—the spending and the cash flow—will only cross in late 2026, suggesting a period of intense strain on the industry's balance sheets.",
+            "The AI investment surge is characterized by a tension between Nvidia's record-breaking, cash-generative earnings and structural risks, including 'circular financing' and physical infrastructure bottlenecks.",
+            "Adding to the complexity is the personal drama surrounding Nvidia's CEO, Jensen Huang. Recent reports have alleged that Huang is a target of a Chinese government spy operation, a development that adds a layer of geopolitical risk to an already high-stakes industry. While the specific details of this 'row' remain a matter of ongoing investigation, it highlights the vulnerability of the world's most valuable chipmaker to non-market forces.",
+            "Despite these risks, the current market valuation is statistically more anchored to fundamentals than the peak of the dot-com bubble. Nvidia, for instance, trades at 16× trailing earnings trailing earnings, a multiple that, while high, is not the absurdity seen in the late 1990s. The market is not pricing in perfection, but it is pricing in a very high bar for continued growth.",
+            "For the retail investor, the takeaway is not a binary choice between 'bubble' and 'revolution.' The evidence suggests a market that is fundamentally stronger than its predecessors but is currently navigating a critical inflection point. The gap between the cash being spent and the cash being earned is the metric to watch. If that gap fails to close as projected, the 'circular' nature of the financing could lead to a sharp correction, regardless of how profitable Nvidia remains in the short term."
+          ],
+          "subheads": 1
+        },
+        "signals": {
+          "story": {
+            "words": 547,
+            "sentences": 25,
+            "meanSentenceWords": 21.9,
+            "sentenceLengthCV": 0.28,
+            "paragraphLengthCV": 0.26,
+            "emDashesPer1000Words": 3.7,
+            "formulaicContrasts": 0,
+            "stockPhrases": 3,
+            "stockPhraseList": [
+              "navigating",
+              "underscores",
+              "inflection point"
+            ],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 1
+          }
+        },
+        "numberDiscipline": {
+          "unknownTokens": [],
+          "bareNumbers": []
+        }
+      },
+      "revised": {
+        "label": "revised prompts",
+        "story": {
+          "headline": "The $1.5 Trillion Question: Is Nvidia's Boom Built on Sand?",
+          "dek": "Nvidia is printing cash at a rate that defies the dot-com era, yet the Federal Reserve has flagged the financing structure behind its growth as a systemic risk. The tension between real earnings and circular money is the defining question for AI investors.",
+          "keyPoints": [
+            "Nvidia's revenue is real and massive, distinguishing it from the revenue-less tech stocks of the late 1990s.",
+            "The Fed has identified 'circular financing'—where investors buy their own suppliers—as a financial stability risk.",
+            "AI infrastructure spending is growing faster than the cash flow funding it, with the two projected to cross in late 2026."
+          ],
+          "paragraphs": [
+            "Nvidia just reported quarterly revenue of $115.8 billion. That is a staggering number, one that would have seemed impossible to most market observers a decade ago. It is the engine of the current AI trade, and for many retail investors, it is the reason their portfolios have outperformed the broader market. But behind that headline figure lies a structural contradiction that is increasingly difficult to ignore: the company is generating real cash, yet the financial architecture supporting its growth has been flagged by the Federal Reserve as a potential stability risk.",
+            "The common narrative treats the AI boom as a simple repeat of the dot-com bubble. That comparison, while intuitive, misses a crucial distinction. In the late 1990s, many of the highest-flying tech stocks had little to no revenue. Nvidia is different. Its dominance is anchored by massive earnings growth and high margins, a reality that distinguishes it from the speculative shell companies of the previous era. However, the danger is not that the company is fake; the danger is that the funding mechanism for its expansion may be self-referential.",
+            "This is where the concept of 'circular financing' enters the picture. The Federal Reserve has identified this as a financial stability risk. In this dynamic, large technology companies (hyperscalers) and GPU makers invest in smaller firms. Those smaller firms then purchase hardware from the very companies that invested in them. It is a loop that can sustain growth without traditional market validation. While this structure has historically been used to fund innovation, the scale at which it is now operating in the AI sector is unprecedented.",
+            "The physical reality of the buildout adds another layer of complexity. AI infrastructure spending is growing at a rate that significantly outpaces the cash flow used to fund it. According to recent analysis, the two lines are projected to cross in late 2026. Until that point, the industry is running on momentum and external capital. If the growth in spending slows, or if the external financing dries up, the mismatch between what is being built and what is being paid for could become a source of significant volatility.",
+            "There is also a geopolitical undercurrent to the story. Recent reports suggest that US officials have identified Nvidia CEO Jensen Huang as a target of a Chinese government spy operation. While the specific details of these allegations are still emerging, they underscore the fact that the AI race is no longer just a corporate competition; it is a state-level strategic contest. This adds a layer of regulatory and security risk that did not exist in the dot-com era, where the primary risk was simply overvaluation.",
+            "For the everyday investor, the question is not whether Nvidia is a good company. By most metrics, it is. The question is whether the current valuation of the entire AI sector is sustainable given the financing structures and physical constraints involved. The S&P 500 is up 7.4% over the past year, a performance driven heavily by these mega-cap tech names. But if the 'circular' nature of the financing begins to unwind, or if the infrastructure buildout hits a physical wall, the correction could be sharp and sudden.",
+            "The market is currently priced for continued dominance and uninterrupted growth. The evidence suggests that while the fundamentals are stronger than in 2000, the risks are different. They are not just about hype; they are about the mechanics of how the industry pays for its own existence. Understanding that distinction is the key to navigating the next phase of the AI trade."
+          ],
+          "subheads": 0
+        },
+        "signals": {
+          "story": {
+            "words": 588,
+            "sentences": 34,
+            "meanSentenceWords": 17.3,
+            "sentenceLengthCV": 0.47,
+            "paragraphLengthCV": 0.11,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 2,
+            "stockPhrases": 2,
+            "stockPhraseList": [
+              "navigating",
+              "underscore"
+            ],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 0
+          }
+        },
+        "numberDiscipline": {
+          "unknownTokens": [],
+          "bareNumbers": [
+            "$1.5 Trillion",
+            "1.5 Trillion",
+            "1.5"
+          ]
+        }
+      },
+      "withArgument": {
+        "label": "revised prompts + stand-in author argument",
+        "story": {
+          "headline": "The AI Boom’s Real Risk Isn’t the Chips. It’s the Plumbing.",
+          "dek": "Nvidia is printing cash at a rate that would have looked impossible a decade ago, yet the Federal Reserve is flagging a financing structure that looks suspiciously like the dot-com era’s most dangerous trick. The technology may be real. The way it is being paid for is where the bubble hides.",
+          "keyPoints": [
+            "Nvidia’s revenue and margins are fundamentally different from the unprofitable tech firms of the early 2000s, grounding the AI boom in actual earnings rather than just hype.",
+            "The Fed has identified 'circular financing'—where giants fund their own customers—as a stability risk, a structural flaw that masks the true cost of AI infrastructure.",
+            "Infrastructure spending is growing faster than the cash flow used to pay for it, creating a timeline where the two lines are projected to cross in late 2026, marking a critical inflection point."
+          ],
+          "paragraphs": [
+            "Jensen Huang’s Nvidia is currently the center of a gravitational pull that has reshaped the entire technology sector. The company reported $115.8 billion in revenue for its third quarter, a figure that stands in stark contrast to the dot-com era, where many leading tech firms were burning cash without generating a single dollar of profit. This is the first reason the current AI surge feels different to many investors: the money is real, the margins are high, and the earnings are anchored by actual product sales rather than just promise.",
+            "But there is a counter-current to this optimism. The Federal Reserve has explicitly identified a practice known as 'circular financing' as a financial stability risk. In this arrangement, hyperscalers and GPU makers invest in smaller firms that then turn around and purchase hardware from the investors. It is a loop where the money goes out and comes back, inflating the appearance of demand. This is not a new concept; it is the exact mechanism that helped hide the fragility of the internet bubble twenty years ago.",
+            "The risk is not the technology. The risk is the plumbing.",
+            "The tension lies in the gap between the quality of the earnings and the structure of the funding. Nvidia maintains a commanding 80% of the market and trades at 16× trailing earnings trailing earnings, valuations that are statistically more anchored to fundamentals than the dot-com peak. However, the industry is facing a physical and financial bottleneck. Hyperscaler capital expenditure is growing at 72% a year, a pace that significantly outpaces the cash flow used to fund it.",
+            "This divergence creates a timeline. Analysts project that the line of infrastructure spending will cross the line of available cash flow in late 2026. Until that point, the system can sustain itself on the momentum of initial investments. After that point, the industry will have to prove that the revenue generated by AI infrastructure is sufficient to pay for the next wave of expansion without relying on the circular loops that the Fed is currently watching.",
+            "For the retail investor, this is not a question of whether AI is a 'real' technology. It is a question of whether the current financing structure can survive the transition from a growth phase to a maintenance phase. The 'row' involving Jensen Huang, which includes espionage allegations and regulatory scrutiny, adds a layer of geopolitical risk to an already complex financial picture. But the core issue remains the same: the technology is working, but the way it is being paid for is where the bubble hides.",
+            "The coming months will be a test of whether the AI industry can decouple its valuation from its financing structure. If the cash flow line stays below the spending line, the 'circular' nature of the investment will become a liability rather than a feature. The technology may be the future, but the plumbing is the present, and it is currently under pressure."
+          ],
+          "subheads": 0
+        },
+        "signals": {
+          "story": {
+            "words": 488,
+            "sentences": 25,
+            "meanSentenceWords": 19.5,
+            "sentenceLengthCV": 0.45,
+            "paragraphLengthCV": 0.37,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 1,
+            "stockPhrases": 0,
+            "stockPhraseList": [],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 1
+          }
+        },
+        "numberDiscipline": {
+          "unknownTokens": [],
+          "bareNumbers": []
+        }
+      },
+      "polish": [
+        {
+          "section": "story",
+          "fields": 12,
+          "changed": 6,
+          "ok": 5,
+          "flagged": 1,
+          "rejected": 0,
+          "discarded": 6,
+          "concerns": [],
+          "items": [
+            {
+              "path": "story.dek",
+              "label": "Dek",
+              "status": "ok",
+              "reasons": [],
+              "before": "Nvidia is generating record profits while the Federal Reserve warns that the financing structures underpinning the AI boom could pose systemic risks.",
+              "after": "Nvidia is generating record profits, yet the Federal Reserve warns that the financing structures underpinning the AI boom could pose systemic risks."
+            },
+            {
+              "path": "story.blocks[1].text",
+              "label": "Paragraph 2",
+              "status": "ok",
+              "reasons": [],
+              "before": "The S&P 500 has climbed 7.4% over the past year, reaching 7201.1 as of late November. This rally is heavily weighted toward technology, with Nvidia maintaining a commanding market share of 80% in the GPU market. However, the industry is not a monolith; it is a complex web of hyperscalers, chipmakers, and smaller startups, all interconnected by a flow of capital that regulators are now scrutinizing.",
+              "after": "The S&P 500 has climbed 7.4% over the past year, reaching 7201.1 as of late November. This rally is heavily weighted toward technology, with Nvidia maintaining a commanding market share of 80% in the GPU market. The industry, however, is a tangled web of hyperscalers, chipmakers, and smaller startups, all linked by a flow of capital that regulators are now scrutinizing."
+            },
+            {
+              "path": "story.blocks[3].text",
+              "label": "Paragraph 3",
+              "status": "flagged",
+              "reasons": [
+                "check: Certainty or negation wording changed (−“isn't”, −“doesn't”, +“not”): check the claim still says the same thing."
+              ],
+              "before": "The primary concern isn't that the technology doesn't work, but how it is being paid for. The Federal Reserve has identified 'circular financing' as a financial stability risk. In this model, large tech companies and GPU makers invest in smaller firms, which then use that capital to purchase hardware from the original investors. It is a closed loop where the demand for the product is partly manufactured by the product's own supplier.",
+              "after": "The primary concern is not that the technology fails, but how it is being paid for. The Federal Reserve has identified 'circular financing' as a financial stability risk. In this model, large tech companies and GPU makers invest in smaller firms, which then use that capital to purchase hardware from the original investors. It is a closed loop where the demand for the product is partly manufactured by the product's own supplier."
+            },
+            {
+              "path": "story.blocks[6].text",
+              "label": "Paragraph 5",
+              "status": "ok",
+              "reasons": [],
+              "before": "Amidst this financial scrutiny, CEO Jensen Huang has faced his own 'row.' While the market focuses on margins, US officials have reportedly identified Huang as a target of a Chinese government spy operation. This adds a geopolitical layer to the investment case, suggesting that the AI supply chain is not just a business model but a point of international friction.",
+              "after": "Amidst this financial scrutiny, CEO Jensen Huang has faced his own 'row.' While the market focuses on margins, US officials have reportedly identified Huang as a target of a Chinese government spy operation. This adds a geopolitical layer to the investment case, suggesting that the AI supply chain is a point of international friction, not just a business model."
+            },
+            {
+              "path": "story.blocks[7].text",
+              "label": "Paragraph 6",
+              "status": "ok",
+              "reasons": [],
+              "before": "For the retail investor, the question is no longer whether AI is a trend, but whether the current valuation is supported by the underlying economics. Nvidia's dominance is being challenged by custom silicon from competitors and hyperscalers, yet it maintains superior gross margins. The market is currently pricing in a future where these margins hold, even as the capital required to build the future accelerates faster than the profits can catch up.",
+              "after": "For the retail investor, the question is whether the current valuation is supported by the underlying economics. Nvidia's dominance is being challenged by custom silicon from competitors and hyperscalers, yet it maintains superior gross margins. The market is currently pricing in a future where these margins hold, even as the capital required to build the future accelerates faster than the profits can catch up."
+            },
+            {
+              "path": "story.blocks[8].text",
+              "label": "Paragraph 7",
+              "status": "ok",
+              "reasons": [],
+              "before": "The industry is at an inflection point. The technology is real, and the earnings are real, but the financing structure is fragile. As the gap between spending and cash flow widens, the market will likely look for a catalyst to reset expectations. Until then, the AI trade remains a story of two: the record-breaking profits of the present and the structural risks of the future.",
+              "after": "The industry is at a crossroads. The technology is real, and the earnings are real, but the financing structure is fragile. As the gap between spending and cash flow widens, the market will likely look for a catalyst to reset expectations. Until then, the AI trade remains a story of two: the record-breaking profits of the present and the structural risks of the future."
+            }
+          ],
+          "signalsBefore": {
+            "words": 474,
+            "sentences": 23,
+            "meanSentenceWords": 20.6,
+            "sentenceLengthCV": 0.38,
+            "paragraphLengthCV": 0.36,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 3,
+            "stockPhrases": 2,
+            "stockPhraseList": [
+              "inflection point",
+              "interconnected"
+            ],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 2
+          },
+          "signalsAfter": {
+            "words": 459,
+            "sentences": 23,
+            "meanSentenceWords": 20,
+            "sentenceLengthCV": 0.38,
+            "paragraphLengthCV": 0.37,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 1,
+            "stockPhrases": 0,
+            "stockPhraseList": [],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 2
+          }
+        }
+      ],
+      "revisedPrevious": {
+        "label": "revised prompts",
+        "story": {
+          "headline": "Nvidia's Record Earnings vs. The AI Spending Bubble",
+          "dek": "The AI boom is generating real cash, but the infrastructure race is growing faster than the money coming in to pay for it.",
+          "keyPoints": [
+            "Nvidia's massive revenue growth distinguishes the current AI era from the revenue-less dot-com bubble.",
+            "Hyperscaler capital expenditure is growing at a rate that significantly outpaces the cash flow used to fund it.",
+            "Valuations are currently more anchored to fundamentals than in 2000, but market concentration is at record levels."
+          ],
+          "paragraphs": [
+            "Nvidia just posted a quarter that would have looked like fiction a decade ago. The company's revenue hit $115.8 billion, a figure that anchors its financial performance in massive growth and high margins. For a retail investor, this is the part of the AI story that feels most real: a company that is not just promising the future, but actually selling the hardware to build it.",
+            "But the more you look at the plumbing of the AI boom, the more the picture gets complicated. The tension isn't about whether Nvidia is a good company; it's about whether the industry around it can sustain the pace it's setting. We are seeing a surge in investment that is characterized by a structural risk: the spending is growing much faster than the cash flow used to pay for it.",
+            "This is where the 'bubble' question stops being a vague internet debate and starts being a balance-sheet problem. Hyperscalers are investing in smaller firms that then buy hardware from the investors, a loop the Federal Reserve has flagged as a financial stability risk. It's not a Ponzi scheme, not yet, but it is a circular financing structure that relies on the next round of spending happening on time.",
+            "The spending is growing much faster than the cash flow used to pay for it.",
+            "There is a common narrative that the AI industry is just the dot-com bubble all over again. The evidence suggests that's too simple. Current valuations are statistically more anchored to fundamentals than they were in the late 1990s, and Nvidia's 16× trailing earnings trailing earnings multiple, while high, is supported by actual profits. The market is not pricing in a company that has no revenue; it is pricing in a company that has a lot of it.",
+            "However, the 'row' involving CEO Jensen Huang adds a layer of geopolitical risk that the balance sheets don't capture. US officials have reportedly identified him as a target of a Chinese government spy operation. Whether or not you buy into the espionage angle, it underscores that the AI race is no longer just a business competition; it's a state-level strategic contest. That changes the risk profile for anyone holding these stocks.",
+            "The core question for your portfolio isn't whether AI is real. It is. The question is whether the current rate of infrastructure spending is sustainable. The data shows that capital expenditure growth is outpacing cash flow, with the two lines projected to cross in late 2026. Until that crossover happens, the industry is running on momentum and confidence. When it doesn't, the correction won't be about a lack of technology; it will be about a lack of cash.",
+            "For now, the AI trade is working. But the margin for error is shrinking. The next sign that the bubble is real won't be a drop in Nvidia's stock price; it will be a slowdown in the capital expenditure of the companies buying its chips. Watch that number, not the headlines."
+          ],
+          "subheads": 0
+        },
+        "signals": {
+          "story": {
+            "words": 496,
+            "sentences": 27,
+            "meanSentenceWords": 18.3,
+            "sentenceLengthCV": 0.43,
+            "paragraphLengthCV": 0.31,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 2,
+            "stockPhrases": 1,
+            "stockPhraseList": [
+              "underscores"
+            ],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 0
+          }
+        },
+        "numberDiscipline": {
+          "unknownTokens": [],
+          "bareNumbers": []
+        }
+      },
+      "polishPrevious": [
+        {
+          "section": "story",
+          "fields": 12,
+          "changed": 5,
+          "ok": 2,
+          "flagged": 3,
+          "rejected": 0,
+          "discarded": 7,
+          "concerns": [],
+          "items": [
+            {
+              "path": "story.dek",
+              "label": "Dek",
+              "status": "ok",
+              "reasons": [],
+              "before": "Nvidia is generating record profits while the Federal Reserve warns that the financing structures underpinning the AI boom could pose systemic risks.",
+              "after": "Nvidia is printing record profits, yet the Federal Reserve warns that the financing structures underpinning the AI boom could pose systemic risks."
+            },
+            {
+              "path": "story.blocks[1].text",
+              "label": "Paragraph 2",
+              "status": "flagged",
+              "reasons": [
+                "check: Certainty or negation wording changed (−“not”): check the claim still says the same thing."
+              ],
+              "before": "The S&P 500 has climbed 7.4% over the past year, reaching 7201.1 as of late November. This rally is heavily weighted toward technology, with Nvidia maintaining a commanding market share of 80% in the GPU market. However, the industry is not a monolith; it is a complex web of hyperscalers, chipmakers, and smaller startups, all interconnected by a flow of capital that regulators are now scrutinizing.",
+              "after": "The S&P 500 has climbed 7.4% over the past year, reaching 7201.1 as of late November. This rally is heavily weighted toward technology, with Nvidia maintaining a commanding market share of 80% in the GPU market. But the industry is a web of hyperscalers, chipmakers, and smaller startups, all linked by a flow of capital that regulators are now scrutinizing."
+            },
+            {
+              "path": "story.blocks[3].text",
+              "label": "Paragraph 3",
+              "status": "flagged",
+              "reasons": [
+                "check: Certainty or negation wording changed (−“isn't”, −“doesn't”, +“not”): check the claim still says the same thing."
+              ],
+              "before": "The primary concern isn't that the technology doesn't work, but how it is being paid for. The Federal Reserve has identified 'circular financing' as a financial stability risk. In this model, large tech companies and GPU makers invest in smaller firms, which then use that capital to purchase hardware from the original investors. It is a closed loop where the demand for the product is partly manufactured by the product's own supplier.",
+              "after": "The concern is not that the technology fails, but how it is being paid for. The Federal Reserve has identified 'circular financing' as a financial stability risk. In this model, large tech companies and GPU makers invest in smaller firms, which then use that capital to purchase hardware from the original investors. It is a closed loop where the demand for the product is partly manufactured by the product's own supplier."
+            },
+            {
+              "path": "story.blocks[7].text",
+              "label": "Paragraph 6",
+              "status": "flagged",
+              "reasons": [
+                "check: Certainty or negation wording changed (−“no”): check the claim still says the same thing."
+              ],
+              "before": "For the retail investor, the question is no longer whether AI is a trend, but whether the current valuation is supported by the underlying economics. Nvidia's dominance is being challenged by custom silicon from competitors and hyperscalers, yet it maintains superior gross margins. The market is currently pricing in a future where these margins hold, even as the capital required to build the future accelerates faster than the profits can catch up.",
+              "after": "For the retail investor, the question is whether the current valuation is supported by the underlying economics. Nvidia's dominance is being challenged by custom silicon from competitors and hyperscalers, yet it maintains superior gross margins. The market is currently pricing in a future where these margins hold, even as the capital required to build the future accelerates faster than the profits can catch up."
+            },
+            {
+              "path": "story.blocks[8].text",
+              "label": "Paragraph 7",
+              "status": "ok",
+              "reasons": [],
+              "before": "The industry is at an inflection point. The technology is real, and the earnings are real, but the financing structure is fragile. As the gap between spending and cash flow widens, the market will likely look for a catalyst to reset expectations. Until then, the AI trade remains a story of two: the record-breaking profits of the present and the structural risks of the future.",
+              "after": "The technology is real, and the earnings are real, but the financing structure is fragile. As the gap between spending and cash flow widens, the market will likely look for a catalyst to reset expectations. Until then, the AI trade remains a story of two: the record-breaking profits of the present and the structural risks of the future."
+            }
+          ],
+          "signalsBefore": {
+            "words": 474,
+            "sentences": 23,
+            "meanSentenceWords": 20.6,
+            "sentenceLengthCV": 0.38,
+            "paragraphLengthCV": 0.36,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 3,
+            "stockPhrases": 2,
+            "stockPhraseList": [
+              "inflection point",
+              "interconnected"
+            ],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 2
+          },
+          "signalsAfter": {
+            "words": 452,
+            "sentences": 22,
+            "meanSentenceWords": 20.5,
+            "sentenceLengthCV": 0.35,
+            "paragraphLengthCV": 0.37,
+            "emDashesPer1000Words": 0,
+            "formulaicContrasts": 1,
+            "stockPhrases": 0,
+            "stockPhraseList": [],
+            "rhetoricalQuestions": 0,
+            "tripletLists": 2
+          }
+        }
+      ]
+    }
+  ]
+}

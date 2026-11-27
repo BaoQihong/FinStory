@@ -56,12 +56,12 @@ Phase 3 builds on.
 
 ## Phase 3 — Application development, deployment and operations
 
-**Status: IN PROGRESS — 3A approved and active (2026-11-27).** Each sub-phase needs its own approval.
+**Status: IN PROGRESS — 3A delivered and deployed; 3B (3B.1 + 3B.2) approved 2026-11-27 and implemented locally (not yet pushed/deployed).** Each sub-phase needs its own approval.
 
-- **3A — Publishing engine** ← **current.** Publication lifecycle (publish, republish, unpublish), immutable published snapshots and revision history, permanent slugs, pre-publication validation, studio publishing controls, RLS-protected public data interface. No public page.
-- **3B.1 — Public article renderer** — not started. `/story/[slug]` renders published snapshots through the existing ArticleView.
-- **3B.2 — Editorial quality and writing improvements** — not started. Style guidelines, prompt improvements, fewer AI writing patterns, optional polishing workflow.
-- **3C — Public homepage** — deferred.
+- **3A — Publishing engine** — **done, deployed** (`b1cdb61`). Publication lifecycle (publish, republish, unpublish), immutable published snapshots and revision history, permanent slugs, pre-publication validation, studio publishing controls, RLS-protected public data interface. No public page.
+- **3B.1 — Public article experience** ← **current, implemented and tested locally.** `/story/[slug]` renders the live snapshot through the shared ArticleView (WYSIWYG with preview), real 404s via a proxy slug check, per-request freshness, studio "View published article" (D-047).
+- **3B.2 — Editorial quality and natural writing** ← **current, implemented; editorial evaluation awaiting product-owner judgment.** Versioned style guide, restructured prompts with author argument/voice, whole-article awareness, Editorial Polish with human review and protected-content checks (D-048, D-049).
+- **3C — Public homepage and article discovery** — deferred (new articles do not appear on the homepage; expected).
 - **3D — Production polish and optimisation** — deferred.
 
 Placeholder. Expected outputs: architecture decisions

@@ -7,6 +7,7 @@ import assert from 'node:assert/strict';
 import { checkPublication, publicationState, RESERVED_SLUGS, slugify, slugProblem, uniqueSlug } from '../../lib/publishing/rules.ts';
 import { PublishedStoryV1, toPublicSnapshot } from '../../lib/publishing/snapshot.ts';
 import { SeshatArticleV1, type SeshatArticle } from '../../lib/studio/schema.ts';
+import { DRAFT_FOOTER, PUBLIC_FOOTER, fromDraft, fromSnapshot } from '../../lib/content/render-model.ts';
 
 const TODAY = '2026-11-27';
 const ok = { required: false, reasons: [] as string[] };
@@ -154,4 +155,67 @@ test('snapshot is a copy: later draft edits do not change it', () => {
   assert.equal(s.story.headline, 'A test headline about rates');
   assert.equal((s.story.blocks[0] as { text: string }).text, 'Paragraph one.');
   assert.equal(s.methodology.length, 1);
+});
+
+// ── Phase 3B.1: shared renderer (WYSIWYG) ────────────────────────────────
+// The public page and the editorial preview render the same ArticleView from
+// the same render model; these tests pin that the model is identical for the
+// same content, except header dates, the footer note and attention notes.
+
+const withAttention = () => {
+  const d = fixture();
+  d.macro.attention = { required: true, reasons: ['PRIVATE-EDITOR-NOTE'] };
+  return d;
+};
+
+test('public render model equals the preview render model for the same content', () => {
+  const draft = withAttention();
+  const preview = fromDraft(draft);
+  const pub = fromSnapshot(toPublicSnapshot(draft), { firstPublishedAt: '2026-11-25T10:00:00Z', publishedAt: '2026-11-25T12:00:00Z' });
+  const strip = (m: ReturnType<typeof fromDraft>) => {
+    const a = structuredClone(m.article) as Record<string, unknown> & { [k: string]: unknown };
+    for (const s of ['story', 'macro', 'analytics', 'outlook']) delete (a[s] as Record<string, unknown>).attention;
+    delete a.date;
+    delete a.updated;
+    delete a.footerNote;
+    return { article: a, data: m.data };
+  };
+  assert.deepEqual(strip(pub), strip(preview));
+  assert.equal(preview.article.footerNote, DRAFT_FOOTER);
+  assert.equal(pub.article.footerNote, PUBLIC_FOOTER);
+});
+
+test('public render model carries no attention notes and uses publication dates', () => {
+  const draft = withAttention();
+  const pub = fromSnapshot(toPublicSnapshot(draft), { firstPublishedAt: '2026-11-25T10:00:00Z', publishedAt: '2026-11-27T09:00:00Z' });
+  assert.ok(!JSON.stringify(pub).includes('PRIVATE-EDITOR-NOTE'));
+  for (const s of ['story', 'macro', 'analytics', 'outlook'] as const) assert.equal(pub.article[s].attention, undefined);
+  assert.equal(pub.article.date, '2026-11-25');
+  assert.equal(pub.article.updated, '2026-11-27');
+  const same = fromSnapshot(toPublicSnapshot(draft), { firstPublishedAt: '2026-11-25T10:00:00Z', publishedAt: '2026-11-25T18:00:00Z' });
+  assert.equal(same.article.updated, undefined);
+  // The preview keeps the editor's attention notes.
+  assert.deepEqual(fromDraft(draft).article.macro.attention, { required: true, reasons: ['PRIVATE-EDITOR-NOTE'] });
+});
+
+test('fromDraft mapping is unchanged from Phase 2B (regression reference)', () => {
+  const c = withAttention();
+  // The Phase 2B mapping, verbatim, as the reference.
+  const legacy = {
+    section: c.meta.section,
+    headline: c.story.headline,
+    dek: c.story.dek,
+    byline: c.meta.author,
+    date: c.meta.updatedAt.slice(0, 10),
+    dataCutoff: c.meta.asOf,
+    keyPoints: c.story.keyPoints,
+    story: { id: 'story', label: 'The Story', title: c.story.headline, blocks: c.story.blocks, attention: c.story.attention },
+    macro: { id: 'macro', label: 'Macro', ...c.macro },
+    analytics: { id: 'analytics', label: 'Analytics', ...c.analytics, charts: c.analytics.charts, comparisons: c.analytics.comparisons },
+    outlook: { id: 'outlook', label: 'Outlook', ...c.outlook },
+    methodology: c.methodology,
+    citations: c.evidence.citations.map((x) => ({ label: x.title, url: x.url, note: x.ref, publisher: x.publisher, publishedAt: x.publishedAt })),
+    footerNote: DRAFT_FOOTER,
+  };
+  assert.deepEqual(fromDraft(c).article, legacy);
 });
