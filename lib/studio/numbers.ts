@@ -62,7 +62,7 @@ export function findBareNumbers(text: string): BareNumber[] {
 
 // Superlatives and comparisons that need a data fact behind them in the same sentence.
 const SUPERLATIVE = /\b(record[- ](?:high|low)|all-time|(?:\w+-)?(?:year|month|decade)[- ](?:high|low)|highest|lowest|strongest|weakest|steepest|sharpest|biggest|largest|smallest|(?:above|below) (?:its|the) (?:\w+[- ])?(?:year )?average)\b/i;
-const EXTREME_TOKEN = /\{[a-zA-Z0-9]*(?:High|Low)(?:1y|5y|All)\}|\{[a-zA-Z0-9]*(?:HighestSince|LowestSince)\}/;
+const EXTREME_TOKEN = /\{[a-zA-Z0-9]*(?:High|Low)(?:1y|5y|All)(?:\.date)?(?::(?:short|abs))?\}|\{[a-zA-Z0-9]*(?:HighestSince|LowestSince)\}/;
 
 /** Sentences making a superlative/average claim without an extreme-value fact token in the same sentence. */
 export function findUnsupportedSuperlatives(text: string): string[] {

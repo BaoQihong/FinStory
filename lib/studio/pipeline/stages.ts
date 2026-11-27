@@ -18,6 +18,7 @@ import {
   OutlookSection,
   SCHEMA_VERSION,
   SECTION_ORDER,
+  SeshatArticleV1,
   StorySection,
   noAttention,
   type SeshatArticle,
@@ -604,7 +605,7 @@ export function assembleArticle(ctx: StageContext, fixes: { path: string; text: 
   const now = deps.now().toISOString();
   const missing = (stage: string) => ({ required: true, reasons: [`The ${stage} stage did not complete.`] });
 
-  const article: SeshatArticle = {
+  const built: SeshatArticle = {
     schemaVersion: SCHEMA_VERSION,
     meta: {
       workingTitle: (ctx.article.brief.headline || p?.workingTitle || ctx.article.working_title).slice(0, 200),
@@ -658,6 +659,8 @@ export function assembleArticle(ctx: StageContext, fixes: { path: string; text: 
       generatedAt: now,
     },
   };
+  // Deep copy: stage outputs are shared objects and must never be mutated by fixes.
+  const article: SeshatArticle = structuredClone(built);
   for (const fx of fixes) setPath(article, fx.path, fx.text);
   dedupeUnits(article);
   fixSignWords(article);
@@ -692,6 +695,15 @@ export function dedupeUnits(article: SeshatArticle): void {
   const rules: [RegExp, string][] = [];
   for (const [k, f] of Object.entries(facts)) {
     const tok = `\\{${k}(?::abs)?\\}`;
+    if (f.format === 'text' && f.text) {
+      // Quoted figures carry their own qualifier and unit ("over 220 gigawatts"): drop a
+      // repeated leading word ("over {x}") or a repeated trailing unit word ("{x} gigawatts").
+      const words = f.text.trim().split(/\s+/);
+      if (words.length > 1 && /^[a-z]+$/i.test(words[0])) rules.push([new RegExp(`\\b${esc(words[0])}\\s+(${tok})`, 'gi'), '$1']);
+      const last = words[words.length - 1];
+      if (words.length > 1 && /^[a-z/]+$/i.test(last)) rules.push([new RegExp(`(${tok})\\s+${esc(last)}\\b`, 'gi'), '$1']);
+      continue;
+    }
     if (f.format === 'pp') rules.push([new RegExp(`(${tok})\\s*(?:percentage points?|pp)\\b`, 'g'), '$1']);
     if (f.format === 'pct') rules.push([new RegExp(`(${tok})\\s*(?:%|per ?cent\\b)`, 'g'), '$1']);
     if (f.format !== 'level' || !f.unit) continue;
@@ -836,6 +848,20 @@ export async function finalizeDraft(ctx: StageContext, opts: { partial: boolean 
   const { deps } = ctx;
   const fixes = ((ctx.outputs.repair as { fixes?: { path: string; text: string }[] } | undefined)?.fixes ?? []).slice();
   let article = assembleArticle(ctx, fixes);
+  // A repair rewrite that breaks a field's schema limits (e.g. too long) is discarded:
+  // the original text is kept and the editor is told, rather than failing the draft.
+  const rejectedFixes: string[] = [];
+  for (let pass = 0; pass < 3; pass++) {
+    const check = SeshatArticleV1.safeParse(article);
+    if (check.success) break;
+    const bad = new Set(check.error.issues.map((i) => i.path.map((x) => (typeof x === 'number' ? `[${x}]` : `.${String(x)}`)).join('').replace(/^\./, '').replace(/\.\[/g, '[')));
+    const drop = fixes.filter((f) => bad.has(f.path));
+    if (!drop.length) break;
+    rejectedFixes.push(...drop.map((f) => f.path));
+    fixes.splice(0, fixes.length, ...fixes.filter((f) => !bad.has(f.path)));
+    article = assembleArticle(ctx, fixes);
+  }
+  for (const path of rejectedFixes) ctx.warn(`A fact-check rewrite of ${path} broke the field's limits and was discarded; the original text was kept — please review it.`);
   const requalified = qualifyEvidence(article);
   // Recompute every data fact from the stored datasets — what is displayed is what is validated.
   let recomputed: Record<string, Fact> | undefined;

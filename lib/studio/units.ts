@@ -35,6 +35,7 @@ const RULES: { test: RegExp; info: (u: string) => UnitInfo }[] = [
   { test: /cents per kilowatt-?hour/i, info: () => ({ kind: 'level', display: { prefix: '', suffix: ' cents per kWh' }, label: 'cents per kWh', decimals: 2 }) },
   { test: /million kilowatt-?hours/i, info: () => ({ kind: 'level', display: { prefix: '', suffix: ' million kWh' }, label: 'million kWh', decimals: 0 }) },
   { test: /thousand megawatt-?hours/i, info: () => ({ kind: 'level', display: { prefix: '', suffix: ' thousand MWh' }, label: 'thousand MWh', decimals: 0 }) },
+  { test: /^thousands$/i, info: () => ({ kind: 'level', display: { prefix: '', suffix: ' thousand' }, label: 'thousands', decimals: 0 }) },
   { test: /^thousands of units$/i, info: () => ({ kind: 'level', display: { prefix: '', suffix: ' thousand units' }, label: 'thousand units', decimals: 0 }) },
   { test: /^number of units$/i, info: () => ({ kind: 'level', display: { prefix: '', suffix: ' units' }, label: 'units', decimals: 0 }) },
   { test: /months'? supply/i, info: () => ({ kind: 'level', display: { prefix: '', suffix: " months' supply" }, label: "months' supply", decimals: 1 }) },

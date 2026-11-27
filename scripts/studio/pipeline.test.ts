@@ -352,3 +352,32 @@ test('annual series use year precision; large dollar amounts have no cents; "all
   assert.equal(resolveTokens('{incLatest} in {incLatest.date}', { facts: p.facts, dates: p.dates }), '$87,460 in 2025');
   assert.deepEqual(findUnsupportedSuperlatives('Prices hit {cpHighAll}, an all-time high.'), ['all-time']);
 });
+
+test('a repair rewrite that breaks field limits is discarded, not fatal', async () => {
+  const { store, deps, jobId, articleId } = setup();
+  const original = scripted.repair;
+  const originalReview = scripted.review;
+  scripted.review = () => ({ problems: [{ path: 'outlook.scenarios[0].watch[0]', problem: 'Too vague.', kind: 'other' }, { path: 'story.blocks[2].text', problem: 'x', kind: 'other' }] });
+  scripted.repair = () => ({ fixes: [{ path: 'outlook.scenarios[0].watch[0]', text: 'x'.repeat(500) }, { path: 'story.blocks[2].text', text: 'Producers announced a cut of {srcCut}.' }] });
+  try {
+    const job = await runToEnd(deps, jobId);
+    assert.equal(job.status, 'succeeded', JSON.stringify(job.error));
+    const c = (await store.getArticle(articleId))!.content as SeshatArticle;
+    assert.equal(c.outlook.scenarios[0].watch[0], 'Rate A'); // original kept
+    assert.equal((c.story.blocks[2] as { text: string }).text, 'Producers announced a cut of {srcCut}.'); // valid fix applied
+    assert.ok(job.warnings.some((w) => /broke the field's limits/.test(w.message)));
+  } finally {
+    scripted.repair = original;
+    scripted.review = originalReview;
+  }
+});
+
+test('a superlative citing the date of an extreme-value fact is supported', () => {
+  assert.deepEqual(findUnsupportedSuperlatives('Supply is the highest since {supplyHigh1y.date}.'), []);
+});
+
+test('words repeated around a quoted source figure are removed', () => {
+  const a = { story: { dek: 'The queue holds over {q} gigawatts; it is {q}.' }, macro: {}, analytics: {}, outlook: {}, data: { facts: { q: { value: 220, format: 'text', text: 'over 220 gigawatts', decimals: 0, seriesIds: [], sourceRefs: ['S1'], method: '' } } } };
+  dedupeUnits(a as never);
+  assert.equal(a.story.dek, 'The queue holds {q}; it is {q}.');
+});
