@@ -22,6 +22,7 @@ type Tab = (typeof SECTION_ORDER)[number] | 'research' | 'data' | 'checks' | 'hi
 export function DraftWorkspace(props: {
   articleId: string;
   title: string;
+  temporary?: boolean;
   status: string;
   revision: number;
   brief: StoryBrief;
@@ -99,6 +100,7 @@ export function DraftWorkspace(props: {
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
+          {props.temporary ? <span className="rounded-full bg-cream-200 px-2.5 py-1 text-xs font-semibold text-ink-soft">Temporary</span> : null}
           <StatusBadge status={status} job={props.job ?? undefined} />
           <span className="text-xs text-muted">rev {revision}</span>
           {draft ? (

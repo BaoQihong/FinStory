@@ -90,6 +90,20 @@ export type DatasetRow = {
   sha256: string;
 };
 
+export type Service = 'arli' | 'tavily' | 'fred' | 'tiingo' | 'eia';
+export type UsageRow = {
+  job_id: string;
+  article_id: string;
+  stage: Stage;
+  service: Service;
+  key_fingerprint: string;
+  model: string | null;
+  prompt_tokens: number;
+  completion_tokens: number;
+  credits: number;
+  calls: number;
+};
+
 export interface Store {
   getJob(jobId: string): Promise<Job | null>;
   /** Atomically take the job lease; null when another step holds it or the job is not active. */
@@ -110,6 +124,8 @@ export interface Store {
   replaceFindings(jobId: string, articleId: string, rows: FindingRow[]): Promise<void>;
   replaceDatasets(jobId: string, articleId: string, rows: DatasetRow[]): Promise<void>;
   getDatasets(jobId: string): Promise<DatasetRow[]>;
+  /** Append to the per-service / per-key usage ledger. */
+  recordUsage(rows: UsageRow[]): Promise<void>;
 }
 
 export type Deps = {
@@ -117,6 +133,8 @@ export type Deps = {
   llm: Llm;
   search: SearchProvider;
   data: DataProvider[];
+  /** sha256(api key) prefix per service — identifies which key was used, never the key. */
+  keyFingerprints: Partial<Record<Service, string>>;
   /** ISO date used for staleness and windows (injected for deterministic tests). */
   today: () => string;
   now: () => Date;

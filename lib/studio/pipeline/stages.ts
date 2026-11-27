@@ -37,7 +37,7 @@ export const LIMITS = {
   extractUrls: 6,
   candidatesPerNeed: 6,
   maxCandidates: 42,
-  maxSeries: 8,
+  maxSeries: 10,
   historyYears: 12,
   excerptChars: 5000,
 };
@@ -54,7 +54,7 @@ export const PlanOut = z.object({
   whyReadersCare: t(500),
   questions: z.array(t(300)).min(2).max(6),
   searches: z.array(z.object({ query: t(200), purpose: t(200), recent: z.boolean() })).min(3).max(LIMITS.searches),
-  dataNeeds: z.array(z.object({ need: t(200), why: t(300), searchText: t(120) })).min(2).max(7),
+  dataNeeds: z.array(z.object({ need: t(200), why: t(300), searchText: t(120) })).min(2).max(9),
   storyboardConcern: z.string().max(400),
 });
 export type PlanOut = z.infer<typeof PlanOut>;
@@ -71,7 +71,7 @@ Plan the research for this story:
 - centralQuestion, angle and whyReadersCare: the editorial core in plain language.
 - questions: what the research must answer.
 - searches: ${LIMITS.searches} or fewer web searches. Mix recent developments (recent=true, e.g. latest central-bank decisions, announcements) and background/mechanism explainers (recent=false). Favour queries that surface primary sources (central banks, statistical agencies, official agencies) and credible financial journalism.
-- dataNeeds: the economic/market time series that would let readers see the story in numbers (e.g. an exchange rate, policy rates, bond yields, commodity prices, inventories, an equity benchmark). For each give searchText: a short phrase to search an economic-data catalogue (like FRED), e.g. "Japan 10-year government bond yield".
+- dataNeeds: the economic/market time series that would let readers see the story in numbers. Include a need for EVERY measurable thing the brief explicitly asks about (e.g. "regional price differences" → regional/metro price indices; "consumer electricity prices" → a retail electricity price series) (e.g. an exchange rate, policy rates, bond yields, commodity prices, inventories, an equity benchmark). For each give searchText: a short phrase to search an economic-data catalogue (like FRED), e.g. "Japan 10-year government bond yield".
 - storyboardConcern: empty string if the prompt suits a four-section financial story (story, macro numbers, analytics, outlook); otherwise explain the problem.`;
   const r = await deps.llm.complete({ stage: 'plan', system: SYSTEM, user, schema: PlanOut, maxTokens: 1800, temperature: 0.3 });
   ctx.metric({ llm: { ...r.usage, attempts: r.attempts } });
@@ -188,33 +188,36 @@ async function discover(ctx: StageContext): Promise<DiscoverOut> {
     } else if (byKey.size < LIMITS.maxCandidates) byKey.set(k, { ...m, cid: '', forNeeds: [need] });
   };
   const without: string[] = [];
-  for (const [i, need] of p.dataNeeds.entries()) {
-    const before = byKey.size;
-    const fred = providers.fred;
-    if (fred?.enabled && fred.search) {
-      try {
-        count('fred');
-        const found = await fred.search(need.searchText, 12);
-        found
-          .filter((m) => !/discontinued/i.test(m.title) && freshEnough(m, today))
-          .slice(0, LIMITS.candidatesPerNeed)
-          .forEach((m) => add(m, i));
-      } catch (e) {
-        ctx.warn(`FRED search failed for "${need.searchText}": ${(e as Error).message}`);
+  // Network lookups run concurrently (EIA can take 20–45 s per call); results are
+  // merged afterwards in need order so candidate numbering stays deterministic.
+  const fred = providers.fred;
+  const lookups = await Promise.all(
+    p.dataNeeds.map(async (need) => {
+      const out: SeriesMeta[] = [];
+      if (fred?.enabled && fred.search) {
+        try {
+          count('fred');
+          const found = await fred.search(need.searchText, 12);
+          out.push(...found.filter((m) => !/discontinued/i.test(m.title) && freshEnough(m, today)).slice(0, LIMITS.candidatesPerNeed));
+        } catch (e) {
+          ctx.warn(`FRED search failed for "${need.searchText}": ${(e as Error).message}`);
+        }
       }
-    }
-    for (const r of registryMatches(`${need.need} ${need.searchText}`, 3)) {
-      const prov = providers[r.provider];
-      if (!prov?.enabled || byKey.has(`${r.provider}:${r.id}`)) {
-        if (byKey.has(`${r.provider}:${r.id}`)) add(byKey.get(`${r.provider}:${r.id}`)!, i);
-        continue;
-      }
-      count(r.provider);
-      const m = await prov.meta(r.id);
-      if (m && freshEnough(m, today)) add(m, i);
-    }
-    if (byKey.size === before && ![...byKey.values()].some((c) => c.forNeeds.includes(i))) without.push(need.need);
-  }
+      const reg = registryMatches(`${need.need} ${need.searchText}`, 3).filter((r) => providers[r.provider]?.enabled);
+      const metas = await Promise.all(
+        reg.map((r) => {
+          count(r.provider);
+          return providers[r.provider].meta(r.id);
+        }),
+      );
+      for (const m of metas) if (m && freshEnough(m, today)) out.push(m);
+      return out;
+    }),
+  );
+  lookups.forEach((metas, i) => {
+    for (const m of metas) add(byKey.get(`${m.provider}:${m.id}`) ?? m, i);
+    if (![...byKey.values()].some((c) => c.forNeeds.includes(i))) without.push(p.dataNeeds[i].need);
+  });
   // Tickers the editor named explicitly (e.g. "EWJ, SPY") are verified with the market-data provider.
   const tiingo = providers.tiingo;
   if (tiingo?.enabled && ctx.article.brief.assets) {
@@ -265,7 +268,7 @@ CANDIDATE DATASETS (metadata reported by the data providers; choose ONLY from th
 ${list}
 
 Choose the datasets for this story:
-- series: up to ${LIMITS.maxSeries} candidates that best answer the data needs. CHECK THE UNITS AND TITLE match the need: an exchange rate has units like 'Japanese Yen to One U.S. Dollar'; a policy or market rate is in Percent; intervention amounts, flows, issuance or counts are NOT prices or rates — never use them as one. Prefer current, frequently updated, headline measures; avoid near-duplicates. Give each a short camelCase key (e.g. usdjpy, japan10y, wti) and a reader-friendly label (e.g. "Yen per US dollar").
+- series: up to ${LIMITS.maxSeries} candidates that best answer the data needs. Cover every data need that has a suitable candidate before adding a second series for any one need — explicit requests in the brief (e.g. regional comparisons: pick 2–4 contrasting regions) come first. CHECK THE UNITS AND TITLE match the need: an exchange rate has units like 'Japanese Yen to One U.S. Dollar'; a policy or market rate is in Percent; intervention amounts, flows, issuance or counts are NOT prices or rates — never use them as one. Prefer current, frequently updated, headline measures; avoid near-duplicates. Give each a short camelCase key (e.g. usdjpy, japan10y, wti) and a reader-friendly label (e.g. "Yen per US dollar").
 - derived: optional calculations the application will perform: "difference" (inputs [a, b] → a minus b; both must have the SAME units, e.g. two interest rates → a yield differential); "yoy" (inputs [x] → year-over-year % change of an index or price; never of a rate); "convert" (inputs [asset, fxRate] → an asset priced in a foreign currency re-expressed in the exchange rate's base currency, e.g. a Japanese stock index in US-dollar terms using yen-per-dollar — use it whenever the story concerns foreign assets held by investors in another currency). Use series keys as inputs.
 - charts: 1–5 charts, each answering one editorial question. seriesKeys (series or derived keys) in one chart MUST share the same units; at most 4. from = start date (YYYY-MM-DD), usually 3–10 years before today (${ctx.deps.today()}).
 - unmetNeeds: data needs none of the candidates can meet (do not force an unrelated series).`;
@@ -327,44 +330,52 @@ async function fetchData(ctx: StageContext): Promise<FetchOut> {
   const start = `${Number(deps.today().slice(0, 4)) - LIMITS.historyYears}-01-01`;
   const rows: DatasetRow[] = [];
   const calls: Record<string, number> = {};
-  for (const s of sel.series) {
-    const c = d.candidates.find((x) => x.cid === s.candidate)!;
-    const prov = deps.data.find((p) => p.id === c.provider);
-    if (!prov?.enabled) {
-      ctx.warn(`${c.provider} is not configured; "${s.label}" skipped.`);
+  // Fetch all selected series concurrently (bounded by the selection size, ≤ 8).
+  const fetched = await Promise.all(
+    sel.series.map(async (s) => {
+      const c = d.candidates.find((x) => x.cid === s.candidate)!;
+      const prov = deps.data.find((p) => p.id === c.provider);
+      if (!prov?.enabled) return { s, c, error: `${c.provider} is not configured` };
+      try {
+        return { s, c, prov, r: await prov.fetch(c.id, start) };
+      } catch (e) {
+        return { s, c, error: (e as Error).message };
+      }
+    }),
+  );
+  for (const f of fetched) {
+    const { s, c } = f;
+    if (!('r' in f) || !f.r || !f.prov) {
+      ctx.warn(`Could not retrieve ${c.id} (${s.label}): ${'error' in f ? f.error : 'unknown error'}`);
       continue;
     }
-    try {
-      const r = await prov.fetch(c.id, start);
-      calls[prov.id] = (calls[prov.id] ?? 0) + r.calls;
-      const present = r.observations.filter((o) => o.value !== null);
-      if (present.length < 2) {
-        ctx.warn(`${c.id} returned too few observations; skipped.`);
-        continue;
-      }
-      if (!freshEnough({ ...r.meta, observationEnd: present.at(-1)!.date }, deps.today()))
-        ctx.warn(`${s.label} (${c.id}) is stale: latest observation ${present.at(-1)!.date}.`);
-      const missing = r.observations.length - present.length;
-      rows.push({
-        key: s.key,
-        provider: prov.id,
-        series_id: r.meta.id,
-        name: s.label,
-        units: r.meta.units,
-        frequency: r.meta.frequency,
-        seasonal_adjustment: r.meta.seasonalAdjustment,
-        definition: `${r.meta.title}.${r.meta.notes ? ' ' + r.meta.notes : ''}`.slice(0, 900),
-        source_url: r.meta.sourceUrl,
-        retrieved_at: r.retrievedAt,
-        observation_start: r.observations[0]?.date ?? null,
-        observation_end: present.at(-1)!.date,
-        transformations: [...r.transformations, ...(missing ? [`${missing} missing observation(s) kept as gaps (not filled).`] : [])],
-        observations: r.observations,
-        sha256: r.sha256,
-      });
-    } catch (e) {
-      ctx.warn(`Could not retrieve ${c.id} (${s.label}): ${(e as Error).message}`);
+    const { r, prov } = f;
+    calls[prov.id] = (calls[prov.id] ?? 0) + r.calls;
+    const present = r.observations.filter((o) => o.value !== null);
+    if (present.length < 2) {
+      ctx.warn(`${c.id} returned too few observations; skipped.`);
+      continue;
     }
+    if (!freshEnough({ ...r.meta, observationEnd: present.at(-1)!.date }, deps.today()))
+      ctx.warn(`${s.label} (${c.id}) is stale: latest observation ${present.at(-1)!.date}.`);
+    const missing = r.observations.length - present.length;
+    rows.push({
+      key: s.key,
+      provider: prov.id,
+      series_id: r.meta.id,
+      name: s.label,
+      units: r.meta.units,
+      frequency: r.meta.frequency,
+      seasonal_adjustment: r.meta.seasonalAdjustment,
+      definition: `${r.meta.title}.${r.meta.notes ? ' ' + r.meta.notes : ''}`.slice(0, 900),
+      source_url: r.meta.sourceUrl,
+      retrieved_at: r.retrievedAt,
+      observation_start: r.observations[0]?.date ?? null,
+      observation_end: present.at(-1)!.date,
+      transformations: [...r.transformations, ...(missing ? [`${missing} missing observation(s) kept as gaps (not filled).`] : [])],
+      observations: r.observations,
+      sha256: r.sha256,
+    });
   }
   if (!rows.length) throw Object.assign(new Error('No financial data could be retrieved'), { retryable: true });
   await deps.store.replaceDatasets(ctx.job.id, ctx.article.id, rows);
@@ -513,7 +524,7 @@ ${VOICE}
 - headline: compelling, concise, specific; no clickbait, no question marks unless essential.
 - dek: a one- or two-sentence summary of the central development.
 - keyPoints: three short takeaways a reader should leave with ("the story in 30 seconds").
-- blocks: the narrative — 6 to 10 paragraphs ({"type":"p"}), optionally one {"type":"h3"} subhead, at most one {"type":"pullquote"} and at most one {"type":"chart"} referencing an AVAILABLE chart with a question (chart title) and takeaway. Cover what happened, the relevant history and context, and why it matters to readers. The narrative must make sense without the chart.
+- blocks: the narrative — 6 to 10 paragraphs, each making a distinct point (never repeat a sentence or the key points verbatim) ({"type":"p"}), optionally one {"type":"h3"} subhead, at most one {"type":"pullquote"} and at most one {"type":"chart"} referencing an AVAILABLE chart with a question (chart title) and takeaway. Cover what happened, the relevant history and context, and why it matters to readers. The narrative must make sense without the chart.
 - Use fact tokens for every figure. Keep the Story to the central argument; save mechanisms and scenarios for later sections.
 ${ATTENTION_RULE}`;
   const r = await ctx.deps.llm.complete({ stage: 'story', system: SYSTEM, user, schema: StorySection, maxTokens: 3600, temperature: 0.6 });
@@ -545,7 +556,7 @@ ANALYTICS — "Why is this happening, and what are the consequences?"
 - chain: a transmission mechanism of 3–5 steps (e.g. policy gap → capital flows → currency → import prices). Each step: title, text, evidence (documented / context / interpretation).
 - charts: 0–2 AVAILABLE charts that support the analysis (do not repeat charts used above).
 - comparisons: 0–3 historical comparisons or context notes, only where evidence supports them.
-- implications: title, intro, and 2–5 items (asset classes, businesses or household wealth). For each: asset name; icon (bonds / cash / stocks / property / currency / commodities); shows = what the data or sources show, with showsEvidence; couldMean = a careful interpretation.
+- implications: title, intro, and 2–6 items (asset classes, businesses or household wealth). If the brief names specific groups (e.g. "first-time buyers, banks, homebuilders" or "utilities, independent power producers, grid-equipment makers"), include ONE item for EACH named group, up to 6. For each: asset name; icon (bonds / cash / stocks / property / currency / commodities); shows = what the data or sources show, with showsEvidence; couldMean = a careful interpretation.
 - Never invent correlations, regression results, attribution percentages or backtests. Mark relationships honestly.
 ${VOICE}
 ${ATTENTION_RULE} (Apply it to each section's own attention field.)`;
@@ -649,6 +660,7 @@ export function assembleArticle(ctx: StageContext, fixes: { path: string; text: 
   };
   for (const fx of fixes) setPath(article, fx.path, fx.text);
   dedupeUnits(article);
+  fixSignWords(article);
   // Drop references to charts / indicators that do not exist (validator reports them first).
   const charts = article.data.charts as Record<string, unknown>;
   article.story.blocks = article.story.blocks.filter((b) => b.type !== 'chart' || charts[b.chartId]);
@@ -660,6 +672,19 @@ export function assembleArticle(ctx: StageContext, fixes: { path: string; text: 
 }
 
 const esc = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+/** "fell by {x}" where x < 0 would read "fell by −17.5%": use the magnitude form {x:abs}. */
+export function fixSignWords(article: SeshatArticle): void {
+  const facts = article.data.facts as Record<string, Fact>;
+  const FALL = /\b(fell|fallen|falls|falling|dropped|drop|drops|declined|declines|decline|decreased|decrease|down|lost|loses|slid|slipped|slumped|shrank|shrunk|contracted|weakened|eased|retreated)(\s+(?:by|of|some|nearly|almost|about|roughly))?\s+\{([a-zA-Z0-9]+)\}/g;
+  const walk = (v: unknown): unknown => {
+    if (typeof v === 'string') return v.replace(FALL, (m: string, verb: string, by: string | undefined, key: string) => (facts[key] && facts[key].value < 0 && facts[key].format !== 'text' ? `${verb}${by ?? ''} {${key}:abs}` : m));
+    if (Array.isArray(v)) return v.map(walk);
+    if (v && typeof v === 'object') return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, walk(x)]));
+    return v;
+  };
+  for (const s of SECTION_ORDER) (article as Record<string, unknown>)[s] = walk(article[s]);
+}
 
 /** Tokens carry their own units: drop a unit/sign the model repeated around a token ("{brent} a barrel", "${brent}"). */
 export function dedupeUnits(article: SeshatArticle): void {
@@ -725,7 +750,7 @@ export function setPath(obj: unknown, path: string, value: string): boolean {
 
 // ── J. Review (LLM editorial fact-check against the data; findings, not verification) ──
 export const ReviewOut = z.object({
-  problems: z.array(z.object({ path: z.string().max(120), problem: t(400), kind: z.enum(['contradicts-data', 'logic', 'unsupported', 'estimate-as-fact', 'other']) })).max(20),
+  problems: z.array(z.object({ path: z.string().max(120), problem: t(400), kind: z.enum(['contradicts-data', 'logic', 'unsupported', 'estimate-as-fact', 'inconsistent', 'repetition', 'other']) })).max(20),
 });
 export type ReviewOut = z.infer<typeof ReviewOut>;
 
@@ -758,7 +783,9 @@ List only genuine problems, each with the exact [path]:
 - contradicts-data: a statement that contradicts the observations (wrong direction, wrong magnitude, wrong date, a superlative the data does not show);
 - logic: an economic-reasoning error (e.g. currency-translation direction, confusing a rate with a level, causation asserted from co-movement);
 - estimate-as-fact: a forecast or estimate presented as a reported outcome;
-- unsupported: a specific factual claim with no support in the findings or data.
+- unsupported: a specific factual claim with no support in the findings or data;
+- inconsistent: two passages that state different values or dates for the same thing;
+- repetition: a sentence or point repeated nearly verbatim elsewhere (report the later occurrence).
 Do not report style preferences. If there are no problems, return {"problems": []}.`;
   const r = await ctx.deps.llm.complete({ stage: 'review', system: SYSTEM, user, schema: ReviewOut, maxTokens: 2000, temperature: 0.1 });
   ctx.metric({ llm: { ...r.usage, attempts: r.attempts } });

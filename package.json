@@ -1,6 +1,6 @@
 {
   "name": "finstory",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": true,
   "description": "Seshat — financial storytelling publication (FinStory repository)",
   "type": "module",
@@ -18,7 +18,8 @@
     "data:validate": "node scripts/data/validate-fixtures.ts",
     "verify": "npm run test && npm run data:validate && npm run lint && npm run typecheck && npm run build",
     "studio:check-registry": "node scripts/studio/check-registry.mjs",
-    "studio:editor": "node scripts/setup/create-editor.mjs"
+    "studio:editor": "node scripts/setup/create-editor.mjs",
+    "studio:generate": "node scripts/studio/generate-draft.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",

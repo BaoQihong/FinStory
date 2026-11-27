@@ -16,7 +16,7 @@ export type Fact = {
   /** Observation date (ISO) the value refers to, if a single date. */
   date?: string;
   /** Precision of `date` for display: day → "24 Nov 2026", month → "Oct 2026", quarter → "Q3 2026". */
-  datePrecision?: 'day' | 'month' | 'quarter';
+  datePrecision?: 'day' | 'month' | 'quarter' | 'year';
   /** Series used, for traceability. */
   seriesIds: string[];
   /** Plain-language description of how the value was obtained. */
@@ -26,7 +26,7 @@ export type Fact = {
 /** A date the article states (e.g. "highest since …"), with backing. */
 export type DateFact = {
   date: string;
-  datePrecision: 'day' | 'month' | 'quarter';
+  datePrecision: 'day' | 'month' | 'quarter' | 'year';
   seriesIds: string[];
   method: string;
 };
@@ -40,7 +40,7 @@ export type IndicatorCard = {
   /** Display for non-percent indicators (default: '%' value, 'pp' change). */
   display?: { prefix: string; suffix: string; changeSuffix: string };
   asOf: string;
-  asOfPrecision: 'day' | 'month' | 'quarter';
+  asOfPrecision: 'day' | 'month' | 'quarter' | 'year';
   /** Change versus a stated comparison point (percentage points). */
   change?: { value: number; versus: string };
   /** Short history for the sparkline. */

@@ -59,12 +59,15 @@ Statuses: `Done` · `In progress` · `Blocked` · `Not started`.
 | P2B-08 | Generalised renderer (render model) — Phase 2A unchanged | Done | Production HTML diff of the Bond Comeback page: identical |
 | P2B-09 | Editorial studio: login, drafts, new story, generation panel, section editors, research/data/checks/history, preview | Done | `/admin` |
 | P2B-10 | Vercel production env vars | Done | 8 vars; provider keys marked sensitive; no service-role key |
-| P2B-11 | Live engine integration runs (script) | In progress | `scripts/studio/live-run.ts` |
+| P2B-11 | Live engine integration runs (script) | Done | 6 live runs (yen ×4, oil ×1) surfaced FX-direction, superlative, translation-logic and wrong-dataset errors — all fixed with tests (D-033) |
 | P2B-12 | Acceptance test A (yen) through the studio UI | Not started | |
 | P2B-13 | Acceptance test B (crude oil) through the studio UI | Not started | No code changes between A and B |
-| P2B-14 | Commit, push, deploy; completion report | Not started | |
-| P2B-15 | Optional: EIA API key for oil inventories/production series | Not started | Product owner action (free registration); engine degrades gracefully without it |
+| P2B-14 | Commit, push, deploy; completion report | In progress | `8a72660` deployed; usage/temporary features follow |
+| P2B-15 | EIA API key for oil inventories/production + electricity | Done | Petroleum verified; electricity endpoints down at EIA during testing (D-034) |
 | P2B-16 | Tiingo licence review before public publishing | Not started | Free tier = internal use only (D-025); gate for 2C |
+| P2B-18 | Usage ledger per service & key; temporary drafts; /admin/usage | Done | D-035; migration 20261127090000 |
+| P2B-19 | Product-owner test drafts: US housing; AI data centers & electricity | In progress | Temporary drafts via generate-draft.ts (D-036); delete on request |
+| P2B-12b | Acceptance A/B through the browser UI | Blocked | Needs the product owner to sign in to /admin in Chrome (assistant may not type passwords) |
 | P2B-17 | Disable public sign-ups in Supabase Auth | Not started | Product owner deferred ("fine for proto"); RLS allow-list already blocks non-editors |
 
 ## Phase 2C

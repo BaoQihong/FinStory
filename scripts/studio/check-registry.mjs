@@ -4,14 +4,15 @@ import { readFileSync } from 'node:fs';
 import { readEnv } from '../lib/env-file.mjs';
 const env = readEnv();
 const src = readFileSync(new URL('../../lib/studio/registry.ts', import.meta.url), 'utf8');
-const entries = [...src.matchAll(/^\s*(fred|tiingo)\('([^']+)'/gm)].map((m) => ({ provider: m[1], id: m[2] }));
+const entries = [...src.matchAll(/^\s*(fred|tiingo|eia)\('([^']+)'/gm)].map((m) => ({ provider: m[1], id: m[2] }));
 let bad = 0;
 for (const e of entries) {
   let ok, info;
   if (e.provider === 'eia') {
     if (!env.EIA_API_KEY) { console.log(`skip eia:${e.id} — EIA_API_KEY not configured`); continue; }
-    const r = await fetch(`https://api.eia.gov/v2/seriesid/${e.id}?api_key=${env.EIA_API_KEY}&length=1`);
-    ok = r.ok; info = `HTTP ${r.status}`;
+    const { eiaProvider } = await import('../../lib/studio/providers/eia.ts');
+    const m = await eiaProvider(env.EIA_API_KEY).meta(e.id);
+    ok = !!m; info = m ? `${m.units} last ${m.observationEnd} | ${m.title.slice(0, 60)}` : 'no response (EIA timeout?)';
   } else if (e.provider === 'fred') {
     const r = await fetch(`https://api.stlouisfed.org/fred/series?series_id=${e.id}&api_key=${env.FRED_API_KEY}&file_type=json`);
     const j = await r.json(); const s = j.seriess?.[0];

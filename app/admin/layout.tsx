@@ -20,6 +20,9 @@ export default function StudioLayout({ children }: LayoutProps<'/admin'>) {
             <Link href="/admin/new" className="hover:text-white">
               New story
             </Link>
+            <Link href="/admin/usage" className="hover:text-white">
+              Usage
+            </Link>
           </nav>
           <form action={signOut} className="ml-auto">
             <button type="submit" className="text-cream-200/80 hover:text-white">

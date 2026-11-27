@@ -1,6 +1,7 @@
 // Production dependency wiring (server only). Provider credentials are read
 // from server environment variables and never reach the browser.
 import 'server-only';
+import { createHash } from 'node:crypto';
 import type { ServerSupabase } from '@/lib/supabase/server';
 import { arliLlm } from './llm';
 import { eiaProvider } from './providers/eia';
@@ -22,9 +23,16 @@ export function productionDeps(db: ServerSupabase): Deps {
     llm: arliLlm({ baseUrl: env.ARLI_BASE_URL!, apiKey: env.ARLI_API_KEY!, model: env.ARLI_MODEL! }),
     search: tavilyProvider(env.TAVILY_API_KEY),
     data: [fredProvider(env.FRED_API_KEY), tiingoProvider(env.TIINGO_API_KEY), eiaProvider(env.EIA_API_KEY)],
+    keyFingerprints: keyFingerprints(env),
     today: () => new Date().toISOString().slice(0, 10),
     now: () => new Date(),
   };
 }
 
 export const DAILY_JOB_LIMIT = 12;
+
+/** First 12 hex chars of sha256(key): distinguishes keys without revealing them. */
+export const fingerprint = (key: string | undefined) => (key ? createHash('sha256').update(key).digest('hex').slice(0, 12) : 'not-configured');
+export function keyFingerprints(env: Record<string, string | undefined>) {
+  return { arli: fingerprint(env.ARLI_API_KEY), tavily: fingerprint(env.TAVILY_API_KEY), fred: fingerprint(env.FRED_API_KEY), tiingo: fingerprint(env.TIINGO_API_KEY), eia: fingerprint(env.EIA_API_KEY) };
+}

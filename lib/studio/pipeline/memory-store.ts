@@ -1,7 +1,7 @@
 // In-memory Store for deterministic tests. Mirrors the Supabase semantics
 // that matter: lease exclusivity, one active job, latest-successful-output.
 import { randomUUID } from 'node:crypto';
-import type { ArticleRow, DatasetRow, FindingRow, Job, SourceRow, Stage, StageMetrics, Store } from './types.ts';
+import type { ArticleRow, DatasetRow, FindingRow, Job, SourceRow, Stage, StageMetrics, Store, UsageRow } from './types.ts';
 
 type Run = { id: number; job: string; stage: Stage; attempt: number; status: string; output: unknown; error: string | null; metrics: StageMetrics };
 
@@ -13,6 +13,7 @@ export class MemoryStore implements Store {
   sources = new Map<string, SourceRow[]>();
   findings = new Map<string, FindingRow[]>();
   datasets = new Map<string, DatasetRow[]>();
+  usage: UsageRow[] = [];
   clock = () => Date.now();
 
   createArticleAndJob(article: Omit<ArticleRow, 'id' | 'revision' | 'content' | 'status'>): { articleId: string; jobId: string } {
@@ -82,6 +83,9 @@ export class MemoryStore implements Store {
   }
   async replaceDatasets(job: string, _a: string, rows: DatasetRow[]) {
     this.datasets.set(job, structuredClone(rows));
+  }
+  async recordUsage(rows: UsageRow[]) {
+    this.usage.push(...structuredClone(rows));
   }
   async getDatasets(job: string) {
     return structuredClone(this.datasets.get(job) ?? []);

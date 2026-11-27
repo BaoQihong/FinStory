@@ -25,7 +25,7 @@ async function Preview({ params }: { params: PageProps<'/admin/drafts/[id]/previ
   const { id } = await params;
   if (!/^[0-9a-f-]{36}$/.test(id)) notFound();
   const { db } = await requireEditor();
-  const { data } = await db.from('articles').select('content, revision').eq('id', id).maybeSingle();
+  const { data } = await db.from('articles').select('content, revision, is_temporary').eq('id', id).maybeSingle();
   const parsed = SeshatArticleV1.safeParse(data?.content);
   if (!data || !parsed.success) notFound();
   const model = fromDraft(parsed.data);
@@ -34,7 +34,7 @@ async function Preview({ params }: { params: PageProps<'/admin/drafts/[id]/previ
     <>
       <div className="sticky top-0 z-30 border-b border-gold-500/40 bg-[#fbf1dc]">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-5 py-2 text-sm sm:px-8">
-          <strong className="font-semibold text-ink">Private draft preview</strong>
+          <strong className="font-semibold text-ink">Private draft preview{data.is_temporary ? ' · Temporary' : ''}</strong>
           <span className="text-ink-soft">Revision {data.revision} · not published · visible only to signed-in editors</span>
           <Link href={`/admin/drafts/${id}`} className="ml-auto font-semibold text-navy-800 underline decoration-gold-500 underline-offset-2">
             Back to editing

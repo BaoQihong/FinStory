@@ -59,9 +59,10 @@ export type DataProducts = {
   issues: string[];
 };
 
-const precisionFor = (freq: string): 'day' | 'month' | 'quarter' => {
+const precisionFor = (freq: string): 'day' | 'month' | 'quarter' | 'year' => {
   const c = frequencyClass(freq);
-  if (c === 'monthly' || c === 'annual') return 'month';
+  if (c === 'annual') return 'year';
+  if (c === 'monthly') return 'month';
   if (c === 'quarterly') return 'quarter';
   return 'day';
 };
@@ -206,7 +207,10 @@ function seriesUnit(s: Series): UnitInfo {
 }
 
 function valueFact(s: Series, p: Point, method: string): Fact {
-  const u = seriesUnit(s);
+  // Small dollar amounts (e.g. $0.183 per kWh) keep three decimals.
+  const base0 = seriesUnit(s);
+  const dollars = base0.kind === 'level' && base0.display.prefix === '$';
+  const u = dollars && Math.abs(p.value) < 10 ? { ...base0, decimals: 3 } : dollars && Math.abs(p.value) >= 1000 ? { ...base0, decimals: 0 } : base0;
   const base = { value: round(p.value, u.decimals), decimals: u.decimals, date: p.date, datePrecision: precisionFor(s.frequency), seriesIds: s.inputs, method };
   if (s.units === 'Percentage points') return { ...base, format: 'pp' };
   if (u.kind === 'rate') return { ...base, format: 'pct' };
@@ -399,6 +403,8 @@ export function buildIndicator(s: Series, source: SourceRef): IndicatorCard | nu
   };
 }
 
+const pts0 = (s: Series) => nonNull(s.observations)[0]?.date ?? '';
+
 /** Plain, deterministic statements about where each series stands — guards against wrong superlatives. */
 export function describeSeries(s: Series, facts: Record<string, Fact>, dates: Record<string, DateFact>): string[] {
   const f = (k: string) => facts[`${s.key}${k}`];
@@ -414,7 +420,7 @@ export function describeSeries(s: Series, facts: Record<string, Fact>, dates: Re
     const hi = f(`High${w}`);
     const lo = f(`Low${w}`);
     if (!hi || !lo) continue;
-    const span = w === '1y' ? 'past year' : w === '5y' ? 'past five years' : 'full retrieved history';
+    const span = w === '1y' ? 'past year' : w === '5y' ? 'past five years' : `retrieved history since ${formatDate(pts0(s), precisionFor(s.frequency))} (NOT an all-time record — earlier data was not retrieved)`;
     const atHi = hi.date === latestF.date;
     const atLo = lo.date === latestF.date;
     out.push(`  Over the ${span}: high ${fmt(hi)}, low ${fmt(lo)}. The latest value ${atHi ? 'IS the high' : atLo ? 'IS the low' : 'is NEITHER the high nor the low'} of this window.`);

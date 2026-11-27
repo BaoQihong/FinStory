@@ -15,7 +15,8 @@ export type TokenContext = { facts: Record<string, Fact>; dates: Record<string, 
 
 const TOKEN = /\{([a-zA-Z0-9]+)(?:\.(date))?(?::(short|abs))?\}/g;
 
-export function formatDate(iso: string, precision: 'day' | 'month' | 'quarter' = 'day') {
+export function formatDate(iso: string, precision: 'day' | 'month' | 'quarter' | 'year' = 'day') {
+  if (precision === 'year') return iso.slice(0, 4);
   if (precision === 'month') return fmtMonth(iso);
   if (precision === 'quarter') return fmtQuarter(iso);
   return fmtDay(iso);

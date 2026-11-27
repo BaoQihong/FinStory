@@ -131,14 +131,14 @@ const FactSchema = z.object({
   /** For 'text' facts (figures quoted from a source document): the exact display string. */
   text: z.string().max(120).optional(),
   date: z.string().optional(),
-  datePrecision: z.enum(['day', 'month', 'quarter']).optional(),
+  datePrecision: z.enum(['day', 'month', 'quarter', 'year']).optional(),
   seriesIds: z.array(z.string()),
   sourceRefs: z.array(z.string()).optional(),
   method: z.string().max(600),
 });
 const DateFactSchema = z.object({
   date: z.string(),
-  datePrecision: z.enum(['day', 'month', 'quarter']),
+  datePrecision: z.enum(['day', 'month', 'quarter', 'year']),
   seriesIds: z.array(z.string()),
   method: z.string(),
 });

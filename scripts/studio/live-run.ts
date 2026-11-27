@@ -28,6 +28,7 @@ const deps = {
   llm: arliLlm({ baseUrl: env.ARLI_BASE_URL, apiKey: env.ARLI_API_KEY, model: env.ARLI_MODEL }),
   search: tavilyProvider(env.TAVILY_API_KEY),
   data: [fredProvider(env.FRED_API_KEY), tiingoProvider(env.TIINGO_API_KEY), eiaProvider(env.EIA_API_KEY)],
+  keyFingerprints: {},
   today: () => new Date().toISOString().slice(0, 10),
   now: () => new Date(),
 };

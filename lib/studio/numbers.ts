@@ -68,7 +68,7 @@ const EXTREME_TOKEN = /\{[a-zA-Z0-9]*(?:High|Low)(?:1y|5y|All)\}|\{[a-zA-Z0-9]*(
 export function findUnsupportedSuperlatives(text: string): string[] {
   return text
     .split(/(?<=[.!?])\s+/)
-    .filter((s) => SUPERLATIVE.test(s) && !EXTREME_TOKEN.test(s))
+    .filter((s) => SUPERLATIVE.test(s) && (!EXTREME_TOKEN.test(s) || /\b(all-time|record)\b/i.test(s)))
     .map((s) => (SUPERLATIVE.exec(s)?.[0] ?? '').toLowerCase());
 }
 

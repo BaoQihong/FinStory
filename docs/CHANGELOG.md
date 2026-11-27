@@ -3,6 +3,17 @@
 Notable changes to this project. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/). Newest entries first.
 
+## 0.3.1 — 2026-11-27
+
+- EIA provider (petroleum series; electricity via native v2 routes, fail-fast), housing/electricity/power-equity registry additions (D-034).
+- Usage ledger per service and API-key fingerprint; `/admin/usage`; temporary drafts (D-035).
+- Reasoning safeguards: FX direction, superlatives, review→repair fact-check stage, sign/unit clean-up, event-series guard, year precision, no cents on large dollar amounts (D-033).
+- `scripts/studio/generate-draft.ts` (editor-session generation, D-036).
+
+## 0.3.0 — 2026-11-26
+
+- Phase 2B: editorial studio (`/admin`), staged generation engine, canonical four-section schema, Supabase persistence with RLS, Tavily/FRED/Tiingo providers (D-023–D-032).
+
 ## [Unreleased]
 
 ### Added — 2026-11-26 (Phase 2A: Seshat public prototype)

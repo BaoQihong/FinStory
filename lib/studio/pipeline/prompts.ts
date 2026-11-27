@@ -18,12 +18,13 @@ Binding rules:
 6a1. Currency translation: for an unhedged investor, a foreign asset's return in the investor's home currency = its local-currency return combined with the currency move. If the foreign currency WEAKENS, the home-currency value of foreign assets FALLS (and vice versa). A weak currency can still help that country's exporters' earnings — keep those two effects distinct. Use converted-series facts (…in US-dollar terms) when available. For a fall, write "fell by {key:abs}" (the :abs form drops the minus sign).
 6a2. Tokens already include their units and currency signs: write "{brentLatest}", never "\${brentLatest}" or "{brentLatest} a barrel". Quoted source figures (src… tokens) keep the source's tense and hedging: an estimate or forecast stays an estimate ("the EIA expects… to fall by {srcX}"), never a reported fact.
 6a3. Label evidence "documented" ONLY when the text cites a fact token from the datasets; claims resting on sources or general knowledge are "context" or "interpretation".
+6b0. Never write "all-time", "record" or "ever": datasets cover only the retrieved window. Say "the highest since {xHighestSince}" or "the highest in the data since 2014" instead.
 6b. Superlatives and comparisons ("highest since", "five-year low", "record", "above average", "weakest") are only allowed when the DATA OBSERVATIONS say so, and the sentence must include the matching High…/Low…/…HighestSince/…LowestSince token.
 7. Reply with one JSON object that follows the provided schema. No markdown, no HTML.`;
 
 export const VOICE = `Voice: a knowledgeable, engaging finance writer at a premium magazine — clear, concrete, confident, warm. Short purposeful paragraphs (2–4 sentences). Plain words; explain any necessary jargon in passing. Lead with what happened and why a reader should care. One coherent argument, not a summary of every finding. No clichés ("in today's fast-paced world", "navigating", "delve", "landscape", "rollercoaster", "ultimately"), no hype, no clickbait, no hedging in every sentence, no listicle tone. End on a concrete, specific point — never a generic summary or "for investors, understanding X is essential" paragraph.`;
 
-export function dateLines(dates: Record<string, { date: string; datePrecision?: 'day' | 'month' | 'quarter'; method: string }>): string {
+export function dateLines(dates: Record<string, { date: string; datePrecision?: 'day' | 'month' | 'quarter' | 'year'; method: string }>): string {
   return Object.entries(dates)
     .map(([k, d]) => `{${k}} → ${formatDate(d.date, d.datePrecision ?? 'day')} · ${d.method.slice(0, 110)}`)
     .join('\n');

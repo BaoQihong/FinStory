@@ -110,7 +110,7 @@ function setup(opts: { failSearch?: boolean; failOnce?: string[] } = {}) {
   const store = new MemoryStore();
   const llmCalls: string[] = [];
   const dataCalls: string[] = [];
-  const deps: Deps = { store, llm: fakeLlm(llmCalls, new Set(opts.failOnce)), search: fakeSearch({ fail: opts.failSearch }), data: [fakeData(dataCalls)], today: () => TODAY, now: () => new Date('2026-11-26T12:00:00Z') };
+  const deps: Deps = { store, llm: fakeLlm(llmCalls, new Set(opts.failOnce)), search: fakeSearch({ fail: opts.failSearch }), data: [fakeData(dataCalls)], keyFingerprints: { arli: 'arlikey00001', tavily: 'tavkey000001', fred: 'fredkey00001' }, today: () => TODAY, now: () => new Date('2026-11-26T12:00:00Z') };
   const brief = StoryBrief.parse({ prompt: 'Why is the test currency weakening, and what does it mean for investors?' });
   const { articleId, jobId } = store.createArticleAndJob({ working_title: 'Test', brief });
   return { store, deps, articleId, jobId, llmCalls, dataCalls };
@@ -326,4 +326,29 @@ test('event/flow series (mostly zeros) get no percent changes and never produce 
   assert.ok(Object.values(p.facts).every((f) => Number.isFinite(f.value)));
   assert.ok(p.issues.some((i) => /mostly zeros/.test(i)));
   assert.equal(p.indicators[0].change, undefined);
+});
+
+test('usage ledger records tokens, credits and calls per service and key fingerprint', async () => {
+  const { store, deps, jobId } = setup();
+  await runToEnd(deps, jobId);
+  const by = (s: string) => store.usage.filter((u) => u.service === s);
+  assert.equal(by('arli').length, 8); // one row per LLM stage
+  assert.ok(by('arli').every((u) => u.key_fingerprint === 'arlikey00001' && u.model === 'fake-model' && u.prompt_tokens === 100));
+  assert.equal(by('fred').reduce((a, u) => a + u.calls, 0) > 0, true);
+  assert.equal(by('fred')[0].key_fingerprint, 'fredkey00001');
+});
+
+import { fixSignWords } from '../../lib/studio/pipeline/stages.ts';
+test('"fell by {x}" with a negative x uses the magnitude form; positive values untouched', () => {
+  const a = { story: { dek: 'Starts have fallen {s} and rose {r}; prices declined by {s}.' }, macro: {}, analytics: {}, outlook: {}, data: { facts: { s: { value: -17.5, format: 'pct', decimals: 1, seriesIds: [], method: '' }, r: { value: 3, format: 'pct', decimals: 1, seriesIds: [], method: '' } } } };
+  fixSignWords(a as never);
+  assert.equal(a.story.dek, 'Starts have fallen {s:abs} and rose {r}; prices declined by {s:abs}.');
+  assert.equal(resolveTokens('{s:abs}', { facts: a.data.facts as never, dates: {} }), '17.5%');
+});
+
+test('annual series use year precision; large dollar amounts have no cents; "all-time" is always flagged', () => {
+  const inc = ds('inc', 'Current Dollars', 'Annual', [{ date: '2020-01-01', value: 80000 }, { date: '2025-01-01', value: 87460 }]);
+  const p = buildDataProducts([inc], [], []);
+  assert.equal(resolveTokens('{incLatest} in {incLatest.date}', { facts: p.facts, dates: p.dates }), '$87,460 in 2025');
+  assert.deepEqual(findUnsupportedSuperlatives('Prices hit {cpHighAll}, an all-time high.'), ['all-time']);
 });

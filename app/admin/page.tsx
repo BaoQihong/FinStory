@@ -29,7 +29,7 @@ async function DraftList() {
   const { db } = await requireEditor();
   const { data: rows, error } = await db
     .from('articles')
-    .select('id, working_title, status, revision, updated_at, as_of, generation_jobs(status, stage, created_at)')
+    .select('id, working_title, status, revision, updated_at, as_of, is_temporary, generation_jobs(status, stage, created_at)')
     .order('updated_at', { ascending: false })
     .limit(100);
   if (error) return <p className="mt-10 text-[#9a3412]">Could not load drafts: {error.message}</p>;
@@ -49,7 +49,10 @@ async function DraftList() {
           <li key={r.id}>
             <Link href={`/admin/drafts/${r.id}`} className="flex flex-wrap items-center gap-x-6 gap-y-2 px-5 py-4 hover:bg-cream-100 sm:px-6">
               <span className="min-w-0 flex-1">
-                <span className="block truncate font-display text-lg font-semibold text-navy-900">{r.working_title}</span>
+                <span className="block truncate font-display text-lg font-semibold text-navy-900">
+                  {r.is_temporary ? <span className="mr-2 rounded-full bg-cream-200 px-2 py-0.5 align-middle font-sans text-xs font-semibold text-ink-soft">Temporary</span> : null}
+                  {r.working_title}
+                </span>
                 <span className="text-xs text-muted">
                   Updated {fmtDayShort(r.updated_at.slice(0, 10))} · revision {r.revision}
                   {r.as_of ? ` · data to ${fmtDayShort(r.as_of)}` : ''}

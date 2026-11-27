@@ -23,7 +23,7 @@ async function Workspace({ params }: { params: PageProps<'/admin/drafts/[id]'>['
   const { id } = await params;
   if (!/^[0-9a-f-]{36}$/.test(id)) notFound();
   const { db } = await requireEditor();
-  const { data: article } = await db.from('articles').select('id, working_title, status, revision, content, brief, created_at, updated_at').eq('id', id).maybeSingle();
+  const { data: article } = await db.from('articles').select('id, working_title, status, revision, content, brief, created_at, updated_at, is_temporary').eq('id', id).maybeSingle();
   if (!article) notFound();
   const { data: jobs } = await db.from('generation_jobs').select('*').eq('article_id', id).order('created_at', { ascending: false }).limit(1);
   const job = jobs?.[0] as Job | undefined;
@@ -41,6 +41,7 @@ async function Workspace({ params }: { params: PageProps<'/admin/drafts/[id]'>['
       key={`${article.revision}:${article.status}:${job?.status ?? ''}`}
       articleId={article.id}
       title={article.working_title}
+      temporary={article.is_temporary}
       status={article.status}
       revision={article.revision}
       brief={article.brief as StoryBrief}

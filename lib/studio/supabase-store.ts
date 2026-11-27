@@ -1,14 +1,14 @@
 // Supabase implementation of the pipeline Store, running under the editor's
 // session (RLS-enforced). Lease semantics come from claim_generation_job().
-import 'server-only';
-import type { ServerSupabase } from '@/lib/supabase/server';
-import type { ArticleRow, DatasetRow, FindingRow, Job, SourceRow, Stage, StageMetrics, Store } from './pipeline/types';
+// Used by server routes (via deps.ts) and by the editor-session generation script.
+import type { SupabaseClient } from '@supabase/supabase-js';
+import type { ArticleRow, DatasetRow, FindingRow, Job, SourceRow, Stage, StageMetrics, Store, UsageRow } from './pipeline/types.ts';
 
 const fail = (what: string, e: { message: string } | null) => {
   if (e) throw new Error(`${what}: ${e.message}`);
 };
 
-export function supabaseStore(db: ServerSupabase): Store {
+export function supabaseStore(db: SupabaseClient): Store {
   return {
     async getJob(id) {
       const { data, error } = await db.from('generation_jobs').select('*').eq('id', id).maybeSingle();
@@ -79,6 +79,9 @@ export function supabaseStore(db: ServerSupabase): Store {
     async replaceDatasets(jobId, articleId, rows: DatasetRow[]) {
       fail('clear datasets', (await db.from('datasets').delete().eq('job_id', jobId)).error);
       if (rows.length) fail('insert datasets', (await db.from('datasets').insert(rows.map((r) => ({ ...r, job_id: jobId, article_id: articleId })))).error);
+    },
+    async recordUsage(rows: UsageRow[]) {
+      if (rows.length) fail('record usage', (await db.from('api_usage').insert(rows)).error);
     },
     async getDatasets(jobId) {
       const { data, error } = await db.from('datasets').select('*').eq('job_id', jobId).order('key');

@@ -5,7 +5,22 @@
 import { LlmError } from '../llm.ts';
 import { ProviderError } from '../providers/http.ts';
 import { STAGE_IMPL, finalizeDraft } from './stages.ts';
-import { STAGES, type Deps, type Job, type Stage, type StageContext, type StageMetrics, type Warning } from './types.ts';
+import { STAGES, type Deps, type Job, type Service, type Stage, type StageContext, type StageMetrics, type UsageRow, type Warning } from './types.ts';
+
+/** Ledger rows for one stage run: model tokens, search credits and data calls, per service and key. */
+export function usageRows(deps: Deps, job: Job, stage: Stage, m: StageMetrics): UsageRow[] {
+  const rows: UsageRow[] = [];
+  const base = { job_id: job.id, article_id: job.article_id, stage, prompt_tokens: 0, completion_tokens: 0, credits: 0, calls: 0, model: null as string | null };
+  const fp = (s: Service) => deps.keyFingerprints[s] ?? 'unknown';
+  if (m.llm && (m.llm.promptTokens || m.llm.completionTokens))
+    rows.push({ ...base, service: 'arli', key_fingerprint: fp('arli'), model: deps.llm.model, prompt_tokens: m.llm.promptTokens, completion_tokens: m.llm.completionTokens, calls: m.llm.attempts });
+  for (const [name, n] of Object.entries(m.calls ?? {})) {
+    const service = name.toLowerCase() as Service;
+    if (!['tavily', 'fred', 'tiingo', 'eia'].includes(service) || !n) continue;
+    rows.push({ ...base, service, key_fingerprint: fp(service), calls: n, credits: service === 'tavily' ? (m.credits ?? 0) : 0 });
+  }
+  return rows;
+}
 
 export const LEASE_SECONDS = 290; // < Vercel's 300 s function limit
 export const MAX_ATTEMPTS = 3;
@@ -55,6 +70,7 @@ export async function runStep(deps: Deps, jobId: string): Promise<StepResult> {
     const output = await STAGE_IMPL[stage](ctx);
     const m = recordMetrics();
     await deps.store.finishRun(runId, 'succeeded', output, null, metrics);
+    await deps.store.recordUsage(usageRows(deps, job, stage, metrics)).catch(() => undefined);
     const next = STAGES[STAGES.indexOf(stage) + 1];
     const done = !next;
     await deps.store.releaseJob(jobId, token, {
@@ -73,6 +89,7 @@ export async function runStep(deps: Deps, jobId: string): Promise<StepResult> {
     if (e instanceof LlmError) metrics.llm = { ...e.usage, attempts: 2 };
     const m = recordMetrics();
     await deps.store.finishRun(runId, 'failed', null, message.slice(0, 2000), metrics);
+    await deps.store.recordUsage(usageRows(deps, job, stage, metrics)).catch(() => undefined);
     const error = { stage, message: message.slice(0, 1000), retryable, at: deps.now().toISOString() };
     if (!retryable) {
       // Preserve whatever was produced: save a partial, clearly-flagged draft once data exists.
