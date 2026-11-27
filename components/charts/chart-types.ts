@@ -21,7 +21,11 @@ export type ClientChart = {
   yTickStep?: number;
   xTickFormat: 'year' | 'month';
   pointFrequency: 'daily' | 'monthly';
+  /** Value dressing; defaults to percent. */
+  unit: { prefix: string; suffix: string; label: string };
 };
+
+export const PERCENT_UNIT = { prefix: '', suffix: '%', label: '%' };
 
 export function toClientChart(c: ChartData): ClientChart {
   return {
@@ -32,5 +36,6 @@ export function toClientChart(c: ChartData): ClientChart {
     yTickStep: c.yTickStep,
     xTickFormat: c.xTickFormat,
     pointFrequency: c.series.every((s) => s.frequency.toLowerCase().startsWith('daily')) ? 'daily' : 'monthly',
+    unit: c.unit ?? PERCENT_UNIT,
   };
 }

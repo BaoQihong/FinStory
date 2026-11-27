@@ -5,8 +5,14 @@ import type { DisplaySeries, Point, SourceRef } from './types.ts';
 export type Fact = {
   value: number;
   /** How to render: 'pct' → "4.91%", 'pp' → "1.34 percentage points", 'num' → plain. */
-  format: 'pct' | 'pp' | 'num';
+  format: 'pct' | 'pp' | 'num' | 'level' | 'text';
   decimals: number;
+  /** For 'level' facts: how to dress the number, e.g. { prefix: '$', suffix: ' a barrel' }. */
+  unit?: UnitDisplay;
+  /** For 'text' facts — a figure quoted verbatim from a source document. */
+  text?: string;
+  /** Research source refs ("S3") backing a 'text' fact. */
+  sourceRefs?: string[];
   /** Observation date (ISO) the value refers to, if a single date. */
   date?: string;
   /** Precision of `date` for display: day → "24 Nov 2026", month → "Oct 2026", quarter → "Q3 2026". */
@@ -30,7 +36,9 @@ export type IndicatorCard = {
   label: string;
   value: number;
   decimals: number;
-  unit: '%';
+  unit: '%' | 'level';
+  /** Display for non-percent indicators (default: '%' value, 'pp' change). */
+  display?: { prefix: string; suffix: string; changeSuffix: string };
   asOf: string;
   asOfPrecision: 'day' | 'month' | 'quarter';
   /** Change versus a stated comparison point (percentage points). */
@@ -70,8 +78,13 @@ export type ChartSpec = {
   yTickStep?: number;
   /** x-axis tick formatting granularity */
   xTickFormat: 'year' | 'month';
+  /** Y-axis / tooltip unit. Omitted = percent ("4.5%"). All series in a chart share it. */
+  unit?: UnitDisplay & { label: string };
   sources: SourceRef[];
   notes: string[];
 };
 
 export type ChartColor = 'nominal' | 'real' | 'breakeven' | 'policy' | 'inflation';
+
+/** Prefix/suffix around a number, e.g. { prefix: '$', suffix: '' } or { prefix: '', suffix: ' yen' }. */
+export type UnitDisplay = { prefix: string; suffix: string };

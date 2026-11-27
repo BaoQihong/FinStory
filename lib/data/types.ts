@@ -52,4 +52,6 @@ export type SourceRef = {
   frequency: string;
   retrievedAt: string;
   lastObservation: string;
+  /** Short provider label for attributions ("FRED", "Tiingo"). Omitted = "FRED". */
+  short?: string;
 };

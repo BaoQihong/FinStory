@@ -65,7 +65,7 @@ export function ChartFigure({
             <span key={s.seriesId}>
               {i ? ', ' : ''}
               <a className="underline decoration-gold-500 underline-offset-2 hover:text-ink" href={s.url} rel="noopener">
-                FRED {s.seriesId}
+                {s.short ?? 'FRED'} {s.seriesId}
               </a>
             </span>
           ))}
@@ -100,7 +100,7 @@ function DataTable({ data, daily, caption }: { data: ChartData; daily: boolean; 
             </th>
             {data.series.map((s) => (
               <th key={s.key} scope="col" className="px-3 py-2 text-right font-semibold">
-                {s.label} (%)
+                {s.label} ({data.unit?.label ?? '%'})
               </th>
             ))}
           </tr>

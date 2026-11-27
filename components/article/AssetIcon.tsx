@@ -1,5 +1,7 @@
 // Simple line icons for asset classes (hand-built SVG geometry).
-export function AssetIcon({ kind, className }: { kind: 'bonds' | 'cash' | 'stocks' | 'property'; className?: string }) {
+export type AssetIconKind = 'bonds' | 'cash' | 'stocks' | 'property' | 'currency' | 'commodities';
+
+export function AssetIcon({ kind, className }: { kind: AssetIconKind; className?: string }) {
   const common = { fill: 'none', stroke: 'currentColor', strokeWidth: 1.5, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
   return (
     <svg viewBox="0 0 32 32" className={className} aria-hidden="true">
@@ -29,6 +31,19 @@ export function AssetIcon({ kind, className }: { kind: 'bonds' | 'cash' | 'stock
           <path d="M5 15L16 6l11 9" />
           <path d="M8 13v13h16V13" />
           <path d="M14 26v-7h4v7" />
+        </g>
+      )}
+      {kind === 'currency' && (
+        <g {...common}>
+          <circle cx="12" cy="13" r="6.5" />
+          <circle cx="20" cy="19" r="6.5" />
+          <path d="M12 10v6M10 11.5h4" />
+        </g>
+      )}
+      {kind === 'commodities' && (
+        <g {...common}>
+          <path d="M16 5c4 5.5 7 9.3 7 13a7 7 0 0 1-14 0c0-3.7 3-7.5 7-13z" />
+          <path d="M13 19a3 3 0 0 0 3 3" />
         </g>
       )}
     </svg>

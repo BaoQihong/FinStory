@@ -1,7 +1,6 @@
 import Link from 'next/link';
-import type { PublishedArticle, Scenario } from '@/lib/content/types';
-import type { BondComebackData } from '@/lib/stories/bond-comeback/build';
-import { resolveTokens } from '@/lib/content/tokens';
+import type { RenderArticle, RenderData, RenderScenario } from '@/lib/content/render-model';
+import { resolveTokens, resolveTokensSafe } from '@/lib/content/tokens';
 import { fmtDay } from '@/lib/format';
 import { ChartFigure } from '@/components/charts/ChartFigure';
 import { IndicatorCard } from '@/components/charts/IndicatorCard';
@@ -11,40 +10,53 @@ import { EvidenceKey, EvidenceTag } from '@/components/editorial/EvidenceTag';
 import { HeroPattern } from '@/components/editorial/HeroPattern';
 import { AssetIcon } from './AssetIcon';
 
-type Props = { article: PublishedArticle; data: BondComebackData; sectionName: string; readingMinutes: number };
+type Props = {
+  article: RenderArticle;
+  data: RenderData;
+  sectionName: string;
+  readingMinutes: number;
+  /** 'preview' = private editorial preview of a draft: tolerant token resolution + attention notes. */
+  mode?: 'public' | 'preview';
+};
 
-export function ArticleView({ article, data, sectionName, readingMinutes }: Props) {
-  const t = (s: string) => resolveTokens(s, data);
+/**
+ * The canonical Seshat article: THE STORY → MACRO → ANALYTICS → OUTLOOK.
+ * Renders the published Phase 2A article and generated drafts alike.
+ */
+export function ArticleView({ article, data, sectionName, readingMinutes, mode = 'public' }: Props) {
+  const preview = mode === 'preview';
+  const t = (s: string) => (preview ? resolveTokensSafe(s, data) : resolveTokens(s, data));
   const chapters: Chapter[] = [
-    { id: article.narrative.id, label: article.narrative.label, blurb: 'What happened and why it matters' },
+    { id: article.story.id, label: article.story.label, blurb: 'What happened and why it matters' },
     { id: article.macro.id, label: article.macro.label, blurb: 'The key numbers in context' },
     { id: article.analytics.id, label: article.analytics.label, blurb: 'Causes, effects and implications' },
     { id: article.outlook.id, label: article.outlook.label, blurb: 'Scenarios and what to watch' },
   ];
-  const chart = (id: string) => data.charts[id as keyof typeof data.charts];
+  const chart = (id: string) => data.charts[id];
+  const analyticsGraphics = (data.split && article.analytics.split ? 1 : 0) + article.analytics.charts.filter((c) => chart(c.chartId)).length;
 
   return (
     <article>
-      {/* ── Layer 1 — Headline ─────────────────────────────────────── */}
+      {/* ── Headline ───────────────────────────────────────────────── */}
       <header className="relative overflow-hidden bg-navy-900 text-cream-50">
         <HeroPattern className="pointer-events-none absolute inset-y-0 right-0 h-full w-full opacity-70 md:w-[62%] md:opacity-100" />
         <div className="relative mx-auto max-w-7xl px-5 pb-14 pt-10 sm:px-8 sm:pb-20 sm:pt-16">
           <nav aria-label="Breadcrumb" className="text-sm">
-            <Link href={`/section/${article.section}`} className="kicker rounded bg-gold-400 px-2.5 py-1 text-navy-950 hover:bg-gold-300">
+            <Link href={preview ? '#' : `/section/${article.section}`} className="kicker rounded bg-gold-400 px-2.5 py-1 text-navy-950 hover:bg-gold-300">
               {sectionName}
             </Link>
           </nav>
           <h1 className="mt-6 max-w-4xl font-display text-[2.35rem] font-semibold leading-[1.05] tracking-[-0.015em] text-balance sm:text-6xl lg:text-[4.25rem]">
-            {article.headline}
+            {t(article.headline)}
           </h1>
-          <p className="mt-6 max-w-2xl font-serif text-lg leading-relaxed text-cream-200 sm:text-xl">{article.dek}</p>
+          <p className="mt-6 max-w-2xl font-serif text-lg leading-relaxed text-cream-200 sm:text-xl">{t(article.dek)}</p>
           <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-cream-200">
             <span>
               By <span className="font-semibold text-cream-50">{article.byline.name}</span>
               <span className="text-cream-200/70"> · {article.byline.role}</span>
             </span>
             <span aria-hidden="true" className="hidden h-4 w-px bg-white/25 sm:block" />
-            <time dateTime={article.publishedAt}>{fmtDay(article.publishedAt)}</time>
+            <time dateTime={article.date}>{fmtDay(article.date)}</time>
             <span>{readingMinutes} min read</span>
             <span className="text-cream-200/70">Data to {fmtDay(article.dataCutoff)}</span>
           </div>
@@ -78,11 +90,12 @@ export function ArticleView({ article, data, sectionName, readingMinutes }: Prop
         </aside>
 
         <div className="min-w-0 space-y-20 sm:space-y-28">
-          {/* ── Layer 2 — Narrative ─────────────────────────────────── */}
-          <section id={article.narrative.id} aria-labelledby="h-story" className="max-w-[42rem]">
-            <ChapterHeading id="h-story" n={1} label={article.narrative.label} title={article.narrative.title} hideTitle />
+          {/* ── 1 — The Story ───────────────────────────────────────── */}
+          <section id={article.story.id} aria-labelledby="h-story" className="max-w-[42rem]">
+            <ChapterHeading id="h-story" n={1} label={article.story.label} title={article.story.title} hideTitle />
+            {preview ? <AttentionNote attention={article.story.attention} /> : null}
             <div className="prose-seshat mt-2">
-              {article.narrative.blocks.map((b, i) => {
+              {article.story.blocks.map((b, i) => {
                 if (b.type === 'p') return <p key={i}>{t(b.text)}</p>;
                 if (b.type === 'h3') return <h3 key={i}>{t(b.text)}</h3>;
                 if (b.type === 'pullquote')
@@ -91,9 +104,11 @@ export function ArticleView({ article, data, sectionName, readingMinutes }: Prop
                       “{t(b.text)}”
                     </blockquote>
                   );
+                const c = chart(b.chartId);
+                if (!c) return null;
                 return (
                   <div key={i} className="not-prose my-10 font-sans">
-                    <ChartFigure data={chart(b.chartId)} question={t(b.question)} takeaway={t(b.takeaway)} />
+                    <ChartFigure data={c} question={t(b.question)} takeaway={t(b.takeaway)} />
                   </div>
                 );
               })}
@@ -109,46 +124,52 @@ export function ArticleView({ article, data, sectionName, readingMinutes }: Prop
             </p>
           </section>
 
-          {/* ── Layer 3 — Macro ─────────────────────────────────────── */}
+          {/* ── 2 — Macro ───────────────────────────────────────────── */}
           <section id={article.macro.id} aria-labelledby="h-macro">
-            <ChapterHeading id="h-macro" n={2} label={article.macro.label} title={article.macro.title} intro={t(article.macro.intro)} />
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-              {article.macro.indicators.map((n) => {
-                const card = data.indicators.find((c) => c.key === n.key)!;
-                return <IndicatorCard key={n.key} card={card} note={t(n.note)} />;
-              })}
-            </div>
+            <ChapterHeading id="h-macro" n={2} label={article.macro.label} title={t(article.macro.title)} intro={t(article.macro.intro)} />
+            {preview ? <AttentionNote attention={article.macro.attention} /> : null}
+            {article.macro.indicators.length ? (
+              <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                {article.macro.indicators.map((n) => {
+                  const card = data.indicators.find((c) => c.key === n.key);
+                  return card ? <IndicatorCard key={n.key} card={card} note={t(n.note)} /> : null;
+                })}
+              </div>
+            ) : null}
             <div className="mt-10 space-y-8">
-              {article.macro.charts.map((c) => (
-                <ChartFigure key={c.chartId} data={chart(c.chartId)} question={t(c.question)} takeaway={t(c.takeaway)} />
-              ))}
+              {article.macro.charts.map((c) =>
+                chart(c.chartId) ? <ChartFigure key={c.chartId} data={chart(c.chartId)} question={t(c.question)} takeaway={t(c.takeaway)} /> : null,
+              )}
             </div>
-            <div className="mt-10">
-              <h3 className="font-display text-2xl font-semibold text-navy-900">What changed</h3>
-              <ul className="mt-5 grid gap-6 md:grid-cols-3">
-                {article.macro.explainers.map((e) => (
-                  <li key={e.title} className="border-l-2 border-gold-500 pl-4">
-                    <EvidenceTag evidence={e.evidence} />
-                    <h4 className="mt-2 font-semibold leading-snug text-ink">{t(e.title)}</h4>
-                    <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{t(e.text)}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {article.macro.explainers.length ? (
+              <div className="mt-10">
+                <h3 className="font-display text-2xl font-semibold text-navy-900">What changed</h3>
+                <ul className="mt-5 grid gap-6 md:grid-cols-3">
+                  {article.macro.explainers.map((e) => (
+                    <li key={e.title} className="border-l-2 border-gold-500 pl-4">
+                      <EvidenceTag evidence={e.evidence} />
+                      <h4 className="mt-2 font-semibold leading-snug text-ink">{t(e.title)}</h4>
+                      <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{t(e.text)}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
           </section>
 
-          {/* ── Layer 4 — Analytics ─────────────────────────────────── */}
+          {/* ── 3 — Analytics ───────────────────────────────────────── */}
           <section id={article.analytics.id} aria-labelledby="h-analytics">
-            <ChapterHeading id="h-analytics" n={3} label={article.analytics.label} title={article.analytics.title} intro={t(article.analytics.intro)} />
+            <ChapterHeading id="h-analytics" n={3} label={article.analytics.label} title={t(article.analytics.title)} intro={t(article.analytics.intro)} />
+            {preview ? <AttentionNote attention={article.analytics.attention} /> : null}
             <div className="mt-6 rounded-lg bg-cream-50 px-4 py-3">
               <EvidenceKey />
             </div>
 
             <div className="mt-8">
-              <h3 className="font-display text-2xl font-semibold text-navy-900">{article.analytics.chain.title}</h3>
-              <ol className="mt-5 grid gap-3 md:grid-cols-4 md:gap-0">
+              <h3 className="font-display text-2xl font-semibold text-navy-900">{t(article.analytics.chain.title)}</h3>
+              <ol className={`mt-5 grid gap-3 ${CHAIN_COLS[Math.min(article.analytics.chain.steps.length, 5)] ?? 'md:grid-cols-4'} md:gap-0`}>
                 {article.analytics.chain.steps.map((s, i, all) => (
-                  <li key={s.title} className="relative flex md:pr-6">
+                  <li key={s.title + i} className="relative flex md:pr-6">
                     <div className="flex-1 rounded-xl border border-cream-300 bg-cream-50 p-5">
                       <div className="flex items-center justify-between gap-2">
                         <span className="font-display text-2xl font-semibold text-gold-500" aria-hidden="true">
@@ -156,7 +177,7 @@ export function ArticleView({ article, data, sectionName, readingMinutes }: Prop
                         </span>
                         <EvidenceTag evidence={s.evidence} />
                       </div>
-                      <h4 className="mt-3 font-semibold leading-snug text-navy-900">{s.title}</h4>
+                      <h4 className="mt-3 font-semibold leading-snug text-navy-900">{t(s.title)}</h4>
                       <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{t(s.text)}</p>
                     </div>
                     {i < all.length - 1 ? (
@@ -169,51 +190,71 @@ export function ArticleView({ article, data, sectionName, readingMinutes }: Prop
               </ol>
             </div>
 
-            <div className="mt-10 grid gap-8 xl:grid-cols-2">
-              <YieldSplit
-                rows={data.split}
-                question={t(article.analytics.split.question)}
-                takeaway={t(article.analytics.split.takeaway)}
-                note={t(article.analytics.split.note)}
-              />
-              <ChartFigure
-                data={chart(article.analytics.chart.chartId)}
-                question={t(article.analytics.chart.question)}
-                takeaway={t(article.analytics.chart.takeaway)}
-              />
-            </div>
-
-            <div className="mt-12">
-              <h3 className="font-display text-2xl font-semibold text-navy-900">{article.analytics.implications.title}</h3>
-              <p className="mt-2 max-w-2xl text-sm text-ink-soft">{t(article.analytics.implications.intro)}</p>
-              <div className="mt-5 divide-y divide-cream-300 rounded-2xl border border-cream-300 bg-cream-50">
-                {article.analytics.implications.items.map((it) => (
-                  <div key={it.asset} className="grid gap-4 p-5 sm:grid-cols-[10rem_1fr_1fr] sm:gap-6 sm:p-6">
-                    <div className="flex items-center gap-3">
-                      <AssetIcon kind={it.icon} className="h-8 w-8 text-gold-700" />
-                      <h4 className="font-display text-lg font-semibold text-navy-900">{it.asset}</h4>
-                    </div>
-                    <div>
-                      <p className="mb-1.5 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted">
-                        What we see <EvidenceTag evidence={it.showsEvidence} />
-                      </p>
-                      <p className="text-sm leading-relaxed text-ink">{t(it.shows)}</p>
-                    </div>
-                    <div>
-                      <p className="mb-1.5 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted">
-                        What it could mean <EvidenceTag evidence="interpretation" />
-                      </p>
-                      <p className="text-sm leading-relaxed text-ink">{t(it.couldMean)}</p>
-                    </div>
-                  </div>
-                ))}
+            {analyticsGraphics ? (
+              <div className={`mt-10 grid gap-8 ${analyticsGraphics > 1 ? 'xl:grid-cols-2' : ''}`}>
+                {data.split && article.analytics.split ? (
+                  <YieldSplit
+                    rows={data.split}
+                    question={t(article.analytics.split.question)}
+                    takeaway={t(article.analytics.split.takeaway)}
+                    note={t(article.analytics.split.note)}
+                  />
+                ) : null}
+                {article.analytics.charts.map((c) =>
+                  chart(c.chartId) ? <ChartFigure key={c.chartId} data={chart(c.chartId)} question={t(c.question)} takeaway={t(c.takeaway)} /> : null,
+                )}
               </div>
-            </div>
+            ) : null}
+
+            {article.analytics.comparisons.length ? (
+              <div className="mt-10">
+                <h3 className="font-display text-2xl font-semibold text-navy-900">In context</h3>
+                <ul className="mt-5 grid gap-6 md:grid-cols-3">
+                  {article.analytics.comparisons.map((e) => (
+                    <li key={e.title} className="border-l-2 border-gold-500 pl-4">
+                      <EvidenceTag evidence={e.evidence} />
+                      <h4 className="mt-2 font-semibold leading-snug text-ink">{t(e.title)}</h4>
+                      <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{t(e.text)}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+
+            {article.analytics.implications.items.length ? (
+              <div className="mt-12">
+                <h3 className="font-display text-2xl font-semibold text-navy-900">{t(article.analytics.implications.title)}</h3>
+                <p className="mt-2 max-w-2xl text-sm text-ink-soft">{t(article.analytics.implications.intro)}</p>
+                <div className="mt-5 divide-y divide-cream-300 rounded-2xl border border-cream-300 bg-cream-50">
+                  {article.analytics.implications.items.map((it) => (
+                    <div key={it.asset} className="grid gap-4 p-5 sm:grid-cols-[10rem_1fr_1fr] sm:gap-6 sm:p-6">
+                      <div className="flex items-center gap-3">
+                        <AssetIcon kind={it.icon} className="h-8 w-8 text-gold-700" />
+                        <h4 className="font-display text-lg font-semibold text-navy-900">{it.asset}</h4>
+                      </div>
+                      <div>
+                        <p className="mb-1.5 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted">
+                          What we see <EvidenceTag evidence={it.showsEvidence} />
+                        </p>
+                        <p className="text-sm leading-relaxed text-ink">{t(it.shows)}</p>
+                      </div>
+                      <div>
+                        <p className="mb-1.5 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted">
+                          What it could mean <EvidenceTag evidence="interpretation" />
+                        </p>
+                        <p className="text-sm leading-relaxed text-ink">{t(it.couldMean)}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : null}
           </section>
 
-          {/* ── Layer 5 — Outlook ───────────────────────────────────── */}
+          {/* ── 4 — Outlook ─────────────────────────────────────────── */}
           <section id={article.outlook.id} aria-labelledby="h-outlook">
-            <ChapterHeading id="h-outlook" n={4} label={article.outlook.label} title={article.outlook.title} intro={t(article.outlook.intro)} />
+            <ChapterHeading id="h-outlook" n={4} label={article.outlook.label} title={t(article.outlook.title)} intro={t(article.outlook.intro)} />
+            {preview ? <AttentionNote attention={article.outlook.attention} /> : null}
             <p className="mt-6 flex items-start gap-3 rounded-lg border border-gold-500/40 bg-[#fbf1dc] px-4 py-3 text-sm leading-relaxed text-ink">
               <span aria-hidden="true" className="mt-0.5 text-gold-700">
                 ◇
@@ -240,11 +281,27 @@ export function ArticleView({ article, data, sectionName, readingMinutes }: Prop
                   <a href={s.url} rel="noopener" className="font-semibold text-navy-800 underline decoration-gold-500 underline-offset-2">
                     {s.name}
                   </a>{' '}
-                  — FRED series <code className="text-xs">{s.seriesId}</code>, {s.units.toLowerCase()}, {s.frequency.toLowerCase()}.
+                  — {s.short ?? 'FRED'} series <code className="text-xs">{s.seriesId}</code>, {s.units.toLowerCase()}, {s.frequency.toLowerCase()}.
                   Latest observation {fmtDay(s.lastObservation)}; retrieved {fmtDay(s.retrievedAt.slice(0, 10))}.
                 </li>
               ))}
             </ul>
+            {article.citations.length ? (
+              <>
+                <h3 className="mt-8 text-xs font-semibold uppercase tracking-wider text-muted">Reporting and documents</h3>
+                <ul className="mt-3 space-y-2.5 text-sm">
+                  {article.citations.map((c) => (
+                    <li key={c.url} className="leading-relaxed text-ink-soft">
+                      <a href={c.url} rel="noopener nofollow" className="font-semibold text-navy-800 underline decoration-gold-500 underline-offset-2">
+                        {c.label}
+                      </a>
+                      {c.publisher ? ` — ${c.publisher}` : ''}
+                      {c.publishedAt ? `, ${fmtDay(c.publishedAt)}` : ''}.
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : null}
             <details className="group mt-6">
               <summary className="inline-flex items-center gap-1 text-sm font-semibold text-navy-800">
                 How we calculated the numbers
@@ -258,14 +315,28 @@ export function ArticleView({ article, data, sectionName, readingMinutes }: Prop
                 ))}
               </ul>
             </details>
-            <p className="mt-6 text-xs leading-relaxed text-muted">
-              Prototype edition: this demonstration article is a draft awaiting editorial review. It is general information and education, not investment advice. Past movements in yields do not
-              predict future ones.
-            </p>
+            <p className="mt-6 text-xs leading-relaxed text-muted">{article.footerNote}</p>
           </section>
         </div>
       </div>
     </article>
+  );
+}
+
+const CHAIN_COLS: Record<number, string> = { 2: 'md:grid-cols-2', 3: 'md:grid-cols-3', 4: 'md:grid-cols-4', 5: 'md:grid-cols-5' };
+
+/** Private preview only: tells the editor a section still needs work. Never rendered publicly. */
+function AttentionNote({ attention }: { attention?: { required: boolean; reasons: string[] } }) {
+  if (!attention?.required) return null;
+  return (
+    <div role="note" className="mt-6 rounded-lg border border-[#c2410c]/40 bg-[#fff4ec] px-4 py-3 text-sm text-ink">
+      <p className="font-semibold text-[#9a3412]">Needs editorial attention</p>
+      <ul className="mt-1.5 list-disc space-y-1 pl-5 text-ink-soft">
+        {attention.reasons.slice(0, 6).map((r) => (
+          <li key={r}>{r}</li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -299,10 +370,13 @@ function ChapterHeading({
   );
 }
 
-function ScenarioCard({ s, n, t }: { s: Scenario; n: number; t: (x: string) => string }) {
+function ScenarioCard({ s, n, t }: { s: RenderScenario; n: number; t: (x: string) => string }) {
   return (
     <article className="flex flex-col rounded-2xl border border-cream-300 bg-cream-50 p-6">
-      <p className="kicker text-gold-700">Scenario {n}</p>
+      <p className="kicker text-gold-700">
+        Scenario {n}
+        {s.role === 'central' ? ' · Central case' : ''}
+      </p>
       <h3 className="mt-2 font-display text-2xl font-semibold leading-tight text-navy-900">{s.name}</h3>
       <p className="mt-2 text-[0.95rem] leading-relaxed text-ink">{t(s.summary)}</p>
 
@@ -347,6 +421,21 @@ function ScenarioCard({ s, n, t }: { s: Scenario; n: number; t: (x: string) => s
             </li>
           ))}
         </ul>
+        {s.uncertainties?.length ? (
+          <>
+            <h5 className="mt-4 text-xs font-semibold uppercase tracking-wider text-muted">Key uncertainties</h5>
+            <ul className="mt-2 space-y-1 text-sm text-ink-soft">
+              {s.uncertainties.map((u) => (
+                <li key={u} className="flex gap-2">
+                  <span aria-hidden="true" className="text-gold-500">
+                    ?
+                  </span>
+                  {t(u)}
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : null}
       </details>
     </article>
   );

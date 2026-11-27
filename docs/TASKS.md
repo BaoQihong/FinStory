@@ -41,11 +41,33 @@ Statuses: `Done` · `In progress` · `Blocked` · `Not started`.
 | P2A-08 | Tests: unit + data validation + lint + typecheck + build | Done | `npm run verify`; see `docs/TESTING.md` |
 | P2A-09 | Visual QA desktop + 375px mobile | Done | No horizontal overflow on any page; label collisions fixed |
 | P2A-10 | Commit, push, Vercel deploy | Done | Commit `5c2884f`; production https://financialstoryteller.vercel.app (all routes 200, unknown route 404) |
-| P2A-11 | Product owner visual & product review | Not started | Next milestone; gate for Phase 2B |
+| P2A-11 | Product owner visual & product review | Done | Approved by the product owner in the Phase 2B brief (2026-11-26) |
 | P2A-12 | Editorial review of demonstration copy | Not started | Copy written by Claude Code as a stand-in for human editorial work |
 | P2A-13 | Social/OG image (typographic, generated from data) | Not started | Optional polish; no AI imagery |
 
-## Phase 2B / 2C
+## Phase 2B — AI editorial research & generation engine (active)
+
+| ID | Task | Status | Notes |
+|----|------|--------|-------|
+| P2B-01 | Inspect repo, provider research, architecture plan | Done | Plan reported in session; D-023–D-032 |
+| P2B-02 | Credentials: Tavily, FRED, Tiingo, editor login → `.env.local` | Done | All verified live; `scripts/setup/env-from-clipboard.mjs --var` added |
+| P2B-03 | Supabase migration (editors, articles, revisions, jobs, stage runs, sources, findings, datasets; RLS) | Done | Applied to `gmcllutljmotushrsqka`; RLS verified from anon + editor sides (`npm run studio:editor`) |
+| P2B-04 | Canonical schema SeshatArticleV1 + validation | Done | `lib/studio/schema.ts`, `validate.ts`, `numbers.ts` |
+| P2B-05 | Providers: Tavily, FRED, Tiingo, EIA (gated) + curated registry | Done | 47/47 registry ids verified; EIA disabled (no key) |
+| P2B-06 | Deterministic data engine (units, derived series, facts, indicators, charts) | Done | `lib/studio/facts.ts`, `units.ts` |
+| P2B-07 | Staged pipeline + runner (lease, retries, partial drafts) | Done | 11 stages; mocked end-to-end tests |
+| P2B-08 | Generalised renderer (render model) — Phase 2A unchanged | Done | Production HTML diff of the Bond Comeback page: identical |
+| P2B-09 | Editorial studio: login, drafts, new story, generation panel, section editors, research/data/checks/history, preview | Done | `/admin` |
+| P2B-10 | Vercel production env vars | Done | 8 vars; provider keys marked sensitive; no service-role key |
+| P2B-11 | Live engine integration runs (script) | In progress | `scripts/studio/live-run.ts` |
+| P2B-12 | Acceptance test A (yen) through the studio UI | Not started | |
+| P2B-13 | Acceptance test B (crude oil) through the studio UI | Not started | No code changes between A and B |
+| P2B-14 | Commit, push, deploy; completion report | Not started | |
+| P2B-15 | Optional: EIA API key for oil inventories/production series | Not started | Product owner action (free registration); engine degrades gracefully without it |
+| P2B-16 | Tiingo licence review before public publishing | Not started | Free tier = internal use only (D-025); gate for 2C |
+| P2B-17 | Disable public sign-ups in Supabase Auth | Not started | Product owner deferred ("fine for proto"); RLS allow-list already blocks non-editors |
+
+## Phase 2C
 
 Not started. Requires explicit product owner approval to begin.
 

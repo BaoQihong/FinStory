@@ -1,0 +1,55 @@
+import { Suspense } from 'react';
+import { notFound } from 'next/navigation';
+import { requireEditor } from '@/lib/studio/auth';
+import { publicJob } from '@/lib/studio/job-view';
+import type { Job } from '@/lib/studio/pipeline/types';
+import type { SeshatArticle, StoryBrief } from '@/lib/studio/schema';
+import { DraftWorkspace, type DatasetMeta, type FindingView, type SourceView } from '@/components/studio/DraftWorkspace';
+
+// Private, per-request studio route: render on the server at request time (no static shell).
+export const instant = false;
+
+export const metadata = { title: 'Draft' };
+
+export default function DraftPage({ params }: PageProps<'/admin/drafts/[id]'>) {
+  return (
+    <Suspense fallback={<p className="mx-auto max-w-7xl px-5 py-10 text-muted sm:px-8">Loading draft…</p>}>
+      <Workspace params={params} />
+    </Suspense>
+  );
+}
+
+async function Workspace({ params }: { params: PageProps<'/admin/drafts/[id]'>['params'] }) {
+  const { id } = await params;
+  if (!/^[0-9a-f-]{36}$/.test(id)) notFound();
+  const { db } = await requireEditor();
+  const { data: article } = await db.from('articles').select('id, working_title, status, revision, content, brief, created_at, updated_at').eq('id', id).maybeSingle();
+  if (!article) notFound();
+  const { data: jobs } = await db.from('generation_jobs').select('*').eq('article_id', id).order('created_at', { ascending: false }).limit(1);
+  const job = jobs?.[0] as Job | undefined;
+  const [sources, findings, datasets, revisions] = job
+    ? await Promise.all([
+        db.from('research_sources').select('ref, url, title, publisher, source_type, published_at, stale, query, snippet').eq('job_id', job.id),
+        db.from('research_findings').select('ref, claim, evidence_kind, source_refs, quote, quote_verified').eq('job_id', job.id).order('ref'),
+        db.from('datasets').select('key, provider, series_id, name, units, frequency, seasonal_adjustment, definition, source_url, retrieved_at, observation_start, observation_end, transformations').eq('job_id', job.id).order('key'),
+        db.from('article_revisions').select('revision, origin, note, created_at').eq('article_id', id).order('revision', { ascending: false }).limit(20),
+      ])
+    : [{ data: [] }, { data: [] }, { data: [] }, await db.from('article_revisions').select('revision, origin, note, created_at').eq('article_id', id).order('revision', { ascending: false }).limit(20)];
+  const byRef = (a: { ref: string }, b: { ref: string }) => Number(a.ref.slice(1)) - Number(b.ref.slice(1));
+  return (
+    <DraftWorkspace
+      key={`${article.revision}:${article.status}:${job?.status ?? ''}`}
+      articleId={article.id}
+      title={article.working_title}
+      status={article.status}
+      revision={article.revision}
+      brief={article.brief as StoryBrief}
+      content={(article.content as SeshatArticle | null) ?? null}
+      job={job ? publicJob(job) : null}
+      sources={((sources.data ?? []) as SourceView[]).sort(byRef)}
+      findings={((findings.data ?? []) as FindingView[]).sort(byRef)}
+      datasets={(datasets.data ?? []) as DatasetMeta[]}
+      revisions={(revisions.data ?? []) as { revision: number; origin: string; note: string | null; created_at: string }[]}
+    />
+  );
+}

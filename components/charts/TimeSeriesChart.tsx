@@ -113,7 +113,12 @@ export function TimeSeriesChart({ chart, ariaLabel }: { chart: ClientChart; aria
   };
 
   const rightMargin = compact ? 12 : 132;
-  const plotLeft = 44;
+  const { prefix, suffix } = chart.unit;
+  // Axis ticks keep short suffixes only ("%", " pp"); long unit words live in the legend/table.
+  const axisSuffix = suffix.length <= 3 ? suffix : '';
+  const fmtAxis = (v: number) => `${prefix}${Math.abs(v) >= 1000 ? v.toLocaleString('en-US') : v}${axisSuffix}`;
+  const maxAbs = Math.max(...chart.series.flatMap((s) => s.points.map((p) => Math.abs(p.value))));
+  const plotLeft = Math.max(44, Math.round(fmtAxis(Math.round(maxAbs)).length * 7.2 + 10));
   const anchorFor = (x: number) => {
     const plotRight = width - rightMargin;
     if (x > plotRight - 70) return 'end';
@@ -142,7 +147,7 @@ export function TimeSeriesChart({ chart, ariaLabel }: { chart: ClientChart; aria
             <YAxis
               domain={chart.yDomain ?? ['auto', 'auto']}
               ticks={yTicks}
-              tickFormatter={(v: number) => `${v}%`}
+              tickFormatter={fmtAxis}
               tick={{ fill: '#5b6372', fontSize: 12 }}
               tickLine={false}
               axisLine={false}
@@ -173,7 +178,7 @@ export function TimeSeriesChart({ chart, ariaLabel }: { chart: ClientChart; aria
                         <div key={s.key} className="flex items-center gap-2 text-ink-soft">
                           <span className="inline-block h-0.5 w-3" style={{ background: SERIES_COLORS[s.color] }} aria-hidden />
                           <span>{s.label}</span>
-                          <span className="ml-auto pl-3 font-semibold tabular-nums text-ink">{Number(item.value).toFixed(2)}%</span>
+                          <span className="ml-auto pl-3 font-semibold tabular-nums text-ink">{prefix}{Number(item.value).toFixed(2)}{suffix}</span>
                         </div>
                       );
                     })}

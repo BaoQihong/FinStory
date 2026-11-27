@@ -5,6 +5,7 @@
 // Usage (from repo root):
 //   node scripts/setup/env-from-clipboard.mjs --supabase-token   # SUPABASE_ACCESS_TOKEN + `supabase login`
 //   node scripts/setup/env-from-clipboard.mjs --db-password      # rebuilds DATABASE_URL
+//   node scripts/setup/env-from-clipboard.mjs --var TAVILY_API_KEY  # any allow-listed variable (see ALLOWED_VARS)
 import { execSync } from 'node:child_process';
 import { readEnv, setEnv } from '../lib/env-file.mjs';
 
@@ -13,8 +14,12 @@ const POOLER_HOST = 'aws-2-us-east-1.pooler.supabase.com';
 const POOLER_PORT = 6543; // transaction pooler, see D-007
 
 const mode = process.argv[2];
-if (!['--supabase-token', '--db-password'].includes(mode)) {
-  console.error('Usage: node scripts/setup/env-from-clipboard.mjs --supabase-token | --db-password');
+// Variables that may be written with --var (Phase 2B provider keys and the editor login).
+const ALLOWED_VARS = ['TAVILY_API_KEY', 'FRED_API_KEY', 'TIINGO_API_KEY', 'EDITOR_EMAIL', 'EDITOR_PASSWORD'];
+const varName = mode === '--var' ? process.argv[3] : undefined;
+if (!['--supabase-token', '--db-password', '--var'].includes(mode) || (mode === '--var' && !ALLOWED_VARS.includes(varName))) {
+  console.error('Usage: node scripts/setup/env-from-clipboard.mjs --supabase-token | --db-password | --var <NAME>');
+  console.error(`  --var accepts: ${ALLOWED_VARS.join(', ')}`);
   process.exit(2);
 }
 
@@ -44,6 +49,9 @@ if (mode === '--supabase-token') {
     console.log('SUPABASE_ACCESS_TOKEN written to .env.local, but `supabase login` failed:');
     console.log(String(e.stderr || '').split(value).join('***').split('\n').slice(0, 3).join('\n'));
   }
+} else if (mode === '--var') {
+  setEnv({ [varName]: value });
+  console.log(`${varName} written to .env.local (${value.length} chars).`);
 } else {
   const current = env.DATABASE_URL ?? '';
   if (current.includes(`:${encodeURIComponent(value)}@`)) {

@@ -1,6 +1,6 @@
 {
   "name": "finstory",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "description": "Seshat — financial storytelling publication (FinStory repository)",
   "type": "module",
@@ -13,17 +13,22 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
-    "test": "node --test scripts/data/transforms.test.ts",
+    "test": "node --test scripts/data/transforms.test.ts scripts/studio/pipeline.test.ts",
     "data:fetch": "node scripts/data/fetch-fred.mjs",
     "data:validate": "node scripts/data/validate-fixtures.ts",
-    "verify": "npm run test && npm run data:validate && npm run lint && npm run typecheck && npm run build"
+    "verify": "npm run test && npm run data:validate && npm run lint && npm run typecheck && npm run build",
+    "studio:check-registry": "node scripts/studio/check-registry.mjs",
+    "studio:editor": "node scripts/setup/create-editor.mjs"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.119.2",
     "next": "16.4.6",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "recharts": "^3.11.1",
-    "server-only": "^0.0.1"
+    "server-only": "^0.0.1",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "4.3.3",

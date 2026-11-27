@@ -30,18 +30,24 @@ place, preparation work committed locally.
 
 ## Phase 2 — Product design and interactive visual prototyping
 
-**Status: IN PROGRESS — Phase 2A approved by the product owner 2026-11-26.**
+**Status: IN PROGRESS — Phase 2A complete and approved; Phase 2B approved and active (2026-11-26).**
 
 Phase 2 is delivered in sub-phases, each approved separately:
 
-- **2A — Public frontend, editorial experience & financial data** ← **current.**
+- **2A — Public frontend, editorial experience & financial data** — **complete, approved.**
   Homepage, one complete five-layer demonstration story ("The Bond
   Comeback") built on real FRED data, reusable editorial and chart
   components, Vercel deployment. Exclusions: auth, CMS, AI/Arli calls,
   live data ingestion, subscriptions, personalization, trading,
   forecasting engines. Next milestone: product owner visual and product
-  review of the deployed site.
-- **2B, 2C** — not started; **do not begin without explicit approval.**
+  review of the deployed site (approved).
+- **2B — AI editorial research, analytics & story generation engine** ← **current.**
+  Editor-only studio at `/admin` (Supabase Auth + RLS), staged Arli-driven
+  research → data → narrative pipeline producing drafts in the canonical
+  four-section storyboard, editable and previewable in the 2A template.
+  Exclusions: public publishing, multi-editor, autonomous topics, images,
+  subscriptions, advice/trading, forecasting engines.
+- **2C — Public publishing** — not started; **do not begin until 2B is reviewed and approved.**
 
 Original placeholder scope (still indicative): Expected outputs: product definition
 (`docs/PRODUCT.md`), design system (`docs/DESIGN_SYSTEM.md`), interactive

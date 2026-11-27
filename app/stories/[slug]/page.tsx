@@ -5,7 +5,7 @@ import { articles, getArticle, leadStory, sectionName } from '@/content';
 import type { PreviewArticle } from '@/lib/content/types';
 import { getBondComebackData } from '@/lib/stories/bond-comeback';
 import { resolveTokens } from '@/lib/content/tokens';
-import { readingMinutes } from '@/lib/content/reading-time';
+import { fromPublished, readingMinutesOf } from '@/lib/content/render-model';
 import { ArticleView } from '@/components/article/ArticleView';
 import { InPreparationBadge } from '@/components/editorial/StoryCard';
 
@@ -31,9 +31,9 @@ export default async function StoryPage({ params }: PageProps<'/stories/[slug]'>
 
   if (article.status === 'preview') return <PreviewPage article={article} />;
 
-  const data = getBondComebackData();
-  const minutes = readingMinutes(article, (s) => resolveTokens(s, data));
-  return <ArticleView article={article} data={data} sectionName={sectionName(article.section)} readingMinutes={minutes} />;
+  const model = fromPublished(article, getBondComebackData());
+  const minutes = readingMinutesOf(model.article, (s) => resolveTokens(s, model.data));
+  return <ArticleView article={model.article} data={model.data} sectionName={sectionName(article.section)} readingMinutes={minutes} />;
 }
 
 function PreviewPage({ article }: { article: PreviewArticle }) {

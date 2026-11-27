@@ -142,3 +142,83 @@
 .recharts-surface:focus {
   outline: none;
 }
+
+/* ── Editorial studio (/admin only) — form controls in the house palette ── */
+@layer components {
+  .studio-input {
+    display: block;
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-cream-300);
+    background: #fff;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--color-ink);
+  }
+  .studio-input:focus {
+    outline: 2px solid var(--color-gold-400);
+    outline-offset: 1px;
+    border-color: var(--color-gold-500);
+  }
+  textarea.studio-input {
+    resize: vertical;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+  }
+  .studio-btn-primary,
+  .studio-btn,
+  .studio-btn-quiet {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.95rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: background-color 0.15s;
+  }
+  .studio-btn-primary {
+    background: var(--color-navy-900);
+    color: var(--color-cream-50);
+  }
+  .studio-btn-primary:hover:not(:disabled) {
+    background: var(--color-navy-700);
+  }
+  .studio-btn {
+    border: 1px solid var(--color-cream-300);
+    background: var(--color-cream-50);
+    color: var(--color-navy-800);
+  }
+  .studio-btn:hover:not(:disabled) {
+    background: var(--color-cream-200);
+  }
+  .studio-btn-quiet {
+    padding: 0.2rem 0.45rem;
+    font-weight: 500;
+    color: var(--color-muted);
+  }
+  .studio-btn-quiet:hover:not(:disabled) {
+    color: var(--color-ink);
+    background: var(--color-cream-200);
+  }
+  .studio-btn-primary:disabled,
+  .studio-btn:disabled,
+  .studio-btn-quiet:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .studio-card {
+    border-radius: 1rem;
+    border: 1px solid var(--color-cream-300);
+    background: var(--color-cream-50);
+  }
+  .studio-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+}

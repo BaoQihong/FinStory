@@ -21,8 +21,18 @@ export function IndicatorCard({ card, note }: { card: Card; note?: string }) {
       </header>
       <div className="mt-3 flex items-end justify-between gap-3">
         <p className="font-display text-[2.6rem] font-semibold leading-none tracking-tight text-navy-900 tabular-nums">
-          {card.value.toFixed(card.decimals)}
-          <span className="ml-0.5 text-2xl">%</span>
+          {card.display ? (
+            <>
+              {card.display.prefix ? <span className="mr-0.5 text-2xl">{card.display.prefix}</span> : null}
+              {card.value.toLocaleString('en-US', { minimumFractionDigits: card.decimals, maximumFractionDigits: card.decimals })}
+              {card.display.suffix.trim() ? <span className="ml-1 block text-sm font-normal tracking-normal text-muted">{card.display.suffix.trim()}</span> : null}
+            </>
+          ) : (
+            <>
+              {card.value.toFixed(card.decimals)}
+              <span className="ml-0.5 text-2xl">%</span>
+            </>
+          )}
         </p>
         <Sparkline points={card.spark} color={SPARK_COLOR[card.key] ?? '#243b66'} className="h-10 w-28" />
       </div>
@@ -35,7 +45,7 @@ export function IndicatorCard({ card, note }: { card: Card; note?: string }) {
           >
             <span aria-hidden="true">{flat ? '■' : up ? '▲' : '▼'}</span>
             {ch.value > 0 ? '+' : ''}
-            {ch.value.toFixed(2)} pp
+            {card.display ? `${ch.value.toFixed(card.display.changeSuffix === '%' ? 1 : 2)}${card.display.changeSuffix}` : `${ch.value.toFixed(2)} pp`}
           </span>
           vs {ch.versus}
         </p>
@@ -52,7 +62,7 @@ export function IndicatorCard({ card, note }: { card: Card; note?: string }) {
         <p className="mt-1.5">
           Source:{' '}
           <a className="underline decoration-gold-500 underline-offset-2 hover:text-ink" href={card.source.url} rel="noopener">
-            FRED {card.source.seriesId}
+            {card.source.short ?? 'FRED'} {card.source.seriesId}
           </a>
           , {card.source.units.toLowerCase()}.
         </p>
