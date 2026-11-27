@@ -58,6 +58,13 @@ Manual / browser checks performed for 2A (repeat after visual changes):
 - Browser: desktop (1280) and mobile (375, measured in a same-origin iframe because the window could not be resized) checks of the public article: no horizontal overflow after the indicator-card fix, charts, tables and scenarios render.
 - **Not automatable here:** the studio UI (Publish panel links, byline editor, Editorial Polish review) needs a signed-in editor; the assistant may not type passwords. Server-action logic is covered by the pure-module unit tests above.
 
+## Phase 3C — editorial homepage
+
+- `npm test` adds `scripts/publishing/home.test.ts`: featured selection and fallback, page parsing, card model (public fields only, story URL, original/updated dates, token resolution, unresolvable copy skipped), lead-chart artwork (own first chart, at most two lines, thinned, absent when no chart).
+- `npm run publish:home-check -- --base <url>` (live HTTP + Supabase, fixtures only; restores the prior feature): the inflation article is discoverable and prototype pages are not listed; drafts never appear; a new publication appears with its `/story/<slug>` link and no private fields; newest-first ordering and default lead; featuring leads without repeating; only live articles can be featured, only by editors, and anon cannot read `updated_by`; draft edits stay private and republishing updates in place, keeping the feature; unpublishing removes the story and falls back; a deleted article disappears; malformed/out-of-range pages render. **While it runs, fixtures are briefly live** on any deployment reading this project.
+- Browser (local production build): desktop 1440 and mobile 375 (same-origin iframes) for one story with chart artwork, several stories (temporary labelled fixtures, removed straight after), and the empty state (local dev server with the data forced empty, reverted). No horizontal overflow at 375 px. The article page is unchanged.
+- **Not automatable here:** the studio Feature control needs a signed-in editor; the database function behind it is covered by the live check.
+
 ## Principles (to expand in later phases)
 
 - Test user-visible behavior first (editorial pipeline correctness).

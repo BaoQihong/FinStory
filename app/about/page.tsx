@@ -73,17 +73,16 @@ export default function AboutPage() {
           </ul>
         </section>
 
-        <section aria-labelledby="h-prototype" className="mt-16 rounded-2xl border border-cream-300 bg-cream-50 p-6">
-          <h2 id="h-prototype" className="kicker text-gold-700">
-            Prototype edition
+        <section aria-labelledby="h-edition" className="mt-16 rounded-2xl border border-cream-300 bg-cream-50 p-6">
+          <h2 id="h-edition" className="kicker text-gold-700">
+            Early edition
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-            You are reading an early edition of Seshat. One full story is published —{' '}
-            <Link className="font-semibold text-navy-800 underline decoration-gold-500 underline-offset-2" href="/stories/the-bond-comeback">
-              The Bond Comeback
-            </Link>
-            — and other stories are marked as in preparation. The demonstration copy is a draft awaiting editorial review. Economic data comes from Federal Reserve Economic Data
-            (FRED), Federal Reserve Bank of St. Louis.
+            You are reading an early edition of Seshat. Stories appear on the{' '}
+            <Link className="font-semibold text-navy-800 underline decoration-gold-500 underline-offset-2" href="/">
+              front page
+            </Link>{' '}
+            when an editor approves and publishes them, and each one credits the data sources it uses.
           </p>
         </section>
       </div>

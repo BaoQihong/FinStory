@@ -34,6 +34,8 @@ async function DraftList() {
     .select('id, working_title, status, revision, updated_at, as_of, is_temporary, is_live, first_published_at, published_source_revision, generation_jobs(status, stage, created_at)')
     .order('updated_at', { ascending: false })
     .limit(100);
+  const { data: feature } = await db.from('homepage_feature').select('article_id').maybeSingle();
+  const featuredId = (feature?.article_id as string | null) ?? null;
   if (error) return <p className="mt-10 text-[#9a3412]">Could not load drafts: {error.message}</p>;
   if (!rows?.length)
     return (
@@ -60,6 +62,7 @@ async function DraftList() {
                   {r.as_of ? ` · data to ${fmtDayShort(r.as_of)}` : ''}
                 </span>
               </span>
+              {r.id === featuredId ? <span className="inline-flex shrink-0 items-center rounded-full bg-gold-300/40 px-2.5 py-1 text-xs font-semibold text-navy-900">Featured</span> : null}
               <PublicationBadge state={publicationState(r)} />
               <StatusBadge status={r.status} job={job} />
             </Link>

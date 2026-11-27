@@ -32,9 +32,9 @@ no invented probabilities (D-019). Run `npm run verify` before committing.
 - The project runs in three phases (see `docs/ROADMAP.md`):
   1. Project preparation and infrastructure configuration (complete)
   2. Product design and interactive visual prototyping (2A done, 2B delivered)
-  3. Application development, deployment and operations ← **current: 3B
-     (3B.1 public article, 3B.2 editorial quality; approved 2026-11-27)**;
-     3C (homepage/discovery) and 3D (polish/optimisation) need separate approval
+  3. Application development, deployment and operations ← **current: 3C
+     (editorial homepage; approved 2026-11-27) — completes Seshat v0.1,
+     Editorial MVP**; 3D (polish/optimisation) needs separate approval
 - **Do not begin work belonging to a later phase without explicit product
   owner approval.**
 

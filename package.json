@@ -1,6 +1,6 @@
 {
   "name": "finstory",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": true,
   "description": "Seshat — financial storytelling publication (FinStory repository)",
   "type": "module",
@@ -13,7 +13,7 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
-    "test": "node --test scripts/data/transforms.test.ts scripts/studio/pipeline.test.ts scripts/studio/brief.test.ts scripts/publishing/publishing.test.ts scripts/studio/polish.test.ts",
+    "test": "node --test scripts/data/transforms.test.ts scripts/studio/pipeline.test.ts scripts/studio/brief.test.ts scripts/publishing/publishing.test.ts scripts/publishing/home.test.ts scripts/studio/polish.test.ts",
     "data:fetch": "node scripts/data/fetch-fred.mjs",
     "data:validate": "node scripts/data/validate-fixtures.ts",
     "verify": "npm run test && npm run data:validate && npm run lint && npm run typecheck && npm run build",
@@ -22,6 +22,7 @@
     "studio:generate": "node scripts/studio/generate-draft.ts",
     "publish:check": "node scripts/publishing/publish-check.ts",
     "publish:route-check": "node scripts/publishing/public-route-check.ts",
+    "publish:home-check": "node scripts/publishing/home-check.ts",
     "editorial:eval": "node scripts/studio/editorial-eval.ts"
   },
   "dependencies": {

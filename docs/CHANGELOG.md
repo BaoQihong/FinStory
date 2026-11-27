@@ -3,6 +3,17 @@
 Notable changes to this project. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/). Newest entries first.
 
+## 0.6.0 — 2026-11-27 (Phase 3C: editorial homepage) — **Seshat v0.1, Editorial MVP**
+
+Milestone: an editor can create, edit and publish an article, and a reader can discover and read it from the homepage. v0.1 = Phase 1 (infrastructure), Phase 2 (editorial creation workflow), 3A (publishing engine), 3B (public article rendering and editorial quality), 3C (public editorial homepage). Phase 3D remains deferred.
+
+- Homepage `/` rebuilt from live published content: masthead, featured story (headline, standfirst, byline, dates, real-data chart artwork from the article's own lead chart or a type-only layout), Latest stories grid (section, headline, summary, date, author), simple pagination, empty state. Per request, no cache (D-053).
+- Featured article: one at a time, live articles only, automatic fallback to the newest story; **Feature on homepage / Remove feature** in the studio publication panel and a Featured badge in the drafts list (D-054).
+- Migrations `20261127180000_homepage_feature.sql` and `20261127183000_homepage_feature_column_grants.sql` (additive; applied).
+- Navigation: header Latest + About; minimal footer. Phase 2A prototype pages delisted (still reachable by URL); About page note updated.
+- Tests: `scripts/publishing/home.test.ts` (unit) and `npm run publish:home-check` (live HTTP lifecycle with fixtures).
+- Removed the unused prototype `LeadVisual` component.
+
 ## 0.5.0 — 2026-11-27 (Phase 3B: public article experience and editorial quality)
 
 ### 3B.1 — public article

@@ -56,13 +56,25 @@ Phase 3 builds on.
 
 ## Phase 3 — Application development, deployment and operations
 
-**Status: IN PROGRESS — 3A delivered and deployed; 3B (3B.1 + 3B.2) approved 2026-11-27 and implemented locally (not yet pushed/deployed).** Each sub-phase needs its own approval.
+**Status: IN PROGRESS — 3A delivered and deployed; 3B and 3C approved 2026-11-27 and implemented locally (not yet pushed/deployed). 3C completes Seshat v0.1 (Editorial MVP).** Each sub-phase needs its own approval.
 
 - **3A — Publishing engine** — **done, deployed** (`b1cdb61`). Publication lifecycle (publish, republish, unpublish), immutable published snapshots and revision history, permanent slugs, pre-publication validation, studio publishing controls, RLS-protected public data interface. No public page.
 - **3B.1 — Public article experience** ← **current, implemented and tested locally.** `/story/[slug]` renders the live snapshot through the shared ArticleView (WYSIWYG with preview), real 404s via a proxy slug check, per-request freshness, studio "View published article" (D-047).
 - **3B.2 — Editorial quality and natural writing** ← **current, implemented; editorial evaluation awaiting product-owner judgment.** Versioned style guide, restructured prompts with author argument/voice, whole-article awareness, Editorial Polish with human review and protected-content checks (D-048, D-049).
-- **3C — Public homepage and article discovery** — deferred (new articles do not appear on the homepage; expected).
-- **3D — Production polish and optimisation** — deferred.
+- **3C — Public editorial homepage** ← **current, approved 2026-11-27; implemented and tested locally (not yet pushed/deployed).** `/` built from live published snapshots: featured story (editor-chosen, falls back to newest), latest stories, pagination, empty state; studio Feature control (D-053, D-054).
+- **3D — Production polish and optimisation** — deferred (caching, SEO/social, performance).
+
+### Milestone: Seshat v0.1 — Editorial MVP (reached with 3C)
+
+An editor can create, edit and publish an article; a reader can discover it on the homepage and read it at its permanent URL.
+
+- Phase 1: Infrastructure.
+- Phase 2: Editorial creation workflow.
+- Phase 3A: Publishing engine.
+- Phase 3B: Public article rendering and editorial quality.
+- Phase 3C: Public editorial homepage.
+
+Still outstanding after v0.1: commercial market-data licensing (P2B-16, P3A-09, P3B-14), editorial quality evaluation by the product owner (P3B-10, P2A-12), production optimisation (3D), studio browser acceptance by a signed-in editor (P2B-12b, P2B-22, P3A-07, P3B-13, P3C-09), the live article's byline role (P3B-12).
 
 Placeholder. Expected outputs: architecture decisions
 (`docs/ARCHITECTURE.md`), application implementation, test suite

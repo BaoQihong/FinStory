@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, useSyncExternalStore, useTransition } from 'react';
-import { publicationPreflight, publishArticle, unpublishArticle, type Preflight } from '@/app/admin/publish-actions';
+import { publicationPreflight, publishArticle, setFeaturedArticle, unpublishArticle, type Preflight } from '@/app/admin/publish-actions';
 import { STATE_LABELS, slugProblem, type PublicationState } from '@/lib/publishing/rules';
 
 export type PublicationView = {
@@ -12,6 +12,8 @@ export type PublicationView = {
   firstPublishedAt: string | null;
   lastPublishedAt: string | null;
   unpublishedAt: string | null;
+  /** Phase 3C: place on the homepage while live — explicitly featured, default lead (newest, nothing featured) or neither. */
+  homepage?: 'featured' | 'lead' | 'none';
 };
 
 const STATE_STYLE: Record<PublicationState, string> = {
@@ -106,6 +108,7 @@ export function PublishPanel({ articleId, revision, dirty, generating, pub }: { 
           {pub.state === 'live_changed' ? <span className="text-xs text-muted">Readers see publication {pub.publishedRevision}, not your latest edits.</span> : null}
         </div>
       ) : null}
+      {pub.state === 'live' || pub.state === 'live_changed' ? <HomepageFeature articleId={articleId} role={pub.homepage ?? 'none'} onResult={setFlash} /> : null}
       {lockReason && pub.state !== 'live' ? <p className="mt-2 text-xs text-muted">{lockReason}</p> : null}
       {flash ? (
         <p role="status" className={`mt-2 text-sm ${flash.kind === 'ok' ? 'text-ev-documented' : 'text-[#9a3412]'}`}>
@@ -302,5 +305,40 @@ function UnpublishDialog({ articleId, pub, onClose }: { articleId: string; pub: 
         </button>
       </div>
     </Modal>
+  );
+}
+
+const HOMEPAGE_TEXT: Record<'featured' | 'lead' | 'none', string> = {
+  featured: 'Featured on the homepage.',
+  lead: 'Leads the homepage as the newest story (nothing is featured).',
+  none: 'Listed under Latest stories on the homepage.',
+};
+
+/** Phase 3C: choose this live article as the homepage feature, or clear the choice. */
+function HomepageFeature({ articleId, role, onResult }: { articleId: string; role: 'featured' | 'lead' | 'none'; onResult: (m: { kind: 'ok' | 'error'; text: string }) => void }) {
+  const [pending, start] = useTransition();
+  const run = (id: string | null) =>
+    start(async () => {
+      const r = await setFeaturedArticle(id);
+      if (!r.ok) return onResult({ kind: 'error', text: r.error });
+      onResult({
+        kind: 'ok',
+        text: r.outcome === 'cleared' ? 'Feature removed. The homepage now leads with the newest story.' : r.outcome === 'featured' ? 'Featured on the homepage.' : 'No change.',
+      });
+    });
+  return (
+    <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
+      <span className="text-xs font-semibold text-muted">Homepage</span>
+      <span className="text-xs text-ink-soft">{HOMEPAGE_TEXT[role]}</span>
+      {role === 'featured' ? (
+        <button type="button" className="studio-btn-quiet" disabled={pending} onClick={() => run(null)}>
+          {pending ? 'Updating…' : 'Remove feature'}
+        </button>
+      ) : (
+        <button type="button" className="studio-btn-quiet" disabled={pending} onClick={() => run(articleId)} title="Only one article is featured at a time; this replaces any current choice.">
+          {pending ? 'Updating…' : 'Feature on homepage'}
+        </button>
+      )}
+    </div>
   );
 }

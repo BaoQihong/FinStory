@@ -81,7 +81,7 @@ production project with `npx supabase db push --remote --dry-run` and
 then `npx supabase db push --remote --yes`. They need product-owner
 approval, and only additive changes are made without a separate decision.
 Check with `npx supabase migration list --remote`. Applied so far:
-`20261126120000`, `20261127090000`, `20261127150000` (publishing engine).
+`20261126120000`, `20261127090000`, `20261127150000` (publishing engine), `20261127180000` + `20261127183000` (homepage feature, Phase 3C).
 
 ## Publishing (Phase 3A)
 
@@ -94,6 +94,11 @@ Check with `npx supabase migration list --remote`. Applied so far:
 - Public URL: `https://financialstoryteller.vercel.app/story/<slug>`. Rendered per request from `published_stories` (no cache), so unpublishing takes effect immediately.
 - If public pages return 404 for live stories, check `NEXT_PUBLIC_SUPABASE_URL` / `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` on Vercel: the proxy existence check uses them. A Supabase *outage* fails open to the page, which then errors (500) rather than showing a false 404.
 - After a deploy: `npm run publish:route-check -- --base https://financialstoryteller.vercel.app` (creates and removes its own fixture articles).
+
+## Homepage (Phase 3C)
+
+- `/` lists every live story (newest first, 12 per page) and leads with the featured one. To change the lead, open a live article in the studio → publication panel → **Feature on homepage** / **Remove feature**. With nothing featured, the newest story leads; unpublishing a featured story clears the feature automatically.
+- After a deploy: `npm run publish:home-check -- --base https://financialstoryteller.vercel.app`. Its fixtures are visible on the live homepage for a few seconds; it restores the feature that was set before the run.
 
 ## Editorial Polish (Phase 3B.2)
 

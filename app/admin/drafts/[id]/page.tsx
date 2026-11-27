@@ -40,6 +40,7 @@ async function Workspace({ params }: { params: PageProps<'/admin/drafts/[id]'>['
     : [{ data: [] }, { data: [] }, { data: [] }, await db.from('article_revisions').select('revision, origin, note, created_at').eq('article_id', id).order('revision', { ascending: false }).limit(20)];
   const { data: publications } = await db.from('publication_revisions').select('revision, source_revision, slug, note, published_by_name, published_at').eq('article_id', id).order('revision', { ascending: false });
   const p = article as unknown as PublicationColumns;
+  const homepage = p.is_live ? await homepageRole(db, article.id) : 'none';
   const byRef = (a: { ref: string }, b: { ref: string }) => Number(a.ref.slice(1)) - Number(b.ref.slice(1));
   return (
     <DraftWorkspace
@@ -55,9 +56,20 @@ async function Workspace({ params }: { params: PageProps<'/admin/drafts/[id]'>['
       sources={((sources.data ?? []) as SourceView[]).sort(byRef)}
       findings={((findings.data ?? []) as FindingView[]).sort(byRef)}
       datasets={(datasets.data ?? []) as DatasetMeta[]}
-      publication={{ state: publicationState(p), slug: p.slug, publishedRevision: p.published_revision, sourceRevision: p.published_source_revision, firstPublishedAt: p.first_published_at, lastPublishedAt: p.last_published_at, unpublishedAt: p.unpublished_at }}
+      publication={{ state: publicationState(p), slug: p.slug, publishedRevision: p.published_revision, sourceRevision: p.published_source_revision, firstPublishedAt: p.first_published_at, lastPublishedAt: p.last_published_at, unpublishedAt: p.unpublished_at, homepage }}
       publications={(publications ?? []) as PublicationEntry[]}
       revisions={(revisions.data ?? []) as { revision: number; origin: string; note: string | null; created_at: string }[]}
     />
   );
+}
+
+/** This live article's place on the homepage (Phase 3C): explicitly featured, the default lead (newest, nothing featured), or neither. */
+async function homepageRole(db: Awaited<ReturnType<typeof requireEditor>>['db'], articleId: string): Promise<'featured' | 'lead' | 'none'> {
+  const [{ data: feature }, { data: newest }] = await Promise.all([
+    db.from('homepage_feature').select('article_id').maybeSingle(),
+    db.from('published_stories').select('article_id').order('first_published_at', { ascending: false }).order('article_id').limit(1),
+  ]);
+  const explicit = (feature?.article_id as string | null) ?? null;
+  if (explicit) return explicit === articleId ? 'featured' : 'none';
+  return newest?.[0]?.article_id === articleId ? 'lead' : 'none';
 }

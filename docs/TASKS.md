@@ -113,6 +113,24 @@ Superseded by Phase 3A (D-043).
 | P3B-14 | Decide data licensing for public display (UMich, S&P via FRED; Tiingo; snapshot scope) | Not started | `docs/DATA_LICENSING.md` (D-051) |
 | P3B-15 | Commit, push, deploy 3B | In progress | Committed locally; push + Vercel deploy await product-owner approval |
 
-## Phase 3C / 3D
+## Phase 3C — editorial homepage (active) → Seshat v0.1, Editorial MVP
 
-Deferred: homepage and discovery (3C); production polish, tag-based caching of public pages, SEO/social (3D).
+| ID | Task | Status | Notes |
+|----|------|--------|-------|
+| P3C-01 | Inspect repo, verify 3B status, plan | Done | 3B committed locally (`9c235fc`), not pushed/deployed; plan approved with "delist prototype, keep URLs" and the additive migration |
+| P3C-02 | Migration: `homepage_feature` + `set_featured_article()`; column-level read grant | Done | `20261127180000`, `20261127183000` applied to `gmcllutljmotushrsqka` (D-054) |
+| P3C-03 | `getHomepage()` + pure helpers (featured fallback, cards, lead-chart artwork) | Done | `lib/publishing/public.ts`, `lib/publishing/home.ts` |
+| P3C-04 | Homepage `/`: masthead, featured, latest grid, pagination, empty state; nav/footer/About | Done | D-053 |
+| P3C-05 | Studio: Feature on homepage / Remove feature; Featured badge | Done | UI check needs a signed-in editor |
+| P3C-06 | Tests: unit + `npm run publish:home-check` + regressions | Done | 78/78 unit; home 10/10, route 10/10, publish 12/12 against a local production build |
+| P3C-07 | Browser QA desktop + 375 px (0 / 1 / several stories) | Done | Temporary fixtures removed; empty state via a reverted local edit |
+| P3C-08 | Code review | Done | `updated_by` readable by anon → fixed by column grant; invalid featured snapshot → next story leads; masthead UTC date removed |
+| P3C-09 | Browser acceptance of the studio Feature control by a signed-in editor | Blocked | Assistant may not type passwords |
+| P3C-10 | Commit, push, deploy 3B + 3C | In progress | Awaiting product-owner approval to push/deploy (3B is not yet deployed either) |
+| P3C-11 | Decide: retire or keep the delisted Phase 2A prototype routes | Not started | Product-owner decision; currently reachable by URL only |
+
+Note: during documentation work a shell-quoting mistake ran `publish:home-check` once against the production URL (2026-11-27). It used fixtures only, cleaned them up and restored the (empty) feature; production did not yet serve the new homepage, so nothing reached readers.
+
+## Phase 3D
+
+Deferred: production polish, tag-based caching of public pages, SEO/social.

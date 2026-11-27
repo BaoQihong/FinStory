@@ -138,6 +138,7 @@ export async function publishArticle(input: { articleId: string; expectedRevisio
   const row = (Array.isArray(data) ? data[0] : data) as { outcome: 'published' | 'unchanged'; slug: string; published_revision: number; published_source_revision: number } | undefined;
   if (!row) return { ok: false, error: 'Publishing returned no result.' };
   revalidatePath(`/story/${row.slug}`);
+  revalidatePath('/');
   revalidatePath(`/admin/drafts/${a.id}`);
   revalidatePath('/admin');
   return { ok: true, outcome: row.outcome, slug: row.slug, publication: row.published_revision, sourceRevision: row.published_source_revision };
@@ -156,7 +157,31 @@ export async function unpublishArticle(articleId: string): Promise<UnpublishResu
   const row = (Array.isArray(data) ? data[0] : data) as { outcome: 'unpublished' | 'unchanged' } | undefined;
   // The public page is rendered per request (D-047); this also clears any future route cache.
   if (art?.slug) revalidatePath(`/story/${art.slug}`);
+  revalidatePath('/');
   revalidatePath(`/admin/drafts/${articleId}`);
   revalidatePath('/admin');
+  return { ok: true, outcome: row?.outcome ?? 'unchanged' };
+}
+
+// ── Homepage feature (Phase 3C) ──────────────────────────────────────────
+// One featured article at a time, live articles only (enforced in the
+// database by set_featured_article() and the homepage_feature foreign key).
+export type FeatureResult = { ok: true; outcome: 'featured' | 'cleared' | 'unchanged' } | { ok: false; error: string };
+
+export async function setFeaturedArticle(articleId: string | null): Promise<FeatureResult> {
+  const ed = await getEditor();
+  if (!ed) return { ok: false, error: 'Your session has expired. Sign in again.' };
+  if (articleId !== null && !/^[0-9a-f-]{36}$/.test(String(articleId))) return { ok: false, error: 'Draft not found.' };
+  const { data, error } = await ed.db.rpc('set_featured_article', { p_article: articleId });
+  if (error) {
+    const code = error.message.match(/^([a-z_]+):/)?.[1];
+    if (code === 'not_live') return { ok: false, error: 'Only a published article can be featured. Publish it first.' };
+    if (code === 'not_authorised') return { ok: false, error: 'This account is not authorised to change the homepage.' };
+    return { ok: false, error: `Could not update the homepage: ${error.message.slice(0, 200)}` };
+  }
+  const row = (Array.isArray(data) ? data[0] : data) as { outcome: 'featured' | 'cleared' | 'unchanged' } | undefined;
+  revalidatePath('/');
+  revalidatePath('/admin');
+  if (articleId) revalidatePath(`/admin/drafts/${articleId}`);
   return { ok: true, outcome: row?.outcome ?? 'unchanged' };
 }

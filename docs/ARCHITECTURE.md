@@ -388,3 +388,39 @@ article shows "unpublished changes" until the editor republishes.
 | Generation (unchanged count) | 8 | The writing-stage prompts grow by about 1.5k tokens each (style guide) plus about 1–2k for earlier-section context |
 | Editorial Polish, per section | 1 | ≈6–9.5k prompt + 0.6–1.1k completion tokens; 30–60 s typical |
 | Evaluation script (manual) | ≈15 | Recorded as `api_usage.stage = 'evaluation'` |
+
+# Phase 3C — editorial homepage
+
+Seshat v0.1 (Editorial MVP): the homepage `/` is built only from the publishing engine's live content.
+
+## Request path
+
+```
+GET /  (app/page.tsx, instant = false; per request; no data cache, as D-047)
+  └─ getHomepage(page)               lib/publishing/public.ts, anon client (RLS)
+       ├─ homepage_feature.article_id      (single row; anon may read id, article_id, updated_at only)
+       ├─ published_stories index          (article_id, ordered by first_published_at desc)
+       ├─ resolveFeaturedId(explicit, index)   lib/publishing/home.ts (pure)
+       └─ published_stories snapshots for the featured story + one page of 12
+            └─ PublishedStoryV1 re-validation → toCard() (tokens resolved, public fields only)
+```
+
+- **Featured story:** the editor's explicit choice while it is live; otherwise the newest live story. If the featured snapshot fails validation, the next story leads. The featured story is never repeated under Latest stories.
+- **Ordering:** by original publication date, newest first, so republishing updates a story in place without moving it. "Updated <date>" is shown when the latest publication differs from the first.
+- **Artwork:** the article's own first chart (macro, else analytics), at most two lines, drawn as SVG from the snapshot's data (`LeadChartArt`). With no chart, the featured slot uses a centred, type-only layout. No images (D-020).
+- **Counts:** zero stories → masthead + empty state. One story → featured only (no empty Latest section). More than 12 others → `?page=N` with Newer/Older links; malformed or out-of-range pages render the nearest valid page.
+- **Navigation:** header Latest + About; footer Latest stories, About, Standards. The Phase 2A prototype pages (`/stories/*`, `/section/*`) stay reachable by URL but are no longer linked (D-053).
+
+## Schema (migrations `20261127180000_homepage_feature.sql`, `20261127183000_homepage_feature_column_grants.sql`, additive)
+
+| Object | Purpose |
+|---|---|
+| `homepage_feature` (one row, `id = true`) | `article_id` → `published_stories(article_id)` **ON DELETE SET NULL**: only a live article can be featured; unpublishing clears the feature in the same transaction; republishing (row updated in place) keeps it. `updated_at`, `updated_by` for the record. |
+| `set_featured_article(uuid \| null)` | SECURITY DEFINER, `is_editor()` check, row lock; outcomes `featured` / `cleared` / `unchanged`; `not_live` for a non-live article. Granted to `authenticated` only. |
+| Grants | anon/authenticated: `SELECT (id, article_id, updated_at)` only — readers never see who chose the feature. No direct writes for anyone. |
+
+## Studio
+
+- Draft page → publication panel, for live articles: *Homepage — Featured / Leads as newest / Listed under Latest stories* with **Feature on homepage** or **Remove feature** (server action `setFeaturedArticle`, `app/admin/publish-actions.ts`).
+- Drafts list: a **Featured** badge.
+- Publish, unpublish and feature actions call `revalidatePath('/')` (ready for 3D caching; the page is per request today).
