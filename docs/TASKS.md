@@ -24,7 +24,8 @@ Statuses: `Done` · `In progress` · `Blocked` · `Not started`.
 | P1-11 | Arli AI credentials + connectivity test | Done | `Qwen3.8-27B` (provisional, D-008) replied "pong", 0 reasoning tokens; 128k shared window (D-010) |
 | P1-13 | Connectivity tooling | Done | `scripts/setup/supabase-keys.mjs`, `scripts/verify/connectivity.mjs` (no deps, never print secrets) |
 | P1-14 | Align Vercel Node version with local | Not started | Vercel project set to Node 26.x; local is 22.x — decide before Phase 3 deploys |
-| P1-12 | Verification pass + initial local commit | Not started | Depends on P1-06 … P1-11 |
+| P1-12 | Verification pass + initial local commit | Done | 6/6 connectivity checks pass; secret scan of 25 tracked files clean; commit `7ce3b17` (not pushed) |
+| P1-16 | Push `main` to GitHub | Not started | Awaiting product owner go-ahead; first push will trigger a Vercel deployment via Git integration |
 
 ## Phase 2 — Product design and interactive visual prototyping
 
