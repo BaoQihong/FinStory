@@ -6,7 +6,7 @@ not begin work belonging to a later phase.
 
 ## Phase 1 — Project preparation and infrastructure configuration
 
-**Status: IN PROGRESS** (started 2026-11-26)
+**Status: COMPLETE** (2026-11-26). Closed when the product owner issued the Phase 2A brief.
 
 Goal: a verified local and cloud foundation — repository, connectivity to
 all four services, secure credential management, and the documentation
@@ -17,23 +17,33 @@ skeleton.
 - [x] Install Supabase CLI (3.4.0) and Vercel CLI (67.0.0) via npm
 - [x] Credential management files (`.gitignore`, `.env.example`, `.env.local`)
 - [x] Documentation structure (this directory)
-- [ ] Supabase CLI login and project link (`gmcllutljmotushrsqka`) — needs product owner (browser auth)
-- [ ] Retrieve Supabase API keys into `.env.local`; verify REST connectivity
-- [ ] Obtain database connection string (`DATABASE_URL`)
-- [ ] Vercel CLI login and project link — needs product owner (browser auth)
-- [ ] Arli AI: base URL, API key, model ID from product owner; connectivity test
-- [ ] Verification pass (see `docs/TESTING.md` § Phase 1 verification)
-- [ ] Initial local commit; confirm no secrets in tracked files
+- [x] Supabase CLI login and project link (`gmcllutljmotushrsqka`)
+- [x] Retrieve Supabase API keys into `.env.local`; verify REST connectivity
+- [x] Obtain database connection string (`DATABASE_URL`)
+- [x] Vercel CLI login and project link
+- [x] Arli AI: base URL, API key, model ID; connectivity test
+- [x] Verification pass (see `docs/TESTING.md` § Phase 1 verification)
+- [x] Initial local commit; confirm no secrets in tracked files
 
 Exit criteria: all connectivity checks pass, credentials secured, docs in
 place, preparation work committed locally.
 
 ## Phase 2 — Product design and interactive visual prototyping
 
-**Status: NOT STARTED — do not begin without product owner approval.**
+**Status: IN PROGRESS — Phase 2A approved by the product owner 2026-11-26.**
 
-Placeholder. Scope will be defined with the product owner (creative
-director) at phase start. Expected outputs: product definition
+Phase 2 is delivered in sub-phases, each approved separately:
+
+- **2A — Public frontend, editorial experience & financial data** ← **current.**
+  Homepage, one complete five-layer demonstration story ("The Bond
+  Comeback") built on real FRED data, reusable editorial and chart
+  components, Vercel deployment. Exclusions: auth, CMS, AI/Arli calls,
+  live data ingestion, subscriptions, personalization, trading,
+  forecasting engines. Next milestone: product owner visual and product
+  review of the deployed site.
+- **2B, 2C** — not started; **do not begin without explicit approval.**
+
+Original placeholder scope (still indicative): Expected outputs: product definition
 (`docs/PRODUCT.md`), design system (`docs/DESIGN_SYSTEM.md`), interactive
 visual prototypes (`docs/design/`), and the architecture direction that
 Phase 3 builds on.

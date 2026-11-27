@@ -1,18 +1,12 @@
 # Design
 
-Design prototypes and assets for FinStory (Phase 2 working directory).
+Design references and asset records for Seshat (repository: FinStory).
 
-Expected contents once Phase 2 begins:
+| File | Purpose |
+|------|---------|
+| `Seshat’s Bond Comeback_ Macro and Analytics.png` | Phase 2A primary visual reference from the product owner. **AI-generated concept art — reference only; never use as a site asset.** |
+| `ASSETS.md` | Attribution record for every third-party asset used on the site |
 
-- Interactive visual prototypes
-- Brand exploration (name, logo, identity)
-- Design-system artifacts feeding `docs/DESIGN_SYSTEM.md`
-
-Conventions:
-
-- Keep working files self-contained and viewable without build tooling
-  where practical.
-- Reference decisions from `docs/DECISIONS.md` when a design direction is
-  approved by the product owner.
-
-*(Phase 1: empty by design.)*
+The implemented design system is documented in `docs/DESIGN_SYSTEM.md`.
+Deviations from the reference are recorded in `docs/DECISIONS.md`
+(D-019 – D-021).

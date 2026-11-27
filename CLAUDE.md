@@ -4,11 +4,17 @@ Instructions for Claude Code sessions working in this repository.
 
 ## Project overview
 
-FinStory (working name — final commercial name and branding undecided) is a
-consumer-oriented financial storytelling platform that transforms
-human-authored editorial content into visually compelling narratives,
-macroeconomic insights, quantitative analytics and conditional market
-predictions.
+The publication is branded **Seshat** (repository, Vercel and Supabase
+projects keep the FinStory names — D-012). Seshat is an independent
+financial storytelling publication that turns human-authored editorial
+content into visually compelling narratives, macroeconomic insights,
+quantitative analytics and conditional market scenarios.
+"The presentation is the product. Analytics is the infrastructure."
+
+Binding product rules: real data only (never fabricate or silently fill
+missing values), every number in copy is a fact token validated against
+fixtures (D-017), no AI-generated imagery anywhere (D-020), scenarios carry
+no invented probabilities (D-019). Run `npm run verify` before committing.
 
 ## Roles and autonomy
 
@@ -21,8 +27,9 @@ predictions.
   operations, financial commitments, major product decisions, and **phase
   transitions**.
 - The project runs in three phases (see `docs/ROADMAP.md`):
-  1. Project preparation and infrastructure configuration ← **current**
-  2. Product design and interactive visual prototyping
+  1. Project preparation and infrastructure configuration (complete)
+  2. Product design and interactive visual prototyping ← **current: 2A only**
+     (2B/2C need separate approval)
   3. Application development, deployment and operations
 - **Do not begin work belonging to a later phase without explicit product
   owner approval.**

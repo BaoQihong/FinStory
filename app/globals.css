@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+/* ── Seshat design tokens ───────────────────────────────────────────────
+   Deep navy, warm cream, restrained gold. Text colours meet WCAG AA on the
+   surfaces they are used on (checked in docs/DESIGN_SYSTEM.md).            */
+@theme {
+  --color-navy-950: #0a1428;
+  --color-navy-900: #0f1d38;
+  --color-navy-800: #172a4d;
+  --color-navy-700: #243b66;
+  --color-cream-50: #fdfaf3;
+  --color-cream-100: #f8f2e6;
+  --color-cream-200: #efe6d3;
+  --color-cream-300: #e2d5bb;
+  --color-gold-300: #e6c37a; /* on navy only */
+  --color-gold-400: #d4a94f; /* decorative / on navy */
+  --color-gold-500: #b8892e; /* decorative lines */
+  --color-gold-700: #7f5a12; /* gold text on cream (AA) */
+  --color-ink: #1a2233;
+  --color-ink-soft: #3d4658;
+  --color-muted: #5b6372;
+
+  /* Data series (validated: dataviz palette check, cream surface) */
+  --color-series-nominal: #3158a5;
+  --color-series-real: #b97a12;
+  --color-series-breakeven: #0e968c;
+  --color-series-policy: #a04f9a;
+  --color-series-inflation: #0e968c;
+
+  /* Evidence tags */
+  --color-ev-documented: #1f5f4a;
+  --color-ev-context: #2f4f86;
+  --color-ev-interpretation: #8a4b12;
+
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-serif: var(--font-source-serif), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    background: var(--color-cream-100);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-gold-300);
+    color: var(--color-navy-950);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-gold-500);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  /* Anchor targets clear the sticky header + chapter bar */
+  [id] {
+    scroll-margin-top: 7.5rem;
+  }
+  @media (min-width: 1024px) {
+    [id] {
+      scroll-margin-top: 5.5rem;
+    }
+  }
+}
+
+@layer components {
+  /* Long-form reading text */
+  .prose-seshat {
+    font-family: var(--font-serif);
+    font-size: 1.1875rem;
+    line-height: 1.72;
+    color: var(--color-ink);
+  }
+  .prose-seshat p + p {
+    margin-top: 1.15em;
+  }
+  .prose-seshat h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin-top: 2.2em;
+    margin-bottom: 0.6em;
+    color: var(--color-navy-900);
+    letter-spacing: -0.01em;
+  }
+  .prose-seshat > p:first-of-type::first-letter {
+    font-family: var(--font-display);
+    float: left;
+    font-size: 4.1em;
+    line-height: 0.82;
+    padding: 0.06em 0.09em 0 0;
+    color: var(--color-navy-900);
+    font-weight: 600;
+  }
+  @media (max-width: 640px) {
+    .prose-seshat {
+      font-size: 1.0625rem;
+    }
+  }
+
+  .kicker {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* Hairline with a central gold lozenge — the house divider */
+  .rule-seshat {
+    position: relative;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-gold-500) 20%, var(--color-gold-500) 80%, transparent);
+    opacity: 0.6;
+  }
+
+  details > summary {
+    list-style: none;
+    cursor: pointer;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+  details[open] > summary .chev {
+    transform: rotate(180deg);
+  }
+}
+
+/* Recharts: keep focus ring tidy inside figures */
+.recharts-wrapper:focus,
+.recharts-surface:focus {
+  outline: none;
+}

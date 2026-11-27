@@ -54,9 +54,25 @@ ones above.
 
 ## Environments and deployment
 
-To be defined in Phase 3. Expected direction: Vercel Git-integration
-deployments from `main`; Supabase schema changes applied as migrations
-via the CLI. Not decided yet.
+**Phase 2A (current):** pushing `main` to GitHub triggers a Vercel
+production deployment via the Git integration. `vercel.json` forces the
+Next.js framework preset (the dashboard preset is "Other", D-014);
+`package.json` `engines.node` pins Node 22.x. The app uses no environment
+variables, so nothing needs configuring in Vercel for 2A.
+
+Refreshing data (manual in 2A):
+
+```
+npm run data:fetch      # re-download FRED series into data/fred/
+npm run data:validate   # recompute & check every fact; fails if copy no longer matches
+```
+
+If the latest observation date changes, update `dataCutoff` in
+`content/articles/the-bond-comeback.ts` (the validator enforces it) and
+re-read the copy — narrative statements may need editorial revision.
+
+Phase 3 will define preview/production environments and Supabase
+migrations.
 
 ## Incident and maintenance runbooks
 

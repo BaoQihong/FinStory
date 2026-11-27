@@ -1,25 +1,67 @@
 # Architecture
 
-> **Status: PLACEHOLDER — Phase 2/3 document.** Architecture decisions are
-> deliberately NOT made in Phase 1. Do not treat anything here as decided.
+> **Status: Phase 2A prototype architecture.** Describes what is built.
+> Production architecture (database schema, APIs, data pipelines, LLM
+> integration) remains a Phase 3 decision.
 
-## Constraints known from Phase 1 setup
+## Stack
 
-- **Hosting**: Vercel (project already created).
-- **Backend**: Supabase project `gmcllutljmotushrsqka` (Postgres, auth,
-  storage).
-- **LLM**: Qwen models via Arli AI's OpenAI-compatible API. **Assume a
-  limited context window and single-request concurrency** — any design
-  must plan for chunking/summarization of long editorial inputs and
-  serialized or queued LLM calls (see D-006 in `docs/DECISIONS.md`).
-- The Phase 1 environment variable naming anticipates a Next.js-style
-  frontend, but framework selection itself is a Phase 2/3 decision.
+Next.js 16 App Router (Turbopack, Cache Components), React 19, TypeScript 5,
+Tailwind CSS 4, Recharts 3. Node 22.x. Hosted on Vercel via Git integration
+(`main` → production). See D-013–D-015.
 
-## To be decided (Phase 2/3)
+Every route is statically prerendered at build time. There are no API
+routes, no environment variables in use by the app, and no runtime calls to
+Supabase or Arli AI in Phase 2A.
 
-- Framework, rendering strategy and project structure
-- Data model and Supabase schema design
-- LLM integration pattern: caching, queueing, retries, fallbacks
-- Editorial content ingestion and storage
-- Environments (development / preview / production) and deployment
-  topology
+## Layout
+
+```
+app/                     routes: / · /stories/[slug] · /section/[section] · /about · 404
+components/
+  site/                  header, footer, nav, Seshat mark
+  editorial/             story cards, chapter nav, evidence tags, hero pattern
+  article/               ArticleView (five layers), asset icons
+  charts/                TimeSeriesChart (client), ChartFigure, IndicatorCard, Sparkline, YieldSplit
+  home/                  LeadVisual
+content/                 editorial content (TypeScript), index of sections/articles
+lib/
+  data/                  types.ts (SeriesFixture, DisplaySeries), display.ts (Fact, ChartData…), transforms.ts
+  content/               article model (types.ts), fact tokens, reading time
+  stories/bond-comeback/ build.ts (pure: fixtures → facts, indicators, charts) · index.ts (server-only loader)
+data/fred/               version-controlled FRED fixtures (one JSON per series)
+scripts/data/            fetch-fred.mjs · validate-fixtures.ts · transforms.test.ts
+```
+
+## Data flow
+
+```
+FRED CSV ──fetch-fred.mjs──▶ data/fred/<ID>.json  (SeriesFixture: source, units, frequency,
+                                                   retrievedAt, sha256, observations[null=missing])
+                                   │
+                    lib/stories/bond-comeback/build.ts   (pure; also run by validate-fixtures.ts)
+                                   │
+             facts / dates / indicators / charts / split
+                                   │
+ content/articles/*.ts ──fact tokens {y10Peak}──▶ lib/content/tokens.ts ──▶ rendered copy
+                                   │
+     Server Components render text, cards, tables; only the chart points
+     needed for drawing are passed to the client TimeSeriesChart.
+```
+
+## Content model (Phase 3 mapping)
+
+`lib/content/types.ts` defines `PublishedArticle` (metadata, key points,
+narrative blocks, macro indicators + chart blocks + explainers, analytics
+split / chain / chart / implications, outlook scenarios, methodology,
+citations) and `PreviewArticle`. These map naturally onto future tables
+(`articles`, `article_blocks`, `scenarios`, `citations`, `series`,
+`observations`); fact tokens become references to stored derived values.
+
+## Phase 3 replacement points
+
+- `scripts/data/fetch-fred.mjs` → scheduled retrieval writing the same
+  `SeriesFixture` shape to Supabase.
+- `content/` → database-backed content with an editorial CMS.
+- `lib/stories/<story>/build.ts` → per-story derivations computed at
+  publish time and stored with the article.

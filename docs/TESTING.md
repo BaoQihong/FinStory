@@ -21,6 +21,28 @@ in `docs/TASKS.md`:
 6. **Credential hygiene** — `.env.local` untracked; `git ls-files` output
    contains no secrets (scan for key patterns before commit).
 
+## Phase 2A checks (run before every commit)
+
+`npm run verify` runs, in order:
+
+| Step | Command | What it checks |
+|------|---------|----------------|
+| Unit tests | `npm test` | `lib/data/transforms` — YoY from index levels, gap handling (no interpolation), annualized rates, monthly averages, date alignment, "highest since", policy-move detection |
+| Data validation | `npm run data:validate` | Fixture integrity (metadata, ascending unique dates, finite/null values); independent recomputation of every headline fact from raw observations; real + breakeven = nominal identity; "highest since" claims; every article fact token resolves; **no hardcoded percentages in copy**; referenced charts/indicators exist |
+| Lint | `npm run lint` | ESLint (next/core-web-vitals + TypeScript) |
+| Types | `npm run typecheck` | `next typegen` + `tsc --noEmit` |
+| Build | `npm run build` | Production build; all routes prerender |
+
+Manual / browser checks performed for 2A (repeat after visual changes):
+
+- Desktop (1280px) review of home, article (all five layers), previews,
+  sections, about, 404.
+- Mobile (375px) — scripted check that no element extends past the
+  viewport on every route; visual check of chapter tab bar and compact
+  charts.
+- Chart label collisions, legends, tooltips, "Show the data" tables.
+- Every navigation link resolves (no dead buttons; previews clearly marked).
+
 ## Principles (to expand in later phases)
 
 - Test user-visible behavior first (editorial pipeline correctness).
