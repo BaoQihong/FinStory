@@ -43,6 +43,13 @@ Manual / browser checks performed for 2A (repeat after visual changes):
 - Chart label collisions, legends, tooltips, "Show the data" tables.
 - Every navigation link resolves (no dead buttons; previews clearly marked).
 
+## Phase 3A — publishing checks
+
+- `npm test` includes `scripts/publishing/publishing.test.ts`: state derivation, slugify/validation/duplicates, blocking vs warning rules, snapshot completeness and leakage, and snapshot independence from later edits.
+- `npm run publish:check` runs against the real Supabase project with the editor session plus the anon key. It creates fixture articles and deletes them afterwards, using the secret key for cleanup only. Its 12 checks cover acceptance criteria 1–12: publishing, invalid/temporary drafts, unique slugs, edits not touching the snapshot, unpublished changes, stale and slug-changing requests, 5 concurrent republishes giving exactly one publication, history retention, idempotent unpublish, anon unable to read drafts/history/unpublished stories, direct writes rejected, and republishing under the same slug.
+- Criterion 13 (Phase 2 unchanged): the full `npm run verify`.
+- The studio UI is checked manually by a signed-in editor (see the Phase 3A handover).
+
 ## Principles (to expand in later phases)
 
 - Test user-visible behavior first (editorial pipeline correctness).

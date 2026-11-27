@@ -3,6 +3,8 @@ import { Suspense } from 'react';
 import { requireEditor } from '@/lib/studio/auth';
 import { StatusBadge } from '@/components/studio/StatusBadge';
 import { fmtDayShort } from '@/lib/format';
+import { PublicationBadge } from '@/components/studio/PublishPanel';
+import { publicationState } from '@/lib/publishing/rules';
 
 export const metadata = { title: 'Drafts' };
 
@@ -29,7 +31,7 @@ async function DraftList() {
   const { db } = await requireEditor();
   const { data: rows, error } = await db
     .from('articles')
-    .select('id, working_title, status, revision, updated_at, as_of, is_temporary, generation_jobs(status, stage, created_at)')
+    .select('id, working_title, status, revision, updated_at, as_of, is_temporary, is_live, first_published_at, published_source_revision, generation_jobs(status, stage, created_at)')
     .order('updated_at', { ascending: false })
     .limit(100);
   if (error) return <p className="mt-10 text-[#9a3412]">Could not load drafts: {error.message}</p>;
@@ -58,6 +60,7 @@ async function DraftList() {
                   {r.as_of ? ` · data to ${fmtDayShort(r.as_of)}` : ''}
                 </span>
               </span>
+              <PublicationBadge state={publicationState(r)} />
               <StatusBadge status={r.status} job={job} />
             </Link>
           </li>

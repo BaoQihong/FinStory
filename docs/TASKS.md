@@ -76,8 +76,23 @@ Statuses: `Done` · `In progress` · `Blocked` · `Not started`.
 
 ## Phase 2C
 
-Not started. Requires explicit product owner approval to begin.
+Superseded by Phase 3A (D-043).
 
-## Phase 3 — Application development, deployment and operations
+## Phase 3A — Publishing engine (active)
 
-Not started. Requires product owner approval to begin.
+| ID | Task | Status | Notes |
+|----|------|--------|-------|
+| P3A-01 | Inspect repo; implementation plan; approvals | Done | Product owner approved the plan and the migration; Tiingo = warning for now |
+| P3A-02 | Migration: identity columns, publication_revisions, published_stories, publish/unpublish functions, guard trigger, RLS | Done | `20261127150000_publishing_engine.sql` applied to `gmcllutljmotushrsqka` (additive) |
+| P3A-03 | Publishing library: snapshot contract, validation, slugs, state | Done | `lib/publishing/` (D-044–D-046) |
+| P3A-04 | Server actions + studio publication panel, dialog, badges, history | Done | `app/admin/publish-actions.ts`, `components/studio/PublishPanel.tsx` |
+| P3A-05 | Phase 3B public data contract | Done | `lib/publishing/public.ts` (`getPublishedStory`, `listPublishedStories`) |
+| P3A-06 | Tests: unit + live integration (`npm run publish:check`) | Done | 9 unit tests; 12/12 integration checks against Supabase |
+| P3A-07 | Browser check of the publishing UI | Blocked | Needs the product owner signed in to /admin (assistant may not type passwords) |
+| P3A-08 | Commit, push, deploy | In progress | Committed locally; push/deploy awaits approval |
+| P3A-09 | Decide: Tiingo licence before wide distribution | Not started | Currently a non-blocking warning (P2B-16) |
+| P3A-10 | Optional: bind the snapshot to the draft inside the database (hash/derivation) | Not started | Accepted trade-off for now (D-045) |
+
+## Phase 3B and later
+
+3B.1 public renderer, 3B.2 editorial quality: not started, need approval. 3C and 3D deferred.

@@ -74,6 +74,21 @@ re-read the copy — narrative statements may need editorial revision.
 Phase 3 will define preview/production environments and Supabase
 migrations.
 
+## Database migrations
+
+Migrations live in `supabase/migrations/` and are applied to the linked
+production project with `npx supabase db push --remote --dry-run` and
+then `npx supabase db push --remote --yes`. They need product-owner
+approval, and only additive changes are made without a separate decision.
+Check with `npx supabase migration list --remote`. Applied so far:
+`20261126120000`, `20261127090000`, `20261127150000` (publishing engine).
+
+## Publishing (Phase 3A)
+
+- Unpublishing is the way to take a story down: the live row is removed and the history is kept.
+- Published articles cannot be deleted (FK restrict, D-044).
+- `npm run publish:check` is safe to run against production. It uses uniquely named fixtures and removes them.
+
 ## Incident and maintenance runbooks
 
 Phase 3 placeholder.

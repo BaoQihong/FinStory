@@ -3,6 +3,13 @@
 Notable changes to this project. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/). Newest entries first.
 
+## 0.4.0 — 2026-11-27 (Phase 3A: publishing engine)
+
+- Publish, republish and unpublish from the draft page, with a confirmation dialog showing the draft revision and publication number, blocking errors, warnings, the slug and a note. Duplicate submissions are prevented (D-043–D-046).
+- Migration `20261127150000_publishing_engine.sql`: permanent slugs and publication columns on `articles`, immutable `publication_revisions`, public `published_stories`, atomic `publish_article` / `unpublish_article` functions and a guard trigger.
+- Public data contract for Phase 3B (`lib/publishing/public.ts`); publication badges on the drafts list and draft header; publications in the History tab; the preview banner shows whether the draft matches the live publication.
+- Tests: `scripts/publishing/publishing.test.ts` (in `npm test`) and `npm run publish:check` (live lifecycle, RLS and concurrency checks).
+
 ## 0.3.3 — 2026-11-27 (Phase 2B enhancement: editorial brief builder)
 
 - **Develop Editorial Brief** on /admin/new: AI-suggested angle, questions, markets and indicators, outlook focus and premise to verify, all editable; regeneration keeps edited fields; per-field “Suggest again”; quick path (prompt → Research & Generate) unchanged (D-042).

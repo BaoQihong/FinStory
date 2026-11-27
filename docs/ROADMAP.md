@@ -30,7 +30,7 @@ place, preparation work committed locally.
 
 ## Phase 2 — Product design and interactive visual prototyping
 
-**Status: IN PROGRESS — Phase 2A complete and approved; Phase 2B approved and active (2026-11-26).**
+**Status: 2A complete and approved; 2B delivered, with its UI acceptance items still open (see TASKS). 2C was superseded by Phase 3A on 2026-11-27.**
 
 Phase 2 is delivered in sub-phases, each approved separately:
 
@@ -41,13 +41,13 @@ Phase 2 is delivered in sub-phases, each approved separately:
   live data ingestion, subscriptions, personalization, trading,
   forecasting engines. Next milestone: product owner visual and product
   review of the deployed site (approved).
-- **2B — AI editorial research, analytics & story generation engine** ← **current.**
+- **2B — AI editorial research, analytics & story generation engine** — delivered; browser acceptance (P2B-12b, P2B-22) still open.
   Editor-only studio at `/admin` (Supabase Auth + RLS), staged Arli-driven
   research → data → narrative pipeline producing drafts in the canonical
   four-section storyboard, editable and previewable in the 2A template.
   Exclusions: public publishing, multi-editor, autonomous topics, images,
   subscriptions, advice/trading, forecasting engines.
-- **2C — Public publishing** — not started; **do not begin until 2B is reviewed and approved.**
+- **2C — Public publishing** — superseded: re-scoped as Phase 3A by the product owner (D-043).
 
 Original placeholder scope (still indicative): Expected outputs: product definition
 (`docs/PRODUCT.md`), design system (`docs/DESIGN_SYSTEM.md`), interactive
@@ -56,7 +56,13 @@ Phase 3 builds on.
 
 ## Phase 3 — Application development, deployment and operations
 
-**Status: NOT STARTED — do not begin without product owner approval.**
+**Status: IN PROGRESS — 3A approved and active (2026-11-27).** Each sub-phase needs its own approval.
+
+- **3A — Publishing engine** ← **current.** Publication lifecycle (publish, republish, unpublish), immutable published snapshots and revision history, permanent slugs, pre-publication validation, studio publishing controls, RLS-protected public data interface. No public page.
+- **3B.1 — Public article renderer** — not started. `/story/[slug]` renders published snapshots through the existing ArticleView.
+- **3B.2 — Editorial quality and writing improvements** — not started. Style guidelines, prompt improvements, fewer AI writing patterns, optional polishing workflow.
+- **3C — Public homepage** — deferred.
+- **3D — Production polish and optimisation** — deferred.
 
 Placeholder. Expected outputs: architecture decisions
 (`docs/ARCHITECTURE.md`), application implementation, test suite

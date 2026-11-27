@@ -4,7 +4,8 @@ import { requireEditor } from '@/lib/studio/auth';
 import { publicJob } from '@/lib/studio/job-view';
 import type { Job } from '@/lib/studio/pipeline/types';
 import type { SeshatArticle, StoryBrief } from '@/lib/studio/schema';
-import { DraftWorkspace, type DatasetMeta, type FindingView, type SourceView } from '@/components/studio/DraftWorkspace';
+import { DraftWorkspace, type DatasetMeta, type FindingView, type PublicationEntry, type SourceView } from '@/components/studio/DraftWorkspace';
+import { publicationState, type PublicationColumns } from '@/lib/publishing/rules';
 
 // Private, per-request studio route: render on the server at request time (no static shell).
 export const instant = false;
@@ -23,7 +24,7 @@ async function Workspace({ params }: { params: PageProps<'/admin/drafts/[id]'>['
   const { id } = await params;
   if (!/^[0-9a-f-]{36}$/.test(id)) notFound();
   const { db } = await requireEditor();
-  const { data: article } = await db.from('articles').select('id, working_title, status, revision, content, brief, created_at, updated_at, is_temporary').eq('id', id).maybeSingle();
+  const { data: article } = await db.from('articles').select('id, working_title, status, revision, content, brief, created_at, updated_at, is_temporary, slug, is_live, first_published_at, last_published_at, unpublished_at, published_revision, published_source_revision').eq('id', id).maybeSingle();
   if (!article) notFound();
   const { data: jobs } = await db.from('generation_jobs').select('*').eq('article_id', id).order('created_at', { ascending: false }).limit(1);
   const job = jobs?.[0] as Job | undefined;
@@ -35,6 +36,8 @@ async function Workspace({ params }: { params: PageProps<'/admin/drafts/[id]'>['
         db.from('article_revisions').select('revision, origin, note, created_at').eq('article_id', id).order('revision', { ascending: false }).limit(20),
       ])
     : [{ data: [] }, { data: [] }, { data: [] }, await db.from('article_revisions').select('revision, origin, note, created_at').eq('article_id', id).order('revision', { ascending: false }).limit(20)];
+  const { data: publications } = await db.from('publication_revisions').select('revision, source_revision, slug, note, published_by_name, published_at').eq('article_id', id).order('revision', { ascending: false });
+  const p = article as unknown as PublicationColumns;
   const byRef = (a: { ref: string }, b: { ref: string }) => Number(a.ref.slice(1)) - Number(b.ref.slice(1));
   return (
     <DraftWorkspace
@@ -50,6 +53,8 @@ async function Workspace({ params }: { params: PageProps<'/admin/drafts/[id]'>['
       sources={((sources.data ?? []) as SourceView[]).sort(byRef)}
       findings={((findings.data ?? []) as FindingView[]).sort(byRef)}
       datasets={(datasets.data ?? []) as DatasetMeta[]}
+      publication={{ state: publicationState(p), slug: p.slug, publishedRevision: p.published_revision, sourceRevision: p.published_source_revision, firstPublishedAt: p.first_published_at, lastPublishedAt: p.last_published_at, unpublishedAt: p.unpublished_at }}
+      publications={(publications ?? []) as PublicationEntry[]}
       revisions={(revisions.data ?? []) as { revision: number; origin: string; note: string | null; created_at: string }[]}
     />
   );

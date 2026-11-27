@@ -12,9 +12,11 @@ import { GenerationPanel } from './GenerationPanel';
 import { AnalyticsEditor, MacroEditor, OutlookEditor, StoryEditor } from './SectionEditors';
 import { FactPalette } from './fields';
 import { StatusBadge } from './StatusBadge';
+import { PublicationBadge, PublishPanel, type PublicationView } from './PublishPanel';
 
 export type SourceView = { ref: string; url: string; title: string; publisher: string; source_type: string; published_at: string | null; stale: boolean; query: string; snippet: string | null };
 export type FindingView = { ref: string; claim: string; evidence_kind: string; source_refs: string[]; quote: string | null; quote_verified: boolean };
+export type PublicationEntry = { revision: number; source_revision: number; slug: string; note: string | null; published_by_name: string; published_at: string };
 export type DatasetMeta = { key: string; provider: string; series_id: string; name: string; units: string; frequency: string; seasonal_adjustment: string | null; definition: string | null; source_url: string; retrieved_at: string; observation_start: string | null; observation_end: string | null; transformations: string[] };
 
 type Tab = (typeof SECTION_ORDER)[number] | 'research' | 'data' | 'checks' | 'history';
@@ -32,6 +34,8 @@ export function DraftWorkspace(props: {
   findings: FindingView[];
   datasets: DatasetMeta[];
   revisions: { revision: number; origin: string; note: string | null; created_at: string }[];
+  publication: PublicationView;
+  publications: PublicationEntry[];
 }) {
   const [draft, setDraft] = useState(props.content);
   const [revision, setRevision] = useState(props.revision);
@@ -103,6 +107,7 @@ export function DraftWorkspace(props: {
         <div className="flex flex-wrap items-center gap-2">
           {props.temporary ? <span className="rounded-full bg-cream-200 px-2.5 py-1 text-xs font-semibold text-ink-soft">Temporary</span> : null}
           <StatusBadge status={status} job={props.job ?? undefined} />
+          <PublicationBadge state={props.publication.state} />
           <span className="text-xs text-muted">rev {revision}</span>
           {draft ? (
             <Link href={`/admin/drafts/${props.articleId}/preview`} className="studio-btn" aria-disabled={dirty} onClick={(e) => dirty && (e.preventDefault(), setMessage({ kind: 'error', text: 'Save your changes first — the preview shows the latest saved draft.' }))}>
@@ -121,6 +126,8 @@ export function DraftWorkspace(props: {
           {message.text}
         </p>
       ) : null}
+
+      {draft ? <PublishPanel articleId={props.articleId} revision={revision} dirty={dirty} generating={generating} pub={props.publication} /> : null}
 
       {props.job && (generating || props.job.status !== 'succeeded' || !draft) ? (
         <div className="mt-6">
@@ -154,7 +161,7 @@ export function DraftWorkspace(props: {
               {tab === 'research' ? <ResearchPanel sources={props.sources} findings={props.findings} warnings={props.job?.warnings ?? []} gaps={draft.evidence.gaps ?? []} /> : null}
               {tab === 'data' ? <DataPanel datasets={props.datasets} draft={draft} /> : null}
               {tab === 'checks' ? <ChecksPanel issues={issues} claims={draft.validation.claims ?? []} /> : null}
-              {tab === 'history' ? <HistoryPanel revisions={props.revisions} job={props.job} /> : null}
+              {tab === 'history' ? <HistoryPanel revisions={props.revisions} job={props.job} publications={props.publications} /> : null}
             </div>
             <aside className="space-y-4 lg:sticky lg:top-4 lg:self-start">
               <FactPalette ctx={ctx} />
@@ -365,9 +372,25 @@ function ChecksPanel({ issues, claims }: { issues: ValidationIssue[]; claims: Cl
   );
 }
 
-function HistoryPanel({ revisions, job }: { revisions: { revision: number; origin: string; note: string | null; created_at: string }[]; job: JobView | null }) {
+function HistoryPanel({ revisions, job, publications }: { revisions: { revision: number; origin: string; note: string | null; created_at: string }[]; job: JobView | null; publications: PublicationEntry[] }) {
   return (
     <section className="space-y-6">
+      <div>
+        <h2 className="font-display text-2xl font-semibold text-navy-900">Publications</h2>
+        {publications.length ? (
+          <ul className="mt-3 space-y-1 text-sm">
+            {publications.map((p) => (
+              <li key={p.revision} className="text-ink-soft">
+                <span className="font-semibold text-ink">publication {p.revision}</span> · from draft rev {p.source_revision} · {p.published_at.slice(0, 16).replace('T', ' ')} UTC · {p.published_by_name}
+                {p.note ? ` — ${p.note}` : ''}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="mt-2 text-sm text-muted">Not published yet.</p>
+        )}
+        <p className="mt-2 text-xs text-muted">Every publication is kept as an immutable snapshot for traceability.</p>
+      </div>
       <div>
         <h2 className="font-display text-2xl font-semibold text-navy-900">Revisions</h2>
         <ul className="mt-3 space-y-1 text-sm">

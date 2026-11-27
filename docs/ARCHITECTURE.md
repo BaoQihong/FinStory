@@ -138,3 +138,157 @@ supabase/migrations/20261126120000_phase2b_editorial_studio.sql
 
 - **LLM**: planning, relevance, selection among verified candidates, synthesis, prose, interpretation, scenarios.
 - **Application**: every HTTP call, search, retrieval, unit handling, calculation, citation/URL handling, schema validation, persistence, orchestration, authorisation.
+
+# Phase 3A — publishing engine
+
+Publishing is always an explicit editor action in the studio. No pipeline
+stage, job or script publishes or alters a live story (D-043).
+
+## Publication lifecycle
+
+```
+never ──Publish──▶ live ──edit / regenerate──▶ live_changed ──Republish──▶ live
+                    │                             │
+                    └────────── Unpublish ────────┴──▶ unpublished ──Republish──▶ live
+```
+
+There is no stored state machine. The four states the studio shows are
+derived from the publication columns on `articles`
+(`lib/publishing/rules.ts` → `publicationState`):
+
+| State | Condition | Studio label |
+|-------|-----------|--------------|
+| `never` | `first_published_at is null` | Not published |
+| `live` | `is_live and published_source_revision = revision` | Published |
+| `live_changed` | `is_live and published_source_revision <> revision` | Published · unpublished changes |
+| `unpublished` | `not is_live and first_published_at is not null` | Unpublished |
+
+Any save or generation bumps `articles.revision`. That is what "unpublished
+changes" means, and it never touches the live snapshot.
+
+## Schema (migration `20261127150000_publishing_engine.sql`, additive)
+
+- **`articles`** (new columns) — `slug` (unique, `^[a-z0-9]+(-[a-z0-9]+)*$`,
+  3–80 chars, permanent once set), `is_live`, `first_published_at`,
+  `last_published_at`, `unpublished_at`, `published_revision` (publication
+  number, 0 = never), `published_source_revision` (the working-draft
+  revision that is or was live). The stable internal identifier remains
+  `articles.id`.
+- **`publication_revisions`** — immutable history: `article_id`,
+  `revision` (publication number, unique per article), `source_revision`,
+  `slug`, `content` (the full internal draft at that revision), `snapshot`
+  (the public projection exactly as served), `note`, `published_by`,
+  `published_by_name`, `published_at`. The FK is `on delete restrict`, so
+  an article that was ever published cannot be deleted.
+- **`published_stories`** — one row per *live* article: `article_id`
+  (PK), `slug` (unique), `revision`, `snapshot`, `first_published_at`,
+  `published_at`. Unpublishing deletes the row; the history stays.
+- **`publish_article(article, expected_revision, slug, snapshot, note)`** and
+  **`unpublish_article(article)`** — `SECURITY DEFINER`, `search_path = ''`,
+  an explicit `is_editor()` check, executable by `authenticated` only. Each
+  is one transaction with `SELECT … FOR UPDATE` on the article row. Publish
+  refuses with a stable code prefix (`stale_revision`, `generation_running`,
+  `temporary_draft`, `no_content`, `slug_taken`, `slug_mismatch`,
+  `slug_required`, `invalid_snapshot`, `not_authorised`). A request for a
+  revision that is already live returns `unchanged`, and so does
+  unpublishing a story that is not live. Duplicate or concurrent requests
+  therefore produce exactly one publication.
+- **Trigger `articles_zz_guard_publication`** — rejects any insert or update
+  of the publication columns outside the two functions (they set the
+  transaction-local flag `seshat.publishing`), makes the slug immutable, and
+  keeps `updated_at` unchanged on publish and unpublish.
+
+## Snapshot model — `PublishedStoryV1` (`lib/publishing/snapshot.ts`)
+
+`toPublicSnapshot()` projects the snapshot from the validated working
+draft, and it is stored twice (history and live). It is a deep copy.
+Nothing is re-researched, regenerated or re-fetched: the data products
+already in the draft are copied as they are.
+
+| Kept (public) | Dropped (internal) |
+|---------------|--------------------|
+| `meta.section`, `meta.author`, `meta.asOf` | `meta.workingTitle`, `createdAt`, `updatedAt` |
+| `story`, `macro`, `analytics`, `outlook` (all copy, chart references, explainers, chain, implications, scenarios, disclaimer) | each section's `attention` (editor notes) |
+| `methodology` | `evidence.findings` (claims, quotes), `evidence.gaps` |
+| `citations` (= `evidence.citations`) | `validation` (issues, claims ledger) |
+| `data` (facts, dates, charts, indicators, dataset sources with retrieval timestamps) | `generation` (job id, model, providers) |
+
+The brief, research sources and excerpts, stage outputs, raw dataset
+observations and editor notes live in other tables and are never copied.
+
+## Pre-publication validation (`checkPublication`)
+
+The server re-reads the draft from the database and never trusts content
+from the browser. It runs the same checks as every save (`SeshatArticleV1`
+and `validateArticle`).
+
+- **Blocking:** no content; a schema violation; any validation *error*
+  (unknown fact token, chart or indicator; contradicted superlative;
+  quantity error; missing source…); any section still flagged *needs
+  attention* (the editor resolves it and clears the flag); a temporary
+  draft; a running generation; a stale revision; an invalid, reserved or
+  taken slug.
+- **Warnings (shown, not blocking):** validation warnings (bare numbers,
+  unsupported superlatives, thin story, few scenarios, stale data…),
+  Tiingo-sourced data (licence review pending, P2B-16), no citations.
+
+## Security and access control
+
+| Role | `articles` and Phase 2B tables | `publication_revisions` | `published_stories` | publish / unpublish |
+|------|------------------------------|-------------------------|---------------------|-------------------|
+| anon (public) | none | none | `SELECT` (only live rows exist) | no execute |
+| authenticated non-editor | RLS denies | RLS denies | `SELECT` | can execute, but `is_editor()` raises `not_authorised` |
+| editor | RLS `is_editor()` (publication columns guarded by the trigger) | `SELECT` only | `SELECT` only | yes |
+
+No role can write the history or live tables directly. The app still uses
+only the publishable key and the editor's session (D-029). The secret key
+is used only by the local integration script, to delete its fixtures.
+
+## Phase 3B data-access contract
+
+`lib/publishing/public.ts` (server-only, cookie-less anon client):
+
+- `getPublishedStory(slug): Promise<PublicStory | null>`. Returns null for
+  unknown, unpublished or schema-invalid snapshots.
+- `listPublishedStories(limit = 50): Promise<PublicStory[]>`. Most recently
+  published first.
+- `PublicStory = { id, slug, revision, firstPublishedAt, publishedAt, story: PublishedStoryV1 }`.
+
+The public route is `/story/[slug]`. The Phase 2A demonstration stays at
+`/stories/[slug]`, and its slugs are reserved. The 3B renderer maps
+`PublishedStoryV1` onto the existing render model. Its sections are
+`SeshatArticleV1`'s section shapes without `attention`, so a
+`fromSnapshot()` sibling of `fromDraft()` is a thin adapter. Use
+`firstPublishedAt` and `publishedAt` for the header dates, plus a public
+footer note. Until 3B ships, the studio shows the permanent URL with a
+copy button but no "Open" link (`PUBLIC_ROUTE_LIVE = false` in
+`components/studio/PublishPanel.tsx`).
+
+## Studio interface
+
+- **Publication panel** on the draft page: the state, publication number
+  and source revision, first, latest and unpublished timestamps, an
+  unpublished-changes notice, the permanent URL with a copy button, and the
+  Publish… / Republish… / Unpublish… buttons. These are disabled while
+  there are unsaved edits or a generation is running.
+- **Confirmation dialog:** fetches a fresh preflight and shows the
+  headline, "draft revision N becomes publication M", the slug (editable
+  only before the first publication), blocking errors, warnings and an
+  optional note. The submit button locks while a request is pending; a ref
+  guard stops double submits, and the database is idempotent anyway.
+- The drafts list and the draft header show a publication badge. The
+  History tab lists every publication, and the preview banner says whether
+  the preview matches the live publication.
+
+## Limitations and deferred work
+
+- There is no public renderer yet (3B). Live snapshots exist in the
+  database but have no page.
+- There is no revision comparison or rollback UI. The history is stored
+  for it.
+- There is one editor today. `published_by_name` comes from
+  `editors.display_name`; multi-editor roles and approvals are not modelled.
+- Published articles cannot be deleted (FK restrict). A "retract and
+  delete" operation would need its own decision.
+- The snapshot is re-validated when read; a future schema change needs a
+  `schemaVersion` 2 reader.

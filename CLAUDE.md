@@ -28,9 +28,9 @@ no invented probabilities (D-019). Run `npm run verify` before committing.
   transitions**.
 - The project runs in three phases (see `docs/ROADMAP.md`):
   1. Project preparation and infrastructure configuration (complete)
-  2. Product design and interactive visual prototyping ← **current: 2A only**
-     (2B/2C need separate approval)
-  3. Application development, deployment and operations
+  2. Product design and interactive visual prototyping (2A done, 2B delivered)
+  3. Application development, deployment and operations ← **current: 3A
+     (publishing engine) only**; 3B.1/3B.2 need separate approval
 - **Do not begin work belonging to a later phase without explicit product
   owner approval.**
 
