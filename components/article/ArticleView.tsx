@@ -268,7 +268,11 @@ export function ArticleView({ article, data, sectionName, readingMinutes, mode =
                 <strong className="font-semibold">Illustrative scenarios.</strong> {t(article.outlook.disclaimer)}
               </span>
             </p>
-            <div className="mt-8 grid gap-6 lg:grid-cols-3">
+            <div
+              className={`mt-8 grid gap-6 ${
+                article.outlook.scenarios.length >= 3 ? 'lg:grid-cols-3' : article.outlook.scenarios.length === 2 ? 'md:grid-cols-2' : 'max-w-[48rem]'
+              }`}
+            >
               {article.outlook.scenarios.map((s, i) => (
                 <ScenarioCard key={s.key} s={s} n={i + 1} t={t} />
               ))}

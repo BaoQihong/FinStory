@@ -125,7 +125,9 @@ export function validateArticle(input: unknown, opts: { today: string; recompute
   if (paragraphs < 3) add('warning', 'story', 'thin-story', `The Story has ${paragraphs} paragraph(s); at least 3 expected`);
   if (!a.macro.charts.length && !a.macro.indicators.length) add('warning', 'macro', 'no-macro-data', 'Macro has no charts or indicators');
   if (!a.analytics.implications.items.length) add('warning', 'analytics', 'no-implications', 'Analytics has no asset implications');
-  if (a.outlook.scenarios.length < 2) add('warning', 'outlook', 'few-scenarios', `Outlook has ${a.outlook.scenarios.length} scenario(s); at least 2 expected`);
+  // One well-supported scenario is complete; only an empty Outlook or more than three is flagged (D-063).
+  if (!a.outlook.scenarios.length) add('warning', 'outlook', 'no-scenarios', 'Outlook has no scenarios');
+  if (a.outlook.scenarios.length > 3) add('warning', 'outlook', 'many-scenarios', `Outlook has ${a.outlook.scenarios.length} scenarios; keep at most 3, the ones the evidence most supports`);
   const central = a.outlook.scenarios.filter((s) => s.role === 'central').length;
   if (a.outlook.scenarios.length && central !== 1) add('info', 'outlook', 'central-scenario', `${central} scenarios are marked central; expected exactly one`);
 

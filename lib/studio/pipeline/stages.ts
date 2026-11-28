@@ -20,6 +20,7 @@ import {
   EvidenceKind,
   MacroSection,
   OutlookSection,
+  Scenario,
   SCHEMA_VERSION,
   SECTION_ORDER,
   SeshatArticleV1,
@@ -665,7 +666,8 @@ ${ATTENTION_RULE} (Apply it to each section's own attention field.)`;
 }
 
 // ── I. Outlook ──────────────────────────────────────────────────────────────
-export const OutlookOut = OutlookSection.omit({ disclaimer: true });
+// Generation ceiling of three (D-063); the stored schema keeps max(4) so existing drafts and published articles still parse.
+export const OutlookOut = OutlookSection.omit({ disclaimer: true }).extend({ scenarios: z.array(Scenario).min(1).max(3) });
 export const OUTLOOK_DISCLAIMER =
   'These are conditional scenarios — editorial analysis of what could happen and what to watch, not forecasts, probabilities or investment advice. Outcomes depend on developments no one can predict with confidence.';
 
@@ -688,7 +690,7 @@ ${STYLE}
 TASK: write the OUTLOOK — conditional paths from here, and how a reader would know which one is unfolding.
 - title: says something about the choice ahead, not "What's next".
 - intro (2–3 sentences): the open question the article leaves, in the author's terms. No recap, no generic stakes.
-- scenarios: 2–3 conditional scenarios in a consistent format. Exactly one has role "central" (the path current evidence leans towards, NOT a probability); others "alternative" — at least one should be a path the author's argument would NOT predict. Each: key (short slug), name, summary, conditions (the specific developments that would produce it), whyItMatters (for whom, concretely — not "investors should stay alert"), assets (asset → plausible effect, conditional language), watch (specific signposts that would distinguish THIS scenario from the others — real indicators or events, ideally ones in this article; not a generic list), uncertainties (the strongest counterarguments or unknowns).
+- scenarios: only the conditional paths that are economically meaningful and genuinely distinct on this evidence — one or two is often right, three at most. Let the subject decide: do not pad to fill a template or force a bullish / base / bearish set; if more paths are plausible, keep the ones the evidence most supports. Exactly one has role "central" (the path current evidence leans towards, NOT a probability); any others are "alternative", and where there are alternatives at least one should be a path the author's argument would NOT predict. Each: key (short slug), name, summary, conditions (the specific developments that would produce it), whyItMatters (for whom, concretely — not "investors should stay alert"), assets (asset → plausible effect, conditional language), watch (specific signposts that would distinguish THIS scenario from the others — real indicators or events, ideally ones in this article; not a generic list), uncertainties (the strongest counterarguments or unknowns).
 - No probabilities, odds, confidence scores, price or rate targets, no investment advice, and no new numbers beyond fact tokens.
 ${ATTENTION_RULE}`;
   const r = await ctx.deps.llm.complete({ stage: 'outlook', system: SYSTEM, user, schema: OutlookOut, maxTokens: 3800, temperature: 0.5 });

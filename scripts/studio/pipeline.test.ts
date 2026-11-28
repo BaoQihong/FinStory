@@ -7,7 +7,7 @@ import assert from 'node:assert/strict';
 import type { z } from 'zod';
 import { MemoryStore } from '../../lib/studio/pipeline/memory-store.ts';
 import { runStep } from '../../lib/studio/pipeline/runner.ts';
-import { assembleArticle, setPath } from '../../lib/studio/pipeline/stages.ts';
+import { assembleArticle, OutlookOut, setPath } from '../../lib/studio/pipeline/stages.ts';
 import type { Deps, StageContext } from '../../lib/studio/pipeline/types.ts';
 import { LlmError, type Llm, type LlmRequest } from '../../lib/studio/llm.ts';
 import type { DataProvider, SearchProvider, SeriesMeta } from '../../lib/studio/providers/types.ts';
@@ -372,6 +372,38 @@ test('a repair rewrite that breaks field limits is discarded, not fatal', async 
   } finally {
     scripted.repair = original;
     scripted.review = originalReview;
+  }
+});
+
+// ── Outlook scenario count (D-063) ───────────────────────────────────────
+test('outlook schema: one to three scenarios; the prompt states a ceiling, not a target', () => {
+  const base = scripted.outlook() as { scenarios: unknown[] };
+  const one = { ...base, scenarios: base.scenarios.slice(0, 1) };
+  assert.equal(OutlookOut.safeParse(one).success, true);
+  assert.equal(OutlookOut.safeParse({ ...base, scenarios: [...base.scenarios, base.scenarios[1]] }).success, true);
+  assert.equal(OutlookOut.safeParse({ ...base, scenarios: [] }).success, false);
+  assert.equal(OutlookOut.safeParse({ ...base, scenarios: [...base.scenarios, ...base.scenarios] }).success, false);
+});
+
+test('a single-scenario outlook passes validation, review and repair without being flagged', async () => {
+  const { store, deps, jobId, articleId, prompts } = setup();
+  const original = scripted.outlook;
+  scripted.outlook = () => {
+    const o = original() as { scenarios: unknown[] };
+    return { ...o, scenarios: o.scenarios.slice(0, 1) };
+  };
+  try {
+    const job = await runToEnd(deps, jobId);
+    assert.equal(job.status, 'succeeded', JSON.stringify(job.error));
+    const c = (await store.getArticle(articleId))!.content as SeshatArticle;
+    assert.equal(c.outlook.scenarios.length, 1);
+    assert.deepEqual(c.validation.issues.filter((i) => i.section === 'outlook'), []);
+    assert.equal(c.outlook.attention.required, false);
+    assert.ok(!/outlook/.test(prompts.repair ?? ''), 'repair was not asked to touch the outlook');
+    assert.doesNotMatch(prompts.outlook, /2[–-]3 (conditional )?scenarios|three scenarios/i);
+    assert.match(prompts.outlook, /three at most/);
+  } finally {
+    scripted.outlook = original;
   }
 });
 

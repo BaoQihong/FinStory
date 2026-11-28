@@ -123,13 +123,22 @@ test('validation errors block, warnings do not', () => {
   assert.ok(r.blocking.some((i) => i.code === 'unknown-token'));
 
   const w = fixture();
-  w.outlook.scenarios = w.outlook.scenarios.slice(0, 1);
+  w.outlook.scenarios = [];
   w.meta.asOf = '2026-01-01'; // stale data
   w.data.sources = [{ seriesId: 'SPY', name: 'SPDR', provider: 'Tiingo', url: 'https://api.tiingo.com', units: 'USD', frequency: 'Daily', retrievedAt: 'x', lastObservation: 'x' }];
   const rw = checkPublication(input(w));
   assert.equal(rw.ok, true, JSON.stringify(rw.blocking));
   const codes = rw.warnings.map((i) => i.code);
-  for (const c of ['few-scenarios', 'stale-data', 'tiingo-licence']) assert.ok(codes.includes(c), `${c} in ${codes}`);
+  for (const c of ['no-scenarios', 'stale-data', 'tiingo-licence']) assert.ok(codes.includes(c), `${c} in ${codes}`);
+});
+
+test('a single central scenario is a complete Outlook (D-063)', () => {
+  const a = fixture();
+  a.outlook.scenarios = a.outlook.scenarios.slice(0, 1);
+  const r = checkPublication(input(a));
+  assert.equal(r.ok, true, JSON.stringify(r.blocking));
+  const outlook = [...r.blocking, ...r.warnings].filter((i) => /scenario/.test(i.code));
+  assert.deepEqual(outlook, [], JSON.stringify(outlook));
 });
 
 // ── Snapshot ─────────────────────────────────────────────────────────────

@@ -229,7 +229,7 @@ and `validateArticle`).
   draft; a running generation; a stale revision; an invalid, reserved or
   taken slug.
 - **Warnings (shown, not blocking):** validation warnings (bare numbers,
-  unsupported superlatives, thin story, few scenarios, stale data…),
+  unsupported superlatives, thin story, an Outlook with no scenarios or more than three, stale data…),
   Tiingo-sourced data (licence review pending, P2B-16), no citations.
 
 ## Security and access control

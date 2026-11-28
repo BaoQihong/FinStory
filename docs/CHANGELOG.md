@@ -3,6 +3,13 @@
 Notable changes to this project. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/). Newest entries first.
 
+## 0.6.5 — 2026-11-28 (Outlook: scenario count follows the evidence)
+
+- **Outlook scenarios** (D-063): the prompt asks for only distinct, economically meaningful paths (three at most, one or two acceptable), with no bullish / base / bearish template. The generation schema accepts 1-3.
+- Validator: one scenario is no longer flagged (`few-scenarios` replaced by `no-scenarios` and `many-scenarios`).
+- Article page: the scenario grid adapts to one, two or three cards.
+- Tests: 2 new in `scripts/studio/pipeline.test.ts`; `publishing.test.ts` updated, with a new single-scenario case.
+
 ## 0.6.4 — 2026-11-28 (studio: delete never-published drafts)
 
 - **Delete draft** at the foot of the draft page (D-062).

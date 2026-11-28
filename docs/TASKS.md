@@ -140,6 +140,7 @@ Note: during documentation work a shell-quoting mistake ran `publish:home-check`
 | V01-03 | Tests: unit + live model probe | Done | 91/91 unit tests. Live, temporary copies: an injected level-as-change error was resolved in 1 attempt on both runs (6 s and 41 s). The housing draft (3 attention flags + 1 unknown token) was fully resolved in 2 attempts on one run; on another, the 200-character watch item stayed too long after all 3 attempts, so it was reported unresolved at the cap |
 | V01-04 | Browser acceptance of Fix It for Me by a signed-in editor | Not started | Assistant may not type passwords; steps in the delivery notes / TESTING.md |
 | V01-05 | Commit, push, deploy | Not started | Awaiting product-owner approval |
+| V01-06 | Outlook scenario flexibility: 1-3 scenarios chosen by the evidence | Done | D-063. Prompt, generation schema, validator and article grid. 134/134 tests and `npm run verify` pass. Not yet deployed: awaiting product-owner approval |
 
 ## Phase 3D
 
