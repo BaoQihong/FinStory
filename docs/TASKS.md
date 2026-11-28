@@ -131,6 +131,16 @@ Superseded by Phase 3A (D-043).
 
 Note: during documentation work a shell-quoting mistake ran `publish:home-check` once against the production URL (2026-11-27). It used fixtures only, cleaned them up and restored the (empty) feature; production did not yet serve the new homepage, so nothing reached readers.
 
+## v0.1 editorial testing — enhancements (within approved Phase 3C scope)
+
+| ID | Task | Status | Notes |
+|----|------|--------|-------|
+| V01-01 | Investigate the blocking issues on "The index fund paradox" draft | Done | Both blockers were validator false positives ("making **up** {share}"); a third false positive was found in the gold draft ("{price} **as** of" → "per s"). Fixed in the validator (D-056) |
+| V01-02 | Fix It for Me: pure core, server action, dialog UI, docs | Done | D-055; `lib/editorial/fix.ts`, `app/admin/fix-actions.ts`, `components/studio/PublishPanel.tsx` |
+| V01-03 | Tests: unit + live model probe | Done | 91/91 unit tests. Live, temporary copies: an injected level-as-change error was resolved in 1 attempt on both runs (6 s and 41 s). The housing draft (3 attention flags + 1 unknown token) was fully resolved in 2 attempts on one run; on another, the 200-character watch item stayed too long after all 3 attempts, so it was reported unresolved at the cap |
+| V01-04 | Browser acceptance of Fix It for Me by a signed-in editor | Not started | Assistant may not type passwords; steps in the delivery notes / TESTING.md |
+| V01-05 | Commit, push, deploy | Not started | Awaiting product-owner approval |
+
 ## Phase 3D
 
 Deferred: production polish, tag-based caching of public pages, SEO/social.

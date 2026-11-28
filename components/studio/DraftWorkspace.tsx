@@ -128,7 +128,23 @@ export function DraftWorkspace(props: {
         </p>
       ) : null}
 
-      {draft ? <PublishPanel articleId={props.articleId} revision={revision} dirty={dirty} generating={generating} pub={props.publication} /> : null}
+      {draft ? (
+        <PublishPanel
+          articleId={props.articleId}
+          revision={revision}
+          dirty={dirty}
+          generating={generating}
+          pub={props.publication}
+          onRepaired={(r) => {
+            setDraft(r.content);
+            setRevision(r.revision);
+            setStatus(r.status);
+            setIssues(r.issues);
+            setDirty(false);
+            setMessage({ kind: 'ok', text: `Fix It for Me saved revision ${r.revision}. Not published — readers see the live publication until you publish or republish.` });
+          }}
+        />
+      ) : null}
 
       {props.job && (generating || props.job.status !== 'succeeded' || !draft) ? (
         <div className="mt-6">

@@ -3,6 +3,14 @@
 Notable changes to this project. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/). Newest entries first.
 
+## 0.6.1 — 2026-11-28 (v0.1 editorial testing: Fix It for Me, validator false positives)
+
+- **Fix It for Me** in the publication dialog's blocking-issues panel: up to three targeted AI repair attempts on the passages behind blocking issues. Each successful attempt is saved as a new draft revision, and the dialog stays open and re-runs the publication checks. Changes are shown before and after, with removed or qualified claims called out. Rejected rewrites and anything that needs the editor (data, structure, licence, editorial-judgement notes) are listed. It never publishes (D-055).
+- Shared repair core `lib/studio/repair.ts`: the generation repair stage and Fix It use the same prompt and output schema (generation prompt unchanged). Editorial Polish's field diff is exposed as `revisionDelta()` (behaviour unchanged).
+- Validator false positives fixed (D-056): "making up {share} of the index" is no longer read as a change, and "{price} as of 25 November" is no longer read as "per s". Genuine level-vs-change and unit errors are still caught (new regression tests).
+- `saveDraft` takes an optional `{ revalidate: false }`; generation and the brief builder also wait for an in-flight Fix It call (single Arli request, D-010).
+- Tests: `scripts/studio/fix.test.ts` (unit) and `npm run editorial:fix-check -- <articleId> [--inject-level-as-change]` (live model probe on temporary copies).
+
 ## 0.6.0 — 2026-11-27 (Phase 3C: editorial homepage) — **Seshat v0.1, Editorial MVP**
 
 Milestone: an editor can create, edit and publish an article, and a reader can discover and read it from the homepage. v0.1 = Phase 1 (infrastructure), Phase 2 (editorial creation workflow), 3A (publishing engine), 3B (public article rendering and editorial quality), 3C (public editorial homepage). Phase 3D remains deferred.

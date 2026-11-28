@@ -440,6 +440,65 @@ test('claim check: correct sentences are not flagged (false-positive guard)', ()
   ]) assert.deepEqual(issuesOf(ok), [], ok);
 });
 
+// Level-vs-change is decided by the words attached to each token, not by comparative or change
+// language elsewhere in the sentence (false positives found in product-owner testing, 2026-11-28).
+const G: Record<string, QuantityFact> = {
+  aiShare: qf({ kind: 'level', unit: '%', measure: 'ratio', period: '2026-11-03' }, { format: 'text', text: 'about 26%', date: '2026-11-03' }),
+  top10Weight: qf({ kind: 'level', unit: '%', measure: 'ratio' }),
+  unemployment: qf({ kind: 'level', unit: '%', measure: 'rate' }),
+  spxYoy: qf({ kind: 'change', window: '1y', unit: '%', measure: 'index' }),
+  yieldChgPp: qf({ kind: 'change', window: '1y', unit: 'pp' }, { format: 'pp' }),
+  gldLatest: qf({ kind: 'level', unit: 'US$ per share', denominator: 'share', measure: 'price', period: '2026-11-25' }, { format: 'level', date: '2026-11-25' }),
+};
+const gIssues = (text: string) => checkText('p', text, G, (s) => s).flatMap((c) => c.issues.map((i) => i.code));
+
+test('claim check: percentage levels, shares and index weights are not read as changes', () => {
+  for (const ok of [
+    // The two sentences from the "index fund paradox" draft (story.blocks[4], analytics.implications.items[0].shows).
+    'The current concentration is driven significantly by AI-related companies, with six of the largest companies making up {aiShare} of the index as of November 2026.',
+    'The top 10 stocks comprise a significantly larger share of the index than in previous eras, with six AI-related companies making up {aiShare} of the index as of November 2026.',
+    'Six companies make up {aiShare} of the S&P 500.',
+    'Together they made up about {aiShare} of the index.',
+    'The ten largest stocks take up {top10Weight} of the index, a larger share than in any earlier era.',
+    'Their weights add up to {top10Weight}.',
+    'The unemployment rate stands at {unemployment}, higher than a year ago.',
+    'Concentration has risen sharply: the top ten now account for {top10Weight} of the index.',
+  ]) assert.deepEqual(gIssues(ok), [], ok);
+});
+
+test('claim check: percentage and percentage-point changes keep working; mixed sentences judge each figure', () => {
+  for (const ok of [
+    'The S&P 500 is up {spxYoy} over the past year.',
+    'The index rose {spxYoy} year-over-year.',
+    'The 10-year yield climbed {yieldChgPp} over the past year.',
+    'Yields are down {yieldChgPp} from a year earlier.',
+    // Several figures, different meanings, in one sentence.
+    'The index rose {spxYoy} over the past year, while six companies make up {aiShare} of it.',
+    'The index gained {spxYoy} over the year as the ten largest stocks grew to {top10Weight} of its value.',
+  ]) assert.deepEqual(gIssues(ok), [], ok);
+});
+
+test('claim check: genuine level-vs-change errors are still detected', () => {
+  assert.ok(gIssues('AI stocks jumped {aiShare} this year.').includes('level-as-change'));
+  assert.ok(gIssues('The index is up {aiShare} since January.').includes('level-as-change'));
+  assert.ok(gIssues('Their weight rose by {top10Weight}.').includes('level-as-change'));
+  assert.ok(gIssues('Unemployment fell {unemployment}.').includes('level-as-change'));
+  assert.ok(gIssues('The index reached {spxYoy}.').includes('change-as-level'));
+  assert.ok(gIssues('Yields stand at {yieldChgPp}.').includes('change-as-level'));
+  // Mixed sentence: the correct figure passes, the misused one is flagged by name.
+  const msgs = checkText('p', 'Six companies make up {aiShare} of the index, which surged {top10Weight}.', G, (s) => s).flatMap((c) => c.issues.map((i) => i.message));
+  assert.equal(msgs.length, 1);
+  assert.match(msgs[0], /\{top10Weight\} is a level/);
+});
+
+test('claim check: "as of" after a per-share price is not a foreign denominator; real ones still are', () => {
+  assert.deepEqual(gIssues('GLD fell to {gldLatest} as of 25 November, just above its 52-week low.'), []);
+  assert.deepEqual(gIssues('GLD trades at {gldLatest} a share.'), []);
+  assert.ok(gIssues('GLD costs {gldLatest} per ounce.').includes('unit-mismatch'));
+  assert.ok(gIssues('GLD costs {gldLatest}/ounce.').includes('unit-mismatch'));
+  assert.ok(issuesOf('Grid work costs {capexPerMw} a kWh.').includes('unit-mismatch'));
+});
+
 test('quoted figures: forecast language, missing denominators and fake changes are corrected from the quote', () => {
   const a = verifyQuotedQuantity('1,000 terawatt-hours', 'Consumption will reach 1,000 terawatt-hours by 2030.', { kind: 'level', measure: 'flow', unit: 'TWh', denominator: '', temporal: 'historical', period: '2030' });
   assert.equal(a.quantity.temporal, 'forecast');

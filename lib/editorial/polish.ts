@@ -161,32 +161,23 @@ const certaintyOf = (s: string) => [...s.matchAll(CERTAINTY)].map((m) => m[0].to
  *   material changes (figures, tokens, dates, quotations, references) or
  *   wording that changes certainty/negation.
  */
-export function checkRevision(before: string, after: string, ctx: { max: number; facts: Record<string, unknown>; dates: Record<string, unknown> }): RevisionCheck {
-  const reasons: CheckReason[] = [];
+/** Structured difference between two versions of one field (shared by Polish and Fix It for Me). */
+export type RevisionDelta = {
+  lostTokens: string[];
+  newTokens: string[];
+  bareNew: string[];
+  lostDigits: string[];
+  newDigits: string[];
+  lostQuotes: string[];
+  newQuotes: string[];
+  lostRefs: string[];
+  newRefs: string[];
+  lostCert: string[];
+  newCert: string[];
+};
+
+export function revisionDelta(before: string, after: string): RevisionDelta {
   const t = after.trim();
-  if (!t) reasons.push({ severity: 'block', message: 'The proposed text is empty.' });
-  if (t.length > ctx.max) reasons.push({ severity: 'block', message: `The proposed text is ${t.length} characters; this field allows ${ctx.max}.` });
-  if (/<\/?[a-z][^>]*>|```|https?:\/\//i.test(t)) reasons.push({ severity: 'block', message: 'The proposed text contains markup or a URL.' });
-  for (const p of checkTokens(t, ctx.facts, ctx.dates)) reasons.push({ severity: 'block', message: `Unknown fact token ${p.token} (${p.reason}).` });
-
-  const lostTokens = diff(tokensOf(before), tokensOf(t));
-  const newTokens = diff(tokensOf(t), tokensOf(before));
-  if (lostTokens.length) reasons.push({ severity: 'material', message: `Figures removed: ${[...new Set(lostTokens)].join(', ')}.` });
-  if (newTokens.length) reasons.push({ severity: 'material', message: `Figures added: ${[...new Set(newTokens)].join(', ')}.` });
-  const bareNew = findBareNumbers(t).filter((b) => !findBareNumbers(before).some((o) => o.match === b.match));
-  if (bareNew.length) reasons.push({ severity: 'material', message: `New figure typed into the text (not a fact token): ${bareNew.map((b) => `“${b.match}”`).join(', ')}.` });
-  const lostDigits = diff(digitsOf(before), digitsOf(t));
-  const newDigits = diff(digitsOf(t), digitsOf(before));
-  if (lostDigits.length || newDigits.length)
-    reasons.push({ severity: 'material', message: `Numbers or dates changed${lostDigits.length ? ` (removed ${lostDigits.join(', ')})` : ''}${newDigits.length ? ` (added ${newDigits.join(', ')})` : ''}.` });
-  const lostQuotes = quotesOf(before).filter((q) => !t.includes(q));
-  if (lostQuotes.length) reasons.push({ severity: 'material', message: `Quoted text changed or removed: ${lostQuotes.map((q) => `“${q.slice(0, 60)}”`).join(', ')}.` });
-  const newQuotes = quotesOf(t).filter((q) => !before.includes(q));
-  if (newQuotes.length) reasons.push({ severity: 'material', message: `New quotation added: ${newQuotes.map((q) => `“${q.slice(0, 60)}”`).join(', ')} — check it is not presented as someone's words.` });
-  const lostRefs = diff(refsOf(before), refsOf(t));
-  const newRefs = diff(refsOf(t), refsOf(before));
-  if (lostRefs.length || newRefs.length) reasons.push({ severity: 'material', message: `Source references changed (${[...lostRefs.map((r) => `−${r}`), ...newRefs.map((r) => `+${r}`)].join(', ')}).` });
-
   let lostCert = diff(certaintyOf(before), certaintyOf(t));
   let newCert = diff(certaintyOf(t), certaintyOf(before));
   // Dissolving a formulaic "not X; it is Y" contrast necessarily drops a negation: expected, not a change of claim.
@@ -198,6 +189,39 @@ export function checkRevision(before: string, after: string, ctx: { max: number;
     budget = removedContrasts;
     newCert = newCert.filter((w) => !(budget > 0 && NEGATIONS.has(w) && budget--));
   }
+  return {
+    lostTokens: diff(tokensOf(before), tokensOf(t)),
+    newTokens: diff(tokensOf(t), tokensOf(before)),
+    bareNew: findBareNumbers(t).filter((b) => !findBareNumbers(before).some((o) => o.match === b.match)).map((b) => b.match),
+    lostDigits: diff(digitsOf(before), digitsOf(t)),
+    newDigits: diff(digitsOf(t), digitsOf(before)),
+    lostQuotes: quotesOf(before).filter((q) => !t.includes(q)),
+    newQuotes: quotesOf(t).filter((q) => !before.includes(q)),
+    lostRefs: diff(refsOf(before), refsOf(t)),
+    newRefs: diff(refsOf(t), refsOf(before)),
+    lostCert,
+    newCert,
+  };
+}
+
+export function checkRevision(before: string, after: string, ctx: { max: number; facts: Record<string, unknown>; dates: Record<string, unknown> }): RevisionCheck {
+  const reasons: CheckReason[] = [];
+  const t = after.trim();
+  if (!t) reasons.push({ severity: 'block', message: 'The proposed text is empty.' });
+  if (t.length > ctx.max) reasons.push({ severity: 'block', message: `The proposed text is ${t.length} characters; this field allows ${ctx.max}.` });
+  if (/<\/?[a-z][^>]*>|```|https?:\/\//i.test(t)) reasons.push({ severity: 'block', message: 'The proposed text contains markup or a URL.' });
+  for (const p of checkTokens(t, ctx.facts, ctx.dates)) reasons.push({ severity: 'block', message: `Unknown fact token ${p.token} (${p.reason}).` });
+
+  const { lostTokens, newTokens, bareNew, lostDigits, newDigits, lostQuotes, newQuotes, lostRefs, newRefs, lostCert, newCert } = revisionDelta(before, t);
+  if (lostTokens.length) reasons.push({ severity: 'material', message: `Figures removed: ${[...new Set(lostTokens)].join(', ')}.` });
+  if (newTokens.length) reasons.push({ severity: 'material', message: `Figures added: ${[...new Set(newTokens)].join(', ')}.` });
+  if (bareNew.length) reasons.push({ severity: 'material', message: `New figure typed into the text (not a fact token): ${bareNew.map((b) => `“${b}”`).join(', ')}.` });
+  if (lostDigits.length || newDigits.length)
+    reasons.push({ severity: 'material', message: `Numbers or dates changed${lostDigits.length ? ` (removed ${lostDigits.join(', ')})` : ''}${newDigits.length ? ` (added ${newDigits.join(', ')})` : ''}.` });
+  if (lostQuotes.length) reasons.push({ severity: 'material', message: `Quoted text changed or removed: ${lostQuotes.map((q) => `“${q.slice(0, 60)}”`).join(', ')}.` });
+  if (newQuotes.length) reasons.push({ severity: 'material', message: `New quotation added: ${newQuotes.map((q) => `“${q.slice(0, 60)}”`).join(', ')} — check it is not presented as someone's words.` });
+  if (lostRefs.length || newRefs.length) reasons.push({ severity: 'material', message: `Source references changed (${[...lostRefs.map((r) => `−${r}`), ...newRefs.map((r) => `+${r}`)].join(', ')}).` });
+
   if (lostCert.length || newCert.length)
     reasons.push({ severity: 'check', message: `Certainty or negation wording changed (${[...new Set(lostCert)].map((w) => `−“${w}”`).concat([...new Set(newCert)].map((w) => `+“${w}”`)).join(', ')}): check the claim still says the same thing.` });
   if (before.length > 120 && t.length < before.length * 0.5) reasons.push({ severity: 'check', message: 'Shortened by more than half: check nothing material was dropped.' });

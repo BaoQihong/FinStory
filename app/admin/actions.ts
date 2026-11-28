@@ -11,9 +11,9 @@ import { CONTEXT_FIELDS, suggestBrief, type BriefSuggestion, type ContextField }
 import { arliLlm, LlmError } from '@/lib/studio/llm';
 
 
-/** An Editorial Polish call is using the AI model (reservation row, see polish-actions.ts). */
+/** An Editorial Polish or Fix It for Me call is using the AI model (reservation row, see polish-actions.ts / fix-actions.ts). */
 async function polishInFlight(db: Awaited<ReturnType<typeof supabaseServer>>) {
-  const { data } = await db.from('api_usage').select('id').eq('stage', 'polish').eq('calls', 0).gte('created_at', new Date(Date.now() - 300_000).toISOString()).limit(1);
+  const { data } = await db.from('api_usage').select('id').in('stage', ['polish', 'fix']).eq('calls', 0).gte('created_at', new Date(Date.now() - 300_000).toISOString()).limit(1);
   return !!data?.length;
 }
 
@@ -126,7 +126,8 @@ export async function developBrief(input: { prompt: string; context?: Partial<Re
 // ── Editorial saves ──────────────────────────────────────────────────────
 export type SaveResult = { ok: true; revision: number; issues: ValidationIssue[]; status: string; content: SeshatArticle } | { ok: false; error: string; issues?: ValidationIssue[] };
 
-export async function saveDraft(articleId: string, expectedRevision: number, content: unknown, note?: string): Promise<SaveResult> {
+/** opts.revalidate = false: the caller updates the open page itself (Fix It keeps the publication dialog open). */
+export async function saveDraft(articleId: string, expectedRevision: number, content: unknown, note?: string, opts?: { revalidate?: boolean }): Promise<SaveResult> {
   const ed = await getEditor();
   if (!ed) return { ok: false, error: 'Your session has expired. Sign in again (your edits are still in this tab).' };
   const { db } = ed;
@@ -153,7 +154,7 @@ export async function saveDraft(articleId: string, expectedRevision: number, con
   if (rErr) return { ok: false, error: /duplicate/.test(rErr.message) ? 'Someone saved this draft at the same time. Reload before saving.' : rErr.message };
   const { error: uErr } = await db.from('articles').update({ content: next, revision, status, working_title: next.meta.workingTitle, as_of: next.meta.asOf }).eq('id', articleId).eq('revision', expectedRevision);
   if (uErr) return { ok: false, error: uErr.message };
-  revalidatePath(`/admin/drafts/${articleId}`);
+  if (opts?.revalidate !== false) revalidatePath(`/admin/drafts/${articleId}`);
   return { ok: true, revision, issues: v.issues, status, content: next };
 }
 

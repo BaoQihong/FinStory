@@ -381,12 +381,41 @@ apply logic, and is unit-tested in `scripts/studio/polish.test.ts`. A Polish
 request never writes the draft, and an accepted Polish never publishes: a live
 article shows "unpublished changes" until the editor republishes.
 
+## Fix It for Me (D-055)
+
+```
+Publish dialog → blocking issues panel → "Fix It for Me" (editor click; Publish disabled meanwhile)
+  client loop, attempt = 1..3 (stops early: no blockers left · retry = false · error)
+  → fixPublicationIssues(article, revision N, attempt, feedback)   app/admin/fix-actions.ts
+      editor? revision still N? no generation job? daily limit (30) · Arli slot shared with Polish
+      planFix()   lib/editorial/fix.ts: targets = text fields named by a BLOCKING validator error with a
+                  wording code (isRepairableCode, same set as generation repair) + fields behind an
+                  attention flag whose reasons are validator messages; everything else → "needs you"
+      fixPrompt() repairPrompt() from lib/studio/repair.ts (shared with the generation repair stage)
+                  + Fix It constraints, author intent, the job's stored data observations (no new
+                  research or data fetch), each field's schema limit, the previous attempt's rejections
+      one Arli call (stage "fix", RepairOut schema; malformed reply → error, draft unchanged)
+      applyFix()  per rewrite: target path only · known tokens · no new typed numbers/years · quotes and
+                  source refs unchanged · no verified figure dropped unless the problem is about it ·
+                  within the schema limit → otherwise rejected, original kept; removed claims noted.
+                  Attention: drop only validator-derived reasons the validator no longer reproduces.
+      saveDraft(N, content, note, {revalidate: false}) → revision N+1 (origin editor; N kept)
+  ← changes (before/after/notes), rejected, cleared, remaining blocking, manual, retry
+  workspace adopts revision N+1 (dialog stays open) · after the loop: publicationPreflight() again
+  closing the dialog → router.refresh() (History shows the new revisions)
+```
+
+It never publishes and never touches `published_stories` / `publication_revisions`;
+publishing still needs its own click. Warnings (Tiingo licence, bare numbers, no
+citations) are not targets and stay listed.
+
 ## Cost
 
 | Operation | Calls | Typical tokens (Qwen3.8-27B, measured) |
 |---|---|---|
 | Generation (unchanged count) | 8 | The writing-stage prompts grow by about 1.5k tokens each (style guide) plus about 1–2k for earlier-section context |
 | Editorial Polish, per section | 1 | ≈6–9.5k prompt + 0.6–1.1k completion tokens; 30–60 s typical |
+| Fix It for Me, per attempt (≤3 per click) | 1 | ≈10–12k prompt + ≈100–150 completion tokens; 3–6 s (live check, 2026-11-28) |
 | Evaluation script (manual) | ≈15 | Recorded as `api_usage.stage = 'evaluation'` |
 
 # Phase 3C — editorial homepage

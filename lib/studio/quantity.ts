@@ -71,7 +71,11 @@ export type ClaimRecord = { path: string; sentence: string; tokens: string[]; st
 
 const TOKEN = /\{([a-zA-Z0-9]+)(\.date)?(?::(short|abs))?\}/g;
 const QUAL = String.raw`(?:by\s+|some\s+|nearly\s+|about\s+|almost\s+|roughly\s+|around\s+|more than\s+|over\s+|less than\s+)?`;
-const CHANGE_VERB = String.raw`(?:rose|risen|rises|rising|increased|increases|jumped|jumps|climbed|climbs|grew|grown|grows|gained|gains|added|fell|fallen|falls|dropped|drops|declined|declines|decreased|slid|slipped|lost|loses|surged|soared|plunged|tumbled|shrank|shrunk|contracted|expanded|up|down)`;
+// "up"/"down" are change language ("up {x} on the year"), except as the particle of a phrasal
+// verb of composition or breakdown: "six companies make up {share} of the index" states a level.
+// The check is local to the words before each token, never the whole sentence.
+const PHRASAL = String.raw`(?:make|makes|making|made|take|takes|taking|took|taken|add|adds|adding|added|sum|sums|summing|summed|break|breaks|breaking|broke|broken|split|splits|splitting)`;
+const CHANGE_VERB = String.raw`(?:rose|risen|rises|rising|increased|increases|jumped|jumps|climbed|climbs|grew|grown|grows|gained|gains|added|fell|fallen|falls|dropped|drops|declined|declines|decreased|slid|slipped|lost|loses|surged|soared|plunged|tumbled|shrank|shrunk|contracted|expanded|(?<!\b${PHRASAL}\s+)(?:up|down))`;
 const LEVEL_VERB = String.raw`(?:stands? at|stood at|reached|reaches|reaching|hit|hits|sits? at|sat at|rose to|risen to|fell to|fallen to|climbed to|dropped to|declined to|jumped to|averaged|totall?ed)`;
 const ONE_YEAR = /\b(year[- ]over[- ]year|year[- ]on[- ]year|y\/y|yoy|over the (?:past|last) (?:year|12 months|twelve months)|in the (?:past|last) year|from a year (?:earlier|ago)|annual (?:increase|rise|growth|decline|fall)|this year|12-month)\b/i;
 const FIVE_YEAR = /\b(five years|5 years|half[- ]decade|five-year (?:increase|rise|change|decline|fall|gain))\b/i;
@@ -124,7 +128,8 @@ export function checkText(path: string, text: string, facts: Record<string, Quan
         add('rate-framing', 'error', `${label} is measured per ${q.denominator}, not per period; "year-over-year"/"annually" framing changes its meaning`);
       // 5. Foreign denominator right after the token.
       const after = sentence.split(new RegExp(tok))[1] ?? '';
-      const dm = /^\s*(?:per|a|an|each|\/)\s*([a-z][a-z-]*(?:\s+btu)?)/i.exec(after);
+      // "per"/"a"/"an"/"each" must be whole words ("{x} as of …" is not "per s"); only "/" may touch the unit.
+      const dm = /^\s*(?:(?:per|a|an|each)\s+|\/\s*)([a-z][a-z-]*(?:\s+btu)?)/i.exec(after);
       if (dm) {
         const said = normDenominator(dm[1]);
         if (q.denominator && said && said !== q.denominator && !(TIME_DENOMS.has(said) && q.measure === 'flow'))

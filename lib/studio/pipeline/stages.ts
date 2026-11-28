@@ -31,7 +31,7 @@ import { classifySource, figureInQuote, isStale, isoDate, leadingNumber, publish
 import { frequencyClass } from '../units.ts';
 import { applyAttention, validateArticle } from '../validate.ts';
 import { ATTENTION_RULE, STORYBOARD, STYLE, SYSTEM, briefBlock, dateLines, factLines, untrusted } from './prompts.ts';
-import { REVISION_PRINCIPLES } from '../../editorial/style-guide.ts';
+import { isRepairableCode, repairPrompt, RepairOut } from '../repair.ts';
 import type { DatasetRow, FindingRow, SourceRow, Stage, StageContext } from './types.ts';
 
 // ── Limits (cost and runtime guards) ────────────────────────────────────────
@@ -959,39 +959,21 @@ Do not report style preferences. If there are no problems, return {"problems": [
 }
 
 // ── K. Repair (LLM rewrites only strings the validator or reviewer flagged) ──
-export const RepairOut = z.object({ fixes: z.array(z.object({ path: z.string().max(120), text: t(1600) })).max(40) });
+// The prompt and output schema live in lib/studio/repair.ts, shared with 'Fix It for Me' (D-055).
+export { RepairOut };
 
 async function repair(ctx: StageContext) {
   const draft = assembleArticle(ctx);
   const v = validateArticle(draft, { today: ctx.deps.today() });
-  const REPAIRABLE = ['bare-number', 'unknown-token', 'unsupported-superlative', 'superlative-contradicted', 'style', 'duplicate-word'];
   const flagged = v.issues
-    .filter((i) => (REPAIRABLE.includes(i.code) || i.code.startsWith('quantity:')) && i.path && !i.path.startsWith('methodology'))
+    .filter((i) => isRepairableCode(i.code) && i.path && !i.path.startsWith('methodology'))
     .map((i) => ({ path: i.path!, message: i.message }));
   for (const p of (ctx.outputs.review as ReviewOut | undefined)?.problems ?? []) flagged.push({ path: p.path, message: `Fact-check (${p.kind}): ${p.problem}` });
   const paths = [...new Set(flagged.map((i) => i.path))].slice(0, 30);
   if (!paths.length) return { fixes: [], skipped: true };
-  const items = paths
-    .map((path) => {
-      const why = flagged.filter((i) => i.path === path).map((i) => i.message).join('; ');
-      const text = String(getPath(draft, path));
-      return `PATH ${path}\nMAX LENGTH ${Math.max(120, Math.round(text.length * 1.15))} characters\nPROBLEM ${why}\nTEXT ${text}`;
-    })
-    .join('\n\n');
+  const items = paths.map((path) => ({ path, text: String(getPath(draft, path)), problem: flagged.filter((i) => i.path === path).map((i) => i.message).join('; ') }));
   const f = ctx.outputs.fetch as FetchOut | undefined;
-  const user = `Some passages in a Seshat draft were flagged by Seshat's validator or fact-checking editor: numbers that are not fact tokens, tokens that do not exist, superlatives ("highest", "five-year low", "above average"…) not backed by a data fact, clichés, repeated words, figures used as the wrong kind of quantity (a level presented as a change, a per-unit cost presented as an annual increase, a forecast stated as an outcome, the wrong period or unit), or factual/logical problems.
-
-FACT TOKENS AVAILABLE:
-${factLines(draft.data.facts as Record<string, Fact>)}
-${dateLines(draft.data.dates as Record<string, { date: string; method: string }>)}
-
-DATA OBSERVATIONS (deterministic — superlatives must agree with these):
-${(f?.products.observations ?? []).join('\n')}
-
-FLAGGED TEXT:
-${items}
-
-For each PATH, return the full corrected text (within its MAX LENGTH): use each figure only as what its description says it is (level vs change, its unit and denominator, its period, forecast vs historical); fix each factual or logical problem (correct it using the data and observations, or remove/qualify the claim); replace each flagged figure with the matching fact token if one exists, otherwise rewrite without that number; make each superlative either cite the matching high/low/since token in the same sentence or remove it if the observations do not support it; replace clichés with plain, specific words (rework the sentence; do not swap in a synonym). Keep everything else the same. ${REVISION_PRINCIPLES} Return {"fixes": [{"path": "...", "text": "..."}]}.`;
+  const user = repairPrompt({ items, facts: draft.data.facts as Record<string, Fact>, dates: draft.data.dates as Record<string, { date: string; method: string }>, observations: f?.products.observations ?? [] });
   const r = await ctx.deps.llm.complete({ stage: 'repair', system: SYSTEM, user, schema: RepairOut, maxTokens: 3000, temperature: 0.1 });
   ctx.metric({ llm: { ...r.usage, attempts: r.attempts } });
   return { fixes: r.data.fixes.filter((f) => paths.includes(f.path)), skipped: false };

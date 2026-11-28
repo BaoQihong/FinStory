@@ -60,10 +60,10 @@ export async function proposePolish(input: { articleId: string; expectedRevision
     .single();
   if (slotErr || !slot) return { ok: false, error: 'Could not reserve the AI model. Try again.' };
   const release = () => db.from('api_usage').delete().eq('id', slot.id).then(() => undefined, () => undefined);
-  const { data: earlier } = await db.from('api_usage').select('id').eq('stage', 'polish').eq('calls', 0).lt('id', slot.id).gte('created_at', new Date(Date.now() - POLISH_IN_FLIGHT_MS).toISOString()).limit(1);
+  const { data: earlier } = await db.from('api_usage').select('id').in('stage', ['polish', 'fix']).eq('calls', 0).lt('id', slot.id).gte('created_at', new Date(Date.now() - POLISH_IN_FLIGHT_MS).toISOString()).limit(1);
   if (earlier?.length) {
     await release();
-    return { ok: false, error: 'Another Editorial Polish request is still running (the AI model takes one request at a time). Try again when it has finished.' };
+    return { ok: false, error: 'Another Editorial Polish or Fix It for Me request is still running (the AI model takes one request at a time). Try again when it has finished.' };
   }
 
   const llm = arliLlm({ baseUrl: env.ARLI_BASE_URL, apiKey: env.ARLI_API_KEY, model: env.ARLI_MODEL, timeoutMs: 240_000 });
