@@ -105,6 +105,37 @@ Check with `npx supabase migration list --remote`. Applied so far:
 - Usage appears in `/admin/usage` as stage `polish` (evaluation runs as `evaluation`). Limit: 40 Polish requests per 24 h; refused while a generation job runs (single Arli concurrency).
 - A Polish request on Vercel can take up to about 2 min; the draft page sets `maxDuration = 300`.
 
+## Model selection (Phase 3D.1a, interim)
+
+Interim until the Phase 3D.2 model gateway (D-058). Server environment variables only; no UI.
+
+| Variable | Used for | When unset or empty |
+|---|---|---|
+| `ARLI_MODEL` (required) | any stage not listed below; fallback for both roles | the studio reports "AI model not configured" |
+| `ARLI_ANALYTICAL_MODEL` | plan, select, synthesize, macro_analytics, outlook, review, repair, brief builder, Fix It for Me | `ARLI_MODEL` |
+| `ARLI_EDITORIAL_MODEL` | story, Editorial Polish | `ARLI_MODEL` |
+
+- **Precedence per stage:** role variable (trimmed, non-empty) → `ARLI_MODEL`. Both roles may name the same model. Local scripts (`studio:generate-draft`, `live-run`, `resume-job`, `model-probe`) also accept the three variables from the process environment, overriding `.env.local`.
+- **Ids are case-exact Arli catalog ids:** `Qwen3.8-27B`, `DeepSeek-V4.1-Flash-1017`, `MiMo-V2.6-Flash-MOPD`. Arli returns HTTP 404 for an unknown id and never substitutes a model.
+- **Thinking-off switch per family** (`lib/studio/model-roles.ts`): DeepSeek gets `chat_template_kwargs {enable_thinking:false, thinking:false}`. Every other model gets the original `{enable_thinking:false}`, so the Qwen request is byte-identical to before.
+- **Observability:** each Arli call logs one `[llm] {…}` line in the Vercel function logs. The line carries stage, model, attempt, format, ms, prompt/completion/reasoning tokens and finish reason; HTTP errors go to `console.warn`. Reasoning reported while thinking is off is logged as a `warning`. Stage metrics (`generation_jobs.metrics`) and `/admin/usage` record the model each stage actually used. Prompts, outputs, reasoning text and keys are never logged.
+- **Live check:** `node scripts/studio/model-probe.ts [--models A,B]` makes 3 sequential small requests per model. It reports whether reasoning really is off: `reasoning_tokens = 0`, and for DeepSeek the prompt-token drop from 88 to 62. It refuses to run while a generation job is active.
+- **Switching or rollback:** change or remove the role variables in Vercel (Production), then redeploy. Environment changes take effect only on a new deployment. With both role variables removed, every stage uses `ARLI_MODEL` with the original request.
+
+## FRED request discipline (D-059)
+
+- **Limits:**
+  - one FRED request in flight per server process;
+  - requests start at least 1 s apart (≤ 60/min);
+  - HTTP 429 → wait Retry-After, or 5/15/30 s, capped at 60 s, with at most 2 retries per call;
+  - HTTP 403 → no FRED requests from that process for 15 minutes.
+  
+  Constants are in `lib/studio/providers/fred-limiter.ts`. Do not raise them, or work around a 403, without a terms review (P3D1a-13).
+- **Diagnosis:**
+  - `[provider]` log lines, and `generation_jobs.metrics.stages.<stage>[n].requests.fred`, give counts per endpoint (`series/search`, `series`, `series/observations`) plus `http429`, `http403`, `blocked` and `waitMs`.
+  - A draft that says "FRED … access denied" is an outage; re-run the job later. Only a series FRED says does not exist is reported as "not found".
+- **No caching:** FRED data is fetched per job and nothing is stored beyond the job's own datasets.
+
 ## Incident and maintenance runbooks
 
 Phase 3 placeholder.

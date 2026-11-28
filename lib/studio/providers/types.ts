@@ -50,4 +50,6 @@ export interface DataProvider {
   search?(text: string, limit: number): Promise<SeriesMeta[]>;
   meta(id: string): Promise<SeriesMeta | null>;
   fetch(id: string, start: string): Promise<SeriesData>;
+  /** Request counts by endpoint/outcome since the last call (then reset); recorded per stage (FRED only for now). */
+  takeRequestStats?(): Record<string, number>;
 }

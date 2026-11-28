@@ -9,7 +9,8 @@ import { resolveTokensSafe } from '../../content/tokens.ts';
 import { stringLeaves } from '../numbers.ts';
 import { verifyQuotedQuantity } from '../quantity.ts';
 import { createBreaker, type Gap, type ProviderOutage } from './breaker.ts';
-import { ProviderError } from '../providers/http.ts';
+import { isOutage } from '../providers/http.ts';
+import { llmMetric } from '../llm.ts';
 import { shiftMonths } from '../../data/transforms.ts';
 import { buildDataProducts, type ChartSpecInput, type DataProducts, type Dataset, type DerivedSpec } from '../facts.ts';
 import { registryMatches } from '../registry.ts';
@@ -82,7 +83,7 @@ Plan the research for this story:
 - counterChecks: 1–4 ways the premise could be WRONG and the data that would show it (e.g. "prices are resilient" → "metros where prices fell" with searchText "home price index metro"; "data centers raise bills" → "states with fast data-center growth but flat prices"). For geographically diverse subjects always include a regional check.
 - storyboardConcern: empty string if the prompt suits a four-section financial story (story, macro numbers, analytics, outlook); otherwise explain the problem.`;
   const r = await deps.llm.complete({ stage: 'plan', system: SYSTEM, user, schema: PlanOut, maxTokens: 1800, temperature: 0.3 });
-  ctx.metric({ llm: { ...r.usage, attempts: r.attempts } });
+  ctx.metric({ llm: llmMetric(r) });
   if (r.data.storyboardConcern.trim()) ctx.warn(`Storyboard concern from planning: ${r.data.storyboardConcern}`);
   return r.data;
 }
@@ -324,7 +325,7 @@ Choose the datasets for this story:
 - charts: 1–5 charts, each answering one editorial question. seriesKeys (series or derived keys) in one chart MUST share the same units; at most 4. from = start date (YYYY-MM-DD), usually 3–10 years before today (${ctx.deps.today()}).
 - unmetNeeds: data needs none of the candidates can meet (do not force an unrelated series).`;
   const r = await ctx.deps.llm.complete({ stage: 'select', system: SYSTEM, user, schema: SelectOut, maxTokens: 2000, temperature: 0.2 });
-  ctx.metric({ llm: { ...r.usage, attempts: r.attempts } });
+  ctx.metric({ llm: llmMetric(r) });
   const known = new Set(d.candidates.map((c) => c.cid));
   const out = { ...r.data, series: r.data.series.filter((s) => known.has(s.candidate)) };
   const dropped = r.data.series.length - out.series.length;
@@ -391,7 +392,7 @@ async function fetchData(ctx: StageContext): Promise<FetchOut> {
       try {
         return { s, c, prov, r: await prov.fetch(c.id, start) };
       } catch (e) {
-        return { s, c, error: (e as Error).message, outage: e instanceof ProviderError ? e.retryable : true, provider: prov.name };
+        return { s, c, error: (e as Error).message, outage: isOutage(e), provider: prov.name };
       }
     }),
   );
@@ -509,7 +510,7 @@ Build the evidence package:
 - gaps: what the evidence cannot establish.
 - sectionSupport: how well the evidence supports each of the four sections.`;
   const r = await deps.llm.complete({ stage: 'synthesize', system: SYSTEM, user, schema: SynthOut, maxTokens: 4200, temperature: 0.2 });
-  ctx.metric({ llm: { ...r.usage, attempts: r.attempts } });
+  ctx.metric({ llm: llmMetric(r) });
   const byRef = new Map(sources.map((s) => [s.ref, s]));
   const findings: FindingRow[] = r.data.findings.map((x, i) => {
     const refs = x.sourceRefs.filter((ref) => byRef.has(ref));
@@ -619,7 +620,7 @@ Output fields:
 - Use fact tokens for every figure.
 ${ATTENTION_RULE} If the evidence contradicts the author's argument, write what the evidence supports, say plainly where it departs from the author's view, and set attention with that reason so the editor decides.`;
   const r = await ctx.deps.llm.complete({ stage: 'story', system: SYSTEM, user, schema: StorySection, maxTokens: 3600, temperature: 0.6 });
-  ctx.metric({ llm: { ...r.usage, attempts: r.attempts } });
+  ctx.metric({ llm: llmMetric(r) });
   return r.data;
 }
 
@@ -659,7 +660,7 @@ ANALYTICS — the mechanism: why this is happening and what it does next.
 - Macro and Analytics must not repeat each other or the Story: each figure is interpreted once, in the place it matters most. Never copy a sentence or clause from the Story; if a Story point is needed, refer to it in a few words and add what is new.
 ${ATTENTION_RULE} (Apply it to each section's own attention field.)`;
   const r = await ctx.deps.llm.complete({ stage: 'macro_analytics', system: SYSTEM, user, schema: MacroAnalyticsOut, maxTokens: 5200, temperature: 0.45 });
-  ctx.metric({ llm: { ...r.usage, attempts: r.attempts } });
+  ctx.metric({ llm: llmMetric(r) });
   return r.data;
 }
 
@@ -691,7 +692,7 @@ TASK: write the OUTLOOK — conditional paths from here, and how a reader would 
 - No probabilities, odds, confidence scores, price or rate targets, no investment advice, and no new numbers beyond fact tokens.
 ${ATTENTION_RULE}`;
   const r = await ctx.deps.llm.complete({ stage: 'outlook', system: SYSTEM, user, schema: OutlookOut, maxTokens: 3800, temperature: 0.5 });
-  ctx.metric({ llm: { ...r.usage, attempts: r.attempts } });
+  ctx.metric({ llm: llmMetric(r) });
   return r.data;
 }
 
@@ -953,7 +954,7 @@ List only genuine problems, each with the exact [path]:
 - repetition: a sentence or point repeated nearly verbatim elsewhere (report the later occurrence).
 Do not report style preferences. If there are no problems, return {"problems": []}.`;
   const r = await ctx.deps.llm.complete({ stage: 'review', system: SYSTEM, user, schema: ReviewOut, maxTokens: 2000, temperature: 0.1 });
-  ctx.metric({ llm: { ...r.usage, attempts: r.attempts } });
+  ctx.metric({ llm: llmMetric(r) });
   const valid = r.data.problems.filter((p) => typeof getPath(draft, p.path) === 'string');
   return { problems: valid, checked: segs.length };
 }
@@ -975,7 +976,7 @@ async function repair(ctx: StageContext) {
   const f = ctx.outputs.fetch as FetchOut | undefined;
   const user = repairPrompt({ items, facts: draft.data.facts as Record<string, Fact>, dates: draft.data.dates as Record<string, { date: string; method: string }>, observations: f?.products.observations ?? [] });
   const r = await ctx.deps.llm.complete({ stage: 'repair', system: SYSTEM, user, schema: RepairOut, maxTokens: 3000, temperature: 0.1 });
-  ctx.metric({ llm: { ...r.usage, attempts: r.attempts } });
+  ctx.metric({ llm: llmMetric(r) });
   return { fixes: r.data.fixes.filter((f) => paths.includes(f.path)), skipped: false };
 }
 

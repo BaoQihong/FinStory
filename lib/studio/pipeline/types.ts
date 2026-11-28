@@ -28,9 +28,12 @@ export type Warning = { stage: Stage; message: string };
 
 export type StageMetrics = {
   ms: number;
-  llm?: { promptTokens: number; completionTokens: number; attempts: number };
+  /** model = the model actually called (D-058); reasoningTokens only when reported (should be 0: thinking is off). */
+  llm?: { promptTokens: number; completionTokens: number; attempts: number; model?: string; reasoningTokens?: number; finish?: string };
   calls?: Record<string, number>; // provider → HTTP calls
   credits?: number; // search credits
+  /** Provider requests by endpoint and outcome during this stage run (e.g. fred: series/search, series, series/observations, http429, waitMs). */
+  requests?: Record<string, Record<string, number>>;
 };
 
 export type Job = {

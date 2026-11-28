@@ -5,7 +5,8 @@
 import { createHash } from 'node:crypto';
 import { createClient } from '@supabase/supabase-js';
 import { readEnv } from '../lib/env-file.mjs';
-import { arliLlm } from '../../lib/studio/llm.ts';
+import { roleLlm } from '../../lib/studio/llm.ts';
+import { modelOverrides } from '../../lib/studio/model-roles.ts';
 import { tavilyProvider } from '../../lib/studio/providers/tavily.ts';
 import { fredProvider } from '../../lib/studio/providers/fred.ts';
 import { tiingoProvider } from '../../lib/studio/providers/tiingo.ts';
@@ -31,7 +32,8 @@ if (job.status === 'failed') {
 const fp = (k?: string) => (k ? createHash('sha256').update(k).digest('hex').slice(0, 12) : 'not-configured');
 const deps = {
   store: supabaseStore(db),
-  llm: arliLlm({ baseUrl: env.ARLI_BASE_URL, apiKey: env.ARLI_API_KEY, model: env.ARLI_MODEL }),
+  // Model variables: the process environment overrides .env.local (as in Next.js), so a run can try a selection (D-058).
+  llm: roleLlm({ baseUrl: env.ARLI_BASE_URL, apiKey: env.ARLI_API_KEY, env: { ...env, ...modelOverrides(process.env) } }),
   search: tavilyProvider(env.TAVILY_API_KEY),
   data: [fredProvider(env.FRED_API_KEY), tiingoProvider(env.TIINGO_API_KEY), eiaProvider(env.EIA_API_KEY)],
   keyFingerprints: { arli: fp(env.ARLI_API_KEY), tavily: fp(env.TAVILY_API_KEY), fred: fp(env.FRED_API_KEY), tiingo: fp(env.TIINGO_API_KEY), eia: fp(env.EIA_API_KEY) },

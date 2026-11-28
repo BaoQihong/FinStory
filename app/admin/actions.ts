@@ -8,7 +8,8 @@ import { SECTION_ORDER, SeshatArticleV1, StoryBrief, type SeshatArticle, type Va
 import { validateArticle } from '@/lib/studio/validate';
 import { supabaseServer } from '@/lib/supabase/server';
 import { CONTEXT_FIELDS, suggestBrief, type BriefSuggestion, type ContextField } from '@/lib/studio/brief';
-import { arliLlm, LlmError } from '@/lib/studio/llm';
+import { roleLlm, LlmError } from '@/lib/studio/llm';
+import { modelForStage, resolveModels } from '@/lib/studio/model-roles';
 
 
 /** An Editorial Polish or Fix It for Me call is using the AI model (reservation row, see polish-actions.ts / fix-actions.ts). */
@@ -105,12 +106,13 @@ export async function developBrief(input: { prompt: string; context?: Partial<Re
   const { count } = await db.from('api_usage').select('id', { count: 'exact', head: true }).eq('stage', 'brief').gte('created_at', since);
   if ((count ?? 0) >= DAILY_BRIEF_LIMIT) return { ok: false, error: `Daily brief limit reached (${DAILY_BRIEF_LIMIT} per 24 hours). You can still write the guidance yourself.` };
 
-  const llm = arliLlm({ baseUrl: env.ARLI_BASE_URL, apiKey: env.ARLI_API_KEY, model: env.ARLI_MODEL, timeoutMs: 90_000 });
+  const llm = roleLlm({ baseUrl: env.ARLI_BASE_URL, apiKey: env.ARLI_API_KEY, env, timeoutMs: 90_000 });
+  const model = modelForStage(resolveModels(env), 'brief');
   const record = (u: { promptTokens: number; completionTokens: number }, calls: number) =>
     u.promptTokens || u.completionTokens
       ? db
           .from('api_usage')
-          .insert({ job_id: null, article_id: null, stage: 'brief', service: 'arli', key_fingerprint: fingerprint(env.ARLI_API_KEY), model: env.ARLI_MODEL, prompt_tokens: u.promptTokens, completion_tokens: u.completionTokens, credits: 0, calls })
+          .insert({ job_id: null, article_id: null, stage: 'brief', service: 'arli', key_fingerprint: fingerprint(env.ARLI_API_KEY), model, prompt_tokens: u.promptTokens, completion_tokens: u.completionTokens, credits: 0, calls })
           .then(() => undefined, () => undefined)
       : undefined;
   try {

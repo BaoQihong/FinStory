@@ -13,7 +13,7 @@ export function usageRows(deps: Deps, job: Job, stage: Stage, m: StageMetrics): 
   const base = { job_id: job.id, article_id: job.article_id, stage, prompt_tokens: 0, completion_tokens: 0, credits: 0, calls: 0, model: null as string | null };
   const fp = (s: Service) => deps.keyFingerprints[s] ?? 'unknown';
   if (m.llm && (m.llm.promptTokens || m.llm.completionTokens))
-    rows.push({ ...base, service: 'arli', key_fingerprint: fp('arli'), model: deps.llm.model, prompt_tokens: m.llm.promptTokens, completion_tokens: m.llm.completionTokens, calls: m.llm.attempts });
+    rows.push({ ...base, service: 'arli', key_fingerprint: fp('arli'), model: m.llm.model ?? deps.llm.model, prompt_tokens: m.llm.promptTokens, completion_tokens: m.llm.completionTokens, calls: m.llm.attempts });
   for (const [name, n] of Object.entries(m.calls ?? {})) {
     const service = name.toLowerCase() as Service;
     if (!['tavily', 'fred', 'tiingo', 'eia'].includes(service) || !n) continue;
@@ -58,9 +58,20 @@ export async function runStep(deps: Deps, jobId: string): Promise<StepResult> {
     metric: (m) => Object.assign(metrics, m),
   };
   const runId = await deps.store.startRun(jobId, stage, attempt);
+  // Per-stage provider request counts (D-059): discard anything counted before this stage.
+  for (const d of deps.data) d.takeRequestStats?.();
   const t0 = Date.now();
   const recordMetrics = () => {
     metrics.ms = Date.now() - t0;
+    const requests: Record<string, Record<string, number>> = {};
+    for (const d of deps.data) {
+      const s = d.takeRequestStats?.();
+      if (s && Object.keys(s).length) requests[d.id] = s;
+    }
+    if (Object.keys(requests).length) {
+      metrics.requests = requests;
+      console.info(`[provider] ${JSON.stringify({ job: job.id, stage, attempt, ms: metrics.ms, requests })}`);
+    }
     const all = { ...(job.metrics.stages ?? {}) };
     all[stage] = [...(all[stage] ?? []), metrics];
     return { ...job.metrics, startedAt: job.metrics.startedAt ?? new Date(t0).toISOString(), stages: all };
@@ -86,7 +97,7 @@ export async function runStep(deps: Deps, jobId: string): Promise<StepResult> {
   } catch (e) {
     const message = (e as Error).message ?? String(e);
     const retryable = isRetryable(e) && attempt < MAX_ATTEMPTS;
-    if (e instanceof LlmError) metrics.llm = { ...e.usage, attempts: 2 };
+    if (e instanceof LlmError) metrics.llm = { ...e.usage, attempts: 2, ...(e.model ? { model: e.model } : {}) };
     const m = recordMetrics();
     await deps.store.finishRun(runId, 'failed', null, message.slice(0, 2000), metrics);
     await deps.store.recordUsage(usageRows(deps, job, stage, metrics)).catch(() => undefined);
@@ -123,7 +134,7 @@ export function summarizeMetrics(job: Job) {
   const stages = job.metrics.stages ?? {};
   let ms = 0, prompt = 0, completion = 0, credits = 0, llmCalls = 0;
   const calls: Record<string, number> = {};
-  const perStage: Record<string, { ms: number; runs: number; tokens: number }> = {};
+  const perStage: Record<string, { ms: number; runs: number; tokens: number; model?: string }> = {};
   for (const [stage, runs] of Object.entries(stages)) {
     for (const r of runs ?? []) {
       ms += r.ms;
@@ -138,6 +149,7 @@ export function summarizeMetrics(job: Job) {
       p.ms += r.ms;
       p.runs += 1;
       p.tokens += (r.llm?.promptTokens ?? 0) + (r.llm?.completionTokens ?? 0);
+      if (r.llm?.model) p.model = r.llm.model;
     }
   }
   return { ms, promptTokens: prompt, completionTokens: completion, llmCalls, searchCredits: credits, calls, perStage };

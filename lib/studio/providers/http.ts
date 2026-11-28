@@ -13,6 +13,9 @@ export class ProviderError extends Error {
 }
 
 const RETRYABLE = new Set([408, 425, 429, 500, 502, 503, 504]);
+
+/** A provider outage (missing evidence, re-run later) rather than "no such dataset": transient failures and access denied. */
+export const isOutage = (e: unknown) => (e instanceof ProviderError ? e.retryable || e.status === 401 || e.status === 403 : true);
 const safeUrl = (u: string) => u.split('?')[0];
 
 export type FetchLike = (input: string, init?: RequestInit) => Promise<Response>;

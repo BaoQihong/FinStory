@@ -3,7 +3,7 @@
 import 'server-only';
 import { createHash } from 'node:crypto';
 import type { ServerSupabase } from '@/lib/supabase/server';
-import { arliLlm } from './llm';
+import { roleLlm } from './llm';
 import { eiaProvider } from './providers/eia';
 import { fredProvider } from './providers/fred';
 import { tavilyProvider } from './providers/tavily';
@@ -20,7 +20,8 @@ export function productionDeps(db: ServerSupabase): Deps {
   const env = process.env;
   return {
     store: supabaseStore(db),
-    llm: arliLlm({ baseUrl: env.ARLI_BASE_URL!, apiKey: env.ARLI_API_KEY!, model: env.ARLI_MODEL! }),
+    // Interim model roles (D-058): ARLI_ANALYTICAL_MODEL / ARLI_EDITORIAL_MODEL, else ARLI_MODEL.
+    llm: roleLlm({ baseUrl: env.ARLI_BASE_URL!, apiKey: env.ARLI_API_KEY!, env }),
     search: tavilyProvider(env.TAVILY_API_KEY),
     data: [fredProvider(env.FRED_API_KEY), tiingoProvider(env.TIINGO_API_KEY), eiaProvider(env.EIA_API_KEY)],
     keyFingerprints: keyFingerprints(env),

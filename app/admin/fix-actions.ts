@@ -14,7 +14,8 @@
 // snapshots — publication stays an explicit human action.
 import { getEditor } from '@/lib/studio/auth';
 import { fingerprint } from '@/lib/studio/deps';
-import { arliLlm, LlmError } from '@/lib/studio/llm';
+import { roleLlm, LlmError } from '@/lib/studio/llm';
+import { modelForStage, resolveModels } from '@/lib/studio/model-roles';
 import { SeshatArticleV1, StoryBrief, type SeshatArticle, type ValidationIssue } from '@/lib/studio/schema';
 import { SYSTEM } from '@/lib/studio/pipeline/prompts';
 import { RepairOut } from '@/lib/studio/repair';
@@ -108,7 +109,7 @@ export async function fixPublicationIssues(input: { articleId: string; expectedR
     // Reserve the model (calls = 0 marks "in flight"), exactly as Editorial Polish does.
     const { data: slot, error: slotErr } = await db
       .from('api_usage')
-      .insert({ job_id: null, article_id: articleId, stage: 'fix', service: 'arli', key_fingerprint: fingerprint(env.ARLI_API_KEY), model: env.ARLI_MODEL, prompt_tokens: 0, completion_tokens: 0, credits: 0, calls: 0 })
+      .insert({ job_id: null, article_id: articleId, stage: 'fix', service: 'arli', key_fingerprint: fingerprint(env.ARLI_API_KEY), model: modelForStage(resolveModels(env), 'fix'), prompt_tokens: 0, completion_tokens: 0, credits: 0, calls: 0 })
       .select('id')
       .single();
     if (slotErr || !slot) return { ok: false, error: 'Could not reserve the AI model. Try again.' };
@@ -123,7 +124,7 @@ export async function fixPublicationIssues(input: { articleId: string; expectedR
         ? db.from('api_usage').update({ prompt_tokens: u.promptTokens, completion_tokens: u.completionTokens, calls: Math.max(1, calls) }).eq('id', slot.id).then(() => undefined, () => undefined)
         : release();
 
-    const llm = arliLlm({ baseUrl: env.ARLI_BASE_URL, apiKey: env.ARLI_API_KEY, model: env.ARLI_MODEL, timeoutMs: 150_000 });
+    const llm = roleLlm({ baseUrl: env.ARLI_BASE_URL, apiKey: env.ARLI_API_KEY, env, timeoutMs: 150_000 });
     try {
       const r = await llm.complete({ stage: 'fix', system: SYSTEM, user, schema: RepairOut, maxTokens: budget, temperature: 0.1 });
       await record(r.usage, r.attempts);

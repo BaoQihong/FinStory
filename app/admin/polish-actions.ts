@@ -12,7 +12,8 @@
 // the database trigger and only publish_article() may set them (D-045).
 import { getEditor } from '@/lib/studio/auth';
 import { fingerprint } from '@/lib/studio/deps';
-import { arliLlm, LlmError } from '@/lib/studio/llm';
+import { roleLlm, LlmError } from '@/lib/studio/llm';
+import { modelForStage, resolveModels } from '@/lib/studio/model-roles';
 import { SECTION_LABELS, SECTION_ORDER, SeshatArticleV1, StoryBrief, type SectionId, type SeshatArticle, type ValidationIssue } from '@/lib/studio/schema';
 import { SYSTEM } from '@/lib/studio/pipeline/prompts';
 import { applyRevisions, buildProposal, polishPrompt, PolishOut, type AcceptedRevision, type PolishProposal } from '@/lib/editorial/polish';
@@ -55,7 +56,7 @@ export async function proposePolish(input: { articleId: string; expectedRevision
   // first (calls = 0 marks "in flight"); if an earlier reservation is still in flight, back off.
   const { data: slot, error: slotErr } = await db
     .from('api_usage')
-    .insert({ job_id: null, article_id: articleId, stage: 'polish', service: 'arli', key_fingerprint: fingerprint(env.ARLI_API_KEY), model: env.ARLI_MODEL, prompt_tokens: 0, completion_tokens: 0, credits: 0, calls: 0 })
+    .insert({ job_id: null, article_id: articleId, stage: 'polish', service: 'arli', key_fingerprint: fingerprint(env.ARLI_API_KEY), model: modelForStage(resolveModels(env), 'polish'), prompt_tokens: 0, completion_tokens: 0, credits: 0, calls: 0 })
     .select('id')
     .single();
   if (slotErr || !slot) return { ok: false, error: 'Could not reserve the AI model. Try again.' };
@@ -66,7 +67,7 @@ export async function proposePolish(input: { articleId: string; expectedRevision
     return { ok: false, error: 'Another Editorial Polish or Fix It for Me request is still running (the AI model takes one request at a time). Try again when it has finished.' };
   }
 
-  const llm = arliLlm({ baseUrl: env.ARLI_BASE_URL, apiKey: env.ARLI_API_KEY, model: env.ARLI_MODEL, timeoutMs: 240_000 });
+  const llm = roleLlm({ baseUrl: env.ARLI_BASE_URL, apiKey: env.ARLI_API_KEY, env, timeoutMs: 240_000 });
   const record = (u: { promptTokens: number; completionTokens: number }, calls: number) =>
     u.promptTokens || u.completionTokens
       ? db.from('api_usage').update({ prompt_tokens: u.promptTokens, completion_tokens: u.completionTokens, calls: Math.max(1, calls) }).eq('id', slot.id).then(() => undefined, () => undefined)

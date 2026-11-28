@@ -2,6 +2,7 @@
 // observations through the official API. Missing values (".") become null.
 import { createHash } from 'node:crypto';
 import { fetchJson, ProviderError, type FetchLike } from './http.ts';
+import { sharedFredLimiter, type FredLimiter } from './fred-limiter.ts';
 import type { DataProvider, SeriesData, SeriesMeta } from './types.ts';
 
 type FredSeries = {
@@ -18,7 +19,14 @@ type FredSeries = {
 
 const BASE = 'https://api.stlouisfed.org/fred';
 
-export function fredProvider(apiKey: string | undefined, fetchImpl?: FetchLike): DataProvider {
+/** FRED answers an unknown series id with HTTP 400 "The series does not exist" (or 404). Only that means "not found". */
+export const isMissingSeries = (e: unknown) =>
+  e instanceof ProviderError && (e.status === 404 || (e.status === 400 && /does not exist/i.test(e.message)));
+
+// Every request goes through the shared limiter (one at a time, ≤ 60/min, 429 backoff, 403 circuit breaker).
+export function fredProvider(apiKey: string | undefined, fetchImpl?: FetchLike, limiter: FredLimiter = sharedFredLimiter): DataProvider {
+  const base: FetchLike = fetchImpl ?? ((input, init) => fetch(input, init));
+  const via = (endpoint: string) => limiter.fetchFor(endpoint, base);
   const q = (path: string, params: Record<string, string>) =>
     `${BASE}/${path}?${new URLSearchParams({ ...params, api_key: apiKey ?? '', file_type: 'json' })}`;
   const toMeta = (s: FredSeries): SeriesMeta => ({
@@ -39,29 +47,30 @@ export function fredProvider(apiKey: string | undefined, fetchImpl?: FetchLike):
     name: 'FRED, Federal Reserve Bank of St. Louis',
     short: 'FRED',
     enabled: !!apiKey,
+    takeRequestStats: () => limiter.takeStats(),
     async search(text, limit) {
       const { data } = await fetchJson<{ seriess?: FredSeries[] }>(
         q('series/search', { search_text: text, limit: String(limit), order_by: 'popularity', sort_order: 'desc' }),
-        { label: 'FRED search', fetchImpl },
+        { label: 'FRED search', fetchImpl: via('series/search') },
       );
       return (data.seriess ?? []).map(toMeta);
     },
     async meta(id) {
       try {
-        const { data } = await fetchJson<{ seriess?: FredSeries[] }>(q('series', { series_id: id }), { label: 'FRED series', fetchImpl, retries: 1 });
+        const { data } = await fetchJson<{ seriess?: FredSeries[] }>(q('series', { series_id: id }), { label: 'FRED series', fetchImpl: via('series'), retries: 1 });
         return data.seriess?.[0] ? toMeta(data.seriess[0]) : null;
       } catch (e) {
-        // Not found → null. A service failure (timeout / 5xx / 429) is rethrown so callers can
-        // tell an outage from a missing series (circuit breaker + evidence gaps).
-        if (e instanceof ProviderError && e.retryable) throw e;
-        return null;
+        // Only a genuine unknown-series answer is "not found". Everything else (timeout, 5xx, 429,
+        // and access denied 401/403) is rethrown so callers report an outage, not a missing series.
+        if (isMissingSeries(e)) return null;
+        throw e;
       }
     },
     async fetch(id, start): Promise<SeriesData> {
       const meta = await this.meta(id);
       if (!meta) throw new Error(`FRED series ${id} not found`);
       const url = q('series/observations', { series_id: id, observation_start: start });
-      const { data, ms, calls } = await fetchJson<{ observations?: { date: string; value: string }[] }>(url, { label: 'FRED observations', fetchImpl, timeoutMs: 45000 });
+      const { data, ms, calls } = await fetchJson<{ observations?: { date: string; value: string }[] }>(url, { label: 'FRED observations', fetchImpl: via('series/observations'), timeoutMs: 45000 });
       const raw = data.observations ?? [];
       const observations = raw.map((o) => {
         const v = o.value === '.' || o.value === '' ? null : Number(o.value);

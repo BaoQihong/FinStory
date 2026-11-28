@@ -3,7 +3,7 @@
 // job is treated as unavailable for the rest of that job: later calls are
 // skipped instead of each waiting for a timeout. Failures are recorded so the
 // draft can name the missing evidence explicitly. Nothing is substituted.
-import { ProviderError } from '../providers/http.ts';
+import { isOutage } from '../providers/http.ts';
 
 export type Gap = { need: string; reason: 'provider-unavailable' | 'no-dataset' | 'stale-data'; provider?: string; detail?: string };
 export type ProviderOutage = { provider: string; failures: number; lastError: string };
@@ -44,7 +44,7 @@ export function createBreaker() {
       try {
         return await fn();
       } catch (e) {
-        const outage = e instanceof ProviderError ? e.retryable : true;
+        const outage = isOutage(e);
         if (outage) {
           const s = state.get(provider) ?? { failures: 0, lastError: '' };
           s.failures += 1;

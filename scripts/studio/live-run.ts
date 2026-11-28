@@ -7,7 +7,8 @@
 // Never prints secrets; output JSON contains the article, warnings and metrics.
 import { writeFileSync } from 'node:fs';
 import { readEnv } from '../lib/env-file.mjs';
-import { arliLlm } from '../../lib/studio/llm.ts';
+import { roleLlm } from '../../lib/studio/llm.ts';
+import { modelOverrides } from '../../lib/studio/model-roles.ts';
 import { tavilyProvider } from '../../lib/studio/providers/tavily.ts';
 import { fredProvider } from '../../lib/studio/providers/fred.ts';
 import { tiingoProvider } from '../../lib/studio/providers/tiingo.ts';
@@ -25,7 +26,8 @@ if (!prompt) throw new Error('prompt required');
 const store = new MemoryStore();
 const deps = {
   store,
-  llm: arliLlm({ baseUrl: env.ARLI_BASE_URL, apiKey: env.ARLI_API_KEY, model: env.ARLI_MODEL }),
+  // Model variables: the process environment overrides .env.local (as in Next.js), so a run can try a selection (D-058).
+  llm: roleLlm({ baseUrl: env.ARLI_BASE_URL, apiKey: env.ARLI_API_KEY, env: { ...env, ...modelOverrides(process.env) } }),
   search: tavilyProvider(env.TAVILY_API_KEY),
   data: [fredProvider(env.FRED_API_KEY), tiingoProvider(env.TIINGO_API_KEY), eiaProvider(env.EIA_API_KEY)],
   keyFingerprints: {},

@@ -3,6 +3,21 @@
 Notable changes to this project. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/). Newest entries first.
 
+## 0.6.2 — 2026-11-28 (Phase 3D.1a: interim model upgrade)
+
+- **Model roles chosen by environment variable** (D-058). `ARLI_ANALYTICAL_MODEL` covers plan, select, synthesize, macro_analytics, outlook, review, repair, brief and Fix It. `ARLI_EDITORIAL_MODEL` covers story and Polish. Both fall back to `ARLI_MODEL`. With neither set, behaviour and request bodies are unchanged (Qwen3.8-27B). The experiment is DeepSeek-V4.1-Flash-1017 for analytical stages and MiMo-V2.6-Flash-MOPD for editorial ones, both with thinking off.
+- **Per-family thinking switch** (`lib/studio/model-roles.ts`): DeepSeek ignores `enable_thinking:false` and now also receives `thinking:false`, verified live (reasoning tokens 0).
+- **Observability:** one `[llm]` log line per Arli call (stage, model, ms, tokens incl. reasoning, finish reason, errors). A warning is logged if reasoning appears while thinking is off. Stage metrics and the usage ledger record the model actually used.
+- **Scripts:** `scripts/studio/model-probe.ts` (live thinking-off and structured-output check). `generate-draft.ts` gains `--brief-from <articleId>`, prints model, reasoning and finish per stage, and takes the model variables from the process environment.
+- **Tests:** `scripts/studio/model-roles.test.ts` (18 tests: precedence, routing, byte-identical Qwen body, thinking switches, serialisation across models, logging, repair round and fallback unchanged).
+- **FRED (D-059):**
+  - an access-denied (403) or rate-limited (429) answer is no longer reported as "series not found";
+  - requests are throttled to one at a time and at most 60 per minute, with bounded 429 backoff and a 15-minute 403 circuit breaker;
+  - per-stage request counts by endpoint (`metrics.stages[*].requests`, `[provider]` log line);
+  - no caching.
+- **Tests:** `scripts/studio/fred.test.ts` (7 tests).
+- Unchanged: prompts, schemas, fact tokens, validation, repair, templates, outlook rules, publishing and Arli concurrency.
+
 ## 0.6.1 — 2026-11-28 (v0.1 editorial testing: Fix It for Me, validator false positives)
 
 - **Fix It for Me** in the publication dialog's blocking-issues panel: up to three targeted AI repair attempts on the passages behind blocking issues. Each successful attempt is saved as a new draft revision, and the dialog stays open and re-runs the publication checks. Changes are shown before and after, with removed or qualified claims called out. Rejected rewrites and anything that needs the editor (data, structure, licence, editorial-judgement notes) are listed. It never publishes (D-055).
