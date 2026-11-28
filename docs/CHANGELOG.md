@@ -3,7 +3,7 @@
 Notable changes to this project. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/). Newest entries first.
 
-## Unreleased (branch `p3d1a-15-fred-dedupe`)
+## 0.6.3 — 2026-11-28 (FRED duplicate-request reduction; 3D.1 research committed)
 
 - **FRED duplicate-request reduction** (D-060): screening and the fetch stage reuse metadata already retrieved, and identical metadata lookups within a stage share one request (in memory, cleared every stage, never stored). About 45% fewer FRED requests per job (167 → 92) and discover about 1.8× faster (147 → 82 s). Coverage and limits unchanged.
 - `DataProvider.fetch` takes optional known metadata; providers may implement `beginStage()`. New request counters `metaReused` and `metaKnown`.

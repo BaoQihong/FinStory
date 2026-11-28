@@ -56,12 +56,16 @@ Phase 3 builds on.
 
 ## Phase 3 — Application development, deployment and operations
 
-**Status: IN PROGRESS — 3A delivered and deployed; 3B and 3C approved 2026-11-27, deployed 2026-11-27. 3C completes Seshat v0.1 (Editorial MVP).** Each sub-phase needs its own approval.
+**Status: IN PROGRESS — 3A–3C deployed (3C completes Seshat v0.1, Editorial MVP). 3D.1 and 3D.1a complete (2026-11-28); 3D.2 awaits instruction.** Each sub-phase needs its own approval.
 
 - **3A — Publishing engine** — **done, deployed** (`b1cdb61`). Publication lifecycle (publish, republish, unpublish), immutable published snapshots and revision history, permanent slugs, pre-publication validation, studio publishing controls, RLS-protected public data interface. No public page.
 - **3B.1 — Public article experience** — **done, deployed** (`9c235fc`). `/story/[slug]` renders the live snapshot through the shared ArticleView (WYSIWYG with preview), real 404s via a proxy slug check, per-request freshness, studio "View published article" (D-047).
 - **3B.2 — Editorial quality and natural writing** — **deployed** (`9c235fc`); editorial evaluation awaiting product-owner judgment. Versioned style guide, restructured prompts with author argument/voice, whole-article awareness, Editorial Polish with human review and protected-content checks (D-048, D-049).
 - **3C — Public editorial homepage** ← **current; approved and deployed 2026-11-27** (`50cee01`). `/` built from live published snapshots: featured story (editor-chosen, falls back to newest), latest stories, pagination, empty state; studio Feature control (D-053, D-054).
+- **3D.1 — LLM qualification and evaluation** — **complete** (2026-11-28, research only). Harness `research/model-eval/` (kept as permanent development infrastructure) and report `docs/research/phase-3d1-model-evaluation.md` (D-057).
+- **3D.1a — Interim model upgrade** — **complete, deployed** (2026-11-28). DeepSeek-V4.1-Flash for the analytical stages and MiMo-V2.6-Flash for the editorial stages, both with thinking off, chosen by environment variable with Qwen as the fallback (D-058). FRED request discipline (D-059) and duplicate-request reduction (D-060). One manual production check is outstanding (TASKS P3D1a-17).
+- **3D.2 — Standalone model gateway** ← **next; not started, awaits product-owner instruction.** The unfinished gateway work is on local branch `wip/model-gateway`, not merged.
+- **Longer-term direction (not scheduled):** move financial data acquisition to Thoth, using original data providers where practical instead of FRED (see TASKS P3D1a-16).
 - **3D — Production polish and optimisation** — deferred (caching, SEO/social, performance).
 
 ### Milestone: Seshat v0.1 — Editorial MVP (reached with 3C)

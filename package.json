@@ -1,6 +1,6 @@
 {
   "name": "finstory",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "private": true,
   "description": "Seshat — financial storytelling publication (FinStory repository)",
   "type": "module",
