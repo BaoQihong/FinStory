@@ -266,7 +266,7 @@ async function discover(ctx: StageContext): Promise<DiscoverOut> {
     await Promise.all(
       toScreen.slice(i, i + 8).map(async (c) => {
         count('fred');
-        const r = await breaker.run('fred', () => fred!.fetch(c.id, since));
+        const r = await breaker.run('fred', () => fred!.fetch(c.id, since, c));
         c.recent = r ? recentChange(r.observations, c.units) : 'n/a';
       }),
     );
@@ -390,7 +390,7 @@ async function fetchData(ctx: StageContext): Promise<FetchOut> {
       const prov = deps.data.find((p) => p.id === c.provider);
       if (!prov?.enabled) return { s, c, error: `${c.provider} is not configured` };
       try {
-        return { s, c, prov, r: await prov.fetch(c.id, start) };
+        return { s, c, prov, r: await prov.fetch(c.id, start, c) };
       } catch (e) {
         return { s, c, error: (e as Error).message, outage: isOutage(e), provider: prov.name };
       }

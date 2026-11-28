@@ -3,6 +3,13 @@
 Notable changes to this project. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/). Newest entries first.
 
+## Unreleased (branch `p3d1a-15-fred-dedupe`)
+
+- **FRED duplicate-request reduction** (D-060): screening and the fetch stage reuse metadata already retrieved, and identical metadata lookups within a stage share one request (in memory, cleared every stage, never stored). About 45% fewer FRED requests per job (167 → 92) and discover about 1.8× faster (147 → 82 s). Coverage and limits unchanged.
+- `DataProvider.fetch` takes optional known metadata; providers may implement `beginStage()`. New request counters `metaReused` and `metaKnown`.
+- Tests: 6 new in `scripts/studio/fred.test.ts`.
+- Docs: ARCHITECTURE § Phase 3D.1a (model roles, FRED request path, process-local limiter scope). FRED terms findings in TASKS P3D1a-16.
+
 ## 0.6.2 — 2026-11-28 (Phase 3D.1a: interim model upgrade)
 
 - **Model roles chosen by environment variable** (D-058). `ARLI_ANALYTICAL_MODEL` covers plan, select, synthesize, macro_analytics, outlook, review, repair, brief and Fix It. `ARLI_EDITORIAL_MODEL` covers story and Polish. Both fall back to `ARLI_MODEL`. With neither set, behaviour and request bodies are unchanged (Qwen3.8-27B). The experiment is DeepSeek-V4.1-Flash-1017 for analytical stages and MiMo-V2.6-Flash-MOPD for editorial ones, both with thinking off.

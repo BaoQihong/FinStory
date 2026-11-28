@@ -78,6 +78,8 @@ export function createFredLimiter(opts: { minIntervalMs?: number; now?: () => nu
       return s;
     },
     isBlocked: () => now() < blockedUntil,
+    /** Count a request that was avoided (metadata reused); never touches the throttle. */
+    note: (key: string) => void bump(key),
   };
 }
 

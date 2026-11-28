@@ -59,7 +59,10 @@ export async function runStep(deps: Deps, jobId: string): Promise<StepResult> {
   };
   const runId = await deps.store.startRun(jobId, stage, attempt);
   // Per-stage provider request counts (D-059): discard anything counted before this stage.
-  for (const d of deps.data) d.takeRequestStats?.();
+  for (const d of deps.data) {
+    d.takeRequestStats?.();
+    d.beginStage?.();
+  }
   const t0 = Date.now();
   const recordMetrics = () => {
     metrics.ms = Date.now() - t0;

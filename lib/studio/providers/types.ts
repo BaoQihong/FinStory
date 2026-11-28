@@ -49,7 +49,10 @@ export interface DataProvider {
   readonly enabled: boolean;
   search?(text: string, limit: number): Promise<SeriesMeta[]>;
   meta(id: string): Promise<SeriesMeta | null>;
-  fetch(id: string, start: string): Promise<SeriesData>;
+  /** known: metadata the caller already holds for this series (same provider and id), so it is not requested again (P3D1a-15). */
+  fetch(id: string, start: string, known?: SeriesMeta): Promise<SeriesData>;
+  /** Discard transient per-stage state (in-memory metadata de-duplication). Called by the runner before each stage; nothing persists. */
+  beginStage?(): void;
   /** Request counts by endpoint/outcome since the last call (then reset); recorded per stage (FRED only for now). */
   takeRequestStats?(): Record<string, number>;
 }

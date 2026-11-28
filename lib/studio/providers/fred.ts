@@ -42,32 +42,72 @@ export function fredProvider(apiKey: string | undefined, fetchImpl?: FetchLike, 
     sourceUrl: `https://fred.stlouisfed.org/series/${s.id}`,
     popularity: s.popularity ?? null,
   });
+  // P3D1a-15: transient, in-memory de-duplication of metadata lookups within one pipeline stage.
+  // Identical lookups (concurrent or repeated) share one request, and series returned by a search
+  // are not looked up again. Failures are never remembered, so retries and the breaker behave as
+  // before. Cleared by beginStage() (the runner calls it before every stage); never persisted.
+  let lookups = new Map<string, Promise<SeriesMeta | null>>();
+  const remember = (m: SeriesMeta) => {
+    if (!lookups.has(m.id)) lookups.set(m.id, Promise.resolve(m));
+  };
+  const lookup = async (id: string): Promise<SeriesMeta | null> => {
+    try {
+      const { data } = await fetchJson<{ seriess?: FredSeries[] }>(q('series', { series_id: id }), { label: 'FRED series', fetchImpl: via('series'), retries: 1 });
+      return data.seriess?.[0] ? toMeta(data.seriess[0]) : null;
+    } catch (e) {
+      // Only a genuine unknown-series answer is "not found". Everything else (timeout, 5xx, 429,
+      // and access denied 401/403) is rethrown so callers report an outage, not a missing series.
+      if (isMissingSeries(e)) return null;
+      throw e;
+    }
+  };
+  /** The SeriesMeta fields only (callers may pass a richer candidate object). */
+  const metaOnly = (m: SeriesMeta): SeriesMeta => ({
+    provider: m.provider,
+    id: m.id,
+    title: m.title,
+    units: m.units,
+    frequency: m.frequency,
+    seasonalAdjustment: m.seasonalAdjustment,
+    observationStart: m.observationStart,
+    observationEnd: m.observationEnd,
+    notes: m.notes,
+    sourceUrl: m.sourceUrl,
+    popularity: m.popularity,
+  });
   return {
     id: 'fred',
     name: 'FRED, Federal Reserve Bank of St. Louis',
     short: 'FRED',
     enabled: !!apiKey,
     takeRequestStats: () => limiter.takeStats(),
+    beginStage: () => {
+      lookups = new Map();
+    },
     async search(text, limit) {
       const { data } = await fetchJson<{ seriess?: FredSeries[] }>(
         q('series/search', { search_text: text, limit: String(limit), order_by: 'popularity', sort_order: 'desc' }),
         { label: 'FRED search', fetchImpl: via('series/search') },
       );
-      return (data.seriess ?? []).map(toMeta);
+      const found = (data.seriess ?? []).map(toMeta);
+      found.forEach(remember);
+      return found;
     },
-    async meta(id) {
-      try {
-        const { data } = await fetchJson<{ seriess?: FredSeries[] }>(q('series', { series_id: id }), { label: 'FRED series', fetchImpl: via('series'), retries: 1 });
-        return data.seriess?.[0] ? toMeta(data.seriess[0]) : null;
-      } catch (e) {
-        // Only a genuine unknown-series answer is "not found". Everything else (timeout, 5xx, 429,
-        // and access denied 401/403) is rethrown so callers report an outage, not a missing series.
-        if (isMissingSeries(e)) return null;
-        throw e;
+    meta(id) {
+      const seen = lookups.get(id);
+      if (seen) {
+        limiter.note('metaReused');
+        return seen;
       }
+      const p = lookup(id);
+      lookups.set(id, p);
+      p.catch(() => lookups.get(id) === p && lookups.delete(id));
+      return p;
     },
-    async fetch(id, start): Promise<SeriesData> {
-      const meta = await this.meta(id);
+    async fetch(id, start, known): Promise<SeriesData> {
+      const reuse = known && known.provider === 'fred' && known.id === id;
+      if (reuse) limiter.note('metaKnown');
+      const meta = reuse ? metaOnly(known) : await this.meta(id);
       if (!meta) throw new Error(`FRED series ${id} not found`);
       const url = q('series/observations', { series_id: id, observation_start: start });
       const { data, ms, calls } = await fetchJson<{ observations?: { date: string; value: string }[] }>(url, { label: 'FRED observations', fetchImpl: via('series/observations'), timeoutMs: 45000 });
@@ -82,7 +122,7 @@ export function fredProvider(apiKey: string | undefined, fetchImpl?: FetchLike, 
         transformations: [],
         retrievedAt: new Date().toISOString(),
         sha256: createHash('sha256').update(JSON.stringify(raw)).digest('hex'),
-        calls: calls + 1,
+        calls: calls + (reuse ? 0 : 1),
         ms,
       };
     },

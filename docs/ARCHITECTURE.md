@@ -453,3 +453,35 @@ GET /  (app/page.tsx, instant = false; per request; no data cache, as D-047)
 - Draft page → publication panel, for live articles: *Homepage — Featured / Leads as newest / Listed under Latest stories* with **Feature on homepage** or **Remove feature** (server action `setFeaturedArticle`, `app/admin/publish-actions.ts`).
 - Drafts list: a **Featured** badge.
 - Publish, unpublish and feature actions call `revalidatePath('/')` (ready for 3D caching; the page is per request today).
+
+# Phase 3D.1a — model roles and FRED request discipline
+
+## Model roles (D-058)
+
+`lib/studio/model-roles.ts` maps each stage to a role and resolves the model: role variable → `ARLI_MODEL`. It also holds the per-family thinking-off switch. `roleLlm` (`lib/studio/llm.ts`) routes each request by stage. All clients share the module-level serialisation queue. This is interim until the 3D.2 gateway replaces it.
+
+## FRED requests (D-059, D-060)
+
+```
+stage code ──▶ fredProvider ──▶ per-stage metadata de-duplication ──▶ shared limiter ──▶ fetchJson ──▶ FRED API
+                (known meta reused)  (transient Map, cleared by          (1 in flight, ≥1 s apart,
+                                      runner.beginStage)                   429 backoff, 403 circuit)
+```
+
+- **Metadata reuse:** screening (discover) and the fetch stage pass the candidate metadata they already hold (from the discover output, which is persisted under the existing workflow) to `fetch(id, start, known)`. FRED is then asked only for observations.
+- **De-duplication:**
+  - repeated or concurrent `meta()` calls for the same series within one stage share one request;
+  - series returned by a search are not looked up again;
+  - failures are not remembered;
+  - the map is in memory, per provider instance, and the runner clears it before every stage.
+- **Instrumentation:** `metrics.stages[*].requests.fred` holds `series/search`, `series`, `series/observations`, `http429`, `http403`, `blocked`, `waitMs`, plus `metaReused` and `metaKnown` (requests avoided).
+
+### Scope of the limiter and breaker: process-local, not distributed
+
+- The limiter, its 429 cooldown and its 403 circuit live in module memory of one server process. A warm Vercel instance shares them across the invocations it serves; separate instances do not share them.
+- **In practice:** generation runs one stage per request, and only one job is active at a time (one-active-job index plus lease, D-010/D-026). FRED is called only from the discover and fetch stages, so FRED traffic is effectively sequential across the deployment. Brief, Polish and Fix It make no FRED calls.
+- **Gap:**
+  - a stage that lands on a fresh instance does not inherit an earlier 429 cooldown or 403 circuit, so it can send one request before reacting (the per-stage discovery breaker then opens after two failures);
+  - the 60/min ceiling is per process, so it holds deployment-wide only because of the one-job rule.
+
+  A shared limiter (database row or KV) would close this gap. It is not built.

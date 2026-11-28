@@ -105,3 +105,66 @@ test('missing values stay null; the API key never appears in errors', async () =
   const bad = harness(() => new Response('boom https://api.stlouisfed.org/fred/series/search?search_text=x&api_key=k3y', { status: 500 }));
   await assert.rejects(bad.fred.search!('x', 1), (e: unknown) => !String((e as Error).message).includes('k3y'));
 });
+
+// ── P3D1a-15: metadata reuse and transient de-duplication ───────────────
+const meta = { provider: 'fred' as const, id: 'CPIAUCSL', title: 'CPI', units: 'Index', frequency: 'Monthly', seasonalAdjustment: 'SA', observationStart: '1947-01-01', observationEnd: '2026-10-01', notes: '', sourceUrl: 'https://fred.stlouisfed.org/series/CPIAUCSL', popularity: null };
+
+test('fetch with metadata already held makes no metadata request and returns plain SeriesMeta', async () => {
+  const h = harness((url) => json(url.includes('observations') ? OBS : SERIES));
+  const candidate = { ...meta, cid: 'C1', forNeeds: [0], recent: 'up' };
+  const d = await h.fred.fetch('CPIAUCSL', '2020-01-01', candidate);
+  assert.equal(h.urls.length, 1);
+  assert.match(h.urls[0], /series\/observations/);
+  assert.deepEqual(Object.keys(d.meta).sort(), Object.keys(meta).sort(), 'candidate-only fields are not carried into the dataset');
+  assert.equal(d.calls, 1);
+  // Metadata for a different series is not reused.
+  await h.fred.fetch('OTHER', '2020-01-01', candidate);
+  assert.equal(h.urls.filter((u) => /\/series\?/.test(u)).length, 1);
+  const s = h.limiter.takeStats();
+  assert.equal(s.metaKnown, 1);
+  assert.equal(s['series/observations'], 2);
+  assert.equal(s.series, 1);
+});
+
+test('identical metadata lookups in one stage share one request (concurrent and repeated)', async () => {
+  const h = harness(() => json(SERIES));
+  const all = await Promise.all([h.fred.meta('CPIAUCSL'), h.fred.meta('CPIAUCSL'), h.fred.meta('CPIAUCSL')]);
+  await h.fred.meta('CPIAUCSL');
+  assert.equal(h.urls.length, 1);
+  assert.deepEqual(all[0], all[2]);
+  assert.equal(h.limiter.takeStats().metaReused, 3);
+});
+
+test('series returned by a search are not looked up again', async () => {
+  const h = harness(() => json(SERIES));
+  await h.fred.search!('cpi', 5);
+  const m = await h.fred.meta('CPIAUCSL');
+  assert.equal(m?.title, 'CPI');
+  assert.equal(h.urls.length, 1);
+});
+
+test('failures are never remembered: the next lookup retries (breaker semantics unchanged)', async () => {
+  let n = 0;
+  const h = harness(() => (n++ < 2 ? new Response('busy', { status: 503 }) : json(SERIES)));
+  await assert.rejects(h.fred.meta('CPIAUCSL'), (e: unknown) => e instanceof ProviderError && e.retryable);
+  assert.equal(h.urls.length, 2); // first attempt + the one bounded retry
+  assert.equal((await h.fred.meta('CPIAUCSL'))?.id, 'CPIAUCSL');
+  assert.equal(h.urls.length, 3);
+});
+
+test('a genuine "does not exist" is remembered for the stage; beginStage() clears everything', async () => {
+  const h = harness(() => json({ error_message: 'Bad Request.  The series does not exist.' }, 400));
+  assert.equal(await h.fred.meta('NOPE'), null);
+  assert.equal(await h.fred.meta('NOPE'), null);
+  assert.equal(h.urls.length, 1);
+  h.fred.beginStage!();
+  assert.equal(await h.fred.meta('NOPE'), null);
+  assert.equal(h.urls.length, 2);
+});
+
+test('de-duplication sits above the limiter: requests that are made stay spaced ≥ 1 s', async () => {
+  const h = harness((url) => json(url.includes('observations') ? OBS : SERIES));
+  await Promise.all(['A', 'A', 'B', 'B', 'C'].map((id) => h.fred.meta(id)));
+  assert.equal(h.starts.length, 3);
+  for (let i = 1; i < h.starts.length; i++) assert.ok(h.starts[i] - h.starts[i - 1] >= 1000);
+});
