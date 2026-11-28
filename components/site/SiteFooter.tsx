@@ -14,8 +14,8 @@ export function SiteFooter() {
             The stories behind the numbers.
           </p>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-cream-200/80">
-            Named for the ancient Egyptian goddess of writing, mathematics and measurement. Independent financial
-            journalism, written by people and measured against real data.
+            Named for the ancient Egyptian goddess of writing, mathematics and measurement. Creating narratives and
+            macro analytics from data and numbers.
           </p>
         </div>
         <div>
