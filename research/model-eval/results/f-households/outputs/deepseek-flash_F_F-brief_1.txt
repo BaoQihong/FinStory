@@ -1,0 +1,22 @@
+{
+  "angle": "The gap between falling inflation and the persistent sense that everyday life remains expensive, and what that disconnect means for how ordinary households can realistically build wealth.",
+  "questions": [
+    "How far has headline inflation actually fallen across major economies, and how does that compare with the trajectory of core and services inflation?",
+    "How have prices in the categories households buy most frequently — food, housing, energy, transport — moved relative to the overall inflation rate?",
+    "How do wage growth and real household disposable income compare with cumulative price levels since the recent inflation peak?",
+    "What has happened to the cost of borrowing and to returns on savings and investments that ordinary households rely on?",
+    "Which measures best capture the lived experience of prices, and how do they differ from the headline indices?"
+  ],
+  "indicators": [
+    "Headline consumer price inflation",
+    "Core inflation",
+    "Food and energy prices",
+    "House prices",
+    "Rents",
+    "Average wage growth",
+    "Policy interest rates",
+    "Real household disposable income"
+  ],
+  "outlook": "The Outlook should explore whether the gap between official inflation and perceived costs narrows as price levels stabilise, and what would signal a lasting improvement in household purchasing power. It should also consider conditions that could keep the sense of unaffordability in place, such as sticky services prices, housing costs or weak real income growth.",
+  "premise": "The idea assumes that inflation has fallen meaningfully and that many households nonetheless perceive prices as high or rising. Research should first establish whether both are supported by current evidence, and whether the perceived cost of living tracks headline inflation, cumulative price levels or specific spending categories."
+}

@@ -1,0 +1,5 @@
+<<<REASONING (reasoning)>>>
+We need answer classify three indicators with category and short note. Need concise. CPI -> prices. unemployment rate -> labour. 10-year Treasury yield -> rates. Short note each. Need maybe note CPI measures consumer inflation; unemployment rate measures share of labor force unemployed; 10-year Treasury yield benchmark long-term borrowing rate / market expectations. Ensure categories exactly. Final.
+<<<END REASONING>>>
+
+{"items":[{"name":"CPI","category":"prices","note":"Measures consumer inflation via changes in a basket of goods and services."},{"name":"Unemployment rate","category":"labour","note":"Share of the labour force that is unemployed and actively seeking work."},{"name":"10-year Treasury yield","category":"rates","note":"Benchmark long-term interest rate reflecting Treasury borrowing costs and market expectations."}]}

@@ -1,0 +1,5 @@
+<<<REASONING (reasoning)>>>
+We need answer JSON object keys city country capital Japan. Need return JSON only likely. City Tokyo, country Japan. Ensure valid JSON.
+<<<END REASONING>>>
+
+{"city":"Tokyo","country":"Japan"}

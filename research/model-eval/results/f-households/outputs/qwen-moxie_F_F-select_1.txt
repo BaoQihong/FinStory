@@ -1,0 +1,97 @@
+{
+  "series": [
+    {
+      "candidate": "C1",
+      "key": "headlineCPI",
+      "label": "Headline CPI (All Items)"
+    , "reason": "Primary measure of overall inflation to establish the premise that headline rates are trending downward."
+    },
+    {
+      "candidate": "C2",
+      "key": "coreCPI",
+      "label": "Core CPI (Less Food & Energy)"
+    , "reason": "Alternative inflation measure to compare against headline figures and identify persistent cost drivers."
+    },
+    {
+      "candidate": "C8",
+      "key": "corePCE",
+      "label": "Core PCE Price Index"
+    , "reason": "Federal Reserve's preferred inflation gauge for comparison with CPI measures."
+    },
+    {
+      "candidate": "C9",
+      "key": "realMedianIncome",
+      "label": "Real Median Household Income (US)"
+    , "reason": "Measures cumulative price increases relative to wage growth for median-income households."
+    },
+    {
+      "candidate": "C18",
+      "key": "t10y",
+      "label": "10-Year Treasury Yield"
+    , "reason": "Assesses current fixed-income returns and the risk-reward calculus for household portfolios."
+    },
+    {
+      "candidate": "C24",
+      "key": "sp500",
+      "label": "S&P 500 Index"
+    , "reason": "Evaluates equity performance; combined with CPI data to assess real returns on common wealth-building assets."
+    },
+    {
+      "candidate": "C25",
+      "key": "consumerSentiment",
+      "label": "University of Michigan Consumer Sentiment"
+    , "reason": "Gauges consumer sentiment and its correlation with spending habits in response to the inflation-perception gap."
+    },
+    {
+      "candidate": "C15",
+      "key": "t10yReal",
+      "label": "10-Year Real Treasury Yield"
+    , "reason": "Directly measures the inflation-adjusted return on fixed income, crucial for the wealth accumulation angle."
+    }
+  ],
+  "derived": [
+    {
+      "key": "sp500Real",
+      "op": "difference",
+      "inputs": ["sp500", "headlineCPI"],
+      "label": "S&P 500 vs Headline CPI (Real Return Proxy)"
+    , "reason": "Approximates the real return of equities by comparing the growth of the S&P 500 index against the growth of the CPI index over the same period."
+    }
+  ],
+  "charts": [
+    {
+      "id": "inflationTrends",
+      "seriesKeys": ["headlineCPI", "coreCPI", "corePCE"],
+      "from": "2019-01-01",
+      "purpose": "Compare the trajectories of headline CPI, core CPI, and core PCE to visualize the divergence between official inflation metrics and the perception of persistent high costs."
+    },
+    {
+      "id": "incomeVsInflation",
+      "seriesKeys": ["realMedianIncome", "headlineCPI"],
+      "from": "2019-01-01",
+      "purpose": "Illustrate the gap between real median household income growth and cumulative price increases, showing whether wages have outpaced inflation for median-income households."
+    },
+    {
+      "id": "wealthReturns",
+      "seriesKeys": ["sp500", "t10y", "t10yReal"],
+      "from": "2019-01-01",
+      "purpose": "Examine the current state of real returns on common wealth-building assets (equities and fixed income) after adjusting for inflation, highlighting the risk-reward calculus for household portfolios."
+    },
+    {
+      "id": "sentimentGap",
+      "seriesKeys": ["consumerSentiment", "headlineCPI"],
+      "from": "2019-01-01",
+      "purpose": "Explore the relationship between consumer sentiment and official inflation data, gauging how the perception gap affects consumer confidence and spending habits."
+    }
+  ],
+  "unmetNeeds": [
+    {
+      "need": "Specific categories of goods or services driving perceived persistence of high costs",
+      "why": "None of the candidate datasets provide a breakdown of CPI by specific categories (e.g., housing, healthcare, food). The available CPI series are aggregate indices."
+    },
+    {
+      "need": "Structural shifts in consumer spending (e.g., permanent move away from discretionary items)",
+      "why": "No candidate dataset provides detailed data on changes in consumer spending patterns by category or discretionary vs. non-discretionary items."
+    }
+  ]
+}

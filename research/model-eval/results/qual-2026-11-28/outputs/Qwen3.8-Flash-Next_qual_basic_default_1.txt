@@ -1,0 +1,5 @@
+<<<REASONING (reasoning)>>>
+We need to respond to user: "Reply with exactly the word: pong". Need final exactly pong. Ensure no extra.
+<<<END REASONING>>>
+
+pong

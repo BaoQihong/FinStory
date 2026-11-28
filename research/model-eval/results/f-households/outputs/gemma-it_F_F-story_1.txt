@@ -1,0 +1,50 @@
+{
+  "kicker": "Cost of Living",
+  "headline": "The Inflation Mirage",
+  "dek": "Official data says inflation is cooling, but for the median household, the cumulative price hikes of the last five years have permanently shifted the financial baseline.",
+  "keyPoints": [
+    "A widening gap exists between decelerating inflation rates and the actual cost of living experienced by consumers.",
+    "Cumulative price increases have significantly outpaced real wage growth, eroding household purchasing power.",
+    "The psychological toll is evident in a sharp decline in consumer sentiment that no longer tracks with income levels."
+  ],
+  "blocks": [
+    {
+      "type": "p",
+      "text": "The official narrative is one of moderation. Headline inflation has cooled from its 2022 peaks, and the Federal Reserve's preferred gauge, core PCE, now sits at {corePCEChg1y}. To a policymaker, this looks like a return to stability. To a person paying for groceries and rent, it feels like a lie."
+    },
+    {
+      "type": "p",
+      "text": "The disconnect lies in the difference between the rate of increase and the absolute price level. A falling inflation rate does not mean prices are dropping; it simply means they are rising more slowly. For the average American, the last five years have been a relentless climb. Core CPI has risen {cpiCoreChg5y} in that window, while real median household income grew by only {realMedianIncomeChg5y}."
+    },
+    {
+      "type": "p",
+      "text": "This is the inflation mirage: the data suggests the crisis is ending, but the cumulative damage to purchasing power is already baked into the economy. The median household is not experiencing a 'return to normal' because the baseline has shifted upward far faster than their paychecks could keep pace."
+    },
+    {
+      "type": "pullquote",
+      "text": "The disconnect lies in the difference between the rate of increase and the absolute price level."
+    },
+    {
+      "type": "p",
+      "text": "This financial squeeze has triggered a psychological break. University of Michigan Consumer Sentiment has fallen {consumerSentimentChg5y} over five years, reaching {consumerSentimentLatest} in October 2026. Our reading is that sentiment is no longer reacting to how much people earn, but to the persistent, sticky costs of essential services that refuse to budge."
+    },
+    {
+      "type": "p",
+      "text": "The impact extends beyond the monthly budget to the long-term goal of wealth accumulation. Traditional strategies are under pressure as real returns compress. The S&P 500's year-over-year real return fell by {sp500RealReturnChg1y} over the last year, making it harder for retail investors to outpace the cost of living using standard equity portfolios."
+    },
+    {
+      "type": "chart",
+      "chartId": "incomeVsInflation",
+      "question": "Is income keeping up with the cost of living?",
+      "takeaway": "While nominal incomes may rise, the real median household income growth has been dwarfed by the cumulative rise in core price indices over the same period."
+    },
+    {
+      "type": "p",
+      "text": "As consumers trade down and cut discretionary spending to survive, the economy is absorbing a structural shift in behavior. The question is no longer when inflation will hit 2%, but whether the median household can ever recover the ground lost during the great price surge."
+    }
+  ],
+  "attention": {
+    "required": false,
+    "reasons": []
+  }
+}

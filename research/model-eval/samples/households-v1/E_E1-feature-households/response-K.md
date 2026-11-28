@@ -1,0 +1,31 @@
+<!-- E/E1-feature-households · response K · blind sample -->
+
+# The Price of the Past
+
+The inflation story has been backwards for three years. We were told to watch the rate, the percentage by which prices rise each year, and to feel relieved when it fell. But households do not budget by the rate. They budget by the level. And the level has not come down. It has climbed so far that the cost of living is now being set not by what the grocery bill does this month, but by what it was when you locked in your mortgage, your credit card, or your first apartment. The squeeze is not a new tax on consumption. It is the bill for the past, coming due now.
+
+## The Level, Not the Rate
+
+In the twelve months to January 2026, the consumer price index rose by just 2.4%. By September 2026, that number had climbed to 3.7%, up from 3.0% a year earlier. Headlines focused on the re-acceleration, the return of inflation from its recent low. But the more important number is the one that does not make the headline: the cumulative rise in the CPI price level from January 2020 to September 2026 is 29.8%.
+
+That is the level. That is the distance between where prices were when the average worker was planning their finances and where they are now. Inflation falling from 3.7% to 2.4% is a story about the speed of the climb. The 29.8% is the story about how high the mountain has gotten. You can walk up the mountain at a slower pace and still end up out of breath. That is where most households are.
+
+## Pay Has Kept Pace. Borrowing Has Not.
+
+On the surface, the story looks manageable. Average hourly earnings have risen by 33.2% over the same period from January 2020 to September 2026, more than the 29.8% rise in prices. On average, pay has more than kept pace with the cost of living. If that were the whole story, the sense of financial strain would be inexplicable.
+
+But the whole story is not the whole picture. The cost of borrowing has not come back down. A household that took out a thirty-year fixed mortgage in January 2021 locked in a rate of 2.74%. In October 2026, the monthly average for that same loan was 7.33%. The price of getting onto the housing ladder, or moving up it, has not followed the price of a loaf of bread. It has followed the cost of credit, which is set by the Federal Reserve and the markets, not by the grocery store.
+
+The Fed held its benchmark rate at 3.63% through August 2026 and has since raised it to 3.88%. That is the signal the market is reading. The thirty-year mortgage rate was 6.25% in October 2025 and is now 7.33%. The lock-in of past borrowing costs into the price of anything bought on credit means that the average household is paying for the inflation of 2021 and 2022 every month, in their mortgage, their car loan, their credit card balance. The pay rise has covered the grocery bill. It has not covered the interest.
+
+## Spending on Thinner Ice
+
+Households are still spending. Real consumer spending is up 2.5% in the twelve months to October 2026. That is not nothing. It is a sign of resilience, of people who are still buying, still dining out, still filling their cars with gas. But the saving rate has fallen from 4.9% in October 2025 to 4.1% in October 2026. Some of that spending is being financed by saving less. That is not a sustainable model. It is a buffer being drained.
+
+The sentiment data tells the same story from a different angle. The University of Michigan consumer sentiment index stood at 48 in October 2026, against 71.7 in January 2025. It hit a low of 44.8 in May 2026, the lowest reading since at least 2016 in our data. Unemployment is 4.1%, so this is not a jobs story. People have work. They have pay. And they still feel poorer. The likelier explanation is that the feeling is not about the income line. It is about the cost line, the one that is set by the price level and the interest rate, not by the wage.
+
+## What Comes Next
+
+The evidence does not tell us which households are hit hardest. There is no income-group or renter-owner breakdown here. It does not prove that mortgage rates cause the sentiment slump, though the correlation is not coincidental. And it cannot say whether the 2026 rise in headline inflation will persist. What it does show is that the mechanism is not the same as the one that produced the 2022 squeeze. Then, the problem was the rate. Now, the problem is the level, compounded by the cost of credit.
+
+The thing to watch is not the next CPI print. It is the saving rate. If it continues to fall while spending holds, the household balance sheet is being quietly eroded. If it rebounds, the buffer is being rebuilt. Until then, the squeeze is not a matter of feeling. It is a matter of arithmetic. The mountain is higher than it was. And the interest on the climb has not gone down.

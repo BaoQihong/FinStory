@@ -1,0 +1,127 @@
+{
+  "macro": {
+    "title": "The Price Level Has Not Come Down",
+    "intro": "The Story established that inflation rates have slowed but the cumulative cost of living has not. The data reveals the specific magnitude of this divergence: while the rate of price growth has moderated, the absolute price index has reached its highest point in the retrieved history, and the gap between that price level and household income has widened significantly over the five-year period.",
+    "indicators": [
+      {
+        "key": "cpiHeadline",
+        "note": "The headline CPI index is at its highest level in the data since 2014, confirming that the 'level' of prices, not just the 'rate' of change, is the core of the consumer squeeze."
+      },
+      {
+        "key": "realMedianIncome",
+        "note": "Real median household income has grown far more slowly than the core CPI over the same five-year window, quantifying the erosion of purchasing power for the median household."
+      },
+      {
+        "key": "consumerSentiment",
+        "note": "Consumer sentiment is at its lowest level in the data since 2014, providing a direct measure of the psychological disconnect between official economic data and lived experience."
+      },
+      {
+        "key": "mortgageRate",
+        "note": "The 30-year fixed mortgage rate remains significantly higher than its five-year low, illustrating the persistent cost of housing that keeps the perceived cost of living elevated even as headline inflation cools."
+      }
+    ],
+    "charts": [
+      {
+        "chartId": "inflationTrends",
+        "question": "How have headline, core CPI, and core PCE price levels evolved over the last six years?",
+        "takeaway": "All three price indices show a consistent upward trajectory, with the core measures rising more steadily than the headline figure, indicating that the underlying cost of goods and services has not reversed."
+      }
+    ],
+    "explainers": [
+      {
+        "title": "The Wage-Price Gap",
+        "text": "Over the past five years, the core CPI has risen by {cpiCoreChg5y}, while real median household income has grown by only {realMedianIncomeChg5y}. This divergence means that the median household is effectively paying more for the same basket of goods and services than it was five years ago, even after adjusting for inflation in the income figure.",
+        "evidence": "documented"
+      },
+      {
+        "title": "Sentiment Tracks Prices, Not Income",
+        "text": "Consumer sentiment has fallen by {consumerSentimentChg5y} over five years, reaching {consumerSentimentLatest} in October 2026. This decline is more closely correlated with the rise in price levels than with the modest growth in real income, suggesting that consumers are reacting to the sticker prices they see at the register rather than their nominal paychecks.",
+        "evidence": "documented"
+      },
+      {
+        "title": "Sticky Housing Costs",
+        "text": "The 30-year fixed mortgage rate is currently at {mortgageRateLatest}, which is {mortgageRateChg5y} higher than its level five years ago. For households that have not yet purchased a home, or those who need to refinance, this represents a persistent and significant increase in the cost of a major necessity, which keeps the overall cost of living feeling high.",
+        "evidence": "documented"
+      }
+    ],
+    "attention": {
+      "required": false,
+      "reasons": []
+    }
+  },
+  "analytics": {
+    "title": "The Transmission of the Perception Gap",
+    "intro": "The causal question is how a slowing inflation rate can coexist with a persistent feeling of financial squeeze. The answer lies in the lag between official price indices and the specific categories that dominate household budgets, compounded by the compression of real investment returns that makes it harder to offset these costs.",
+    "chain": {
+      "title": "From Sticky Costs to Squeezed Savings",
+      "steps": [
+        {
+          "title": "Category-Level Persistence",
+          "text": "While headline inflation has moderated, specific categories like housing and medical care continue to see monthly increases that outpace the broader index. Because these are non-discretionary, high-weight items in the consumer basket, their persistent rise keeps the perceived cost of living elevated even as the aggregate rate falls.",
+          "evidence": "documented"
+        },
+        {
+          "title": "Income Lag",
+          "text": "Real median household income has not kept pace with the cumulative rise in the core CPI. This means that even if a household's nominal income is growing, its purchasing power is being eroded by the faster-growing cost of necessities. The gap between what people earn and what they need to spend is the direct driver of the financial squeeze.",
+          "evidence": "documented"
+        },
+        {
+          "title": "Sentiment Feedback Loop",
+          "text": "As the gap between prices and income widens, consumer sentiment deteriorates. Lower sentiment is associated with reduced discretionary spending, which can slow economic activity and, in turn, affect wage growth and business investment. This creates a feedback loop where the perception of high costs becomes a self-reinforcing economic reality.",
+          "evidence": "interpretation"
+        },
+        {
+          "title": "Wealth Accumulation Friction",
+          "text": "The compression in real equity returns, with the S&P 500's year-over-year real return falling by {sp500RealReturnChg1y} over the last year, reduces the effectiveness of traditional wealth-building strategies. For households trying to build a financial cushion, the lower real returns mean it takes longer to offset the erosion of purchasing power caused by the wage-price gap.",
+          "evidence": "documented"
+        }
+      ]
+    },
+    "charts": [],
+    "comparisons": [
+      {
+        "title": "The 2022 Peak vs. Current Levels",
+        "text": "Comparing the current data to the 2022 peak shows that while inflation rates have fallen significantly, the price level itself has continued to rise. The CPI index is now at its highest point in the retrieved history, indicating that the 'reset' to pre-inflation price levels has not occurred.",
+        "evidence": "documented"
+      }
+    ],
+    "implications": {
+      "title": "What This Means for Household Wealth",
+      "intro": "The perception gap is not just a psychological phenomenon; it has tangible consequences for how households manage their money and build wealth over time.",
+      "items": [
+        {
+          "asset": "Equities",
+          "icon": "stocks",
+          "shows": "The S&P 500's year-over-year real return has fallen by {sp500RealReturnChg1y} over the last year, now standing at {sp500RealReturnLatest}.",
+          "showsEvidence": "documented",
+          "couldMean": "The compression in real returns suggests that relying solely on stock market gains to outpace inflation is becoming less reliable, potentially pushing households toward more defensive or diversified strategies."
+        },
+        {
+          "asset": "Fixed Income",
+          "icon": "bonds",
+          "shows": "The 10-year Treasury yield is at {t10yYieldLatest}, which is {t10yYieldChg5y} higher than its level five years ago.",
+          "showsEvidence": "documented",
+          "couldMean": "Higher yields offer savers a better nominal return than in the low-rate environment of the early 2020s, but the real return on bonds is still subject to the same inflation pressures that are eroding equity gains."
+        },
+        {
+          "asset": "Housing",
+          "icon": "property",
+          "shows": "The 30-year fixed mortgage rate is at {mortgageRateLatest}, which is {mortgageRateChg5y} higher than its level five years ago.",
+          "showsEvidence": "documented",
+          "couldMean": "The high cost of borrowing is a significant barrier to wealth accumulation for first-time buyers and a source of ongoing financial pressure for existing homeowners who have not yet refinanced."
+        },
+        {
+          "asset": "Consumer Discretionary",
+          "icon": "stocks",
+          "shows": "Consumers are altering their spending habits by trading down and reducing discretionary purchases.",
+          "showsEvidence": "context",
+          "couldMean": "This structural shift in spending could have lasting effects on businesses that rely on discretionary income, potentially affecting their revenue and, by extension, the performance of equities in those sectors."
+        }
+      ]
+    },
+    "attention": {
+      "required": false,
+      "reasons": []
+    }
+  }
+}

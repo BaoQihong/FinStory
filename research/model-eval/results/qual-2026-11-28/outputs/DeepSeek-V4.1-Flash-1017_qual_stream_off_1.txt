@@ -1,0 +1,5 @@
+<<<REASONING (reasoning_content)>>>
+We need answer two sentences why central banks raise interest rates. Need concise. Need maybe mention curb inflation by reducing demand, preventing inflation expectations. Two sentences. Ensure accurate. Could say: Central banks raise interest rates primarily to fight inflation by making borrowing more expensive, which cools spending and investment and reduces demand pressures. Higher rates also help anchor inflation expectations and support currency, though at cost of slower growth. That's two sentences. Need maybe "why central banks raise interest rates" general. final only.
+<<<END REASONING>>>
+
+Central banks raise interest rates mainly to control inflation by making borrowing more expensive, which cools consumer spending and business investment and reduces demand-driven price pressures. Higher rates also help anchor inflation expectations and can support the currency, though they typically slow economic growth.

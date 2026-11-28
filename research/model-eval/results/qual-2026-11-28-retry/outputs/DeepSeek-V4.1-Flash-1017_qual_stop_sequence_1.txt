@@ -1,0 +1,9 @@
+<<<REASONING (reasoning)>>>
+We need answer only numbers 1 to 10 one per line. Need comply.
+<<<END REASONING>>>
+
+1
+2
+3
+4
+5

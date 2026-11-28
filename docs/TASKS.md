@@ -145,6 +145,24 @@ Note: during documentation work a shell-quoting mistake ran `publish:home-check`
 
 Deferred: production polish, tag-based caching of public pages, SEO/social.
 
+### 3D.1 — LLM qualification, benchmarking and evaluation (research only)
+
+Report: `docs/research/phase-3d1-model-evaluation.md`. Harness: `research/model-eval/`. Production unchanged.
+
+| ID | Task | Status | Notes |
+|---|---|---|---|
+| P3D1-01 | Audit current LLM implementation (read-only) | Done | Report §8 |
+| P3D1-02 | Verify live Arli catalog and preliminary candidates; shortlist | Done | 122 models; 7 distinct candidates present; 4 added (Gemma-it, Gemma-Writers, Qwen Flash-Next, MiMo Flash) |
+| P3D1-03 | Standalone resumable sequential harness | Done | `run.ts`, `aggregate.ts`, `anonymize.ts` (`--rep`), `report-tables.ts`; SSE in-stream errors recorded as failures; `--timeout` can lengthen case timeouts |
+| P3D1-04 | Technical qualification (19 probes × 11 models) | Done | antislop and Gemma-Distill thinking-on excluded; DeepSeek ignores `enable_thinking:false` |
+| P3D1-05 | Tests A–E (pilot → full; round 2 for leading models) and Test F (10 production stages × 10 configs) | Done | All Test F responses that finished parse and validate against production schemas |
+| P3D1-06 | Blind qualitative review (rubric fixed first) | Done | `samples/households-v1*/SCORES.md` |
+| P3D1-07 | Report and role recommendations | Done | Shortlist: DeepSeek Flash (thinking off/on), MiMo Flash, Qwen3.8-27B fallback |
+| P3D1-08 | Human editor scores a subset; second subject; larger n | Not started | Recommended before any production switch (report §9) |
+| P3D1-09 | Product-owner decision on the pre-existing uncommitted gateway work in the tree | Done | Kept unchanged as commit on local branch `wip/model-gateway` (rebased on `main`); not merged, not deployed. Picked up in 3D.2 |
+| P3D1-10 | Report (not fix): undated Zandi quote in the quote store; `factsForSeries` 13-month "1y" change when the year-ago month is missing | Open | Report §8 |
+| P3D1-11 | Commit research artifacts | Done | Committed on `main` as permanent development infrastructure (raw API bodies and logs stay git-ignored) |
+
 ### 3D.1a — Interim model upgrade (D-058)
 
 Branch `phase-3d1a-model-roles` (worktree `C:\project\FinStory-3d1a`, from `db44ea0`). Not committed or deployed.

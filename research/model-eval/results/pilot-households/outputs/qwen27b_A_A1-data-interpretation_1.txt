@@ -1,0 +1,26 @@
+**Part 1 — Interpretation**
+
+The data depict a US household sector navigating a transition from high inflation and restrictive monetary policy toward lower inflation and easing rates, but with persistent stress on balance sheets and sentiment. From September 2024 to October 2026, headline CPI inflation (12-month change) declined from approximately 2.4% to 1.4%, indicating a successful cooling of price pressures. This disinflation was accompanied by a steady reduction in the effective federal funds rate, which fell from 5.13% to 3.88%, and a decline in the 30-year mortgage rate from 6.18% to 7.33% (note: the mortgage rate actually rose in the final months, complicating the easing narrative for homeowners).
+
+Household income growth remained robust, with average hourly earnings rising from $35.34 to $38.00 over the period. However, the real purchasing power of these gains was eroded by inflation in the early part of the period. By late 2026, as inflation slowed, real wage growth likely improved, though the data does not explicitly provide real wage series, only nominal earnings and CPI. The divergence between nominal earnings growth (approx. 7.5% over the period) and CPI growth (approx. 6.5% over the period) suggests modest real income gains, but the timing matters: real wages likely stagnated or fell in 2024-2025 before recovering in 2026.
+
+Consumer sentiment provides a critical counter-narrative to the improving macro indicators. The University of Michigan index plummeted from 70.1 in September 2024 to a low of 44.8 in May 2026, before recovering slightly to 48.0 by October 2026. This sharp decline suggests that households felt significantly worse off despite stable employment (unemployment rate hovered between 4.0% and 4.5%) and rising nominal incomes. The divergence between objective economic indicators (stable jobs, rising wages) and subjective sentiment (plunging confidence) may reflect anxiety over future income, housing costs, or broader economic uncertainty not captured in these monthly aggregates.
+
+The personal saving rate also tells a story of tightening household finances. It started at 5.7% in September 2024, dipped to 5.1% in December 2024, and then declined further to 3.6% by September 2026, before a slight uptick to 4.1% in October 2026. This downward trend indicates that households were consuming a larger share of their disposable income, potentially drawing down savings or increasing debt, even as nominal incomes rose. This is consistent with the weak sentiment readings.
+
+Limitations of this data for judging household well-being are significant. First, it aggregates all households, masking vast differences in wealth, income, and housing status. Second, it does not capture asset values (stocks, housing equity) which are crucial for net worth. Third, the "real" condition of households depends on the cost of living relative to income, but the CPI is an imperfect proxy for individual spending baskets. Finally, the data ends in October 2026, so the full impact of the 2026 policy shifts is not yet visible. The missing data for October 2025 CPI and unemployment rate also creates a gap in the trend analysis for that specific month.
+
+<answers>
+{"q1": 1.4,
+ "q2": 2.4,
+ "q3": -1.0,
+ "q4": false,
+ "q5": 7.5,
+ "q6": 6.1,
+ "q7": 1.08,
+ "q8": 17.3,
+ "q9": -125,
+ "q10": ["2026-06"],
+ "q11": "2026-05",
+ "q12": -0.1}
+</answers>

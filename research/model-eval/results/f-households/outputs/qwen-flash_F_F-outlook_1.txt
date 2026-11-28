@@ -1,0 +1,103 @@
+{
+  "title": "The Long Wait for Normalcy",
+  "intro": "The central uncertainty is not whether inflation will fall further, but whether the structural damage to household balance sheets is permanent. If wages eventually catch up to the cumulative price shock, confidence may recover; if sticky costs in housing and services remain entrenched, the economy risks settling into a new, lower baseline of financial security.",
+  "scenarios": [
+    {
+      "key": "wage-catchup",
+      "name": "The Slow Grind to Parity",
+      "role": "central",
+      "summary": "Real median household income continues to rise, slowly closing the gap created by the five-year price surge. As the 'base effect' of the 2021-2022 spike fades from year-over-year calculations, consumer sentiment improves not because prices drop, but because income finally feels sufficient to cover them.",
+      "conditions": [
+        "Real median household income growth sustains a positive trajectory, building on the {realMedianIncomeChg1y} gain recorded in 2025.",
+        "Core inflation continues to moderate toward the Federal Reserve's target, reducing the drag on purchasing power.",
+        "Housing costs stabilize, allowing the 'lock-in' effect of low-rate mortgages to ease as older loans mature."
+      ],
+      "whyItMatters": "For median-income households, this path means the gradual restoration of discretionary spending power. It suggests that the current feeling of being 'squeezed' is a temporary lag rather than a permanent structural shift, allowing families to resume normal saving rates.",
+      "assets": [
+        {
+          "asset": "Consumer Discretionary Equities",
+          "effect": "Potential outperformance as households regain confidence to spend on non-essentials."
+        },
+        {
+          "asset": "Small-Cap Equities",
+          "effect": "Benefit from lower input cost pressures and improved domestic demand."
+        }
+      ],
+      "watch": [
+        "Monthly updates to {realMedianIncomeLatest} and {realMedianIncomeChg1y} to confirm sustained real wage growth.",
+        "University of Michigan Consumer Sentiment ({consumerSentimentLatest}): A sustained move above {consumerSentimentHigh1y} would signal that perception is finally aligning with data.",
+        "Core CPI ({cpiCoreLatest}): A continued decline in the year-over-year rate ({cpiCoreChg1y}) would validate the disinflation trend."
+      ],
+      "uncertainties": [
+        "Wage growth may plateau if labor market conditions tighten further.",
+        "Sticky housing costs could continue to absorb any gains in real income, preventing a true restoration of purchasing power."
+      ]
+    },
+    {
+      "key": "structural-squeeze",
+      "name": "The New Expensive Normal",
+      "role": "alternative",
+      "summary": "Headline inflation falls, but the 'level' of prices remains permanently higher, and real incomes stagnate. Consumers adapt to a structurally higher cost of living by permanently cutting discretionary spending and reducing savings, leading to a prolonged period of low growth and low confidence.",
+      "conditions": [
+        "Core inflation remains sticky above 3%, driven by services and housing costs that do not revert to pre-2021 levels.",
+        "Real median household income growth stalls or turns negative, as seen in the {realIncomeCAChg1y} decline in California.",
+        "The 30-Year Fixed Mortgage Rate ({mortgageRateLatest}) remains elevated, keeping housing affordability low and preventing wealth accumulation through homeownership."
+      ],
+      "whyItMatters": "This scenario implies that the 'wealth effect' from asset prices is decoupled from household reality. For renters and those without significant equity, financial security deteriorates further, forcing a permanent shift toward value-oriented consumption and away from growth-oriented investing.",
+      "assets": [
+        {
+          "asset": "Value Stocks & Consumer Staples",
+          "effect": "Relative outperformance as consumers trade down to cheaper goods and services."
+        },
+        {
+          "asset": "Long-Duration Bonds",
+          "effect": "Potential gains if economic growth slows significantly due to reduced consumer demand."
+        }
+      ],
+      "watch": [
+        "30-Year Fixed Mortgage Rate ({mortgageRateLatest}): Persistence near {mortgageRateHigh5y} would signal continued housing stress.",
+        "Real Median Household Income (California) ({realIncomeCALatest}): A continued decline ({realIncomeCAChg1y}) would indicate that high-cost regions are seeing real income erosion.",
+        "S&P 500 Year-over-Year Return ({sp500RealReturnLatest}): A further drop from {sp500RealReturnLow1y} would suggest that equity markets are failing to keep pace with inflation."
+      ],
+      "uncertainties": [
+        "Labor market resilience could sustain wage growth even if productivity slows.",
+        "Policy interventions (e.g., housing subsidies) could mitigate the impact of high costs."
+      ]
+    },
+    {
+      "key": "policy-misstep",
+      "name": "The Inflation Resurgence",
+      "role": "alternative",
+      "summary": "The Federal Reserve declares victory too early, or external shocks (energy, supply chains) re-ignite price pressures. Inflation rebounds, forcing a resumption of rate hikes or a prolonged period of high rates that crushes asset values and real incomes alike.",
+      "conditions": [
+        "Core PCE ({corePCEChg1y}) reverses its downward trend and accelerates again.",
+        "Energy or commodity prices spike, pushing headline CPI ({cpiHeadlineChg1y}) back toward double-digit territory.",
+        "The 10-Year Treasury Yield ({t10yYieldLatest}) rises significantly above {t10yYieldHigh1y}, tightening financial conditions sharply."
+      ],
+      "whyItMatters": "This is the 'worst-case' for wealth preservation. It would erode both nominal returns and purchasing power simultaneously, potentially triggering a recession as high rates persist longer than anticipated. Households would face a 'double squeeze' of high costs and falling asset values.",
+      "assets": [
+        {
+          "asset": "Cash & Short-Term Treasuries",
+          "effect": "Preservation of capital as long-duration assets fall in value."
+        },
+        {
+          "asset": "Commodities & TIPS",
+          "effect": "Hedge against renewed inflationary pressures."
+        }
+      ],
+      "watch": [
+        "Core PCE Price Index ({corePCELatest}): A monthly increase that pushes the year-over-year rate ({corePCEChg1y}) higher would be the primary signal.",
+        "10-Year Treasury Yield ({t10yYieldLatest}): A break above {t10yYieldHigh1y} would indicate market expectations of persistent inflation.",
+        "University of Michigan Consumer Sentiment ({consumerSentimentLatest}): A renewed drop toward {consumerSentimentLow5y} would reflect renewed fear of price instability."
+      ],
+      "uncertainties": [
+        "The labor market may cool enough to prevent wage-price spirals even if inflation ticks up.",
+        "Global supply chain improvements could offset domestic price pressures."
+      ]
+    }
+  ],
+  "attention": {
+    "required": false,
+    "reasons": []
+  }
+}

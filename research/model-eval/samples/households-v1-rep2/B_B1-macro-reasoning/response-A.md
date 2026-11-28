@@ -1,0 +1,57 @@
+<!-- B/B1-macro-reasoning · response A · blind sample -->
+
+## The Puzzle: Falling Inflation, Firm Spending, and Collapsing Confidence
+
+The headline pattern invites a familiar story: restrictive policy is working, inflation is easing, and the economy is landing softly. But the data do not yet establish that story. They show a set of correlations over twelve months, not causal mechanisms, and several features of the table complicate the conventional reading.
+
+### Competing explanations
+
+**Explanation 1: Policy is working with a lag.** The federal funds rate fell from 5.33% to 4.33% between July 2024 and January 2025, yet remains well above the near-zero levels of 2020–21. Mortgage rates stayed near 6.7–7.0% throughout, and the 10-year yield actually rose from 3.72% in September 2024 to 4.63% in January 2025 before easing. On this reading, the cumulative weight of past tightening is still transmitting through housing, credit, and business investment, gradually cooling demand. The decline in core CPI inflation from 3.30% to a trough of 2.77% in May 2025 is the lagged payoff.
+
+What would distinguish this: we would expect to see leading indicators of demand weakening—slower payroll growth, rising job openings-to-unemployment ratios falling, softer loan demand—before spending actually contracts. The real spending data do not yet show a clear break: 12-month growth ranged from 2.44% to 3.74%, with no monotonic decline.
+
+**Explanation 2: Confidence is responding to something other than current economic conditions.** The University of Michigan index fell from 74.0 in December 2024 to 52.2 in April 2025—a drop of nearly 30%—while unemployment stayed between 4.0% and 4.3% and spending growth remained positive. This dissociation is striking. Possible drivers include expectations of future policy (tariffs, fiscal changes, political uncertainty), partisan composition effects in the survey, or a response to price levels rather than inflation rates. Consumers experience prices, not price changes; cumulative price increases since 2021 remain substantial even as the 12-month rate falls.
+
+What would distinguish this: breaking the Michigan survey into expectations versus current conditions, and by political affiliation, would show whether the collapse is forward-looking or partisan. If current-conditions sentiment held up while expectations plunged, the story is anticipatory anxiety, not present hardship.
+
+**Explanation 3: The aggregate masks distributional divergence.** Average hourly earnings grew 3.6–4.2% over the period while CPI grew 2.3–3.0%, implying positive real wage growth for those employed. Yet the personal saving rate fluctuated between 5.1% and 6.2% without a clear trend, and unemployment ticked up from 4.0% in January to 4.3% in May before falling to 4.1%. Households with locked-in low mortgage rates and stable employment may be fine; recent homebuyers, renters, and those in cyclical industries may not be.
+
+What would distinguish this: distributional data on spending by income quintile, credit card delinquency rates by income band, and rental vacancy/rent growth by metro area.
+
+### Channels of transmission—and where they fail
+
+Elevated rates reach households primarily through mortgages, auto loans, credit cards, and the discount rate applied to future income. The mortgage channel is partially blocked: roughly two-thirds of outstanding US mortgages carry rates below 4%, so the high prevailing rate affects only new buyers and those who must refinance. This "lock-in" effect suppresses housing turnover without uniformly squeezing existing owners.
+
+The credit-card and auto-loan channels are more direct and more regressive, hitting households that carry balances. The saving rate's stability suggests that aggregate household balance sheets have not been forced into distress—but averages conceal the tail.
+
+Business investment and hiring are affected through the cost of capital and financing. The data here do not include business investment or credit growth, so we cannot assess this channel directly.
+
+Where rates are *failing* to reach: asset prices and wealth effects. If equity and housing wealth remain elevated, high rates may be partially offset by balance-sheet strength for asset-owning households, sustaining spending despite restrictive policy.
+
+### What the conventional reading misses
+
+First, the conventional reading treats "inflation declining" as synonymous with "policy succeeding," but the decline could reflect base effects, easing supply constraints, or falling energy prices rather than demand destruction. The data table does not decompose the CPI change by component.
+
+Second, it treats the fed funds rate as the relevant measure of restrictiveness. Real rates matter: with CPI at 2.68% in June 2025 and the nominal rate at 4.33%, the ex-post real rate is roughly 1.65%. Whether that is restrictive depends on the equilibrium real rate, which is unobservable and contested.
+
+Third, the conventional reading assumes confidence should track current conditions. The 2024–25 divergence suggests confidence may be responding to anticipated regime change—tariff threats, fiscal uncertainty, geopolitical risk—rather than present data. If so, the confidence collapse is a leading indicator of behavior change not yet visible in spending, or it is noise.
+
+Fourth, the reading misses that the unemployment rate's stability (4.0–4.3%) alongside falling inflation could indicate a genuine soft landing—or could reflect labor force composition changes and low hiring rather than robust labor demand. The unemployment rate is a stock, not a flow; a low-hiring, low-firing market produces stable unemployment while concealing weakening opportunity.
+
+### What to test next
+
+**Hypothesis 1: The confidence collapse is driven by expectations, not current conditions.** Test with the Michigan survey's expectations and current-conditions sub-indices, broken out separately. If expectations fell while current conditions held, anticipatory anxiety is the driver.
+
+**Hypothesis 2: The confidence decline is substantially partisan.** Test with the Michigan survey's political affiliation breakdown (available in the microdata). A sharp divergence between partisans would indicate political rather than economic sentiment.
+
+**Hypothesis 3: Household spending strength is concentrated among higher-income, asset-owning households.** Test with Bureau of Labor Statistics Consumer Expenditure Survey data by income quintile, and Federal Reserve Survey of Consumer Finances (or the Distributional Financial Accounts) for balance-sheet composition.
+
+**Hypothesis 4: Credit stress is rising at the tail even as aggregates look healthy.** Test with the New York Fed's Household Debt and Credit Report (delinquency by loan type and credit score), and the Fed's H.8 release on bank consumer lending.
+
+**Hypothesis 5: The inflation decline reflects supply-side improvement rather than demand destruction.** Test with CPI component decomposition (energy, food, core goods, core services ex-housing), the Cleveland Fed's inflation nowcasts, and import price indices.
+
+**Hypothesis 6: Housing lock-in is suppressing mobility and constraining labor reallocation.** Test with existing-home sales volumes, Census geographic mobility data, and job-to-job transition rates from the BLS JOLTS and CPS.
+
+**Hypothesis 7: Real wage growth is positive in aggregate but uneven across sectors and wage levels.** Test with BLS wage data by industry and percentile, and the Atlanta Fed Wage Growth Tracker (which follows the same workers over time, avoiding composition effects).
+
+The story is not yet "policy is working." It is that the economy is producing an unusual combination—falling inflation, stable employment, resilient spending, and collapsing sentiment—and the data cannot yet tell us whether this is a soft landing, a lagged adjustment still in progress, or a confidence shock that has not yet reached the real economy. Distinguishing among these requires distributional, expectations, and credit data that the current table does not contain.

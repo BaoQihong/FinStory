@@ -1,0 +1,5 @@
+<<<REASONING (reasoning)>>>
+We need answer user's request: "What is 17 multiplied by 23? Reply with the number only." Need compute 17*23 = 391. Reply number only, no extra. Ensure final only 391.
+<<<END REASONING>>>
+
+391

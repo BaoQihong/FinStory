@@ -1,0 +1,5 @@
+<<<REASONING (reasoning)>>>
+The user wants me to reply with exactly the word "pong". This is a simple request that doesn't require any complex reasoning or analysis. I should just respond with that single word as requested.
+<<<END REASONING>>>
+
+pong

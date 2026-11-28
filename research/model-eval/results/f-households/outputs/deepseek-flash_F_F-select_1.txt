@@ -1,0 +1,146 @@
+{
+  "series": [
+    {
+      "candidate": "C1",
+      "key": "cpiHeadline",
+      "label": "US CPI, all items (index, 1982-84=100)"
+    ,
+      "reason": "Headline CPI level — the official inflation benchmark and the base for year-over-year comparisons."
+    },
+    {
+      "candidate": "C2",
+      "key": "cpiCore",
+      "label": "US CPI, all items less food and energy (index)"
+    ,
+      "reason": "Core CPI to compare against headline and show which measure is stickier."
+    },
+    {
+      "candidate": "C3",
+      "key": "stickyCpi",
+      "label": "Sticky-price CPI less food and energy (YoY %)"
+    ,
+      "reason": "Sticky-price inflation isolates slow-moving categories that drive the felt cost of living."
+    },
+    {
+      "candidate": "C4",
+      "key": "medianCpi",
+      "label": "Median CPI (annual rate %)"
+    ,
+      "reason": "Median CPI shows the typical category's price change, a robust read on breadth of inflation."
+    },
+    {
+      "candidate": "C8",
+      "key": "corePce",
+      "label": "Core PCE price index (2017=100)"
+    ,
+      "reason": "The Fed's preferred inflation gauge, for comparison with CPI."
+    },
+    {
+      "candidate": "C9",
+      "key": "realMedianIncome",
+      "label": "Real median household income (2025 dollars)"
+    ,
+      "reason": "Measures whether median household purchasing power has kept pace with prices."
+    },
+    {
+      "candidate": "C11",
+      "key": "realMedianIncomeCA",
+      "label": "Real median household income, California"
+    ,
+      "reason": "Contrasting regional case: a high-cost state where real income fell."
+    },
+    {
+      "candidate": "C13",
+      "key": "realMedianIncomeTX",
+      "label": "Real median household income, Texas"
+    ,
+      "reason": "Contrasting regional case: a state where real income rose."
+    },
+    {
+      "candidate": "C18",
+      "key": "ust10y",
+      "label": "10-year Treasury yield (%)"
+    ,
+      "reason": "Nominal fixed-income return benchmark for the wealth-building discussion."
+    },
+    {
+      "candidate": "C21",
+      "key": "real10y",
+      "label": "10-year real interest rate (%)"
+    ,
+      "reason": "Inflation-adjusted Treasury yield — the real return on safe assets."
+    }
+  ],
+  "derived": [
+    {
+      "key": "cpiHeadlineYoy",
+      "op": "yoy",
+      "inputs": ["cpiHeadline"],
+      "label": "Headline CPI, year-over-year %"
+    ,
+      "reason": "Turns the index into the headline inflation rate readers hear about."
+    },
+    {
+      "key": "cpiCoreYoy",
+      "op": "yoy",
+      "inputs": ["cpiCore"],
+      "label": "Core CPI, year-over-year %"
+    ,
+      "reason": "Core inflation rate for direct comparison with headline."
+    },
+    {
+      "key": "corePceYoy",
+      "op": "yoy",
+      "inputs": ["corePce"],
+      "label": "Core PCE, year-over-year %"
+    ,
+      "reason": "Fed-preferred inflation rate on a comparable YoY basis."
+    },
+    {
+      "key": "sp500Yoy",
+      "op": "yoy",
+      "inputs": ["sp500"],
+      "label": "S&P 500, year-over-year %"
+    ,
+      "reason": "Nominal equity return to set against inflation for a real-return read."
+    }
+  ],
+  "charts": [
+    {
+      "id": "inflationMeasures",
+      "seriesKeys": ["cpiHeadlineYoy", "cpiCoreYoy", "corePceYoy"],
+      "from": "2019-01-01",
+      "purpose": "Compare headline, core CPI and core PCE to test whether inflation is trending down and how sticky core measures are."
+    },
+    {
+      "id": "stickyVsMedian",
+      "seriesKeys": ["stickyCpi", "medianCpi"],
+      "from": "2019-01-01",
+      "purpose": "Show whether slow-moving and typical-category inflation remain elevated relative to headline."
+    },
+    {
+      "id": "realIncome",
+      "seriesKeys": ["realMedianIncome", "realMedianIncomeCA", "realMedianIncomeTX"],
+      "from": "2015-01-01",
+      "purpose": "Track whether median real household income has kept pace with prices, with contrasting state cases."
+    },
+    {
+      "id": "realReturns",
+      "seriesKeys": ["ust10y", "real10y"],
+      "from": "2019-01-01",
+      "purpose": "Show the nominal and inflation-adjusted 10-year Treasury yield to frame the real return on safe assets."
+    },
+    {
+      "id": "equityVsInflation",
+      "seriesKeys": ["sp500Yoy", "cpiHeadlineYoy"],
+      "from": "2019-01-01",
+      "purpose": "Set nominal equity returns against headline inflation to gauge real equity performance."
+    }
+  ],
+  "unmetNeeds": [
+    {
+      "need": "Consumer Confidence Index",
+      "why": "No consumer confidence series is among the candidates; the University of Michigan Consumer Sentiment index (C25) is a sentiment measure, not the Conference Board Consumer Confidence Index, and was not selected as a substitute."
+    }
+  ]
+}

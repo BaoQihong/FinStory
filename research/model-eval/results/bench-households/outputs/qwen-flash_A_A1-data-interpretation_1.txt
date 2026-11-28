@@ -1,0 +1,106 @@
+**Part 1: Interpretation of US Household Conditions (2024–2026)**
+
+The data from September 2024 through October 2026 depicts a US household sector undergoing a significant transition from resilience to strain, characterized by a divergence between nominal wage growth and real purchasing power, alongside a sharp deterioration in consumer confidence.
+
+In the early period (late 2024 to mid-2025), households appeared relatively stable. Real Personal Consumption Expenditures (PCE) grew steadily, rising from $16.16 trillion in September 2024 to $16.37 trillion by December 2024, and continuing to climb through 2025. During this phase, the unemployment rate remained historically low, hovering between 4.0% and 4.3%. However, a critical divergence emerged in early 2025. While the Federal Reserve cut the effective federal funds rate from 5.13% in September 2024 to 4.33% by January 2025, the 30-year fixed mortgage rate did not follow suit immediately, instead rising from 6.18% to 6.96% by January 2025. This disconnect suggests that monetary policy easing did not immediately translate into cheaper long-term borrowing costs for households, potentially dampening the housing market despite lower short-term rates.
+
+Consumer sentiment, a key indicator of household well-being, began a steep decline in early 2025. The University of Michigan index fell from 71.7 in January 2025 to 52.2 by April 2025. This collapse in sentiment occurred even as average hourly earnings continued to rise (from $35.84 to $36.12) and inflation appeared to moderate slightly in the first half of 2025. The divergence between rising nominal wages and falling sentiment suggests that households were increasingly concerned about the cost of living or future economic prospects, rather than current income levels.
+
+The period from late 2025 through 2026 reveals a more pronounced deterioration in household financial conditions. While nominal wages continued to grow, reaching $38.00 per hour by October 2026, the pace of inflation accelerated significantly in 2026. The CPI index jumped from 327.46 in February 2026 to 337.476 in October 2026. This resurgence in inflation eroded real purchasing power. Although real PCE continued to grow nominally, the personal saving rate—a buffer for household financial health—declined sharply from 5.7% in September 2024 to 4.1% in October 2026. This 1.6 percentage-point drop indicates that households were spending a larger share of their disposable income, likely to maintain consumption levels in the face of higher prices.
+
+Furthermore, the labor market showed signs of cooling. Nonfarm payrolls grew very slowly, increasing by only about 1,381,000 persons (from 157,912k to 159,293k) over the two-year period, a modest expansion. The unemployment rate, while still low, drifted upward to 4.5% in November 2025 before settling around 4.1-4.2% in late 2026. The combination of slowing job growth, declining savings, and rising inflation led to a sustained low in consumer sentiment, which hovered near 48-50 in late 2026, well below the 70+ levels seen in late 2024.
+
+Limitations of this data include the lack of distributional information; averages mask disparities between income groups. Additionally, the "Real PCE" measure reflects aggregate spending, not necessarily household welfare or debt burdens. The data does not capture asset price changes (like home values or stock portfolios), which significantly impact household net worth. Finally, the missing data for October 2025 (CPI, unemployment) creates a gap in the trend analysis, though surrounding months suggest continuity in the underlying trends.
+
+**Part 2: Answers**
+
+**q1:** 12-month CPI inflation in 2026-09.
+CPI 2026-09: 336.298
+CPI 2025-09: 324.245
+Calculation: $(336.298 / 324.245) - 1 = 0.03717...$
+Result: 3.7%
+
+**q2:** 12-month CPI inflation in 2025-09.
+CPI 2025-09: 324.245
+CPI 2024-09: 314.732
+Calculation: $(324.245 / 314.732) - 1 = 0.03022...$
+Result: 3.0%
+
+**q3:** Change from q2 to q1 in percentage points.
+$3.7 - 3.0 = 0.7$
+Result: 0.7
+
+**q4:** Can 12-month CPI inflation for 2026-10 be computed?
+CPI 2026-10: 337.476
+CPI 2025-10: n/a (missing)
+Since the base value is missing, the calculation cannot be performed.
+Result: false
+
+**q5:** 12-month growth of average hourly earnings in 2026-09.
+AHE 2026-09: 37.86
+AHE 2025-09: 36.70
+Calculation: $(37.86 / 36.70) - 1 = 0.03160...$
+Result: 3.2%
+
+**q6:** Approximate real growth of AHE over 12 months to 2026-09.
+Nominal Growth (q5): 3.16%
+Inflation (q1): 3.72%
+Real Growth $\approx$ Nominal - Inflation = $3.16 - 3.72 = -0.56\%$
+More precise: $(1.0316 / 1.0372) - 1 = -0.0054...$
+Result: -0.5%
+
+**q7:** Change in 30-year mortgage rate from 2025-10 to 2026-10.
+Rate 2026-10: 7.33%
+Rate 2025-10: 6.25%
+Change: $7.33 - 6.25 = 1.08$ percentage points.
+Result: 1.08
+
+**q8:** Same change as percentage change of the rate itself.
+Calculation: $(7.33 - 6.25) / 6.25 = 1.08 / 6.25 = 0.1728$
+Result: 17.3%
+
+**q9:** Change in federal funds rate from 2024-09 to 2026-10 in basis points.
+Rate 2024-09: 5.13%
+Rate 2026-10: 3.88%
+Change: $3.88 - 5.13 = -1.25$ percentage points.
+In basis points: $-1.25 \times 100 = -125$ bps.
+Result: -125
+
+**q10:** Months where CPI index fell compared with previous month.
+Checking month-over-month changes:
+2025-03: 319.785 vs 319.679 (Up)
+2025-04: 320.302 vs 319.785 (Up)
+...
+2026-06: 332.568 vs 333.979 (Down) -> **2026-06**
+2026-07: 332.813 vs 332.568 (Up)
+...
+Result: ["2026-06"]
+
+**q11:** Month with lowest consumer sentiment reading.
+Scanning the "University of Michigan consumer sentiment" column:
+Lowest value is 44.8 in 2026-05.
+Result: 2026-05
+
+**q12:** 12-month core CPI inflation minus 12-month headline CPI inflation in 2026-09.
+Core CPI 2026-09: 338.896
+Core CPI 2025-09: 330.418
+Core Inflation: $(338.896 / 330.418) - 1 = 0.025658...$ (2.57%)
+Headline Inflation (q1): 3.717...% (3.72%)
+Difference: $2.5658 - 3.7172 = -1.1514$ percentage points.
+Rounding to 1 decimal: -1.2
+Result: -1.2
+
+<answers>
+{"q1": 3.7,
+ "q2": 3.0,
+ "q3": 0.7,
+ "q4": false,
+ "q5": 3.2,
+ "q6": -0.5,
+ "q7": 1.08,
+ "q8": 17.3,
+ "q9": -125,
+ "q10": ["2026-06"],
+ "q11": "2026-05",
+ "q12": -1.2}
+</answers>

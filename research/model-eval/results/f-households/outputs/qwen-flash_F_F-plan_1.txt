@@ -1,0 +1,101 @@
+{
+  "workingTitle": "The Price Hangover: Why Falling Inflation Feels Like Rising Costs",
+  "section": "economy",
+  "centralQuestion": "Why does the consumer experience of high prices persist despite declining headline inflation rates, and how does this 'price level' vs. 'price growth' disconnect impact household wealth accumulation?",
+  "angle": "Investigate the psychological and financial gap between the rate of price change (inflation) and the absolute price level. Show how cumulative price increases have outpaced wage growth for median households, eroding real purchasing power, and analyze how this 'price hangover' is forcing structural shifts in saving and spending behavior that complicate traditional wealth-building strategies.",
+  "whyReadersCare": "Readers are confused and frustrated because official news says inflation is 'under control,' yet their bank accounts feel emptier than ever. Understanding the difference between slowing price growth and high absolute prices helps them adjust their budgets, understand why their savings aren't keeping up, and make smarter long-term investment decisions in a higher-price environment.",
+  "questions": [
+    "How do core inflation measures (excluding food/energy) compare to headline CPI, and which specific categories (e.g., services, housing, insurance) are driving the perceived persistence of high costs?",
+    "What is the cumulative gap between median household income growth and the cumulative price increase since the start of the recent inflationary period (e.g., 2020-2021)?",
+    "How are consumer sentiment indices (like U. Michigan or Conference Board) diverging from actual inflation data, and what specific spending habits are changing as a result?",
+    "What are the real (inflation-adjusted) returns on common wealth-building assets (S&P 500, 10-Year Treasury) over the last 3-5 years compared to historical averages?",
+    "Is there evidence of a structural shift in consumer spending away from discretionary goods toward necessities, and how does this affect the 'return to normal' narrative?"
+  ],
+  "searches": [
+    {
+      "query": "BLS CPI vs Core PCE inflation trend 2024 2025",
+      "purpose": "To establish the current state of headline vs. core inflation and identify persistent categories.",
+      "recent": true
+    },
+    {
+      "query": "University of Michigan Consumer Sentiment Index vs Inflation expectations divergence",
+      "purpose": "To quantify the disconnect between official data and consumer perception.",
+      "recent": true
+    },
+    {
+      "query": "Census Bureau Median Household Income vs CPI cumulative growth 2020-2025",
+      "purpose": "To measure the erosion of real purchasing power for median households.",
+      "recent": false
+    },
+    {
+      "query": "Federal Reserve Survey of Consumer Finances savings rate trends 2024 2025",
+      "purpose": "To understand how households are altering saving habits in response to high price levels.",
+      "recent": false
+    },
+    {
+      "query": "S&P 500 real return vs nominal return inflation adjusted 2020-2025",
+      "purpose": "To analyze the real wealth-building performance of equities during the inflationary period.",
+      "recent": false
+    },
+    {
+      "query": "Consumer spending shift discretionary vs non-discretionary goods post-inflation",
+      "purpose": "To identify structural changes in spending behavior.",
+      "recent": false
+    }
+  ],
+  "dataNeeds": [
+    {
+      "need": "Headline CPI and Core CPI (excluding food and energy)",
+      "why": "To show the trend of price growth and isolate persistent inflation drivers.",
+      "searchText": "CPI All Urban Consumers and Core CPI"
+    },
+    {
+      "need": "Median Household Income",
+      "why": "To compare wage growth against price increases for the typical household.",
+      "searchText": "Median Household Income in the United States"
+    },
+    {
+      "need": "Consumer Sentiment Index (U. Michigan or Conference Board)",
+      "why": "To measure the subjective experience of consumers and the 'vibecession' gap.",
+      "searchText": "University of Michigan Consumer Sentiment Index"
+    },
+    {
+      "need": "Personal Savings Rate",
+      "why": "To see if households are drawing down savings to maintain consumption.",
+      "searchText": "Personal Savings Rate"
+    },
+    {
+      "need": "S&P 500 Index and 10-Year Treasury Yield",
+      "why": "To calculate real returns on major asset classes.",
+      "searchText": "S&P 500 Index and 10-Year Treasury Constant Maturity Rate"
+    },
+    {
+      "need": "Real Disposable Personal Income",
+      "why": "To directly measure purchasing power after inflation.",
+      "searchText": "Real Disposable Personal Income"
+    }
+  ],
+  "counterChecks": [
+    {
+      "premise": "Inflation is not actually falling or is accelerating again.",
+      "contradictingEvidence": "Recent monthly CPI prints showing month-over-month increases above 0.3% or year-over-year rates rising above 3.5%.",
+      "searchText": "Latest monthly CPI report"
+    },
+    {
+      "premise": "Wage growth has actually outpaced inflation for median households.",
+      "contradictingEvidence": "Data showing median household income growth exceeding cumulative CPI growth since 2020.",
+      "searchText": "Median household income growth vs inflation"
+    },
+    {
+      "premise": "Consumer sentiment is aligned with inflation data (no disconnect).",
+      "contradictingEvidence": "Consumer sentiment indices rising in tandem with falling inflation, indicating no 'price level' hangover.",
+      "searchText": "Consumer sentiment trends vs inflation"
+    },
+    {
+      "premise": "Real returns on assets have been positive and strong.",
+      "contradictingEvidence": "S&P 500 real returns being negative or below historical averages over the last 3-5 years.",
+      "searchText": "S&P 500 real return history"
+    }
+  ],
+  "storyboardConcern": ""
+}

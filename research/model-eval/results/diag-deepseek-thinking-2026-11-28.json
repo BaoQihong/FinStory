@@ -1,0 +1,117 @@
+[
+ {
+  "id": "default",
+  "params": {},
+  "ok": true,
+  "status": 200,
+  "latencyMs": 121153,
+  "finish": "stop",
+  "usage": {
+   "input": 88,
+   "output": 383,
+   "reasoning": 347,
+   "total": 471
+  },
+  "reasoningChars": 853,
+  "content": "Sep 2025: **3.0%**  \nSep 2026: **3.7%**  \nChange: **+0.7 percentage points**"
+ },
+ {
+  "id": "enable_thinking_false",
+  "params": {
+   "chat_template_kwargs": {
+    "enable_thinking": false
+   }
+  },
+  "ok": true,
+  "status": 200,
+  "latencyMs": 11443,
+  "finish": "stop",
+  "usage": {
+   "input": 88,
+   "output": 376,
+   "reasoning": 330,
+   "total": 464
+  },
+  "reasoningChars": 818,
+  "content": "Sep 2024→Sep 2025: **3.0%**  \nSep 2025→Sep 2026: **3.7%**  \nChange: **+0.7 percentage points**"
+ },
+ {
+  "id": "thinking_false",
+  "params": {
+   "chat_template_kwargs": {
+    "thinking": false
+   }
+  },
+  "ok": true,
+  "status": 200,
+  "latencyMs": 75408,
+  "finish": "stop",
+  "usage": {
+   "input": 62,
+   "output": 71,
+   "reasoning": 0,
+   "total": 133
+  },
+  "reasoningChars": 0,
+  "content": "Sep 2024→2025: (324.245/314.732 − 1) × 100 = **3.0%**\n\nSep 2025→2026: (336.298/324.245 − 1) × 100 = **3.7%**\n\nChange: **+0.7 percentage points**"
+ },
+ {
+  "id": "both_false",
+  "params": {
+   "chat_template_kwargs": {
+    "enable_thinking": false,
+    "thinking": false
+   }
+  },
+  "ok": true,
+  "status": 200,
+  "latencyMs": 3508,
+  "finish": "stop",
+  "usage": {
+   "input": 62,
+   "output": 73,
+   "reasoning": 0,
+   "total": 135
+  },
+  "reasoningChars": 0,
+  "content": "Sep 2024→2025: (324.245/314.732 − 1) × 100 = **3.0%**  \nSep 2025→2026: (336.298/324.245 − 1) × 100 = **3.7%**  \nChange: **+0.7 percentage points**"
+ },
+ {
+  "id": "reasoning_effort_none",
+  "params": {
+   "reasoning_effort": "none"
+  },
+  "ok": true,
+  "status": 200,
+  "latencyMs": 4421,
+  "finish": "stop",
+  "usage": {
+   "input": 62,
+   "output": 64,
+   "reasoning": 0,
+   "total": 126
+  },
+  "reasoningChars": 0,
+  "content": "Sep 2024→2025: (324.245/314.732 − 1) = 3.0%  \nSep 2025→2026: (336.298/324.245 − 1) = 3.7%  \nChange: +0.7 percentage points."
+ },
+ {
+  "id": "thinking_disabled",
+  "params": {
+   "thinking": {
+    "type": "disabled"
+   }
+  },
+  "ok": true,
+  "status": 200,
+  "latencyMs": 11104,
+  "finish": "stop",
+  "usage": {
+   "input": 88,
+   "output": 395,
+   "reasoning": 351,
+   "total": 483
+  },
+  "reasoningChars": 877,
+  "content": "Sep 2025 12-month inflation: **3.0%**  \nSep 2026 12-month inflation: **3.7%**  \nChange: **+0.7 percentage points**"
+ }
+]

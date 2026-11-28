@@ -1,0 +1,105 @@
+{
+  "macro": {
+    "title": "The Cost-of-Living Gap",
+    "intro": "While inflation rates are cooling, the absolute price level is at its highest in the data since 2014. The critical metric for households is not the rate of increase, but the gap between cumulative price growth and the growth of real income.",
+    "indicators": [
+      {
+        "key": "cpiHeadline",
+        "note": "The index is at {cpiHeadlineLatest}, the highest in the data since 2014, meaning the 'disinflation' reported in news headlines has not lowered prices, only slowed their rise."
+      },
+      {
+        "key": "realMedianIncome",
+        "note": "Real median household income grew by {realMedianIncomeChg5y} over five years, failing to keep pace with the {cpiHeadlineChg5y} increase in the headline CPI over the same period."
+      },
+      {
+        "key": "consumerSentiment",
+        "note": "Sentiment has fallen {consumerSentimentChg5y} over five years, now more closely tied to price perceptions than to income levels."
+      }
+    ],
+    "charts": [
+      {
+        "chartId": "inflationTrends",
+        "question": "How have different inflation measures trended since 2020?",
+        "takeaway": "Headline CPI, core CPI, and core PCE have all reached their highest levels in the data window in October 2026."
+      }
+    ],
+    "explainers": [
+      {
+        "title": "Real Income Stagnation",
+        "text": "The purchasing power of the median American household has barely moved in five years, growing only {realMedianIncomeChg5y} since 2020.",
+        "evidence": "documented"
+      },
+      {
+        "title": "The Sentiment Floor",
+        "text": "Consumer sentiment is now at {consumerSentimentLatest}, near its lowest point in the data since 2014.",
+        "evidence": "documented"
+      }
+    ],
+    "attention": {
+      "required": false,
+      "reasons": []
+    }
+  },
+  "analytics": {
+    "title": "The Mechanics of the Squeeze",
+    "intro": "Why does the financial pressure persist even as inflation slows? The answer lies in the 'stickiness' of non-discretionary costs and the resulting erosion of real returns on savings.",
+    "chain": {
+      "title": "From Price Shocks to Structural Squeeze",
+      "steps": [
+        {
+          "title": "Non-discretionary cost spikes",
+          "text": "Initial inflation was driven by necessities; housing and medical care continue to post monthly increases that outpace the broader index.",
+          "evidence": "documented"
+        },
+        {
+          "title": "Budget crowding-out",
+          "text": "Because housing and healthcare are necessities, their persistent growth crowds out spending on discretionary items.",
+          "evidence": "context"
+        },
+        {
+          "title": "Behavioral shift",
+          "text": "Consumers are structurally altering habits by trading down and reducing non-essential purchases.",
+          "evidence": "context"
+        },
+        {
+          "title": "Real return compression",
+          "text": "Inflation eats into the real gains of wealth-building assets; the S&P 500's real return fell by {sp500RealReturnChg1y} over the last year.",
+          "evidence": "documented"
+        }
+      ]
+    },
+    "charts": [],
+    "comparisons": [],
+    "implications": {
+      "title": "Impact on Household Wealth",
+      "intro": "The divergence between price levels and real income changes the risk-reward profile for common assets.",
+      "items": [
+        {
+          "asset": "Equities",
+          "icon": "stocks",
+          "shows": "The S&P 500's real return is at {sp500RealReturnLatest}, the lowest since {sp500RealReturnLowestSince}.",
+          "showsEvidence": "documented",
+          "couldMean": "Traditional equity-based wealth building is less effective at outpacing the cost of living than it was in the prior five-year period."
+        },
+        {
+          "asset": "Real Estate",
+          "icon": "property",
+          "shows": "The 30-year fixed mortgage rate is {mortgageRateLatest}, up {mortgageRateChg5y} over five years.",
+          "showsEvidence": "documented",
+          "couldMean": "Higher borrowing costs combined with sticky housing prices may permanently price out first-time buyers, shifting demand toward rentals."
+        },
+        {
+          "asset": "Cash/Fixed Income",
+          "icon": "bonds",
+          "shows": "The 10-year Treasury yield has risen {t10yYieldChg5y} over five years to {t10yYieldLatest}.",
+          "showsEvidence": "documented",
+          "couldMean": "Higher nominal yields provide some relief to savers, but only if they stay above the actual cost-of-living increases experienced by the household."
+        }
+      ]
+    },
+    "attention": {
+      "required": false,
+      "reasons": []
+    }
+  }
+}

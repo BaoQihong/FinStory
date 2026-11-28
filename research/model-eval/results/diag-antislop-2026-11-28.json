@@ -1,0 +1,116 @@
+[
+ {
+  "id": "t0.7_off",
+  "params": {
+   "max_tokens": 200,
+   "temperature": 0.7,
+   "top_p": 0.8,
+   "chat_template_kwargs": {
+    "enable_thinking": false
+   }
+  },
+  "ok": true,
+  "status": 200,
+  "latencyMs": 8886,
+  "finish": "length",
+  "usage": {
+   "input": 28,
+   "output": 200,
+   "reasoning": 0,
+   "total": 228
+  },
+  "content": "билTbl量大力行isinxml gambбилaglioбилODA内外سدODAسدбилODA内外aglio昇内外ambessäicarODAicaricarringxmlTblambeicarODAssäaglioaglioODAicar�ODA昇昇ExposedExposedssä昇Exposed邀ODAicarODATblODA昇 gambExposed邀ExposedODAODA内",
+  "reasoning": ""
+ },
+ {
+  "id": "t1.0_off",
+  "params": {
+   "max_tokens": 200,
+   "temperature": 1,
+   "chat_template_kwargs": {
+    "enable_thinking": false
+   }
+  },
+  "ok": true,
+  "status": 200,
+  "latencyMs": 6837,
+  "finish": "length",
+  "usage": {
+   "input": 28,
+   "output": 200,
+   "reasoning": 0,
+   "total": 228
+  },
+  "content": "内外 Ranked而那些ssä gambODAring量大سدسد昇饲aglioODAбил/xhtml内外内外/xhtmlaglio内外 Anonymousбил昇سد昇icarбилitier内外ODAODA gambسد内外xmlODA内外ริก内外ring昇билбил力行бил内外бил Rankedardt昇ambeExposed昇 Anonymousambe内外icar内外xml内外",
+  "reasoning": ""
+ },
+ {
+  "id": "t0.7_rep1.1_off",
+  "params": {
+   "max_tokens": 200,
+   "temperature": 0.7,
+   "repetition_penalty": 1.1,
+   "chat_template_kwargs": {
+    "enable_thinking": false
+   }
+  },
+  "ok": true,
+  "status": 200,
+  "latencyMs": 7220,
+  "finish": "length",
+  "usage": {
+   "input": 28,
+   "output": 200,
+   "reasoning": 0,
+   "total": 228
+  },
+  "content": "isinริกODAxml RankedбилstatusCode昇Tblssä内外邀سدxml量大ambeODAardtตันODAhalteraglioسدODAellowตันshal昇 البدбилicar+(安Sock�ODA邀билODA AnonymousaborExposedбил겹билstatusCodeitier曝光ştiODAسد升降TRAINExposedбил产区昇内",
+  "reasoning": ""
+ },
+ {
+  "id": "t0_off",
+  "params": {
+   "max_tokens": 200,
+   "temperature": 0,
+   "chat_template_kwargs": {
+    "enable_thinking": false
+   }
+  },
+  "ok": true,
+  "status": 200,
+  "latencyMs": 7377,
+  "finish": "length",
+  "usage": {
+   "input": 28,
+   "output": 200,
+   "reasoning": 0,
+   "total": 228
+  },
+  "content": "ODAODA量大ODAODAODAODAODAODA量大ODAODAODAODA量大ODAODAODAODAODAODAODAODAODAODAODAODAODAODAODAODAODAODAODAODAODAODA量大ODAODAODAODAODAODAODAODAODA量大ODAODAODAODAODAODAODAODAODAODAODAODAODAODAODAODAODAODAODAODAO",
+  "reasoning": ""
+ },
+ {
+  "id": "minp_off",
+  "params": {
+   "max_tokens": 200,
+   "temperature": 0.6,
+   "min_p": 0.05,
+   "top_k": 20,
+   "chat_template_kwargs": {
+    "enable_thinking": false
+   }
+  },
+  "ok": true,
+  "status": 200,
+  "latencyMs": 7514,
+  "finish": "length",
+  "usage": {
+   "input": 28,
+   "output": 200,
+   "reasoning": 0,
+   "total": 228
+  },
+  "content": "一跳�内外ODA量大昇内外ssäسد邀ODA昇ambe内外安Exposed内外量大昇سدODAбил昇TblTblбилicar Anonymousбил内外ODAODAssäбил安ODAExposed内外量大бил gambسد昇量大�TblExposed内外aglio Anonymous昇 Ranked昇TblardtExposed内外ODA昇ODA RankedسدODATblODA邀内外",
+  "reasoning": ""
+ }
+]

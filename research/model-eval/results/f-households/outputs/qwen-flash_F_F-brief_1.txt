@@ -1,0 +1,21 @@
+{
+  "angle": "Investigate the disconnect between declining headline inflation rates and the persistent high cost of living, exploring how this 'price level' effect impacts household purchasing power and long-term wealth accumulation strategies.",
+  "questions": [
+    "How have core inflation components, particularly services and housing, behaved relative to headline CPI in recent months?",
+    "What is the current trajectory of real wage growth versus the cost of essential goods and services?",
+    "How have central bank interest rate policies influenced mortgage and borrowing costs for ordinary households?",
+    "What asset classes have preserved or eroded real value for retail investors during the recent high-inflation period?",
+    "How do consumer sentiment indices reflect the gap between statistical inflation data and perceived affordability?"
+  ],
+  "indicators": [
+    "Headline CPI",
+    "Core CPI",
+    "Real wage growth",
+    "Consumer sentiment index",
+    "Mortgage rates",
+    "Savings account yields",
+    "Housing affordability index"
+  ],
+  "outlook": "The Outlook should examine whether disinflation trends continue to erode purchasing power or if wage growth accelerates enough to restore real income gains, while considering how shifting interest rate expectations might alter the attractiveness of cash versus equities for average savers.",
+  "premise": "The idea assumes that headline inflation is currently falling and that the cost of living remains high for ordinary people despite this trend. Research should first establish whether current data supports the claim that inflation is 'coming down' and whether the perceived expense is driven by price levels rather than the rate of change."
+}

@@ -1,0 +1,110 @@
+{
+  "macro": {
+    "title": "The Persistence of the Price Floor",
+    "intro": "While the rate of increase has slowed, the absolute level of prices has not reset. The data shows a structural shift where the cost of living has established a new, higher baseline that nominal income growth cannot easily erase.",
+    "indicators": [
+      {
+        "key": "cpiCore",
+        "note": "The fact that this index is at {cpiCoreLatest}, the highest in the data since 2014, proves that 'falling inflation' is not the same as 'falling prices'."
+      },
+      {
+        "key": "consumerSentiment",
+        "note": "The drop to {consumerSentimentLatest} suggests a psychological break where households no longer trust official moderation figures to reflect their daily expenses."
+      },
+      {
+        "key": "mortgageRate",
+        "note": "A current rate of {mortgageRateLatest} compared to the five-year low of {mortgageRateLow5y} creates a permanent increase in monthly housing overhead for new borrowers."
+      }
+    ],
+    "charts": [
+      {
+        "chartId": "inflationTrends",
+        "question": "How do different inflation measures compare in their trajectory?",
+        "takeaway": "Both headline CPI and core PCE have reached their highest levels in the retrieved history since 2014, peaking in October 2026."
+      }
+    ],
+    "explainers": [
+      {
+        "title": "The Real Income Lag",
+        "text": "Median households are seeing nominal gains, but their actual purchasing power is stagnant. Real median household income grew only {realMedianIncomeChg5y} over five years, while the core cost of goods rose {cpiCoreChg5y}.",
+        "evidence": "documented"
+      },
+      {
+        "title": "Equity Return Compression",
+        "text": "The real benefit of investing in the S&P 500 has eroded, with the year-over-year real return falling by {sp500RealReturnChg1y} over the last year.",
+        "evidence": "documented"
+      }
+    ],
+    "attention": {
+      "required": false,
+      "reasons": []
+    }
+  },
+  "analytics": {
+    "title": "The Mechanics of the Squeeze",
+    "intro": "Why does the perception of expense persist? The answer lies in the 'stickiness' of non-discretionary costs and the lag in real wage recovery, which together create a permanent reduction in disposable income.",
+    "chain": {
+      "title": "From Price Shocks to Structural Squeeze",
+      "steps": [
+        {
+          "title": "Non-Discretionary Price Spikes",
+          "text": "Initial inflation hit essential services like housing and medical care, which do not fluctuate as quickly as energy or food.",
+          "evidence": "documented"
+        },
+        {
+          "title": "The 'Sticky' Floor",
+          "text": "These costs remain high even as headline inflation drops, because rents and service contracts are slow to adjust downward.",
+          "evidence": "context"
+        },
+        {
+          "title": "Purchasing Power Erosion",
+          "text": "Because real median income grew only {realMedianIncomeChg5y} over five years, the higher baseline for essentials consumes a larger share of the monthly budget.",
+          "evidence": "documented"
+        },
+        {
+          "title": "Behavioral Adaptation",
+          "text": "Consumers respond by trading down or cutting discretionary spending to cover the fixed costs of housing and health.",
+          "evidence": "context"
+        },
+        {
+          "title": "Sentiment Decoupling",
+          "text": "This lived experience of a tighter budget drives consumer sentiment down {consumerSentimentChg5y} over five years, regardless of what the current inflation rate is.",
+          "evidence": "documented"
+        }
+      ]
+    },
+    "charts": [],
+    "comparisons": [],
+    "implications": {
+      "title": "Wealth Accumulation in a High-Baseline Era",
+      "intro": "The shift from temporary inflation to a higher cost-of-living floor changes the risk-reward calculus for household assets.",
+      "items": [
+        {
+          "asset": "Equities",
+          "icon": "stocks",
+          "shows": "S&P 500 real returns are at their lowest since {sp500RealReturnLowestSince} {sp500RealReturnLatest}.",
+          "showsEvidence": "documented",
+          "couldMean": "Traditional 60/40 portfolios may provide less 'real' growth than in the previous decade, requiring higher risk tolerance to maintain the same wealth trajectory."
+        },
+        {
+          "asset": "Fixed Income",
+          "icon": "bonds",
+          "shows": "The 10-Year Treasury Yield has risen {t10yYieldChg5y} over five years to {t10yYieldLatest}.",
+          "showsEvidence": "documented",
+          "couldMean": "Higher nominal yields offer better income for savers, but they may not fully offset the structural increase in the cost of living."
+        },
+        {
+          "asset": "Real Estate",
+          "icon": "property",
+          "shows": "30-year mortgage rates have risen {mortgageRateChg5y} over five years.",
+          "showsEvidence": "documented",
+          "couldMean": "The cost of entry for new homeowners has fundamentally shifted, likely slowing the rate of wealth accumulation for first-time buyers."
+        }
+      ]
+    },
+    "attention": {
+      "required": false,
+      "reasons": []
+    }
+  }
+}

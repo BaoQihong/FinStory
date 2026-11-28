@@ -1,0 +1,106 @@
+{
+  "workingTitle": "The Price Gap: Why Falling Inflation Doesn't Feel Like Relief",
+  "section": "economy",
+  "centralQuestion": "Why does the subjective experience of high prices persist even as official headline inflation rates decline, and how does this divergence impact household wealth accumulation?",
+  "angle": "Investigating the disconnect between falling CPI/PCE metrics and the persistent perception of expensive goods, focusing on the lag in wage growth, the stickiness of specific service categories, and the erosion of real returns on common assets.",
+  "whyReadersCare": "Understanding this gap helps readers distinguish between temporary price spikes and structural cost increases, allowing them to adjust their spending and investment strategies to protect purchasing power in a post-inflationary environment.",
+  "questions": [
+    "How do core inflation measures compare to headline figures, and which specific categories (e.g., housing, insurance, food) are driving the perceived persistence of high costs?",
+    "To what extent has the cumulative price increase from 2021-2023 outpaced wage growth for median-income households?",
+    "How are consumers altering their saving and spending habits in response to the gap between official inflation data and their personal cost-of-living experience?",
+    "What is the current state of real returns on common wealth-building assets such as equities and fixed income after adjusting for inflation?",
+    "Are there structural shifts in consumer spending, such as a permanent move away from discretionary items, that are complicating the return to pre-inflation norms?"
+  ],
+  "searches": [
+    {
+      "query": "US CPI core inflation rate latest report 2026",
+      "purpose": "Establish the current trajectory of headline and core inflation to verify the premise that inflation is declining.",
+      "recent": true
+    },
+    {
+      "query": "Consumer Price Index housing services stickiness 2024 2025",
+      "purpose": "Identify specific categories driving the perception of persistent high costs despite falling headline numbers.",
+      "recent": false
+    },
+    {
+      "query": "Median household income growth vs CPI inflation 2021 2026",
+      "purpose": "Quantify the divergence between cumulative price increases and wage growth for median households.",
+      "recent": true
+    },
+    {
+      "query": "Consumer confidence index sentiment high prices 2026",
+      "purpose": "Assess consumer sentiment and how the perception of cost of living impacts confidence and spending habits.",
+      "recent": true
+    },
+    {
+      "query": "Real returns S&P 500 10-year Treasury yield inflation adjusted 2026",
+      "purpose": "Evaluate the current state of real returns on common wealth-building assets after adjusting for inflation.",
+      "recent": true
+    },
+    {
+      "query": "Structural shift consumer spending discretionary goods services post-inflation",
+      "purpose": "Investigate whether there are permanent changes in consumer behavior, such as a move away from discretionary items.",
+      "recent": false
+    }
+  ],
+  "dataNeeds": [
+    {
+      "need": "Headline CPI and Core CPI year-over-year changes",
+      "why": "To verify the premise that headline inflation is declining and compare it with core measures.",
+      "searchText": "US Consumer Price Index All Items and Core CPI"
+    },
+    {
+      "need": "Core PCE Price Index year-over-year changes",
+      "why": "To provide the Federal Reserve's preferred inflation gauge for comparison with CPI.",
+      "searchText": "US Core PCE Price Index"
+    },
+    {
+      "need": "Median Real Household Income",
+      "why": "To measure wage growth relative to inflation and determine if purchasing power is recovering.",
+      "searchText": "US Median Real Household Income"
+    },
+    {
+      "need": "10-Year Treasury Yield",
+      "why": "To assess the nominal return on fixed income and calculate real yields after adjusting for inflation.",
+      "searchText": "US 10-Year Treasury Yield"
+    },
+    {
+      "need": "S&P 500 Real Return",
+      "why": "To evaluate the performance of equities in real terms, accounting for inflation.",
+      "searchText": "S&P 500 Real Return"
+    },
+    {
+      "need": "Consumer Confidence Index",
+      "why": "To gauge consumer sentiment and the psychological impact of the price-perception gap.",
+      "searchText": "US Consumer Confidence Index"
+    },
+    {
+      "need": "CPI Housing and CPI Food categories",
+      "why": "To identify specific sticky categories driving the perception of high costs.",
+      "searchText": "US CPI Housing and Food"
+    }
+  ],
+  "counterChecks": [
+    {
+      "premise": "Headline inflation is currently declining.",
+      "contradictingEvidence": "If the latest CPI or PCE reports show a re-acceleration or plateau in inflation rates, the premise that inflation is 'coming down' would be false.",
+      "searchText": "US CPI YoY change latest report"
+    },
+    {
+      "premise": "There is a significant disconnect between official inflation metrics and consumer perception.",
+      "contradictingEvidence": "If consumer confidence indices show a strong positive correlation with falling inflation rates, or if surveys indicate that consumers feel prices are dropping in line with official data, the 'disconnect' narrative would be weak.",
+      "searchText": "Consumer perception of inflation vs actual CPI"
+    },
+    {
+      "premise": "Wage growth has not kept up with cumulative price increases.",
+      "contradictingEvidence": "If median real household income has grown significantly since 2021, outpacing the cumulative CPI increase, the argument that purchasing power is eroded would be incorrect.",
+      "searchText": "US Median Real Household Income growth 2021-2026"
+    },
+    {
+      "premise": "Real returns on assets are negative or low.",
+      "contradictingEvidence": "If real yields on Treasuries or real returns on equities are positive and growing, the concern about wealth accumulation being hindered by inflation would be less valid.",
+      "searchText": "US Real 10-Year Treasury Yield"
+    }
+  ],
+  "storyboardConcern": ""
+}

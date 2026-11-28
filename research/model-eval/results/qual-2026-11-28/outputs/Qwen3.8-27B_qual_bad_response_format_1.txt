@@ -1,0 +1,2 @@
+
+[error http 400: {"message":"Invalid `response_format.type`: must be one of: text, json_object, json_schema, structural_tag"}]

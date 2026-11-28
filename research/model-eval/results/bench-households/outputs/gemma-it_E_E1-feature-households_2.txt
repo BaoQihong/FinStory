@@ -1,0 +1,39 @@
+# The Level and the Rate
+
+*Households are feeling a squeeze that persists even when inflation drops, because while the rate of price increases slows, the cost of living—and borrowing—stays high.*
+
+For the last few years, the official narrative of the economy has been one of "disinflation." When the consumer price index (CPI) fell to 2.4% in the 12 months to January 2026, the data suggested a victory. But for the person paying for groceries or looking for a home, the feeling of relief never arrived.
+
+The disconnect exists because policymakers talk about the inflation rate, but households live with the price level. A slowing rate of increase does not mean prices are falling; it only means they are rising more slowly. Between January 2020 and September 2026, the cumulative rise in the CPI price level was 29.8%. That is the permanent new baseline.
+
+On paper, workers have kept pace. Average hourly earnings rose by 33.2% over that same period. In a vacuum, the average worker should feel slightly better off than they were in 2020. Yet consumer sentiment is fragile, sitting at 48 in October 2026, down from 71.7 in January 2025.
+
+The missing piece of the puzzle is the cost of credit. While wages managed to climb alongside the price of milk and eggs, the cost of borrowing for a home did not move in the same direction. A household that took out a mortgage in January 2021 faced a rate of 2.74%. By October 2026, the monthly average for a 30-year fixed mortgage rate was 7.33%. 
+
+The squeeze is not just about the weekly shopping trip. It is about the cost of getting onto, or moving up, the housing and credit ladder. When the cost of a mortgage more than doubles, the ability to build wealth through property stalls. This creates a psychological and financial ceiling that a slight dip in the inflation rate cannot break.
+
+Now, the situation is compounding. After that low point in January, inflation began to climb again. By September 2026, CPI for the 12 months to that date was 3.7%, up from 3.0% a year earlier. 
+
+This recent uptick is particularly grating because it is concentrated in the things people notice most. Core CPI, which excludes food and energy, was 2.6% in the 12 months to September 2026. This means the jump to 3.7% was driven by the volatile costs of heating, fuel, and food. When the price of a steak or a gallon of gas rises, it registers more acutely than a change in the cost of a haircut.
+
+The result is a renewed erosion of purchasing power. Average hourly earnings grew 3.2% in the year to September 2026, meaning pay is once again growing more slowly than prices.
+
+This explains why sentiment has remained depressed, hitting a low of 44.8 in May 2026. This is not a jobs story; the unemployment rate was 4.1% in October 2026. Instead, it is a story of how people feel about their money. As the University of Michigan Surveys of Consumers noted, "Since mid-2022, consumer sentiment has been moving more closely with sentiment regarding higher prices than with sentiment regarding income."
+
+Despite the gloom, people are still spending. Real consumer spending—adjusted for inflation—was up 2.5% in the 12 months to October 2026. But this spending is not being funded by new wealth or higher real wages. It is being funded by a decline in prudence. The personal saving rate, the share of disposable income people set aside, fell from 4.9% in October 2025 to 4.1% in October 2026. 
+
+People are maintaining their lifestyles by dipping into their reserves. This is a sustainable strategy for a few months, but it cannot continue indefinitely. As the impact of higher prices persists, behaviors shift. According to a consumer-behaviour research note, "Primarily, consumers started trading down, but as inflation’s impact on consumers persisted, broader behaviors started to change; these included less frequent purchases, shifting from restaurants to eating at home."
+
+The pressure is being maintained by the Federal Reserve. The federal funds rate—the benchmark interest rate that influences everything from credit cards to mortgages—was 3.63% from May to August 2026. Since then, it has risen to 3.88% as of October 2026. 
+
+This move by the Fed is intended to cool the economy and bring inflation back down, but it reinforces the credit squeeze. Higher benchmark rates push mortgage rates higher, which further locks people into their current homes or prices new buyers out of the market. Mark Zandi of Moody’s Analytics, quoted by CNBC, noted that "Perhaps the largest contributor to the outsized inflation reading in Tuesday's CPI report was housing."
+
+We are left with a precarious loop. The Fed raises rates to fight inflation, but those higher rates increase the cost of housing, which in turn keeps inflation readings high. Meanwhile, the consumer is caught in the middle, spending more of their paycheck to maintain the same standard of living and saving less to do it.
+
+The path forward depends on whether the recent rise in headline inflation is a temporary spike in food and energy or a sign of a more permanent trend. 
+
+If inflation continues to climb toward 4%, the Federal Reserve will likely keep the federal funds rate elevated or raise it further. This would keep mortgage rates high, further depressing consumer sentiment and potentially forcing a sharper drop in spending as savings are exhausted.
+
+Alternatively, if food and energy prices stabilize and the CPI returns toward the 2.4% level seen in early 2026, the Fed may have room to cut rates. This would be the only mechanism to actually ease the squeeze on households, as it would lower the cost of borrowing and potentially unlock the housing market.
+
+The critical signpost will be the gap between core CPI and headline CPI over the next few months. If core inflation remains steady at 2.6% while headline inflation fluctuates, it suggests the problem is external and temporary. If core inflation begins to drift upward, it means the "level" of prices is not just a memory of the last six years, but a moving target that continues to outrun the American worker.

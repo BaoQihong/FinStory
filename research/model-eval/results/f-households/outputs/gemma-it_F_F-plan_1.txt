@@ -1,0 +1,101 @@
+{
+  "workingTitle": "The Price Paradox: Why Disinflation Doesn't Feel Like a Discount",
+  "section": "wealth",
+  "centralQuestion": "Why do consumers feel a persistent cost-of-living crisis even as official inflation rates decline, and how does this 'price level' trap affect retail wealth accumulation?",
+  "angle": "The story will distinguish between the rate of price increases (inflation) and the absolute level of prices. It will argue that while the 'inflation fire' is being put out, the 'charred remains' (permanently higher price floors) are eroding real purchasing power and forcing a structural shift in how households approach saving and investing.",
+  "whyReadersCare": "Most people confuse 'falling inflation' with 'falling prices.' Understanding that prices rarely return to previous levels helps investors adjust their expectations for real returns and their strategies for long-term wealth building.",
+  "questions": [
+    "What is the gap between the current headline CPI/PCE and the 'core' measures that exclude volatile food and energy?",
+    "Which specific categories (e.g., shelter, services, insurance) have seen the most persistent price increases compared to the overall index?",
+    "How does the cumulative increase in the cost of a 'standard basket' of goods since 2021 compare to the growth in median real household income?",
+    "What is the current real return (nominal return minus inflation) for the S&P 500 and 10-year Treasuries over the recent inflationary cycle?",
+    "Is there a documented shift in consumer spending from discretionary categories to essentials that persists despite slowing inflation?"
+  ],
+  "searches": [
+    {
+      "query": "BLS Consumer Price Index detailed report by category 2021-2026",
+      "purpose": "Identify specific categories where prices remain high or continue to rise despite headline declines.",
+      "recent": true
+    },
+    {
+      "query": "median real household income vs cumulative CPI 2021-2026",
+      "purpose": "Quantify the gap between wage growth and the absolute price level increase.",
+      "recent": true
+    },
+    {
+      "query": "consumer sentiment vs inflation expectations survey data 2024-2026",
+      "purpose": "Find evidence of the disconnect between official data and subjective consumer perception.",
+      "recent": true
+    },
+    {
+      "query": "difference between disinflation and deflation for consumers",
+      "purpose": "Establish the conceptual framework for the 'price level' argument.",
+      "recent": false
+    },
+    {
+      "query": "real returns on equities and bonds during high inflation regimes",
+      "purpose": "Provide context on how inflation erodes the purchasing power of nominal investment gains.",
+      "recent": false
+    },
+    {
+      "query": "structural shifts in US household spending patterns post-2021",
+      "purpose": "Determine if spending habits have permanently shifted away from discretionary items.",
+      "recent": true
+    }
+  ],
+  "dataNeeds": [
+    {
+      "need": "Headline CPI (Consumer Price Index)",
+      "why": "To track the official rate of inflation decline.",
+      "searchText": "Consumer Price Index for All Urban Consumers: All Items in U.S. City Average"
+    },
+    {
+      "need": "Core PCE Price Index",
+      "why": "To compare the Fed's preferred measure against headline CPI.",
+      "searchText": "Core PCE Price Index"
+    },
+    {
+      "need": "Median Real Household Income",
+      "why": "To see if purchasing power has recovered to pre-inflation levels.",
+      "searchText": "Real Median Household Income"
+    },
+    {
+      "need": "S&P 500 Total Return",
+      "why": "To calculate real returns after adjusting for inflation.",
+      "searchText": "S&P 500 Index"
+    },
+    {
+      "need": "10-Year Treasury Yield",
+      "why": "To assess the real yield (nominal yield minus inflation).",
+      "searchText": "10-Year Treasury Constant Maturity Rate"
+    },
+    {
+      "need": "Consumer Confidence Index",
+      "why": "To quantify the 'perception gap' mentioned in the editorial intent.",
+      "searchText": "University of Michigan Consumer Sentiment Index"
+    },
+    {
+      "need": "CPI for Shelter/Housing",
+      "why": "To test if housing is the primary driver of the 'expensive' feeling.",
+      "searchText": "CPI: Shelter"
+    }
+  ],
+  "counterChecks": [
+    {
+      "premise": "Prices are permanently higher across the board.",
+      "contradictingEvidence": "Significant price drops in key categories (e.g., used cars, electronics) that offset other gains.",
+      "searchText": "CPI: Used Cars and Trucks"
+    },
+    {
+      "premise": "Wages have failed to keep up with the price level.",
+      "contradictingEvidence": "Low-to-middle income brackets seeing nominal wage growth that exceeds cumulative CPI.",
+      "searchText": "Average Hourly Earnings for all employees"
+    },
+    {
+      "premise": "Consumer sentiment is driven by the 'price level' rather than the 'inflation rate'.",
+      "contradictingEvidence": "Sentiment improving rapidly as soon as the inflation rate drops, regardless of absolute price levels.",
+      "searchText": "Consumer Sentiment Index"
+    }
+  ],
+  "storyboardConcern": ""
+}

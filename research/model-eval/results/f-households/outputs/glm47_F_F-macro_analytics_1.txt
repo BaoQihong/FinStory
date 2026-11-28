@@ -1,0 +1,111 @@
+{
+  "macro": {
+    "title": "The divergence between the data and the daily receipt",
+    "intro": "The official metrics confirm a cooling economy, yet the aggregate figures obscure the specific pain points in household budgets. A close look at the data reveals that while the rate of price increases is slowing, the absolute cost of living has climbed to a level that recent wage growth has failed to match.",
+    "indicators": [
+      {
+        "key": "cpiHeadline",
+        "note": "This index measures the overall change in consumer prices and is currently at its highest point in the retrieved history, confirming that prices have not fallen back to previous levels."
+      },
+      {
+        "key": "realMedianIncome",
+        "note": "Adjusted for inflation, this metric shows the purchasing power of the typical household, which has lagged significantly behind the rise in the cost of goods over five years."
+      },
+      {
+        "key": "consumerSentiment",
+        "note": "This index captures the public's optimism about their personal finances, and its sharp decline over five years validates the disconnect between improving economic data and consumer experience."
+      }
+    ],
+    "charts": [
+      {
+        "chartId": "inflationTrends",
+        "question": "How have headline and core inflation measures evolved over the recent economic cycle?",
+        "takeaway": "The chart shows that while both headline and core measures have retreated from their peaks, the indices remain significantly elevated compared to the start of the period, illustrating that price levels have structurally shifted higher."
+      }
+    ],
+    "explainers": [
+      {
+        "title": "The Price Level vs. The Rate of Change",
+        "text": "Headline inflation has slowed to {cpiHeadlineChg1y} over the past year, but the price index itself sits at {cpiHeadlineLatest}, the highest in the data since 2014. This means prices are still rising, just more slowly, and the cumulative increase since the start of the decade is permanent.",
+        "evidence": "documented"
+      },
+      {
+        "title": "The Wage-Price Gap",
+        "text": "Over the last five years, core CPI rose by {cpiCoreChg5y}, while real median household income grew by only {realMedianIncomeChg5y}. This gap quantifies the erosion of purchasing power that explains the persistent financial squeeze.",
+        "evidence": "documented"
+      },
+      {
+        "title": "Sentiment Disconnect",
+        "text": "Consumer sentiment has fallen by {consumerSentimentChg5y} over five years, a drop that is far more severe than the modest changes in recent inflation rates. This suggests that household confidence is anchored to the high level of prices rather than the decelerating rate of inflation.",
+        "evidence": "documented"
+      }
+    ]
+  ,
+    "attention": {
+      "required": false,
+      "reasons": []
+    }
+  },
+  "analytics": {
+    "title": "Why the recovery feels like a squeeze",
+    "intro": "The mechanism driving this disconnect is not a mystery of data collection, but a lag in the adjustment of essential costs and household earnings. The economy is experiencing a shift where the benefits of slowing inflation are distributed unevenly, hitting those with fixed budgets hardest.",
+    "chain": {
+      "title": "The transmission of sticky costs to household wealth",
+      "steps": [
+        {
+          "title": "Sticky service costs",
+          "text": "While goods prices have stabilized, costs for housing and medical care continue to rise. These categories represent large, non-discretionary portions of household budgets, meaning their price increases are felt acutely every month.",
+          "evidence": "documented"
+        },
+        {
+          "title": "Wage lag",
+          "text": "Nominal wages are rising, but they have not yet caught up to the cumulative price increases of the last five years. For the median household, real income growth over five years has been {realMedianIncomeChg5y}, failing to outpace the {cpiCoreChg5y} rise in core prices.",
+          "evidence": "documented"
+        },
+        {
+          "title": "Erosion of real returns",
+          "text": "As costs outpace income, households rely more on investment returns to build wealth. However, the real return on the S&P 500 has compressed, falling by {sp500RealReturnChg1y} over the last year to {sp500RealReturnLatest}. This reduces the ability of assets to offset the higher cost of living.",
+          "evidence": "documented"
+        },
+        {
+          "title": "Behavioral adjustment",
+          "text": "Faced with a permanent shift in the baseline cost of living, consumers are trading down and cutting discretionary spending. This structural shift protects household balance sheets in the short term but signals a lasting change in consumption patterns.",
+          "evidence": "context"
+        }
+      ]
+    },
+    "charts": [],
+    "comparisons": [],
+    "implications": {
+      "title": "The impact on household wealth",
+      "intro": "The divergence between official inflation and lived experience creates specific risks and opportunities for different asset classes.",
+      "items": [
+        {
+          "asset": "Equities",
+          "icon": "stocks",
+          "shows": "The S&P 500 year-over-year real return is {sp500RealReturnLatest}, having fallen by {sp500RealReturnChg1y} over the last year.",
+          "showsEvidence": "documented",
+          "couldMean": "Stocks are no longer providing the robust inflation hedge they once did, requiring investors to accept lower real returns or take on more risk to maintain purchasing power."
+        },
+        {
+          "asset": "Cash",
+          "icon": "cash",
+          "shows": "The personal saving rate is currently {srcPersonalSavingRate}.",
+          "showsEvidence": "documented",
+          "couldMean": "A low savings rate suggests households are dipping into reserves to maintain spending, leaving them more vulnerable to future economic shocks."
+        },
+        {
+          "asset": "Housing",
+          "icon": "property",
+          "shows": "Mortgage rates have risen to {mortgageRateLatest}, up {mortgageRateChg5y} over five years.",
+          "showsEvidence": "documented",
+          "couldMean": "High financing costs have locked in current homeowners and priced out new buyers, turning housing into a source of illiquid wealth rather than a stepping stone."
+        }
+      ]
+    },
+    "attention": {
+      "required": false,
+      "reasons": []
+    }
+  }
+}

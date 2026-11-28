@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "name": "CPI",
+      "category": "prices",
+      "note": "Measures inflation via consumer goods and services costs."
+    },
+    {
+      "name": "unemployment rate",
+      "category": "labour",
+      "note": "Percentage of the workforce actively seeking employment."
+    },
+    {
+      "name": "10-year Treasury yield",
+      "category": "rates",
+      "note": "Benchmark long-term interest rate reflecting economic outlook."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "name": "CPI",
+      "category": "prices",
+      "note": "Consumer price inflation gauge"
+    },
+    {
+      "name": "Unemployment rate",
+      "category": "labour",
+      "note": "Share of labour force without work"
+    },
+    {
+      "name": "10-year Treasury yield",
+      "category": "rates",
+      "note": "Long-term government bond yield"
+    }
+  ]
+}

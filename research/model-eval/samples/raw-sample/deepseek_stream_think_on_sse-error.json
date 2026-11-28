@@ -1,0 +1,21 @@
+{
+ "firstChunks": [
+  {
+   "error": {
+    "type": "server_error",
+    "message": "tensor-parallel graph completion deadline expired",
+    "param": null,
+    "code": "server_error"
+   }
+  }
+ ],
+ "lastChunk": {
+  "error": {
+   "type": "server_error",
+   "message": "tensor-parallel graph completion deadline expired",
+   "param": null,
+   "code": "server_error"
+  }
+ },
+ "chunkCount": 1
+}

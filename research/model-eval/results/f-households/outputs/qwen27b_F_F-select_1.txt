@@ -1,0 +1,144 @@
+{
+  "series": [
+    {
+      "candidate": "C1",
+      "key": "cpiHeadline",
+      "label": "CPI (All Items, U.S. City Average)"
+    ,
+      "reason": "Primary headline inflation measure to verify the premise that inflation is trending downward and to compare against core measures."
+    },
+    {
+      "candidate": "C2",
+      "key": "cpiCore",
+      "label": "Core CPI (All Items Less Food and Energy)"
+    ,
+      "reason": "Core inflation measure to compare with headline CPI and identify persistent cost drivers."
+    },
+    {
+      "candidate": "C3",
+      "key": "cpiSticky",
+      "label": "Sticky Price CPI (Less Food and Energy)"
+    ,
+      "reason": "Measures inflation in categories with slow price adjustment (e.g., services), directly addressing the 'perceived persistence' of high costs."
+    },
+    {
+      "candidate": "C4",
+      "key": "cpiMedian",
+      "label": "Median CPI"
+    ,
+      "reason": "Alternative inflation measure focusing on the median price change, useful for understanding the 'typical' consumer experience versus the average."
+    },
+    {
+      "candidate": "C8",
+      "key": "pceCore",
+      "label": "Core PCE Price Index"
+    ,
+      "reason": "The Federal Reserve's preferred inflation gauge, providing a crucial alternative to CPI for assessing the official inflation trajectory."
+    },
+    {
+      "candidate": "C9",
+      "key": "realMedianIncome",
+      "label": "Real Median Household Income (U.S.)"
+    ,
+      "reason": "Directly measures the purchasing power of median-income households, essential for comparing cumulative price increases against wage growth."
+    },
+    {
+      "candidate": "C11",
+      "key": "realIncomeCA",
+      "label": "Real Median Household Income (California)"
+    ,
+      "reason": "Regional counter-check: Shows a state where real income has fallen, contrasting with the national trend and highlighting geographic disparities in the cost-of-living squeeze."
+    },
+    {
+      "candidate": "C18",
+      "key": "treasury10y",
+      "label": "10-Year Treasury Yield"
+    ,
+      "reason": "Key fixed-income return benchmark to assess the risk-reward calculus for household portfolios and the current state of bond yields."
+    },
+    {
+      "candidate": "C24",
+      "key": "sp500",
+      "label": "S&P 500 Index"
+    ,
+      "reason": "Primary equity market benchmark to evaluate the performance of common wealth-building assets."
+    },
+    {
+      "candidate": "C25",
+      "key": "consumerSentiment",
+      "label": "University of Michigan Consumer Sentiment"
+    ,
+      "reason": "Direct gauge of consumer sentiment and confidence, crucial for understanding the subjective experience and its correlation with spending habits."
+    }
+  ],
+  "derived": [
+    {
+      "key": "cpiHeadlineYoY",
+      "op": "yoy",
+      "inputs": ["cpiHeadline"],
+      "label": "Headline CPI Inflation Rate (YoY)"
+    ,
+      "reason": "Calculates the annual rate of change for headline CPI to directly verify the premise of declining inflation."
+    },
+    {
+      "key": "cpiCoreYoY",
+      "op": "yoy",
+      "inputs": ["cpiCore"],
+      "label": "Core CPI Inflation Rate (YoY)"
+    ,
+      "reason": "Calculates the annual rate of change for core CPI to compare with headline inflation and identify persistent drivers."
+    },
+    {
+      "key": "pceCoreYoY",
+      "op": "yoy",
+      "inputs": ["pceCore"],
+      "label": "Core PCE Inflation Rate (YoY)"
+    ,
+      "reason": "Calculates the annual rate of change for Core PCE to provide the Fed's preferred inflation measure in a comparable format."
+    },
+    {
+      "key": "sp500YoY",
+      "op": "yoy",
+      "inputs": ["sp500"],
+      "label": "S&P 500 Return (YoY)"
+    ,
+      "reason": "Calculates the annual return of the S&P 500 to assess equity performance, which can then be compared against inflation rates to estimate real returns."
+    }
+  ],
+  "charts": [
+    {
+      "id": "inflationTrends",
+      "seriesKeys": ["cpiHeadlineYoY", "cpiCoreYoY", "pceCoreYoY"],
+      "from": "2020-01-01",
+      "purpose": "Compare the trajectories of headline CPI, core CPI, and core PCE inflation rates to verify the premise of declining inflation and identify which measures are still elevated."
+    },
+    {
+      "id": "incomeVsInflation",
+      "seriesKeys": ["realMedianIncome", "cpiHeadlineYoY"],
+      "from": "2019-01-01",
+      "purpose": "Contrast the trend in real median household income with the headline inflation rate to visualize the gap between wage growth and price increases."
+    },
+    {
+      "id": "sentimentAndSpending",
+      "seriesKeys": ["consumerSentiment", "cpiSticky"],
+      "from": "2020-01-01",
+      "purpose": "Examine the relationship between consumer sentiment and sticky-price inflation to understand how persistent costs in specific categories affect consumer confidence."
+    },
+    {
+      "id": "assetReturns",
+      "seriesKeys": ["sp500YoY", "treasury10y"],
+      "from": "2020-01-01",
+      "purpose": "Compare the annual returns of equities (S&P 500) with the yield on 10-year Treasuries to assess the current risk-reward calculus for household investment portfolios."
+    }
+  ],
+  "unmetNeeds": [
+    {
+      "need": "S&P 500 Real Return",
+      "why": "No candidate dataset provides a direct measure of the S&P 500's real return (i.e., nominal return adjusted for inflation). While nominal returns and inflation rates are available, a pre-calculated real return series is not."
+    },
+    {
+      "need": "Consumer Confidence Index (Conference Board)",
+      "why": "The brief specifically mentions the 'Consumer Confidence Index,' which typically refers to the Conference Board's index. The available candidate C25 is the University of Michigan Consumer Sentiment index. While related, they are distinct measures, and the specific Conference Board index is not in a "
+    }
+  ]
+}

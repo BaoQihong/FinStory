@@ -1,0 +1,72 @@
+{
+  "title": "Wealth Accumulation Under Persistent Squeeze",
+  "intro": "The central question is whether the disconnect between official inflation and lived experience is a temporary lag or a structural realignment. If the gap persists, traditional wealth-building assumptions based on historical inflation targets may no longer apply.",
+  "scenarios": [
+    {
+      "key": "sticky-squeeze",
+      "name": "Persistent Cost-Income Divergence",
+      "role": "central",
+      "summary": "Headline inflation returns toward targets, but housing and services remain structurally elevated, and real median household income fails to regain pre-inflation growth rates.",
+      "conditions": [
+        "Shelter costs remain elevated due to structural housing shortages",
+        "Wage growth fails to outpace cumulative inflation effects",
+        "Consumer behavior permanently shifts toward lower-cost alternatives"
+      ],
+      "whyItMatters": "For median-income households, the perception of financial strain remains a reality regardless of what official CPI numbers say, limiting discretionary income and savings capacity.",
+      "assets": [
+        {
+          "asset": "Equities",
+          "effect": "May face headwinds as broad consumer spending weakens, though companies with pricing power could outperform."
+        },
+        {
+          "asset": "Real Estate",
+          "effect": "Housing costs could remain high, benefiting owners with existing low-rate mortgages but pricing out new buyers."
+        }
+      ],
+      "watch": [
+        "Real median household income continuing to lag cumulative core CPI",
+        "Consumer sentiment remaining depressed despite headline inflation declines",
+        "Continued monthly increases in owners' equivalent rent outstripping headline CPI"
+      ],
+      "uncertainties": [
+        "Potential for unexpected productivity gains to boost real wages",
+        "Possible housing supply response that lowers shelter costs faster than expected"
+      ]
+    },
+    {
+      "key": "real-income-catchup",
+      "name": "Real Income Recovery",
+      "role": "alternative",
+      "summary": "Real household income accelerates as wage growth finally outpaces cumulative inflation, narrowing the gap between official data and consumer experience.",
+      "conditions": [
+        "Tight labor markets sustain wage growth above inflation",
+        "Productivity gains allow firms to raise wages without raising prices",
+        "Housing supply increases significantly, reducing shelter costs"
+      ],
+      "whyItMatters": "This would restore the wealth-building capacity of median households and likely reverse the structural shift in consumer spending habits.",
+      "assets": [
+        {
+          "asset": "Equities",
+          "effect": "Broad consumer discretionary stocks could recover as household purchasing power improves."
+        },
+        {
+          "asset": "Fixed Income",
+          "effect": "Lower inflation expectations could reduce nominal yields, increasing bond prices."
+        }
+      ],
+      "watch": [
+        "Real median household income growth exceeding headline inflation for multiple quarters",
+        "Consumer sentiment trending toward pre-inflation levels",
+        "Housing starts and completions rising significantly above historical averages"
+      ],
+      "uncertainties": [
+        "Wage-price spirals could reignite inflation",
+        "Economic slowdown could trigger layoffs, offsetting wage gains"
+      ]
+    }
+  ],
+  "attention": {
+    "required": false,
+    "reasons": []
+  }
+}

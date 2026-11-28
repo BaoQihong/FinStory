@@ -1,0 +1,49 @@
+{
+  "revisions": [
+    {
+      "path": "story.dek",
+      "text": "Price growth is slowing, but the cumulative cost of living has outpaced household income, leaving consumers feeling squeezed and skeptical of the official data."
+    },
+    {
+      "path": "story.keyPoints[0]",
+      "text": "Headline inflation has moderated from 2022 peaks but remains above the Federal Reserve's target."
+    },
+    {
+      "path": "story.keyPoints[1]",
+      "text": "Core prices have risen faster than real median household income over the past five years."
+    },
+    {
+      "path": "story.keyPoints[2]",
+      "text": "Consumer sentiment has fallen, reflecting a gap between official statistics and the personal experience of high prices."
+    },
+    {
+      "path": "story.blocks[0].text",
+      "text": "Sticker prices at the grocery store or hardware shop tell a story that the news headlines are struggling to match. While official inflation measures have decelerated, the cumulative effect of five years of price increases has left many households stretched. The friction in the American economy now comes from this disconnect: the rate of inflation is slowing, but the cost of living remains high."
+    },
+    {
+      "path": "story.blocks[1].text",
+      "text": "The data confirms the slowdown. Headline CPI rose by {cpiHeadlineChg1y} over the past year, and core PCE rose by {corePCEChg1y}, both a moderation from 2022. But for a family balancing a checkbook, the rate of change matters less than the total cost of staying afloat. The price level itself is at {cpiHeadlineLatest}, the highest in the data since 2014."
+    },
+    {
+      "path": "story.blocks[2].text",
+      "text": "This is where prices collide with paychecks. Over the last five years, core CPI has risen by {cpiCoreChg5y}, while real median household income grew by only {realMedianIncomeChg5y}. Nominal wages went up, but purchasing power did not keep pace. It is a quiet erosion of wealth that cannot be reversed quickly."
+    },
+    {
+      "path": "story.blocks[4].text",
+      "text": "That squeeze shows up in the mood of the market. The University of Michigan Consumer Sentiment Index fell by {consumerSentimentChg5y:abs} over five years to {consumerSentimentLatest} in October 2026, the lowest level in the data since 2014. Sentiment now tracks the perception of high prices more closely than it tracks income growth."
+    },
+    {
+      "path": "story.blocks[5].text",
+      "text": "Some costs are more stubborn than others. Housing and medical care continue to climb, with monthly increases often outpacing the broader index. Because these are necessities rather than discretionary choices, they dominate the monthly budget. When the rent or the pharmacy bill keeps rising, a decline in the headline inflation rate feels abstract."
+    },
+    {
+      "path": "story.blocks[6].text",
+      "text": "The drag extends to savings. The S&P 500's year-over-year real return fell by {sp500RealReturnChg1y:abs} over the last year to {sp500RealReturnLatest}. This compression makes it harder for households to use traditional equity investments to build a cushion against future shocks."
+    },
+    {
+      "path": "story.blocks[7].text",
+      "text": "Consumers are adapting by trading down and cutting discretionary spending. This shift suggests that the baseline cost of living has fundamentally moved upward. Even as inflation rates trend down, the feeling of being broke persists because the new floor for expenses is simply higher."
+    }
+  ],
+  "concerns": []
+}

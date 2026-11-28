@@ -1,0 +1,5 @@
+<<<REASONING (reasoning)>>>
+The user wants me to reply with exactly the word "pong". This is a simple request - I should output just that word with no additional text.
+<<<END REASONING>>>
+
+pong

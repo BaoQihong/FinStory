@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "name": "CPI",
+      "category": "prices",
+      "note": "Tracks consumer price inflation; a core gauge of purchasing-power erosion."
+    },
+    {
+      "name": "Unemployment rate",
+      "category": "labour",
+      "note": "Share of the labour force without a job; signals labour-market slack or tightness."
+    },
+    {
+      "name": "10-year Treasury yield",
+      "category": "rates",
+      "note": "Benchmark long-term interest rate; anchors borrowing costs and discount rates."
+    }
+  ]
+}

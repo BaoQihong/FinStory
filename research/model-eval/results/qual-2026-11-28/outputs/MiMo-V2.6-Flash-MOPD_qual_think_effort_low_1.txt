@@ -1,0 +1,5 @@
+<<<REASONING (reasoning)>>>
+17 × 23 = 391.
+<<<END REASONING>>>
+
+391

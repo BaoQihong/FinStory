@@ -1,0 +1,55 @@
+<!-- D/D1-market-outlook · response D · blind sample -->
+
+Outlook: A Narrow Landing Strip With Three Different Runways
+
+The evidence describes an economy that has moved through a disinflationary stretch, then encountered renewed price pressure while employment remained unusually stable. From November 2025 to October 2026, the unemployment rate stayed between 4.1 and 4.5 percent, while nonfarm payrolls rose from 158,449 to 159,293 thousand. Real consumer spending growth fluctuated between 1.47 and 2.78 percent. CPI inflation fell to 2.39 percent in January 2026, then climbed to 4.17 percent in May before easing to 3.72 percent in September. Core CPI inflation followed a narrower path, from 2.51 percent in January to 2.82 percent in May and 2.57 percent in September. Average hourly earnings growth declined steadily from 3.93 percent in November 2025 to 3.11 percent in August 2026, then edged up to 3.16 percent in September.
+
+These are conditional scenarios, not forecasts.
+
+Base case: Sticky prices, contained labor stress
+
+Conditions: Inflation remains in the mid-2-to-high-3 percent range, core CPI stays near the mid-2 percent range, wage growth remains around the low-3 percent range, unemployment stays near the low-4 percent range, and payrolls continue to post modest monthly gains. Consumer sentiment fluctuates without a sustained collapse, and real spending growth remains positive.
+
+Transmission: With labor-market slack limited and wage growth cooling only gradually, price pressure does not disappear quickly. The Federal Reserve keeps the effective federal funds rate near its recent plateau, while longer-term yields remain sensitive to inflation news. Mortgage rates stay elevated relative to the funds rate, restraining housing turnover but not producing a broad collapse in activity. Equity valuations remain supported by employment and spending, but gains are uneven as higher discount rates compete with earnings resilience. The dollar responds mainly to relative growth and rate differentials, which are not shown here. Cash savers continue to earn meaningful nominal returns, though real returns depend on inflation.
+
+Asset implications:
+- Treasuries: Yields remain range-bound around recent levels, with the 10-year yield near the upper-4 percent to low-5 percent area seen in late 2026. Curve shape depends on whether policy expectations or term premium dominate.
+- US equities: Performance is selective; sectors sensitive to discount rates face pressure, while firms benefiting from steady employment and spending hold up better.
+- Housing and mortgage borrowers: Mortgage rates remain near the high-6 to low-7 percent range observed in late 2026, keeping affordability constrained and limiting refinance activity.
+- US dollar: Direction depends on external comparisons not provided; domestic data alone do not establish a clear dollar path.
+- Cash savers: Nominal returns remain attractive relative to recent history, but persistent inflation erodes purchasing power if price growth stays above wage growth.
+
+Invalidation: A sustained drop in CPI and core CPI toward the low-2 percent range, wage growth falling below 3 percent, unemployment rising above 4.5 percent, or payrolls contracting for several months would undermine this scenario. A sharp, sustained fall in mortgage rates and Treasury yields would also indicate a different regime.
+
+Upside scenario: Disinflation resumes without a labor-market break
+
+Conditions: CPI and core CPI fall back toward the low-2 percent range, wage growth settles near 3 percent, unemployment remains at or below 4.3 percent, payrolls continue to rise, and real spending growth stays above 2 percent. Consumer sentiment recovers from its mid-2026 lows.
+
+Transmission: Easier financial conditions emerge as inflation expectations recede. The funds rate can remain stable or decline without reigniting price pressure. Lower term yields feed into mortgage rates, improving affordability at the margin. Equity valuations benefit from lower discount rates and steady earnings. The dollar strengthens if US growth and real yields compare favorably with trading partners, though those comparisons are not in the table. Cash savers face falling nominal yields as rates ease.
+
+Asset implications:
+- Treasuries: Yields decline across the curve, with the 10-year moving back toward the low-4 percent area seen in early 2026.
+- US equities: Broad support from lower yields and resilient spending, with rate-sensitive sectors gaining most.
+- Housing and mortgage borrowers: Mortgage rates fall toward the low-6 percent range, improving affordability and unlocking some refinance demand.
+- US dollar: Likely supported by lower inflation and stable growth, but the table does not show foreign rates or inflation.
+- Cash savers: Nominal returns fall, reducing the reward for holding cash.
+
+Invalidation: A renewed rise in CPI above 4 percent, core CPI moving back toward 3 percent, wage growth accelerating above 3.5 percent, or unemployment falling below 4.1 percent while payrolls surge would suggest inflation pressure is not fading. A jump in mortgage rates above 7 percent despite lower policy expectations would also challenge this path.
+
+Downside scenario: Inflation reaccelerates as growth cools
+
+Conditions: CPI rises above 4 percent and core CPI approaches 3 percent, wage growth turns upward, unemployment climbs above 4.5 percent, payrolls flatten or decline, and real spending growth falls below 2 percent. Consumer sentiment drops further from its May 2026 low of 44.8.
+
+Transmission: The economy faces a stagflationary mix: prices rise while activity weakens. Policy is constrained; easing to support growth risks reigniting inflation, while tightening to curb prices risks deeper weakness. Term yields rise as investors demand compensation for inflation risk. Mortgage rates climb, housing activity slows, and equity multiples compress as earnings weaken and discount rates rise. The dollar could weaken if growth disappoints, though external comparisons are absent. Cash savers benefit from higher nominal rates but lose ground if inflation outpaces them.
+
+Asset implications:
+- Treasuries: Yields rise, with the 10-year moving above the 5.13 percent level reached in October 2026, and curve dynamics driven by inflation risk.
+- US equities: Broad pressure from higher yields and softer earnings, with defensive sectors outperforming.
+- Housing and mortgage borrowers: Mortgage rates move further above 7 percent, sharply reducing affordability and freezing transaction volume.
+- US dollar: Direction uncertain without external data; domestic stagflation alone does not determine it.
+- Cash savers: Nominal returns rise, but real returns depend on whether inflation exceeds those returns.
+
+Invalidation: CPI falling below 3 percent, core CPI returning to the mid-2 percent range, unemployment staying at or below 4.3 percent, payrolls continuing to grow, or real spending growth remaining above 2.5 percent would weaken this scenario. A drop in mortgage rates below 6.5 percent alongside stable employment would also contradict it.
+
+Key uncertainties
+The most consequential unknowns are whether the post-May 2026 rise in CPI reflects a temporary shock or a durable shift; whether the steady decline in wage growth will continue or reverse; whether the low unemployment rate can persist if payrolls stop growing; how consumers respond if sentiment remains near its recent lows; and how inflation expectations influence Treasury yields and mortgage rates. The table does not show productivity, fiscal policy, global growth, foreign inflation, exchange rates, or housing supply, all of which could alter these transmissions.

@@ -1,0 +1,5 @@
+{"items": [
+  {"name": "CPI", "category": "prices", "note": "Measures inflation"},
+  {"name": "unemployment rate", "category": "labour", "note": "Measures joblessness"},
+  {"name": "10-year Treasury yield", "category": "rates", "note": "Benchmark long-term interest rate"}
+]}

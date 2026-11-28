@@ -1,0 +1,37 @@
+# The price of everything
+
+*Households are feeling the squeeze again as inflation ticks up. The real problem is that while the rate of inflation fluctuates, the price level only goes one way.*
+
+The story told by policymakers and economists for the last year was that inflation was falling. By January 2026, consumer prices (CPI) had slowed to 2.4% for the 12 months ending that month, the low point of the last year. The narrative was one of progress, a return to normalcy.
+
+But households do not live inside a rate of change. They live with the price level.
+
+Between January 2020 and September 2026, the CPI price level rose by 29.8%. That is the cumulative increase in the cost of living over six and a half years. It is the number that matters when a person looks at a grocery bill or a utility statement and remembers what it used to be.
+
+To be fair, pay has kept pace. Average hourly earnings rose 33.2% over that same period. On average, workers have not lost ground since before the pandemic. Indeed, they are slightly ahead.
+
+Yet consumer sentiment remains weak. The University of Michigan consumer sentiment index was 48 in October 2026, far below the 71.7 recorded in January 2025. It is not a jobs story; the unemployment rate was 4.1% in October. It is a prices story. As the University of Michigan Surveys of Consumers noted, "Since mid-2022, consumer sentiment has been moving more closely with sentiment regarding higher prices than with sentiment regarding income."
+
+People feel poorer because, in many ways, they are. The most visible squeeze is not just the cost of milk and eggs, but the cost of credit. 
+
+Inflation may have slowed for a while, but the price of borrowing did not go back to where it was. A household that took out a 30-year fixed mortgage in January 2021 faced a rate of 2.74%. By October 2026, the monthly average for that same kind of mortgage was 7.33%. 
+
+For anyone trying to get onto the housing ladder or move up it, the cost of borrowing has nearly tripled. This is a permanent price increase that earnings growth cannot easily offset.
+
+Now the "inflation is falling" story has run out of steam. In the 12 months to September 2026, consumer prices rose 3.7%, up from 3.0% a year earlier. Core CPI—which excludes food and energy—was 2.6%. This means the recent uptick is concentrated in the things people buy most often and notice most acutely.
+
+Average hourly earnings grew 3.2% in the year to September 2026. For the average worker, pay is once again losing purchasing power to prices.
+
+Real consumer spending—adjusted for inflation—is still up 2.5% for the 12 months to October 2026. People are spending, but they are doing so by dipping into their reserves. The personal saving rate, the share of disposable income not spent, fell to 4.1% in October 2026 from 4.9% a year earlier. 
+
+Spending sustained by a falling saving rate cannot continue indefinitely. When people can no longer afford to spend more of their income, they change their behavior. A consumer-behaviour research note describes this process: "Primarily, consumers started trading down, but as inflation’s impact on consumers persisted, broader behaviors started to change; these included less frequent purchases, shifting from restaurants to eating at home".
+
+The Federal Reserve has responded to the recent rise in inflation by raising the federal funds rate—the interest rate it pays on reserves, which sets the floor for other rates in the economy. The rate was 3.63% from May through August 2026 and has risen since, reaching 3.88% in October 2026.
+
+Higher rates from the Fed mean higher rates for borrowers. Mark Zandi of Moody’s Analytics, quoted by CNBC, said, "Perhaps the largest contributor to the outsized inflation reading in Tuesday's CPI report was housing".
+
+If housing costs continue to drive inflation higher, the Fed may keep rates elevated or raise them further. That would only increase the gap between the borrowing costs people enjoyed a few years ago and the costs they face today.
+
+The path forward depends on whether the recent rise in headline inflation persists or proves to be a temporary bump in food and energy costs. If it is temporary, the Fed may hold or cut rates, easing some pressure on borrowers and renters. If inflation remains sticky above the Fed's target, rates will likely stay high or climb.
+
+The signpost to watch is core CPI. Because it strips out the volatility of food and energy, it tells us whether inflation is becoming embedded in the rest of the economy. If core inflation begins to climb alongside headline inflation, it will suggest that the price level is not just shifting up, but accelerating again. For the household already struggling with a 7.33% mortgage, that is the worst possible outcome.

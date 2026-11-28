@@ -1,0 +1,69 @@
+{
+  "thesis": "While headline inflation has trended down from recent peaks, a significant 'perception gap' persists because consumers experience the cumulative effect of price increases rather than the rate of change. This disconnect, compounded by a lag in real wage recovery and the erosion of real returns on safe assets, continues to squeeze household sentiment and wealth accumulation even as official metrics stabilize.",
+  "findings": [
+    {
+      "claim": "Headline inflation has trended down from recent peaks but remains above the Federal Reserve's 2% target.",
+      "kind": "documented",
+      "sourceRefs": [],
+      "quote": ""
+    },
+    {
+      "claim": "Consumer sentiment has deteriorated significantly over the last five years, falling more in line with perceptions of higher prices than with actual income levels.",
+      "kind": "documented",
+      "sourceRefs": [
+        "S6"
+      ],
+      "quote": "Since mid-2022, consumer sentiment has been moving more closely with sentiment regarding higher prices than with sentiment regarding income."
+    },
+    {
+      "claim": "Consumers tend to overweight the impact of price increases while failing to associate wage growth with inflation adjustments, viewing raises instead as personal achievements.",
+      "kind": "context",
+      "sourceRefs": [
+        "S6"
+      ],
+      "quote": "People perceive that prices increase while wages do not seem to catch up. People do not associate increases in their income with inflation-adjustments but instead with personal achievements they have earned or deserve."
+    },
+    {
+      "claim": "Persistent inflation has led to structural changes in spending, with consumers 'trading down' and shifting budgets from discretionary items like clothing and home furnishings toward essentials.",
+      "kind": "context",
+      "sourceRefs": [
+        "S13"
+      ],
+      "quote": "Primarily, consumers started trading down, but as inflation’s impact on consumers persisted, broader behaviors started to change; these included less frequent purchases, shifting from restaurants to eating in, and more acceptance of value-based brands."
+    },
+    {
+      "claim": "Real median household income has grown modestly over five years, but remains below the peak levels seen in some regions (like California) just a year ago.",
+      "kind": "documented",
+      "sourceRefs": [],
+      "quote": ""
+    },
+    {
+      "claim": "The S&P 500 has provided positive real returns over the last year and five years, though the one-year real return is lower than it was a year ago.",
+      "kind": "documented",
+      "sourceRefs": [],
+      "quote": ""
+    },
+    {
+      "claim": "Borrowing costs for homeowners remain high, with the 30-year fixed mortgage rate significantly above pre-inflation levels.",
+      "kind": "documented",
+      "sourceRefs": [],
+      "quote": ""
+    }
+  ],
+  "sourceFigures": [],
+  "conflicts": [],
+  "gaps": [
+    "Specific categories driving the 'perceived' persistence of costs are mentioned generally (food, housing) but not quantified relative to the overall index in the provided data.",
+    "The extent to which consumers have permanently moved away from discretionary spending versus a temporary reaction to high prices is not definitively established."
+  ],
+  "sectionSupport": {
+    "story": "supported",
+    "macro": "supported",
+    "analytics": "supported",
+    "outlook": "supported"
+  },
+  "authorArgument": {
+    "status": "supported",
+    "note": "Data confirms headline inflation is lower than its peak but still above target; consumer sentiment data strongly supports the existence of a disconnect between official rates and subjective experience."
+  }
+}

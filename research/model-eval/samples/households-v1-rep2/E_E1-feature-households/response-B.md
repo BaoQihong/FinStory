@@ -1,0 +1,37 @@
+<!-- E/E1-feature-households · response B · blind sample -->
+
+# The bill that never went back down
+
+*Inflation falling was never the same thing as prices falling. The gap between the two explains why households feel worse off than the pay figures suggest — and it is widening again.*
+
+The most quoted number in economics last winter was 2.4%. That was consumer price inflation in the twelve months to January 2026, the low point of the past year, and it was received as vindication: the worst of the price surge was over. Nine months later the same measure reads 3.7%, up from 3.0% a year earlier. The victory lap was premature, but the more interesting mistake was conceptual. A falling inflation rate never meant prices were coming down. It meant they were climbing more slowly than before, from a level households had already been forced to absorb.
+
+That distinction is doing a lot of quiet work in how people feel about their finances, and it is the key to a puzzle the standard data can't quite explain. Since January 2020, the consumer price index has risen 29.8%. Average hourly earnings over the same period are up 33.2%. On average, pay has more than kept pace. If the story ended there, households should feel roughly whole. They plainly do not.
+
+## What the averages hide
+
+Part of the answer is that "on average" is doing heavy lifting. The most recent figures have turned against workers: hourly earnings grew 3.2% in the year to September 2026, slower than prices. Whatever cushion the past six years built has stopped growing. The University of Michigan's consumer sentiment index sat at 48 in October 2026, against 71.7 in January 2025 and a low of 44.8 in May. Unemployment is 4.1%. This is not a story about people losing jobs. It is a story about people with jobs feeling that the arithmetic of their lives has changed.
+
+The surveys point at prices rather than pay. "Since mid-2022, consumer sentiment has been moving more closely with sentiment regarding higher prices than with sentiment regarding income," the University of Michigan's Surveys of Consumers notes. That is a striking finding. People are not mainly reacting to what they earn. They are reacting to what things cost — and to the fact that the level never resets.
+
+## The borrowing ladder
+
+Here the grocery bill stops being the whole story. The price of credit has not merely stayed high; it has moved in the opposite direction from the price of everything else. A household that took out a 30-year fixed mortgage in January 2021 did so at 2.74%. In October 2026 the same mortgage cost 7.33%, up from 6.25% a year earlier. The Federal Reserve held its policy rate at 3.63% from May through August 2026 and has since raised it to 3.88%.
+
+Our reading is that this, more than the cost of food, is what people mean when they say they feel poorer. Anyone who bought or refinanced at the bottom has locked in a cheap payment and has little reason to move. Everyone else — the renter trying to buy, the owner wanting a bigger house, the family needing a new car on credit — faces a price of borrowing that has not come back down. The squeeze is concentrated at the points where households try to climb.
+
+There is a wrinkle worth flagging. Mark Zandi of Moody's Analytics, quoted by CNBC, pointed to housing as a driver of recent price readings: "Perhaps the largest contributor to the outsized inflation reading in Tuesday's CPI report was housing, Zandi said." That is the same housing market where borrowing costs have jumped. The two pressures reinforce each other.
+
+## Spending on the savings account
+
+If households feel this squeezed, why are they still spending? Real consumer spending rose 2.5% in the year to October 2026. The answer is in the saving rate, which fell from 4.9% to 4.1% over the same period. Some of the spending is being financed by saving less. That is a buffer, not a solution. A saving rate can fall for a while; it cannot fall indefinitely.
+
+There is also evidence that people are changing what they buy, not just how much. "Primarily, consumers started trading down, but as inflation's impact on consumers persisted, broader behaviors started to change; these included less frequent purchases, shifting from restaurants to eating at home," one consumer-behaviour research note observed. Trading down is what households do when they are managing a level, not a rate.
+
+## What to watch
+
+The recent rise in headline inflation is concentrated in food and energy — core inflation was 2.6% in the year to September 2026 — which matters because those are the purchases people see most often. The open question is whether that rise persists. If food and energy prices settle, the headline number may drift back toward the core. If they don't, the squeeze on real pay continues and the sentiment reading has further to fall.
+
+Two signposts will tell us which path is unfolding. The first is whether hourly earnings growth recovers above the inflation rate; the second is whether the saving rate stabilises or keeps sliding. A saving rate that keeps falling while spending holds up would suggest households are running down reserves to maintain a standard of living they can no longer quite afford. That cannot last, and when it ends, the spending figures will show it.
+
+The deeper point is that the "inflation is falling" story was always a story about a rate. Households live with a level, and the level of prices — and of borrowing costs — has not gone back. Until it does, or until pay clearly outruns it again, the gap between the official numbers and the feeling in people's kitchens is not a mystery. It is the arithmetic.

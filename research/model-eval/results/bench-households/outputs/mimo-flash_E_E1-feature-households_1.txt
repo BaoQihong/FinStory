@@ -1,0 +1,49 @@
+# The Rate Fell. The Price Stayed.
+
+*Households were told inflation was coming down. They are right that it never came down far enough — and now it is going back up.*
+
+In January 2026, consumer prices rose 2.4% over the previous twelve months, the low point of the year. The number was treated as a milestone: inflation, the story went, was finally beaten. Eight months later the same measure stood at 3.7%, up from 3.0% a year earlier.
+
+Households noticed the second number more than the first, and they were right to. But the deeper reason people feel poorer has little to do with which way the rate is moving. It has to do with where the level stopped.
+
+Between January 2020 and September 2026, consumer prices rose 29.8%. Over the same period, average hourly earnings rose 33.2%. On paper, the average worker has come out ahead: pay has more than kept pace with prices, and the gap has widened rather than closed. If the squeeze people describe were purely about wages losing to the supermarket shelf, the aggregate numbers would not show it.
+
+What the aggregate numbers do not capture is the price of borrowing. A household that took out a 30-year fixed mortgage in January 2021 locked in a rate of 2.74%. In October 2026, the rate was 7.33%. Nobody's existing mortgage payment changed. What changed is what it costs to buy a house, to move, to refinance, or to do anything else that requires credit.
+
+That is the mechanism behind the sentence people keep repeating: *I make more than I used to and I feel poorer.* The groceries cost more, yes. But the grocery bill is a monthly annoyance. The mortgage rate is a permanent reclassification of what you can afford.
+
+**The gap between the rate and the level**
+
+The confusion is partly a matter of vocabulary. Inflation is a rate of change; the price level is a stock. When a politician says inflation has come down, they are describing the second derivative of your cost of living. When a household says prices are high, they are describing the first. Both are correct, and they are not describing the same thing.
+
+The trouble is that the rate story has dominated the public conversation for so long that a fall in inflation was widely read as a return to normal. It was never going to be. Prices did not go back. They stopped rising as fast, which is a different achievement and a smaller one.
+
+Core inflation — which strips out food and energy — is 2.6%, below the headline 3.7%. That gap matters: the recent acceleration is concentrated in exactly the purchases people notice most often. You do not feel the core index when you fill a cart. You feel the headline.
+
+**Pay, prices, and the turn**
+
+The second half of the story is what happened to earnings after the low point. Average hourly earnings grew 3.2% in the year to September 2026 — slower than the 3.7% rise in prices over the same period. The average worker's pay is again losing purchasing power, for the first time in a while, and the direction of travel has reversed.
+
+This is where the argument has to adapt to the evidence. The long-run comparison still favours wages: 33.2% against 29.8% since January 2020. But the recent comparison does not, and a household living month to month experiences the recent comparison. The cumulative surplus is a fact about the past six years; the monthly shortfall is a fact about now.
+
+**Why spending holds up, and for how long**
+
+Households have not stopped buying. Real consumer spending is up 2.5% on a year earlier, which in isolation looks like resilience. The saving rate tells a different story: it fell from 4.9% in October 2025 to 4.1% in October 2026. Some of that spending is being financed by saving less.
+
+That cannot continue indefinitely. A saving rate of 4.1% is not a crisis, but the direction is the point. When prices rise faster than pay, something has to give: either consumption falls, or the buffer shrinks. Households are currently choosing the buffer.
+
+Meanwhile, sentiment has collapsed in a way that does not fit the labour market. The University of Michigan index read 48 in October 2026, against 71.7 in January 2025, having bottomed at 44.8 in May 2026. Unemployment is 4.1%. This is not a jobs story. The University of Michigan Surveys of Consumers has found that "Since mid-2022, consumer sentiment has been moving more closely with sentiment regarding higher prices than with sentiment regarding income."
+
+The Federal Reserve, for its part, held its rate at 3.63% through August 2026 and has since raised it to 3.88%. That is a central bank looking at the re-acceleration in headline inflation and deciding it has not finished. It also means the cost of borrowing is unlikely to fall soon, which keeps the housing lock-in in place.
+
+**What we do not know**
+
+The evidence here does not tell us which households are hit hardest. There is no income-group breakdown, no renter-versus-owner split in these numbers, and no way to tell from them whether mortgage rates are causing the sentiment slump or merely accompanying it. Mark Zandi of Moody's Analytics, quoted by CNBC, pointed to housing as a major contributor to the outsized inflation reading in the September CPI report — which would make the housing squeeze central to both the price story and the borrowing story, but that is an interpretation, not a settled finding.
+
+Nor can these figures say whether the 2026 rise in headline inflation will persist. Core inflation at 2.6% suggests the acceleration is concentrated in volatile categories; if food and energy calm down, the headline number could fall again without anything else changing.
+
+**What to watch**
+
+The signposts are specific. If the saving rate keeps falling while real spending holds up, households are financing their living standards out of a shrinking buffer, and the spending will eventually have to give. If wage growth overtakes price growth again, the monthly squeeze eases even if the price level does not. And if the mortgage rate stays near 7.33%, the housing ladder stays locked, no matter what happens to the grocery bill.
+
+The question that matters is not whether inflation comes down. It is whether the level at which it stopped — and the cost of credit that came with it — ever becomes livable for the people who have to buy at today's prices and today's rates.

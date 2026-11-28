@@ -1,0 +1,58 @@
+{
+  "revisions": [
+    {
+      "path": "story.dek",
+      "text": "Official price growth has slowed, but the cumulative cost of living has outpaced household income, leaving consumers feeling squeezed and skeptical of the economic data."
+    },
+    {
+      "path": "story.keyPoints[0]",
+      "text": "Headline inflation has moderated from its 2022 peaks but remains well above the Federal Reserve's target."
+    },
+    {
+      "path": "story.keyPoints[1]",
+      "text": "Core prices have risen significantly faster than real median household income over the past five years."
+    },
+    {
+      "path": "story.keyPoints[2]",
+      "text": "Consumer sentiment has deteriorated sharply, reflecting a persistent gap between official data and personal financial experience."
+    },
+    {
+      "path": "story.blocks[0].text",
+      "text": "Walk into a grocery store or a hardware shop and the sticker prices tell a story that the news headlines are struggling to match. While official measures of inflation have decelerated from their recent peaks, the cumulative effect of five years of price increases has left many households feeling financially stretched. This disconnect between the slowing rate of inflation and the persistent high level of prices is creating a significant friction point in the American economy."
+    },
+    {
+      "path": "story.blocks[1].text",
+      "text": "The data confirms that price growth has indeed slowed. Headline CPI rose by {cpiHeadlineChg1y} over the past year, while core PCE rose by {corePCEChg1y}. These figures represent a clear moderation from the 2022 highs. However, for the average consumer, the rate of change is less relevant than the total cost of maintaining their standard of living. The price level itself remains at a historic high, with the CPI index at {cpiHeadlineLatest}, the highest in the data since 2014."
+    },
+    {
+      "path": "story.blocks[2].text",
+      "text": "The core of the problem lies in the gap between prices and paychecks. Over the last five years, core CPI has risen by {cpiCoreChg5y}. In the same period, real median household income grew by only {realMedianIncomeChg5y}. This means that while nominal wages have increased, the purchasing power of the median household has not kept pace with the cost of goods and services. The result is a quiet erosion of household wealth that is difficult to reverse quickly."
+    },
+    {
+      "path": "story.blocks[4].text",
+      "text": "This financial squeeze is visible in consumer behavior. The University of Michigan Consumer Sentiment Index has fallen by {consumerSentimentChg5y:abs} over five years, reaching {consumerSentimentLatest} in October 2026. This is the lowest level in the data since 2014. Sentiment is now more closely tied to perceptions of high prices than to income growth, suggesting that consumers are reacting to their lived experience rather than the official statistics."
+    },
+    {
+      "path": "story.blocks[5].text",
+      "text": "Certain categories of spending are particularly sticky. Housing and medical care remain the primary engines of persistent inflation, with monthly increases in these areas often outpacing the broader index. For many families, these are not discretionary purchases but necessities that dominate their monthly budget. When these specific costs continue to rise, the overall decline in headline inflation feels abstract and irrelevant."
+    },
+    {
+      "path": "story.blocks[6].text",
+      "text": "The impact on wealth accumulation is also becoming apparent. The S&P 500's year-over-year real return has fallen by {sp500RealReturnChg1y:abs} over the last year, now standing at {sp500RealReturnLatest}. This compression in real returns reduces the effectiveness of traditional wealth-building strategies, making it harder for households to build a financial cushion against future shocks."
+    },
+    {
+      "path": "story.blocks[7].text",
+      "text": "Consumers are responding by altering their spending habits, trading down and reducing discretionary purchases. This is a structural shift that complicates the return to pre-inflation consumption norms. Even as official inflation rates trend downward, the perception of expense remains high because the baseline cost of living has fundamentally shifted upward."
+    }
+  ],
+  "concerns": [
+    {
+      "path": "story.blocks[1].text",
+      "concern": "The phrase 'historic high' combined with 'highest in the data since 2014' may be misleading if the data window is limited to recent years (e.g., post-2014). 'Historic' implies a much longer timeframe than 'since 2014'. Consider changing 'historic high' to 'multi-year high' or 'highest level in the available data' to align with the specific constraint in rule 6b0."
+    },
+    {
+      "path": "story.blocks[4].text",
+      "concern": "Similar to blocks[1], 'lowest level in the data since 2014' is used. Ensure the reader understands this refers to the retrieved data window, not necessarily the lowest since 2014 in all historical records, though the phrasing 'in the data' helps mitigate this."
+    }
+  ]
+}

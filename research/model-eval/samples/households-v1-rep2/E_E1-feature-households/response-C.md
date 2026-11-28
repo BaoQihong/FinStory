@@ -1,0 +1,51 @@
+<!-- E/E1-feature-households · response C · blind sample -->
+
+# The Price of Time: Why Falling Inflation Didn’t Fix Your Wallet
+
+# The headline number was down. The reality in your bank account wasn’t.
+
+Inflation has been the defining financial anxiety of the last five years, a word that has entered the daily lexicon with the same weight as "recession" or "layoff." For two years, the narrative was comforting: the rate of price increases was slowing. By January 2026, consumer prices were rising at just 2.4% a year, down from 3.0% the previous September. The story suggested that the squeeze was easing, that the worst was behind us.
+
+But that story missed a crucial distinction. Inflation is a speedometer; it tells you how fast prices are moving. It does not tell you where you are. Households do not live with the rate of change; they live with the level. Since January 2020, the CPI price level has risen by 29.8%. Average hourly earnings have risen by 33.2% over the same period. On paper, wages have kept pace, even slightly outpacing prices. Yet, for many, the financial picture looks worse, not better. The reason is not the grocery bill alone, but the cost of time itself—the price of borrowing money that has not gone back down.
+
+The data reveals a household that is feeling poorer not because of a sudden shock, but because of a slow, structural shift in the cost of credit. And now, with inflation turning up again, that shift is accelerating.
+
+**The Level, Not the Rate**
+
+To understand why the "inflation is falling" narrative failed to translate into financial relief, you have to look at the gap between nominal growth and real capability. In the 12 months to September 2026, average hourly earnings grew by 3.2%. That sounds healthy. But it is slower than the 3.7% rise in consumer prices over the same period. When wages grow more slowly than prices, purchasing power shrinks. The average worker is again losing ground.
+
+This erosion is compounded by the fact that the baseline has shifted permanently. We are no longer comparing 2026 to 2020; we are comparing it to a world where prices are nearly 30% higher. The 2.4% low point in January 2026 was a momentary pause in a long climb. By September 2026, that climb had resumed, reaching 3.7%. Core inflation, which excludes the volatile swings of food and energy, stood at 2.6%. The recent acceleration is concentrated in the items people notice most often: the food on the table and the fuel in the tank.
+
+The University of Michigan’s consumer sentiment index tells the story of this disconnect. In January 2025, the index stood at 71.7. By October 2026, it had fallen to 48. This is not a spike in pessimism; it is a sustained decline. The lowest reading in our data set was 44.8 in May 2026. The Michigan surveys note that "Since mid-2022, consumer sentiment has been moving more closely with sentiment regarding higher prices than with sentiment regarding income." People are not angry about their paychecks; they are angry about what those paychecks can buy.
+
+**The Mortgage Lock-In**
+
+If the grocery bill is the daily friction, the mortgage is the structural barrier. This is where the "inflation is falling" story collapses entirely. For a household looking to buy a home, or to refinance an existing one, the relevant number is not the CPI, but the mortgage rate.
+
+In January 2021, when interest rates were at historic lows, the 30-year fixed mortgage rate was 2.74%. That was the price of entry for a generation of buyers. By October 2025, that rate had climbed to 6.25%. By October 2026, it was 7.33%.
+
+Consider the mechanism of this lock-in. A person who bought a home in 2021 paid a price for their debt that was a fraction of what it is today. They have little reason to sell, because they are paying 2.74% on a loan that now costs new buyers 7.33% to originate. This creates a market where the homes of early buyers are effectively locked up, reducing supply and keeping prices elevated. For those who entered the market later, or those trying to move up the ladder, the cost of credit has become a wall.
+
+The Federal Reserve’s policy has reinforced this reality. The central bank held its federal funds rate at 3.63% from May to August 2026. It has since risen to 3.88% in October 2026. The Fed is not cutting rates to stimulate the economy; it is holding or raising them to keep inflation in check. This means the cost of borrowing money is not just high; it is being actively managed to stay high. For a household trying to finance a purchase, the message is clear: the cheap money era is over.
+
+**Spending on Thin Ice**
+
+Despite this headwind, consumers are not stopping. Real consumer spending, adjusted for inflation, is up 2.5% in the 12 months to October 2026. The economy is not in a recession; unemployment stands at 4.1%, a relatively low level. People are working, and they are spending.
+
+But the source of that spending is changing. The personal saving rate, the share of disposable income that households set aside, has fallen from 4.9% in October 2025 to 4.1% in October 2026. This is a significant drop. It suggests that the increase in spending is being financed, in part, by dipping into reserves. Households are spending their savings to maintain their standard of living.
+
+This behavior is sustainable only for so long. Research on consumer behavior notes that "Primarily, consumers started trading down, but as inflation’s impact on consumers persisted, broader behaviors started to change; these included less frequent purchases, shifting from restaurants to eating at home." The shift from discretionary spending to necessity is already visible. But the deeper concern is the depletion of the buffer. When the saving rate drops, households have less cushion for unexpected shocks. They are running on fumes.
+
+Mark Zandi of Moody’s Analytics pointed to a specific driver of the recent inflation reading: "Perhaps the largest contributor to the outsized inflation reading in Tuesday's CPI report was housing." This highlights the circular nature of the problem. Housing costs, driven by high borrowing rates and sticky wages, feed back into the CPI. The CPI, in turn, influences Fed policy, which keeps borrowing rates high. It is a feedback loop that punishes those who rely on credit to participate in the economy.
+
+**The New Normal**
+
+The question now is not whether inflation will fall, but what happens when it doesn’t. The 3.7% reading for September 2026 is higher than the 3.0% reading for the same month a year earlier. This is not a one-month blip; it is a re-acceleration. The Fed’s move to 3.88% suggests they see a risk that prices will continue to climb.
+
+For the household, this means the squeeze is likely to persist. The "inflation is falling" narrative offered a false comfort because it focused on the speed of the climb, not the height of the mountain. The mountain is higher now than it was in 2020, and the path up it has become steeper.
+
+The data does not tell us which households are hit hardest. There is no breakdown by income group or renter versus owner in this set. But the mechanism is clear: those who borrowed at the bottom have an advantage, while those trying to enter or move up are paying a premium for the same access. The sentiment index, at 48, reflects a population that has adjusted its expectations downward. They are not expecting a rescue; they are bracing for a long winter.
+
+The next six months will be watched closely for two signals: whether the saving rate stabilizes or continues to erode, and whether the Fed feels compelled to raise rates further to tame the 3.7% headline number. If spending remains high while savings drain, the economy is running on borrowed time. And if the mortgage rate stays near 7.33%, the housing market will remain a place of locked doors and high prices, a permanent feature of the landscape rather than a temporary hurdle.
+
+The lesson of the last five years is that financial health is not determined by the rate of change, but by the level of the baseline. We have moved to a higher baseline for prices and a higher baseline for interest rates. The "falling inflation" story was a story about the slope. The reality is about the altitude. And for many households, the view from up here is not as clear as they hoped.

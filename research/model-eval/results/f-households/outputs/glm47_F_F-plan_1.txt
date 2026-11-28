@@ -1,0 +1,111 @@
+{
+  "workingTitle": "The Price Level Paradox",
+  "section": "economy",
+  "centralQuestion": "Why does life feel expensive even as inflation rates fall, and what does this mean for household wealth?",
+  "angle": "Investigating the gap between disinflationary trends and the 'price level' shock, analyzing how cumulative price hikes and lagging wages alter consumer behavior and real returns.",
+  "whyReadersCare": "Readers are confused by reports of 'beating inflation' while their grocery bills remain high. This story clarifies the distinction between the *rate* of change and the *level* of prices, and explains the long-term impact on their purchasing power and investment portfolios.",
+  "questions": [
+    "Is headline inflation currently trending downward according to the latest CPI and PCE data?",
+    "Which specific categories (e.g., food, energy, shelter) are driving the perception of high costs despite falling rates?",
+    "How does the cumulative price increase since 2019 compare to the cumulative wage growth for median-income households?",
+    "What are the current real returns (inflation-adjusted) for the S&P 500 and 10-year Treasury bonds?",
+    "How has consumer confidence or spending shifted in response to these persistent price levels?"
+  ],
+  "searches": [
+    {
+      "query": "US CPI inflation latest report 2026 core services shelter",
+      "purpose": "Verify if headline inflation is falling and identify sticky categories like shelter or services.",
+      "recent": true
+    },
+    {
+      "query": "cumulative price level change CPI 2019 to 2026 vs wage growth",
+      "purpose": "Quantify the total price increase versus total wage growth to explain the 'sticker shock'.",
+      "recent": false
+    },
+    {
+      "query": "real household income median 2025 2026 inflation adjusted",
+      "purpose": "Check if median incomes have kept pace with the cumulative price level rise.",
+      "recent": true
+    },
+    {
+      "query": "consumer confidence 2026 inflation perception survey",
+      "purpose": "Find evidence of the disconnect between official data and consumer sentiment.",
+      "recent": true
+    },
+    {
+      "query": "S&P 500 real total return inflation adjusted 2026",
+      "purpose": "Determine current real returns on equities for wealth-building context.",
+      "recent": true
+    },
+    {
+      "query": "10 year treasury yield real interest rate 2026 TIPS",
+      "purpose": "Assess the real return on safe assets and the impact of rates on borrowing costs.",
+      "recent": true
+    }
+  ],
+  "dataNeeds": [
+    {
+      "need": "Headline CPI inflation rate to confirm the downward trend.",
+      "why": "To verify the premise that inflation is cooling.",
+      "searchText": "CPI inflation rate"
+    },
+    {
+      "need": "Core PCE Price Index to compare with headline CPI.",
+      "why": "To identify underlying inflation trends excluding volatile food and energy.",
+      "searchText": "Core PCE price index"
+    },
+    {
+      "need": "CPI for Shelter or Rent.",
+      "why": "Housing is often the largest expense and a major driver of 'sticky' inflation perception.",
+      "searchText": "CPI shelter rent"
+    },
+    {
+      "need": "Median Real Household Income.",
+      "why": "To measure if wages are keeping up with the cost of living.",
+      "searchText": "median real household income"
+    },
+    {
+      "need": "Consumer Confidence Index.",
+      "why": "To quantify consumer sentiment regarding the economy and personal finances.",
+      "searchText": "consumer confidence index"
+    },
+    {
+      "need": "S&P 500 Real Total Return Index.",
+      "why": "To assess the performance of equities after adjusting for inflation.",
+      "searchText": "S&P 500 real total return"
+    },
+    {
+      "need": "10-Year Treasury Constant Maturity Rate.",
+      "why": "To understand the nominal return on fixed income.",
+      "searchText": "10 year treasury yield"
+    },
+    {
+      "need": "10-Year TIPS Yield (Real Yield).",
+      "why": "To determine the real return on safe government bonds.",
+      "searchText": "10 year TIPS yield"
+    }
+  ],
+  "counterChecks": [
+    {
+      "premise": "Headline inflation is falling.",
+      "contradictingEvidence": "If the latest monthly or annual CPI figures show an acceleration or re-acceleration of prices.",
+      "searchText": "CPI monthly change annual rate"
+    },
+    {
+      "premise": "Wages have lagged behind cumulative price increases.",
+      "contradictingEvidence": "If real median household income has returned to or exceeded its pre-pandemic trend.",
+      "searchText": "real median household income trend"
+    },
+    {
+      "premise": "Consumers perceive high prices due to the level of inflation.",
+      "contradictingEvidence": "If consumer confidence indices are high and inflation expectations are anchored despite high price levels.",
+      "searchText": "consumer confidence inflation expectations"
+    },
+    {
+      "premise": "Discretionary spending is structurally shifting away.",
+      "contradictingEvidence": "If retail sales data for discretionary goods (e.g., dining out, travel) are growing faster than essentials.",
+      "searchText": "retail sales discretionary goods"
+    }
+  ],
+  "storyboardConcern": ""
+}

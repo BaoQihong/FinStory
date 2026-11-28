@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "name": "CPI",
+      "category": "prices",
+      "note": "Measures inflation via consumer goods."
+    },
+    {
+      "name": "unemployment rate",
+      "category": "labour",
+      "note": "Tracks the percentage of jobless seekers."
+    },
+    {
+      "name": "10-year Treasury yield",
+      "category": "rates",
+      "note": "Reflects long-term interest rate expectations."
+    }
+  ]
+}

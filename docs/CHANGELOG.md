@@ -18,6 +18,16 @@ Notable changes to this project. Format loosely follows
 - **Tests:** `scripts/studio/fred.test.ts` (7 tests).
 - Unchanged: prompts, schemas, fact tokens, validation, repair, templates, outlook rules, publishing and Arli concurrency.
 
+## 3D.1 — 2026-11-28 (LLM evaluation, research only; no application release)
+
+- New standalone research harness `research/model-eval/`. Nothing in `app/` or `lib/` imports it.
+  - Commands: catalog, qualification, benchmark suites A–F, aggregation, blind anonymisation, report tables.
+  - Data: frozen FRED and Seshat-stage fixtures; a fixed rubric.
+- Report `docs/research/phase-3d1-model-evaluation.md`:
+  - 11 models qualified and 12 configurations benchmarked, plus the 10 real production stages;
+  - role recommendations for 3D.2.
+- No production change: `ARLI_MODEL`, prompts, schemas, templates, workflows and drafts are untouched.
+
 ## 0.6.1 — 2026-11-28 (v0.1 editorial testing: Fix It for Me, validator false positives)
 
 - **Fix It for Me** in the publication dialog's blocking-issues panel: up to three targeted AI repair attempts on the passages behind blocking issues. Each successful attempt is saved as a new draft revision, and the dialog stays open and re-runs the publication checks. Changes are shown before and after, with removed or qualified claims called out. Rejected rewrites and anything that needs the editor (data, structure, licence, editorial-judgement notes) are listed. It never publishes (D-055).

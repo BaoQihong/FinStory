@@ -1,0 +1,20 @@
+1.  **Analyze the Request:** The user wants to know the product of 17 and 23. The constraint is to reply with the *number only*.
+
+2.  **Perform the Calculation:**
+    *   Method 1: Standard multiplication
+        *   $17 \times 20 = 340$
+        *   $17 \times 3 = 51$
+        *   $340 + 51 = 391$
+    *   Method 2: Decomposition
+        *   $17 \times 23 = (10 + 7) \times 23$
+        *   $10 \times 23 = 230$
+        *   $7 \times 23 = 7 \times (20 + 3) = 140 + 21 = 161$
+        *   $230 + 161 = 391$
+    *   Method 3: Difference of squares (approximate)
+        *   $17 \times 23 = (20 - 3)(20 + 3) = 20^2 - 3^2 = 400 - 9 = 391$
+
+3.  **Verify the Result:** All methods yield 391.
+
+4.  **Format the Output:** The user requested "the number only".
+
+5.  **Final Output Generation:** 391.</think>391

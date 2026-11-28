@@ -1,0 +1,107 @@
+{
+  "title": "The Gap That Won't Close: Three Paths for the Cost-of-Living Disconnect",
+  "intro": "The data shows inflation slowing but prices at their highest levels in the retrieved history, while real median income has barely kept pace. The open question is whether this divergence is a temporary lag that will correct as base effects fade, or a structural reset that has permanently altered the relationship between wages and the cost of living.",
+  "scenarios": [
+    {
+      "key": "structural-reset",
+      "name": "The Permanent Plateau",
+      "role": "central",
+      "summary": "The perception gap persists because the cost of living has structurally shifted upward, driven by sticky sectors that do not respond to slowing headline inflation. Consumers remain squeezed, and wealth accumulation stagnates as real returns stay compressed.",
+      "conditions": [
+        "Core inflation remains above the Federal Reserve's target for an extended period, with no sustained decline in the rate of price increases.",
+        "Housing and medical care costs continue to rise at a pace that outpaces the broader index, maintaining pressure on the aggregate figures.",
+        "Real median household income growth fails to outpace the cumulative price increases of the recent period, keeping the gap between wages and costs wide."
+      ],
+      "whyItMatters": "For median-income households, this path means the 'new normal' is a permanent reduction in purchasing power. Wealth-building through traditional equity strategies becomes less effective as real returns remain low, forcing a longer time horizon or a fundamental shift in how savings are allocated to maintain lifestyle.",
+      "assets": [
+        {
+          "asset": "Equities",
+          "effect": "Real returns remain compressed, with the S&P 500's year-over-year real return staying at its lowest level in the data since April 2025, reducing the pace of wealth accumulation for unhedged investors."
+        },
+        {
+          "asset": "Fixed Income",
+          "effect": "Higher yields, such as the 10-year Treasury yield at its current level, offer better nominal returns for savers but may not fully offset the persistent rise in the cost of living if inflation remains above target."
+        }
+      ],
+      "watch": [
+        "Core CPI and Core PCE Price Index: Do these measures continue to post monthly increases that outpace the broader index, as seen in recent data for housing and medical care?",
+        "Real Median Household Income: Does the growth rate of real median income fail to exceed the one-year change in core inflation, maintaining the cumulative gap?",
+        "Consumer Sentiment: Does the University of Michigan Consumer Sentiment index remain near its lowest levels in the data since May 2026, indicating that the psychological disconnect from official data?"
+      ],
+      "uncertainties": [
+        "The dataset does not provide specific breakdowns of inflation by category for the full five-year period, so the persistence of high costs in specific sectors is supported by recent monthly data but not by long-run aggregates.",
+        "There is no data on the specific composition of household portfolios or the real returns on fixed income assets after adjusting for inflation, only equity real returns, leaving a gap in understanding the full wealth-accumulation picture."
+      ]
+    },
+    {
+      "key": "base-effect-correction",
+      "name": "The Lagging Correction",
+      "role": "alternative",
+      "summary": "The perception gap narrows as base effects fade and wages catch up with the new price level. The slowing rate of inflation eventually translates into a stable cost of living, and consumer sentiment recovers as the psychological disconnect resolves.",
+      "conditions": [
+        "Headline and core inflation rates continue to decelerate, moving closer to the Federal Reserve's 2% target over the next several quarters.",
+        "Real median household income growth accelerates, outpacing the rate of inflation and beginning to close the cumulative gap from the recent period.",
+        "Consumer sentiment indicators show a sustained upward trend, reflecting that personal financial experience is aligning with official data."
+      ],
+      "whyItMatters": "For consumers who have been trading down and reducing discretionary purchases, this path offers a return to pre-inflation consumption norms. It allows households to resume wealth-building strategies with greater confidence, as the risk-reward calculus for investment improves with stable prices and rising real income.",
+      "assets": [
+        {
+          "asset": "Equities",
+          "effect": "Real returns on the S&P 500 could expand as the year-over-year real return, currently at its lowest since April 2025, recovers if nominal growth outpaces a lower inflation rate."
+        },
+        {
+          "asset": "Consumer Discretionary",
+          "effect": "Sectors tied to discretionary spending may see a rebound as consumers feel less financially squeezed and return to normal spending patterns."
+        }
+      ],
+      "watch": [
+        "Headline CPI: Does the one-year change in the Consumer Price Index show a consistent downward trend, moving from its current level toward the 2% target?",
+        "Real Median Household Income: Does the one-year change in real median income exceed the one-year change in core inflation, signaling that wages are catching up?",
+        "Consumer Sentiment: Does the University of Michigan Consumer Sentiment index move decisively above its lowest point in the data since May 2026, indicating a shift in consumer psychology?"
+      ],
+      "uncertainties": [
+        "This scenario assumes that the current deceleration in inflation is a temporary base effect rather than a structural shift, which is not directly supported by the long-run category data in the dataset.",
+        "The dataset does not include data on consumer saving rates over time, making it difficult to quantify whether the shift in saving habits is a temporary response or a permanent change in behavior."
+      ]
+    },
+    {
+      "key": "stagflationary-squeeze",
+      "name": "The Stalled Recovery",
+      "role": "alternative",
+      "summary": "A path the argument would not predict: inflation fails to decelerate further and instead re-accelerates, while wage growth stagnates. This creates a worse version of the current squeeze, where the perception gap widens rather than narrows, and wealth accumulation is severely impaired.",
+      "conditions": [
+        "Headline and core inflation rates stop declining and begin to rise again, driven by a resurgence in sticky costs or new supply-side shocks.",
+        "Real median household income growth slows or turns negative, as seen in the recent one-year change for California, widening the gap between wages and costs.",
+        "Interest rates remain elevated or rise further, as the 10-year Treasury yield moves above its highest point in the data since October 2026, increasing the cost of borrowing and investment."
+      ],
+      "whyItMatters": "For households, this path represents a significant deterioration in financial well-being. The combination of rising costs and stagnant income forces deeper cuts to spending and savings, potentially leading to a prolonged period of financial stress and a breakdown in consumer confidence that could have broader economic consequences.",
+      "assets": [
+        {
+          "asset": "Equities",
+          "effect": "Real returns on the S&P 500 could turn negative if nominal price growth is outpaced by a re-acceleration in inflation, eroding the value of investments for wealth-building."
+        },
+        {
+          "asset": "Fixed Income",
+          "effect": "While nominal yields on the 10-year Treasury would be high, the real return on these assets could be negative if inflation outpaces the yield, making them a poor store of value."
+        }
+      ],
+      "watch": [
+        "Headline CPI: Does the one-year change in the Consumer Price Index reverse its downward trend and begin to increase, signaling a re-acceleration in inflation?",
+        "Real Median Household Income: Does the one-year change in real median income turn negative or show a significant slowdown, as seen in the recent data for California?",
+        "10-Year Treasury Yield: Does the yield move above its highest point in the data since October 2026, indicating that the market is pricing in a more persistent inflation problem?"
+      ],
+      "uncertainties": [
+        "This scenario is a counterfactual to the current trend of decelerating inflation, and the dataset does not provide evidence to support a re-acceleration in the near term.",
+        "The causal link between elevated interest rates and a re-acceleration of inflation is complex and not directly supported by the data, which shows rates and inflation moving in tandem but not one causing the other."
+      ]
+    }
+  ],
+  "attention": {
+    "required": true,
+    "reasons": [
+      "The dataset does not provide specific breakdowns of inflation by category (e.g., food, housing, medical) for the full five-year period, only the aggregate core and headline figures. The persistence of high costs in specific categories is supported by recent monthly data (S8, S10) but not by long-run aggregates, which limits the ability to fully support the 'structural reset' scenario.",
+      "There is no data on the specific composition of household portfolios or the real returns on fixed income assets (bonds) after adjusting for inflation, only equity real returns. This gap makes it difficult to provide a complete picture of the wealth-accumulation impact across different asset classes in the scenarios.",
+      "The dataset does not include data on consumer saving rates over time, only the current rate from S2, making it difficult to quantify changes in saving habits over the five-year period and to fully support the narrative of a structural shift in consumer behavior."
+    ]
+  }
+}

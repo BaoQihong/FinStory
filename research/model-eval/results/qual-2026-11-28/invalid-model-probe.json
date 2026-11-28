@@ -1,0 +1,8 @@
+{
+ "httpStatus": 404,
+ "errorKind": "http",
+ "errorDetail": "{\"message\":\"Model \\\"Seshat-Nonexistent-Model-Probe\\\" does not exist\"}",
+ "ok": false,
+ "echoedModel": null,
+ "content": ""
+}

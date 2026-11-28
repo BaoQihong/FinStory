@@ -1,0 +1,50 @@
+{
+  "kicker": "Inflation",
+  "headline": "Inflation Is Falling, but Your Paycheck Still Feels Small",
+  "dek": "Official inflation numbers are trending down, yet the cumulative price hikes of the last five years have permanently outpaced wage growth, leaving households stuck in a cost-of-living gap that won't close on its own.",
+  "keyPoints": [
+    "While inflation rates are moderating, cumulative price increases have far outstripped real wage growth since 2020.",
+    "A persistent perception gap exists because essential costs like housing and healthcare remain sticky.",
+    "The erosion of real income is compressing real returns for everyday investors, complicating traditional wealth building."
+  ],
+  "blocks": [
+    {
+      "type": "p",
+      "text": "Official data says inflation is cooling. Headline CPI sat at {cpiHeadlineChg1y} over the past year, and core PCE was {corePCEChg1y} — numbers that suggest the worst of the price spikes are behind us."
+    },
+    {
+      "type": "p",
+      "text": "But for the median household, the math doesn't feel like it's improving. The problem is that inflation rates measure the speed of price increases, not the level. Prices aren't falling; they're just rising more slowly. After five years of cumulative increases, the damage to purchasing power is baked in."
+    },
+    {
+      "type": "p",
+      "text": "The numbers confirm a widening gap. Since 2020, core CPI rose {cpiCoreChg5y}, while real median household income grew only {realMedianIncomeChg5y}. Prices moved much faster than paychecks."
+    },
+    {
+      "type": "p",
+      "text": "This disconnect shows up clearly in consumer sentiment, which fell {consumerSentimentChg5y} over five years. People aren't misreading the data — they're experiencing a structural loss of affordability that a moderating inflation rate doesn't fix."
+    },
+    {
+      "type": "pullquote",
+      "text": "The problem is that inflation rates measure the speed of price increases, not the level. Prices aren't falling; they're just rising more slowly."
+    },
+    {
+      "type": "p",
+      "text": "The squeeze extends to wealth building. The S&P 500's real return fell by {sp500RealReturnChg1y} over the last year, meaning traditional investments are doing less heavy lifting for savers trying to recover lost ground."
+    },
+    {
+      "type": "chart",
+      "chartId": "incomeVsInflation",
+      "question": "How does income keep pace with inflation?",
+      "takeaway": "Real median household income has remained relatively flat compared to the cumulative rise in price indices over the same period."
+    },
+    {
+      "type": "p",
+      "text": "The central question for households is no longer whether inflation will peak, but whether real incomes can recover enough to close the gap. With housing and services remaining sticky, the cost of living has shifted to a higher plateau, and wages are lagging behind."
+    }
+  ],
+  "attention": {
+    "required": false,
+    "reasons": []
+  }
+}

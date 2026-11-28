@@ -1,0 +1,21 @@
+{
+  "angle": "The apparent disconnect between falling inflation and the continued feeling of high costs, and what that means for household financial planning and wealth accumulation.",
+  "questions": [
+    "How far have inflation rates actually fallen, and what do the latest data show about the pace of disinflation?",
+    "What factors explain why everyday costs still feel high even as headline inflation declines?",
+    "How are households adjusting their spending, saving and debt decisions in response to the current inflation environment?",
+    "What do financial planners and economists say about the best strategies for ordinary people to build wealth in this environment?"
+  ],
+  "indicators": [
+    "US CPI",
+    "US core inflation",
+    "UK CPI",
+    "UK core inflation",
+    "US 10-year Treasury yield",
+    "UK Gilts yield",
+    "US 30-year mortgage rate",
+    "UK base rate"
+  ],
+  "outlook": "The Outlook section should explore the conditions under which the feeling of high costs persists despite falling inflation, and the conditions that could lead to a genuine reduction in household financial pressure. It should also consider how different wealth-building strategies perform under varying inflation and interest rate scenarios.",
+  "premise": "The idea assumes that inflation is coming down and that everyday costs still feel high. Research should first establish whether both of these are supported by current data and what the latest evidence shows about the relationship between official inflation measures and perceived costs."
+}

@@ -1,0 +1,117 @@
+<<<REASONING (reasoning)>>>
+Let me write the article. Need 900-1200 words. Headline, dek, sections: The Story, Macro, Analytics, Outlook. Use only fact sheet figures exactly. Careful: don't derive figures. E.g., "pay has more than kept pace" — 33.2 vs 29.8 is a comparison from fact sheet, allowed since both figures listed; the brief itself says "on average, pay has more than kept pace with prices". That's fine as a stated comparison, not a derived magnitude. Avoid saying "3.4 percentage points" — that's derived.
+
+Also "hourly earnings grew 3.2% — slower than prices (3.7%)" — that's a comparison of two listed figures, fine.
+
+Avoid em dashes mostly (at most one or two per section). Hmm, "at most one or two per section" — I'll use very few, maybe a couple total.
+
+Careful with the mortgage rate: 2.74% January 2021 vs 7.33% October 2026. Don't say "nearly tripled" — that's a derived magnitude? "tripled" would be a figure derived. Avoid. Say "a household that took out a mortgage in January 2021 at 2.74% faces 7.33% now."
+
+Argument: the squeeze is about the level of prices and the cost of credit, not the rate of change.
+
+Structure:
+- Headline: something specific. "The Rate Fell. The Bill Didn't." Maybe "Inflation Fell. The Prices Didn't." Good.
+- Dek: one or two sentences.
+
+Story: start with a specific number that surprises — the 29.8% vs 33.2%: pay has outrun prices, yet sentiment is 48. The contradiction. Then the mortgage rate 2.74% → 7.33%. The argument: the "inflation is falling" story was about the rate; households live with the level; and the cost of borrowing never came back down. Now inflation is rising again.
+
+Macro: the evidence. 2.4% January 2026 low, 3.7% September 2026, up from 3.0%. Core 2.6% — rise concentrated in food and energy. Earnings 3.2% vs 3.7% — real pay falling again. Mortgage 6.25% → 7.33%. Fed 3.63% held through August, now 3.88%. Spending 2.5% real, saving rate 4.9% → 4.1%. Sentiment 48, 71.7 January 2025, low 44.8 May 2026. Unemployment 4.1%. Use the Michigan quote here.
+
+Analytics: mechanism. Price level vs rate; nominal vs real; lock-in of past borrowing costs into the price of anything bought on credit; spending financed by lower saving. Where the causal claim is weak: no income-group breakdown, doesn't prove mortgage rates cause sentiment slump. Use Zandi quote? Zandi quote is about housing contributing to CPI — could fit in Macro. The trading-down quote fits Analytics (downstream consequences for specific groups — behaviour change). Careful: the quote says "housing" contributed to the CPI reading; that's a retrieved source. I can use it in Macro with attribution, noting it's a claim about the September reading. But brief says core is 2.6% and rise concentrated in food and energy. Hmm, Zandi's quote about housing being the largest contributor to "Tuesday's CPI report" — that could conflict. Actually it's a verified quote; I can use it carefully, or skip. Maybe skip Zandi to avoid contradicting the brief. Actually it might be usable in Analytics as a caution: the composition of the index matters. Hmm, risky. I'll skip Zandi, or use it in a way that doesn't contradict: "Mark Zandi of Moody's Analytics, quoted by CNBC, singled out housing as 'perhaps the largest contributor'..." Actually the quote is "Perhaps the largest contributor to the outsized inflation reading in Tuesday's CPI report was housing, Zandi said." I could use it to note that shelter costs feed into the index and are the slow-moving part. But brief says core is 2.6% and rise concentrated in food and energy — implying housing isn't the driver. I'll skip it to keep coherence. Two quotes is fine.
+
+Outlook: conditional paths. What would tell us which is unfolding: whether core stays at 2.6% while food and energy fade; whether the saving rate keeps falling (4.1% has a floor); whether the Fed's 3.88% holds; whether sentiment recovers above 44.8/48. Signposts concrete.
+
+End: something worth leaving on. Maybe: the thing to watch is not the headline rate but whether the level of credit costs ever comes down — and the saving rate is the buffer that tells you how long households can keep absorbing it.
+
+Word count target ~1,050.
+
+Let me draft.
+
+Headline: "# The Rate Came Down. The Bill Didn't."
+
+Dek: "Headline inflation fell to 2.4% this year and households still feel worse off than they did in 2025. The reason is that prices never went back, and the cost of borrowing them never did either."
+
+Hmm "prices never went back" — fine.
+
+Story section (no subhead needed? Style says subheads only if they genuinely help. Seshat sections have purposes; I'll use three subheads: The story / The numbers / ... Actually maybe skip subheads entirely and let paragraphs move. But 1,100 words with clear section purposes — subheads could help. I'll use three: "The story", "What the numbers say", "The mechanism", "What to watch". Hmm, that's mechanical. Maybe two or none. I'll use minimal subheads — maybe none, letting the prose move. Actually the guide warns against "bullet-point thinking inside prose: subheads and lists where an argument should be." I'll use no subheads, or maybe one. Let's do none and rely on transitions. That's cleaner and shows craft.
+
+Draft:
+
+Para 1: Start specific. "In January 2021 the average 30-year fixed mortgage carried a rate of 2.74%. In October 2026 it carried 7.33%." Then: "That single pair of numbers explains more about how households feel than any inflation report published since."
+
+Careful with "explains more... than any" — that's an assertion, fine as argument.
+
+Para 2: The contradiction: prices up 29.8% since January 2020, average hourly earnings up 33.2%. On average pay has more than kept pace. Yet sentiment 48 in October 2026, against 71.7 in January 2025.
+
+Para 3: The argument. "Inflation is falling" was always a claim about a rate; households live with a level. 3.7% in the year to September 2026 doesn't undo the 29.8%. And the part of the bill that did not fall at all is the cost of credit.
+
+Para 4: And now the rate is rising again. 2.4% January 2026 low → 3.7% September 2026, from 3.0% a year earlier. So the relief that was supposed to arrive has reversed.
+
+Macro paras:
+- Core 2.6%, so the rise is concentrated in food and energy — the things bought weekly. Michigan quote.
+- Earnings 3.2% vs 3.7%: pay losing ground again, after the catch-up.
+- Borrowing: mortgage 6.25% Oct 2025 → 7.33% Oct 2026; Fed held 3.63% May–August, now 3.88%.
+- Spending 2.5% real, saving 4.9% → 4.1%. Unemployment 4.1%, so not a jobs story.
+
+Analytics:
+- Mechanism: rate vs level; nominal vs real; the lock-in. A household with a 2.74% mortgage has little reason to move; the price of the next rung is set at 7.33%. That's a lock-in that constrains supply... careful, style guide example used "people who refinanced at the bottom have little reason to sell". I can use that reasoning but shouldn't copy verbatim. Fine.
+- Where the causal claim is weak: no income-group or renter/owner breakdown; can't prove mortgage rates cause the sentiment slump; the correlation between price sentiment and overall sentiment is suggestive, not proof.
+- Downstream: trading-down quote. "Primarily, consumers started trading down, but as inflation's impact on consumers persisted, broader behaviors started to change; these included less frequent purchases, shifting from restaurants to eating at home" — Consumer-behaviour research note. Attribute as "a consumer-behaviour research note".
+- Saving rate as buffer.
+
+Outlook:
+- Path A: food and energy fade, core stays 2.6%, headline drifts back. Signpost: monthly core prints, energy prices.
+- Path B: the rise broadens beyond food and energy — that's when the Fed's 3.88% has to move and the mortgage rate with it.
+- The saving rate: 4.1% can't fall forever; spending 2.5% is being part-funded by it. Watch whether spending holds when saving stops falling.
+- Sentiment: 48 vs the 44.8 May low. Watch whether it breaks that low with unemployment at 4.1%.
+- End: the level is the thing. Something like: "The number to watch is not the one in the inflation headline. It is the one on the mortgage offer, which has not come down, and the saving rate, which is the only thing standing between households and the level they keep being told has stopped rising."
+
+Let me be careful about "which is the only thing standing" — overclaim. Adjust.
+
+Also avoid "It's not X, it's Y" formula. Avoid triples.
+
+Word count check as I go. Let me write it out properly.
+
+Draft:
+
+# The Rate Came Down. The Bill Didn't.
+
+*Inflation has fallen a long way from its peak and households still say they are worse off than they were a year ago. The explanation is in two numbers: 2.74% and 7.33%.*
+
+Hmm — "fallen a long way from its peak" — fact sheet doesn't give a peak. Avoid. Rewrite dek: "Headline inflation fell to 2.4% in January and households still feel poorer than they did a year ago. The reason is that prices never came back down, and the cost of borrowing never did either."
+
+Careful: "feel poorer than they did a year ago" — sentiment 48 vs? We have October 2025 saving rate but not sentiment a year ago. We have 71.7 in January 2025. So say "still feel worse off than they did in early 2025."
+
+Dek: "Headline inflation fell to 2.4% in January 2026, and households still feel worse off than they did in early 2025. Prices never came back down. Neither did the cost of borrowing."
+
+Good.
+
+Now body.
+
+P1: "In January 2021, the average 30-year fixed mortgage rate was 2.74%. In October 2026, it was 7.33%. Between those two dates sits the whole of the argument about why American households say they are struggling when the inflation figures say they should not be."
+
+Hmm "American" — fact sheet doesn't specify country but CPI, Fed, Michigan — clearly US. Fine.
+
+P2: "The standard measure of the squeeze is the price level. Consumer prices are up 29.8% since January 2020. Average hourly earnings are up 33.2% over the same period, which means that on average, and before taxes and everything else, pay has more than kept pace with prices. This is the fact that gets left out of most conversations about affordability, and it is true. It is also not much comfort."
+
+P3: "Because the inflation rate and the price level are different things, and households live with the second one. The rate falling from 3.0% in the year to September 2025 to 2.4% in the year to January 2026 did not remove a single dollar from anyone's grocery bill; it only slowed the rate at which the bill was growing. ..."
+
+Careful "did not remove a single dollar" — rhetorical, fine, not a figure.
+
+P4: "Then the rate turned back up. In the 12 months to September 2026 consumer prices rose 3.7%, up from 3.0% a year earlier and well above the 2.4% low of January. The relief that households were promised for 2026 has not arrived; the thing it was meant to relieve has got worse."
+
+Macro section:
+
+P5: "The composition matters. Core inflation, which strips out food and energy, was 2.6% in the year to September 2026. So the acceleration is concentrated in the two categories people buy most often and notice most sharply. The University of Michigan's Surveys of Consumers has been blunt about which way that cuts: "Since mid-2022, consumer sentiment has been moving more closely with sentiment regarding higher prices than with sentiment regarding income." Its index stood at 48 in October 2026, against 71.7 in January 2025 and a low of 44.8 in May."
+
+Hmm, "blunt about which way that cuts" — the quote is about sentiment moving with prices rather than income. Fine.
+
+P6: "Income is the weaker half of the story now anyway. Average hourly earnings rose 3.2% in the 12 months to September 2026, slower than prices at 3.7%. The catch-up that showed up in the cumulative figures has stalled in the most recent year: the average worker's pay is again losing purchasing power, month by month, in small amounts that are easy to dismiss individually and hard to dismiss in aggregate."
+
+Hmm "month by month" — we only have annual figures. Adjust: "in small amounts that are easy to dismiss individually and harder to dismiss over a year."
+
+P7: Borrowing. "Borrowing costs have moved the other way. The 30-year fixed mortgage rate was 6.25% in October 2025 and 7.33% in October 2026, which is the wrong direction for anyone trying to buy. The Federal Reserve held its policy rate at 3.63% from May to August 2026 and has since raised it to 3.88%."
+
+Careful: fact sheet says "3.88% — federal funds rate, October 2026 (it was 3.63% from May to August 2026 and has risen since)". So "held at 3.63% from May to August 2026 and has since raised it to 3.88%" is accurate
+<<<END REASONING>>>
+

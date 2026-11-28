@@ -1,0 +1,103 @@
+{
+  "title": "The Great Reconciliation, or the Permanent Squeeze",
+  "intro": "The question left hanging is whether the gap between official inflation and personal experience will narrow as base effects fade and wages catch up, or whether it will persist due to structural cost increases in housing and services. The answer will determine whether the current financial squeeze is a temporary adjustment or a permanent shift in the economic landscape.",
+  "scenarios": [
+    {
+      "key": "reconciliation",
+      "name": "The Great Reconciliation",
+      "role": "central",
+      "summary": "Inflation continues to moderate, and real wage growth accelerates, closing the gap between official data and personal experience. Consumer sentiment recovers as the cost of living stabilizes.",
+      "conditions": [
+        "Core CPI and Core PCE fall below 2% for several consecutive months.",
+        "Real median household income growth exceeds core inflation for at least two quarters.",
+        "Housing and medical care inflation rates align with the broader index."
+      ],
+      "whyItMatters": "Households would feel less financially squeezed, potentially leading to increased consumer spending and investment. This could support a broader economic recovery.",
+      "assets": [
+        {
+          "asset": "Equities",
+          "effect": "Real returns could improve as inflation moderates and corporate earnings stabilize."
+        },
+        {
+          "asset": "Fixed Income",
+          "effect": "Bond yields might decline, making fixed-income investments more attractive."
+        }
+      ],
+      "watch": [
+        "Monthly core CPI and PCE reports showing a sustained decline.",
+        "Quarterly real median household income data indicating growth above inflation.",
+        "Consumer sentiment indices recovering towards pre-2022 levels."
+      ],
+      "uncertainties": [
+        "Whether wage growth can sustainably outpace inflation without triggering new inflationary pressures.",
+        "The potential for external shocks (e.g., geopolitical events, supply chain disruptions) to disrupt the trend."
+      ]
+    },
+    {
+      "key": "persistent_squeeze",
+      "name": "The Permanent Squeeze",
+      "role": "alternative",
+      "summary": "Inflation moderates but remains above target, and real wage growth stagnates, leaving consumers perpetually feeling squeezed. Structural cost increases in housing and services continue to outpace income growth.",
+      "conditions": [
+        "Core CPI and Core PCE stabilize above 2% for an extended period.",
+        "Real median household income growth remains flat or negative.",
+        "Housing and medical care inflation rates persistently exceed the broader index."
+      ],
+      "whyItMatters": "Households would continue to feel financially strained, potentially leading to a prolonged period of reduced consumer spending and investment. This could weigh on economic growth and asset returns.",
+      "assets": [
+        {
+          "asset": "Equities",
+          "effect": "Real returns could remain compressed as inflation erodes gains and consumer spending stays subdued."
+        },
+        {
+          "asset": "Fixed Income",
+          "effect": "Bond yields might remain elevated, reducing the attractiveness of fixed-income investments."
+        }
+      ],
+      "watch": [
+        "Monthly core CPI and PCE reports showing persistent inflation above 2%.",
+        "Quarterly real median household income data indicating stagnation or decline.",
+        "Consumer sentiment indices remaining low or declining further."
+      ],
+      "uncertainties": [
+        "Whether policymakers can effectively manage inflation without causing a recession.",
+        "The potential for structural economic shifts (e.g., automation, demographic changes) to exacerbate income inequality."
+      ]
+    },
+    {
+      "key": "stagflationary_spiral",
+      "name": "The Stagflationary Spiral",
+      "role": "alternative",
+      "summary": "Inflation re-accelerates while economic growth stalls, creating a challenging environment for both consumers and investors. This scenario would be a significant departure from the current trend.",
+      "conditions": [
+        "Core CPI and Core PCE begin to rise again, exceeding 3%.",
+        "Economic growth indicators (e.g., GDP, employment) show signs of stagnation or decline.",
+        "Consumer and business confidence deteriorate sharply."
+      ],
+      "whyItMatters": "Households would face rising costs with limited income growth, leading to significant financial stress. This could trigger a broader economic downturn and asset market sell-off.",
+      "assets": [
+        {
+          "asset": "Equities",
+          "effect": "Real returns could turn negative as inflation outpaces nominal gains and economic growth stalls."
+        },
+        {
+          "asset": "Fixed Income",
+          "effect": "Bond yields might rise sharply, reducing the value of existing bond holdings."
+        }
+      ],
+      "watch": [
+        "Monthly core CPI and PCE reports showing a clear upward trend.",
+        "Quarterly GDP and employment data indicating economic stagnation or contraction.",
+        "Consumer and business confidence indices declining sharply."
+      ],
+      "uncertainties": [
+        "Whether policymakers can effectively address both inflation and economic growth simultaneously.",
+        "The potential for external shocks (e.g., geopolitical conflicts, pandemics) to trigger a stagflationary environment."
+      ]
+    }
+  ],
+  "attention": {
+    "required": false,
+    "reasons": []
+  }
+}

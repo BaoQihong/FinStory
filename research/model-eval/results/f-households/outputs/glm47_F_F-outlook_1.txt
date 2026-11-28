@@ -1,0 +1,60 @@
+{
+  "title": "The Long Squeeze vs. The Slow Catch-Up",
+  "intro": "The central tension is not whether inflation will fall, but whether the cumulative price level of the last five years has permanently reset the baseline for household budgets. The path forward depends on whether wages accelerate to close the gap or if the economy settles into a prolonged period of high nominal costs and constrained purchasing power.",
+  "scenarios": [
+    {
+      "key": "wage-catch-up",
+      "name": "The Slow Catch-Up",
+      "role": "alternative",
+      "summary": "Wage growth accelerates and outpaces sticky price increases, gradually restoring the purchasing power lost since 2021.",
+      "conditions": ["Sustained acceleration in real median income growth beyond the current 2.6% annual rate.", "A deceleration in housing costs and medical services inflation back toward the broader index."],
+      "whyItMatters": "Households would see their real living standards improve, allowing for a return to pre-inflation consumption patterns and renewed confidence in long-term wealth accumulation.",
+      "assets": [
+        {
+          "asset": "Equities",
+          "effect": "A recovery in real returns would likely follow as consumer balance sheets strengthen."
+        },
+        {
+          "asset": "Fixed Income",
+          "effect": "Yields could stabilize or fall if the Fed perceives a sustainable balance between wages and prices."
+        }
+      ],
+      "watch": [
+        "Real median household income rising faster than core CPI.",
+        "Monthly readings for owners' equivalent rent and medical services slowing."
+      ],
+      "uncertainties": [
+        "It is unclear if the labor market can sustain the tightness required for higher real wages without re-igniting demand-pull inflation."
+      ]
+    },
+    {
+      "key": "structural-squeeze",
+      "name": "The Long Squeeze",
+      "role": "central",
+      "summary": "Prices stabilize at the new, higher level while wage growth remains modest, locking in the current perception gap and forcing a permanent downshift in discretionary spending.",
+      "conditions": ["Core inflation remains above target but does not accelerate further.", "Real wage growth hovers near current levels, failing to close the 20.7% cumulative price gap of the last five years."],
+      "whyItMatters": "Consumers would continue to feel squeezed, necessitating a structural shift toward saving over spending and potentially altering the risk-reward calculus for retail investors.",
+      "assets": [
+        {
+          "asset": "Equities",
+          "effect": "Real returns may remain compressed if corporate earnings face pressure from reduced consumer discretionary spending."
+        },
+        {
+          "asset": "Housing",
+          "effect": "High mortgage rates could persist, keeping homeownership out of reach for many and suppressing transaction volumes."
+        }
+      ],
+      "watch": [
+        "Consumer sentiment remaining depressed despite moderating inflation data.",
+        "The personal saving rate staying low as households prioritize immediate costs over long-term investment."
+      ],
+      "uncertainties": [
+        "The durability of the 'trading down' behavior is unknown; consumers may eventually accept the new price level, or social friction could intensify."
+      ]
+    }
+  ],
+  "attention": {
+    "required": false,
+    "reasons": []
+  }
+}

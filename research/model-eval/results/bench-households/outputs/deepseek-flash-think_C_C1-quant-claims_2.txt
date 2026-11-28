@@ -1,0 +1,75 @@
+<<<REASONING (reasoning)>>>
+We need answer each claim concise 100-200 words, assess. Need use only stats. Need final exactly one block verdict per claim. Need be careful.
+
+We need analyze each.
+
+C1: Claim Fed rate cuts work: started cutting Sep 2024 and mortgage rates came down. Evidence monthly levels: fed funds 5.33 Jun, 5.33 Aug, 5.13 Sep, 4.83 Oct, 4.64 Nov, 4.48 Dec, 4.33 Jan. Mortgage: 6.92 Jun, 6.5 Aug, 6.18 Sep, 6.43 Oct, 6.81 Nov, 6.72 Dec, 6.96 Jan. So mortgage fell before cuts (Jun-Aug) and around Sep, then rose as Fed continued cutting. Correlation monthly changes mortgage vs fed funds r=0.16 weak; mortgage vs 10-year r=0.83 strong. Levels correlation 0.93 but levels can be spurious/trend. Claim "rate cuts work" not supported by this evidence; mortgage rates more tied to 10-year. Confounding: 10-year reflects expectations, term premium, inflation, growth; mortgage spread. Further analysis: event study around FOMC, control 10-year, spread, longer sample, changes not levels, lag. Verdict not supported.
+
+C2: Stocks inflation hedge: S&P and CPI correlation 0.94. Evidence levels r=0.94, changes r=-0.01. Levels correlation reflects common trends (both rise over time), not hedge. Hedge would require stocks keep pace with inflation / positive correlation of returns with inflation surprises, not levels. Monthly % changes near zero means no systematic short-run relationship. Confounding: trend, monetary policy, growth. Further: real returns vs inflation, inflation surprises, horizons, controls. Verdict not supported (claim as stated). Could be "insufficient"? The claim "proven inflation hedge" based on levels is wrong; evidence doesn't support. Verdict not supported.
+
+C3: Yield curve inverted so recession followed — record perfect. Evidence inversion 2022-07 to 2024-08 26 months. Unemployment 3.4 Apr 2023, 4.2 Aug 2024, 4.5 Nov 2025, 4.1 Oct 2026. Payrolls rising. This sample contains one inversion episode. Does a recession follow? We don't have recession dates, but unemployment low/rising modestly, payrolls growing. One episode cannot establish perfect record. Also inversion ended Aug 2024; by 2026 unemployment 4.1, payrolls higher. No clear recession in data. Claim "record perfect" impossible from one episode. Confounding: small sample, definition/timing, other indicators. Further: historical episodes, recession dating, lead times, controls. Verdict not supported or insufficient evidence? The claim says "so a recession followed" but evidence doesn't show recession; payrolls up, unemployment 4.1. It might not have followed. "record perfect" with one episode is unsupported. Verdict not supported. Need maybe "insufficient evidence" for perfect record? Since sample one inversion, cannot assess record. But claim includes recession followed; data doesn't show recession. I'd say not supported. Need be precise: evidence shows inversion and labor market still expanding; no recession in provided data. One episode cannot prove perfect record. Verdict not supported.
+
+C4: Rising bond yields bad for stocks fixed rule. Evidence correlation S&P returns vs changes in 10y: 2017-2019 r=0.07; 2022-2024 r=-0.5. So relationship unstable, sign flips/varies. In 2022-24 negative moderate, but earlier near zero. "Fixed rule" not supported. Confounding: inflation regime, growth vs inflation shocks, Fed reaction, valuation. Further: rolling correlations, decompose yield changes into real/expected inflation/term premium, control macro. Verdict not supported.
+
+C5: Consumer sentiment doesn't matter for spending: last six months sentiment and spending moved opposite directions. Evidence r=-0.16 n=6. Very small sample, weak correlation, not evidence of no relationship. "Opposite directions" maybe negative but weak. Cannot infer doesn't matter. Confounding: small sample, noise, timing, income/employment. Further: longer sample, lags, controls, significance. Verdict insufficient evidence. Could be not supported? Claim "doesn't matter" from r=-0.16 n=6 is insufficient. Verdict insufficient evidence.
+
+C6: Jobs drive spending: payroll changes and real spending growth correlation 0.78. Evidence full sample r=0.78 n=119; excluding Mar-Jul 2020 r=0.27 n=114. So correlation driven by pandemic outliers. Without those, weak. Claim overstates. Confounding: COVID shock, fiscal transfers, composition. Further: robust regression, outliers, lags, controls, subperiods. Verdict not supported (as general claim). Could be insufficient? The evidence shows full correlation but fragile; claim "jobs drive spending" not supported by robust evidence. Verdict not supported.
+
+Need final exactly one block with JSON. Need ensure no extra after. Each claim 100-200 words. We can write paragraphs. Need mention "holds" etc. Let's craft concise.
+
+Need be careful with C1: "Fed's rate cuts work" maybe mortgage rates did come down from Jun to Sep but not due to cuts. The correlation of changes with fed funds 0.16 weak; with 10-year 0.83. Levels r=0.93 but levels can be trend. Also mortgage rates rose after Sep as Fed cut. So not supported.
+
+C2: levels correlation 0.94 but changes -0.01. A hedge is about returns relative to inflation, not co-trending levels. Not supported.
+
+C3: one inversion episode; unemployment 3.4 to 4.2 to 4.5 to 4.1; payrolls increased. No recession shown. "Perfect record" cannot be established with one episode. Not supported.
+
+C4: r=0.07 vs -0.5. Not fixed. Not supported.
+
+C5: n=6 r=-0.16. Insufficient evidence.
+
+C6: r=0.78 full, 0.27 ex COVID. Not supported.
+
+Need maybe mention "significance levels not given" for C5. Use only stats. Good.
+
+Need final block exactly. The instructions: "End with exactly one block, verdict per claim = ..." So final answer should include assessments then block. Ensure block is last. Use <answers>...</answers>. No markdown? Fine.
+
+Let's write with headings C1 etc. Each ~100-200 words. Need not too long. Desired oververbosity 5. Let's produce.
+
+Need maybe include "what further analysis would settle it" for each. We'll include.
+
+Let's draft:
+
+C1. The claim does not hold as stated. Mortgage rates did fall from 6.92% in June 2024 to 6.18% in September, but much of that move preceded the September cut, and mortgage rates then rose to 6.96% by January 2025 while the fed funds rate kept falling. The change correlations support this: mortgage changes are strongly associated with 10-year yield changes (r=0.83) and only weakly with fed funds changes (r=0.16). The level correlation (0.93) is not evidence of causation; both series can trend and mortgage rates price longer-term expectations. Confounders include inflation expectations, term premia, Fed guidance, and mortgage spreads. Further analysis: event studies around FOMC dates, regressions of mortgage changes on fed funds surprises and 10-year changes, controls for spreads and lags. Verdict not supported.
+
+C2. The claim is not supported. A 0.94 correlation of monthly levels mostly reflects common upward trends in the S&P 500 and CPI over the sample; it does not show that stocks hedge inflation. The relevant test is co-movement of returns with inflation, and monthly percentage changes have r=-0.01, essentially no relationship. A hedge would require stocks to preserve purchasing power when inflation rises, not merely to rise over the same decades as prices. Confounders include trend, monetary policy, growth, and the fact that both series are nonstationary in levels. Further analysis: real returns versus inflation surprises, horizon-specific regressions, controls for growth and rates, and tests using inflation expectations. Verdict not supported.
+
+C3. The claim is not supported by the evidence given. The sample contains one inversion episode, from 2022-07 to 2024-08, so it cannot establish a "perfect" record. The labor-market data do not show a clear recession following the inversion: unemployment was 3.4% in 2023-04, 4.2% in 2024-08, 4.5% in 2025-11, and 4.1% in 2026-10, while payrolls rose from 153,072 thousand to 159,293 thousand. A modest unemployment rise is not enough to confirm recession, and one episode is too small to validate a rule. Confounders include recession dating, lead times, and other shocks. Further analysis: historical inversion episodes with official recession dates, survival/timing analysis, and controls for other indicators. Verdict not supported.
+
+C4. The claim is not supported. The relationship is not a fixed rule: S&P 500 returns and changes in the 10-year yield had r=0.07 in 2017-2019, essentially no linear relationship, but r=-0.5 in 2022-2024. Even the latter is a moderate negative correlation, not a universal law, and the sign/magnitude varies by regime. Confounders include whether yield moves reflect growth, inflation, Fed policy, or term premia; stocks can react differently to each. Further analysis: rolling correlations, decomposition of yield changes into real rates, breakevens, and term premia, plus regressions controlling for macro surprises. Verdict not supported.
+
+C5. The evidence is insufficient. A correlation of -0.16 over only six monthly observations is weak and based on a very small sample; it does not establish that sentiment "doesn't matter" for spending. "Opposite directions" may be noise, and no significance level is provided. Confounders include income, employment, fiscal transfers, timing, and the short window. Further analysis: a longer sample, lagged relationships, controls for income and employment, and formal significance/robustness tests. Verdict insufficient evidence.
+
+C6. The claim is not supported as a general statement. The full-sample correlation of 0.78 is fragile: excluding March-July 2020 reduces it to 0.27 with n=114. That pattern suggests the headline correlation is driven largely by the pandemic shock, when payrolls collapsed and spending collapsed together, rather than by a stable month-to-month jobs-spending relationship. Confounders include fiscal transfers, lockdowns, composition effects, and outliers. Further analysis: robust regressions with outliers handled, lag structures, subperiod stability, and controls for income and transfers. Verdict not supported.
+
+Need final block. Ensure exactly one block. Good.
+
+Need maybe "holds" for each? We say. Good.
+
+Potential issue: C3 "recession followed" maybe not in data. We say not supported. Good.
+
+Need final answer only. Use final.
+<<<END REASONING>>>
+
+C1. The claim does not hold as stated. Mortgage rates did fall from 6.92% in June 2024 to 6.18% in September, but much of that move preceded the September cut, and mortgage rates then rose to 6.96% by January 2025 while the fed funds rate kept falling. The change correlations support this: mortgage changes are strongly associated with 10-year yield changes (r=0.83) and only weakly with fed funds changes (r=0.16). The level correlation (0.93) is not evidence of causation; both series can trend and mortgage rates price longer-term expectations. Confounders include inflation expectations, term premia, Fed guidance, and mortgage spreads. Further analysis: event studies around FOMC dates, regressions of mortgage changes on fed funds surprises and 10-year changes, controls for spreads and lags. Verdict not supported.
+
+C2. The claim is not supported. A 0.94 correlation of monthly levels mostly reflects common upward trends in the S&P 500 and CPI over the sample; it does not show that stocks hedge inflation. The relevant test is co-movement of returns with inflation, and monthly percentage changes have r=-0.01, essentially no relationship. A hedge would require stocks to preserve purchasing power when inflation rises, not merely to rise over the same decades as prices. Confounders include trend, monetary policy, growth, and the fact that both series are nonstationary in levels. Further analysis: real returns versus inflation surprises, horizon-specific regressions, controls for growth and rates, and tests using inflation expectations. Verdict not supported.
+
+C3. The claim is not supported by the evidence given. The sample contains one inversion episode, from 2022-07 to 2024-08, so it cannot establish a "perfect" record. The labor-market data do not show a clear recession following the inversion: unemployment was 3.4% in 2023-04, 4.2% in 2024-08, 4.5% in 2025-11, and 4.1% in 2026-10, while payrolls rose from 153,072 thousand to 159,293 thousand. A modest unemployment rise is not enough to confirm recession, and one episode is too small to validate a rule. Confounders include recession dating, lead times, and other shocks. Further analysis: historical inversion episodes with official recession dates, survival/timing analysis, and controls for other indicators. Verdict not supported.
+
+C4. The claim is not supported. The relationship is not a fixed rule: S&P 500 returns and changes in the 10-year yield had r=0.07 in 2017-2019, essentially no linear relationship, but r=-0.5 in 2022-2024. Even the latter is a moderate negative correlation, not a universal law, and the sign/magnitude varies by regime. Confounders include whether yield moves reflect growth, inflation, Fed policy, or term premia; stocks can react differently to each. Further analysis: rolling correlations, decomposition of yield changes into real rates, breakevens, and term premia, plus regressions controlling for macro surprises. Verdict not supported.
+
+C5. The evidence is insufficient. A correlation of -0.16 over only six monthly observations is weak and based on a very small sample; it does not establish that sentiment "doesn't matter" for spending. "Opposite directions" may be noise, and no significance level is provided. Confounders include income, employment, fiscal transfers, timing, and the short window. Further analysis: a longer sample, lagged relationships, controls for income and employment, and formal significance/robustness tests. Verdict insufficient evidence.
+
+C6. The claim is not supported as a general statement. The full-sample correlation of 0.78 is fragile: excluding March-July 2020 reduces it to 0.27 with n=114. That pattern suggests the headline correlation is driven largely by the pandemic shock, when payrolls collapsed and spending collapsed together, rather than by a stable month-to-month jobs-spending relationship. Confounders include fiscal transfers, lockdowns, composition effects, and outliers. Further analysis: robust regressions with outliers handled, lag structures, subperiod stability, and controls for income and transfers. Verdict not supported.
+
+<answers>{"C1": "not supported", "C2": "not supported", "C3": "not supported", "C4": "not supported", "C5": "insufficient evidence", "C6": "not supported"}</answers>

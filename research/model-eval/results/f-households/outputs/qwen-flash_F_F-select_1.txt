@@ -1,0 +1,171 @@
+{
+  "series": [
+    {
+      "candidate": "C1",
+      "key": "cpiHeadline",
+      "label": "Headline CPI (All Items)"
+    ,
+      "reason": "Primary measure of headline inflation to establish the trend."
+    },
+    {
+      "candidate": "C2",
+      "key": "cpiCore",
+      "label": "Core CPI (Less Food & Energy)"
+    ,
+      "reason": "Alternative inflation measure to compare against headline and identify sticky components."
+    },
+    {
+      "candidate": "C9",
+      "key": "realMedianIncome",
+      "label": "Real Median Household Income (US)"
+    ,
+      "reason": "Measures purchasing power of median households to assess if wages are keeping up with prices."
+    },
+    {
+      "candidate": "C12",
+      "key": "realMedianIncomeNY",
+      "label": "Real Median Household Income (NY)"
+    ,
+      "reason": "Regional contrast: NY income fell while national rose, highlighting geographic disparities in wealth accumulation."
+    },
+    {
+      "candidate": "C14",
+      "key": "realMedianIncomeNC",
+      "label": "Real Median Household Income (NC)"
+    ,
+      "reason": "Regional contrast: NC income rose significantly, showing divergent regional experiences."
+    },
+    {
+      "candidate": "C15",
+      "key": "real10yYield",
+      "label": "10-Year Real Treasury Yield"
+    ,
+      "reason": "Assesses the real return on safe assets, crucial for fixed-income wealth building."
+    },
+    {
+      "candidate": "C24",
+      "key": "sp500",
+      "label": "S&P 500 Index"
+    ,
+      "reason": "Proxy for equity market performance; used to evaluate nominal returns before inflation adjustment."
+    },
+    {
+      "candidate": "C25",
+      "key": "consumerSentiment",
+      "label": "University of Michigan Consumer Sentiment"
+    ,
+      "reason": "Direct measure of consumer confidence to quantify the 'perception gap'."
+    },
+    {
+      "candidate": "C7",
+      "key": "breakeven10y",
+      "label": "10-Year Breakeven Inflation Rate"
+    ,
+      "reason": "Market-based expectation of inflation, useful for comparing perceived vs. expected future inflation."
+    },
+    {
+      "candidate": "C28",
+      "key": "trimmedMeanPCE",
+      "label": "Trimmed Mean PCE Inflation"
+    ,
+      "reason": "Alternative Fed-preferred inflation measure that filters out outliers, providing a cleaner signal of underlying trends."
+    }
+  ],
+  "derived": [
+    {
+      "key": "cpiHeadlineYoY",
+      "op": "yoy",
+      "inputs": [
+        "cpiHeadline"
+      ]
+    ,
+      "label": "Headline CPI YoY Change"
+    ,
+      "reason": "Converts index level to year-over-year percentage change for easier comparison with sentiment and income growth."
+    },
+    {
+      "key": "cpiCoreYoY",
+      "op": "yoy",
+      "inputs": [
+        "cpiCore"
+      ]
+    ,
+      "label": "Core CPI YoY Change"
+    ,
+      "reason": "Converts index level to year-over-year percentage change."
+    },
+    {
+      "key": "sp500YoY",
+      "op": "yoy",
+      "inputs": [
+        "sp500"
+      ]
+    ,
+      "label": "S&P 500 YoY Change"
+    ,
+      "reason": "Nominal equity return for comparison against inflation and real yields."
+    },
+    {
+      "key": "realEquityReturnProxy",
+      "op": "difference",
+      "inputs": [
+        "sp500YoY",
+        "cpiHeadlineYoY"
+      ]
+    ,
+      "label": "Approx. Real Equity Return (Nominal - Headline Inflation)"
+    ,
+      "reason": "Rough estimate of real equity returns to assess wealth accumulation potential."
+    }
+  ],
+  "charts": [
+    {
+      "id": "chart1",
+      "seriesKeys": [
+        "cpiHeadlineYoY",
+        "cpiCoreYoY",
+        "trimmedMeanPCE"
+      ],
+      "from": "2016-11-25",
+      "purpose": "Compare headline, core, and trimmed-mean inflation trends to show that while headline inflation may be falling, core measures remain elevated, supporting the 'sticky prices' narrative."
+    },
+    {
+      "id": "chart2",
+      "seriesKeys": [
+        "consumerSentiment",
+        "cpiHeadlineYoY"
+      ],
+      "from": "2016-11-25",
+      "purpose": "Plot consumer sentiment against headline inflation to visualize the disconnect: sentiment remains low even as inflation declines."
+    },
+    {
+      "id": "chart3",
+      "seriesKeys": [
+        "realMedianIncome",
+        "realMedianIncomeNY",
+        "realMedianIncomeNC"
+      ],
+      "from": "2016-11-25",
+      "purpose": "Show divergent regional trends in real median income, illustrating that the 'wealth squeeze' is not uniform and depends on location."
+    },
+    {
+      "id": "chart4",
+      "seriesKeys": [
+        "real10yYield",
+        "breakeven10y"
+      ],
+      "from": "2016-11-25",
+      "purpose": "Display real yields and inflation expectations to assess the risk-reward environment for fixed-income investors."
+    }
+  ],
+  "unmetNeeds": [
+    {
+      "need": "Specific category-level CPI data (e.g., housing, food, services) to pinpoint drivers of perceived cost persistence.",
+      "why": "Candidate datasets only provide aggregate CPI (All Items) or Core CPI (Less Food/Energy), lacking granular category breakdowns."
+    },
+    {
+      "need": "Direct measure of household savings rate or spending composition shifts.",
+      "why": "No dataset provided for personal savings rate or detailed PCE spending components."
+    }
+  ]
+}

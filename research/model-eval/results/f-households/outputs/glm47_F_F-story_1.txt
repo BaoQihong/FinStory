@@ -1,0 +1,42 @@
+{
+  "kicker": "Cost of Living",
+  "headline": "Why Inflation Feels High Even When the Data Says It Isn’t",
+  "dek": "Official price measures are cooling, but the cumulative hit of the last five years has crushed purchasing power. The gap between headline rates and lived reality is reshaping how households think about wealth.",
+  "keyPoints": [
+    "Headline inflation has slowed, but cumulative price rises over five years have far outstripped real wage growth.",
+    "Consumer sentiment has collapsed, tracking the pain of price levels rather than the improvement in inflation rates.",
+    "Real returns on equities are compressing, weakening the primary engine of household wealth accumulation."
+  ],
+  "blocks": [
+    {
+      "type": "p",
+      "text": "There is a disconnect between what the economic data says and what the grocery store bill feels like. Headline inflation has indeed cooled from the peaks of 2022, with the Consumer Price Index rising {cpiHeadlineChg1y} over the past year. Yet, this statistical deceleration offers little comfort to a median household that has seen prices climb {cpiHeadlineChg5y} over the last five years. The economy is moving past the acute phase of a price shock, but the accumulated damage to purchasing power remains."
+    },
+    {
+      "type": "p",
+      "text": "This is where the official story and the consumer experience diverge. A lower inflation rate only means prices are rising more slowly, not that they are returning to previous levels. For the median household, real income has grown just {realMedianIncomeChg5y} in that same five-year span. When costs rise by {cpiHeadlineChg5y} and the ability to pay rises by only {realMedianIncomeChg5y}, the result is a permanent erosion of lifestyle that a single month’s moderating data cannot fix."
+    },
+    {
+      "type": "chart",
+      "chartId": "incomeVsInflation",
+      "question": "How far has real income fallen behind the cumulative rise in prices?",
+      "takeaway": "Real median income growth has lagged significantly behind the five-year rise in the cost of living."
+    },
+    {
+      "type": "p",
+      "text": "The psychological toll of this math is visible in consumer sentiment, which has fallen {consumerSentimentChg5y} over five years. People do not experience the economy as a percentage change in an index; they experience it as the price of rent, medical care, and a weekly shop staying stubbornly high even as their paychecks fail to catch up. That sentiment gap is not a misunderstanding of the data—it is a rational response to the level of prices, not just the rate of change."
+    },
+    {
+      "type": "p",
+      "text": "The squeeze is now compounding because the tools households use to build wealth are also under pressure. The S&P 500 has delivered a nominal return of {sp500Chg5y} over five years, but the real return—the gain after stripping out inflation—has fallen by {sp500RealReturnChg5y} over that period. Inflation acts as a hidden tax on assets, making it harder for savers to outpace the cost of living even when markets are nominally up."
+    },
+    {
+      "type": "p",
+      "text": "The implication is that the return to a “normal” economy will feel incomplete for a long time. Wages are rising nominally, and asset prices are holding up, but the lead that prices established over the past half-decade is large. Building wealth now requires not just participating in growth, but clawing back lost ground—a much harder, slower task that explains why the mood remains so dour."
+    }
+  ],
+  "attention": {
+    "required": false,
+    "reasons": []
+  }
+}

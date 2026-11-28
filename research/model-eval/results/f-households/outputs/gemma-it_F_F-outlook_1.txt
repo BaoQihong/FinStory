@@ -1,0 +1,62 @@
+{
+  "title": "The Gap Between Data and the Wallet",
+  "intro": "The central tension is whether the current feeling of financial squeeze is a temporary lag in income adjustment or a permanent shift in the cost of living. The outcome depends on whether the 'sticky' costs of housing and healthcare eventually stabilize or create a new, higher floor for household expenses.",
+  "scenarios": [
+    {
+      "key": "structural_squeeze",
+      "name": "The New Cost Floor",
+      "role": "central",
+      "summary": "The disconnect between headline inflation and consumer experience persists because essential costs remain structurally higher, preventing a return to pre-inflation consumption patterns.",
+      "conditions": [
+        "Housing and medical costs continue to outpace the broader index",
+        "Real median household income growth remains sluggish compared to cumulative price increases"
+      ],
+      "whyItMatters": "Median-income households will face a permanent reduction in discretionary spending power, regardless of whether the Federal Reserve hits its inflation target.",
+      "assets": [
+        {
+          "asset": "Equities",
+          "effect": "Potential long-term pressure on consumer-facing companies as 'trading down' becomes a permanent habit."
+        },
+        {
+          "asset": "Real Estate",
+          "effect": "Continued pressure on affordability as mortgage rates remain far above the {mortgageRateLow5y} level."
+        }
+      ],
+      "watch": [
+        "A continued divergence where {cpiHeadlineLatest} falls while housing-specific components of the index remain elevated.",
+        "Consumer sentiment remaining near the {consumerSentimentLow5y} level despite falling headline rates."
+      ],
+      "uncertainties": [
+        "A sudden collapse in housing demand could force a correction in rents and owner-equivalent costs."
+      ]
+    },
+    {
+      "key": "income_catchup",
+      "name": "The Wage Recovery",
+      "role": "alternative",
+      "summary": "The perception gap closes as nominal wage growth accelerates to erase the cumulative loss in purchasing power, restoring consumer confidence.",
+      "conditions": [
+        "Significant acceleration in real median household income growth",
+        "A transition from 'trading down' back to discretionary spending"
+      ],
+      "whyItMatters": "Retailers and service providers would see a recovery in volume as the psychological weight of the 2022 price shocks fades.",
+      "assets": [
+        {
+          "asset": "Equities",
+          "effect": "Improved real returns for discretionary stocks as consumer confidence recovers."
+        }
+      ],
+      "watch": [
+        "A trend of {realMedianIncomeLatest} rising significantly above its current five-year high.",
+        "University of Michigan Consumer Sentiment trending back toward {consumerSentimentHigh5y} levels."
+      ],
+      "uncertainties": [
+        "Aggressive wage growth could trigger a second wave of inflation, prompting further rate hikes."
+      ]
+    }
+  ],
+  "attention": {
+    "required": false,
+    "reasons": []
+  }
+}

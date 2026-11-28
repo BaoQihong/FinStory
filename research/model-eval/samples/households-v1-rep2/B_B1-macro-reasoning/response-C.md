@@ -1,0 +1,56 @@
+<!-- B/B1-macro-reasoning · response C · blind sample -->
+
+# Editorial Memo: Deconstructing the Divergence in Consumer Behavior and Sentiment
+
+The provided data presents a paradox: a period of declining inflation and easing policy rates (from 5.33% in July 2024 to 4.33% by June 2025) coinciding with a collapse in consumer sentiment, yet persisting real consumer spending. The University of Michigan index plummeted from a peak of 74.0 in December 2024 to 60.7 in June 2025, with a trough of 52.2 in the spring. Meanwhile, real consumer spending remained positive throughout, peaking at 3.74% in December 2024 and ending the period at 2.50%.
+
+As we commission this feature, we must move beyond the surface-level observation that "consumers are unhappy but still spending." We need to investigate why the transmission mechanism of monetary policy is behaving asynchronously.
+
+### Competing Explanations
+
+There are three primary frameworks to explain why sentiment is decoupling from spending and inflation.
+
+**1. The "Lagged Pain" Hypothesis**
+In this scenario, the decline in sentiment is a leading indicator of a delayed reaction to the high-rate environment. Consumers may be spending out of necessity or using remaining liquidity, but their psychological outlook is darkening as the cumulative weight of 4%+ interest rates erodes their long-term financial security. 
+*Distinguishing feature:* If this is true, we should see a subsequent drop in real spending and a rise in the unemployment rate as sentiment bottoms out.
+
+**2. The "K-Shaped" Resilience Hypothesis**
+The data shows average hourly earnings growth remaining robust (peaking at 4.21% in March 2025). This suggests that a segment of the population—likely high-earners or those in sectors with strong pricing power—is driving the spending growth, while the "average" consumer (represented by the sentiment index) is feeling the squeeze.
+*Distinguishing feature:* A widening gap between spending in luxury/discretionary categories versus staples.
+
+**3. The "Inflation Psychology" Hypothesis**
+Despite CPI falling from 2.94% to 2.68% over the period, the *experience* of inflation is often sticky. Consumers may be reacting to the absolute price levels of goods rather than the rate of change. The sharp drop in sentiment starting in January 2025 suggests a psychological breaking point where the "cost of living" becomes the dominant narrative, regardless of whether the inflation rate is technically decelerating.
+*Distinguishing feature:* Sentiment remaining low even as CPI continues to drop toward 2%.
+
+### Transmission Channels: Where is the Pressure?
+
+The data suggests that the "blunt instrument" of the federal funds rate is hitting different channels with varying intensity.
+
+*   **The Mortgage Channel:** The 30-year fixed mortgage rate remained stubbornly high, fluctuating between 6.18% and 6.96%. This suggests a "lock-in effect" where homeowners are unable to move or refinance, suppressing housing mobility but potentially insulating them from rate hikes if they hold legacy low-rate mortgages.
+*   **The Savings Channel:** The personal saving rate is volatile and generally low, dipping to 5.1% in December 2024. This indicates that consumers are not building a buffer; they are funding their spending through income or debt rather than accumulated wealth.
+*   **The Labor Channel:** This is the primary stabilizer. With average hourly earnings growth consistently outstripping CPI (e.g., 3.86% earnings vs 2.68% CPI in June 2025), real wages are increasing. This is the likely reason spending has held up despite the sentiment crash.
+
+### Distributional Impacts
+
+The evidence implies a stark divide in economic experience. The "winners" in this data are those whose wages are rising faster than inflation and who are not dependent on new credit. The "losers" are those sensitive to the 10-year Treasury yield and mortgage rates—likely first-time homebuyers and those with floating-rate debt.
+
+The collapse in sentiment (from 74 to 60.7) likely reflects the anxiety of the latter group. The fact that the unemployment rate remained relatively stable (between 4.0% and 4.3%) suggests that the pain is not yet manifesting as job loss, but rather as a decline in "financial wellness" and future expectations.
+
+### Challenging the Conventional Reading
+
+The conventional reading would be that the Fed’s rate cuts (from 5.33% to 4.33%) are working to stabilize the economy. However, this ignores the fact that the 10-year Treasury yield actually *rose* from 3.72% in September 2024 to 4.38% in June 2025.
+
+The market is signaling that long-term inflation expectations or term premiums are rising, even as the Fed lowers the short-term policy rate. This "bear steepening" of the curve means that for the average consumer, the cost of long-term borrowing (mortgages, auto loans) has not meaningfully improved despite the Fed's easing. The "pivot" is a mirage for the household.
+
+### Next Steps: Testable Hypotheses
+
+To turn this into a definitive feature, I want the writer to test the following:
+
+**Hypothesis A: Spending is being driven by the top quintile of earners.**
+*   *Test:* Analyze **Retail Sales by category** (Luxury vs. Discount) and **Census Bureau Household Expenditure** data. If luxury spending is rising while discount spending stalls, the "K-shaped" theory is confirmed.
+
+**Hypothesis B: Consumers are substituting savings for spending to maintain living standards.**
+*   *Test:* Cross-reference the **Personal Saving Rate** with **Household Debt-to-Income ratios** and **Credit Card Delinquency rates**. If spending is holding up while delinquencies rise, the spending is "hollow" and funded by debt.
+
+**Hypothesis C: The sentiment crash is tied to housing unaffordability rather than general inflation.**
+*   *Test:* Compare the **University of Michigan sentiment sub-indices** (specifically expectations regarding housing) against the **Case-Shiller Home Price Index**. If sentiment correlates more strongly with home prices than with the CPI, the story is about a housing crisis, not a general economic downturn.

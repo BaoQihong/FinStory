@@ -1,0 +1,84 @@
+{
+  "fixes": [
+    {
+      "path": "story.blocks[1].text",
+      "text": "The data confirms that price growth has indeed slowed. Headline CPI rose {cpiHeadlineChg1y} over the past year, while core PCE rose {corePCEChg1y}. These figures represent a clear moderation from the 2022 highs. However, for the average consumer, the rate of change is less relevant than the total cost of maintaining their standard of living. The price level itself remains elevated, with the CPI index at {cpiHeadlineLatest}, the highest in the data since {cpiHeadlineHistoryStart}."
+    },
+    {
+      "path": "story.blocks[4].text",
+      "text": "This financial squeeze is visible in consumer behavior. The University of Michigan Consumer Sentiment Index has fallen by {consumerSentimentChg5y:abs} over five years, reaching {consumerSentimentLatest} in October 2026. This is the lowest level in the data since {consumerSentimentLowAll.date}. Sentiment is now more closely tied to perceptions of high prices than to income growth, suggesting that consumers are reacting to their lived experience rather than the official statistics."
+    },
+    {
+      "path": "macro.intro",
+      "text": "While the rate of inflation has cooled from its 2022 peaks, the level of prices remains at its highest point in the data since {cpiHeadlineHistoryStart}. This creates a disconnect: the speed of price increases is slowing, but the destination—your cost of living—is still significantly higher than where you started."
+    },
+    {
+      "path": "macro.indicators[0].note",
+      "text": "Headline CPI is at its highest level in the retrieved history since {cpiHeadlineHistoryStart}, confirming that while the pace of inflation has moderated, the absolute cost of goods and services remains elevated."
+    },
+    {
+      "path": "macro.charts[0].takeaway",
+      "text": "Both headline and core inflation indices have reached their highest levels in the retrieved history since {cpiHeadlineHistoryStart}, with the core index showing a persistent upward trend that outpaces the modest growth in real median income."
+    },
+    {
+      "path": "macro.explainers[0].text",
+      "text": "Headline CPI has slowed to {cpiHeadlineChg1y} year-over-year, down from its 2022 peaks, but the index itself is at its highest level since {cpiHeadlineHistoryStart}. This means prices are still rising, just at a slower pace, which keeps the cost of living high even as the 'inflation rate' falls."
+    },
+    {
+      "path": "macro.explainers[1].text",
+      "text": "Over the past five years, core CPI has risen by {cpiCoreChg5y}, while real median household income has grown by only {realMedianIncomeChg5y}. This gap means that the purchasing power of the median household has been significantly eroded, even as nominal wages have increased."
+    },
+    {
+      "path": "macro.explainers[2].text",
+      "text": "Consumer sentiment has fallen by {consumerSentimentChg5y:abs} over five years, reaching its lowest level in the retrieved history since {consumerSentimentLowAll.date}. This decline is more closely correlated with perceptions of high prices than with income growth, indicating a psychological disconnect from official economic data."
+    },
+    {
+      "path": "analytics.chain.steps[0].text",
+      "text": "The Federal Reserve's response to high inflation led to significant increases in interest rates, pushing the 10-year Treasury yield from {t10yYieldFiveYearsAgo} five years ago to {t10yYieldLatest} today. This increase in the cost of capital directly impacts borrowing costs for households and businesses."
+    },
+    {
+      "path": "analytics.chain.steps[2].text",
+      "text": "The S&P 500's year-over-year real return has fallen by {sp500RealReturnChg1y:abs} over the last year, reducing the effectiveness of traditional wealth-building strategies. This compression of real returns makes it harder for households to build wealth through equity investments, even as nominal stock prices rise."
+    },
+    {
+      "path": "analytics.comparisons[0].text",
+      "text": "While headline inflation has moderated from its 2022 peaks, the current level of the CPI index is still at its highest in the retrieved history since {cpiHeadlineHistoryStart}. This suggests that the economic normalization process is slower than the deceleration in the inflation rate might imply."
+    },
+    {
+      "path": "analytics.implications.items[0].shows",
+      "text": "The S&P 500's real return has compressed significantly, with the year-over-year real return falling by {sp500RealReturnChg1y:abs} over the last year."
+    },
+    {
+      "path": "analytics.implications.items[1].shows",
+      "text": "The 10-year Treasury yield has risen to {t10yYieldLatest}, providing higher nominal yields for bond investors compared to the past five years."
+    },
+    {
+      "path": "analytics.implications.items[2].shows",
+      "text": "Mortgage rates have risen to {mortgageRateLatest}, significantly higher than the {mortgageRateFiveYearsAgo} seen five years ago, making home ownership more expensive."
+    },
+    {
+      "path": "outlook.scenarios[0].summary",
+      "text": "Inflation continues its gradual descent toward the Federal Reserve's target while real wage growth stabilizes, allowing the perception gap to narrow. This scenario assumes that the 'sticky' components of inflation—housing and services—will eventually yield to monetary policy and base effects."
+    },
+    {
+      "path": "outlook.scenarios[0].watch[0]",
+      "text": "The trajectory of {cpiHeadlineChg1y} and {cpiCoreChg1y} relative to the Federal Reserve's target."
+    },
+    {
+      "path": "outlook.scenarios[1].watch[0]",
+      "text": "Whether {cpiCoreChg1y} shows signs of stalling above the Federal Reserve's target."
+    },
+    {
+      "path": "outlook.intro",
+      "text": "The gap between official inflation data and the lived experience of high costs reflects a structural lag. As base effects fade and wages attempt to catch up, the next twelve months will determine whether this divergence narrows into relief or calcifies into a new, higher-cost normal. For households, the stakes involve more than just sentiment—they hinge on whether real returns on savings can finally outpace the erosion of purchasing power."
+    },
+    {
+      "path": "analytics.chain.steps[1].text",
+      "text": "Housing and medical care remain key drivers of persistent inflation, with owners' equivalent rent and medical services posting monthly increases that outpace the broader index. These sticky costs are not easily reduced by policy changes, leading to a prolonged period of high living expenses."
+    },
+    {
+      "path": "analytics.chain.steps[3].text",
+      "text": "Consumers are altering spending habits by trading down and reducing discretionary purchases, a structural shift that complicates the return to pre-inflation consumption norms. This behavior change is driven by the gap between official inflation data and the personal cost-of-living experience."
+    }
+  ]
+}

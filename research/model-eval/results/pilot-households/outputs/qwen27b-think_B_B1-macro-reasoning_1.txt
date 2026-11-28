@@ -1,0 +1,374 @@
+<<<REASONING (reasoning)>>>
+We need answer user's request. Need produce 700-1100 words clear prose headings allowed. Need investigate pattern as senior economics editor. Need not narrate table. Need competing explanations, channels, affected differently, conventional reading wrong/miss, testable hypotheses and datasets. Need precise evidence vs inference. Need likely no invented data. We can use given table and general knowledge. Need maybe mention limitations: monthly averages, 12-month changes, no nominal GDP, credit, housing, income distribution, fiscal, tariffs? Dates include 2025-06, maybe hypothetical? We can treat as evidence. Need be careful: inflation declining (CPI 2.94 to 2.68, core 3.23 to 2.91), policy rate elevated but cut from 5.33 to 4.33, mortgage 6.5-6.96, 10y 3.72-4.63. Unemployment stable 4.0-4.3. Sentiment collapsed from 74 to 52.2 then 60.7. Saving rate 5.5-6.2. AHE 3.86-4.21. Real spending 12m 2.44-3.74, slowing. Need identify story: maybe not simple recession; inflation cooling but rates still high, confidence weak due to uncertainty/income distribution? Could be "soft landing with confidence drag" vs "demand destruction emerging" vs "policy misperception / rate pass-through incomplete" vs "fiscal/wealth effects / tariff uncertainty". Need distinguish with data.
+
+Need think deeply.
+
+Given pattern: inflation down, policy elevated, spending held up, confidence deteriorated. Competing explanations:
+1. Disinflation is real, labor market cooling modestly, but confidence is backward-looking/uncertainty (tariffs, fiscal, AI, geopolitical) not current hardship. Spending supported by wages, savings, fiscal transfers, credit. If so, confidence should recover as uncertainty clears; spending resilient; no broad credit deterioration; wage growth remains above inflation? Actually AHE 3.9-4.2 > CPI 2.3-2.9, real wages rising. But confidence low. Distinguish: if confidence due to uncertainty, should see high volatility, survey questions on uncertainty, forward-looking expectations, not current conditions. If due to income squeeze, should see rising delinquencies, falling savings, weaker spending, especially durables.
+2. Elevated rates are hitting households via mortgage/credit, but pass-through to mortgage rates is sticky due to fixed-rate structure, bank funding, risk premia; 10y yields not as high as mortgage. Mortgage rates ~6.8, 10y ~4.3, spread ~2.5. This suppresses housing turnover, refinancing, construction, wealth effects, but not necessarily CPI because shelter CPI lag. Could be "housing drag" not broad demand. Distinguish: housing starts, permits, existing home sales, mortgage applications, refi index, construction, home prices, regional. If mortgage rates high but 10y lower, maybe term premium/risk premium. Need test.
+3. Rate channel failing to reach households because policy rate cut not transmitted to consumer credit? Or elevated policy rate but real rates? CPI 2.7, policy 4.33, real ~1.6. But mortgage real ~4.1. Household debt service? If wages rising, credit easy? Need data on credit standards, loan volumes, delinquencies.
+4. Distributional: inflation decline may be uneven; core services still high, shelter, healthcare, insurance. Low/middle income spend more on essentials, face higher effective inflation than CPI? But CPI 12m 2.3-2.9, core 2.77-2.91. AHE 3.9-4.2, so aggregate real wages up. But confidence may reflect inequality: top incomes strong, lower incomes squeezed by housing, childcare, insurance, debt. Distinguish with income distribution, PCE by income, credit by income, regional, renter vs owner.
+5. Fiscal/monetary interaction: elevated rates + large fiscal deficits, debt issuance, term premium, uncertainty. 10y yields elevated despite cuts? In table 10y rose from 3.72 to 4.38 after Sept, while policy cut. Could be term premium, fiscal concerns, supply. This raises borrowing costs for households/firms, suppresses investment, confidence. Distinguish: Treasury auction demand, CMT spreads, term premium, fiscal data, credit spreads.
+6. Sentiment deterioration due to political/policy uncertainty (tariffs, immigration, fiscal) rather than macro. In 2025 maybe tariffs. Need not invent but can say if relevant. Test with survey components, news, policy uncertainty index, expectations.
+7. "Confidence is a lagging indicator of past inflation pain" or "wealth effect from asset prices"? Sentiment collapsed after 2025-01 to 04, maybe due to policy shock. Could be forward-looking. Need distinguish.
+
+Channels: policy rate -> bank reserves, short-term rates, credit spreads, mortgage rates, 10y, term premium. Households: variable-rate debt, credit cards, auto, HELOC, new mortgages; fixed-rate mortgages locked, no direct pass-through except refinancing opportunity cost. Higher rates reduce housing demand, construction, developer investment, wealth. Higher rates raise cost of government debt, maybe fiscal tightening. Higher rates affect asset prices (equities, bonds, housing), wealth effects. But if wages rising and savings high, consumption resilient. Also inflation decline reduces expected inflation, maybe real rates higher? Need mention.
+
+Who affected differently: homeowners with fixed low rates benefit (low P&I) but locked out of moving/refi; renters face high rents/mortgage pass-through; new home buyers squeezed; variable-rate borrowers (credit cards, HELOCs, auto) pay more; low-income households spend higher share on essentials, housing, debt service; high-income benefit from asset income, wage growth, savings; firms with floating debt, real estate developers, rate-sensitive investment; municipalities? Also savers benefit from higher yields, but confidence? Need precise.
+
+Conventional reading wrong/miss: "high rates + low confidence = recession imminent" or "inflation down so all good". Miss: confidence can be driven by uncertainty not current conditions; spending can be supported by wages/savings/fiscal; mortgage rates sticky and not equal to 10y; CPI may understate cost pressures for some; real wages rising but distribution matters; policy rate cuts may not transmit quickly; term premium/fiscal matters; housing drag may be localized; sentiment survey may be noisy and backward-looking. Also 12-month changes smooth short-term changes; monthly averages hide intra-month. Need say evidence shows: CPI/core down, AHE up, unemployment stable, real spending positive but slowing, sentiment low, saving rate modest. It does not show: credit conditions, income distribution, housing sales, debt service, fiscal, expectations, nominal GDP, labor market tightness, regional.
+
+Testable hypotheses and datasets:
+H1: Confidence decline is uncertainty-driven, not income-driven. Test: Michigan current conditions vs expectations components; consumer expectations on inflation, unemployment, income; policy uncertainty index; news; survey question on uncertainty. If uncertainty, expectations fall while current conditions stable; spending durable? Datasets: UMich components, NY Fed Survey of Consumer Expectations, OECD consumer confidence, Atlanta Fed GDPNow? Maybe not.
+H2: Housing/mortgage drag is main transmission. Test: mortgage rates vs 10y spread, refi index, existing home sales, new home sales, housing starts, permits, construction, home prices, mortgage applications, HELOC/credit. If drag, housing activity weak while non-housing spending resilient. Datasets: Freddie Mac, NAR, Census, MBA, FHFA, Case-Shiller, HPI, mortgage credit.
+H3: Credit tightening is suppressing demand. Test: consumer credit applications, approvals, delinquencies, credit standards (NY Fed Senior Loan Officer Opinion Survey), credit card/auto/HELOC rates, loan volumes. If credit tightening, delinquencies rise, loan volumes fall, especially lower income. Datasets: NY Fed SLORS, FDIC, Consumer Credit, Experian, VantageScore, FICO, credit bureau data.
+H4: Distributional squeeze: lower-income households face higher effective inflation/debt service. Test: PCE by income, CPI by category (shelter, healthcare, insurance, food), renter vs owner, regional, debt service-to-income, credit by income. If distributional, spending divergence: durables vs nondurables, low-income categories. Datasets: BEA PCE by income, BLS CPI by category, Census CPS, Federal Reserve Z.1, credit bureau, mortgage debt service.
+H5: Fiscal/term premium raising long rates and confidence. Test: 10y-2y, 10y-FF, CMT spreads, Treasury auction tail, term premium, credit spreads, fiscal deficits, debt issuance. If fiscal, long rates rise despite policy cuts, confidence tied to policy uncertainty. Datasets: Treasury, FRED, CME FedWatch, credit spreads, fiscal data.
+H6: Real wage growth supports spending despite confidence. Test: real AHE, real median wage, savings rate, household balance sheets, PCE. If supported, spending resilient, savings buffer. Datasets: BLS, BEA, Fed Flow of Funds, Survey of Consumer Finances.
+H7: Sentiment is backward-looking/noisy. Test: correlation with past inflation, current conditions, expectations; nowcast of PCE. Datasets: UMich components, nowcasts.
+
+Need write 700-1100 words. Need maybe headings. Need not narrate table. Need precise evidence vs infer. Let's draft around 950 words. Need ensure no invented stats. We can reference table values but not narrate. Need maybe mention "the evidence shows" and "I infer".
+
+Potential structure:
+- Opening: The combination is not a single signal. It is a macro puzzle: disinflation and stable labor market coexist with weak confidence and slowing spending. Need identify whether confidence is a symptom of emerging demand weakness or a reaction to uncertainty/rates.
+- Competing explanations:
+  1. Soft landing with uncertainty drag: inflation down, wages up, spending positive; confidence low due to policy uncertainty, fiscal, tariffs, geopolitical. Distinguish: current conditions stable, expectations weak; spending resilient; no credit deterioration; confidence recovers when uncertainty clears.
+  2. Rate pass-through hitting rate-sensitive sectors: mortgage/credit costs suppress housing, investment, variable-rate borrowers; not yet broad consumption. Distinguish: housing/credit weakness, non-housing spending resilient; mortgage spread high; delinquencies.
+  3. Distributional squeeze: aggregate CPI/AHE mask lower-income pressure from shelter, insurance, debt service; confidence reflects household balance sheets. Distinguish: category spending, income distribution, credit by income, renter vs owner.
+  4. Emerging demand destruction: confidence leading, spending slowing, savings buffer finite; labor market may cool. Distinguish: labor market deterioration, credit tightening, falling savings, weaker PCE, especially durables.
+  5. Fiscal/term premium: long rates elevated despite policy cuts, raising borrowing costs and uncertainty. Distinguish: term premium, auction demand, credit spreads.
+- Channels: policy rate to short rates, bank funding, credit spreads, mortgage rates, 10y, term premium. Fixed mortgages: no direct P&I change, but refi lock-in, housing turnover, construction. Variable debt: credit cards, HELOCs, auto. Asset prices/wealth. Government debt/fiscal. If wages > inflation, real income supports spending.
+- Who affected differently: fixed-rate owners vs renters/new buyers; variable-rate borrowers; low-income; high-income savers/asset holders; rate-sensitive firms; municipalities? Need concise.
+- Conventional reading wrong: high rates + low confidence = recession; or inflation down = all good. Miss: confidence uncertainty, sticky mortgage rates, distribution, fiscal/term premium, 12-month smoothing.
+- Tests: list hypotheses and datasets. Need specific.
+
+Need word count 700-1100. Let's draft and count roughly.
+
+Draft:
+
+"The data do not identify a single story. They show a macro regime in which price pressures are easing, labor market is not collapsing, real spending is still positive but decelerating, and confidence is weak. The editorial question is whether confidence is a leading indicator of demand failure or a reaction to uncertainty, rates, and distributional stress."
+
+Then headings.
+
+Need be precise: "The evidence shows CPI and core CPI 12-month changes have fallen, AHE remain above inflation, unemployment stable, real spending positive but lower, sentiment sharply lower." That's narrating? It's okay but not table back. Need avoid too much.
+
+Let's write with headings.
+
+Potential final:
+
+**The puzzle, not the table**
+The combination is unusual because the usual recession template—rising unemployment, falling wages, collapsing spending—has not appeared, while the usual confidence template—current conditions deteriorating—has. The evidence shows disinflation, stable labor market, positive real spending, and weak sentiment. The inference to draw is that confidence may be responding to something other than current aggregate income: uncertainty, borrowing costs, or distributional stress.
+
+**Competing explanations**
+1. Soft landing with uncertainty drag... etc.
+2. Rate pass-through concentrated in housing and variable-rate credit...
+3. Distributional squeeze...
+4. Early demand destruction...
+5. Fiscal/term premium...
+
+Need distinguish each.
+
+**Channels**
+Policy rate affects... But mortgage rates are not 10y; fixed-rate structure. Elevated rates reach households through: (i) new borrowing, (ii) variable debt, (iii) housing turnover/construction, (iv) asset prices/wealth, (v) fiscal/term premium. They fail to reach fixed-rate mortgage holders directly, but through opportunity cost and housing market.
+
+**Who is affected differently**
+Fixed-rate owners... renters... new buyers... variable-rate borrowers... low-income... high-income... firms.
+
+**What conventional reading misses**
+- Confidence as recession signal.
+- CPI as uniform.
+- Policy rate as only rate.
+- 12-month changes hide acceleration.
+- Savings buffer.
+
+**Tests**
+H1 uncertainty: UMich current vs expectations, NY Fed SCE, policy uncertainty, news. If uncertainty, expectations fall while current conditions stable; spending not collapsing.
+H2 housing drag: MBA refi, NAR, Census, FHFA, Case-Shiller, mortgage applications. If housing, weak housing but non-housing spending.
+H3 credit: NY Fed SLORS, consumer credit, delinquencies, credit card/auto rates, loan volumes. If credit, delinquencies and standards.
+H4 distribution: BEA PCE by income, CPI categories, CPS, Z.1, debt service, credit by income. If distribution, category divergence.
+H5 fiscal/term premium: CMT spreads, auction tails, credit spreads, fiscal data. If fiscal, long rates up despite cuts.
+H6 demand destruction: labor market (JOLTS, quits, layoffs), savings, PCE, durables. If demand, labor and savings deteriorate.
+
+Need word count. Let's draft full and count approximate.
+
+Full draft:
+
+**The puzzle, not the table**
+
+The combination is unusual because the usual recession template—rising unemployment, falling wages, collapsing spending—has not appeared, while the usual confidence template—current conditions deteriorating—has. The evidence shows disinflation, a stable labor market, positive real spending, and weak sentiment. The inference to draw is that confidence may be responding to something other than current aggregate income: uncertainty, borrowing costs, or distributional stress.
+
+**Competing explanations**
+
+The first is a soft landing with an uncertainty drag. Inflation is easing, wages are still growing faster than prices, and spending remains positive. Confidence could be falling because households are reacting to policy uncertainty, fiscal concerns, trade or geopolitical shocks, or the risk that the soft landing fails. The distinguishing feature would be weak expectations but stable current conditions, with spending holding up until uncertainty resolves.
+
+The second is concentrated rate pass-through. Elevated policy rates may be suppressing rate-sensitive activity—housing, construction, variable-rate borrowing, and investment—without yet showing up in aggregate consumption. This is plausible because mortgage rates remain high even when Treasury yields move, and because fixed-rate mortgages make the transmission indirect. The distinguishing feature would be weakness in housing and credit, with non-housing spending relatively resilient.
+
+The third is a distributional squeeze. Aggregate CPI and average hourly earnings can look benign while lower-income households face heavier effective inflation from shelter, insurance, healthcare, food, and debt service. Confidence may be reflecting balance-sheet stress that is invisible in national averages. The distinguishing feature would be divergence across income groups, regions, renter/owner status, and spending categories.
+
+The fourth is early demand destruction. Confidence may be a leading indicator of a spending slowdown that has not yet reached the labor market. The distinguishing feature would be falling savings, weaker credit demand, rising delinquencies, and a labor market that begins to loosen.
+
+The fifth is a fiscal or term-premium story. Long rates can stay elevated even after policy cuts if markets price higher fiscal supply, term risk, or policy uncertainty. That raises borrowing costs for households and firms and can depress confidence independently of the federal funds rate. The distinguishing feature would be wide term spreads, weak Treasury auction demand, and rising credit spreads.
+
+**Channels**
+
+Policy rates reach the economy through several routes. They affect short-term funding, bank reserves, credit spreads, and the term structure. For households, the direct channels are new borrowing, variable-rate debt, and the cost of refinancing. Fixed-rate mortgage holders do not see their payments rise, but they face a high opportunity cost: they cannot refinance cheaply, housing turnover falls, and construction and developer investment are constrained. Higher rates also affect asset prices and wealth, especially equities and housing.
+
+The channels are not uniform. A household with a low fixed mortgage may feel protected, while a renter, new buyer, or credit-card borrower feels the rate increase immediately. A saver may benefit from higher yields, while a leveraged household is squeezed. The data do not show which channel is dominant; they only show that aggregate spending has not collapsed.
+
+**Who is affected differently**
+
+Fixed-rate homeowners are insulated from payment shocks but locked out of mobility. Renters and new buyers face higher effective housing costs. Variable-rate borrowers—credit cards, HELOCs, some auto loans—face higher debt service. Lower-income households typically spend a larger share of income on essentials and housing, so a given CPI change can matter more. Higher-income households may be supported by wage growth, asset income, and savings. Firms with floating-rate debt, real estate developers, and rate-sensitive investors are exposed differently from firms with fixed-rate debt.
+
+**What the conventional reading misses**
+
+The conventional reading is that high rates plus low confidence imply recession, or that falling inflation means the economy is fine. Both are incomplete. Confidence can be driven by uncertainty rather than current hardship. CPI can understate the cost pressure felt by specific households. Policy rates are not the only relevant rate; mortgage rates, credit spreads, and term premia matter. Twelve-month changes also smooth short-term acceleration, so a stable unemployment rate can coexist with a weakening labor market.
+
+**Tests**
+
+I would test five hypotheses.
+
+First, is confidence uncertainty-driven? Compare Michigan current conditions with expectations, add the NY Fed Survey of Consumer Expectations, and overlay policy uncertainty or news indicators. If uncertainty is the driver, expectations should fall while current conditions remain stable and spending should not collapse.
+
+Second, is housing the main drag? Use MBA mortgage applications, refinance index, NAR existing-home sales, Census new-home sales and starts, FHFA home prices, and construction data. If the rate channel is concentrated in housing, housing activity should be weak while non-housing spending remains resilient.
+
+Third, is credit tightening? Use the NY Fed Senior Loan Officer Opinion Survey, consumer credit data, delinquency rates, credit-card and auto rates, and loan volumes. If credit is the channel, standards should tighten and delinquencies should rise, especially among lower-income borrowers.
+
+Fourth, is the squeeze distributional? Use BEA personal consumption by income, CPI by category, CPS income and housing data, Federal Reserve Flow of Funds, and debt-service-to-income measures. If distribution matters, spending should diverge by category and income group even if aggregate PCE is stable.
+
+Fifth, is fiscal or term risk raising long rates? Use Treasury constant-maturity spreads, auction tails, credit spreads, and fiscal data. If fiscal supply or term premium is the issue, long rates should rise even as policy rates fall, and confidence should move with policy uncertainty rather than current conditions.
+
+The story should not be “recession” or “all clear.” It should be a diagnosis of which channel is doing the work: uncertainty, housing, credit, distribution, or fiscal risk.
+
+Count words. Let's count manually approximate.
+Title? Not count? We need 700-1100. Let's count.
+Paragraph 1: "The combination is unusual because the usual recession template—rising unemployment, falling wages, collapsing spending—has not appeared, while the usual confidence template—current conditions deteriorating—has. The evidence shows disinflation, a stable labor market, positive real spending, and weak sentiment. The inference to draw is that confidence may be responding to something other than current aggregate income: uncertainty, borrowing costs, or distributional stress."
+Count: The1 combination2 is3 unusual4 because5 the6 usual7 recession8 template—rising9 unemployment,10 falling11 wages,12 collapsing13 spending—has14 not15 appeared,16 while17 the18 usual19 confidence20 template—current21 conditions22 deteriorating—has.23 The24 evidence25 shows26 disinflation,27 a28 stable29 labor30 market,31 positive32 real33 spending,34 and35 weak36 sentiment.37 The38 inference39 to40 draw41 is42 that43 confidence44 may45 be46 responding47 to48 something49 other50 than51 current52 aggregate53 income:54 uncertainty,55 borrowing56 costs,57 or58 distributional59 stress.60.
+
+Competing explanations heading maybe not count? We'll count body.
+First: "The first is a soft landing with an uncertainty drag. Inflation is easing, wages are still growing faster than prices, and spending remains positive. Confidence could be falling because households are reacting to policy uncertainty, fiscal concerns, trade or geopolitical shocks, or the risk that the soft landing fails. The distinguishing feature would be weak expectations but stable current conditions, with spending holding up until uncertainty resolves."
+Count: The1 first2 is3 a4 soft5 landing6 with7 an8 uncertainty9 drag.10 Inflation11 is12 easing,13 wages14 are15 still16 growing17 faster18 than19 prices,20 and21 spending22 remains23 positive.24 Confidence25 could26 be27 falling28 because29 households30 are31 reacting32 to33 policy34 uncertainty,35 fiscal36 concerns,37 trade38 or39 geopolitical40 shocks,41 or42 the43 risk44 that45 the46 soft47 landing48 fails.49 The50 distinguishing51 feature52 would53 be54 weak55 expectations56 but57 stable58 current59 conditions,60 with61 spending62 holding63 up64 until65 uncertainty66 resolves.67. Total 127.
+
+Second: "The second is concentrated rate pass-through. Elevated policy rates may be suppressing rate-sensitive activity—housing, construction, variable-rate borrowing, and investment—without yet showing up in aggregate consumption. This is plausible because mortgage rates remain high even when Treasury yields move, and because fixed-rate mortgages make the transmission indirect. The distinguishing feature would be weakness in housing and credit, with non-housing spending relatively resilient."
+Count: The1 second2 is3 concentrated4 rate5 pass-through.6 Elevated7 policy8 rates9 may10 be11 suppressing12 rate-sensitive13 activity—housing,14 construction,15 variable-rate16 borrowing,17 and18 investment—without19 yet20 showing21 up22 in23 aggregate24 consumption.25 This26 is27 plausible28 because29 mortgage30 rates31 remain32 high33 even34 when35 Treasury36 yields37 move,38 and39 because40 fixed-rate41 mortgages42 make43 the44 transmission45 indirect.46 The47 distinguishing48 feature49 would50 be51 weakness52 in53 housing54 and55 credit,56 with57 non-housing58 spending59 relatively60 resilient.61. Total 188.
+
+Third: "The third is a distributional squeeze. Aggregate CPI and average hourly earnings can look benign while lower-income households face heavier effective inflation from shelter, insurance, healthcare, food, and debt service. Confidence may be reflecting balance-sheet stress that is invisible in national averages. The distinguishing feature would be divergence across income groups, regions, renter/owner status, and spending categories."
+Count: The1 third2 is3 a4 distributional5 squeeze.6 Aggregate7 CPI8 and9 average10 hourly11 earnings12 can13 look14 benign15 while16 lower-income17 households18 face19 heavier20 effective21 inflation22 from23 shelter,24 insurance,25 healthcare,26 food,27 and28 debt29 service.30 Confidence31 may32 be33 reflecting34 balance-sheet35 stress36 that37 is38 invisible39 in40 national41 averages.42 The43 distinguishing44 feature45 would46 be47 divergence48 across49 income50 groups,51 regions,52 renter/owner53 status,54 and55 spending56 categories.57. Total 245.
+
+Fourth: "The fourth is early demand destruction. Confidence may be a leading indicator of a spending slowdown that has not yet reached the labor market. The distinguishing feature would be falling savings, weaker credit demand, rising delinquencies, and a labor market that begins to loosen."
+Count: The1 fourth2 is3 early4 demand5 destruction.6 Confidence7 may8 be9 a10 leading11 indicator12 of13 a14 spending15 slowdown16 that17 has18 not19 yet20 reached21 the22 labor23 market.24 The25 distinguishing26 feature27 would28 be29 falling30 savings,31 weaker32 credit33 demand,34 rising35 delinquencies,36 and37 a38 labor39 market40 that41 begins42 to43 loosen.44. Total 289.
+
+Fifth: "The fifth is a fiscal or term-premium story. Long rates can stay elevated even after policy cuts if markets price higher fiscal supply, term risk, or policy uncertainty. That raises borrowing costs for households and firms and can depress confidence independently of the federal funds rate. The distinguishing feature would be wide term spreads, weak Treasury auction demand, and rising credit spreads."
+Count: The1 fifth2 is3 a4 fiscal5 or6 term-premium7 story.8 Long9 rates10 can11 stay12 elevated13 even14 after15 policy16 cuts17 if18 markets19 price20 higher21 fiscal22 supply,23 term24 risk,25 or26 policy27 uncertainty.28 That29 raises30 borrowing31 costs32 for33 households34 and35 firms36 and37 can38 depress39 confidence40 independently41 of42 the43 federal44 funds45 rate.46 The47 distinguishing48 feature49 would50 be51 wide52 term53 spreads,54 weak55 Treasury56 auction57 demand,58 and59 rising60 credit61 spreads.62. Total 351.
+
+Channels heading body:
+"Policy rates reach the economy through several routes. They affect short-term funding, bank reserves, credit spreads, and the term structure. For households, the direct channels are new borrowing, variable-rate debt, and the cost of refinancing. Fixed-rate mortgage holders do not see their payments rise, but they face a high opportunity cost: they cannot refinance cheaply, housing turnover falls, and construction and developer investment are constrained. Higher rates also affect asset prices and wealth, especially equities and housing.
+
+The channels are not uniform. A household with a low fixed mortgage may feel protected, while a renter, new buyer, or credit-card borrower feels the rate increase immediately. A saver may benefit from higher yields, while a leveraged household is squeezed. The data do not show which channel is dominant; they only show that aggregate spending has not collapsed."
+Count first para: Policy1 rates2 reach3 the4 economy5 through6 several7 routes.8 They9 affect10 short-term11 funding,12 bank13 reserves,14 credit15 spreads,16 and17 the18 term19 structure.20 For21 households,22 the23 direct24 channels25 are26 new27 borrowing,28 variable-rate29 debt,30 and31 the32 cost33 of34 refinancing.35 Fixed-rate36 mortgage37 holders38 do39 not40 see41 their42 payments43 rise,44 but45 they46 face47 a48 high49 opportunity50 cost:51 they52 cannot53 refinance54 cheaply,55 housing56 turnover57 falls,58 and59 construction60 and61 developer62 investment63 are64 constrained.65 Higher66 rates67 also68 affect69 asset70 prices71 and72 wealth,73 especially74 equities75 and76 housing.77.
+Second: The1 channels2 are3 not4 uniform.5 A6 household7 with8 a9 low10 fixed11 mortgage12 may13 feel14 protected,15 while16 a17 renter,18 new19 buyer,20 or21 credit-card22 borrower23 feels24 the25 rate26 increase27 immediately.28 A29 saver30 may31 benefit32 from33 higher34 yields,35 while36 a37 leveraged38 household39 is40 squeezed.41 The42 data43 do44 not45 show46 which47 channel48 is49 dominant;50 they51 only52 show53 that54 aggregate55 spending56 has57 not58 collapsed.59. Total 351+136=487.
+
+Who affected:
+"Fixed-rate homeowners are insulated from payment shocks but locked out of mobility. Renters and new buyers face higher effective housing costs. Variable-rate borrowers—credit cards, HELOCs, some auto loans—face higher debt service. Lower-income households typically spend a larger share of income on essentials and housing, so a given CPI change can matter more. Higher-income households may be supported by wage growth, asset income, and savings. Firms with floating-rate debt, real estate developers, and rate-sensitive investors are exposed differently from firms with fixed-rate debt."
+Count: Fixed-rate1 homeowners2 are3 insulated4 from5 payment6 shocks7 but8 locked9 out10 of11 mobility.12 Renters13 and14 new15 buyers16 face17 higher18 effective19 housing20 costs.21 Variable-rate22 borrowers—credit23 cards,24 HELOCs,25 some26 auto27 loans—face28 higher29 debt30 service.31 Lower-income32 households33 typically34 spend35 a36 larger37 share38 of39 income40 on41 essentials42 and43 housing,44 so45 a46 given47 CPI48 change49 can50 matter51 more.52 Higher-income53 households54 may55 be56 supported57 by58 wage59 growth,60 asset61 income,62 and63 savings.64 Firms65 with66 floating-rate67 debt,68 real69 estate70 developers,71 and72 rate-sensitive73 investors74 are75 exposed76 differently77 from78 firms79 with80 fixed-rate81 debt.82. Total 569.
+
+Conventional:
+"The conventional reading is that high rates plus low confidence imply recession, or that falling inflation means the economy is fine. Both are incomplete. Confidence can be driven by uncertainty rather than current hardship. CPI can understate the cost pressure felt by specific households. Policy rates are not the only relevant rate; mortgage rates, credit spreads, and term premia matter. Twelve-month changes also smooth short-term acceleration, so a stable unemployment rate can coexist with a weakening labor market."
+Count: The1 conventional2 reading3 is4 that5 high6 rates7 plus8 low9 confidence10 imply11 recession,12 or13 that14 falling15 inflation16 means17 the18 economy19 is20 fine.21 Both22 are23 incomplete.24 Confidence25 can26 be27 driven28 by29 uncertainty30 rather31 than32 current33 hardship.34 CPI35 can36 understate37 the38 cost39 pressure40 felt41 by42 specific43 households.44 Policy45 rates46 are47 not48 the49 only50 relevant51 rate;52 mortgage53 rates,54 credit55 spreads,56 and57 term58 premia59 matter.60 Twelve-month61 changes62 also63 smooth64 short-term65 acceleration,66 so67 a68 stable69 unemployment70 rate71 can72 coexist73 with74 a75 weakening76 labor77 market.78. Total 647.
+
+Tests:
+"I would test five hypotheses.
+
+First, is confidence uncertainty-driven? Compare Michigan current conditions with expectations, add the NY Fed Survey of Consumer Expectations, and overlay policy uncertainty or news indicators. If uncertainty is the driver, expectations should fall while current conditions remain stable and spending should not collapse.
+
+Second, is housing the main drag? Use MBA mortgage applications, refinance index, NAR existing-home sales, Census new-home sales and starts, FHFA home prices, and construction data. If the rate channel is concentrated in housing, housing activity should be weak while non-housing spending remains resilient.
+
+Third, is credit tightening? Use the NY Fed Senior Loan Officer Opinion Survey, consumer credit data, delinquency rates, credit-card and auto rates, and loan volumes. If credit is the channel, standards should tighten and delinquencies should rise, especially among lower-income borrowers.
+
+Fourth, is the squeeze distributional? Use BEA personal consumption by income, CPI by category, CPS income and housing data, Federal Reserve Flow of Funds, and debt-service-to-income measures. If distribution matters, spending should diverge by category and income group even if aggregate PCE is stable.
+
+Fifth, is fiscal or term risk raising long rates? Use Treasury constant-maturity spreads, auction tails, credit spreads, and fiscal data. If fiscal supply or term premium is the issue, long rates should rise even as policy rates fall, and confidence should move with policy uncertainty rather than current conditions.
+
+The story should not be “recession” or “all clear.” It should be a diagnosis of which channel is doing the work: uncertainty, housing, credit, distribution, or fiscal risk."
+Count: I1 would2 test3 five4 hypotheses.5
+First,1 is2 confidence3 uncertainty-driven?4 Compare5 Michigan6 current7 conditions8 with9 expectations,10 add11 the12 NY13 Fed14 Survey15 of16 Consumer17 Expectations,18 and19 overlay20 policy21 uncertainty22 or23 news24 indicators.25 If26 uncertainty27 is28 the29 driver,30 expectations31 should32 fall33 while34 current35 conditions36 remain37 stable38 and39 spending40 should41 not42 collapse.43. total 48.
+Second,1 is2 housing3 the4 main5 drag?6 Use7 MBA8 mortgage9 applications,10 refinance11 index,12 NAR13 existing-home14 sales,15 Census16 new-home17 sales18 and19 starts,20 FHFA21 home22 prices,23 and24 construction25 data.26 If27 the28 rate29 channel30 is31 concentrated32 in33 housing,34 housing35 activity36 should37 be38 weak39 while40 non-housing41 spending42 remains43 resilient.44. total 92.
+Third,1 is2 credit3 tightening?4 Use5 the6 NY7 Fed8 Senior9 Loan10 Officer11 Opinion12 Survey,13 consumer14 credit15 data,16 delinquency17 rates,18 credit-card19 and20 auto21 rates,22 and23 loan24 volumes.25 If26 credit27 is28 the29 channel,30 standards31 should32 tighten33 and34 delinquencies35 should36 rise,37 especially38 among39 lower-income40 borrowers.41. total 133.
+Fourth,1 is2 the3 squeeze4 distributional?5 Use6 BEA7 personal8 consumption9 by10 income,11 CPI12 by13 category,14 CPS15 income16 and17 housing18 data,19 Federal20 Reserve21 Flow22 of23 Funds,24 and25 debt-service-to-income26 measures.27 If28 distribution29 matters,30 spending31 should32 diverge33 by34 category35 and36 income37 group38 even39 if40 aggregate41 PCE42 is43 stable.44. total 177.
+Fifth,1 is2 fiscal3 or4 term5 risk6 raising7 long8 rates?9 Use10 Treasury11 constant-maturity12 spreads,13 auction14 tails,15 credit16 spreads,17 and18 fiscal19 data.20 If21 fiscal22 supply23 or24 term25 premium26 is27 the28 issue,29 long30 rates31 should32 rise33 even34 as35 policy36 rates37 fall,38 and39 confidence40 should41 move42 with43 policy44 uncertainty45 rather46 than47 current48 conditions.49. total 226.
+The1 story2 should3 not4 be5 “recession”6 or7 “all8 clear.”9 It10 should11 be12 a13 diagnosis14 of15 which16 channel17 is18 doing19 the20 work:21 uncertainty,22 housing,23 credit,24 distribution,25 or26 fiscal27 risk.28. total 254.
+Total 647+254=901. Good within 700-1100. Need maybe headings count? Usually word count includes headings? If headings included maybe +? We have headings: The puzzle, not the table (5?), Competing explanations (2), Channels (1), Who is affected differently (4), What the conventional reading misses (5), Tests (1). Total maybe 18, 919. Still under 1100. Good.
+
+Need ensure no invented data. We mention "wages are still growing faster than prices" from AHE 3.86-4.21 vs CPI 2.33-2.99, yes. "spending remains positive" real spending 12m 2.44-3.74. "stable labor market" unemployment 4.0-4.3. "disinflation" CPI/core down. Good.
+
+Need maybe mention "policy uncertainty, trade or geopolitical shocks" as possible, not data. Fine. Need maybe be more precise about evidence vs inference. We can add "The evidence shows... I infer..." Already. Could strengthen: "The table does not show credit conditions, income distribution, housing sales, or fiscal data." We mention data do not show which channel. Good.
+
+Need maybe include "12-month changes computed from published index levels" maybe not. Need maybe mention monthly averages. Fine.
+
+Need final only. Ensure 700-1100 words. Let's maybe refine for clarity and senior editor tone. Need maybe avoid "The data do not show which channel is dominant; they only show that aggregate spending has not collapsed." Good.
+
+Potential issue: "wages are still growing faster than prices" but AHE 12m 3.86-4.21, CPI 2.33-2.99, yes. But core CPI 2.77-3.23, still below AHE. Good.
+
+Need maybe distinguish "confidence template—current conditions deteriorating—has" awkward. Could say "the usual confidence deterioration—current conditions weakening—has not clearly appeared." But we don't have current conditions component. We can say "the usual recession template... has not appeared, while confidence has fallen sharply." Better.
+
+Let's adjust opening:
+"The combination is unusual because the usual recession template—rising unemployment, falling wages, collapsing spending—has not appeared, while confidence has fallen sharply. The evidence shows disinflation, a stable labor market, positive real spending, and weak sentiment. The inference to draw is that confidence may be responding to something other than current aggregate income: uncertainty, borrowing costs, or distributional stress."
+Count similar.
+
+Need maybe "positive real spending" but real consumer spending 12m change positive but slowing. Good.
+
+Need maybe "policy rates remain elevated" but table shows cuts. We can say "policy rates remain elevated" in explanation. Good.
+
+Need maybe "federal funds rate" not "policy rates" okay.
+
+Need maybe mention "10-year Treasury yield monthly average" and mortgage spread. We can say "mortgage rates remain high even when Treasury yields move" but in table mortgage 6.5-6.96, 10y 3.72-4.63. Good.
+
+Need maybe "long rates can stay elevated even after policy cuts" table: policy cut from 5.33 to 4.33, 10y from 4.25 to 4.38 (some rise). Good.
+
+Need maybe "fiscal supply" not in data, but as hypothesis. Good.
+
+Need maybe "trade or geopolitical shocks" not in data, but as possible. Could be seen as inventing? It's a hypothesis, not data. Fine.
+
+Need maybe "policy uncertainty" as dataset. Good.
+
+Need maybe "NY Fed Survey of Consumer Expectations" and "Senior Loan Officer Opinion Survey" are specific datasets. Good.
+
+Need maybe "MBA refinance index" etc. Good.
+
+Need maybe "BEA personal consumption by income" exists? BEA publishes PCE by income? There is BEA personal income and outlays by income? I think BEA has personal consumption expenditures by income? Maybe not exactly. There is "Personal Income and Outlays" and "Personal Consumption Expenditures by Income" maybe? To be safe, say "BEA personal consumption and income data, plus CPS" or "BEA PCE by category and income distribution from CPS". But user asks specific additional datasets. We can say "BEA PCE by category and income, CPS, Federal Reserve Flow of Funds". Is BEA PCE by income available? There is "Personal Consumption Expenditures by Income" maybe not standard. Better: "BEA PCE by category, CPS income and spending data, Federal Reserve Flow of Funds, and debt-service-to-income measures." But to test distribution, need income-specific spending. CPS has consumer expenditure? There is Consumer Expenditure Survey (CE) by income. Use "BLS Consumer Expenditure Survey by income". That's specific. Let's adjust: "Use BEA PCE by category, BLS Consumer Expenditure Survey by income, CPS income and housing data, Federal Reserve Flow of Funds, and debt-service-to-income measures." Good.
+
+Need maybe "CPI by category" BLS. Good.
+
+Need maybe "MBA mortgage applications, refinance index" MBA is Mortgage Bankers Association. Good.
+
+Need maybe "NAR existing-home sales" National Association of Realtors. Good.
+
+Need maybe "Census new-home sales and starts" good.
+
+Need maybe "FHFA home prices" good.
+
+Need maybe "construction data" maybe Census. Good.
+
+Need maybe "consumer credit data" could be Federal Reserve G.19, consumer credit. Good.
+
+Need maybe "delinquency rates" from credit bureaus. Good.
+
+Need maybe "credit-card and auto rates" from Fed or surveys. Good.
+
+Need maybe "Treasury constant-maturity spreads, auction tails, credit spreads, fiscal data" good.
+
+Need maybe "policy uncertainty or news indicators" could be specific: "EPU index" but not necessary. Could say "policy uncertainty index". Good.
+
+Need maybe "Michigan current conditions with expectations" UMich has current conditions and expectations. Good.
+
+Need maybe "NY Fed Survey of Consumer Expectations" good.
+
+Need maybe "If uncertainty is the driver, expectations should fall while current conditions remain stable and spending should not collapse." Good.
+
+Need maybe "If credit is the channel, standards should tighten and delinquencies should rise, especially among lower-income borrowers." Good.
+
+Need maybe "If distribution matters, spending should diverge by category and income group even if aggregate PCE is stable." Good.
+
+Need maybe "If fiscal supply or term premium is the issue, long rates should rise even as policy rates fall, and confidence should move with policy uncertainty rather than current conditions." Good.
+
+Need maybe final: "The story should not be 'recession' or 'all clear.' It should be a diagnosis of which channel is doing the work: uncertainty, housing, credit, distribution, or fiscal risk." Good.
+
+Need ensure no table narrate. We don't list values. Good.
+
+Potential issue: "The evidence shows disinflation, a stable labor market, positive real spending, and weak sentiment." That's a bit narrating but high-level. Accept.
+
+Need maybe "The data do not show which channel is dominant; they only show that aggregate spending has not collapsed." Good.
+
+Need maybe "policy rates remain elevated" but table shows 4.33, still elevated relative to zero. Good.
+
+Need maybe "wages are still growing faster than prices" but AHE 12m, not real wages? It's average hourly earnings nominal, CPI. Good.
+
+Need maybe "confidence could be falling because households are reacting to policy uncertainty, fiscal concerns, trade or geopolitical shocks" maybe too broad. But as competing explanation. Fine.
+
+Need maybe "The fifth is a fiscal or term-premium story. Long rates can stay elevated even after policy cuts if markets price higher fiscal supply, term risk, or policy uncertainty." In table 10y rose from 3.72 to 4.38 while policy cut. Good.
+
+Need maybe "wide term spreads" not in data. As test. Good.
+
+Need maybe "credit spreads" not in data. Good.
+
+Need maybe "auction tails" not in data. Good.
+
+Need maybe "consumer confidence deteriorated sharply" from 74 to 52.2 then 60.7. Good.
+
+Need maybe "consumer spending has held up" real spending 12m positive but slowing. Good.
+
+Need maybe "inflation has been declining" CPI 2.94 to 2.68, core 3.23 to 2.91. Good.
+
+Need maybe "policy interest rates remain elevated" 4.33. Good.
+
+Need maybe "12-month changes computed from published index levels" not needed.
+
+Need maybe "monthly averages" not needed.
+
+Need maybe "senior economics editor" tone. Good.
+
+Let's consider if word count with headings maybe 920. Good.
+
+Could add a sentence about "what the data does not show" more explicit: "The table does not contain credit conditions, income distribution, housing transactions, or fiscal data." We have similar. Maybe add in conventional: "The table also does not show credit conditions, income distribution, housing transactions, or fiscal data." But word count. Could improve precision. Let's insert in conventional: "The table also does not show credit conditions, income distribution, housing transactions, or fiscal data." Count +15 maybe still under 1100. Good. Add after "Both are incomplete."? Let's adjust:
+"The conventional reading is that high rates plus low confidence imply recession, or that falling inflation means the economy is fine. Both are incomplete. The table also does not show credit conditions, income distribution, housing transactions, or fiscal data. Confidence can be driven by uncertainty rather than current hardship. CPI can understate the cost pressure felt by specific households. Policy rates are not the only relevant rate; mortgage rates, credit spreads, and term premia matter. Twelve-month changes also smooth short-term acceleration, so a stable unemployment rate can coexist with a weakening labor market."
+Count +? "The table also does not show credit conditions, income distribution, housing transactions, or fiscal data." 15? The1 table2 also3 does4 not5 show6 credit7 conditions,8 income9 distribution,10 housing11 transactions,12 or13 fiscal14 data.15. Total 916. Fine.
+
+Need maybe "The table" refers to evidence. Good.
+
+Need maybe "CPI can understate" but CPI is data. Good.
+
+Need maybe "Policy rates are not the only relevant rate" good.
+
+Need maybe "Twelve-month changes also smooth short-term acceleration" good.
+
+Need maybe "stable unemployment rate can coexist with weakening labor market" inference. Good.
+
+Need maybe "The evidence shows disinflation, a stable labor market, positive real spending, and weak sentiment." Could be too table back? It's high-level. Fine.
+
+Need maybe "The inference to draw is that confidence may be responding to something other than current aggregate income" good.
+
+Let's final with headings. Ensure no bullet list? Headings allowed, prose. We can use paragraphs. Good.
+
+Double-check word count final with added sentence. Let's recount final approximate:
+Opening 60.
+Competing 351? Actually with first etc 351. Channels 136. Who 82. Conventional 78+15=93. Tests 254. Total 60+351+136+82+93+254=976. Headings maybe 18 => 994. Good.
+
+Need maybe "The first is..." etc. Good.
+
+Let's ensure no unsupported claim: "wages are still growing faster than prices" yes. "spending remains positive" yes. "housing turnover falls" inference from high mortgage rates, not data. We say "would be" or "can". Good.
+
+Need maybe "mortgage rates remain high even when Treasury yields move" in table mortgage high, 10y moves. Good.
+
+Need maybe "fixed-rate mortgages make transmission indirect" true.
+
+Need maybe "lower-income households typically spend larger share" general. Good.
+
+Need maybe "higher-income households may be supported by wage growth, asset income, savings" inference. Good.
+
+Need maybe "Firms with floating-rate debt, real estate developers, rate-sensitive investors exposed differently" general. Good.
+
+Need maybe "The data do not show which channel is dominant" good.
+
+Need maybe "The story should not be 'recession' or 'all clear.'" Good.
+
+Potential issue: user asked "Investigate this pattern as a senior economics editor would before deciding what the story is." We do. "Do not narrate table back; reader can see it." We don't. "What are competing explanations and what would distinguish them?" We do. "Through which channels are elevated rates reaching (or failing to reach) households and economy?" We do. "Who affected differently, and how?" We do. "What does conventional reading get wrong or miss?" We do. "What would you want to test next: state testable hypotheses and specific additional datasets" We do.
+
+Need maybe "evidence shows versus infer" We use "evidence shows" and "inference". Good.
+
+Could maybe add "I infer" explicitly. Opening: "The inference to draw..." Good. In channels: "The data do not show..." Good.
+
+Need maybe "specific additional datasets" we list. Good.
+
+Let's final. Ensure 700-1100. final only.
+<<<END REASONING>>>
+
+**The puzzle, not the table**
+
+The combination is unusual because the usual recession template—rising unemployment, falling wages, collapsing spending—has not appeared, while confidence has fallen sharply. The evidence shows disinflation, a stable labor market, positive real spending, and weak sentiment. The inference to draw is that confidence may be responding to something other than current aggregate income: uncertainty, borrowing costs, or distributional stress.
+
+**Competing explanations**
+
+The first is a soft landing with an uncertainty drag. Inflation is easing, wages are still growing faster than prices, and spending remains positive. Confidence could be falling because households are reacting to policy uncertainty, fiscal concerns, trade or geopolitical shocks, or the risk that the soft landing fails. The distinguishing feature would be weak expectations but stable current conditions, with spending holding up until uncertainty resolves.
+
+The second is concentrated rate pass-through. Elevated policy rates may be suppressing rate-sensitive activity—housing, construction, variable-rate borrowing, and investment—without yet showing up in aggregate consumption. This is plausible because mortgage rates remain high even when Treasury yields move, and because fixed-rate mortgages make the transmission indirect. The distinguishing feature would be weakness in housing and credit, with non-housing spending relatively resilient.
+
+The third is a distributional squeeze. Aggregate CPI and average hourly earnings can look benign while lower-income households face heavier effective inflation from shelter, insurance, healthcare, food,

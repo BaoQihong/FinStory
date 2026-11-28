@@ -1,0 +1,12 @@
+<<<REASONING (reasoning)>>>
+Thinking:
+
+1.  **Analyze the Request:** The user wants me to reply with *exactly* the word "pong".
+2.  **Identify Constraints:**
+    *   Output must be exactly "pong".
+    *   No punctuation, no extra text, no markdown (unless it's just the word itself).
+3.  **Formulate Response:** "pong"
+4.  **Final Verification:** Does the response contain exactly the word "pong"? Yes. No extra characters. No trailing newline if possible, but standard text output is fine. Just the string "pong".
+<<<END REASONING>>>
+
+pong

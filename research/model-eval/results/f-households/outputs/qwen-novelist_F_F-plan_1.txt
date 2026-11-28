@@ -1,0 +1,101 @@
+{
+  "workingTitle": "The Price Perception Gap: Why Inflation Feels High Even as It Falls",
+  "section": "economy",
+  "centralQuestion": "Why does the cost of living still feel high to most consumers even as official inflation rates decline, and what does this disconnect mean for household wealth-building strategies?",
+  "angle": "Investigate the divergence between falling headline inflation and persistent consumer price anxiety, examining which specific goods and services are driving the perception gap and how this affects saving, spending, and investment decisions.",
+  "whyReadersCare": "Understanding this disconnect helps readers make more informed financial decisions, recognize when official data may not reflect their personal economic reality, and adjust their wealth-building strategies accordingly.",
+  "questions": [
+    "How do core inflation measures compare to headline figures, and which specific categories are driving perceived high costs?",
+    "To what extent have cumulative price increases outpaced wage growth for median-income households?",
+    "How are consumers changing their saving and spending habits in response to the inflation perception gap?",
+    "What are the current real returns on common wealth-building assets after inflation adjustment?",
+    "Are there structural shifts in consumer spending that complicate the return to pre-inflation norms?"
+  ],
+  "searches": [
+    {
+      "query": "US CPI core inflation rate 2026 latest data",
+      "purpose": "Get the most current headline and core inflation figures to establish the baseline trend",
+      "recent": true
+    },
+    {
+      "query": "consumer perception inflation survey 2026 disconnect official data",
+      "purpose": "Find recent surveys or studies quantifying the gap between official inflation and consumer perception",
+      "recent": true
+    },
+    {
+      "query": "median household income growth vs inflation 2020-2026 cumulative",
+      "purpose": "Compare wage growth to price increases over the recent inflationary period",
+      "recent": false
+    },
+    {
+      "query": "real returns equities bonds 2026 inflation adjusted",
+      "purpose": "Assess current real returns on common investment assets",
+      "recent": true
+    },
+    {
+      "query": "consumer spending shift discretionary goods 2026 structural change",
+      "purpose": "Identify any permanent changes in consumer behavior post-inflation",
+      "recent": true
+    },
+    {
+      "query": "inflation categories driving cost of living 2026 housing food energy",
+      "purpose": "Pinpoint which specific goods and services are most responsible for the perception gap",
+      "recent": true
+    }
+  ],
+  "dataNeeds": [
+    {
+      "need": "Headline and core CPI inflation rates",
+      "why": "To establish the official inflation trend and compare headline vs. core measures",
+      "searchText": "US Consumer Price Index All Items and Core"
+    },
+    {
+      "need": "Median household income growth",
+      "why": "To compare wage growth against cumulative price increases",
+      "searchText": "US median household income real"
+    },
+    {
+      "need": "Consumer confidence index",
+      "why": "To gauge consumer sentiment and its relationship to inflation perception",
+      "searchText": "US consumer confidence index"
+    },
+    {
+      "need": "Real returns on S&P 500 and 10-year Treasury",
+      "why": "To assess the current state of wealth-building asset returns after inflation",
+      "searchText": "S&P 500 real return and 10-year Treasury real yield"
+    },
+    {
+      "need": "Category-specific CPI data (housing, food, energy)",
+      "why": "To identify which specific goods and services are driving the perception gap",
+      "searchText": "US CPI by category housing food energy"
+    },
+    {
+      "need": "Consumer saving rate",
+      "why": "To track changes in household saving behavior in response to inflation",
+      "searchText": "US personal saving rate"
+    }
+  ],
+  "counterChecks": [
+    {
+      "premise": "Inflation is declining",
+      "contradictingEvidence": "Recent CPI data showing inflation accelerating or remaining stubbornly high",
+      "searchText": "US CPI year-over-year 2026"
+    },
+    {
+      "premise": "There is a significant disconnect between official inflation and consumer perception",
+      "contradictingEvidence": "Surveys showing consumer inflation expectations closely aligned with official data",
+      "searchText": "consumer inflation expectations survey 2026"
+    },
+    {
+      "premise": "Wage growth has lagged behind inflation",
+      "contradictingEvidence": "Data showing real median household income rising significantly in recent years",
+      "searchText": "US real median household income growth 2024-2026"
+    },
+    {
+      "premise": "Consumers are structurally shifting away from discretionary spending",
+      "contradictingEvidence": "Data showing a return to pre-inflation spending patterns on discretionary items",
+      "searchText": "US consumer spending discretionary goods 2026"
+    }
+  ],
+  "storyboardConcern": ""
+}

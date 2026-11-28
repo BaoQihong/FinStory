@@ -1,0 +1,20 @@
+{
+  "angle": "The investigation focuses on the disconnect between decelerating inflation rates and the persistent high cost of living, and how this gap affects the ability of retail investors to accumulate wealth.",
+  "questions": [
+    "How does the current price level of essential goods and services compare to pre-inflationary benchmarks?",
+    "To what extent has nominal wage growth kept pace with the cumulative price increases of the last few years?",
+    "Which specific asset classes have remained most accessible to ordinary savers during this period of price volatility?",
+    "Is there a measurable divergence between headline inflation figures and the 'perceived inflation' experienced by households?",
+    "How has the cost of entry for traditional wealth-building assets, such as real estate, shifted relative to median incomes?"
+  ],
+  "indicators": [
+    "Consumer Price Index (CPI)",
+    "Real median household income",
+    "Core inflation",
+    "Housing affordability index",
+    "Retail investor participation rates",
+    "Central bank policy rates"
+  ],
+  "outlook": "The research should explore whether a continued decline in inflation leads to a recovery in purchasing power or if price plateaus create a permanent new baseline. It should also examine conditions under which wealth accumulation resumes versus scenarios where stagnant real wages persist.",
+  "premise": "The idea assumes that inflation is currently trending downwards but that price levels remain high enough to hinder wealth creation. Research should first establish whether inflation is indeed decelerating and whether the cost of living remains elevated relative to income."
+}

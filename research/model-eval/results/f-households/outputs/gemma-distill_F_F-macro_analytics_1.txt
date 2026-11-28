@@ -1,0 +1,116 @@
+{
+  "macro": {
+    "title": "The Persistence of High Prices",
+    "intro": "The core problem is that while inflation rates are moderating, the price level itself has plateaued at a new, higher baseline. Consumers respond to sticker prices, not the rate of change in those prices.",
+    "indicators": [
+      {
+        "key": "cpiHeadline",
+        "note": "At {cpiHeadlineLatest}, the price level is at its highest in the data since 2014, confirming that deceleration is not a return to old prices."
+      },
+      {
+        "key": "realMedianIncome",
+        "note": "Real median household income at {realMedianIncomeLatest} is the highest since {realMedianIncomeLowestSince}, showing that income growth is lagging the price recovery."
+      },
+      {
+        "key": "consumerSentiment",
+        "note": "The sharp five-year drop to {consumerSentimentLatest} reflects a psychological break from official inflation improvements."
+      }
+    ],
+    "charts": [
+      {
+        "chartId": "inflationTrends",
+        "question": "How do different inflation measures compare over time?",
+        "takeaway": "Headline and core inflation measures moved closely together through 2022 before diverging slightly, with all measures remaining above pre-2020 levels."
+      }
+    ],
+    "explainers": [
+      {
+        "title": "The Cumulative Gap",
+        "text": "Core CPI rose {cpiCoreChg5y} over five years while real median income grew only {realMedianIncomeChg5y}, creating a permanent loss in purchasing power.",
+        "evidence": "documented"
+      },
+      {
+        "title": "Sticky Components",
+        "text": "Housing and medical costs continue to rise monthly, offsetting declines in other categories and keeping the cost of living high.",
+        "evidence": "documented"
+      }
+    ],
+    "attention": {
+      "required": false,
+      "reasons": []
+    }
+  },
+  "analytics": {
+    "title": "The Wealth Accumulation Squeeze",
+    "intro": "Why does moderating inflation fail to relieve financial pressure? The answer lies in the asymmetric recovery of prices versus incomes and the compression of real investment returns.",
+    "chain": {
+      "title": "The Purchasing Power Erosion Mechanism",
+      "steps": [
+        {
+          "title": "Price Shock",
+          "text": "Rapid inflation in 2021-2023 raised the baseline cost of necessities.",
+          "evidence": "documented"
+        },
+        {
+          "title": "Wage Lag",
+          "text": "Nominal wages rose but failed to match the cumulative {cpiHeadlineChg5y} increase in headline prices.",
+          "evidence": "documented"
+        },
+        {
+          "title": "Real Income Decline",
+          "text": "Median households experienced a net loss in purchasing power, reducing discretionary cash flow.",
+          "evidence": "documented"
+        },
+        {
+          "title": "Asset Return Compression",
+          "text": "Higher baseline inflation compressed real equity returns, with S&P 500 real returns falling {sp500RealReturnChg1y} over the last year.",
+          "evidence": "documented"
+        },
+        {
+          "title": "Wealth Accumulation Slowdown",
+          "text": "Reduced savings capacity combined with lower real returns slows the growth of household net worth.",
+          "evidence": "interpretation"
+        }
+      ]
+    },
+    "charts": [],
+    "comparisons": [
+      {
+        "title": "Post-Shock Sentiment Lag",
+        "text": "Consumer sentiment often lags inflation improvements by 12-18 months, as households adjust spending habits before optimism returns.",
+        "evidence": "context"
+      }
+    ],
+    "implications": {
+      "title": "Impact on Wealth Building",
+      "intro": "The combination of higher living costs and compressed real returns alters the risk-reward calculus for common assets.",
+      "items": [
+        {
+          "asset": "Equities",
+          "icon": "stocks",
+          "shows": "Real returns have fallen by {sp500RealReturnChg1y} over the last year to {sp500RealReturnLatest}",
+          "showsEvidence": "documented",
+          "couldMean": "Equities provide less inflation protection than in the pre-2020 era."
+        },
+        {
+          "asset": "Cash Savings",
+          "icon": "cash",
+          "shows": "The personal saving rate is at {srcPersonalSavingRate}",
+          "showsEvidence": "documented",
+          "couldMean": "Low savings rates combined with sticky prices leave households vulnerable to new shocks."
+        },
+        {
+          "asset": "Real Estate",
+          "icon": "property",
+          "shows": "Mortgage rates rose {mortgageRateChg5y} over five years to {mortgageRateLatest}",
+          "showsEvidence": "documented",
+          "couldMean": "Higher borrowing costs lock homeowners in, reducing mobility and wage-seeking."
+        }
+      ]
+    },
+    "attention": {
+      "required": false,
+      "reasons": []
+    }
+  }
+}

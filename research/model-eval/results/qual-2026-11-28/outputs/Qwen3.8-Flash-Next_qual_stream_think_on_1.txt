@@ -1,0 +1,5 @@
+<<<REASONING (reasoning)>>>
+We need answer user's simple arithmetic: 17*23 = 391. Need final number only. Ensure no extra.
+<<<END REASONING>>>
+
+391

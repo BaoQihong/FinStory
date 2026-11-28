@@ -1,0 +1,22 @@
+{
+  "angle": "The story investigates the apparent disconnect between falling headline inflation and the persistent financial pressure on households, focusing on the implications for wealth accumulation.",
+  "questions": [
+    "To what extent have price levels remained high even as the rate of inflation has declined?",
+    "How have real wages adjusted relative to the cumulative price increases of recent years?",
+    "What impact is the current interest rate environment having on the cost of servicing debt versus returns on savings?",
+    "Which asset classes are currently accessible to ordinary households and how have they performed against inflation?",
+    "How does the current cost of living affect the capacity of average earners to invest or build savings?"
+  ],
+  "indicators": [
+    "CPI",
+    "Core CPI",
+    "Real wage growth",
+    "Personal savings rate",
+    "Central bank policy rates",
+    "Household debt to income ratio",
+    "S&P 500",
+    "Real estate price indices"
+  ],
+  "outlook": "The Outlook section should explore the conditions under which purchasing power might recover, such as sustained real wage growth or falling borrowing costs, versus scenarios where high living costs and elevated rates continue to impede wealth creation.",
+  "premise": "The idea assumes that inflation is currently trending downward and that households perceive goods and services as remaining expensive. Research should first establish whether both are supported by current evidence."
+}

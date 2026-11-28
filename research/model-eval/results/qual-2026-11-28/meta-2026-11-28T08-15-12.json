@@ -1,0 +1,46 @@
+{
+ "runId": "qual-2026-11-28",
+ "command": "qual --run --retry-errors --models DeepSeek-V4.1-Flash-1017,GLM-4.7",
+ "node": "v22.23.5",
+ "provider": "arliai",
+ "host": "api.arliai.com",
+ "keyFingerprint": "e940d5b63d82",
+ "productionModel": "Qwen3.8-27B",
+ "startedAt": "2026-11-28T08:15:12.522Z",
+ "options": {
+  "runDir": "C:\\project\\FinStory\\research\\model-eval\\results\\qual-2026-11-28",
+  "runId": "qual-2026-11-28",
+  "timeoutMs": 300000,
+  "retries": 1,
+  "gapMs": 750,
+  "tokenScale": 1,
+  "retryErrors": true,
+  "dryRun": false
+ },
+ "suite": "qual",
+ "configs": [
+  "GLM-4.7",
+  "DeepSeek-V4.1-Flash-1017"
+ ],
+ "cases": [
+  "basic_default",
+  "think_off_kwargs",
+  "think_on_kwargs",
+  "think_effort_low",
+  "think_effort_none",
+  "think_kwarg_thinking_false",
+  "system_prompt",
+  "multi_turn",
+  "temp0_repeat",
+  "top_p",
+  "length_truncation",
+  "stop_sequence",
+  "json_object",
+  "json_schema_strict",
+  "stream_off",
+  "stream_think_on",
+  "throughput_600",
+  "context_24k",
+  "bad_response_format"
+ ]
+}

@@ -1,0 +1,33 @@
+{
+  "revisions": [
+    {
+      "path": "story.blocks[0].text",
+      "text": "The sticker prices at a grocery store tell a story that news headlines often miss. Official measures of inflation have decelerated from their recent peaks, yet five years of price increases have left many households financially stretched. The disconnect is not about the speed of price rises, but their height: the cost of living has settled at a new, higher plateau, creating friction in the American economy."
+    },
+    {
+      "path": "story.blocks[1].text",
+      "text": "Price growth is undoubtedly slowing. Headline CPI rose by {cpiHeadlineChg1y} over the past year, while core PCE rose by {corePCEChg1y}, a clear moderation from the 2022 highs. But for the average consumer, the rate of change matters less than the total cost of maintaining their standard of living. The price level itself remains elevated, with the CPI index at {cpiHeadlineLatest}, the highest in the data since 2014."
+    },
+    {
+      "path": "story.blocks[2].text",
+      "text": "The real problem is the gap between prices and paychecks. Over the last five years, core CPI has risen by {cpiCoreChg5y}. In that same period, real median household income grew by only {realMedianIncomeChg5y}. Nominal wages may have increased, but the purchasing power of the median household has not kept pace with the cost of goods and services. The result is a quiet erosion of household wealth that will be difficult to reverse."
+    },
+    {
+      "path": "story.blocks[4].text",
+      "text": "This squeeze is visible in consumer behavior. The University of Michigan Consumer Sentiment Index has fallen by {consumerSentimentChg5y:abs} over five years, reaching {consumerSentimentLatest} in October 2026. This is the lowest level in the data since 2014. Sentiment now tracks perceptions of high prices more closely than income growth, suggesting that people are reacting to their lived experience rather than the official statistics."
+    },
+    {
+      "path": "story.blocks[5].text",
+      "text": "Some costs are stickier than others. Housing and medical care continue to push prices up, with monthly increases in these areas often outpacing the broader index. For many families, these are not discretionary purchases but necessities that dominate the monthly budget. When these specific costs keep rising, the overall decline in headline inflation feels abstract."
+    },
+    {
+      "path": "story.blocks[6].text",
+      "text": "The damage to wealth accumulation is becoming apparent. The S&P 500's year-over-year real return has fallen by {sp500RealReturnChg1y:abs} over the last year, now standing at {sp500RealReturnLatest}. This compression in real returns undermines traditional wealth-building strategies, making it harder for households to build a financial cushion against future shocks."
+    },
+    {
+      "path": "story.blocks[7].text",
+      "text": "Consumers are responding by trading down and cutting discretionary purchases. This is a structural shift that complicates a return to pre-inflation norms. Even as official inflation rates trend downward, the perception of expense remains high because the baseline cost of living has fundamentally shifted upward."
+    }
+  ],
+  "concerns": []
+}

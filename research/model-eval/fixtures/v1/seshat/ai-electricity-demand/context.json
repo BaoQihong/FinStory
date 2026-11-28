@@ -1,0 +1,187 @@
+{
+ "subject": "ai-electricity-demand",
+ "capturedAt": "2026-11-28T07:09:31.534Z",
+ "article": {
+  "id": "8629779e-a132-486d-9e67-2e9c6e0126ab",
+  "revision": 1,
+  "workingTitle": "The AI Power Crunch: How Data Centers Are Reshaping US Electricity Markets"
+ },
+ "jobId": "ef7ebed0-4624-4fe1-9876-b2a0f05d984a",
+ "asOf": "2026-11-25",
+ "styleGuideVersion": "2026-11-27.2",
+ "promptSha256": {
+  "plan": "aa1f58be65259c72",
+  "select": "30a50b3a37796ee2",
+  "synthesize": "56466437576c9b2b",
+  "story": "e6810c104b9e40ac",
+  "macro_analytics": "77873329eef4dcda",
+  "outlook": "daf3ab9a4279b645",
+  "review": "3cfc6d19e186be18",
+  "repair": "38e1818be7ac4f09",
+  "brief": "c0d8c7686ad2c1ee",
+  "polish": "d891c59bcdc95573"
+ },
+ "facts": {
+  "eatonStockChg1y": {
+   "date": "2026-11-25"
+  },
+  "eatonStockChg5y": {
+   "date": "2026-11-25"
+  },
+  "eatonStockLow1y": {
+   "date": "2026-11-20"
+  },
+  "eatonStockLow5y": {
+   "date": "2022-07-14"
+  },
+  "eatonStockHigh1y": {
+   "date": "2026-08-12"
+  },
+  "eatonStockHigh5y": {
+   "date": "2026-08-12"
+  },
+  "eatonStockLatest": {
+   "date": "2026-11-25"
+  },
+  "eatonStockLowAll": {
+   "date": "2016-01-25"
+  },
+  "henryHubGasChg1y": {
+   "date": "2026-11-24"
+  },
+  "henryHubGasChg5y": {
+   "date": "2026-11-24"
+  },
+  "henryHubGasLow1y": {
+   "date": "2026-10-30"
+  },
+  "henryHubGasLow5y": {
+   "date": "2024-11-08"
+  },
+  "quantaStockChg1y": {
+   "date": "2026-11-25"
+  },
+  "quantaStockChg5y": {
+   "date": "2026-11-25"
+  },
+  "quantaStockLow1y": {
+   "date": "2026-01-08"
+  },
+  "quantaStockLow5y": {
+   "date": "2022-01-27"
+  },
+  "usElecPriceChg1y": {
+   "date": "2026-10-01"
+  },
+  "usElecPriceChg5y": {
+   "date": "2026-10-01"
+  },
+  "usElecPriceLow1y": {
+   "date": "2025-11-01"
+  },
+  "usElecPriceLow5y": {
+   "date": "2021-10-01"
+  },
+  "eatonStockHighAll": {
+   "date": "2026-08-12"
+  },
+  "eatonStockYearAgo": {
+   "date": "2025-11-25"
+  },
+  "henryHubGasHigh1y": {
+   "date": "2026-01-23"
+  },
+  "henryHubGasHigh5y": {
+   "date": "2026-01-23"
+  },
+  "henryHubGasLatest": {
+   "date": "2026-11-24"
+  },
+  "henryHubGasLowAll": {
+   "date": "2024-11-08"
+  },
+  "quantaStockHigh1y": {
+   "date": "2026-05-06"
+  },
+  "quantaStockHigh5y": {
+   "date": "2026-05-06"
+  },
+  "quantaStockLatest": {
+   "date": "2026-11-25"
+  },
+  "quantaStockLowAll": {
+   "date": "2016-02-11"
+  },
+  "usElecPriceHigh1y": {
+   "date": "2026-06-01"
+  },
+  "usElecPriceHigh5y": {
+   "date": "2026-06-01"
+  },
+  "usElecPriceLatest": {
+   "date": "2026-10-01"
+  },
+  "usElecPriceLowAll": {
+   "date": "2014-04-01"
+  },
+  "henryHubGasHighAll": {
+   "date": "2026-01-23"
+  },
+  "henryHubGasYearAgo": {
+   "date": "2025-11-24"
+  },
+  "quantaStockHighAll": {
+   "date": "2026-05-06"
+  },
+  "quantaStockYearAgo": {
+   "date": "2025-11-25"
+  },
+  "usElecPriceHighAll": {
+   "date": "2026-06-01"
+  },
+  "usElecPriceYearAgo": {
+   "date": "2025-09-01"
+  },
+  "eatonStockFiveYearsAgo": {
+   "date": "2021-11-24"
+  },
+  "henryHubGasFiveYearsAgo": {
+   "date": "2021-11-24"
+  },
+  "quantaStockFiveYearsAgo": {
+   "date": "2021-11-24"
+  },
+  "usElecPriceFiveYearsAgo": {
+   "date": "2021-10-01"
+  },
+  "srcQuantaBacklogQ3": {
+   "date": null
+  },
+  "srcUsPpaVolume2025": {
+   "date": null
+  },
+  "srcGridSpending2025": {
+   "date": null
+  },
+  "srcErcotLargeLoadQueue": {
+   "date": null
+  },
+  "srcAiDataCenterCapexPerMw": {
+   "date": null
+  },
+  "srcDataCenterInfraCost2025": {
+   "date": null
+  },
+  "srcUsUtilityCapex2026to2030": {
+   "date": null
+  }
+ },
+ "dateKeys": [
+  "eatonStockHistoryStart",
+  "usElecPriceLowestSince",
+  "henryHubGasHistoryStart",
+  "quantaStockHistoryStart",
+  "usElecPriceHistoryStart"
+ ],
+ "note": "Requests captured from the production stage functions with stored outputs of earlier stages (no model call, no DB write)."
+}

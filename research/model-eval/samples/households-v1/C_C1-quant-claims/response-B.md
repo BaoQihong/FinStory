@@ -1,0 +1,21 @@
+<!-- C/C1-quant-claims · response B · blind sample -->
+
+**C1**
+The claim is not supported. While the Federal Reserve cut the fed funds rate starting in September 2024, mortgage rates did not sustainably decline; they fell initially but subsequently rose through January 2025. The evidence shows that the correlation of monthly *changes* between mortgage rates and the fed funds rate is weak ($r=0.16$), whereas the correlation with the 10-year yield is strong ($r=0.83$). This indicates mortgage rates track long-term bond markets, not short-term policy. The high correlation of *levels* ($r=0.93$) is misleading, reflecting shared long-term trends rather than causal transmission. Confounding factors include inflation expectations and term premiums. To settle this, analysis should focus on the pass-through of policy to the 10-year yield, rather than assuming a direct mechanical link.
+
+**C2**
+The claim is not supported. The cited correlation of 0.94 refers to the *levels* of the S&P 500 and CPI, which is largely a statistical artifact of both series trending upward over the decade. A valid inflation hedge requires asset returns to move with inflation. The correlation of monthly *percentage changes* is effectively zero ($r=-0.01$), indicating that stock returns did not systematically track inflation month-to-month. Confounding factors include earnings growth and valuation multiple expansion, which drive stocks independently of consumer prices. Further analysis should examine real (inflation-adjusted) returns over longer horizons to assess purchasing power preservation.
+
+**C3**
+The claim is not supported. The evidence relies on a single inversion episode ($n=1$), which is insufficient to establish a "perfect" record. Furthermore, the economic data provided does not clearly show a recession: nonfarm payrolls increased consistently from July 2022 to October 2026. While unemployment rose modestly, continued job growth contradicts the standard definition of a recession involving significant economic contraction. Confounding factors include fiscal stimulus and labor market rigidities. To settle this, one must analyze a historical dataset containing multiple inversion episodes to test the statistical reliability of the yield curve as a predictor.
+
+**C4**
+The claim is not supported. A "fixed rule" implies a consistent relationship, yet the evidence shows high variability. The correlation was slightly positive ($r=0.07$) during 2017–2019 but strongly negative ($r=-0.5$) during 2022–2024. This demonstrates that the relationship between bond yields and stock returns is context-dependent, not fixed. Confounding factors include the economic drivers of rate changes; rising yields due to strong growth may boost stocks, while rising yields due to inflation may hurt them. Further analysis should segment the data by the underlying cause of rate changes (growth vs. inflation) to determine the conditional relationship.
+
+**C5**
+The claim is not supported. The sample size is extremely small ($n=6$), making any statistical conclusion unreliable. The correlation of -0.16 is weak and likely within the realm of random noise for such a short period. It is impossible to determine the true relationship between sentiment and spending, let alone prove that sentiment "doesn't matter," based on six months of data. Confounding factors include income changes, interest rates, and seasonal variations. Further analysis requires a much longer time series to establish whether a statistically significant relationship exists.
+
+**C6**
+The claim is not supported. The high correlation of 0.78 is an artifact of the pandemic period (March–July 2020), where both jobs and spending crashed simultaneously. When this outlier period is excluded, the correlation drops to 0.27, indicating a weak relationship in normal times. The data does not support a strong, persistent link between monthly payroll changes and spending growth. Confounding factors include the savings rate and fiscal transfers, which can decouple income from spending. Further analysis should examine lagged effects and control for household balance sheets to better understand consumption drivers.
+
+<answers>{"C1": "not supported", "C2": "not supported", "C3": "not supported", "C4": "not supported", "C5": "not supported", "C6": "not supported"}</answers>

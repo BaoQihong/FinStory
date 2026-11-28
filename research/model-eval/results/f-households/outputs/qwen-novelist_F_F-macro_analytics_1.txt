@@ -1,0 +1,125 @@
+{
+  "macro": {
+    "title": "The Numbers Behind the Squeeze",
+    "intro": "The official inflation data tells a story of moderation, but the underlying price level and the real purchasing power of the median household tell a different one. The gap between these two realities is where the current consumer frustration lives.",
+    "indicators": [
+      {
+        "key": "cpiHeadline",
+        "note": "The headline CPI at {cpiHeadlineLatest} is the highest in the data since 2014, meaning the overall cost of living is at a peak even as the rate of increase slows."
+      },
+      {
+        "key": "realMedianIncome",
+        "note": "Real median household income at {realMedianIncomeLatest} is the highest in the data since 2014, but its growth over five years ({realMedianIncomeChg5y}) has been far slower than the rise in core prices ({cpiCoreChg5y})."
+      },
+      {
+        "key": "consumerSentiment",
+        "note": "Consumer sentiment at {consumerSentimentLatest} is the lowest in the data since 2014, reflecting a direct link between the high price level and household confidence."
+      },
+      {
+        "key": "sp500RealReturn",
+        "note": "The S&P 500's real return at {sp500RealReturnLatest} is the lowest in the data since April 2025, showing how inflation has eroded the value of equity gains for savers."
+      }
+    ],
+    "charts": [
+      {
+        "chartId": "inflationTrends",
+        "question": "How have headline and core inflation measures moved relative to each other over the past six years?",
+        "takeaway": "While headline CPI has moderated from its 2022 peak, core measures like the PCE index continue to rise, indicating that the underlying cost of goods and services remains stubbornly high."
+      }
+    ],
+    "explainers": [
+      {
+        "title": "Price Level vs. Rate of Change",
+        "text": "A falling inflation rate means prices are rising more slowly, not that they are falling. The current price level is still at a historic high, which is why consumers feel the pinch even as the news reports 'disinflation'.",
+        "evidence": "documented"
+      },
+      {
+        "title": "The Wage-Price Gap",
+        "text": "Over the past five years, core prices rose by {cpiCoreChg5y} while real median income grew by only {realMedianIncomeChg5y}. This gap is the fundamental reason why households feel poorer despite nominal wage increases.",
+        "evidence": "documented"
+      },
+      {
+        "title": "Sticky Costs",
+        "text": "Housing and medical care are the primary drivers of persistent inflation. These are not discretionary purchases, so their continued rise has an outsized impact on household budgets and the perception of cost-of-living.",
+        "evidence": "documented"
+      }
+    ],
+    "attention": {
+      "required": false,
+      "reasons": []
+    }
+  },
+  "analytics": {
+    "title": "Why the Disconnect Persists",
+    "intro": "The core question is why official inflation data and the consumer experience have diverged so sharply. The answer lies in the structure of the inflation itself and the lag in household income adjustment.",
+    "chain": {
+      "title": "From Price Shock to Wealth Erosion",
+      "steps": [
+        {
+          "title": "The Initial Price Shock",
+          "text": "The 2021-2022 inflation surge was driven by a combination of supply chain disruptions and a post-pandemic demand spike. This created a broad-based increase in the price level across goods and services.",
+          "evidence": "documented"
+        },
+        {
+          "title": "The Wage Lag",
+          "text": "Nominal wages did increase, but not fast enough to keep pace with the initial price surge. This created a period of significant real income loss for the median household, as seen in the data from 2022.",
+          "evidence": "documented"
+        },
+        {
+          "title": "Sticky Costs and Base Effects",
+          "text": "Even as headline inflation slowed, costs in housing and medical care remained elevated. These 'sticky' components continued to push up the overall price level, preventing a full recovery in real purchasing power.",
+          "evidence": "documented"
+        },
+        {
+          "title": "The Sentiment Feedback Loop",
+          "text": "Consumers, reacting to their lived experience of high prices and stagnant real income, became more pessimistic. This is reflected in the sharp drop in consumer sentiment, which is now more closely tied to price perceptions than to income growth.",
+          "evidence": "interpretation"
+        },
+        {
+          "title": "Wealth Accumulation Under Pressure",
+          "text": "The combination of high prices and compressed real returns on assets like equities makes it harder for households to build wealth. The real return on the S&P 500 has fallen to {sp500RealReturnLatest}, the lowest in the data since April 2025, reducing the effectiveness of traditional saving strategies.",
+          "evidence": "documented"
+        }
+      ]
+    },
+    "charts": [],
+    "comparisons": [
+      {
+        "title": "The 1970s Parallel",
+        "text": "The current situation shares a key feature with the 1970s: a period of high inflation followed by a prolonged period where the price level remains elevated, even as the rate of inflation falls. In both cases, this created a persistent perception of high costs that outlasted the official disinflation.",
+        "evidence": "context"
+      }
+    ],
+    "implications": {
+      "title": "What This Means for Households and Investors",
+      "intro": "The divergence between official data and lived experience has real consequences for how households manage their finances and invest their money.",
+      "items": [
+        {
+          "asset": "Equities",
+          "icon": "stocks",
+          "shows": "The S&P 500's real return has fallen to {sp500RealReturnLatest}, the lowest in the data since April 2025.",
+          "showsEvidence": "documented",
+          "couldMean": "Traditional equity-based wealth accumulation is less effective in the current environment. Investors may need to seek higher nominal returns or accept a longer time horizon to achieve their real return goals."
+        },
+        {
+          "asset": "Housing",
+          "icon": "property",
+          "shows": "Owners' equivalent rent and mortgage rates remain high, with the 30-year fixed rate at {mortgageRateLatest}.",
+          "showsEvidence": "documented",
+          "couldMean": "The high cost of housing is a major driver of the perceived expense gap. This makes homeownership less accessible for younger households and increases the financial burden for existing owners who cannot refinance."
+        },
+        {
+          "asset": "Consumer Discretionary Spending",
+          "icon": "cash",
+          "shows": "Consumers are trading down and reducing discretionary purchases, a structural shift in spending habits.",
+          "showsEvidence": "context",
+          "couldMean": "This shift complicates the return to pre-inflation consumption norms. Businesses that rely on discretionary spending may face a prolonged period of weaker demand, even as official inflation rates fall."
+        }
+      ]
+    },
+    "attention": {
+      "required": false,
+      "reasons": []
+    }
+  }
+}

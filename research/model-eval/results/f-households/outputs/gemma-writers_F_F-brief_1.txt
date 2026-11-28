@@ -1,0 +1,18 @@
+{
+  "angle": "The disconnect between falling headline inflation rates and the persistent high cost of living, and how this environment affects retail wealth accumulation.",
+  "questions": [
+    "How do current price levels for essential goods and services compare to pre-inflationary periods?",
+    "To what extent have nominal wage increases kept pace with the cumulative price increases of the last few years?",
+    "Which specific categories of consumer spending continue to show price growth despite an overall decline in inflation?",
+    "How is the gap between falling inflation and high price levels impacting household savings rates?"
+  ],
+  "indicators": [
+    "Consumer Price Index (CPI)",
+    "Real wage growth",
+    "Household savings rate",
+    "Core inflation",
+    "Retail sales volumes"
+  ],
+  "outlook": "Conditions under which price levels might actually decline (deflation) versus a scenario where inflation remains sticky above central bank targets.",
+  "premise": "The idea assumes that inflation is currently trending downwards while the absolute cost of living remains high. Research should first establish whether this divergence is supported by current economic data."
+}

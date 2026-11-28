@@ -1,0 +1,46 @@
+{
+  "kicker": "Inflation",
+  "headline": "Why Everything Still Feels So Expensive",
+  "dek": "Headline inflation is cooling, but the cumulative price hikes of the last five years have left the median household financially squeezed and skeptical of official data.",
+  "keyPoints": [
+    "Price levels remain at their highest point in five years even as the rate of increase slows.",
+    "Real median household income has failed to keep pace with the 20.7% jump in core prices since 2021.",
+    "A growing gap between official metrics and lived experience is eroding consumer confidence."
+  ],
+  "blocks": [
+    {
+      "type": "p",
+      "text": "Inflation is coming down, but prices aren't. This is the central frustration of the current economic moment: the gap between a decelerating inflation rate and a cost of living that feels higher than ever. To the person paying for rent and medical care, the news that inflation has moderated from its 2022 peak is cold comfort when the actual price tags are still climbing."
+    },
+    {
+      "type": "p",
+      "text": "The official indices confirm this tension. While the pace of increases has slowed, the price level itself hasn't dropped. US Core CPI is at its highest point in the data since January 2014, having risen {cpiCoreChg5y} over the past five years."
+    },
+    {
+      "type": "p",
+      "text": "The squeeze is most acute because wages haven't caught up. Over that same five-year period, US real median household income grew by only {realMedianIncomeChg5y}. The result is a persistent perception gap: consumers are told the inflation fire is being put out, but they are still standing in the heat."
+    },
+    {
+      "type": "chart",
+      "chartId": "incomeVsInflation",
+      "question": "How does household income compare to inflation?",
+      "takeaway": "Real median household income has grown modestly over five years, failing to match the cumulative rise in prices."
+    },
+    {
+      "type": "p",
+      "text": "This disconnect is taking a psychological toll. Consumer sentiment has fallen {consumerSentimentChg5y} over five years. It no longer tracks closely with income growth; instead, it is driven by the perception that things simply cost too much."
+    },
+    {
+      "type": "p",
+      "text": "For those trying to build wealth, the environment has grown more hostile. Real returns on equities have compressed, with the S&P 500's year-over-year real return falling by {sp500RealReturnChg1y} over the last year. Traditional strategies for getting ahead are working less effectively as inflation eats deeper into nominal gains."
+    },
+    {
+      "type": "p",
+      "text": "If consumers continue to trade down and cut discretionary spending to manage these structural cost increases, the economy may not return to pre-inflation norms even after price stability is fully restored."
+    }
+  ],
+  "attention": {
+    "required": false,
+    "reasons": []
+  }
+}

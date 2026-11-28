@@ -1,0 +1,64 @@
+**Outlook: A Tightrope Between Sticky Prices and a Cooling Labor Market**
+
+The US economy enters the final quarter of 2026 balancing two opposing forces. On one side, inflation has re-accelerated from its late-2025 lows, with the CPI 12-month change rising from 2.65% in December 2025 to 4.17% in May 2026 before easing to 3.72% in September. Core CPI has followed a similar, if more muted, path, climbing from 2.65% to a peak of 2.82% in May before settling at 2.57% in September. On the other side, the labor market has remained remarkably stable: unemployment has drifted down from 4.5% in November 2025 to 4.1% in October 2026, while nonfarm payrolls have grown steadily from 158,449 thousand to 159,293 thousand over the same period. Real consumer spending growth has fluctuated between 1.47% and 2.78%, suggesting demand is neither collapsing nor overheating.
+
+Against this backdrop, the Federal Reserve has held the effective federal funds rate at 3.63–3.64% for most of 2026, only nudging it up to 3.75% in September and 3.88% in October. Treasury yields have risen in tandem: the 2-year has climbed from 3.50% in December 2025 to 4.74% in October 2026, and the 10-year from 4.14% to 5.13%. Mortgage rates have followed, rising from 6.19% to 7.33%. Consumer sentiment has been volatile, dipping to 44.8 in May before recovering to 55.2 in July and falling again to 48.0 in October. The personal saving rate has declined from 5.0% in December 2025 to 3.6% in September, before ticking up to 4.1% in October.
+
+These conditional scenarios are not forecasts. They describe what would happen if specific conditions materialized.
+
+---
+
+**Base Case: Gradual Rebalancing**
+
+*Conditions:* Inflation continues to drift down from its mid-2026 peak while the labor market cools only modestly. Real consumer spending growth settles around 2–2.5%, the personal saving rate stabilizes near 4%, and the Federal Reserve holds the federal funds rate near current levels.
+
+*Transmission mechanism:* Slower inflation reduces the pressure on the Fed to hike, keeping short-term rates steady. A cooling but not collapsing labor market means wage growth continues to decelerate from 3.93% in November 2025 to 3.12% in October 2026, easing cost pressures without triggering mass layoffs. Treasury yields stabilize as markets price in a steady policy path.
+
+*Asset implications:*
+- **Treasuries:** The 2-year and 10-year yields level off rather than rising further, benefiting holders of existing bonds.
+- **US equities:** Earnings growth is supported by stable consumer spending; the S&P 500, which rose from 6,845.50 in December 2025 to 7,580.07 in October 2026, consolidates rather than surges.
+- **Housing and mortgage borrowers:** Mortgage rates near 7% remain a headwind for affordability, but stable rates allow the housing market to adjust gradually rather than seize up.
+- **US dollar:** A steady rate differential with other major economies keeps the dollar broadly stable.
+- **Cash savers:** Deposit rates remain attractive relative to the inflation of recent months, preserving real returns if CPI settles near 3%.
+
+*Invalidating developments:* A renewed spike in CPI above 4.5%, a sharp drop in nonfarm payrolls below 158,000 thousand, or a collapse in real consumer spending growth below 1% would each undermine this scenario.
+
+---
+
+**Upside Scenario: Soft Landing Achieved**
+
+*Conditions:* Inflation falls back toward 2.5% on both headline and core measures, wage growth settles near 3%, and real consumer spending growth holds above 2.5%. The personal saving rate recovers toward 5%, giving households a buffer.
+
+*Transmission mechanism:* Declining inflation expectations reduce long-term Treasury yields even if the Fed holds rates steady. Lower inflation also supports real incomes, boosting consumer spending and corporate revenues. The labor market remains tight enough to support wages but not so tight as to reignite price pressures.
+
+*Asset implications:*
+- **Treasuries:** The 10-year yield falls from 5.13% as inflation expectations anchor, raising bond prices.
+- **US equities:** Lower discount rates and stable earnings support further gains beyond the 7,580 level reached in October 2026.
+- **Housing and mortgage borrowers:** Mortgage rates ease from 7.33%, improving affordability and potentially unlocking dormant housing demand.
+- **US dollar:** If other central banks ease faster than the Fed, the dollar weakens, aiding exporters.
+- **Cash savers:** Real returns on savings improve as inflation falls below nominal deposit rates.
+
+*Invalidating developments:* CPI rising back above 4%, the unemployment rate dropping below 4.0% while wage growth accelerates above 3.5%, or the personal saving rate falling below 3.5% would each challenge this scenario.
+
+---
+
+**Downside Scenario: Stagflation Pressures**
+
+*Conditions:* Inflation remains stuck above 3.5% while real consumer spending growth drops below 1.5% and the personal saving rate falls below 3.5%. Unemployment begins to rise from 4.1%.
+
+*Transmission mechanism:* Persistent inflation forces the Fed to keep rates elevated or even hike further, pushing the federal funds rate above 4%. Higher short-term rates feed through to the 2-year and 10-year yields, raising borrowing costs across the economy. Weaker consumer spending reduces corporate revenues, while higher rates compress equity valuations.
+
+*Asset implications:*
+- **Treasuries:** Yields rise further as the Fed tightens, causing losses for bondholders.
+- **US equities:** The S&P 500 retreats from 7,580 as earnings expectations are marked down and discount rates rise.
+- **Housing and mortgage borrowers:** Mortgage rates climb above 7.33%, further chilling an already strained housing market and locking out potential buyers.
+- **US dollar:** Higher US rates could attract foreign capital, strengthening the dollar and hurting multinational earnings.
+- **Cash savers:** Nominal returns rise, but if inflation stays above 4%, real returns remain negative.
+
+*Invalidating developments:* CPI falling below 3%, real consumer spending growth recovering above 2.5%, or the personal saving rate rising above 5% would each weaken this scenario.
+
+---
+
+**Key Uncertainties**
+
+The most consequential unknowns are: whether the inflation uptick from late 2025 through mid-2026 proves temporary or entrenched; whether the labor market's resilience masks underlying weakness; how consumers will respond if the saving rate continues to fall; and whether the rise in Treasury yields reflects inflation expectations or fiscal concerns. The volatility in consumer sentiment—from 44.8 to 56.6 within six months—suggests households are highly responsive to news, making spending patterns difficult to predict. Finally, the interaction between Fed policy and long-term yields remains uncertain: the 10-year has risen even as the Fed held rates steady, a dynamic whose persistence is unclear.

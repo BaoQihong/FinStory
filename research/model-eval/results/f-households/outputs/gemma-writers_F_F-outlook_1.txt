@@ -1,0 +1,56 @@
+{
+  "title": "The Gap Between Rates and Wallets",
+  "intro": "The central question is whether the perceived expense gap is a temporary psychological lag as wages catch up, or a permanent structural shift. If the latter, the old playbook for household wealth accumulation may no longer apply.",
+  "scenarios": [
+    {
+      "key": "structural_squeeze",
+      "name": "The Permanent Squeeze",
+      "role": "central",
+      "summary": "Falling headline inflation fails to translate into a lower cost of living because essential costs in housing and healthcare have reset at a higher plateau. Real wage growth remains insufficient to bridge the gap created by the cumulative price increases of the last five years.",
+      "conditions": [
+        "Core inflation remains sticky, driven by services and rents.",
+        "Real median household income growth stays below the cumulative price increases seen since 2021."
+      ],
+      "whyItMatters": "For the median household, the 'return to normal' never arrives. Discretionary spending remains permanently depressed as a larger share of income is eaten by non-negotiable costs.",
+      "assets": [
+        {
+          "asset": "Equities",
+          "effect": "Long-term real returns may stay compressed if consumer spending shifts permanently away from discretionary goods."
+        }
+      ],
+      "watch": [
+        "A continued divergence where {cpiHeadlineLatest} falls while {consumerSentimentLatest} remains near its low of {consumerSentimentLowAll}."
+      ],
+      "uncertainties": [
+        "A sudden collapse in housing costs or a major medical cost breakthrough could break the structural trend."
+      ]
+    },
+    {
+      "key": "catch_up_recovery",
+      "name": "The Wage Catch-Up",
+      "role": "alternative",
+      "summary": "The perception gap narrows as nominal wages finally outpace the now-moderating inflation rate. As real purchasing power is restored, consumer sentiment recovers and spending patterns return to pre-inflation norms.",
+      "conditions": [
+        "Headline inflation falls toward the 2% target.",
+        "Labor market tightness forces nominal wages up faster than prices."
+      ],
+      "whyItMatters": "Retailers of discretionary goods see a revival in demand as households regain the financial breathing room lost between 2021 and 2026.",
+      "assets": [
+        {
+          "asset": "Equities",
+          "effect": "Real returns could rebound as corporate earnings benefit from restored consumer purchasing power."
+        }
+      ],
+      "watch": [
+        "An increase in {realMedianIncomeLatest} that significantly exceeds the rate of increase in {cpiHeadlineLatest}."
+      ],
+      "uncertainties": [
+        "If the Fed keeps rates high to ensure inflation hits 2%, the resulting economic slowdown could kill the wage growth needed for this recovery."
+      ]
+    }
+  ],
+  "attention": {
+    "required": false,
+    "reasons": []
+  }
+}

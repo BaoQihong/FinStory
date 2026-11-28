@@ -1,0 +1,96 @@
+{
+  "workingTitle": "The Price Paradox: Why Disinflation Doesn't Feel Like a Discount",
+  "section": "wealth",
+  "centralQuestion": "Why does the cost of living still feel prohibitively high even as official inflation rates decline, and how does this 'price level shock' affect long-term wealth building?",
+  "angle": "The story will distinguish between the rate of inflation (how fast prices rise) and the price level (how high prices have already climbed). It will investigate the 'wealth gap' created when cumulative price increases outpace wage growth and how this forces a shift in retail investor behavior from growth to preservation.",
+  "whyReadersCare": "Most people confuse 'lower inflation' with 'lower prices.' Understanding that prices rarely go back down helps readers adjust their budgets and investment expectations to a permanently higher cost-of-living baseline.",
+  "questions": [
+    "How does the current headline CPI trend compare to core CPI and specific 'sticky' categories like shelter and services?",
+    "What is the cumulative increase in the cost of a typical consumer basket since the 2021-2022 inflation spike compared to the cumulative growth in median nominal wages?",
+    "Is there a measurable gap between official inflation figures and consumer sentiment/expectations indices?",
+    "What are the current real (inflation-adjusted) returns for the S&P 500 and 10-year Treasuries?",
+    "Are there signs of 'trading down' in consumer spending data (e.g., generic vs brand name, discount retail growth)?"
+  ],
+  "searches": [
+    {
+      "query": "US CPI headline vs core trends 2024 2025 2026",
+      "purpose": "Establish the current trend of inflation and identify which components are remaining high.",
+      "recent": true
+    },
+    {
+      "query": "cumulative US inflation vs wage growth 2021-2026",
+      "purpose": "Quantify the erosion of purchasing power for median households.",
+      "recent": true
+    },
+    {
+      "query": "University of Michigan Consumer Sentiment inflation expectations vs CPI",
+      "purpose": "Find evidence of the disconnect between official data and consumer perception.",
+      "recent": true
+    },
+    {
+      "query": "real returns on equities and bonds during disinflationary periods",
+      "purpose": "Contextualize how wealth building assets perform when inflation falls but price levels remain high.",
+      "recent": false
+    },
+    {
+      "query": "US consumer spending shifts discretionary vs staples 2024 2025",
+      "purpose": "Look for structural changes in spending habits (trading down).",
+      "recent": true
+    },
+    {
+      "query": "difference between inflation rate and price level for consumers",
+      "purpose": "Find clear pedagogical explanations of the 'price level' concept to use in the narrative.",
+      "recent": false
+    }
+  ],
+  "dataNeeds": [
+    {
+      "need": "Headline Consumer Price Index (CPI)",
+      "why": "To document the trend of falling inflation.",
+      "searchText": "Consumer Price Index for All Urban Consumers: All Items in U.S. City Average"
+    },
+    {
+      "need": "Core CPI (excluding food and energy)",
+      "why": "To see if underlying inflation is more persistent than headline figures.",
+      "searchText": "Consumer Price Index for All Urban Consumers: All Items Less Food and Energy in U.S. City Average"
+    },
+    {
+      "need": "Median Weekly Real Earnings",
+      "why": "To compare wage growth against price increases.",
+      "searchText": "Median Weekly Earnings by Occupational Group"
+    },
+    {
+      "need": "Consumer Sentiment / Inflation Expectations",
+      "why": "To quantify the 'perception gap'.",
+      "searchText": "University of Michigan: Inflation Expectation"
+    },
+    {
+      "need": "S&P 500 Index Level",
+      "why": "To calculate real returns when combined with CPI.",
+      "searchText": "S&P 500"
+    },
+    {
+      "need": "10-Year Treasury Constant Maturity Rate",
+      "why": "To evaluate real fixed-income returns.",
+      "searchText": "10-Year Treasury Constant Maturity Rate"
+    }
+  ],
+  "counterChecks": [
+    {
+      "premise": "Wages have not kept up with prices.",
+      "contradictingEvidence": "Real median household income has actually increased since 2021.",
+      "searchText": "Real Median Household Income"
+    },
+    {
+      "premise": "Consumers feel things are more expensive than the data suggests.",
+      "contradictingEvidence": "Consumer inflation expectations are actually lower than the reported CPI.",
+      "searchText": "University of Michigan: Inflation Expectation"
+    },
+    {
+      "premise": "Inflation is trending down.",
+      "contradictingEvidence": "Core PCE or CPI has plateaued or ticked up in recent months.",
+      "searchText": "Personal Consumption Expenditures Price Index"
+    }
+  ],
+  "storyboardConcern": ""
+}

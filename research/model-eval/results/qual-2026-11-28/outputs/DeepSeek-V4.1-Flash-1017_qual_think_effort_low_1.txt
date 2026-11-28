@@ -1,0 +1,5 @@
+<<<REASONING (reasoning_content)>>>
+We need answer only number. 17*23=391.
+<<<END REASONING>>>
+
+391

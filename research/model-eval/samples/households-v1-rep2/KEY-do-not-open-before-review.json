@@ -1,0 +1,32 @@
+{
+ "B/B1-macro-reasoning": {
+  "A": "mimo-flash (rep 2)",
+  "B": "deepseek-flash (rep 2)",
+  "C": "gemma-it (rep 2)",
+  "D": "qwen27b (rep 2)",
+  "E": "glm47-think (rep 2)",
+  "F": "deepseek-flash-think (rep 2)"
+ },
+ "C/C1-quant-claims": {
+  "A": "deepseek-flash (rep 2)",
+  "B": "gemma-it (rep 2)",
+  "C": "mimo-flash (rep 2)",
+  "D": "qwen27b (rep 2)",
+  "E": "deepseek-flash-think (rep 2)",
+  "F": "glm47-think (rep 2)"
+ },
+ "D/D1-market-outlook": {
+  "A": "gemma-it (rep 2)",
+  "B": "deepseek-flash (rep 2)",
+  "C": "glm47-think (rep 2)",
+  "D": "mimo-flash (rep 2)",
+  "E": "qwen27b (rep 2)",
+  "F": "deepseek-flash-think (rep 2)"
+ },
+ "E/E1-feature-households": {
+  "A": "gemma-it (rep 2)",
+  "B": "deepseek-flash (rep 2)",
+  "C": "qwen27b (rep 2)",
+  "D": "mimo-flash (rep 2)"
+ }
+}

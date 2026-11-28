@@ -1,0 +1,106 @@
+{
+  "workingTitle": "The Price Perception Gap: Why Falling Inflation Still Feels Expensive",
+  "section": "wealth",
+  "centralQuestion": "Why does the subjective experience of high prices persist even as headline inflation trends downward, and how does this divergence impact household wealth accumulation?",
+  "angle": "Investigate the disconnect between falling official inflation metrics and the persistent perception of high costs, focusing on the impact on consumer sentiment and long-term wealth strategies.",
+  "whyReadersCare": "Understanding this gap helps readers navigate the tension between official economic data and their personal cost-of-living reality, informing better decisions on saving, spending, and investing during a period of shifting price dynamics.",
+  "questions": [
+    "How do core inflation measures compare to headline figures, and which specific categories of goods or services are driving the perceived persistence of high costs?",
+    "To what extent has the cumulative price increase from recent inflationary periods outpaced wage growth for median-income households?",
+    "How are consumers altering their saving and spending habits in response to the gap between official inflation data and their personal cost-of-living experience?",
+    "What is the current state of real returns on common wealth-building assets such as equities and fixed income after adjusting for inflation?",
+    "Are there structural shifts in consumer spending, such as a permanent move away from discretionary items, that are complicating the return to pre-inflation norms?"
+  ],
+  "searches": [
+    {
+      "query": "US CPI core inflation rate latest data Federal Reserve",
+      "purpose": "Retrieve the most recent headline and core CPI figures to establish the current inflation trajectory.",
+      "recent": true
+    },
+    {
+      "query": "Consumer confidence index survey results price perception",
+      "purpose": "Find recent consumer sentiment data that quantifies the gap between official inflation and subjective price experience.",
+      "recent": true
+    },
+    {
+      "query": "Median household income growth vs CPI inflation cumulative impact",
+      "purpose": "Gather data comparing long-term wage growth with cumulative price increases to assess real purchasing power.",
+      "recent": false
+    },
+    {
+      "query": "Real returns on equities and bonds inflation-adjusted performance",
+      "purpose": "Identify current real returns on common wealth-building assets to evaluate the impact of inflation on investment portfolios.",
+      "recent": false
+    },
+    {
+      "query": "Structural shifts in consumer spending discretionary goods services",
+      "purpose": "Explore evidence of permanent changes in consumer behavior, such as a move away from discretionary spending.",
+      "recent": false
+    },
+    {
+      "query": "Core PCE price index vs CPI divergence categories driving inflation",
+      "purpose": "Understand the differences between core PCE and CPI, and identify which spending categories are most influential in perceived inflation.",
+      "recent": false
+    }
+  ],
+  "dataNeeds": [
+    {
+      "need": "Headline CPI (Consumer Price Index) over time",
+      "why": "To track the overall trend in inflation and establish whether it is indeed declining.",
+      "searchText": "Consumer Price Index All Urban Consumers"
+    },
+    {
+      "need": "Core CPI (excluding food and energy) over time",
+      "why": "To compare core inflation with headline figures and identify underlying price pressures.",
+      "searchText": "Core Consumer Price Index"
+    },
+    {
+      "need": "Core PCE Price Index over time",
+      "why": "To provide an alternative measure of inflation that the Federal Reserve uses for policy decisions.",
+      "searchText": "Core Personal Consumption Expenditures Price Index"
+    },
+    {
+      "need": "Median Real Household Income over time",
+      "why": "To assess whether wage growth has kept pace with cumulative price increases.",
+      "searchText": "Median Real Household Income"
+    },
+    {
+      "need": "Consumer Confidence Index over time",
+      "why": "To gauge consumer sentiment and the perceived gap between official data and personal experience.",
+      "searchText": "Consumer Confidence Index"
+    },
+    {
+      "need": "Real Returns on S&P 500 and 10-Year Treasury Yield over time",
+      "why": "To evaluate the current state of real returns on common wealth-building assets after adjusting for inflation.",
+      "searchText": "S&P 500 Real Return and 10-Year Treasury Yield"
+    },
+    {
+      "need": "Consumer Spending on Discretionary vs. Necessities over time",
+      "why": "To identify structural shifts in consumer spending patterns that may be complicating the return to pre-inflation norms.",
+      "searchText": "Consumer Spending Discretionary Goods Services"
+    }
+  ],
+  "counterChecks": [
+    {
+      "premise": "Headline inflation is currently declining.",
+      "contradictingEvidence": "If recent CPI data shows a resurgence in inflation, particularly in core categories, the premise would be undermined.",
+      "searchText": "Latest CPI data showing resurgence in core inflation"
+    },
+    {
+      "premise": "There is a significant disconnect between official inflation metrics and consumer perception.",
+      "contradictingEvidence": "If consumer confidence surveys indicate that perceptions are aligning with official data, the premise of a significant gap would be weakened.",
+      "searchText": "Consumer confidence surveys showing alignment with official inflation data"
+    },
+    {
+      "premise": "Cumulative price increases have outpaced wage growth for median-income households.",
+      "contradictingEvidence": "If median real household income has grown at a rate comparable to or exceeding cumulative CPI increases, the premise would be challenged.",
+      "searchText": "Median real household income growth comparable to CPI increases"
+    },
+    {
+      "premise": "Consumers are altering their saving and spending habits in response to the perceived gap.",
+      "contradictingEvidence": "If consumer spending data shows no significant shift in behavior, the premise of altered habits would be less supported.",
+      "searchText": "Consumer spending data showing no significant shift in behavior"
+    }
+  ],
+  "storyboardConcern": ""
+}

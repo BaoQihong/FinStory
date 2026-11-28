@@ -1,0 +1,53 @@
+**Internal Memo: Editorial Analysis of US Macroeconomic Divergence (July 2024 – June 2025)**
+
+The provided data presents a puzzling decoupling. While the Federal Reserve began cutting the effective federal funds rate in September 2024 (from 5.33% to a floor of 4.33% by January 2025), the transmission of this policy to the real economy is uneven. We see a sharp collapse in consumer sentiment—falling from a peak of 74.0 in December 2024 to 60.7 in June 2025—despite the fact that real consumer spending has remained positive and average hourly earnings growth has stayed robust, peaking at 4.21% in March 2025.
+
+Before commissioning a feature, we must determine if this is a "vibecession" (a psychological disconnect) or a leading indicator of a structural break.
+
+### Competing Explanations
+
+There are two primary narratives to reconcile these figures:
+
+**1. The "Lagged Transmission" Hypothesis**
+In this scenario, the economy is finally feeling the weight of the 2023–2024 tightening cycle. The decline in sentiment is a rational response to a tightening credit environment and a plateauing labor market (unemployment ticking up to 4.3% in May 2025). Spending remains high not because consumers are confident, but because they are spending down excess savings or utilizing credit to maintain their standard of living.
+
+**2. The "Expectations Gap" Hypothesis**
+Here, the disconnect is driven by the gap between nominal gains and the cost of living. While CPI has cooled (dropping from 2.94% in July 2024 to 2.33% in April 2025), the *level* of prices remains high. Consumers may be experiencing "price fatigue," where the slowing rate of inflation is irrelevant because the absolute cost of essentials remains prohibitive. In this view, sentiment is a reflection of the cost-of-living plateau, while spending is propped up by strong nominal wage growth (averaging ~4% over the period).
+
+To distinguish these, we must look at the saving rate. If the "Lagged Transmission" theory holds, we should see a systemic collapse in the personal saving rate as households bridge the gap. The data shows a decline from 6.2% (July 2024) to 5.5% (June 2025), but this is a gradual drift rather than a crash, suggesting that spending is not yet being funded by a desperate liquidation of assets.
+
+### Transmission Channels: Where the Policy is Stalling
+
+The data suggests a breakdown in the traditional transmission of monetary policy. Usually, a drop in the federal funds rate leads to a corresponding drop in long-term yields and mortgage rates. 
+
+However, the 10-year Treasury yield and the 30-year fixed mortgage rate have remained stubbornly high. After a dip in September 2024, the 30-year mortgage rate climbed back to 6.82% by June 2025—nearly identical to its July 2024 level (6.85%). 
+
+**The channel is blocked:** The Fed is lowering the short end of the curve, but the long end (which dictates mortgages and corporate borrowing) is ignoring the signal. This suggests that the market is pricing in either persistent structural inflation or a higher term premium. Consequently, households are not receiving the "relief" of lower borrowing costs that usually accompanies Fed cuts, explaining why sentiment is cratering even as the Fed attempts to ease.
+
+### Asymmetric Impacts
+
+The evidence suggests a stark divide in who is feeling this pressure:
+
+*   **The "Locked-In" and the "Locked-Out":** With mortgage rates hovering near 7%, homeowners with legacy 3% rates are insulated, but new buyers are priced out. This creates a frozen housing market that suppresses sentiment even if the broader economy grows.
+*   **Wage Earners vs. Fixed-Income Households:** Those seeing the 4% growth in average hourly earnings are maintaining their spending. However, the collapse in sentiment suggests that this wage growth is not offsetting the psychological or actual burden of high interest rates on non-mortgage debt (credit cards, auto loans).
+
+### The Conventional Misreading
+
+A superficial reading of this data would conclude that "the economy is strong because spending is up and unemployment is low, so the sentiment drop is irrational." 
+
+This misses the **divergence between the Fed and the Market**. The conventional narrative focuses on the *policy rate* (4.33%), but the consumer lives in the *market rate* (6.82% mortgages). The "story" is not that the Fed is failing to cut, but that the market is refusing to follow the Fed. The consumer is reacting to the market, not the policy.
+
+### Next Steps: Testable Hypotheses
+
+To move from inference to a definitive feature, I want to test the following:
+
+**Hypothesis A: Spending is being funded by debt, not income.**
+*   *Test:* Analyze **Household Debt-to-Income ratios** and **Credit Card Delinquency rates**. If spending is holding up while delinquencies rise, the "strong spending" is a mirage of unsustainable leverage.
+
+**Hypothesis B: The sentiment crash is concentrated in specific demographics.**
+*   *Test:* Cross-reference **University of Michigan sentiment data by income quintile**. I suspect the collapse is concentrated in the bottom 40%, while the top 20% remain optimistic, masking a K-shaped reality.
+
+**Hypothesis C: The "Long-End" stubbornness is driven by inflation expectations.**
+*   *Test:* Examine **5-year, 5-year forward inflation-expectation rates**. If these are rising while the Fed cuts, it proves the market believes the Fed is cutting too early or too deeply, which explains why mortgage rates aren't falling.
+
+**Commissioning Decision:** Hold the feature until we have the delinquency and quintile data. We are not looking at a simple "vibecession"; we are looking at a potential failure of monetary transmission. The story is: *The Fed is cutting, but the consumer is still paying the price of the peak.*

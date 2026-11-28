@@ -1,0 +1,5206 @@
+{
+ "runs": [
+  "qual-2026-11-28"
+ ],
+ "generatedAt": "2026-11-28T08:13:46.162Z",
+ "records": 220,
+ "note": "n = number of observations behind each aggregate. Latency is end-to-end wall time from this machine; output tokens/s = output tokens ÷ (latency − time to first token), streaming requests only. Arli is a flat-rate subscription: no per-token cost applies.",
+ "byConfig": {
+  "Qwen3.8-27B": {
+   "model": "Qwen3.8-27B",
+   "mode": "default",
+   "all": {
+    "requests": 20,
+    "succeeded": 19,
+    "failed": 1,
+    "errors": [
+     "http 400"
+    ],
+    "retries": 0,
+    "latencyMs": {
+     "n": 19,
+     "mean": 11706,
+     "median": 2419,
+     "min": 554,
+     "max": 59840
+    },
+    "ttftMs": {
+     "n": 3,
+     "median": 843,
+     "min": 691,
+     "max": 8069
+    },
+    "tokens": {
+     "inputMean": 1203,
+     "outputMean": 62,
+     "reasoningMean": 9,
+     "reasoningReported": 19,
+     "inputTotal": 22849,
+     "outputTotal": 1181
+    },
+    "outputTokensPerSec": {
+     "n": 3,
+     "median": 33.7,
+     "min": 22.4,
+     "max": 85.6
+    },
+    "finishReasons": {
+     "stop": 18,
+     "length": 1
+    },
+    "checksPassed": {
+     "pass": 46,
+     "n": 47
+    },
+    "json": {
+     "bare": null,
+     "parses": {
+      "pass": 2,
+      "n": 2
+     },
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": [
+     "reasoning"
+    ]
+   },
+   "bySuite": {
+    "qual": {
+     "requests": 20,
+     "succeeded": 19,
+     "failed": 1,
+     "errors": [
+      "http 400"
+     ],
+     "retries": 0,
+     "latencyMs": {
+      "n": 19,
+      "mean": 11706,
+      "median": 2419,
+      "min": 554,
+      "max": 59840
+     },
+     "ttftMs": {
+      "n": 3,
+      "median": 843,
+      "min": 691,
+      "max": 8069
+     },
+     "tokens": {
+      "inputMean": 1203,
+      "outputMean": 62,
+      "reasoningMean": 9,
+      "reasoningReported": 19,
+      "inputTotal": 22849,
+      "outputTotal": 1181
+     },
+     "outputTokensPerSec": {
+      "n": 3,
+      "median": 33.7,
+      "min": 22.4,
+      "max": 85.6
+     },
+     "finishReasons": {
+      "stop": 18,
+      "length": 1
+     },
+     "checksPassed": {
+      "pass": 46,
+      "n": 47
+     },
+     "json": {
+      "bare": null,
+      "parses": {
+       "pass": 2,
+       "n": 2
+      },
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    }
+   }
+  },
+  "Qwen3.8-27B-antislop": {
+   "model": "Qwen3.8-27B-antislop",
+   "mode": "default",
+   "all": {
+    "requests": 20,
+    "succeeded": 19,
+    "failed": 1,
+    "errors": [
+     "http 400"
+    ],
+    "retries": 2,
+    "latencyMs": {
+     "n": 19,
+     "mean": 64562,
+     "median": 20239,
+     "min": 2197,
+     "max": 255215
+    },
+    "ttftMs": {
+     "n": 3,
+     "median": 2119,
+     "min": 825,
+     "max": 2330
+    },
+    "tokens": {
+     "inputMean": 1203,
+     "outputMean": 1091,
+     "reasoningMean": 653,
+     "reasoningReported": 19,
+     "inputTotal": 22849,
+     "outputTotal": 20724
+    },
+    "outputTokensPerSec": {
+     "n": 3,
+     "median": 11.9,
+     "min": 10,
+     "max": 23.1
+    },
+    "finishReasons": {
+     "length": 19
+    },
+    "checksPassed": {
+     "pass": 21,
+     "n": 47
+    },
+    "json": {
+     "bare": null,
+     "parses": {
+      "pass": 0,
+      "n": 2
+     },
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": [
+     "reasoning"
+    ]
+   },
+   "bySuite": {
+    "qual": {
+     "requests": 20,
+     "succeeded": 19,
+     "failed": 1,
+     "errors": [
+      "http 400"
+     ],
+     "retries": 2,
+     "latencyMs": {
+      "n": 19,
+      "mean": 64562,
+      "median": 20239,
+      "min": 2197,
+      "max": 255215
+     },
+     "ttftMs": {
+      "n": 3,
+      "median": 2119,
+      "min": 825,
+      "max": 2330
+     },
+     "tokens": {
+      "inputMean": 1203,
+      "outputMean": 1091,
+      "reasoningMean": 653,
+      "reasoningReported": 19,
+      "inputTotal": 22849,
+      "outputTotal": 20724
+     },
+     "outputTokensPerSec": {
+      "n": 3,
+      "median": 11.9,
+      "min": 10,
+      "max": 23.1
+     },
+     "finishReasons": {
+      "length": 19
+     },
+     "checksPassed": {
+      "pass": 21,
+      "n": 47
+     },
+     "json": {
+      "bare": null,
+      "parses": {
+       "pass": 0,
+       "n": 2
+      },
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    }
+   }
+  },
+  "Qwen3.8-27B-Novelist1.0": {
+   "model": "Qwen3.8-27B-Novelist1.0",
+   "mode": "default",
+   "all": {
+    "requests": 20,
+    "succeeded": 19,
+    "failed": 1,
+    "errors": [
+     "http 400"
+    ],
+    "retries": 0,
+    "latencyMs": {
+     "n": 19,
+     "mean": 7990,
+     "median": 3798,
+     "min": 1077,
+     "max": 56227
+    },
+    "ttftMs": {
+     "n": 3,
+     "median": 1704,
+     "min": 1443,
+     "max": 1726
+    },
+    "tokens": {
+     "inputMean": 1203,
+     "outputMean": 63,
+     "reasoningMean": 17,
+     "reasoningReported": 19,
+     "inputTotal": 22849,
+     "outputTotal": 1188
+    },
+    "outputTokensPerSec": {
+     "n": 3,
+     "median": 9.4,
+     "min": 2.3,
+     "max": 26.3
+    },
+    "finishReasons": {
+     "stop": 18,
+     "length": 1
+    },
+    "checksPassed": {
+     "pass": 46,
+     "n": 47
+    },
+    "json": {
+     "bare": null,
+     "parses": {
+      "pass": 2,
+      "n": 2
+     },
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": [
+     "reasoning"
+    ]
+   },
+   "bySuite": {
+    "qual": {
+     "requests": 20,
+     "succeeded": 19,
+     "failed": 1,
+     "errors": [
+      "http 400"
+     ],
+     "retries": 0,
+     "latencyMs": {
+      "n": 19,
+      "mean": 7990,
+      "median": 3798,
+      "min": 1077,
+      "max": 56227
+     },
+     "ttftMs": {
+      "n": 3,
+      "median": 1704,
+      "min": 1443,
+      "max": 1726
+     },
+     "tokens": {
+      "inputMean": 1203,
+      "outputMean": 63,
+      "reasoningMean": 17,
+      "reasoningReported": 19,
+      "inputTotal": 22849,
+      "outputTotal": 1188
+     },
+     "outputTokensPerSec": {
+      "n": 3,
+      "median": 9.4,
+      "min": 2.3,
+      "max": 26.3
+     },
+     "finishReasons": {
+      "stop": 18,
+      "length": 1
+     },
+     "checksPassed": {
+      "pass": 46,
+      "n": 47
+     },
+     "json": {
+      "bare": null,
+      "parses": {
+       "pass": 2,
+       "n": 2
+      },
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    }
+   }
+  },
+  "Qwen3.8-27B-Moxie": {
+   "model": "Qwen3.8-27B-Moxie",
+   "mode": "default",
+   "all": {
+    "requests": 20,
+    "succeeded": 19,
+    "failed": 1,
+    "errors": [
+     "http 400"
+    ],
+    "retries": 0,
+    "latencyMs": {
+     "n": 19,
+     "mean": 8300,
+     "median": 3689,
+     "min": 1659,
+     "max": 38413
+    },
+    "ttftMs": {
+     "n": 3,
+     "median": 1373,
+     "min": 717,
+     "max": 2073
+    },
+    "tokens": {
+     "inputMean": 1203,
+     "outputMean": 59,
+     "reasoningMean": 11,
+     "reasoningReported": 19,
+     "inputTotal": 22849,
+     "outputTotal": 1122
+    },
+    "outputTokensPerSec": {
+     "n": 3,
+     "median": 17.6,
+     "min": 10.7,
+     "max": 26.3
+    },
+    "finishReasons": {
+     "stop": 18,
+     "length": 1
+    },
+    "checksPassed": {
+     "pass": 46,
+     "n": 47
+    },
+    "json": {
+     "bare": null,
+     "parses": {
+      "pass": 2,
+      "n": 2
+     },
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": [
+     "reasoning"
+    ]
+   },
+   "bySuite": {
+    "qual": {
+     "requests": 20,
+     "succeeded": 19,
+     "failed": 1,
+     "errors": [
+      "http 400"
+     ],
+     "retries": 0,
+     "latencyMs": {
+      "n": 19,
+      "mean": 8300,
+      "median": 3689,
+      "min": 1659,
+      "max": 38413
+     },
+     "ttftMs": {
+      "n": 3,
+      "median": 1373,
+      "min": 717,
+      "max": 2073
+     },
+     "tokens": {
+      "inputMean": 1203,
+      "outputMean": 59,
+      "reasoningMean": 11,
+      "reasoningReported": 19,
+      "inputTotal": 22849,
+      "outputTotal": 1122
+     },
+     "outputTokensPerSec": {
+      "n": 3,
+      "median": 17.6,
+      "min": 10.7,
+      "max": 26.3
+     },
+     "finishReasons": {
+      "stop": 18,
+      "length": 1
+     },
+     "checksPassed": {
+      "pass": 46,
+      "n": 47
+     },
+     "json": {
+      "bare": null,
+      "parses": {
+       "pass": 2,
+       "n": 2
+      },
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    }
+   }
+  },
+  "GLM-4.7": {
+   "model": "GLM-4.7",
+   "mode": "default",
+   "all": {
+    "requests": 20,
+    "succeeded": 17,
+    "failed": 3,
+    "errors": [
+     "http 503",
+     "http 400"
+    ],
+    "retries": 2,
+    "latencyMs": {
+     "n": 17,
+     "mean": 33559,
+     "median": 4555,
+     "min": 790,
+     "max": 126643
+    },
+    "ttftMs": {
+     "n": 1,
+     "median": 120517,
+     "min": 120517,
+     "max": 120517
+    },
+    "tokens": {
+     "inputMean": 1244,
+     "outputMean": 72,
+     "reasoningMean": 37,
+     "reasoningReported": 17,
+     "inputTotal": 21155,
+     "outputTotal": 1216
+    },
+    "outputTokensPerSec": {
+     "n": 1,
+     "median": 20.3,
+     "min": 20.3,
+     "max": 20.3
+    },
+    "finishReasons": {
+     "stop": 16,
+     "length": 1
+    },
+    "checksPassed": {
+     "pass": 41,
+     "n": 41
+    },
+    "json": {
+     "bare": null,
+     "parses": {
+      "pass": 2,
+      "n": 2
+     },
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": [
+     "reasoning"
+    ]
+   },
+   "bySuite": {
+    "qual": {
+     "requests": 20,
+     "succeeded": 17,
+     "failed": 3,
+     "errors": [
+      "http 503",
+      "http 400"
+     ],
+     "retries": 2,
+     "latencyMs": {
+      "n": 17,
+      "mean": 33559,
+      "median": 4555,
+      "min": 790,
+      "max": 126643
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 120517,
+      "min": 120517,
+      "max": 120517
+     },
+     "tokens": {
+      "inputMean": 1244,
+      "outputMean": 72,
+      "reasoningMean": 37,
+      "reasoningReported": 17,
+      "inputTotal": 21155,
+      "outputTotal": 1216
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 20.3,
+      "min": 20.3,
+      "max": 20.3
+     },
+     "finishReasons": {
+      "stop": 16,
+      "length": 1
+     },
+     "checksPassed": {
+      "pass": 41,
+      "n": 41
+     },
+     "json": {
+      "bare": null,
+      "parses": {
+       "pass": 2,
+       "n": 2
+      },
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    }
+   }
+  },
+  "DeepSeek-V4.1-Flash-1017": {
+   "model": "DeepSeek-V4.1-Flash-1017",
+   "mode": "default",
+   "all": {
+    "requests": 20,
+    "succeeded": 13,
+    "failed": 7,
+    "errors": [
+     "http 503"
+    ],
+    "retries": 7,
+    "latencyMs": {
+     "n": 13,
+     "mean": 8778,
+     "median": 3378,
+     "min": 1208,
+     "max": 73739
+    },
+    "ttftMs": {
+     "n": 1,
+     "median": 2163,
+     "min": 2163,
+     "max": 2163
+    },
+    "tokens": {
+     "inputMean": 48,
+     "outputMean": 23,
+     "reasoningMean": 12,
+     "reasoningReported": 12,
+     "inputTotal": 577,
+     "outputTotal": 280
+    },
+    "outputTokensPerSec": {
+     "n": 1,
+     "median": 108.2,
+     "min": 108.2,
+     "max": 108.2
+    },
+    "finishReasons": {
+     "stop": 12,
+     "null": 1
+    },
+    "checksPassed": {
+     "pass": 24,
+     "n": 31
+    },
+    "json": {
+     "bare": null,
+     "parses": null,
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": [
+     "reasoning_content"
+    ]
+   },
+   "bySuite": {
+    "qual": {
+     "requests": 20,
+     "succeeded": 13,
+     "failed": 7,
+     "errors": [
+      "http 503"
+     ],
+     "retries": 7,
+     "latencyMs": {
+      "n": 13,
+      "mean": 8778,
+      "median": 3378,
+      "min": 1208,
+      "max": 73739
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 2163,
+      "min": 2163,
+      "max": 2163
+     },
+     "tokens": {
+      "inputMean": 48,
+      "outputMean": 23,
+      "reasoningMean": 12,
+      "reasoningReported": 12,
+      "inputTotal": 577,
+      "outputTotal": 280
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 108.2,
+      "min": 108.2,
+      "max": 108.2
+     },
+     "finishReasons": {
+      "stop": 12,
+      "null": 1
+     },
+     "checksPassed": {
+      "pass": 24,
+      "n": 31
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning_content"
+     ]
+    }
+   }
+  },
+  "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled": {
+   "model": "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled",
+   "mode": "default",
+   "all": {
+    "requests": 20,
+    "succeeded": 19,
+    "failed": 1,
+    "errors": [
+     "http 400"
+    ],
+    "retries": 0,
+    "latencyMs": {
+     "n": 19,
+     "mean": 8817,
+     "median": 5356,
+     "min": 941,
+     "max": 28320
+    },
+    "ttftMs": {
+     "n": 3,
+     "median": 1179,
+     "min": 1089,
+     "max": 9463
+    },
+    "tokens": {
+     "inputMean": 1194,
+     "outputMean": 45,
+     "reasoningMean": 0,
+     "reasoningReported": 19,
+     "inputTotal": 22683,
+     "outputTotal": 853
+    },
+    "outputTokensPerSec": {
+     "n": 3,
+     "median": 5.4,
+     "min": 4.3,
+     "max": 17.8
+    },
+    "finishReasons": {
+     "stop": 18,
+     "length": 1
+    },
+    "checksPassed": {
+     "pass": 42,
+     "n": 47
+    },
+    "json": {
+     "bare": null,
+     "parses": {
+      "pass": 2,
+      "n": 2
+     },
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": []
+   },
+   "bySuite": {
+    "qual": {
+     "requests": 20,
+     "succeeded": 19,
+     "failed": 1,
+     "errors": [
+      "http 400"
+     ],
+     "retries": 0,
+     "latencyMs": {
+      "n": 19,
+      "mean": 8817,
+      "median": 5356,
+      "min": 941,
+      "max": 28320
+     },
+     "ttftMs": {
+      "n": 3,
+      "median": 1179,
+      "min": 1089,
+      "max": 9463
+     },
+     "tokens": {
+      "inputMean": 1194,
+      "outputMean": 45,
+      "reasoningMean": 0,
+      "reasoningReported": 19,
+      "inputTotal": 22683,
+      "outputTotal": 853
+     },
+     "outputTokensPerSec": {
+      "n": 3,
+      "median": 5.4,
+      "min": 4.3,
+      "max": 17.8
+     },
+     "finishReasons": {
+      "stop": 18,
+      "length": 1
+     },
+     "checksPassed": {
+      "pass": 42,
+      "n": 47
+     },
+     "json": {
+      "bare": null,
+      "parses": {
+       "pass": 2,
+       "n": 2
+      },
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    }
+   }
+  },
+  "Gemma-4-31B-it": {
+   "model": "Gemma-4-31B-it",
+   "mode": "default",
+   "all": {
+    "requests": 20,
+    "succeeded": 19,
+    "failed": 1,
+    "errors": [
+     "http 400"
+    ],
+    "retries": 0,
+    "latencyMs": {
+     "n": 19,
+     "mean": 9181,
+     "median": 1828,
+     "min": 530,
+     "max": 40556
+    },
+    "ttftMs": {
+     "n": 3,
+     "median": 874,
+     "min": 589,
+     "max": 37733
+    },
+    "tokens": {
+     "inputMean": 1194,
+     "outputMean": 54,
+     "reasoningMean": 12,
+     "reasoningReported": 19,
+     "inputTotal": 22683,
+     "outputTotal": 1035
+    },
+    "outputTokensPerSec": {
+     "n": 3,
+     "median": 15.2,
+     "min": 5.5,
+     "max": 16
+    },
+    "finishReasons": {
+     "stop": 18,
+     "length": 1
+    },
+    "checksPassed": {
+     "pass": 46,
+     "n": 47
+    },
+    "json": {
+     "bare": null,
+     "parses": {
+      "pass": 2,
+      "n": 2
+     },
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": [
+     "reasoning"
+    ]
+   },
+   "bySuite": {
+    "qual": {
+     "requests": 20,
+     "succeeded": 19,
+     "failed": 1,
+     "errors": [
+      "http 400"
+     ],
+     "retries": 0,
+     "latencyMs": {
+      "n": 19,
+      "mean": 9181,
+      "median": 1828,
+      "min": 530,
+      "max": 40556
+     },
+     "ttftMs": {
+      "n": 3,
+      "median": 874,
+      "min": 589,
+      "max": 37733
+     },
+     "tokens": {
+      "inputMean": 1194,
+      "outputMean": 54,
+      "reasoningMean": 12,
+      "reasoningReported": 19,
+      "inputTotal": 22683,
+      "outputTotal": 1035
+     },
+     "outputTokensPerSec": {
+      "n": 3,
+      "median": 15.2,
+      "min": 5.5,
+      "max": 16
+     },
+     "finishReasons": {
+      "stop": 18,
+      "length": 1
+     },
+     "checksPassed": {
+      "pass": 46,
+      "n": 47
+     },
+     "json": {
+      "bare": null,
+      "parses": {
+       "pass": 2,
+       "n": 2
+      },
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    }
+   }
+  },
+  "Qwen3.8-Flash-Next": {
+   "model": "Qwen3.8-Flash-Next",
+   "mode": "default",
+   "all": {
+    "requests": 20,
+    "succeeded": 19,
+    "failed": 1,
+    "errors": [
+     "http 400"
+    ],
+    "retries": 0,
+    "latencyMs": {
+     "n": 19,
+     "mean": 22875,
+     "median": 3296,
+     "min": 1307,
+     "max": 148104
+    },
+    "ttftMs": {
+     "n": 3,
+     "median": 44069,
+     "min": 35815,
+     "max": 70506
+    },
+    "tokens": {
+     "inputMean": 1203,
+     "outputMean": 60,
+     "reasoningMean": 10,
+     "reasoningReported": 19,
+     "inputTotal": 22849,
+     "outputTotal": 1132
+    },
+    "outputTokensPerSec": {
+     "n": 3,
+     "median": 5.9,
+     "min": 5.1,
+     "max": 7.8
+    },
+    "finishReasons": {
+     "stop": 18,
+     "length": 1
+    },
+    "checksPassed": {
+     "pass": 46,
+     "n": 47
+    },
+    "json": {
+     "bare": null,
+     "parses": {
+      "pass": 2,
+      "n": 2
+     },
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": [
+     "reasoning"
+    ]
+   },
+   "bySuite": {
+    "qual": {
+     "requests": 20,
+     "succeeded": 19,
+     "failed": 1,
+     "errors": [
+      "http 400"
+     ],
+     "retries": 0,
+     "latencyMs": {
+      "n": 19,
+      "mean": 22875,
+      "median": 3296,
+      "min": 1307,
+      "max": 148104
+     },
+     "ttftMs": {
+      "n": 3,
+      "median": 44069,
+      "min": 35815,
+      "max": 70506
+     },
+     "tokens": {
+      "inputMean": 1203,
+      "outputMean": 60,
+      "reasoningMean": 10,
+      "reasoningReported": 19,
+      "inputTotal": 22849,
+      "outputTotal": 1132
+     },
+     "outputTokensPerSec": {
+      "n": 3,
+      "median": 5.9,
+      "min": 5.1,
+      "max": 7.8
+     },
+     "finishReasons": {
+      "stop": 18,
+      "length": 1
+     },
+     "checksPassed": {
+      "pass": 46,
+      "n": 47
+     },
+     "json": {
+      "bare": null,
+      "parses": {
+       "pass": 2,
+       "n": 2
+      },
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    }
+   }
+  },
+  "MiMo-V2.6-Flash-MOPD": {
+   "model": "MiMo-V2.6-Flash-MOPD",
+   "mode": "default",
+   "all": {
+    "requests": 20,
+    "succeeded": 19,
+    "failed": 1,
+    "errors": [
+     "http 400"
+    ],
+    "retries": 1,
+    "latencyMs": {
+     "n": 19,
+     "mean": 9182,
+     "median": 1170,
+     "min": 400,
+     "max": 41495
+    },
+    "ttftMs": {
+     "n": 3,
+     "median": 22507,
+     "min": 3321,
+     "max": 41067
+    },
+    "tokens": {
+     "inputMean": 1190,
+     "outputMean": 42,
+     "reasoningMean": 3,
+     "reasoningReported": 19,
+     "inputTotal": 22614,
+     "outputTotal": 800
+    },
+    "outputTokensPerSec": {
+     "n": 3,
+     "median": 29.4,
+     "min": 23,
+     "max": 37.4
+    },
+    "finishReasons": {
+     "stop": 18,
+     "length": 1
+    },
+    "checksPassed": {
+     "pass": 46,
+     "n": 47
+    },
+    "json": {
+     "bare": null,
+     "parses": {
+      "pass": 2,
+      "n": 2
+     },
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": [
+     "reasoning"
+    ]
+   },
+   "bySuite": {
+    "qual": {
+     "requests": 20,
+     "succeeded": 19,
+     "failed": 1,
+     "errors": [
+      "http 400"
+     ],
+     "retries": 1,
+     "latencyMs": {
+      "n": 19,
+      "mean": 9182,
+      "median": 1170,
+      "min": 400,
+      "max": 41495
+     },
+     "ttftMs": {
+      "n": 3,
+      "median": 22507,
+      "min": 3321,
+      "max": 41067
+     },
+     "tokens": {
+      "inputMean": 1190,
+      "outputMean": 42,
+      "reasoningMean": 3,
+      "reasoningReported": 19,
+      "inputTotal": 22614,
+      "outputTotal": 800
+     },
+     "outputTokensPerSec": {
+      "n": 3,
+      "median": 29.4,
+      "min": 23,
+      "max": 37.4
+     },
+     "finishReasons": {
+      "stop": 18,
+      "length": 1
+     },
+     "checksPassed": {
+      "pass": 46,
+      "n": 47
+     },
+     "json": {
+      "bare": null,
+      "parses": {
+       "pass": 2,
+       "n": 2
+      },
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    }
+   }
+  },
+  "Gemma-4-31B-Writers-V2": {
+   "model": "Gemma-4-31B-Writers-V2",
+   "mode": "default",
+   "all": {
+    "requests": 20,
+    "succeeded": 19,
+    "failed": 1,
+    "errors": [
+     "http 400"
+    ],
+    "retries": 0,
+    "latencyMs": {
+     "n": 19,
+     "mean": 7439,
+     "median": 3983,
+     "min": 1223,
+     "max": 35743
+    },
+    "ttftMs": {
+     "n": 3,
+     "median": 1972,
+     "min": 1529,
+     "max": 3215
+    },
+    "tokens": {
+     "inputMean": 1194,
+     "outputMean": 50,
+     "reasoningMean": 11,
+     "reasoningReported": 19,
+     "inputTotal": 22683,
+     "outputTotal": 943
+    },
+    "outputTokensPerSec": {
+     "n": 3,
+     "median": 18.8,
+     "min": 14,
+     "max": 20.9
+    },
+    "finishReasons": {
+     "stop": 18,
+     "length": 1
+    },
+    "checksPassed": {
+     "pass": 46,
+     "n": 47
+    },
+    "json": {
+     "bare": null,
+     "parses": {
+      "pass": 2,
+      "n": 2
+     },
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": [
+     "reasoning"
+    ]
+   },
+   "bySuite": {
+    "qual": {
+     "requests": 20,
+     "succeeded": 19,
+     "failed": 1,
+     "errors": [
+      "http 400"
+     ],
+     "retries": 0,
+     "latencyMs": {
+      "n": 19,
+      "mean": 7439,
+      "median": 3983,
+      "min": 1223,
+      "max": 35743
+     },
+     "ttftMs": {
+      "n": 3,
+      "median": 1972,
+      "min": 1529,
+      "max": 3215
+     },
+     "tokens": {
+      "inputMean": 1194,
+      "outputMean": 50,
+      "reasoningMean": 11,
+      "reasoningReported": 19,
+      "inputTotal": 22683,
+      "outputTotal": 943
+     },
+     "outputTokensPerSec": {
+      "n": 3,
+      "median": 18.8,
+      "min": 14,
+      "max": 20.9
+     },
+     "finishReasons": {
+      "stop": 18,
+      "length": 1
+     },
+     "checksPassed": {
+      "pass": 46,
+      "n": 47
+     },
+     "json": {
+      "bare": null,
+      "parses": {
+       "pass": 2,
+       "n": 2
+      },
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    }
+   }
+  }
+ },
+ "byCase": {
+  "qual/basic_default": {
+   "Qwen3.8-27B": [
+    {
+     "ok": true,
+     "ms": 8102,
+     "ttft": null,
+     "in": 59,
+     "out": 29,
+     "reasoning": 24,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "says_pong": true,
+      "finish_stop": true,
+      "default_reasoning": true,
+      "usage_reported": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-antislop": [
+    {
+     "ok": true,
+     "ms": 14892,
+     "ttft": null,
+     "in": 59,
+     "out": 400,
+     "reasoning": 400,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "says_pong": false,
+      "finish_stop": false,
+      "default_reasoning": true,
+      "usage_reported": true
+     },
+     "checkDetails": {
+      "says_pong": "",
+      "finish_stop": "finish_reason=length"
+     }
+    }
+   ],
+   "Qwen3.8-27B-Novelist1.0": [
+    {
+     "ok": true,
+     "ms": 5952,
+     "ttft": null,
+     "in": 59,
+     "out": 130,
+     "reasoning": 125,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "says_pong": true,
+      "finish_stop": true,
+      "default_reasoning": true,
+      "usage_reported": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Moxie": [
+    {
+     "ok": true,
+     "ms": 2646,
+     "ttft": null,
+     "in": 59,
+     "out": 35,
+     "reasoning": 30,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "says_pong": true,
+      "finish_stop": true,
+      "default_reasoning": true,
+      "usage_reported": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "GLM-4.7": [
+    {
+     "ok": true,
+     "ms": 2028,
+     "ttft": null,
+     "in": 12,
+     "out": 42,
+     "reasoning": 39,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "says_pong": true,
+      "finish_stop": true,
+      "default_reasoning": true,
+      "usage_reported": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "DeepSeek-V4.1-Flash-1017": [
+    {
+     "ok": true,
+     "ms": 2901,
+     "ttft": null,
+     "in": 38,
+     "out": 14,
+     "reasoning": 10,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "says_pong": true,
+      "finish_stop": true,
+      "default_reasoning": true,
+      "usage_reported": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled": [
+    {
+     "ok": true,
+     "ms": 1066,
+     "ttft": null,
+     "in": 20,
+     "out": 2,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "says_pong": true,
+      "finish_stop": true,
+      "default_reasoning": false,
+      "usage_reported": true
+     },
+     "checkDetails": {
+      "default_reasoning": "reasoning chars=0 tokens=0 field=null"
+     }
+    }
+   ],
+   "Gemma-4-31B-it": [
+    {
+     "ok": true,
+     "ms": 530,
+     "ttft": null,
+     "in": 20,
+     "out": 2,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "says_pong": true,
+      "finish_stop": true,
+      "default_reasoning": false,
+      "usage_reported": true
+     },
+     "checkDetails": {
+      "default_reasoning": "reasoning chars=0 tokens=0 field=null"
+     }
+    }
+   ],
+   "Qwen3.8-Flash-Next": [
+    {
+     "ok": true,
+     "ms": 2012,
+     "ttft": null,
+     "in": 59,
+     "out": 30,
+     "reasoning": 25,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "says_pong": true,
+      "finish_stop": true,
+      "default_reasoning": true,
+      "usage_reported": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "MiMo-V2.6-Flash-MOPD": [
+    {
+     "ok": true,
+     "ms": 646,
+     "ttft": null,
+     "in": 15,
+     "out": 12,
+     "reasoning": 9,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "says_pong": true,
+      "finish_stop": true,
+      "default_reasoning": true,
+      "usage_reported": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Writers-V2": [
+    {
+     "ok": true,
+     "ms": 1226,
+     "ttft": null,
+     "in": 20,
+     "out": 2,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "says_pong": true,
+      "finish_stop": true,
+      "default_reasoning": false,
+      "usage_reported": true
+     },
+     "checkDetails": {
+      "default_reasoning": "reasoning chars=0 tokens=0 field=null"
+     }
+    }
+   ]
+  },
+  "qual/think_off_kwargs": {
+   "Qwen3.8-27B": [
+    {
+     "ok": true,
+     "ms": 59840,
+     "ttft": null,
+     "in": 29,
+     "out": 4,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-antislop": [
+    {
+     "ok": true,
+     "ms": 21618,
+     "ttft": null,
+     "in": 29,
+     "out": 400,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "answer_391": false,
+      "no_reasoning": true,
+      "finish_stop": false
+     },
+     "checkDetails": {
+      "answer_391": "ODAODA量大ODAODAODAODAODAODAODAODAODAODAODAODA量大ODAODAODAODA量大ODAODAODAODAODAODA量大",
+      "finish_stop": "finish_reason=length"
+     }
+    }
+   ],
+   "Qwen3.8-27B-Novelist1.0": [
+    {
+     "ok": true,
+     "ms": 1658,
+     "ttft": null,
+     "in": 29,
+     "out": 4,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Moxie": [
+    {
+     "ok": true,
+     "ms": 1686,
+     "ttft": null,
+     "in": 29,
+     "out": 4,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "GLM-4.7": [
+    {
+     "ok": true,
+     "ms": 6594,
+     "ttft": null,
+     "in": 20,
+     "out": 3,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "DeepSeek-V4.1-Flash-1017": [
+    {
+     "ok": true,
+     "ms": 4027,
+     "ttft": null,
+     "in": 45,
+     "out": 4,
+     "reasoning": 1,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": false,
+      "finish_stop": true
+     },
+     "checkDetails": {
+      "no_reasoning": "reasoning chars=2 tokens=1 field=reasoning_content"
+     }
+    }
+   ],
+   "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled": [
+    {
+     "ok": true,
+     "ms": 941,
+     "ttft": null,
+     "in": 30,
+     "out": 4,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-it": [
+    {
+     "ok": true,
+     "ms": 1005,
+     "ttft": null,
+     "in": 30,
+     "out": 4,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-Flash-Next": [
+    {
+     "ok": true,
+     "ms": 1381,
+     "ttft": null,
+     "in": 29,
+     "out": 4,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "MiMo-V2.6-Flash-MOPD": [
+    {
+     "ok": true,
+     "ms": 573,
+     "ttft": null,
+     "in": 26,
+     "out": 4,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Writers-V2": [
+    {
+     "ok": true,
+     "ms": 1284,
+     "ttft": null,
+     "in": 30,
+     "out": 4,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "qual/think_on_kwargs": {
+   "Qwen3.8-27B": [
+    {
+     "ok": true,
+     "ms": 1736,
+     "ttft": null,
+     "in": 69,
+     "out": 33,
+     "reasoning": 26,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "has_reasoning": true,
+      "reasoning_separated": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-antislop": [
+    {
+     "ok": true,
+     "ms": 147272,
+     "ttft": null,
+     "in": 69,
+     "out": 3000,
+     "reasoning": 3000,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "answer_391": false,
+      "has_reasoning": true,
+      "reasoning_separated": true,
+      "finish_stop": false
+     },
+     "checkDetails": {
+      "answer_391": "",
+      "finish_stop": "finish_reason=length"
+     }
+    }
+   ],
+   "Qwen3.8-27B-Novelist1.0": [
+    {
+     "ok": true,
+     "ms": 3996,
+     "ttft": null,
+     "in": 69,
+     "out": 59,
+     "reasoning": 52,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "has_reasoning": true,
+      "reasoning_separated": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Moxie": [
+    {
+     "ok": true,
+     "ms": 3789,
+     "ttft": null,
+     "in": 69,
+     "out": 60,
+     "reasoning": 53,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "has_reasoning": true,
+      "reasoning_separated": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "GLM-4.7": [
+    {
+     "ok": true,
+     "ms": 126643,
+     "ttft": null,
+     "in": 20,
+     "out": 287,
+     "reasoning": 283,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "has_reasoning": true,
+      "reasoning_separated": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "DeepSeek-V4.1-Flash-1017": [
+    {
+     "ok": true,
+     "ms": 2715,
+     "ttft": null,
+     "in": 45,
+     "out": 20,
+     "reasoning": 17,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "has_reasoning": true,
+      "reasoning_separated": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled": [
+    {
+     "ok": true,
+     "ms": 1882,
+     "ttft": null,
+     "in": 33,
+     "out": 19,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "has_reasoning": false,
+      "reasoning_separated": false,
+      "finish_stop": true
+     },
+     "checkDetails": {
+      "has_reasoning": "reasoning chars=0 tokens=0 field=null",
+      "reasoning_separated": "null"
+     }
+    }
+   ],
+   "Gemma-4-31B-it": [
+    {
+     "ok": true,
+     "ms": 4421,
+     "ttft": null,
+     "in": 33,
+     "out": 82,
+     "reasoning": 74,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "has_reasoning": true,
+      "reasoning_separated": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-Flash-Next": [
+    {
+     "ok": true,
+     "ms": 1569,
+     "ttft": null,
+     "in": 69,
+     "out": 54,
+     "reasoning": 47,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "has_reasoning": true,
+      "reasoning_separated": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "MiMo-V2.6-Flash-MOPD": [
+    {
+     "ok": true,
+     "ms": 692,
+     "ttft": null,
+     "in": 25,
+     "out": 16,
+     "reasoning": 11,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "has_reasoning": true,
+      "reasoning_separated": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Writers-V2": [
+    {
+     "ok": true,
+     "ms": 5309,
+     "ttft": null,
+     "in": 33,
+     "out": 77,
+     "reasoning": 69,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "has_reasoning": true,
+      "reasoning_separated": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "qual/think_effort_low": {
+   "Qwen3.8-27B": [
+    {
+     "ok": true,
+     "ms": 2748,
+     "ttft": null,
+     "in": 57,
+     "out": 63,
+     "reasoning": 56,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "has_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-antislop": [
+    {
+     "ok": true,
+     "ms": 204584,
+     "ttft": null,
+     "in": 57,
+     "out": 3000,
+     "reasoning": 3000,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "answer_391": false,
+      "has_reasoning": true
+     },
+     "checkDetails": {
+      "answer_391": ""
+     }
+    }
+   ],
+   "Qwen3.8-27B-Novelist1.0": [
+    {
+     "ok": true,
+     "ms": 3478,
+     "ttft": null,
+     "in": 57,
+     "out": 42,
+     "reasoning": 35,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "has_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Moxie": [
+    {
+     "ok": true,
+     "ms": 9585,
+     "ttft": null,
+     "in": 57,
+     "out": 53,
+     "reasoning": 46,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "has_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "GLM-4.7": [
+    {
+     "ok": true,
+     "ms": 9514,
+     "ttft": null,
+     "in": 20,
+     "out": 310,
+     "reasoning": 306,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "has_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "DeepSeek-V4.1-Flash-1017": [
+    {
+     "ok": true,
+     "ms": 2786,
+     "ttft": null,
+     "in": 45,
+     "out": 16,
+     "reasoning": 13,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "has_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled": [
+    {
+     "ok": true,
+     "ms": 5649,
+     "ttft": null,
+     "in": 33,
+     "out": 23,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "has_reasoning": false
+     },
+     "checkDetails": {
+      "has_reasoning": "reasoning chars=0 tokens=0 field=null"
+     }
+    }
+   ],
+   "Gemma-4-31B-it": [
+    {
+     "ok": true,
+     "ms": 4760,
+     "ttft": null,
+     "in": 33,
+     "out": 82,
+     "reasoning": 74,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "has_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-Flash-Next": [
+    {
+     "ok": true,
+     "ms": 1582,
+     "ttft": null,
+     "in": 57,
+     "out": 63,
+     "reasoning": 56,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "has_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "MiMo-V2.6-Flash-MOPD": [
+    {
+     "ok": true,
+     "ms": 1301,
+     "ttft": null,
+     "in": 50,
+     "out": 17,
+     "reasoning": 12,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "has_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Writers-V2": [
+    {
+     "ok": true,
+     "ms": 5066,
+     "ttft": null,
+     "in": 33,
+     "out": 77,
+     "reasoning": 69,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "has_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "qual/think_effort_none": {
+   "Qwen3.8-27B": [
+    {
+     "ok": true,
+     "ms": 916,
+     "ttft": null,
+     "in": 29,
+     "out": 4,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-antislop": [
+    {
+     "ok": true,
+     "ms": 124955,
+     "ttft": null,
+     "in": 29,
+     "out": 3000,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "answer_391": false,
+      "no_reasoning": true
+     },
+     "checkDetails": {
+      "answer_391": "ODAODA量大ODAODAODAODAODAODAODAODAODAODAODAODA量大ODAODAODAODA量大ODAODAODAODAODAODAOD"
+     }
+    }
+   ],
+   "Qwen3.8-27B-Novelist1.0": [
+    {
+     "ok": true,
+     "ms": 1893,
+     "ttft": null,
+     "in": 29,
+     "out": 4,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Moxie": [
+    {
+     "ok": true,
+     "ms": 1737,
+     "ttft": null,
+     "in": 29,
+     "out": 4,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "GLM-4.7": [
+    {
+     "ok": true,
+     "ms": 120534,
+     "ttft": null,
+     "in": 20,
+     "out": 3,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "DeepSeek-V4.1-Flash-1017": [
+    {
+     "ok": true,
+     "ms": 4926,
+     "ttft": null,
+     "in": 45,
+     "out": 4,
+     "reasoning": 1,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": false
+     },
+     "checkDetails": {
+      "no_reasoning": "reasoning chars=2 tokens=1 field=reasoning_content"
+     }
+    }
+   ],
+   "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled": [
+    {
+     "ok": true,
+     "ms": 16620,
+     "ttft": null,
+     "in": 30,
+     "out": 4,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-it": [
+    {
+     "ok": true,
+     "ms": 922,
+     "ttft": null,
+     "in": 30,
+     "out": 4,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-Flash-Next": [
+    {
+     "ok": true,
+     "ms": 3316,
+     "ttft": null,
+     "in": 29,
+     "out": 4,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "MiMo-V2.6-Flash-MOPD": [
+    {
+     "ok": true,
+     "ms": 950,
+     "ttft": null,
+     "in": 26,
+     "out": 4,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Writers-V2": [
+    {
+     "ok": true,
+     "ms": 5836,
+     "ttft": null,
+     "in": 30,
+     "out": 4,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "qual/think_kwarg_thinking_false": {
+   "Qwen3.8-27B": [
+    {
+     "ok": true,
+     "ms": 2419,
+     "ttft": null,
+     "in": 69,
+     "out": 33,
+     "reasoning": 26,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": false
+     },
+     "checkDetails": {
+      "no_reasoning": "reasoning chars=64 tokens=26 field=reasoning"
+     }
+    }
+   ],
+   "Qwen3.8-27B-antislop": [
+    {
+     "ok": true,
+     "ms": 147297,
+     "ttft": null,
+     "in": 69,
+     "out": 3000,
+     "reasoning": 3000,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "answer_391": false,
+      "no_reasoning": false
+     },
+     "checkDetails": {
+      "answer_391": "",
+      "no_reasoning": "reasoning chars=8531 tokens=3000 field=reasoning"
+     }
+    }
+   ],
+   "Qwen3.8-27B-Novelist1.0": [
+    {
+     "ok": true,
+     "ms": 9540,
+     "ttft": null,
+     "in": 69,
+     "out": 62,
+     "reasoning": 55,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": false
+     },
+     "checkDetails": {
+      "no_reasoning": "reasoning chars=120 tokens=55 field=reasoning"
+     }
+    }
+   ],
+   "Qwen3.8-27B-Moxie": [
+    {
+     "ok": true,
+     "ms": 38413,
+     "ttft": null,
+     "in": 69,
+     "out": 32,
+     "reasoning": 25,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": false
+     },
+     "checkDetails": {
+      "no_reasoning": "reasoning chars=72 tokens=25 field=reasoning"
+     }
+    }
+   ],
+   "GLM-4.7": [
+    {
+     "ok": true,
+     "ms": 106585,
+     "ttft": null,
+     "in": 20,
+     "out": 283,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "DeepSeek-V4.1-Flash-1017": [
+    {
+     "ok": true,
+     "ms": 5157,
+     "ttft": null,
+     "in": 45,
+     "out": 4,
+     "reasoning": 1,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": false
+     },
+     "checkDetails": {
+      "no_reasoning": "reasoning chars=2 tokens=1 field=reasoning_content"
+     }
+    }
+   ],
+   "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled": [
+    {
+     "ok": true,
+     "ms": 1486,
+     "ttft": null,
+     "in": 30,
+     "out": 4,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-it": [
+    {
+     "ok": true,
+     "ms": 837,
+     "ttft": null,
+     "in": 30,
+     "out": 4,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-Flash-Next": [
+    {
+     "ok": true,
+     "ms": 4784,
+     "ttft": null,
+     "in": 69,
+     "out": 36,
+     "reasoning": 29,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": false
+     },
+     "checkDetails": {
+      "no_reasoning": "reasoning chars=94 tokens=29 field=reasoning"
+     }
+    }
+   ],
+   "MiMo-V2.6-Flash-MOPD": [
+    {
+     "ok": true,
+     "ms": 25844,
+     "ttft": null,
+     "in": 25,
+     "out": 16,
+     "reasoning": 11,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": false
+     },
+     "checkDetails": {
+      "no_reasoning": "reasoning chars=13 tokens=11 field=reasoning"
+     }
+    }
+   ],
+   "Gemma-4-31B-Writers-V2": [
+    {
+     "ok": true,
+     "ms": 3239,
+     "ttft": null,
+     "in": 30,
+     "out": 4,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "no_reasoning": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "qual/system_prompt": {
+   "Qwen3.8-27B": [
+    {
+     "ok": true,
+     "ms": 990,
+     "ttft": null,
+     "in": 49,
+     "out": 3,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "french_bleu": true,
+      "single_word": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-antislop": [
+    {
+     "ok": true,
+     "ms": 20239,
+     "ttft": null,
+     "in": 49,
+     "out": 400,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "french_bleu": false,
+      "single_word": true
+     },
+     "checkDetails": {
+      "french_bleu": "量大ODA量大量大ODAODAODAODAODAODAODAODAODAODAODAODA量大量大ODAODAODAOD"
+     }
+    }
+   ],
+   "Qwen3.8-27B-Novelist1.0": [
+    {
+     "ok": true,
+     "ms": 1582,
+     "ttft": null,
+     "in": 49,
+     "out": 3,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "french_bleu": true,
+      "single_word": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Moxie": [
+    {
+     "ok": true,
+     "ms": 2128,
+     "ttft": null,
+     "in": 49,
+     "out": 3,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "french_bleu": true,
+      "single_word": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "GLM-4.7": [
+    {
+     "ok": true,
+     "ms": 1157,
+     "ttft": null,
+     "in": 38,
+     "out": 3,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "french_bleu": true,
+      "single_word": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "DeepSeek-V4.1-Flash-1017": [
+    {
+     "ok": true,
+     "ms": 3378,
+     "ttft": null,
+     "in": 62,
+     "out": 5,
+     "reasoning": 1,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "french_bleu": true,
+      "single_word": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled": [
+    {
+     "ok": true,
+     "ms": 4156,
+     "ttft": null,
+     "in": 51,
+     "out": 3,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "french_bleu": true,
+      "single_word": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-it": [
+    {
+     "ok": true,
+     "ms": 34691,
+     "ttft": null,
+     "in": 51,
+     "out": 3,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "french_bleu": true,
+      "single_word": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-Flash-Next": [
+    {
+     "ok": true,
+     "ms": 2265,
+     "ttft": null,
+     "in": 49,
+     "out": 3,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "french_bleu": true,
+      "single_word": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "MiMo-V2.6-Flash-MOPD": [
+    {
+     "ok": true,
+     "ms": 400,
+     "ttft": null,
+     "in": 45,
+     "out": 3,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "french_bleu": true,
+      "single_word": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Writers-V2": [
+    {
+     "ok": true,
+     "ms": 1551,
+     "ttft": null,
+     "in": 51,
+     "out": 3,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "french_bleu": true,
+      "single_word": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "qual/multi_turn": {
+   "Qwen3.8-27B": [
+    {
+     "ok": true,
+     "ms": 51585,
+     "ttft": null,
+     "in": 84,
+     "out": 7,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "recalls_both": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-antislop": [
+    {
+     "ok": true,
+     "ms": 17006,
+     "ttft": null,
+     "in": 84,
+     "out": 400,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "recalls_both": false
+     },
+     "checkDetails": {
+      "recalls_both": "ODAODA量大ODAODAODAODAODAODA量大ODA量大ODAODAODAODA量大ODAODAODAODA量"
+     }
+    }
+   ],
+   "Qwen3.8-27B-Novelist1.0": [
+    {
+     "ok": true,
+     "ms": 1607,
+     "ttft": null,
+     "in": 84,
+     "out": 7,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "recalls_both": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Moxie": [
+    {
+     "ok": true,
+     "ms": 1724,
+     "ttft": null,
+     "in": 84,
+     "out": 7,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "recalls_both": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "GLM-4.7": [
+    {
+     "ok": true,
+     "ms": 16468,
+     "ttft": null,
+     "in": 54,
+     "out": 6,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "recalls_both": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "DeepSeek-V4.1-Flash-1017": [
+    {
+     "ok": true,
+     "ms": 3280,
+     "ttft": null,
+     "in": 81,
+     "out": 8,
+     "reasoning": 1,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "recalls_both": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled": [
+    {
+     "ok": true,
+     "ms": 1856,
+     "ttft": null,
+     "in": 77,
+     "out": 7,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "recalls_both": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-it": [
+    {
+     "ok": true,
+     "ms": 1537,
+     "ttft": null,
+     "in": 77,
+     "out": 7,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "recalls_both": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-Flash-Next": [
+    {
+     "ok": true,
+     "ms": 1531,
+     "ttft": null,
+     "in": 84,
+     "out": 7,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "recalls_both": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "MiMo-V2.6-Flash-MOPD": [
+    {
+     "ok": true,
+     "ms": 3381,
+     "ttft": null,
+     "in": 73,
+     "out": 7,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "recalls_both": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Writers-V2": [
+    {
+     "ok": true,
+     "ms": 1616,
+     "ttft": null,
+     "in": 77,
+     "out": 7,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "recalls_both": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "qual/temp0_repeat": {
+   "Qwen3.8-27B": [
+    {
+     "ok": true,
+     "ms": 1141,
+     "ttft": null,
+     "in": 29,
+     "out": 20,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    },
+    {
+     "ok": true,
+     "ms": 1315,
+     "ttft": null,
+     "in": 29,
+     "out": 20,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-antislop": [
+    {
+     "ok": true,
+     "ms": 11046,
+     "ttft": null,
+     "in": 29,
+     "out": 200,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    },
+    {
+     "ok": true,
+     "ms": 9449,
+     "ttft": null,
+     "in": 29,
+     "out": 200,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Novelist1.0": [
+    {
+     "ok": true,
+     "ms": 2616,
+     "ttft": null,
+     "in": 29,
+     "out": 24,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    },
+    {
+     "ok": true,
+     "ms": 9986,
+     "ttft": null,
+     "in": 29,
+     "out": 25,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Moxie": [
+    {
+     "ok": true,
+     "ms": 14004,
+     "ttft": null,
+     "in": 29,
+     "out": 24,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    },
+    {
+     "ok": true,
+     "ms": 8929,
+     "ttft": null,
+     "in": 29,
+     "out": 23,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "GLM-4.7": [
+    {
+     "ok": true,
+     "ms": 2831,
+     "ttft": null,
+     "in": 21,
+     "out": 25,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    },
+    {
+     "ok": true,
+     "ms": 1125,
+     "ttft": null,
+     "in": 21,
+     "out": 24,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "DeepSeek-V4.1-Flash-1017": [
+    {
+     "ok": true,
+     "ms": 3378,
+     "ttft": null,
+     "in": 46,
+     "out": 24,
+     "reasoning": 1,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    },
+    {
+     "ok": true,
+     "ms": 1208,
+     "ttft": null,
+     "in": 46,
+     "out": 26,
+     "reasoning": 1,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled": [
+    {
+     "ok": true,
+     "ms": 15909,
+     "ttft": null,
+     "in": 30,
+     "out": 23,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    },
+    {
+     "ok": true,
+     "ms": 25608,
+     "ttft": null,
+     "in": 30,
+     "out": 23,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-it": [
+    {
+     "ok": true,
+     "ms": 1825,
+     "ttft": null,
+     "in": 30,
+     "out": 23,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    },
+    {
+     "ok": true,
+     "ms": 8422,
+     "ttft": null,
+     "in": 30,
+     "out": 23,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-Flash-Next": [
+    {
+     "ok": true,
+     "ms": 3296,
+     "ttft": null,
+     "in": 29,
+     "out": 29,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    },
+    {
+     "ok": true,
+     "ms": 1569,
+     "ttft": null,
+     "in": 29,
+     "out": 29,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "MiMo-V2.6-Flash-MOPD": [
+    {
+     "ok": true,
+     "ms": 972,
+     "ttft": null,
+     "in": 26,
+     "out": 26,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    },
+    {
+     "ok": true,
+     "ms": 701,
+     "ttft": null,
+     "in": 26,
+     "out": 26,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Writers-V2": [
+    {
+     "ok": true,
+     "ms": 2495,
+     "ttft": null,
+     "in": 30,
+     "out": 23,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    },
+    {
+     "ok": true,
+     "ms": 2188,
+     "ttft": null,
+     "in": 30,
+     "out": 23,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "qual/top_p": {
+   "Qwen3.8-27B": [
+    {
+     "ok": true,
+     "ms": 554,
+     "ttft": null,
+     "in": 20,
+     "out": 2,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "accepted": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-antislop": [
+    {
+     "ok": true,
+     "ms": 20085,
+     "ttft": null,
+     "in": 20,
+     "out": 400,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "accepted": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Novelist1.0": [
+    {
+     "ok": true,
+     "ms": 1712,
+     "ttft": null,
+     "in": 20,
+     "out": 2,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "accepted": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Moxie": [
+    {
+     "ok": true,
+     "ms": 1659,
+     "ttft": null,
+     "in": 20,
+     "out": 2,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "accepted": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "GLM-4.7": [
+    {
+     "ok": true,
+     "ms": 828,
+     "ttft": null,
+     "in": 13,
+     "out": 2,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "accepted": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "DeepSeek-V4.1-Flash-1017": [
+    {
+     "ok": true,
+     "ms": 3059,
+     "ttft": null,
+     "in": 38,
+     "out": 4,
+     "reasoning": 1,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "accepted": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled": [
+    {
+     "ok": true,
+     "ms": 1083,
+     "ttft": null,
+     "in": 21,
+     "out": 2,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "accepted": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-it": [
+    {
+     "ok": true,
+     "ms": 841,
+     "ttft": null,
+     "in": 21,
+     "out": 2,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "accepted": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-Flash-Next": [
+    {
+     "ok": true,
+     "ms": 1307,
+     "ttft": null,
+     "in": 20,
+     "out": 2,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "accepted": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "MiMo-V2.6-Flash-MOPD": [
+    {
+     "ok": true,
+     "ms": 1170,
+     "ttft": null,
+     "in": 17,
+     "out": 2,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "accepted": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Writers-V2": [
+    {
+     "ok": true,
+     "ms": 35743,
+     "ttft": null,
+     "in": 21,
+     "out": 2,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "accepted": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "qual/length_truncation": {
+   "Qwen3.8-27B": [
+    {
+     "ok": true,
+     "ms": 2517,
+     "ttft": null,
+     "in": 31,
+     "out": 24,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "finish_length": true,
+      "output_capped": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-antislop": [
+    {
+     "ok": true,
+     "ms": 2197,
+     "ttft": null,
+     "in": 31,
+     "out": 24,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "finish_length": true,
+      "output_capped": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Novelist1.0": [
+    {
+     "ok": true,
+     "ms": 7043,
+     "ttft": null,
+     "in": 31,
+     "out": 24,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "finish_length": true,
+      "output_capped": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Moxie": [
+    {
+     "ok": true,
+     "ms": 2438,
+     "ttft": null,
+     "in": 31,
+     "out": 24,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "finish_length": true,
+      "output_capped": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "GLM-4.7": [
+    {
+     "ok": true,
+     "ms": 992,
+     "ttft": null,
+     "in": 22,
+     "out": 24,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "finish_length": true,
+      "output_capped": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "DeepSeek-V4.1-Flash-1017": [
+    {
+     "ok": false,
+     "ms": 732,
+     "ttft": null,
+     "in": null,
+     "out": null,
+     "reasoning": null,
+     "tps": null,
+     "finish": null,
+     "error": "http 503 {\"message\":\"No servers available for this model type. Please contact support.\"}",
+     "checks": {},
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled": [
+    {
+     "ok": true,
+     "ms": 3309,
+     "ttft": null,
+     "in": 32,
+     "out": 24,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "finish_length": true,
+      "output_capped": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-it": [
+    {
+     "ok": true,
+     "ms": 1828,
+     "ttft": null,
+     "in": 32,
+     "out": 24,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "finish_length": true,
+      "output_capped": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-Flash-Next": [
+    {
+     "ok": true,
+     "ms": 5155,
+     "ttft": null,
+     "in": 31,
+     "out": 24,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "finish_length": true,
+      "output_capped": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "MiMo-V2.6-Flash-MOPD": [
+    {
+     "ok": true,
+     "ms": 1147,
+     "ttft": null,
+     "in": 28,
+     "out": 24,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "finish_length": true,
+      "output_capped": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Writers-V2": [
+    {
+     "ok": true,
+     "ms": 3983,
+     "ttft": null,
+     "in": 32,
+     "out": 24,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "finish_length": true,
+      "output_capped": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "qual/stop_sequence": {
+   "Qwen3.8-27B": [
+    {
+     "ok": true,
+     "ms": 857,
+     "ttft": null,
+     "in": 31,
+     "out": 11,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "stopped_before_6": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-antislop": [
+    {
+     "ok": true,
+     "ms": 13963,
+     "ttft": null,
+     "in": 31,
+     "out": 200,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "stopped_before_6": false,
+      "finish_stop": false
+     },
+     "checkDetails": {
+      "stopped_before_6": "\"量大ODA量大ODAODAODAODAODAODAODAODAODAODAODA\"",
+      "finish_stop": "finish_reason=length"
+     }
+    }
+   ],
+   "Qwen3.8-27B-Novelist1.0": [
+    {
+     "ok": true,
+     "ms": 1077,
+     "ttft": null,
+     "in": 31,
+     "out": 11,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "stopped_before_6": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Moxie": [
+    {
+     "ok": true,
+     "ms": 2910,
+     "ttft": null,
+     "in": 31,
+     "out": 11,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "stopped_before_6": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "GLM-4.7": [
+    {
+     "ok": true,
+     "ms": 790,
+     "ttft": null,
+     "in": 23,
+     "out": 11,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "stopped_before_6": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "DeepSeek-V4.1-Flash-1017": [
+    {
+     "ok": false,
+     "ms": 727,
+     "ttft": null,
+     "in": null,
+     "out": null,
+     "reasoning": null,
+     "tps": null,
+     "finish": null,
+     "error": "http 503 {\"message\":\"No servers available for this model type. Please contact support.\"}",
+     "checks": {},
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled": [
+    {
+     "ok": true,
+     "ms": 2140,
+     "ttft": null,
+     "in": 32,
+     "out": 11,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "stopped_before_6": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-it": [
+    {
+     "ok": true,
+     "ms": 1083,
+     "ttft": null,
+     "in": 32,
+     "out": 11,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "stopped_before_6": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-Flash-Next": [
+    {
+     "ok": true,
+     "ms": 1434,
+     "ttft": null,
+     "in": 31,
+     "out": 11,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "stopped_before_6": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "MiMo-V2.6-Flash-MOPD": [
+    {
+     "ok": true,
+     "ms": 1696,
+     "ttft": null,
+     "in": 28,
+     "out": 11,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "stopped_before_6": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Writers-V2": [
+    {
+     "ok": true,
+     "ms": 1223,
+     "ttft": null,
+     "in": 32,
+     "out": 11,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "stopped_before_6": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "qual/json_object": {
+   "Qwen3.8-27B": [
+    {
+     "ok": true,
+     "ms": 1141,
+     "ttft": null,
+     "in": 31,
+     "out": 21,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "json_parses": true,
+      "bare_json": true,
+      "shape": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-antislop": [
+    {
+     "ok": true,
+     "ms": 19369,
+     "ttft": null,
+     "in": 31,
+     "out": 400,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "json_parses": false,
+      "bare_json": false,
+      "shape": false
+     },
+     "checkDetails": {
+      "json_parses": "no JSON object found",
+      "bare_json": ""
+     }
+    }
+   ],
+   "Qwen3.8-27B-Novelist1.0": [
+    {
+     "ok": true,
+     "ms": 1645,
+     "ttft": null,
+     "in": 31,
+     "out": 21,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "json_parses": true,
+      "bare_json": true,
+      "shape": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Moxie": [
+    {
+     "ok": true,
+     "ms": 2269,
+     "ttft": null,
+     "in": 31,
+     "out": 21,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "json_parses": true,
+      "bare_json": true,
+      "shape": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "GLM-4.7": [
+    {
+     "ok": true,
+     "ms": 863,
+     "ttft": null,
+     "in": 24,
+     "out": 18,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "json_parses": true,
+      "bare_json": true,
+      "shape": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "DeepSeek-V4.1-Flash-1017": [
+    {
+     "ok": false,
+     "ms": 756,
+     "ttft": null,
+     "in": null,
+     "out": null,
+     "reasoning": null,
+     "tps": null,
+     "finish": null,
+     "error": "http 503 {\"message\":\"No servers available for this model type. Please contact support.\"}",
+     "checks": {},
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled": [
+    {
+     "ok": true,
+     "ms": 8441,
+     "ttft": null,
+     "in": 32,
+     "out": 13,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "json_parses": true,
+      "bare_json": true,
+      "shape": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-it": [
+    {
+     "ok": true,
+     "ms": 1684,
+     "ttft": null,
+     "in": 32,
+     "out": 13,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "json_parses": true,
+      "bare_json": true,
+      "shape": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-Flash-Next": [
+    {
+     "ok": true,
+     "ms": 9794,
+     "ttft": null,
+     "in": 31,
+     "out": 21,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "json_parses": true,
+      "bare_json": true,
+      "shape": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "MiMo-V2.6-Flash-MOPD": [
+    {
+     "ok": true,
+     "ms": 1074,
+     "ttft": null,
+     "in": 28,
+     "out": 18,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "json_parses": true,
+      "bare_json": true,
+      "shape": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Writers-V2": [
+    {
+     "ok": true,
+     "ms": 1780,
+     "ttft": null,
+     "in": 32,
+     "out": 13,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "json_parses": true,
+      "bare_json": true,
+      "shape": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "qual/json_schema_strict": {
+   "Qwen3.8-27B": [
+    {
+     "ok": true,
+     "ms": 33712,
+     "ttft": null,
+     "in": 46,
+     "out": 150,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "json_parses": true,
+      "bare_json": true,
+      "schema_shape": true,
+      "correct_categories": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-antislop": [
+    {
+     "ok": true,
+     "ms": 30962,
+     "ttft": null,
+     "in": 46,
+     "out": 800,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "json_parses": false,
+      "bare_json": false,
+      "schema_shape": false,
+      "correct_categories": false,
+      "finish_stop": false
+     },
+     "checkDetails": {
+      "json_parses": "no JSON object found",
+      "bare_json": "",
+      "schema_shape": "",
+      "correct_categories": "",
+      "finish_stop": "finish_reason=length"
+     }
+    }
+   ],
+   "Qwen3.8-27B-Novelist1.0": [
+    {
+     "ok": true,
+     "ms": 5767,
+     "ttft": null,
+     "in": 46,
+     "out": 148,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "json_parses": true,
+      "bare_json": true,
+      "schema_shape": true,
+      "correct_categories": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Moxie": [
+    {
+     "ok": true,
+     "ms": 9618,
+     "ttft": null,
+     "in": 46,
+     "out": 174,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "json_parses": true,
+      "bare_json": true,
+      "schema_shape": true,
+      "correct_categories": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "GLM-4.7": [
+    {
+     "ok": true,
+     "ms": 4555,
+     "ttft": null,
+     "in": 38,
+     "out": 130,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "json_parses": true,
+      "bare_json": true,
+      "schema_shape": true,
+      "correct_categories": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "DeepSeek-V4.1-Flash-1017": [
+    {
+     "ok": false,
+     "ms": 743,
+     "ttft": null,
+     "in": null,
+     "out": null,
+     "reasoning": null,
+     "tps": null,
+     "finish": null,
+     "error": "http 503 {\"message\":\"No servers available for this model type. Please contact support.\"}",
+     "checks": {},
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled": [
+    {
+     "ok": true,
+     "ms": 8359,
+     "ttft": null,
+     "in": 48,
+     "out": 134,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "json_parses": true,
+      "bare_json": true,
+      "schema_shape": true,
+      "correct_categories": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-it": [
+    {
+     "ok": true,
+     "ms": 7296,
+     "ttft": null,
+     "in": 48,
+     "out": 129,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "json_parses": true,
+      "bare_json": true,
+      "schema_shape": true,
+      "correct_categories": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-Flash-Next": [
+    {
+     "ok": true,
+     "ms": 4017,
+     "ttft": null,
+     "in": 46,
+     "out": 128,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "json_parses": true,
+      "bare_json": true,
+      "schema_shape": true,
+      "correct_categories": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "MiMo-V2.6-Flash-MOPD": [
+    {
+     "ok": true,
+     "ms": 36965,
+     "ttft": null,
+     "in": 43,
+     "out": 105,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "json_parses": true,
+      "bare_json": true,
+      "schema_shape": true,
+      "correct_categories": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Writers-V2": [
+    {
+     "ok": true,
+     "ms": 8855,
+     "ttft": null,
+     "in": 48,
+     "out": 86,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "json_parses": true,
+      "bare_json": true,
+      "schema_shape": true,
+      "correct_categories": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "qual/stream_off": {
+   "Qwen3.8-27B": [
+    {
+     "ok": true,
+     "ms": 2087,
+     "ttft": 691,
+     "in": 23,
+     "out": 47,
+     "reasoning": 0,
+     "tps": 33.7,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true,
+      "ttft_measured": true,
+      "stream_usage": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-antislop": [
+    {
+     "ok": true,
+     "ms": 13831,
+     "ttft": 825,
+     "in": 23,
+     "out": 300,
+     "reasoning": 0,
+     "tps": 23.1,
+     "finish": "length",
+     "checks": {
+      "non_empty": true,
+      "ttft_measured": true,
+      "stream_usage": true,
+      "finish_stop": false
+     },
+     "checkDetails": {
+      "finish_stop": "finish_reason=length"
+     }
+    }
+   ],
+   "Qwen3.8-27B-Novelist1.0": [
+    {
+     "ok": true,
+     "ms": 19280,
+     "ttft": 1704,
+     "in": 23,
+     "out": 41,
+     "reasoning": 0,
+     "tps": 2.3,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true,
+      "ttft_measured": true,
+      "stream_usage": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Moxie": [
+    {
+     "ok": true,
+     "ms": 5128,
+     "ttft": 717,
+     "in": 23,
+     "out": 47,
+     "reasoning": 0,
+     "tps": 10.7,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true,
+      "ttft_measured": true,
+      "stream_usage": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "GLM-4.7": [
+    {
+     "ok": true,
+     "ms": 122337,
+     "ttft": 120517,
+     "in": 16,
+     "out": 37,
+     "reasoning": 0,
+     "tps": 20.3,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true,
+      "ttft_measured": true,
+      "stream_usage": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "DeepSeek-V4.1-Flash-1017": [
+    {
+     "ok": true,
+     "ms": 3558,
+     "ttft": 2163,
+     "in": 41,
+     "out": 151,
+     "reasoning": 100,
+     "tps": 108.2,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true,
+      "ttft_measured": true,
+      "stream_usage": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled": [
+    {
+     "ok": true,
+     "ms": 19771,
+     "ttft": 9463,
+     "in": 24,
+     "out": 44,
+     "reasoning": 0,
+     "tps": 4.3,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true,
+      "ttft_measured": true,
+      "stream_usage": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-it": [
+    {
+     "ok": true,
+     "ms": 40556,
+     "ttft": 37733,
+     "in": 24,
+     "out": 43,
+     "reasoning": 0,
+     "tps": 15.2,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true,
+      "ttft_measured": true,
+      "stream_usage": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-Flash-Next": [
+    {
+     "ok": true,
+     "ms": 44083,
+     "ttft": 35815,
+     "in": 23,
+     "out": 42,
+     "reasoning": 0,
+     "tps": 5.1,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true,
+      "ttft_measured": true,
+      "stream_usage": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "MiMo-V2.6-Flash-MOPD": [
+    {
+     "ok": true,
+     "ms": 5321,
+     "ttft": 3321,
+     "in": 20,
+     "out": 46,
+     "reasoning": 0,
+     "tps": 23,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true,
+      "ttft_measured": true,
+      "stream_usage": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Writers-V2": [
+    {
+     "ok": true,
+     "ms": 5364,
+     "ttft": 3215,
+     "in": 24,
+     "out": 45,
+     "reasoning": 0,
+     "tps": 20.9,
+     "finish": "stop",
+     "checks": {
+      "non_empty": true,
+      "ttft_measured": true,
+      "stream_usage": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "qual/stream_think_on": {
+   "Qwen3.8-27B": [
+    {
+     "ok": true,
+     "ms": 8653,
+     "ttft": 8069,
+     "in": 69,
+     "out": 50,
+     "reasoning": 43,
+     "tps": 85.6,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "reasoning_deltas_separate": true,
+      "stream_usage": true,
+      "reasoning_tokens_reported": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-antislop": [
+    {
+     "ok": true,
+     "ms": 255215,
+     "ttft": 2330,
+     "in": 69,
+     "out": 3000,
+     "reasoning": 3000,
+     "tps": 11.9,
+     "finish": "length",
+     "checks": {
+      "answer_391": false,
+      "reasoning_deltas_separate": true,
+      "stream_usage": true,
+      "reasoning_tokens_reported": true
+     },
+     "checkDetails": {
+      "answer_391": ""
+     }
+    }
+   ],
+   "Qwen3.8-27B-Novelist1.0": [
+    {
+     "ok": true,
+     "ms": 3798,
+     "ttft": 1443,
+     "in": 69,
+     "out": 62,
+     "reasoning": 55,
+     "tps": 26.3,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "reasoning_deltas_separate": true,
+      "stream_usage": true,
+      "reasoning_tokens_reported": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Moxie": [
+    {
+     "ok": true,
+     "ms": 3689,
+     "ttft": 1373,
+     "in": 69,
+     "out": 61,
+     "reasoning": 54,
+     "tps": 26.3,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "reasoning_deltas_separate": true,
+      "stream_usage": true,
+      "reasoning_tokens_reported": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "GLM-4.7": [
+    {
+     "ok": false,
+     "ms": 736,
+     "ttft": null,
+     "in": null,
+     "out": null,
+     "reasoning": null,
+     "tps": null,
+     "finish": null,
+     "error": "http 503 {\"message\":\"No servers available for this model type. Please contact support.\"}",
+     "checks": {},
+     "checkDetails": {}
+    }
+   ],
+   "DeepSeek-V4.1-Flash-1017": [
+    {
+     "ok": true,
+     "ms": 73739,
+     "ttft": null,
+     "in": null,
+     "out": null,
+     "reasoning": null,
+     "tps": null,
+     "finish": null,
+     "checks": {
+      "answer_391": false,
+      "reasoning_deltas_separate": false,
+      "stream_usage": false,
+      "reasoning_tokens_reported": false
+     },
+     "checkDetails": {
+      "answer_391": "",
+      "reasoning_deltas_separate": "null",
+      "reasoning_tokens_reported": "reasoning=null"
+     }
+    }
+   ],
+   "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled": [
+    {
+     "ok": true,
+     "ms": 5356,
+     "ttft": 1089,
+     "in": 33,
+     "out": 23,
+     "reasoning": 0,
+     "tps": 5.4,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "reasoning_deltas_separate": false,
+      "stream_usage": true,
+      "reasoning_tokens_reported": true
+     },
+     "checkDetails": {
+      "reasoning_deltas_separate": "null"
+     }
+    }
+   ],
+   "Gemma-4-31B-it": [
+    {
+     "ok": true,
+     "ms": 15730,
+     "ttft": 874,
+     "in": 33,
+     "out": 82,
+     "reasoning": 74,
+     "tps": 5.5,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "reasoning_deltas_separate": true,
+      "stream_usage": true,
+      "reasoning_tokens_reported": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-Flash-Next": [
+    {
+     "ok": true,
+     "ms": 76580,
+     "ttft": 70506,
+     "in": 69,
+     "out": 36,
+     "reasoning": 29,
+     "tps": 5.9,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "reasoning_deltas_separate": true,
+      "stream_usage": true,
+      "reasoning_tokens_reported": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "MiMo-V2.6-Flash-MOPD": [
+    {
+     "ok": true,
+     "ms": 41495,
+     "ttft": 41067,
+     "in": 25,
+     "out": 16,
+     "reasoning": 11,
+     "tps": 37.4,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "reasoning_deltas_separate": true,
+      "stream_usage": true,
+      "reasoning_tokens_reported": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Writers-V2": [
+    {
+     "ok": true,
+     "ms": 5626,
+     "ttft": 1529,
+     "in": 33,
+     "out": 77,
+     "reasoning": 69,
+     "tps": 18.8,
+     "finish": "stop",
+     "checks": {
+      "answer_391": true,
+      "reasoning_deltas_separate": true,
+      "stream_usage": true,
+      "reasoning_tokens_reported": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "qual/throughput_600": {
+   "Qwen3.8-27B": [
+    {
+     "ok": true,
+     "ms": 29942,
+     "ttft": 843,
+     "in": 49,
+     "out": 651,
+     "reasoning": 0,
+     "tps": 22.4,
+     "finish": "stop",
+     "checks": {
+      "long_output": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-antislop": [
+    {
+     "ok": true,
+     "ms": 122075,
+     "ttft": 2119,
+     "in": 49,
+     "out": 1200,
+     "reasoning": 0,
+     "tps": 10,
+     "finish": "length",
+     "checks": {
+      "long_output": true,
+      "finish_stop": false
+     },
+     "checkDetails": {
+      "finish_stop": "finish_reason=length"
+     }
+    }
+   ],
+   "Qwen3.8-27B-Novelist1.0": [
+    {
+     "ok": true,
+     "ms": 56227,
+     "ttft": 1726,
+     "in": 49,
+     "out": 510,
+     "reasoning": 0,
+     "tps": 9.4,
+     "finish": "stop",
+     "checks": {
+      "long_output": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Moxie": [
+    {
+     "ok": true,
+     "ms": 32057,
+     "ttft": 2073,
+     "in": 49,
+     "out": 528,
+     "reasoning": 0,
+     "tps": 17.6,
+     "finish": "stop",
+     "checks": {
+      "long_output": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "GLM-4.7": [
+    {
+     "ok": false,
+     "ms": 764,
+     "ttft": null,
+     "in": null,
+     "out": null,
+     "reasoning": null,
+     "tps": null,
+     "finish": null,
+     "error": "http 503 {\"message\":\"No servers available for this model type. Please contact support.\"}",
+     "checks": {},
+     "checkDetails": {}
+    }
+   ],
+   "DeepSeek-V4.1-Flash-1017": [
+    {
+     "ok": false,
+     "ms": 724,
+     "ttft": null,
+     "in": null,
+     "out": null,
+     "reasoning": null,
+     "tps": null,
+     "finish": null,
+     "error": "http 503 {\"message\":\"No servers available for this model type. Please contact support.\"}",
+     "checks": {},
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled": [
+    {
+     "ok": true,
+     "ms": 28320,
+     "ttft": 1179,
+     "in": 50,
+     "out": 482,
+     "reasoning": 0,
+     "tps": 17.8,
+     "finish": "stop",
+     "checks": {
+      "long_output": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-it": [
+    {
+     "ok": true,
+     "ms": 31238,
+     "ttft": 589,
+     "in": 50,
+     "out": 489,
+     "reasoning": 0,
+     "tps": 16,
+     "finish": "stop",
+     "checks": {
+      "long_output": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-Flash-Next": [
+    {
+     "ok": true,
+     "ms": 120838,
+     "ttft": 44069,
+     "in": 49,
+     "out": 600,
+     "reasoning": 0,
+     "tps": 7.8,
+     "finish": "stop",
+     "checks": {
+      "long_output": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "MiMo-V2.6-Flash-MOPD": [
+    {
+     "ok": true,
+     "ms": 37427,
+     "ttft": 22507,
+     "in": 46,
+     "out": 438,
+     "reasoning": 0,
+     "tps": 29.4,
+     "finish": "stop",
+     "checks": {
+      "long_output": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Writers-V2": [
+    {
+     "ok": true,
+     "ms": 34366,
+     "ttft": 1972,
+     "in": 50,
+     "out": 453,
+     "reasoning": 0,
+     "tps": 14,
+     "finish": "stop",
+     "checks": {
+      "long_output": true,
+      "finish_stop": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "qual/context_24k": {
+   "Qwen3.8-27B": [
+    {
+     "ok": true,
+     "ms": 12160,
+     "ttft": null,
+     "in": 22046,
+     "out": 9,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "needle_found": true,
+      "input_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-antislop": [
+    {
+     "ok": true,
+     "ms": 30631,
+     "ttft": null,
+     "in": 22046,
+     "out": 400,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "needle_found": false,
+      "input_tokens": true
+     },
+     "checkDetails": {
+      "needle_found": "量大ODA量大ODA量大ODAODAODAODAODAODAODAODAODAODAODAODAODAODAODA量大O"
+     }
+    }
+   ],
+   "Qwen3.8-27B-Novelist1.0": [
+    {
+     "ok": true,
+     "ms": 12958,
+     "ttft": null,
+     "in": 22046,
+     "out": 9,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "needle_found": true,
+      "input_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Moxie": [
+    {
+     "ok": true,
+     "ms": 13297,
+     "ttft": null,
+     "in": 22046,
+     "out": 9,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "needle_found": true,
+      "input_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "GLM-4.7": [
+    {
+     "ok": true,
+     "ms": 46665,
+     "ttft": null,
+     "in": 20773,
+     "out": 8,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "needle_found": true,
+      "input_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "DeepSeek-V4.1-Flash-1017": [
+    {
+     "ok": false,
+     "ms": 1483,
+     "ttft": null,
+     "in": null,
+     "out": null,
+     "reasoning": null,
+     "tps": null,
+     "finish": null,
+     "error": "http 503 {\"message\":\"No servers available for this model type. Please contact support.\"}",
+     "checks": {},
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled": [
+    {
+     "ok": true,
+     "ms": 15564,
+     "ttft": null,
+     "in": 22047,
+     "out": 8,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "needle_found": true,
+      "input_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-it": [
+    {
+     "ok": true,
+     "ms": 15235,
+     "ttft": null,
+     "in": 22047,
+     "out": 8,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "needle_found": true,
+      "input_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-Flash-Next": [
+    {
+     "ok": true,
+     "ms": 148104,
+     "ttft": null,
+     "in": 22046,
+     "out": 9,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "needle_found": true,
+      "input_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "MiMo-V2.6-Flash-MOPD": [
+    {
+     "ok": true,
+     "ms": 12702,
+     "ttft": null,
+     "in": 22042,
+     "out": 9,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "needle_found": true,
+      "input_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Writers-V2": [
+    {
+     "ok": true,
+     "ms": 14595,
+     "ttft": null,
+     "in": 22047,
+     "out": 8,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "needle_found": true,
+      "input_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "qual/bad_response_format": {
+   "Qwen3.8-27B": [
+    {
+     "ok": false,
+     "ms": 249,
+     "ttft": null,
+     "in": null,
+     "out": null,
+     "reasoning": null,
+     "tps": null,
+     "finish": null,
+     "error": "http 400 {\"message\":\"Invalid `response_format.type`: must be one of: text, json_object, json_schema, structural_tag\"}",
+     "checks": {},
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-antislop": [
+    {
+     "ok": false,
+     "ms": 250,
+     "ttft": null,
+     "in": null,
+     "out": null,
+     "reasoning": null,
+     "tps": null,
+     "finish": null,
+     "error": "http 400 {\"message\":\"Invalid `response_format.type`: must be one of: text, json_object, json_schema, structural_tag\"}",
+     "checks": {},
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Novelist1.0": [
+    {
+     "ok": false,
+     "ms": 251,
+     "ttft": null,
+     "in": null,
+     "out": null,
+     "reasoning": null,
+     "tps": null,
+     "finish": null,
+     "error": "http 400 {\"message\":\"Invalid `response_format.type`: must be one of: text, json_object, json_schema, structural_tag\"}",
+     "checks": {},
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-27B-Moxie": [
+    {
+     "ok": false,
+     "ms": 246,
+     "ttft": null,
+     "in": null,
+     "out": null,
+     "reasoning": null,
+     "tps": null,
+     "finish": null,
+     "error": "http 400 {\"message\":\"Invalid `response_format.type`: must be one of: text, json_object, json_schema, structural_tag\"}",
+     "checks": {},
+     "checkDetails": {}
+    }
+   ],
+   "GLM-4.7": [
+    {
+     "ok": false,
+     "ms": 250,
+     "ttft": null,
+     "in": null,
+     "out": null,
+     "reasoning": null,
+     "tps": null,
+     "finish": null,
+     "error": "http 400 {\"message\":\"Invalid `response_format.type`: must be one of: text, json_object, json_schema, structural_tag\"}",
+     "checks": {},
+     "checkDetails": {}
+    }
+   ],
+   "DeepSeek-V4.1-Flash-1017": [
+    {
+     "ok": false,
+     "ms": 754,
+     "ttft": null,
+     "in": null,
+     "out": null,
+     "reasoning": null,
+     "tps": null,
+     "finish": null,
+     "error": "http 503 {\"message\":\"No servers available for this model type. Please contact support.\"}",
+     "checks": {},
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled": [
+    {
+     "ok": false,
+     "ms": 248,
+     "ttft": null,
+     "in": null,
+     "out": null,
+     "reasoning": null,
+     "tps": null,
+     "finish": null,
+     "error": "http 400 {\"message\":\"Invalid `response_format.type`: must be one of: text, json_object, json_schema, structural_tag\"}",
+     "checks": {},
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-it": [
+    {
+     "ok": false,
+     "ms": 249,
+     "ttft": null,
+     "in": null,
+     "out": null,
+     "reasoning": null,
+     "tps": null,
+     "finish": null,
+     "error": "http 400 {\"message\":\"Invalid `response_format.type`: must be one of: text, json_object, json_schema, structural_tag\"}",
+     "checks": {},
+     "checkDetails": {}
+    }
+   ],
+   "Qwen3.8-Flash-Next": [
+    {
+     "ok": false,
+     "ms": 249,
+     "ttft": null,
+     "in": null,
+     "out": null,
+     "reasoning": null,
+     "tps": null,
+     "finish": null,
+     "error": "http 400 {\"message\":\"Invalid `response_format.type`: must be one of: text, json_object, json_schema, structural_tag\"}",
+     "checks": {},
+     "checkDetails": {}
+    }
+   ],
+   "MiMo-V2.6-Flash-MOPD": [
+    {
+     "ok": false,
+     "ms": 249,
+     "ttft": null,
+     "in": null,
+     "out": null,
+     "reasoning": null,
+     "tps": null,
+     "finish": null,
+     "error": "http 400 {\"message\":\"Invalid `response_format.type`: must be one of: text, json_object, json_schema, structural_tag\"}",
+     "checks": {},
+     "checkDetails": {}
+    }
+   ],
+   "Gemma-4-31B-Writers-V2": [
+    {
+     "ok": false,
+     "ms": 253,
+     "ttft": null,
+     "in": null,
+     "out": null,
+     "reasoning": null,
+     "tps": null,
+     "finish": null,
+     "error": "http 400 {\"message\":\"Invalid `response_format.type`: must be one of: text, json_object, json_schema, structural_tag\"}",
+     "checks": {},
+     "checkDetails": {}
+    }
+   ]
+  }
+ }
+}

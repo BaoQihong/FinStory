@@ -1,0 +1,39 @@
+<!-- E/E1-feature-households · response A · blind sample -->
+
+# The Level and the Rate
+
+*Households are feeling a squeeze that official inflation numbers failed to capture, and a recent uptick in prices is making a bad situation worse.*
+
+The disconnect between the economy and the kitchen table usually comes down to a confusion between a rate and a level. When policymakers celebrate that inflation is falling, they are talking about the speed at which prices are rising. They are not saying that prices are going back down.
+
+For the average household, the speed of the increase is a secondary concern to the total cost of living. Since January 2020, the cumulative rise in the CPI price level has been 29.8%. While average hourly earnings rose by 33.2% over that same period, the psychological and financial relief of that pay raise has been swallowed by the cost of credit.
+
+The real squeeze is not found in the grocery aisle alone, but in the cost of moving up the housing and credit ladder. A household that took out a mortgage in January 2021 faced a rate of 2.74%. By October 2026, the monthly average for a 30-year fixed mortgage rate had climbed to 7.33%. This is the gap where the "inflation is falling" narrative collapses. Even if the rate of inflation slows, the cost of borrowing remains high, locking people into their current living situations or making new debt prohibitively expensive.
+
+Now, the trend that provided a glimmer of hope has reversed. Consumer prices (CPI) were 2.4% in the 12 months to January 2026, the low point of the last year. By September 2026, that figure had climbed back to 3.7%, up from 3.0% a year earlier.
+
+This recent acceleration is particularly visible because it is concentrated in the things people buy most often. Core CPI—which excludes food and energy—was 2.6% for the 12 months to September 2026. The gap between the core figure and the headline 3.7% means the current pain is being driven by the petrol pump and the supermarket.
+
+The timing is poor for the American worker. Average hourly earnings were 3.2% in the 12 months to September 2026. Because this growth is slower than the 3.7% rise in prices, the average worker's pay is again losing purchasing power.
+
+The result is a profound collapse in confidence. The University of Michigan consumer sentiment index stood at 71.7 in January 2025. By October 2026, it had fallen to 48. It hit a low of 44.8 in May 2026, the lowest reading since at least 2016 in the available data.
+
+This slump in sentiment is not a reflection of the jobs market. The unemployment rate was 4.1% in October 2026. Instead, the anxiety is tied directly to the cost of living. As the University of Michigan Surveys of Consumers noted, "Since mid-2022, consumer sentiment has been moving more closely with sentiment regarding higher prices than with sentiment regarding income."
+
+Despite this, people are still spending. Real consumer spending—adjusted for inflation—was up 2.5% in the 12 months to October 2026. But this spending is not being fueled by prosperity. The personal saving rate, the share of disposable income people set aside, fell from 4.9% in October 2025 to 4.1% in October 2026. Households are maintaining their lifestyle by dipping into their reserves.
+
+The mechanism of this squeeze is a pincer movement. On one side is the price level: the 29.8% increase in goods and services since 2020. On the other is the cost of capital. To fight inflation, the Federal Reserve raised the federal funds rate—the interest rate at which banks lend to each other overnight. After holding the rate at 3.63% from May to August 2026, the Fed has since raised it to 3.88% as of October 2026.
+
+This move by the Fed pushes mortgage rates higher, as seen in the climb from 6.25% in October 2025 to 7.33% in October 2026. When the cost of borrowing rises while the cost of goods also ticks upward, the ability of a household to "out-earn" inflation vanishes.
+
+The downstream effect is a change in how people live. A consumer-behaviour research note observed that "Primarily, consumers started trading down, but as inflation’s impact on consumers persisted, broader behaviors started to change; these included less frequent purchases, shifting from restaurants to eating at home."
+
+Our reading is that the economy is entering a phase where the "soft landing" promised by officials feels like a crash to the individual. The macroeconomic data shows a stable unemployment rate and modest spending growth, but those figures mask a fragile household balance sheet. When spending is sustained by a falling saving rate, it is a temporary bridge, not a sustainable recovery.
+
+The path forward depends on whether the recent rise in headline inflation is a temporary spike in energy and food or a more permanent return to higher prices.
+
+If the 3.7% inflation rate persists or climbs, the Federal Reserve will likely keep the federal funds rate high or raise it further. This would keep mortgage rates elevated, further cementing the "lock-in" effect where homeowners cannot afford to move and new buyers are priced out. In this scenario, the saving rate may fall even further as households struggle to cover basic costs, eventually leading to a sharper drop in real consumer spending.
+
+Alternatively, if food and energy prices stabilize and headline inflation drifts back toward the 2.4% seen in January 2026, the Fed may have room to cut the federal funds rate. A drop in borrowing costs would be a more powerful relief valve for households than a slight dip in the inflation rate.
+
+The thing to watch is the gap between core CPI and headline CPI. If core inflation begins to climb alongside food and energy, it will signal that price pressures have embedded themselves deeper into the economy. At that point, the struggle for households will no longer be about a few expensive trips to the grocery store, but a permanent reduction in their standard of living.

@@ -1,0 +1,24 @@
+{
+  "problems": [
+    {
+      "path": "[story.blocks[4].text]",
+      "problem": "contradicts-data",
+      "kind": "contradicts-data"
+    },
+    {
+      "path": "[macro.explainers[2].text]",
+      "problem": "contradicts-data",
+      "kind": "contradicts-data"
+    },
+    {
+      "path": "[analytics.chain.steps[0].text]",
+      "problem": "unsupported",
+      "kind": "unsupported"
+    },
+    {
+      "path": "[analytics.implications.items[2].shows]",
+      "problem": "unsupported",
+      "kind": "unsupported"
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "thesis": "Official inflation is still running well above the Fed's 2% target — core PCE at 3.3% and core CPI at 2.9% — so the premise that inflation is 'coming down' is only partly true. The real disconnect is between what the indices say and what households feel: real median income rose just 2.6% last year while prices climbed faster, mortgage rates sit near 7.2%, and consumer sentiment has fallen 10.4% in a year. The squeeze is real, and it is reshaping how people save and invest.",
+  "findings": [
+    {
+      "claim": "Headline and core inflation remain elevated, not declining toward target.",
+      "kind": "documented",
+      "sourceRefs": ["S10", "S12", "S14"],
+      "quote": "Inflation has been above the Fed's target for more than five years."
+    },
+    {
+      "claim": "Core PCE and core CPI diverge from headline CPI, and the two core measures themselves differ.",
+      "kind": "documented",
+      "sourceRefs": ["S12", "S14"],
+      "quote": "core PCE at 3.3% and core CPI at 2.6%"
+    },
+    {
+      "claim": "Housing and food are the main drivers keeping CPI elevated.",
+      "kind": "documented",
+      "sourceRefs": ["S10", "S8"],
+      "quote": "Perhaps the largest contributor to the outsized inflation reading in Tuesday's CPI report was housing"
+    },
+    {
+      "claim": "Real median household income rose 2.6% in 2025, far below the 4.1% headline CPI increase over the same period.",
+      "kind": "documented",
+      "sourceRefs": ["S4"],
+      "quote": ""
+    },
+    {
+      "claim": "Consumer sentiment has deteriorated sharply, falling 10.4% year-over-year to 48.0.",
+      "kind": "documented",
+      "sourceRefs": ["S6"],
+      "quote": "consumers seem to put more weight on higher prices than on higher incomes when assessing their current economic conditions"
+    },
+    {
+      "claim": "Mortgage rates remain near 7.2%, up 0.95 points from a year ago, compounding the cost-of-living squeeze.",
+      "kind": "documented",
+      "sourceRefs": [],
+      "quote": ""
+    },
+    {
+      "claim": "The S&P 500's real return has compressed to 9.93%, down 3.75 points from a year earlier, eroding the wealth-building appeal of equities.",
+      "kind": "documented",
+      "sourceRefs": [],
+      "quote": ""
+    },
+    {
+      "claim": "Consumers are trading down and shifting spending from discretionary categories toward essentials.",
+      "kind": "context",
+      "sourceRefs": ["S13", "S7"],
+      "quote": "consumers started trading down, but as inflation's impact on consumers persisted, broader behaviors started to change"
+    },
+    {
+      "claim": "The perception gap persists because people psychologically separate wage gains from inflation adjustments.",
+      "kind": "context",
+      "sourceRefs": ["S6"],
+      "quote": "People do not associate increases in their income with inflation-adjustments but instead with personal achievements they have earned or deserve."
+    }
+  ],
+  "sourceFigures": [
+    {
+      "key": "coreCpiSept2026",
+      "figure": "2.6%",
+      "quote": "Core CPI, which strips out volatile food and energy costs, increased 0.3%. That was also more than expected.",
+      "sourceRef": "S11",
+      "about": "Core CPI annual rate for September 2026",
+      "kind": "rate",
+      "measure": "index",
+      "unit": "%",
+      "denominator": "year",
+      "temporal": "historical",
+      "period": "September 2026"
+    },
+    {
+      "key": "headlineCpiSept2026",
+      "figure": "3.7%",
+      "quote": "Consumer prices rose 3.7% in the 12 months to September 2026, measured by the CPI-U (not seasonally adjusted), according to the Bureau of Labor Statistics.",
+      "sourceRef": "S14",
+      "about": "Headline CPI annual rate for September 2026",
+      "kind": "rate",
+      "measure": "index",
+      "unit": "%",
+      "denominator": "year",
+      "temporal": "historical",
+      "period": "September 2026"
+    },
+    {
+      "key": "personalSavingRateSept20",
+      "figure": "3.8 percent",
+      "quote": "Personal saving was $911.1 billion, and the personal saving rate—personal saving as a percentage of DPI—was 3.8 percent.",
+      "sourceRef": "S2",
+      "about": "Personal saving rate for September 2026",
+      "kind": "rate",
+      "measure": "ratio",
+      "unit": "%",
+      "denominator": "DPI",
+      "temporal": "historical",
+      "period": "September 2026"
+    },
+    {
+      "key": "realPceChangeSept2026",
+      "figure": "$2.6 billion",
+      "quote": "Real PCE increased $2.6 billion (less than 0.1 percent at a monthly rate) in September.",
+      "sourceRef": "S2",
+      "about": "Real PCE monthly change for September 2026",
+      "kind": "change",
+      "measure": "flow",
+      "unit": "US$",
+      "denominator": "",
+      "temporal": "historical",
+      "period": "September 2026"
+    }
+  ],
+  "conflicts": [
+    {
+      "description": "S12 reports core CPI at 2.6% (September 2026), while the dataset fact cpiCoreChg1y shows 2.9% for October 2026. The difference likely reflects the month and the SA vs. NSA treatment, but the sources do not reconcile this.",
+      "sourceRefs": ["S12"]
+    },
+    {
+      "description": "S1 is a 2008-era piece arguing CPI overstates inflation by ~1pp; it is stale relative to 2026 data where both CPI and PCE are above target.",
+      "sourceRefs": ["S1"]
+    },
+    {
+      "description": "S3 (2008 BLS FAQ) and S13 (2025) are flagged stale; their claims about CPI methodology and consumer trade-down behavior predate the current inflation regime.",
+      "sourceRefs": ["S3", "S13"]
+    }
+  ],
+  "gaps": [
+    "No dataset provides a direct consumer-perception survey quantifying the gap between felt inflation and measured inflation.",
+    "Real returns on fixed-income assets (beyond the 10-year yield level) are not in the data.",
+    "Category-level CPI breakdowns (food, shelter, medical) are only partially available via S8 (Midwest region) and S10 (narrative).",
+    "No data on household portfolio allocation shifts in response to the perception gap."
+  ],
+  "sectionSupport": {
+    "story": "supported",
+    "macro": "supported",
+    "analytics": "supported",
+    "outlook": "supported"
+  },
+  "authorArgument": {
+    "status": "partly-supported",
+    "note": "The premise that inflation is 'coming down' is contradicted by current data showing core PCE at 3.3% and core CPI at 2.9%, both above the 2% target. However, the second half of the premise — a significant disconnect between official metrics and consumer experience — is well supported by the 10.4% drop in sentiment, the wage-price gap, and the persistent mortgage cost burden."
+  }
+}

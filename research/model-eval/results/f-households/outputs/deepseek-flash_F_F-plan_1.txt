@@ -1,0 +1,40 @@
+{
+  "workingTitle": "The Price Is Still Right: Why Falling Inflation Hasn't Felt Like Relief",
+  "section": "economy",
+  "centralQuestion": "If headline inflation is falling, why do households still feel squeezed — and what does that gap between official statistics and lived experience mean for saving, spending and building wealth?",
+  "angle": "Treat the 'vibecession' as a measurable phenomenon rather than a mood: separate headline from core and services inflation, show how cumulative price levels (not just rates of change) outran wage growth, and trace the consequences for real returns, saving behaviour and portfolio choices. The premise that inflation is falling must be tested against the latest data before the story is built on it.",
+  "whyReadersCare": "Most households experience prices as a level, not a rate. If the level of prices has permanently shifted up while wage growth only partly caught up, the arithmetic of household budgets and long-run wealth accumulation changes — and readers need to know whether the 'expensive feeling' is a lagging perception or a real, persistent erosion of purchasing power.",
+  "questions": [
+    "Is headline inflation actually declining in the latest data, and how do core and services measures compare with headline?",
+    "Which categories (shelter, food, services, insurance, energy) are driving the persistence of perceived high costs, and are they the categories households buy frequently?",
+    "How much has the cumulative price level risen relative to median nominal wage growth, i.e. what has happened to real household income?",
+    "How are consumers changing saving rates, revolving credit use and discretionary spending in response to the perceived cost gap?",
+    "What are real (inflation-adjusted) returns on equities and 10-year Treasuries over recent years, and how do they compare with the inflation episode?",
+    "Is there evidence of structural shifts in spending (e.g. permanent downshifting in discretionary categories) that would slow a return to pre-inflation norms? Does consumer confidence track inflation or price levels? "
+  ],
+  "searches": [
+    {"query": "BLS CPI news release latest headline core inflation", "purpose": "Establish current inflation trend and headline vs core split from the primary statistical agency", "recent": true},
+    {"query": "BEA personal income outlays PCE price index latest release", "purpose": "Get the Fed's preferred inflation gauge and consumer spending/saving rate data", "recent": true},
+    {"query": "Federal Reserve FOMC statement latest decision inflation", "purpose": "Latest policy stance and the Fed's read on inflation persistence", "recent": true},
+    {"query": "real median household income Census report wages vs inflation cumulative", "purpose": "Quantify cumulative price increases against wage/income growth", "recent": false},
+    {"query": "consumer sentiment inflation expectations University of Michigan survey", "purpose": "Evidence on the gap between official inflation and consumer perception", "recent": true},
+    {"query": "real return stocks bonds after inflation history inflation adjusted returns", "purpose": "Background on real returns to equities and fixed income during and after inflation episodes", "recent": false}
+  ],
+  "dataNeeds": [
+    {"need": "Headline CPI inflation rate (US)", "why": "Test whether inflation is actually declining", "searchText": "consumer price index all items inflation rate"},
+    {"need": "Core CPI (ex food and energy)", "why": "Compare core persistence with headline", "searchText": "core consumer price index ex food energy"},
+    {"need": "Core PCE price index", "why": "Fed's preferred measure", "searchText": "personal consumption expenditures core price index"},
+    {"need": "CPI by major category (shelter, food, services, insurance, energy)", "why": "Identify which categories drive perceived persistence", "searchText": "consumer price index shelter food services"},
+    {"need": "Median usual weekly earnings or average hourly earnings", "why": "Compare wage growth with cumulative price increases", "searchText": "median usual weekly earnings full time"},
+    {"need": "Real median household income", "why": "Direct measure of whether households are better or worse off", "searchText": "real median household income"},
+    {"need": "Personal saving rate", "why": "How consumers alter saving behaviour", "searchText": "personal saving rate"},
+    {"need": "Consumer credit / revolving credit outstanding", "why": "Evidence of borrowing to cover costs", "searchText": "revolving consumer credit outstanding"},
+    {"need": "10-year Treasury yield", "why": "Nominal anchor for fixed-income returns", "searchText": "10-year treasury constant maturity yield"}  ],
+  "counterChecks": [
+    {"premise": "Inflation is falling", "contradictingEvidence": "If latest CPI/PCE prints show re-acceleration or core stuck above target, the 'falling inflation' premise fails", "searchText": "consumer price index all items inflation rate"},
+    {"premise": "Households are worse off in real terms", "contradictingEvidence": "If real median household income or real wages are at or above prior peaks, the squeeze is perceptual or distributional rather than aggregate", "searchText": "real median household income"},
+    {"premise": "Consumers are pulling back", "contradictingEvidence": "If the saving rate is stable or rising and discretionary spending is resilient, the 'permanent downshift' story is weak", "searchText": "personal saving rate"},
+    {"premise": "The gap is uniform nationally", "contradictingEvidence": "Regional CPI or metro-level price indices showing some areas with much lower inflation would undercut a single national narrative", "searchText": "regional consumer price index metro area"}
+  ],
+  "storyboardConcern": ""
+}

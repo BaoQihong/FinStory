@@ -1,0 +1,5 @@
+<<<REASONING (reasoning)>>>
+We need answer user's simple math: 17*23. Need final number only. Compute: 17*20=340, 17*3=51 total 391. Ensure no extra text.
+<<<END REASONING>>>
+
+391

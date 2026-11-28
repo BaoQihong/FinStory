@@ -1,0 +1,3 @@
+# Raw API bodies / SSE digests are large and reproducible; the normalised
+# outputs, records.jsonl and summaries are kept. See README.md.
+results/*/raw/

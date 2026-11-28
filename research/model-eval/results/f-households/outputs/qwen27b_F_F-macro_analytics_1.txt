@@ -1,0 +1,126 @@
+{
+  "macro": {
+    "title": "The Gap Between the Rate and the Level",
+    "intro": "The Story established that inflation is slowing; the data reveals why that slowdown feels like a lie. The divergence is not just in the speed of price growth, but in the sheer scale of the cumulative price level relative to the income level. For the median household, the cost of living has risen far faster than their ability to pay, creating a structural deficit that no single month's inflation report can fix.",
+    "indicators": [
+      {
+        "key": "cpiHeadline",
+        "note": "This index is at its highest point in the retrieved data since 2014, confirming that the 'high prices' consumers feel are a matter of record, not just perception."
+      },
+      {
+        "key": "realMedianIncome",
+        "note": "While this metric is at its highest level in the data, it has not kept pace with the corresponding rise in the cost of living, illustrating the squeeze on purchasing power."
+      },
+      {
+        "key": "consumerSentiment",
+        "note": "This indicator is at its lowest point in the data since 2014, showing that the psychological impact of the price-income gap is severe and persistent."
+      },
+      {
+        "key": "mortgageRate",
+        "note": "With rates remaining high, the cost of housing—a major component of the CPI—stays elevated, preventing the 'cooling' of inflation from translating into relief for homeowners."
+      }
+    ],
+    "charts": [
+      {
+        "chartId": "inflationTrends",
+        "question": "How have the different measures of inflation tracked over the last five years?",
+        "takeaway": "The chart shows that while the rate of increase has moderated, the absolute level of the Core CPI and Core PCE indices remains at their highest point in the retrieved history since 2014."
+      }
+    ],
+    "explainers": [
+      {
+        "title": "The Cumulative Squeeze",
+        "text": "Over the last five years, core CPI rose by {cpiCoreChg5y}, while real median household income grew by only {realMedianIncomeChg5y}. This gap means that even if inflation drops to zero tomorrow, the baseline cost of living remains significantly higher than the baseline income.",
+        "evidence": "documented"
+      },
+      {
+        "title": "Sentiment Decoupling",
+        "text": "Consumer sentiment has fallen by {consumerSentimentChg5y} over five years. The data suggests that sentiment is now more closely correlated with perceptions of high prices than with income growth, indicating that consumers are reacting to their lived experience rather than official statistics.",
+        "evidence": "documented"
+      },
+      {
+        "title": "Sticky Housing Costs",
+        "text": "Housing and medical care remain key drivers of persistent inflation. With the 30-year fixed mortgage rate at {mortgageRateLatest}, the cost of housing services continues to rise, outpacing the broader index and keeping the 'core' inflation rate elevated.",
+        "evidence": "documented"
+      }
+    ],
+    "attention": {
+      "required": false,
+      "reasons": []
+    }
+  },
+  "analytics": {
+    "title": "Why the Squeeze Persists",
+    "intro": "The causal question is why the deceleration in inflation hasn't led to a recovery in consumer confidence or wealth accumulation. The answer lies in the lag between price levels and income levels, compounded by the compression of real returns on the assets households rely on to build wealth.",
+    "chain": {
+      "title": "From Price Levels to Wealth Erosion",
+      "steps": [
+        {
+          "title": "Cumulative Price Increase",
+          "text": "The starting point is the cumulative rise in the cost of living. Core CPI has increased by {cpiCoreChg5y} over five years. This is not a temporary shock but a structural shift in the price level.",
+          "evidence": "documented"
+        },
+        {
+          "title": "Lagging Real Income",
+          "text": "Real median household income has grown by only {realMedianIncomeChg5y} over the same period. This lag means that the median household's purchasing power has effectively declined relative to the cost of goods and services.",
+          "evidence": "documented"
+        },
+        {
+          "title": "Sentiment and Spending Shift",
+          "text": "This gap drives the deterioration in consumer sentiment, which has fallen by {consumerSentimentChg5y}. Consumers respond by trading down and reducing discretionary purchases, a structural shift that complicates the return to pre-inflation consumption norms.",
+          "evidence": "context"
+        },
+        {
+          "title": "Compression of Real Returns",
+          "text": "The effectiveness of traditional wealth-building strategies is reduced as real returns on equities compress. The S&P 500's year-over-year real return has fallen by {sp500RealReturnChg1y} over the last year, now standing at {sp500RealReturnLatest}.",
+          "evidence": "documented"
+        },
+        {
+          "title": "Wealth Accumulation Stagnation",
+          "text": "The combination of higher living costs and lower real returns on investments means that households are finding it harder to build a financial cushion. This stagnation in wealth accumulation further reinforces the perception of financial squeeze, even as headline inflation rates moderate.",
+          "evidence": "interpretation"
+        }
+      ]
+    },
+    "charts": [],
+    "comparisons": [],
+    "implications": {
+      "title": "Who Feels the Squeeze Most",
+      "intro": "The impact of this divergence is not uniform. It affects specific groups and asset classes in distinct ways, shaping how households and investors navigate the current economic landscape.",
+      "items": [
+        {
+          "asset": "Median Households",
+          "icon": "property",
+          "shows": "Real median household income is at {realMedianIncomeLatest}, but this has not kept pace with the {cpiCoreChg5y} rise in core CPI over five years.",
+          "showsEvidence": "documented",
+          "couldMean": "These households are experiencing a net loss in purchasing power, which is likely driving the shift toward trading down and reducing discretionary spending."
+        },
+        {
+          "asset": "Equity Investors",
+          "icon": "stocks",
+          "shows": "The S&P 500's real return is at {sp500RealReturnLatest}, down {sp500RealReturnChg1y} from a year ago.",
+          "showsEvidence": "documented",
+          "couldMean": "The compression in real returns makes it harder for investors to outpace inflation, potentially leading to a shift in portfolio strategies toward assets that offer better real yield protection."
+        },
+        {
+          "asset": "Homeowners",
+          "icon": "property",
+          "shows": "The 30-year fixed mortgage rate is at {mortgageRateLatest}, which is significantly higher than the {mortgageRateLow5y} low from 2021.",
+          "showsEvidence": "documented",
+          "couldMean": "High mortgage rates keep housing costs elevated, contributing to the stickiness in core inflation and making it difficult for homeowners to see relief in their monthly housing expenses."
+        },
+        {
+          "asset": "Savers",
+          "icon": "cash",
+          "shows": "The personal saving rate is at {srcPersonalSavingRate}, but the real return on savings is likely low given the high inflation environment.",
+          "showsEvidence": "context",
+          "couldMean": "Savers may find that their cash is losing value in real terms, pushing them to seek higher-yielding assets, which could further drive up demand for equities or other investments."
+        }
+      ]
+    },
+    "attention": {
+      "required": false,
+      "reasons": []
+    }
+  }
+}

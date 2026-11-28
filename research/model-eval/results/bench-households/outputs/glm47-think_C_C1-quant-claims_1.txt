@@ -1,0 +1,358 @@
+<<<REASONING (reasoning)>>>
+**Analysis of Claims**
+
+**C1: "The Fed's rate cuts work: it started cutting in September 2024 and mortgage rates came down."**
+
+*   **Claim:** Fed rate cuts caused mortgage rates to drop.
+*   **Evidence:**
+    *   Time series data (June 2024 - Jan 2025): Fed funds dropped from 5.33% to 4.33%. Mortgage rates dropped from 6.92% to 6.18% (Sept) but then rose to 6.96% (Jan).
+    *   Correlation of monthly *changes* (Dec 2016 - Oct 2026):
+        *   Mortgage vs 10-year: $r = 0.83$ (Strong positive).
+        *   Mortgage vs Fed funds: $r = 0.16$ (Weak positive).
+    *   Correlation of *levels* (Mortgage vs Fed funds): $r = 0.93$ (Strong positive).
+*   **Assessment:**
+    *   The claim asserts causality ("work") based on a short-term observation.
+    *   The data shows mortgage rates fell initially (Sept) but subsequently rose (Oct-Jan) despite continued cuts. This contradicts the simple narrative that cuts lead to lower mortgage rates in this specific instance.
+    *   The correlation of *changes* ($r=0.16$) shows that month-to-month movements in the Fed funds rate are very weakly related to month-to-month movements in mortgage rates.
+    *   The high correlation of *levels* ($r=0.93$) is spurious for causal inference regarding short-term policy moves; it merely reflects that both rates trended generally upward over the long sample period (2016-2026).
+    *   The strong link is between mortgages and the 10-year yield ($r=0.83$ for changes), not the Fed funds rate.
+*   **Conclusion:** The claim is not supported. Mortgage rates are driven by the 10-year yield, not the Fed funds rate directly. The recent data shows mortgage rates rising even as the Fed cut rates.
+
+**C2: "Stocks are a proven inflation hedge: the S&P 500 and the CPI have a correlation of 0.94."**
+
+*   **Claim:** Stocks hedge inflation (implying they move together or protect purchasing power).
+*   **Evidence:**
+    *   Correlation of monthly *levels*: $r = 0.94$.
+    *   Correlation of monthly *percentage changes*: $r = -0.01$.
+*   **Assessment:**
+    *   A correlation of levels ($r=0.94$) is largely driven by the shared long-term upward trend (inflation) and nominal price appreciation. It does not mean stocks hedge inflation month-to-month.
+    *   To be an effective "hedge," asset returns should be positively correlated with inflation changes (or at least not negative).
+    *   The correlation of *changes* ($r=-0.01$) indicates essentially no linear relationship between monthly stock returns and monthly inflation changes over this period.
+    *   Therefore, stocks do not act as a short-term inflation hedge based on this data.
+*   **Conclusion:** Not supported. The high level correlation is a statistical artifact of trending data. The near-zero correlation of changes shows stocks do not reliably move with inflation month-to-month.
+
+**C3: "The yield curve inverted, so a recession followed — the curve's record is perfect."**
+
+*   **Claim:** Yield curve inversion causes/reliably predicts recession; record is perfect.
+*   **Evidence:**
+    *   Inversion: 10y-2y spread negative July 2022 - Aug 2024 (26 months).
+    *   Unemployment rose from 3.4% (Apr 2023) to 4.5% (Nov 2025).
+    *   Payrolls increased from 153,072k (July 2022) to 159,293k (Oct 2026).
+    *   Sample contains one inversion episode.
+*   **Assessment:**
+    *   The claim states the record is "perfect" based on a sample size of one episode.
+    *   While unemployment rose (which might suggest a recession or softening), nonfarm payrolls *increased* consistently throughout the period (from 2022 to 2026). A recession is typically defined by significant economic contraction, usually involving negative GDP growth and often rising unemployment *and* falling payrolls.
+    *   The evidence shows job growth continued. We do not have GDP data here, but rising payrolls contradicts a standard recession definition.
+    *   Even if a recession occurred, generalizing from a single observation ($n=1$) is statistically invalid.
+*   **Conclusion:** Not supported. The data shows continued job growth (rising payrolls), which contradicts a standard recession definition. Furthermore, a sample size of one is insufficient to prove a "perfect" record.
+
+**C4: "Rising bond yields are bad for stocks — that's a fixed rule."**
+
+*   **Claim:** Negative relationship between bond yields and stock prices is a fixed rule.
+*   **Evidence:**
+    *   2017-2019: Correlation (S&P returns vs 10y yield changes) $r = 0.07$ (essentially zero/positive).
+    *   2022-2024: Correlation $r = -0.5$ (negative).
+*   **Assessment:**
+    *   A "fixed rule" implies a consistent, invariant relationship.
+    *   The evidence shows the relationship varies over time. It was slightly positive (or uncorrelated) in 2017-2019 and negative in 2022-2024.
+    *   The variation disproves the "fixed rule" claim.
+*   **Conclusion:** Not supported. The correlation changes sign and magnitude over time (0.07 vs -0.5), proving it is not a fixed rule.
+
+**C5: "Consumer sentiment doesn't matter for spending: over the last six months sentiment and spending moved in opposite directions."**
+
+*   **Claim:** Sentiment doesn't matter (based on 6 months of opposite movement).
+*   **Evidence:**
+    *   Correlation (monthly changes in sentiment vs monthly % changes in real spending, May-Oct 2026): $r = -0.16$.
+    *   $n = 6$.
+*   **Assessment:**
+    *   The correlation is negative (-0.16), supporting the "opposite directions" observation, but it is weak.
+    *   With only 6 observations ($n=6$), the statistical power is extremely low. A correlation of -0.16 is not statistically significant in such a small sample (even if we could calculate it, the standard error would be huge).
+    *   Drawing a definitive conclusion ("doesn't matter") from a 6-month sample with a weak correlation is unsound.
+*   **Conclusion:** Not supported. The sample size ($n=6$) is too small to draw any reliable conclusion, and the correlation, while negative, is weak.
+
+**C6: "Jobs drive spending: monthly payroll changes and monthly real-spending growth have a correlation of 0.78."**
+
+*   **Claim:** Jobs drive spending (citing $r=0.78$).
+*   **Evidence:**
+    *   Dec 2016 – Oct 2026: $r = 0.78$ ($n=119$).
+    *   Excluding March–July 2020: $r = 0.27$ ($n=114$).
+*   **Assessment:**
+    *   The claim relies on the 0.78 figure.
+    *   However, the exclusion of the 5-month COVID period (March-July 2020) drops the correlation drastically to 0.27.
+    *   This suggests the high 0.78 correlation is driven entirely by the extreme volatility of the pandemic shock (massive job losses and spending drops simultaneously).
+    *   In "normal" times (excluding the anomaly), the relationship is weak ($r=0.27$).
+    *   Therefore, the claim that jobs "drive" spending is overstated; the link is weak outside of economic crises.
+*   **Conclusion:** Not supported. The high correlation is an artifact of the pandemic outlier. Excluding that period reveals a weak correlation (0.27), suggesting the relationship is not robust.
+
+**Drafting the Response**
+
+*   **C1:** The claim confuses correlation of levels with causality of changes. Mortgage rates track the 10-year yield ($r=0.83$ for changes), not the Fed funds rate ($r=0.16$ for changes). While levels correlate ($r=0.93$), this reflects long-term trends, not policy transmission. Indeed, mortgage rates rose in late 2024/early 2025 even as the Fed cut rates. The evidence suggests the Fed does not directly control mortgage rates.
+*   **C2:** The claim relies on a correlation of *levels* ($r=0.94$), which is misleading because both series trend upward over time. A true hedge requires returns to move with inflation. The correlation of *percentage changes* is effectively zero ($r=-0.01$), meaning stocks did not track inflation month-to-month. Stocks are not a proven short-term inflation hedge based on this data.
+*   **C3:** The claim is unsupported. First, the sample size is one ($n=1$), which is insufficient to establish a "perfect" record. Second, the data shows nonfarm payrolls *increased* throughout the period (2022–2026), contradicting the economic contraction typical of a recession. While unemployment rose modestly, job growth continued.
+*   **C4:** The claim is false because the relationship is not fixed. The correlation was positive (0.07) during 2017–2019 but negative (-0.5) during 2022–2024. This variability proves that rising yields are not inherently bad for stocks; the relationship depends on the economic context (e.g., growth-driven vs. inflation-driven rate moves).
+*   **C5:** The claim is not supported. With only six observations ($n=6$), the sample is too small to be statistically meaningful. The correlation of -0.16 is weak and likely due to random noise. One cannot dismiss the importance of sentiment based on such a short timeframe.
+*   **C6:** The claim is misleading. The high correlation (0.78) is entirely driven by the pandemic outlier (March–July 2020). When this period is excluded, the correlation drops to 0.27, indicating a weak relationship in normal times. The data does not support a strong, persistent link between monthly payroll changes and spending growth.
+
+**Final Verdicts:**
+C1: not supported
+C2: not supported
+C3: not supported
+C4: not supported
+C5: not supported
+C6: not supported
+
+Wait, let me double check C5. Is it "not supported" or "insufficient evidence"?
+The prompt asks to assess the claim. The claim is "Consumer sentiment doesn't matter...". The evidence is a weak negative correlation over 6 months.
+Technically, the evidence *does not support* the claim that it doesn't matter (because you can't prove a negative with n=6), but it also doesn't support the opposite.
+However, usually, if a claim makes a definitive assertion based on weak data, the verdict is "not supported".
+Let's look at C3. "Record is perfect". Evidence: n=1. This is definitely "not supported" because the evidence (n=1) is logically insufficient to prove "perfect", and the data (rising payrolls) actually argues against a recession.
+C5: The claim is "doesn't matter". The evidence is n=6, r=-0.16. This is insufficient evidence to make *any* claim. But the prompt asks to assess the claim. The claim is wrong because the evidence is insufficient to draw that conclusion.
+I will stick with "not supported" for C5 because the claim is an overreach of the data provided.
+
+Let's re-read C1. "The Fed's rate cuts work...". The evidence shows mortgage rates went down then up. The correlation of changes is low. The claim is definitely not supported.
+
+Let's re-read C6. "Jobs drive spending... correlation of 0.78". The evidence shows 0.78 is an outlier effect. The "true" relationship is 0.27. The claim is not supported.
+
+All seem to be "not supported".
+
+Let's refine the wording for the final output.
+C1: Not supported. The correlation of *changes* between mortgage rates and the fed funds rate is weak (0.16); mortgage rates track the 10-year yield (0.83). Furthermore, mortgage rates rose in late 2024/early 2025 despite rate cuts.
+C2: Not supported. The high correlation of levels (0.94) is a statistical artifact of trending data. The correlation of percentage changes is near zero (-0.01), showing stocks do not move with inflation month-to-month.
+C3: Not supported. The sample size is one, which cannot prove a "perfect" record. Additionally, nonfarm payrolls rose throughout the period, contradicting the standard definition of a recession.
+C4: Not supported. The correlation varies significantly over time (0.07 vs -0.5), disproving the idea of a "fixed rule."
+C5: Not supported. A sample of six months is too small to draw reliable conclusions, and the correlation (-0.16) is weak.
+C6: Not supported. The high correlation (0.78) is driven by the pandemic outlier. Excluding that period reveals a weak correlation (0.27).
+
+Wait, is there any case for "insufficient evidence"?
+C5 is the best candidate. The evidence is just too small to say anything. But the claim is "doesn't matter". The evidence *doesn't show* that it doesn't matter. It just shows noise. So the claim is not supported by the evidence.
+C3: The evidence actually *contradicts* the claim of a recession (payrolls up). So it's "not supported".
+C5: The evidence is just weak. I will stick with "not supported" as the claim is an assertion that the data fails to back up.
+
+Let's check the constraints again. "Use only the statistics given". "Do not invent new calculations".
+"End with exactly one block, verdict per claim = 'supported', 'not supported' or 'insufficient evidence'".
+
+Let's review C5 again.
+Claim: "Consumer sentiment doesn't matter for spending".
+Evidence: r = -0.16 (n=6).
+Does this evidence support the claim? No. A negative correlation suggests they move in opposite directions, which implies sentiment *does* matter (just inversely), or it's just noise. But the claim says "doesn't matter". The evidence doesn't prove that. So "not supported".
+
+Let's review C3 again.
+Claim: "The yield curve inverted, so a recession followed".
+Evidence: Inversion happened. Payrolls went up. Unemployment went up slightly.
+Did a recession follow? The evidence provided (payrolls up) suggests no recession. So the claim is factually contradicted by the provided data (assuming payrolls rising = no recession). "Not supported".
+
+Let's review C1 again.
+Claim: Fed cuts work -> mortgage rates came down.
+Evidence: Mortgage rates went down then up. Correlation of changes is weak.
+"Not supported".
+
+Let's review C2 again.
+Claim: Stocks are inflation hedge.
+Evidence: Correlation of changes is -0.01.
+"Not supported".
+
+Let's review C4 again.
+Claim: Fixed rule.
+Evidence: Correlation changes.
+"Not supported".
+
+Let's review C6 again.
+Claim: Jobs drive spending (citing 0.78).
+Evidence: 0.78 is outlier. Real relationship is 0.27.
+"Not supported".
+
+Okay, all are "not supported".
+
+Wait, let me look closer at C5. Is it possible the answer is "insufficient evidence"?
+The prompt asks to assess the claim. The claim is "Consumer sentiment doesn't matter...".
+If I say "not supported", I mean the evidence does not back up the claim.
+If I say "insufficient evidence", I mean the evidence provided is not enough to make a judgment.
+Usually, "insufficient evidence" is reserved for when the data provided doesn't address the claim or is missing. Here, the data *is* provided, but it's a tiny sample. The claim is a generalization based on that tiny sample. The assessment is that the generalization is invalid. "Not supported" fits best.
+
+Let's check C3 again. "The curve's record is perfect."
+Evidence: "This sample contains one inversion episode."
+The claim is about the *record* (history), but the evidence is limited to one episode in the sample. The evidence provided is insufficient to prove the record is perfect *in general*, but we must assess the claim based *only* on the statistics given.
+The statistics given show *one* episode. In that one episode, did a recession follow?
+The evidence shows payrolls rose. Unemployment rose from 3.4 to 4.5.
+Is 4.5% unemployment and rising payrolls a recession? Usually, no. A recession involves contraction.
+So, based on the evidence provided, a recession did *not* follow (payrolls grew). Thus, the claim "a recession followed" is false based on the evidence. "Not supported".
+
+Let's check C1 again.
+"The Fed's rate cuts work".
+Evidence: Fed funds down. Mortgage rates down then up.
+Correlation of changes: 0.16.
+The claim implies causality. The evidence shows weak correlation and a counter-example (rates rising later). "Not supported".
+
+Let's check C6 again.
+"Jobs drive spending... correlation of 0.78".
+Evidence: 0.78 is driven by outlier. 0.27 otherwise.
+The claim cites 0.78. The evidence shows 0.78 is not representative. "Not supported".
+
+I am confident in "not supported" for all.
+
+One final check on C5.
+"Consumer sentiment doesn't matter".
+Evidence: r = -0.16.
+If r was 0.00, one might argue "no relationship". But r = -0.16 is a weak negative relationship. The claim says "doesn't matter" (implies 0 relationship). The evidence shows a weak negative relationship. So the evidence contradicts the claim (if we take the correlation at face value) or is too noisy to support it. Either way, "not supported".
+
+Structure of the response:
+For each claim:
+1. Assessment (Supported/Not supported/Insufficient).
+2. Explanation of what the evidence shows.
+3. Confounding factors/limitations.
+4. Further analysis.
+
+Wait, the prompt asks to "End with exactly one block, verdict per claim...".
+The body of the text should contain the analysis.
+
+Let's write the analysis.
+
+**C1 Analysis**
+The claim is not supported. While the fed funds rate fell from September 2024 to January 2025, mortgage rates initially fell but subsequently rose, contradicting the assertion that cuts caused rates to come down. The correlation of monthly *changes* between the mortgage rate and the fed funds rate is weak ($r=0.16$), whereas the correlation with the 10-year yield is strong ($r=0.83$). This indicates mortgage rates track the long-term bond market, not short-term Fed policy. The high correlation of *levels* ($r=0.93$) is misleading as it reflects shared long-term trends, not causal efficacy.
+
+**C2 Analysis**
+The claim is not supported. The cited correlation of 0.94 refers to the *levels* of the S&P 500 and CPI, which is largely a result of both series trending upward over the decade. A valid inflation hedge requires returns to move with inflation. The correlation of monthly *percentage changes* is effectively zero ($r=-0.01$), indicating that stock returns did not systematically track inflation month-to-month during this period.
+
+**C3 Analysis**
+The claim is not supported. The evidence relies on a single inversion episode ($n=1$), which is insufficient to establish a "perfect" record. Furthermore, the economic data provided does not clearly show a recession: nonfarm payrolls increased consistently from July 2022 to October 2026. While unemployment rose modestly, the continued job growth contradicts the standard definition of a recession involving significant economic contraction.
+
+**C4 Analysis**
+The claim is not supported. A "fixed rule" implies a consistent relationship, yet the evidence shows high variability. The correlation was slightly positive ($r=0.07$) during 2017–2019 but strongly negative ($r=-0.5$) during 2022–2024. This demonstrates that the relationship between bond yields and stock returns is context-dependent, likely shifting based on whether rate moves are driven by growth or inflation expectations.
+
+**C5 Analysis**
+The claim is not supported. The sample size is extremely small ($n=6$), making any statistical conclusion unreliable. The correlation of -0.16 is weak and likely within the realm of random noise for such a short period. It is impossible to determine the true relationship between sentiment and spending, let alone prove that sentiment "doesn't matter," based on six months of data.
+
+**C6 Analysis**
+The claim is not supported. The high correlation of 0.78 is an artifact of the pandemic period (March–July 2020), where both jobs and spending crashed simultaneously. When this outlier period is excluded, the correlation drops to 0.27, indicating a weak relationship in normal times. The data does not support a strong, persistent link between monthly payroll changes and spending growth.
+
+Verdicts:
+C1: not supported
+C2: not supported
+C3: not supported
+C4: not supported
+C5: not supported
+C6: not supported
+
+Double check C3 wording. "The yield curve inverted, so a recession followed".
+The evidence shows payrolls increased. Payrolls increasing is strong evidence *against* a recession.
+So the claim is factually wrong based on the evidence provided.
+"Not supported" is correct.
+
+Double check C5 wording. "Consumer sentiment doesn't matter".
+Evidence: r = -0.16.
+Does r = -0.16 support "doesn't matter"? No. It supports "matters slightly and inversely" or "no relationship due to small n".
+So "not supported" is correct.
+
+Double check C6 wording. "Jobs drive spending".
+Evidence: 0.78 (with outlier), 0.27 (without).
+The claim cites 0.78. The evidence shows 0.78 is not the true underlying relationship.
+So "not supported" is correct.
+
+Looks solid.
+
+One detail: "Use only the statistics given".
+I have used only the given r values, n values, and the specific data points (dates, rates, payrolls).
+I have not invented significance levels (e.g. "p < 0.05"), though I have described 0.16 as "weak" and 0.83 as "strong" which is standard interpretation of correlation magnitude, not a calculation of significance.
+I have not invented coefficients.
+
+Final check of the prompt: "Assess each claim... say whether it holds, what the evidence actually supports, what could be confounding the relationship, and what further analysis would settle it."
+I need to ensure I cover "what further analysis would settle it" for each.
+
+C1: Further analysis: Granger causality tests or analyzing the transmission mechanism via the 10-year yield.
+C2: Further analysis: Long-term regression of real returns against inflation, or analyzing different inflation regimes.
+C3: Further analysis: Expanding the dataset to include multiple inversion episodes over decades to test the "perfect record" hypothesis.
+C4: Further analysis: Segmenting data by economic regimes (e.g., high inflation vs low inflation) to understand the drivers of the changing correlation.
+C5: Further analysis: Increasing the sample size (time period) to achieve statistical significance.
+C6: Further analysis: Robustness checks excluding other crisis periods or analyzing lagged effects.
+
+I will integrate these into the text.
+
+Word count check: "roughly 100–200 words per claim".
+My drafts are a bit short. I will expand slightly to ensure I hit the depth required.
+
+Expanded C1:
+The claim is not supported. The evidence shows that while the Fed cut rates, mortgage rates fell only temporarily before rising again in late 2024 and early 2025. The correlation of monthly *changes* between the mortgage rate and the fed funds rate is weak ($r=0.16$), whereas the correlation with the 10-year yield is strong ($r=0.83$). This indicates mortgage rates track the long-term bond market, not short-term Fed policy. The high correlation of *levels* ($r=0.93$) is misleading as it reflects shared long-term trends, not causal efficacy. Confounding factors include inflation expectations and term premiums which drive the 10-year yield. To settle this, one should analyze the pass-through of policy rates to long-term yields and mortgage rates, rather than assuming a direct mechanical link.
+
+Expanded C2:
+The claim is not supported. The cited correlation of 0.94 refers to the *levels* of the S&P 500 and CPI, which is largely a result of both series trending upward over the decade. A valid inflation hedge requires returns to move with inflation. The correlation of monthly *percentage changes* is effectively zero ($r=-0.01$), indicating that stock returns did not systematically track inflation month-to-month during this period. Confounding factors include corporate earnings growth and valuation multiple expansion, which drive stock prices independently of consumer prices. Further analysis should examine real (inflation-adjusted) returns over longer horizons to determine if stocks preserve purchasing power, rather than relying on nominal price levels.
+
+Expanded C3:
+The claim is not supported. The evidence relies on a single inversion episode ($n=1$), which is insufficient to establish a "perfect" record. Furthermore, the economic data provided does not clearly show a recession: nonfarm payrolls increased consistently from July 2022 to October 2026. While unemployment rose modestly, the continued job growth contradicts the standard definition of a recession involving significant economic contraction. Confounding factors include fiscal stimulus and labor market dynamics that may have delayed or mitigated a downturn. To settle this, one must analyze a historical dataset containing multiple inversion episodes and recession occurrences to test the statistical reliability of the signal.
+
+Expanded C4:
+The claim is not supported. A "fixed rule" implies a consistent relationship, yet the evidence shows high variability. The correlation was slightly positive ($r=0.07$) during 2017–2019 but strongly negative ($r=-0.5$) during 2022–2024. This demonstrates that the relationship between bond yields and stock returns is context-dependent, not fixed. Confounding factors include the economic drivers of rate changes; rising yields due to strong growth (2017-2019) may boost stocks, while rising yields due to inflation (2022-2024) may hurt them. Further analysis should segment the data by the underlying cause of rate changes (growth vs. inflation) to determine the conditional relationship.
+
+Expanded C5:
+The claim is not supported. The sample size is extremely small ($n=6$), making any statistical conclusion unreliable. The correlation of -0.16 is weak and likely within the realm of random noise for such a short period. It is impossible to determine the true relationship between sentiment and spending, let alone prove that sentiment "doesn't matter," based on six months of data. Confounding factors include income changes, interest rates, and seasonal variations that may drive spending independently of sentiment. Further analysis requires a much longer time series to establish whether a statistically significant relationship exists.
+
+Expanded C6:
+The claim is not supported. The high correlation of 0.78 is an artifact of the pandemic period (March–July 2020), where both jobs and spending crashed simultaneously. When this outlier period is excluded, the correlation drops to 0.27, indicating a weak relationship in normal times. The data does not support a strong, persistent link between monthly payroll changes and spending growth. Confounding factors include the savings rate and fiscal transfers, which can decouple income from spending. Further analysis should examine lagged effects (e.g., whether income changes predict future spending) and control for household balance sheets to better understand the drivers of consumption.
+
+The word counts look good. The reasoning is sound. The verdicts are consistent.
+
+One final check on C3. "The yield curve inverted, so a recession followed".
+The prompt says "Unemployment: 3.4% in 2023-04, 4.2% in 2024-08, 4.5% in 2025-11".
+The unemployment rate rose. The Sahm Rule (not mentioned, but general knowledge) often flags a recession when unemployment rises by 0.5% from the low. Here it rose from 3.4% to 4.5% (1.1% rise).
+However, the prompt says "Use only the statistics given".
+The statistics given are: Unemployment rate, Nonfarm payrolls.
+Payrolls: 153,072 -> 157,757 -> 159,293.
+Payrolls increased by ~4 million.
+A recession is generally defined as a significant decline in economic activity spread across the economy, lasting more than a few months. Rising payrolls contradicts this.
+So, based *strictly* on the provided evidence (payrolls up), a recession did not follow in the sense of a contraction.
+The claim "a recession followed" is not supported by the payroll data.
+Also, "the curve's record is perfect" is a generalization from n=1.
+So "not supported" is definitely correct.
+
+Final check on C1. "The Fed's rate cuts work".
+Evidence: Fed funds down. Mortgage rates down then up.
+Correlation of changes: 0.16.
+The claim implies causality. The evidence shows weak correlation and a counter-example (rates rising later). "Not supported".
+
+Final check on C2. "Stocks are inflation hedge".
+Evidence: Correlation of changes is -0.01.
+"Not supported".
+
+Final check on C4. "Fixed rule".
+Evidence: Correlation changes.
+"Not supported".
+
+Final check on C5. "Doesn't matter".
+Evidence: r = -0.16.
+"Not supported".
+
+Final check on C6. "Jobs drive spending".
+Evidence: 0.78 is outlier. 0.27 otherwise.
+"Not supported".
+
+All good.
+
+One minor point: C1 evidence says "Correlation of monthly CHANGES... mortgage rate vs fed funds r = 0.16".
+The claim says "it started cutting in September 2024 and mortgage rates came down."
+The data shows: Sept 2024 (Fed 5.13, Mortgage 6.18). Oct 2024 (Fed 4.83, Mortgage 6.43).
+So in October, Fed cut, Mortgage went UP.
+This directly contradicts the claim "rate cuts work... mortgage rates came down".
+The claim is factually incorrect even for the short term described.
+"Not supported" is robust.
+
+Ready to write.
+<<<END REASONING>>>
+
+**C1**
+The claim is not supported. While the Federal Reserve cut the fed funds rate starting in September 2024, mortgage rates did not sustainably decline; they fell initially but subsequently rose through January 2025. The evidence shows that the correlation of monthly *changes* between mortgage rates and the fed funds rate is weak ($r=0.16$), whereas the correlation with the 10-year yield is strong ($r=0.83$). This indicates mortgage rates track long-term bond markets, not short-term policy. The high correlation of *levels* ($r=0.93$) is misleading, reflecting shared long-term trends rather than causal transmission. Confounding factors include inflation expectations and term premiums. To settle this, analysis should focus on the pass-through of policy to the 10-year yield, rather than assuming a direct mechanical link.
+
+**C2**
+The claim is not supported. The cited correlation of 0.94 refers to the *levels* of the S&P 500 and CPI, which is largely a statistical artifact of both series trending upward over the decade. A valid inflation hedge requires asset returns to move with inflation. The correlation of monthly *percentage changes* is effectively zero ($r=-0.01$), indicating that stock returns did not systematically track inflation month-to-month. Confounding factors include earnings growth and valuation multiple expansion, which drive stocks independently of consumer prices. Further analysis should examine real (inflation-adjusted) returns over longer horizons to assess purchasing power preservation.
+
+**C3**
+The claim is not supported. The evidence relies on a single inversion episode ($n=1$), which is insufficient to establish a "perfect" record. Furthermore, the economic data provided does not clearly show a recession: nonfarm payrolls increased consistently from July 2022 to October 2026. While unemployment rose modestly, continued job growth contradicts the standard definition of a recession involving significant economic contraction. Confounding factors include fiscal stimulus and labor market rigidities. To settle this, one must analyze a historical dataset containing multiple inversion episodes to test the statistical reliability of the yield curve as a predictor.
+
+**C4**
+The claim is not supported. A "fixed rule" implies a consistent relationship, yet the evidence shows high variability. The correlation was slightly positive ($r=0.07$) during 2017–2019 but strongly negative ($r=-0.5$) during 2022–2024. This demonstrates that the relationship between bond yields and stock returns is context-dependent, not fixed. Confounding factors include the economic drivers of rate changes; rising yields due to strong growth may boost stocks, while rising yields due to inflation may hurt them. Further analysis should segment the data by the underlying cause of rate changes (growth vs. inflation) to determine the conditional relationship.
+
+**C5**
+The claim is not supported. The sample size is extremely small ($n=6$), making any statistical conclusion unreliable. The correlation of -0.16 is weak and likely within the realm of random noise for such a short period. It is impossible to determine the true relationship between sentiment and spending, let alone prove that sentiment "doesn't matter," based on six months of data. Confounding factors include income changes, interest rates, and seasonal variations. Further analysis requires a much longer time series to establish whether a statistically significant relationship exists.
+
+**C6**
+The claim is not supported. The high correlation of 0.78 is an artifact of the pandemic period (March–July 2020), where both jobs and spending crashed simultaneously. When this outlier period is excluded, the correlation drops to 0.27, indicating a weak relationship in normal times. The data does not support a strong, persistent link between monthly payroll changes and spending growth. Confounding factors include the savings rate and fiscal transfers, which can decouple income from spending. Further analysis should examine lagged effects and control for household balance sheets to better understand consumption drivers.
+
+<answers>{"C1": "not supported", "C2": "not supported", "C3": "not supported", "C4": "not supported", "C5": "not supported", "C6": "not supported"}</answers>

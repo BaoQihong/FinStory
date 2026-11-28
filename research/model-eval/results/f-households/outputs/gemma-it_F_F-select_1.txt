@@ -1,0 +1,146 @@
+{
+  "series": [
+    {
+      "candidate": "C1",
+      "key": "cpiHeadline",
+      "label": "Consumer Price Index (All Items)"
+        ,
+        "reason": "Primary measure for headline inflation to verify the premise of declining rates."
+    },
+    {
+      "candidate": "C2",
+      "key": "cpiCore",
+      "label": "Consumer Price Index (Less Food and Energy)"
+        ,
+        "reason": "Core inflation measure to compare against headline figures."
+    },
+    {
+      "candidate": "C4",
+      "key": "cpiMedian",
+      "label": "Median Consumer Price Index"
+        ,
+        "reason": "Helps identify if the 'typical' price increase is higher than the headline average."
+    },
+    {
+      "candidate": "C9",
+      "key": "realMedianIncome",
+      "label": "Real Median Household Income (US)"
+        ,
+        "reason": "Measures purchasing power relative to inflation for median households."
+    },
+    {
+      "candidate": "C11",
+      "key": "realIncomeCA",
+      "label": "Real Median Household Income (California)"
+        ,
+        "reason": "Regional contrast: shows a decline in real income."
+    },
+    {
+      "candidate": "C14",
+      "key": "realIncomeNC",
+      "label": "Real Median Household Income (North Carolina)"
+        ,
+        "reason": "Regional contrast: shows a significant increase in real income."
+    },
+    {
+      "candidate": "C18",
+      "key": "treasury10y",
+      "label": "10-Year Treasury Yield"
+        ,
+        "reason": "Benchmark for fixed-income returns and risk-reward calculus."
+    },
+    {
+      "candidate": "C21",
+      "key": "realRate10y",
+      "label": "10-Year Real Interest Rate"
+        ,
+        "reason": "Direct measure of inflation-adjusted returns on government bonds."
+    },
+    {
+      "candidate": "C24",
+      "key": "sp500",
+      "label": "S&P 500 Index"
+        ,
+        "reason": "Benchmark for equity returns to calculate real returns."
+    },
+    {
+      "candidate": "C25",
+      "key": "consumerSentiment",
+      "label": "University of Michigan Consumer Sentiment"
+        ,
+        "reason": "Quantifies the perception gap and consumer confidence."
+    }
+  ],
+  "derived": [
+    {
+      "key": "cpiHeadlineYoY",
+      "op": "yoy",
+      "inputs": [
+        "cpiHeadline"
+      ]
+      ,
+      "label": "Headline CPI Year-over-Year"
+        ,
+      "reason": "Converts the index to an annual inflation rate for easier comparison."
+    },
+    {
+      "key": "cpiCoreYoY",
+      "op": "yoy",
+      "inputs": [
+        "cpiCore"
+      ]
+      ,
+      "label": "Core CPI Year-over-Year"
+        ,
+      "reason": "Converts the core index to an annual inflation rate."
+    }
+  ],
+  "charts": [
+    {
+      "id": "inflationDivergence",
+      "seriesKeys": [
+        "cpiHeadlineYoY",
+        "cpiCoreYoY",
+        "cpiMedian"
+      ],
+      "from": "2021-01-01",
+      "purpose": "Compare headline, core, and median inflation to see if the 'typical' experience is more persistent than the average."
+    },
+    {
+      "id": "incomeVsInflation",
+      "seriesKeys": [
+        "realMedianIncome",
+        "realIncomeCA",
+        "realIncomeNC"
+      ],
+      "from": "2018-01-01",
+      "purpose": "Analyze how real household income has evolved nationally and across contrasting regions."
+    },
+    {
+      "id": "sentimentGap",
+      "seriesKeys": [
+        "consumerSentiment"
+      ],
+      "from": "2021-01-01",
+      "purpose": "Track consumer sentiment relative to the inflation trajectory."
+    },
+    {
+      "id": "realReturns",
+      "seriesKeys": [
+        "realRate10y"
+      ],
+      "from": "2021-01-01",
+      "purpose": "Assess the real return on safe-haven assets after adjusting for inflation."
+    }
+  ],
+  "unmetNeeds": [
+    {
+      "need": "S&P 500 Real Return",
+      "why": "No pre-calculated real return series available; requires manual subtraction of inflation from nominal returns, which is not supported by the 'difference' operator for indices vs percentages."
+    },
+    {
+      "need": "Core PCE Price Index",
+      "why": "While PCE indices are available (C8, C27, C28, C29, C30), they are either indices or trimmed means; a standard headline Core PCE % change series is not explicitly provided as a single simple rate for direct comparison with CPI."
+    }
+  ]
+}

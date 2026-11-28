@@ -1,0 +1,4776 @@
+{
+ "runs": [
+  "pilot-households",
+  "bench-households"
+ ],
+ "generatedAt": "2026-11-28T10:38:46.599Z",
+ "records": 55,
+ "note": "n = number of observations behind each aggregate. Latency is end-to-end wall time from this machine; output tokens/s = output tokens ÷ (latency − time to first token), streaming requests only. Arli is a flat-rate subscription: no per-token cost applies.",
+ "byConfig": {
+  "qwen27b": {
+   "model": "Qwen3.8-27B",
+   "mode": "off",
+   "all": {
+    "requests": 5,
+    "succeeded": 5,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 5,
+     "mean": 74908,
+     "median": 72476,
+     "min": 29119,
+     "max": 113292
+    },
+    "ttftMs": {
+     "n": 5,
+     "median": 1085,
+     "min": 853,
+     "max": 39777
+    },
+    "tokens": {
+     "inputMean": 1880,
+     "outputMean": 1472,
+     "reasoningMean": 0,
+     "reasoningReported": 5,
+     "inputTotal": 9402,
+     "outputTotal": 7362
+    },
+    "outputTokensPerSec": {
+     "n": 5,
+     "median": 29.2,
+     "min": 12,
+     "max": 32.4
+    },
+    "finishReasons": {
+     "stop": 5
+    },
+    "checksPassed": {
+     "pass": 25,
+     "n": 32
+    },
+    "json": {
+     "bare": null,
+     "parses": null,
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": []
+   },
+   "bySuite": {
+    "A": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 29119,
+      "median": 29119,
+      "min": 29119,
+      "max": 29119
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1954,
+      "min": 1954,
+      "max": 1954
+     },
+     "tokens": {
+      "inputMean": 2785,
+      "outputMean": 877,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 2785,
+      "outputTotal": 877
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 32.3,
+      "min": 32.3,
+      "max": 32.3
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 7,
+      "n": 13
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "B": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 60570,
+      "median": 60570,
+      "min": 60570,
+      "max": 60570
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1085,
+      "min": 1085,
+      "max": 1085
+     },
+     "tokens": {
+      "inputMean": 1188,
+      "outputMean": 1927,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1188,
+      "outputTotal": 1927
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 32.4,
+      "min": 32.4,
+      "max": 32.4
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 0,
+      "n": 0
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "C": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 113292,
+      "median": 113292,
+      "min": 113292,
+      "max": 113292
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1003,
+      "min": 1003,
+      "max": 1003
+     },
+     "tokens": {
+      "inputMean": 1196,
+      "outputMean": 1346,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1196,
+      "outputTotal": 1346
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 12,
+      "min": 12,
+      "max": 12
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 8,
+      "n": 8
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "D": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 72476,
+      "median": 72476,
+      "min": 72476,
+      "max": 72476
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 853,
+      "min": 853,
+      "max": 853
+     },
+     "tokens": {
+      "inputMean": 1557,
+      "outputMean": 1478,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1557,
+      "outputTotal": 1478
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 20.6,
+      "min": 20.6,
+      "max": 20.6
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 5,
+      "n": 5
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "E": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 99083,
+      "median": 99083,
+      "min": 99083,
+      "max": 99083
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 39777,
+      "min": 39777,
+      "max": 39777
+     },
+     "tokens": {
+      "inputMean": 2676,
+      "outputMean": 1734,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 2676,
+      "outputTotal": 1734
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 29.2,
+      "min": 29.2,
+      "max": 29.2
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 5,
+      "n": 6
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    }
+   }
+  },
+  "qwen27b-think": {
+   "model": "Qwen3.8-27B",
+   "mode": "on",
+   "all": {
+    "requests": 5,
+    "succeeded": 5,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 5,
+     "mean": 336245,
+     "median": 339782,
+     "min": 129151,
+     "max": 558817
+    },
+    "ttftMs": {
+     "n": 5,
+     "median": 1623,
+     "min": 603,
+     "max": 32014
+    },
+    "tokens": {
+     "inputMean": 1916,
+     "outputMean": 10224,
+     "reasoningMean": 9940,
+     "reasoningReported": 5,
+     "inputTotal": 9582,
+     "outputTotal": 51122
+    },
+    "outputTokensPerSec": {
+     "n": 5,
+     "median": 33,
+     "min": 21.5,
+     "max": 56.8
+    },
+    "finishReasons": {
+     "length": 4,
+     "stop": 1
+    },
+    "checksPassed": {
+     "pass": 14,
+     "n": 20
+    },
+    "json": {
+     "bare": null,
+     "parses": null,
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": [
+     "reasoning"
+    ]
+   },
+   "bySuite": {
+    "A": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 365586,
+      "median": 365586,
+      "min": 365586,
+      "max": 365586
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1623,
+      "min": 1623,
+      "max": 1623
+     },
+     "tokens": {
+      "inputMean": 2821,
+      "outputMean": 12000,
+      "reasoningMean": 12000,
+      "reasoningReported": 1,
+      "inputTotal": 2821,
+      "outputTotal": 12000
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 33,
+      "min": 33,
+      "max": 33
+     },
+     "finishReasons": {
+      "length": 1
+     },
+     "checksPassed": {
+      "pass": 0,
+      "n": 1
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    },
+    "B": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 558817,
+      "median": 558817,
+      "min": 558817,
+      "max": 558817
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 603,
+      "min": 603,
+      "max": 603
+     },
+     "tokens": {
+      "inputMean": 1224,
+      "outputMean": 12000,
+      "reasoningMean": 11711,
+      "reasoningReported": 1,
+      "inputTotal": 1224,
+      "outputTotal": 12000
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 21.5,
+      "min": 21.5,
+      "max": 21.5
+     },
+     "finishReasons": {
+      "length": 1
+     },
+     "checksPassed": {
+      "pass": 0,
+      "n": 0
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    },
+    "C": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 129151,
+      "median": 129151,
+      "min": 129151,
+      "max": 129151
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 32014,
+      "min": 32014,
+      "max": 32014
+     },
+     "tokens": {
+      "inputMean": 1232,
+      "outputMean": 5522,
+      "reasoningMean": 4387,
+      "reasoningReported": 1,
+      "inputTotal": 1232,
+      "outputTotal": 5522
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 56.8,
+      "min": 56.8,
+      "max": 56.8
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 8,
+      "n": 8
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    },
+    "D": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 287888,
+      "median": 287888,
+      "min": 287888,
+      "max": 287888
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1644,
+      "min": 1644,
+      "max": 1644
+     },
+     "tokens": {
+      "inputMean": 1593,
+      "outputMean": 12000,
+      "reasoningMean": 12000,
+      "reasoningReported": 1,
+      "inputTotal": 1593,
+      "outputTotal": 12000
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 41.9,
+      "min": 41.9,
+      "max": 41.9
+     },
+     "finishReasons": {
+      "length": 1
+     },
+     "checksPassed": {
+      "pass": 2,
+      "n": 5
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    },
+    "E": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 339782,
+      "median": 339782,
+      "min": 339782,
+      "max": 339782
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1594,
+      "min": 1594,
+      "max": 1594
+     },
+     "tokens": {
+      "inputMean": 2712,
+      "outputMean": 9600,
+      "reasoningMean": 9600,
+      "reasoningReported": 1,
+      "inputTotal": 2712,
+      "outputTotal": 9600
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 28.4,
+      "min": 28.4,
+      "max": 28.4
+     },
+     "finishReasons": {
+      "length": 1
+     },
+     "checksPassed": {
+      "pass": 4,
+      "n": 6
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    }
+   }
+  },
+  "glm47": {
+   "model": "GLM-4.7",
+   "mode": "off",
+   "all": {
+    "requests": 5,
+    "succeeded": 5,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 5,
+     "mean": 72324,
+     "median": 49702,
+     "min": 32786,
+     "max": 172235
+    },
+    "ttftMs": {
+     "n": 5,
+     "median": 2934,
+     "min": 2065,
+     "max": 129342
+    },
+    "tokens": {
+     "inputMean": 1612,
+     "outputMean": 1212,
+     "reasoningMean": 0,
+     "reasoningReported": 5,
+     "inputTotal": 8060,
+     "outputTotal": 6058
+    },
+    "outputTokensPerSec": {
+     "n": 5,
+     "median": 25.1,
+     "min": 16.6,
+     "max": 43.1
+    },
+    "finishReasons": {
+     "stop": 5
+    },
+    "checksPassed": {
+     "pass": 26,
+     "n": 32
+    },
+    "json": {
+     "bare": null,
+     "parses": null,
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": []
+   },
+   "bySuite": {
+    "A": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 172235,
+      "median": 172235,
+      "min": 172235,
+      "max": 172235
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 129342,
+      "min": 129342,
+      "max": 129342
+     },
+     "tokens": {
+      "inputMean": 2224,
+      "outputMean": 712,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 2224,
+      "outputTotal": 712
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 16.6,
+      "min": 16.6,
+      "max": 16.6
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 7,
+      "n": 13
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "B": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 39655,
+      "median": 39655,
+      "min": 39655,
+      "max": 39655
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 2237,
+      "min": 2237,
+      "max": 2237
+     },
+     "tokens": {
+      "inputMean": 1023,
+      "outputMean": 1614,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1023,
+      "outputTotal": 1614
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 43.1,
+      "min": 43.1,
+      "max": 43.1
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 0,
+      "n": 0
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "C": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 32786,
+      "median": 32786,
+      "min": 32786,
+      "max": 32786
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 2065,
+      "min": 2065,
+      "max": 2065
+     },
+     "tokens": {
+      "inputMean": 1009,
+      "outputMean": 772,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1009,
+      "outputTotal": 772
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 25.1,
+      "min": 25.1,
+      "max": 25.1
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 8,
+      "n": 8
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "D": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 49702,
+      "median": 49702,
+      "min": 49702,
+      "max": 49702
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 2934,
+      "min": 2934,
+      "max": 2934
+     },
+     "tokens": {
+      "inputMean": 1310,
+      "outputMean": 1625,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1310,
+      "outputTotal": 1625
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 34.7,
+      "min": 34.7,
+      "max": 34.7
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 5,
+      "n": 5
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "E": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 67243,
+      "median": 67243,
+      "min": 67243,
+      "max": 67243
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 4610,
+      "min": 4610,
+      "max": 4610
+     },
+     "tokens": {
+      "inputMean": 2494,
+      "outputMean": 1335,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 2494,
+      "outputTotal": 1335
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 21.3,
+      "min": 21.3,
+      "max": 21.3
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 6,
+      "n": 6
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    }
+   }
+  },
+  "qwen-novelist": {
+   "model": "Qwen3.8-27B-Novelist1.0",
+   "mode": "off",
+   "all": {
+    "requests": 5,
+    "succeeded": 5,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 5,
+     "mean": 70590,
+     "median": 66977,
+     "min": 37052,
+     "max": 129876
+    },
+    "ttftMs": {
+     "n": 5,
+     "median": 2160,
+     "min": 1617,
+     "max": 57605
+    },
+    "tokens": {
+     "inputMean": 1880,
+     "outputMean": 1071,
+     "reasoningMean": 0,
+     "reasoningReported": 5,
+     "inputTotal": 9402,
+     "outputTotal": 5354
+    },
+    "outputTokensPerSec": {
+     "n": 5,
+     "median": 21.6,
+     "min": 13.2,
+     "max": 27.5
+    },
+    "finishReasons": {
+     "stop": 5
+    },
+    "checksPassed": {
+     "pass": 27,
+     "n": 32
+    },
+    "json": {
+     "bare": null,
+     "parses": null,
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": []
+   },
+   "bySuite": {
+    "A": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 129876,
+      "median": 129876,
+      "min": 129876,
+      "max": 129876
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 57605,
+      "min": 57605,
+      "max": 57605
+     },
+     "tokens": {
+      "inputMean": 2785,
+      "outputMean": 957,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 2785,
+      "outputTotal": 957
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 13.2,
+      "min": 13.2,
+      "max": 13.2
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 8,
+      "n": 13
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "B": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 42599,
+      "median": 42599,
+      "min": 42599,
+      "max": 42599
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 2046,
+      "min": 2046,
+      "max": 2046
+     },
+     "tokens": {
+      "inputMean": 1188,
+      "outputMean": 1115,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1188,
+      "outputTotal": 1115
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 27.5,
+      "min": 27.5,
+      "max": 27.5
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 0,
+      "n": 0
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "C": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 37052,
+      "median": 37052,
+      "min": 37052,
+      "max": 37052
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1617,
+      "min": 1617,
+      "max": 1617
+     },
+     "tokens": {
+      "inputMean": 1196,
+      "outputMean": 764,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1196,
+      "outputTotal": 764
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 21.6,
+      "min": 21.6,
+      "max": 21.6
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 8,
+      "n": 8
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "D": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 76444,
+      "median": 76444,
+      "min": 76444,
+      "max": 76444
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 3366,
+      "min": 3366,
+      "max": 3366
+     },
+     "tokens": {
+      "inputMean": 1557,
+      "outputMean": 1105,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1557,
+      "outputTotal": 1105
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 15.1,
+      "min": 15.1,
+      "max": 15.1
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 5,
+      "n": 5
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "E": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 66977,
+      "median": 66977,
+      "min": 66977,
+      "max": 66977
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 2160,
+      "min": 2160,
+      "max": 2160
+     },
+     "tokens": {
+      "inputMean": 2676,
+      "outputMean": 1413,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 2676,
+      "outputTotal": 1413
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 21.8,
+      "min": 21.8,
+      "max": 21.8
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 6,
+      "n": 6
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    }
+   }
+  },
+  "qwen-moxie": {
+   "model": "Qwen3.8-27B-Moxie",
+   "mode": "off",
+   "all": {
+    "requests": 5,
+    "succeeded": 5,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 5,
+     "mean": 64462,
+     "median": 67402,
+     "min": 37812,
+     "max": 94625
+    },
+    "ttftMs": {
+     "n": 5,
+     "median": 2110,
+     "min": 1716,
+     "max": 2881
+    },
+    "tokens": {
+     "inputMean": 1880,
+     "outputMean": 1235,
+     "reasoningMean": 0,
+     "reasoningReported": 5,
+     "inputTotal": 9402,
+     "outputTotal": 6176
+    },
+    "outputTokensPerSec": {
+     "n": 5,
+     "median": 22.9,
+     "min": 13.7,
+     "max": 25.1
+    },
+    "finishReasons": {
+     "stop": 5
+    },
+    "checksPassed": {
+     "pass": 25,
+     "n": 32
+    },
+    "json": {
+     "bare": null,
+     "parses": null,
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": []
+   },
+   "bySuite": {
+    "A": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 37812,
+      "median": 37812,
+      "min": 37812,
+      "max": 37812
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 2881,
+      "min": 2881,
+      "max": 2881
+     },
+     "tokens": {
+      "inputMean": 2785,
+      "outputMean": 877,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 2785,
+      "outputTotal": 877
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 25.1,
+      "min": 25.1,
+      "max": 25.1
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 7,
+      "n": 13
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "B": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 67402,
+      "median": 67402,
+      "min": 67402,
+      "max": 67402
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1716,
+      "min": 1716,
+      "max": 1716
+     },
+     "tokens": {
+      "inputMean": 1188,
+      "outputMean": 1575,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1188,
+      "outputTotal": 1575
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 24,
+      "min": 24,
+      "max": 24
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 0,
+      "n": 0
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "C": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 94625,
+      "median": 94625,
+      "min": 94625,
+      "max": 94625
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1818,
+      "min": 1818,
+      "max": 1818
+     },
+     "tokens": {
+      "inputMean": 1196,
+      "outputMean": 1272,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1196,
+      "outputTotal": 1272
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 13.7,
+      "min": 13.7,
+      "max": 13.7
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 8,
+      "n": 8
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "D": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 68200,
+      "median": 68200,
+      "min": 68200,
+      "max": 68200
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 2110,
+      "min": 2110,
+      "max": 2110
+     },
+     "tokens": {
+      "inputMean": 1557,
+      "outputMean": 1263,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1557,
+      "outputTotal": 1263
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 19.1,
+      "min": 19.1,
+      "max": 19.1
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 4,
+      "n": 5
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "E": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 54269,
+      "median": 54269,
+      "min": 54269,
+      "max": 54269
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 2448,
+      "min": 2448,
+      "max": 2448
+     },
+     "tokens": {
+      "inputMean": 2676,
+      "outputMean": 1189,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 2676,
+      "outputTotal": 1189
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 22.9,
+      "min": 22.9,
+      "max": 22.9
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 6,
+      "n": 6
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    }
+   }
+  },
+  "gemma-distill": {
+   "model": "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled",
+   "mode": "off",
+   "all": {
+    "requests": 5,
+    "succeeded": 5,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 5,
+     "mean": 61005,
+     "median": 63161,
+     "min": 39465,
+     "max": 79303
+    },
+    "ttftMs": {
+     "n": 5,
+     "median": 1920,
+     "min": 1281,
+     "max": 2204
+    },
+    "tokens": {
+     "inputMean": 1886,
+     "outputMean": 1046,
+     "reasoningMean": 0,
+     "reasoningReported": 5,
+     "inputTotal": 9429,
+     "outputTotal": 5228
+    },
+    "outputTokensPerSec": {
+     "n": 5,
+     "median": 17.3,
+     "min": 15.8,
+     "max": 20.7
+    },
+    "finishReasons": {
+     "stop": 5
+    },
+    "checksPassed": {
+     "pass": 27,
+     "n": 32
+    },
+    "json": {
+     "bare": null,
+     "parses": null,
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": []
+   },
+   "bySuite": {
+    "A": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 39465,
+      "median": 39465,
+      "min": 39465,
+      "max": 39465
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 2204,
+      "min": 2204,
+      "max": 2204
+     },
+     "tokens": {
+      "inputMean": 2799,
+      "outputMean": 773,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 2799,
+      "outputTotal": 773
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 20.7,
+      "min": 20.7,
+      "max": 20.7
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 8,
+      "n": 13
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "B": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 79303,
+      "median": 79303,
+      "min": 79303,
+      "max": 79303
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1920,
+      "min": 1920,
+      "max": 1920
+     },
+     "tokens": {
+      "inputMean": 1193,
+      "outputMean": 1222,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1193,
+      "outputTotal": 1222
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 15.8,
+      "min": 15.8,
+      "max": 15.8
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 0,
+      "n": 0
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "C": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 45806,
+      "median": 45806,
+      "min": 45806,
+      "max": 45806
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1778,
+      "min": 1778,
+      "max": 1778
+     },
+     "tokens": {
+      "inputMean": 1207,
+      "outputMean": 882,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1207,
+      "outputTotal": 882
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 20,
+      "min": 20,
+      "max": 20
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 8,
+      "n": 8
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "D": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 63161,
+      "median": 63161,
+      "min": 63161,
+      "max": 63161
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1281,
+      "min": 1281,
+      "max": 1281
+     },
+     "tokens": {
+      "inputMean": 1569,
+      "outputMean": 1052,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1569,
+      "outputTotal": 1052
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 17,
+      "min": 17,
+      "max": 17
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 5,
+      "n": 5
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "E": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 77288,
+      "median": 77288,
+      "min": 77288,
+      "max": 77288
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 2076,
+      "min": 2076,
+      "max": 2076
+     },
+     "tokens": {
+      "inputMean": 2661,
+      "outputMean": 1299,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 2661,
+      "outputTotal": 1299
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 17.3,
+      "min": 17.3,
+      "max": 17.3
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 6,
+      "n": 6
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    }
+   }
+  },
+  "gemma-it": {
+   "model": "Gemma-4-31B-it",
+   "mode": "off",
+   "all": {
+    "requests": 5,
+    "succeeded": 5,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 5,
+     "mean": 104861,
+     "median": 78275,
+     "min": 54882,
+     "max": 170891
+    },
+    "ttftMs": {
+     "n": 5,
+     "median": 1349,
+     "min": 1199,
+     "max": 2321
+    },
+    "tokens": {
+     "inputMean": 1886,
+     "outputMean": 1185,
+     "reasoningMean": 0,
+     "reasoningReported": 5,
+     "inputTotal": 9429,
+     "outputTotal": 5923
+    },
+    "outputTokensPerSec": {
+     "n": 5,
+     "median": 15,
+     "min": 7.9,
+     "max": 18.9
+    },
+    "finishReasons": {
+     "stop": 5
+    },
+    "checksPassed": {
+     "pass": 29,
+     "n": 32
+    },
+    "json": {
+     "bare": null,
+     "parses": null,
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": []
+   },
+   "bySuite": {
+    "A": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 146335,
+      "median": 146335,
+      "min": 146335,
+      "max": 146335
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1597,
+      "min": 1597,
+      "max": 1597
+     },
+     "tokens": {
+      "inputMean": 2799,
+      "outputMean": 1223,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 2799,
+      "outputTotal": 1223
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 8.4,
+      "min": 8.4,
+      "max": 8.4
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 11,
+      "n": 13
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "B": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 170891,
+      "median": 170891,
+      "min": 170891,
+      "max": 170891
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1243,
+      "min": 1243,
+      "max": 1243
+     },
+     "tokens": {
+      "inputMean": 1193,
+      "outputMean": 1338,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1193,
+      "outputTotal": 1338
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 7.9,
+      "min": 7.9,
+      "max": 7.9
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 0,
+      "n": 0
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "C": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 54882,
+      "median": 54882,
+      "min": 54882,
+      "max": 54882
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1349,
+      "min": 1349,
+      "max": 1349
+     },
+     "tokens": {
+      "inputMean": 1207,
+      "outputMean": 802,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1207,
+      "outputTotal": 802
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 15,
+      "min": 15,
+      "max": 15
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 8,
+      "n": 8
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "D": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 78275,
+      "median": 78275,
+      "min": 78275,
+      "max": 78275
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1199,
+      "min": 1199,
+      "max": 1199
+     },
+     "tokens": {
+      "inputMean": 1569,
+      "outputMean": 1209,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1569,
+      "outputTotal": 1209
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 15.7,
+      "min": 15.7,
+      "max": 15.7
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 5,
+      "n": 5
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "E": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 73920,
+      "median": 73920,
+      "min": 73920,
+      "max": 73920
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 2321,
+      "min": 2321,
+      "max": 2321
+     },
+     "tokens": {
+      "inputMean": 2661,
+      "outputMean": 1351,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 2661,
+      "outputTotal": 1351
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 18.9,
+      "min": 18.9,
+      "max": 18.9
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 5,
+      "n": 6
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    }
+   }
+  },
+  "qwen-flash": {
+   "model": "Qwen3.8-Flash-Next",
+   "mode": "off",
+   "all": {
+    "requests": 5,
+    "succeeded": 5,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 5,
+     "mean": 63920,
+     "median": 59914,
+     "min": 21094,
+     "max": 123723
+    },
+    "ttftMs": {
+     "n": 5,
+     "median": 14088,
+     "min": 1635,
+     "max": 76603
+    },
+    "tokens": {
+     "inputMean": 1880,
+     "outputMean": 1639,
+     "reasoningMean": 0,
+     "reasoningReported": 5,
+     "inputTotal": 9402,
+     "outputTotal": 8197
+    },
+    "outputTokensPerSec": {
+     "n": 5,
+     "median": 41.3,
+     "min": 26.7,
+     "max": 66.6
+    },
+    "finishReasons": {
+     "stop": 5
+    },
+    "checksPassed": {
+     "pass": 31,
+     "n": 32
+    },
+    "json": {
+     "bare": null,
+     "parses": null,
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": []
+   },
+   "bySuite": {
+    "A": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 39026,
+      "median": 39026,
+      "min": 39026,
+      "max": 39026
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 4596,
+      "min": 4596,
+      "max": 4596
+     },
+     "tokens": {
+      "inputMean": 2785,
+      "outputMean": 2294,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 2785,
+      "outputTotal": 2294
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 66.6,
+      "min": 66.6,
+      "max": 66.6
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 13,
+      "n": 13
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "B": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 59914,
+      "median": 59914,
+      "min": 59914,
+      "max": 59914
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 21963,
+      "min": 21963,
+      "max": 21963
+     },
+     "tokens": {
+      "inputMean": 1188,
+      "outputMean": 1569,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1188,
+      "outputTotal": 1569
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 41.3,
+      "min": 41.3,
+      "max": 41.3
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 0,
+      "n": 0
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "C": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 21094,
+      "median": 21094,
+      "min": 21094,
+      "max": 21094
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1635,
+      "min": 1635,
+      "max": 1635
+     },
+     "tokens": {
+      "inputMean": 1196,
+      "outputMean": 1130,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1196,
+      "outputTotal": 1130
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 58.1,
+      "min": 58.1,
+      "max": 58.1
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 8,
+      "n": 8
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "D": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 123723,
+      "median": 123723,
+      "min": 123723,
+      "max": 123723
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 76603,
+      "min": 76603,
+      "max": 76603
+     },
+     "tokens": {
+      "inputMean": 1557,
+      "outputMean": 1554,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1557,
+      "outputTotal": 1554
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 33,
+      "min": 33,
+      "max": 33
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 5,
+      "n": 5
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "E": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 75843,
+      "median": 75843,
+      "min": 75843,
+      "max": 75843
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 14088,
+      "min": 14088,
+      "max": 14088
+     },
+     "tokens": {
+      "inputMean": 2676,
+      "outputMean": 1650,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 2676,
+      "outputTotal": 1650
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 26.7,
+      "min": 26.7,
+      "max": 26.7
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 5,
+      "n": 6
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    }
+   }
+  },
+  "mimo-flash": {
+   "model": "MiMo-V2.6-Flash-MOPD",
+   "mode": "off",
+   "all": {
+    "requests": 5,
+    "succeeded": 5,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 5,
+     "mean": 25472,
+     "median": 27913,
+     "min": 10695,
+     "max": 40869
+    },
+    "ttftMs": {
+     "n": 5,
+     "median": 1431,
+     "min": 1203,
+     "max": 7898
+    },
+    "tokens": {
+     "inputMean": 1858,
+     "outputMean": 1165,
+     "reasoningMean": 0,
+     "reasoningReported": 5,
+     "inputTotal": 9289,
+     "outputTotal": 5823
+    },
+    "outputTokensPerSec": {
+     "n": 5,
+     "median": 55,
+     "min": 42,
+     "max": 61.2
+    },
+    "finishReasons": {
+     "stop": 5
+    },
+    "checksPassed": {
+     "pass": 26,
+     "n": 32
+    },
+    "json": {
+     "bare": null,
+     "parses": null,
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": []
+   },
+   "bySuite": {
+    "A": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 10695,
+      "median": 10695,
+      "min": 10695,
+      "max": 10695
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 7898,
+      "min": 7898,
+      "max": 7898
+     },
+     "tokens": {
+      "inputMean": 2769,
+      "outputMean": 124,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 2769,
+      "outputTotal": 124
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 44.3,
+      "min": 44.3,
+      "max": 44.3
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 7,
+      "n": 13
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "B": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 40869,
+      "median": 40869,
+      "min": 40869,
+      "max": 40869
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1209,
+      "min": 1209,
+      "max": 1209
+     },
+     "tokens": {
+      "inputMean": 1175,
+      "outputMean": 1666,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1175,
+      "outputTotal": 1666
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 42,
+      "min": 42,
+      "max": 42
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 0,
+      "n": 0
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "C": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 16895,
+      "median": 16895,
+      "min": 16895,
+      "max": 16895
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1203,
+      "min": 1203,
+      "max": 1203
+     },
+     "tokens": {
+      "inputMean": 1177,
+      "outputMean": 960,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1177,
+      "outputTotal": 960
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 61.2,
+      "min": 61.2,
+      "max": 61.2
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 8,
+      "n": 8
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "D": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 30986,
+      "median": 30986,
+      "min": 30986,
+      "max": 30986
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1431,
+      "min": 1431,
+      "max": 1431
+     },
+     "tokens": {
+      "inputMean": 1547,
+      "outputMean": 1649,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 1547,
+      "outputTotal": 1649
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 55.8,
+      "min": 55.8,
+      "max": 55.8
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 5,
+      "n": 5
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    },
+    "E": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 27913,
+      "median": 27913,
+      "min": 27913,
+      "max": 27913
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 2030,
+      "min": 2030,
+      "max": 2030
+     },
+     "tokens": {
+      "inputMean": 2621,
+      "outputMean": 1424,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 2621,
+      "outputTotal": 1424
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 55,
+      "min": 55,
+      "max": 55
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 6,
+      "n": 6
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    }
+   }
+  },
+  "gemma-writers": {
+   "model": "Gemma-4-31B-Writers-V2",
+   "mode": "off",
+   "all": {
+    "requests": 1,
+    "succeeded": 1,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 1,
+     "mean": 71183,
+     "median": 71183,
+     "min": 71183,
+     "max": 71183
+    },
+    "ttftMs": {
+     "n": 1,
+     "median": 2043,
+     "min": 2043,
+     "max": 2043
+    },
+    "tokens": {
+     "inputMean": 2661,
+     "outputMean": 1097,
+     "reasoningMean": 0,
+     "reasoningReported": 1,
+     "inputTotal": 2661,
+     "outputTotal": 1097
+    },
+    "outputTokensPerSec": {
+     "n": 1,
+     "median": 15.9,
+     "min": 15.9,
+     "max": 15.9
+    },
+    "finishReasons": {
+     "stop": 1
+    },
+    "checksPassed": {
+     "pass": 5,
+     "n": 6
+    },
+    "json": {
+     "bare": null,
+     "parses": null,
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": []
+   },
+   "bySuite": {
+    "E": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 71183,
+      "median": 71183,
+      "min": 71183,
+      "max": 71183
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 2043,
+      "min": 2043,
+      "max": 2043
+     },
+     "tokens": {
+      "inputMean": 2661,
+      "outputMean": 1097,
+      "reasoningMean": 0,
+      "reasoningReported": 1,
+      "inputTotal": 2661,
+      "outputTotal": 1097
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 15.9,
+      "min": 15.9,
+      "max": 15.9
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 5,
+      "n": 6
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    }
+   }
+  },
+  "glm47-think": {
+   "model": "GLM-4.7",
+   "mode": "on",
+   "all": {
+    "requests": 5,
+    "succeeded": 5,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 5,
+     "mean": 129482,
+     "median": 120449,
+     "min": 92324,
+     "max": 201458
+    },
+    "ttftMs": {
+     "n": 5,
+     "median": 3386,
+     "min": 1992,
+     "max": 4572
+    },
+    "tokens": {
+     "inputMean": 1612,
+     "outputMean": 4811,
+     "reasoningMean": 3683,
+     "reasoningReported": 5,
+     "inputTotal": 8060,
+     "outputTotal": 24055
+    },
+    "outputTokensPerSec": {
+     "n": 5,
+     "median": 38.3,
+     "min": 32.2,
+     "max": 42.4
+    },
+    "finishReasons": {
+     "stop": 5
+    },
+    "checksPassed": {
+     "pass": 30,
+     "n": 32
+    },
+    "json": {
+     "bare": null,
+     "parses": null,
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": [
+     "reasoning"
+    ]
+   },
+   "bySuite": {
+    "A": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 131687,
+      "median": 131687,
+      "min": 131687,
+      "max": 131687
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 4572,
+      "min": 4572,
+      "max": 4572
+     },
+     "tokens": {
+      "inputMean": 2224,
+      "outputMean": 5388,
+      "reasoningMean": 4637,
+      "reasoningReported": 1,
+      "inputTotal": 2224,
+      "outputTotal": 5388
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 42.4,
+      "min": 42.4,
+      "max": 42.4
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 13,
+      "n": 13
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    },
+    "B": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 101493,
+      "median": 101493,
+      "min": 101493,
+      "max": 101493
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1992,
+      "min": 1992,
+      "max": 1992
+     },
+     "tokens": {
+      "inputMean": 1023,
+      "outputMean": 3810,
+      "reasoningMean": 2415,
+      "reasoningReported": 1,
+      "inputTotal": 1023,
+      "outputTotal": 3810
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 38.3,
+      "min": 38.3,
+      "max": 38.3
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 0,
+      "n": 0
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    },
+    "C": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 201458,
+      "median": 201458,
+      "min": 201458,
+      "max": 201458
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 2392,
+      "min": 2392,
+      "max": 2392
+     },
+     "tokens": {
+      "inputMean": 1009,
+      "outputMean": 7490,
+      "reasoningMean": 6628,
+      "reasoningReported": 1,
+      "inputTotal": 1009,
+      "outputTotal": 7490
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 37.6,
+      "min": 37.6,
+      "max": 37.6
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 8,
+      "n": 8
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    },
+    "D": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 120449,
+      "median": 120449,
+      "min": 120449,
+      "max": 120449
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 3386,
+      "min": 3386,
+      "max": 3386
+     },
+     "tokens": {
+      "inputMean": 1310,
+      "outputMean": 3769,
+      "reasoningMean": 2445,
+      "reasoningReported": 1,
+      "inputTotal": 1310,
+      "outputTotal": 3769
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 32.2,
+      "min": 32.2,
+      "max": 32.2
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 4,
+      "n": 5
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    },
+    "E": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 92324,
+      "median": 92324,
+      "min": 92324,
+      "max": 92324
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 4445,
+      "min": 4445,
+      "max": 4445
+     },
+     "tokens": {
+      "inputMean": 2494,
+      "outputMean": 3598,
+      "reasoningMean": 2291,
+      "reasoningReported": 1,
+      "inputTotal": 2494,
+      "outputTotal": 3598
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 40.9,
+      "min": 40.9,
+      "max": 40.9
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 5,
+      "n": 6
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    }
+   }
+  },
+  "deepseek-flash-think": {
+   "model": "DeepSeek-V4.1-Flash-1017",
+   "mode": "on",
+   "all": {
+    "requests": 4,
+    "succeeded": 4,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 4,
+     "mean": 97068,
+     "median": 100844,
+     "min": 49062,
+     "max": 137521
+    },
+    "ttftMs": {
+     "n": 4,
+     "median": 1444,
+     "min": 1238,
+     "max": 3166
+    },
+    "tokens": {
+     "inputMean": 1389,
+     "outputMean": 4296,
+     "reasoningMean": 3341,
+     "reasoningReported": 4,
+     "inputTotal": 5554,
+     "outputTotal": 17184
+    },
+    "outputTokensPerSec": {
+     "n": 4,
+     "median": 51.8,
+     "min": 29.9,
+     "max": 54.8
+    },
+    "finishReasons": {
+     "stop": 4
+    },
+    "checksPassed": {
+     "pass": 25,
+     "n": 26
+    },
+    "json": {
+     "bare": null,
+     "parses": null,
+     "schemaFirstAttempt": null,
+     "schemaAfterProductionRepair": null
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": [
+     "reasoning"
+    ]
+   },
+   "bySuite": {
+    "A": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 137521,
+      "median": 137521,
+      "min": 137521,
+      "max": 137521
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1581,
+      "min": 1581,
+      "max": 1581
+     },
+     "tokens": {
+      "inputMean": 2145,
+      "outputMean": 6690,
+      "reasoningMean": 5892,
+      "reasoningReported": 1,
+      "inputTotal": 2145,
+      "outputTotal": 6690
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 49.2,
+      "min": 49.2,
+      "max": 49.2
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 13,
+      "n": 13
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    },
+    "B": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 118214,
+      "median": 118214,
+      "min": 118214,
+      "max": 118214
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1307,
+      "min": 1307,
+      "max": 1307
+     },
+     "tokens": {
+      "inputMean": 1057,
+      "outputMean": 3495,
+      "reasoningMean": 2287,
+      "reasoningReported": 1,
+      "inputTotal": 1057,
+      "outputTotal": 3495
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 29.9,
+      "min": 29.9,
+      "max": 29.9
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 0,
+      "n": 0
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    },
+    "C": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 49062,
+      "median": 49062,
+      "min": 49062,
+      "max": 49062
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 1238,
+      "min": 1238,
+      "max": 1238
+     },
+     "tokens": {
+      "inputMean": 1029,
+      "outputMean": 2601,
+      "reasoningMean": 1616,
+      "reasoningReported": 1,
+      "inputTotal": 1029,
+      "outputTotal": 2601
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 54.4,
+      "min": 54.4,
+      "max": 54.4
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 8,
+      "n": 8
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    },
+    "D": {
+     "requests": 1,
+     "succeeded": 1,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 1,
+      "mean": 83473,
+      "median": 83473,
+      "min": 83473,
+      "max": 83473
+     },
+     "ttftMs": {
+      "n": 1,
+      "median": 3166,
+      "min": 3166,
+      "max": 3166
+     },
+     "tokens": {
+      "inputMean": 1323,
+      "outputMean": 4398,
+      "reasoningMean": 3568,
+      "reasoningReported": 1,
+      "inputTotal": 1323,
+      "outputTotal": 4398
+     },
+     "outputTokensPerSec": {
+      "n": 1,
+      "median": 54.8,
+      "min": 54.8,
+      "max": 54.8
+     },
+     "finishReasons": {
+      "stop": 1
+     },
+     "checksPassed": {
+      "pass": 4,
+      "n": 5
+     },
+     "json": {
+      "bare": null,
+      "parses": null,
+      "schemaFirstAttempt": null,
+      "schemaAfterProductionRepair": null
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": [
+      "reasoning"
+     ]
+    }
+   }
+  }
+ },
+ "byCase": {
+  "A/A1-data-interpretation": {
+   "qwen27b": [
+    {
+     "ok": true,
+     "ms": 29119,
+     "ttft": 1954,
+     "in": 2785,
+     "out": 877,
+     "reasoning": 0,
+     "tps": 32.3,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "answers_block": true,
+      "q1_yoy": false,
+      "q2_yoy": false,
+      "q3_pp": false,
+      "q4_missing_data": true,
+      "q5_wage": false,
+      "q6_real_wage": false,
+      "q7_pp": true,
+      "q8_pct_vs_pp": true,
+      "q9_bp": true,
+      "q10_declines": true,
+      "q11_low": true,
+      "q12_core_headline": false
+     },
+     "checkDetails": {
+      "q1_yoy": "got 1.4, key 3.7",
+      "q2_yoy": "got 2.4, key 3",
+      "q3_pp": "got -1, key 0.7",
+      "q5_wage": "got 7.5, key 3.2",
+      "q6_real_wage": "got 6.1, key -0.5",
+      "q12_core_headline": "got -0.1, key -1.2"
+     }
+    }
+   ],
+   "qwen27b-think": [
+    {
+     "ok": true,
+     "ms": 365586,
+     "ttft": 1623,
+     "in": 2821,
+     "out": 12000,
+     "reasoning": 12000,
+     "tps": 33,
+     "finish": "length",
+     "checks": {
+      "finished": false,
+      "has_content": false,
+      "answers_block": false
+     },
+     "checkDetails": {
+      "finished": "finish=length",
+      "has_content": "0 words",
+      "answers_block": "no parseable <answers> block"
+     }
+    }
+   ],
+   "glm47": [
+    {
+     "ok": true,
+     "ms": 172235,
+     "ttft": 129342,
+     "in": 2224,
+     "out": 712,
+     "reasoning": 0,
+     "tps": 16.6,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "answers_block": true,
+      "q1_yoy": false,
+      "q2_yoy": true,
+      "q3_pp": false,
+      "q4_missing_data": true,
+      "q5_wage": false,
+      "q6_real_wage": false,
+      "q7_pp": true,
+      "q8_pct_vs_pp": true,
+      "q9_bp": true,
+      "q10_declines": false,
+      "q11_low": true,
+      "q12_core_headline": false
+     },
+     "checkDetails": {
+      "q1_yoy": "got 7, key 3.7",
+      "q3_pp": "got 4, key 0.7",
+      "q5_wage": "got 7.1, key 3.2",
+      "q6_real_wage": "got 0.1, key -0.5",
+      "q10_declines": "got [], key [\"2026-06\"]",
+      "q12_core_headline": "got -0.5, key -1.2"
+     }
+    }
+   ],
+   "qwen-novelist": [
+    {
+     "ok": true,
+     "ms": 129876,
+     "ttft": 57605,
+     "in": 2785,
+     "out": 957,
+     "reasoning": 0,
+     "tps": 13.2,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "answers_block": true,
+      "q1_yoy": false,
+      "q2_yoy": true,
+      "q3_pp": false,
+      "q4_missing_data": true,
+      "q5_wage": false,
+      "q6_real_wage": false,
+      "q7_pp": true,
+      "q8_pct_vs_pp": true,
+      "q9_bp": true,
+      "q10_declines": true,
+      "q11_low": true,
+      "q12_core_headline": false
+     },
+     "checkDetails": {
+      "q1_yoy": "got 1.9, key 3.7",
+      "q3_pp": "got -1, key 0.7",
+      "q5_wage": "got 5.3, key 3.2",
+      "q6_real_wage": "got 3.3, key -0.5",
+      "q12_core_headline": "got 0.9, key -1.2"
+     }
+    }
+   ],
+   "qwen-moxie": [
+    {
+     "ok": true,
+     "ms": 37812,
+     "ttft": 2881,
+     "in": 2785,
+     "out": 877,
+     "reasoning": 0,
+     "tps": 25.1,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "answers_block": true,
+      "q1_yoy": false,
+      "q2_yoy": true,
+      "q3_pp": false,
+      "q4_missing_data": false,
+      "q5_wage": false,
+      "q6_real_wage": false,
+      "q7_pp": true,
+      "q8_pct_vs_pp": true,
+      "q9_bp": true,
+      "q10_declines": true,
+      "q11_low": true,
+      "q12_core_headline": false
+     },
+     "checkDetails": {
+      "q1_yoy": "got 2.4, key 3.7",
+      "q3_pp": "got -0.6, key 0.7",
+      "q4_missing_data": "got true",
+      "q5_wage": "got 7.5, key 3.2",
+      "q6_real_wage": "got 5.1, key -0.5",
+      "q12_core_headline": "got 0, key -1.2"
+     }
+    }
+   ],
+   "gemma-distill": [
+    {
+     "ok": true,
+     "ms": 39465,
+     "ttft": 2204,
+     "in": 2799,
+     "out": 773,
+     "reasoning": 0,
+     "tps": 20.7,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "answers_block": true,
+      "q1_yoy": false,
+      "q2_yoy": false,
+      "q3_pp": true,
+      "q4_missing_data": true,
+      "q5_wage": true,
+      "q6_real_wage": false,
+      "q7_pp": true,
+      "q8_pct_vs_pp": true,
+      "q9_bp": false,
+      "q10_declines": true,
+      "q11_low": true,
+      "q12_core_headline": false
+     },
+     "checkDetails": {
+      "q1_yoy": "got 4.4, key 3.7",
+      "q2_yoy": "got 3.6, key 3",
+      "q6_real_wage": "got -1.1, key -0.5",
+      "q9_bp": "got -225, key -125",
+      "q12_core_headline": "got -0.3, key -1.2"
+     }
+    }
+   ],
+   "gemma-it": [
+    {
+     "ok": true,
+     "ms": 146335,
+     "ttft": 1597,
+     "in": 2799,
+     "out": 1223,
+     "reasoning": 0,
+     "tps": 8.4,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "answers_block": true,
+      "q1_yoy": true,
+      "q2_yoy": true,
+      "q3_pp": true,
+      "q4_missing_data": false,
+      "q5_wage": true,
+      "q6_real_wage": true,
+      "q7_pp": true,
+      "q8_pct_vs_pp": true,
+      "q9_bp": true,
+      "q10_declines": true,
+      "q11_low": true,
+      "q12_core_headline": false
+     },
+     "checkDetails": {
+      "q4_missing_data": "got true",
+      "q12_core_headline": "got 0.4, key -1.2"
+     }
+    }
+   ],
+   "qwen-flash": [
+    {
+     "ok": true,
+     "ms": 39026,
+     "ttft": 4596,
+     "in": 2785,
+     "out": 2294,
+     "reasoning": 0,
+     "tps": 66.6,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "answers_block": true,
+      "q1_yoy": true,
+      "q2_yoy": true,
+      "q3_pp": true,
+      "q4_missing_data": true,
+      "q5_wage": true,
+      "q6_real_wage": true,
+      "q7_pp": true,
+      "q8_pct_vs_pp": true,
+      "q9_bp": true,
+      "q10_declines": true,
+      "q11_low": true,
+      "q12_core_headline": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "mimo-flash": [
+    {
+     "ok": true,
+     "ms": 10695,
+     "ttft": 7898,
+     "in": 2769,
+     "out": 124,
+     "reasoning": 0,
+     "tps": 44.3,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": false,
+      "answers_block": true,
+      "q1_yoy": false,
+      "q2_yoy": true,
+      "q3_pp": false,
+      "q4_missing_data": true,
+      "q5_wage": true,
+      "q6_real_wage": false,
+      "q7_pp": false,
+      "q8_pct_vs_pp": false,
+      "q9_bp": true,
+      "q10_declines": true,
+      "q11_low": true,
+      "q12_core_headline": false
+     },
+     "checkDetails": {
+      "has_content": "26 words",
+      "q1_yoy": "got 6.7, key 3.7",
+      "q3_pp": "got 3.7, key 0.7",
+      "q6_real_wage": "got 0, key -0.5",
+      "q7_pp": "got -0.18, key 1.08",
+      "q8_pct_vs_pp": "got -2.7, key 17.3",
+      "q12_core_headline": "got 1.4, key -1.2"
+     }
+    }
+   ],
+   "glm47-think": [
+    {
+     "ok": true,
+     "ms": 131687,
+     "ttft": 4572,
+     "in": 2224,
+     "out": 5388,
+     "reasoning": 4637,
+     "tps": 42.4,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "answers_block": true,
+      "q1_yoy": true,
+      "q2_yoy": true,
+      "q3_pp": true,
+      "q4_missing_data": true,
+      "q5_wage": true,
+      "q6_real_wage": true,
+      "q7_pp": true,
+      "q8_pct_vs_pp": true,
+      "q9_bp": true,
+      "q10_declines": true,
+      "q11_low": true,
+      "q12_core_headline": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "deepseek-flash-think": [
+    {
+     "ok": true,
+     "ms": 137521,
+     "ttft": 1581,
+     "in": 2145,
+     "out": 6690,
+     "reasoning": 5892,
+     "tps": 49.2,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "answers_block": true,
+      "q1_yoy": true,
+      "q2_yoy": true,
+      "q3_pp": true,
+      "q4_missing_data": true,
+      "q5_wage": true,
+      "q6_real_wage": true,
+      "q7_pp": true,
+      "q8_pct_vs_pp": true,
+      "q9_bp": true,
+      "q10_declines": true,
+      "q11_low": true,
+      "q12_core_headline": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "B/B1-macro-reasoning": {
+   "qwen27b": [
+    {
+     "ok": true,
+     "ms": 60570,
+     "ttft": 1085,
+     "in": 1188,
+     "out": 1927,
+     "reasoning": 0,
+     "tps": 32.4,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen27b-think": [
+    {
+     "ok": true,
+     "ms": 558817,
+     "ttft": 603,
+     "in": 1224,
+     "out": 12000,
+     "reasoning": 11711,
+     "tps": 21.5,
+     "finish": "length",
+     "checks": {
+      "finished": false,
+      "has_content": true
+     },
+     "checkDetails": {
+      "finished": "finish=length"
+     }
+    }
+   ],
+   "glm47": [
+    {
+     "ok": true,
+     "ms": 39655,
+     "ttft": 2237,
+     "in": 1023,
+     "out": 1614,
+     "reasoning": 0,
+     "tps": 43.1,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-novelist": [
+    {
+     "ok": true,
+     "ms": 42599,
+     "ttft": 2046,
+     "in": 1188,
+     "out": 1115,
+     "reasoning": 0,
+     "tps": 27.5,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-moxie": [
+    {
+     "ok": true,
+     "ms": 67402,
+     "ttft": 1716,
+     "in": 1188,
+     "out": 1575,
+     "reasoning": 0,
+     "tps": 24,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-distill": [
+    {
+     "ok": true,
+     "ms": 79303,
+     "ttft": 1920,
+     "in": 1193,
+     "out": 1222,
+     "reasoning": 0,
+     "tps": 15.8,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-it": [
+    {
+     "ok": true,
+     "ms": 170891,
+     "ttft": 1243,
+     "in": 1193,
+     "out": 1338,
+     "reasoning": 0,
+     "tps": 7.9,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-flash": [
+    {
+     "ok": true,
+     "ms": 59914,
+     "ttft": 21963,
+     "in": 1188,
+     "out": 1569,
+     "reasoning": 0,
+     "tps": 41.3,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "mimo-flash": [
+    {
+     "ok": true,
+     "ms": 40869,
+     "ttft": 1209,
+     "in": 1175,
+     "out": 1666,
+     "reasoning": 0,
+     "tps": 42,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "glm47-think": [
+    {
+     "ok": true,
+     "ms": 101493,
+     "ttft": 1992,
+     "in": 1023,
+     "out": 3810,
+     "reasoning": 2415,
+     "tps": 38.3,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "deepseek-flash-think": [
+    {
+     "ok": true,
+     "ms": 118214,
+     "ttft": 1307,
+     "in": 1057,
+     "out": 3495,
+     "reasoning": 2287,
+     "tps": 29.9,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "C/C1-quant-claims": {
+   "qwen27b": [
+    {
+     "ok": true,
+     "ms": 113292,
+     "ttft": 1003,
+     "in": 1196,
+     "out": 1346,
+     "reasoning": 0,
+     "tps": 12,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "C1_verdict": true,
+      "C2_verdict": true,
+      "C3_verdict": true,
+      "C4_verdict": true,
+      "C5_verdict": true,
+      "C6_verdict": true,
+      "no_invented_coefficients": true,
+      "no_invented_significance": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen27b-think": [
+    {
+     "ok": true,
+     "ms": 129151,
+     "ttft": 32014,
+     "in": 1232,
+     "out": 5522,
+     "reasoning": 4387,
+     "tps": 56.8,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "C1_verdict": true,
+      "C2_verdict": true,
+      "C3_verdict": true,
+      "C4_verdict": true,
+      "C5_verdict": true,
+      "C6_verdict": true,
+      "no_invented_coefficients": true,
+      "no_invented_significance": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "glm47": [
+    {
+     "ok": true,
+     "ms": 32786,
+     "ttft": 2065,
+     "in": 1009,
+     "out": 772,
+     "reasoning": 0,
+     "tps": 25.1,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "C1_verdict": true,
+      "C2_verdict": true,
+      "C3_verdict": true,
+      "C4_verdict": true,
+      "C5_verdict": true,
+      "C6_verdict": true,
+      "no_invented_coefficients": true,
+      "no_invented_significance": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-novelist": [
+    {
+     "ok": true,
+     "ms": 37052,
+     "ttft": 1617,
+     "in": 1196,
+     "out": 764,
+     "reasoning": 0,
+     "tps": 21.6,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "C1_verdict": true,
+      "C2_verdict": true,
+      "C3_verdict": true,
+      "C4_verdict": true,
+      "C5_verdict": true,
+      "C6_verdict": true,
+      "no_invented_coefficients": true,
+      "no_invented_significance": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-moxie": [
+    {
+     "ok": true,
+     "ms": 94625,
+     "ttft": 1818,
+     "in": 1196,
+     "out": 1272,
+     "reasoning": 0,
+     "tps": 13.7,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "C1_verdict": true,
+      "C2_verdict": true,
+      "C3_verdict": true,
+      "C4_verdict": true,
+      "C5_verdict": true,
+      "C6_verdict": true,
+      "no_invented_coefficients": true,
+      "no_invented_significance": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-distill": [
+    {
+     "ok": true,
+     "ms": 45806,
+     "ttft": 1778,
+     "in": 1207,
+     "out": 882,
+     "reasoning": 0,
+     "tps": 20,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "C1_verdict": true,
+      "C2_verdict": true,
+      "C3_verdict": true,
+      "C4_verdict": true,
+      "C5_verdict": true,
+      "C6_verdict": true,
+      "no_invented_coefficients": true,
+      "no_invented_significance": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-it": [
+    {
+     "ok": true,
+     "ms": 54882,
+     "ttft": 1349,
+     "in": 1207,
+     "out": 802,
+     "reasoning": 0,
+     "tps": 15,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "C1_verdict": true,
+      "C2_verdict": true,
+      "C3_verdict": true,
+      "C4_verdict": true,
+      "C5_verdict": true,
+      "C6_verdict": true,
+      "no_invented_coefficients": true,
+      "no_invented_significance": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-flash": [
+    {
+     "ok": true,
+     "ms": 21094,
+     "ttft": 1635,
+     "in": 1196,
+     "out": 1130,
+     "reasoning": 0,
+     "tps": 58.1,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "C1_verdict": true,
+      "C2_verdict": true,
+      "C3_verdict": true,
+      "C4_verdict": true,
+      "C5_verdict": true,
+      "C6_verdict": true,
+      "no_invented_coefficients": true,
+      "no_invented_significance": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "mimo-flash": [
+    {
+     "ok": true,
+     "ms": 16895,
+     "ttft": 1203,
+     "in": 1177,
+     "out": 960,
+     "reasoning": 0,
+     "tps": 61.2,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "C1_verdict": true,
+      "C2_verdict": true,
+      "C3_verdict": true,
+      "C4_verdict": true,
+      "C5_verdict": true,
+      "C6_verdict": true,
+      "no_invented_coefficients": true,
+      "no_invented_significance": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "glm47-think": [
+    {
+     "ok": true,
+     "ms": 201458,
+     "ttft": 2392,
+     "in": 1009,
+     "out": 7490,
+     "reasoning": 6628,
+     "tps": 37.6,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "C1_verdict": true,
+      "C2_verdict": true,
+      "C3_verdict": true,
+      "C4_verdict": true,
+      "C5_verdict": true,
+      "C6_verdict": true,
+      "no_invented_coefficients": true,
+      "no_invented_significance": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "deepseek-flash-think": [
+    {
+     "ok": true,
+     "ms": 49062,
+     "ttft": 1238,
+     "in": 1029,
+     "out": 2601,
+     "reasoning": 1616,
+     "tps": 54.4,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "C1_verdict": true,
+      "C2_verdict": true,
+      "C3_verdict": true,
+      "C4_verdict": true,
+      "C5_verdict": true,
+      "C6_verdict": true,
+      "no_invented_coefficients": true,
+      "no_invented_significance": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "D/D1-market-outlook": {
+   "qwen27b": [
+    {
+     "ok": true,
+     "ms": 72476,
+     "ttft": 853,
+     "in": 1557,
+     "out": 1478,
+     "reasoning": 0,
+     "tps": 20.6,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "three_scenarios": true,
+      "invalidation_stated": true,
+      "no_probabilities": true,
+      "no_targets": true,
+      "assets_covered": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen27b-think": [
+    {
+     "ok": true,
+     "ms": 287888,
+     "ttft": 1644,
+     "in": 1593,
+     "out": 12000,
+     "reasoning": 12000,
+     "tps": 41.9,
+     "finish": "length",
+     "checks": {
+      "finished": false,
+      "has_content": false,
+      "three_scenarios": false,
+      "invalidation_stated": false,
+      "no_probabilities": true,
+      "no_targets": true,
+      "assets_covered": false
+     },
+     "checkDetails": {
+      "finished": "finish=length",
+      "has_content": "0 words",
+      "invalidation_stated": "needs ≥3 invalidation statements"
+     }
+    }
+   ],
+   "glm47": [
+    {
+     "ok": true,
+     "ms": 49702,
+     "ttft": 2934,
+     "in": 1310,
+     "out": 1625,
+     "reasoning": 0,
+     "tps": 34.7,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "three_scenarios": true,
+      "invalidation_stated": true,
+      "no_probabilities": true,
+      "no_targets": true,
+      "assets_covered": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-novelist": [
+    {
+     "ok": true,
+     "ms": 76444,
+     "ttft": 3366,
+     "in": 1557,
+     "out": 1105,
+     "reasoning": 0,
+     "tps": 15.1,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "three_scenarios": true,
+      "invalidation_stated": true,
+      "no_probabilities": true,
+      "no_targets": true,
+      "assets_covered": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-moxie": [
+    {
+     "ok": true,
+     "ms": 68200,
+     "ttft": 2110,
+     "in": 1557,
+     "out": 1263,
+     "reasoning": 0,
+     "tps": 19.1,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "three_scenarios": true,
+      "invalidation_stated": true,
+      "no_probabilities": true,
+      "no_targets": false,
+      "assets_covered": true
+     },
+     "checkDetails": {
+      "no_targets": "rise to 7.33%"
+     }
+    }
+   ],
+   "gemma-distill": [
+    {
+     "ok": true,
+     "ms": 63161,
+     "ttft": 1281,
+     "in": 1569,
+     "out": 1052,
+     "reasoning": 0,
+     "tps": 17,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "three_scenarios": true,
+      "invalidation_stated": true,
+      "no_probabilities": true,
+      "no_targets": true,
+      "assets_covered": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-it": [
+    {
+     "ok": true,
+     "ms": 78275,
+     "ttft": 1199,
+     "in": 1569,
+     "out": 1209,
+     "reasoning": 0,
+     "tps": 15.7,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "three_scenarios": true,
+      "invalidation_stated": true,
+      "no_probabilities": true,
+      "no_targets": true,
+      "assets_covered": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-flash": [
+    {
+     "ok": true,
+     "ms": 123723,
+     "ttft": 76603,
+     "in": 1557,
+     "out": 1554,
+     "reasoning": 0,
+     "tps": 33,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "three_scenarios": true,
+      "invalidation_stated": true,
+      "no_probabilities": true,
+      "no_targets": true,
+      "assets_covered": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "mimo-flash": [
+    {
+     "ok": true,
+     "ms": 30986,
+     "ttft": 1431,
+     "in": 1547,
+     "out": 1649,
+     "reasoning": 0,
+     "tps": 55.8,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "three_scenarios": true,
+      "invalidation_stated": true,
+      "no_probabilities": true,
+      "no_targets": true,
+      "assets_covered": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "glm47-think": [
+    {
+     "ok": true,
+     "ms": 120449,
+     "ttft": 3386,
+     "in": 1310,
+     "out": 3769,
+     "reasoning": 2445,
+     "tps": 32.2,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "three_scenarios": true,
+      "invalidation_stated": true,
+      "no_probabilities": true,
+      "no_targets": false,
+      "assets_covered": true
+     },
+     "checkDetails": {
+      "no_targets": "hit 7.33%"
+     }
+    }
+   ],
+   "deepseek-flash-think": [
+    {
+     "ok": true,
+     "ms": 83473,
+     "ttft": 3166,
+     "in": 1323,
+     "out": 4398,
+     "reasoning": 3568,
+     "tps": 54.8,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_content": true,
+      "three_scenarios": true,
+      "invalidation_stated": true,
+      "no_probabilities": true,
+      "no_targets": true,
+      "assets_covered": false
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "E/E1-feature-households": {
+   "qwen27b": [
+    {
+     "ok": true,
+     "ms": 99083,
+     "ttft": 39777,
+     "in": 2676,
+     "out": 1734,
+     "reasoning": 0,
+     "tps": 29.2,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_headline": true,
+      "length_900_1200": true,
+      "no_unsupported_numbers": false,
+      "no_invented_quotes": true,
+      "no_raw_tokens": true,
+      "no_probabilities": true,
+      "signals": null
+     },
+     "checkDetails": {
+      "no_unsupported_numbers": "2%",
+      "signals": "{\"words\":1320,\"sentences\":95,\"meanSentenceWords\":13.9,\"sentenceLengthCV\":0.53,\"paragraphLengthCV\":0.19,\"emDashesPer1000Words\":0,\"formulaicContrasts\":5,\"stockPhrases\":0,\"stockPhraseList\":[],\"rhetoricalQuestions\":2,\"tripletLists\":1}"
+     }
+    }
+   ],
+   "qwen27b-think": [
+    {
+     "ok": true,
+     "ms": 339782,
+     "ttft": 1594,
+     "in": 2712,
+     "out": 9600,
+     "reasoning": 9600,
+     "tps": 28.4,
+     "finish": "length",
+     "checks": {
+      "finished": false,
+      "has_headline": false,
+      "length_900_1200": false,
+      "no_unsupported_numbers": true,
+      "no_invented_quotes": true,
+      "no_raw_tokens": true,
+      "no_probabilities": true,
+      "signals": null
+     },
+     "checkDetails": {
+      "finished": "finish=length",
+      "has_headline": "",
+      "length_900_1200": "1 words",
+      "signals": "{\"words\":1,\"sentences\":0,\"meanSentenceWords\":0,\"sentenceLengthCV\":0,\"paragraphLengthCV\":0,\"emDashesPer1000Words\":0,\"formulaicContrasts\":0,\"stockPhrases\":0,\"stockPhraseList\":[],\"rhetoricalQuestions\":0,\"tripletLists\":0}"
+     }
+    }
+   ],
+   "glm47": [
+    {
+     "ok": true,
+     "ms": 67243,
+     "ttft": 4610,
+     "in": 2494,
+     "out": 1335,
+     "reasoning": 0,
+     "tps": 21.3,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_headline": true,
+      "length_900_1200": true,
+      "no_unsupported_numbers": true,
+      "no_invented_quotes": true,
+      "no_raw_tokens": true,
+      "no_probabilities": true,
+      "signals": null
+     },
+     "checkDetails": {
+      "signals": "{\"words\":1012,\"sentences\":68,\"meanSentenceWords\":14.9,\"sentenceLengthCV\":0.5,\"paragraphLengthCV\":0.23,\"emDashesPer1000Words\":2,\"formulaicContrasts\":2,\"stockPhrases\":0,\"stockPhraseList\":[],\"rhetoricalQuestions\":0,\"tripletLists\":1}"
+     }
+    }
+   ],
+   "qwen-novelist": [
+    {
+     "ok": true,
+     "ms": 66977,
+     "ttft": 2160,
+     "in": 2676,
+     "out": 1413,
+     "reasoning": 0,
+     "tps": 21.8,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_headline": true,
+      "length_900_1200": true,
+      "no_unsupported_numbers": true,
+      "no_invented_quotes": true,
+      "no_raw_tokens": true,
+      "no_probabilities": true,
+      "signals": null
+     },
+     "checkDetails": {
+      "signals": "{\"words\":980,\"sentences\":51,\"meanSentenceWords\":19.2,\"sentenceLengthCV\":0.59,\"paragraphLengthCV\":0.37,\"emDashesPer1000Words\":12.2,\"formulaicContrasts\":2,\"stockPhrases\":0,\"stockPhraseList\":[],\"rhetoricalQuestions\":1,\"tripletLists\":2}"
+     }
+    }
+   ],
+   "qwen-moxie": [
+    {
+     "ok": true,
+     "ms": 54269,
+     "ttft": 2448,
+     "in": 2676,
+     "out": 1189,
+     "reasoning": 0,
+     "tps": 22.9,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_headline": true,
+      "length_900_1200": true,
+      "no_unsupported_numbers": true,
+      "no_invented_quotes": true,
+      "no_raw_tokens": true,
+      "no_probabilities": true,
+      "signals": null
+     },
+     "checkDetails": {
+      "signals": "{\"words\":846,\"sentences\":66,\"meanSentenceWords\":12.8,\"sentenceLengthCV\":0.6,\"paragraphLengthCV\":0.18,\"emDashesPer1000Words\":0,\"formulaicContrasts\":1,\"stockPhrases\":0,\"stockPhraseList\":[],\"rhetoricalQuestions\":0,\"tripletLists\":0}"
+     }
+    }
+   ],
+   "gemma-distill": [
+    {
+     "ok": true,
+     "ms": 77288,
+     "ttft": 2076,
+     "in": 2661,
+     "out": 1299,
+     "reasoning": 0,
+     "tps": 17.3,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_headline": true,
+      "length_900_1200": true,
+      "no_unsupported_numbers": true,
+      "no_invented_quotes": true,
+      "no_raw_tokens": true,
+      "no_probabilities": true,
+      "signals": null
+     },
+     "checkDetails": {
+      "signals": "{\"words\":917,\"sentences\":50,\"meanSentenceWords\":18.3,\"sentenceLengthCV\":0.51,\"paragraphLengthCV\":0.2,\"emDashesPer1000Words\":5.5,\"formulaicContrasts\":0,\"stockPhrases\":0,\"stockPhraseList\":[],\"rhetoricalQuestions\":0,\"tripletLists\":2}"
+     }
+    }
+   ],
+   "gemma-it": [
+    {
+     "ok": true,
+     "ms": 73920,
+     "ttft": 2321,
+     "in": 2661,
+     "out": 1351,
+     "reasoning": 0,
+     "tps": 18.9,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_headline": true,
+      "length_900_1200": true,
+      "no_unsupported_numbers": true,
+      "no_invented_quotes": false,
+      "no_raw_tokens": true,
+      "no_probabilities": true,
+      "signals": null
+     },
+     "checkDetails": {
+      "no_invented_quotes": " inflation vanishes.\n\nThe downstream effect is a change in how people live. A consumer-behaviour research note observed  | \n\nOur reading is that the economy is entering a phase where the ",
+      "signals": "{\"words\":962,\"sentences\":54,\"meanSentenceWords\":17.8,\"sentenceLengthCV\":0.39,\"paragraphLengthCV\":0.26,\"emDashesPer1000Words\":5.2,\"formulaicContrasts\":0,\"stockPhrases\":0,\"stockPhraseList\":[],\"rhetoricalQuestions\":0,\"tripletLists\":2}"
+     }
+    }
+   ],
+   "qwen-flash": [
+    {
+     "ok": true,
+     "ms": 75843,
+     "ttft": 14088,
+     "in": 2676,
+     "out": 1650,
+     "reasoning": 0,
+     "tps": 26.7,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_headline": true,
+      "length_900_1200": true,
+      "no_unsupported_numbers": false,
+      "no_invented_quotes": true,
+      "no_raw_tokens": true,
+      "no_probabilities": true,
+      "signals": null
+     },
+     "checkDetails": {
+      "no_unsupported_numbers": "7%",
+      "signals": "{\"words\":1171,\"sentences\":70,\"meanSentenceWords\":16.7,\"sentenceLengthCV\":0.49,\"paragraphLengthCV\":0.2,\"emDashesPer1000Words\":0,\"formulaicContrasts\":3,\"stockPhrases\":0,\"stockPhraseList\":[],\"rhetoricalQuestions\":0,\"tripletLists\":2}"
+     }
+    }
+   ],
+   "mimo-flash": [
+    {
+     "ok": true,
+     "ms": 27913,
+     "ttft": 2030,
+     "in": 2621,
+     "out": 1424,
+     "reasoning": 0,
+     "tps": 55,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_headline": true,
+      "length_900_1200": true,
+      "no_unsupported_numbers": true,
+      "no_invented_quotes": true,
+      "no_raw_tokens": true,
+      "no_probabilities": true,
+      "signals": null
+     },
+     "checkDetails": {
+      "signals": "{\"words\":1024,\"sentences\":65,\"meanSentenceWords\":15.8,\"sentenceLengthCV\":0.55,\"paragraphLengthCV\":0.23,\"emDashesPer1000Words\":5.9,\"formulaicContrasts\":0,\"stockPhrases\":0,\"stockPhraseList\":[],\"rhetoricalQuestions\":0,\"tripletLists\":0}"
+     }
+    }
+   ],
+   "gemma-writers": [
+    {
+     "ok": true,
+     "ms": 71183,
+     "ttft": 2043,
+     "in": 2661,
+     "out": 1097,
+     "reasoning": 0,
+     "tps": 15.9,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_headline": true,
+      "length_900_1200": false,
+      "no_unsupported_numbers": true,
+      "no_invented_quotes": true,
+      "no_raw_tokens": true,
+      "no_probabilities": true,
+      "signals": null
+     },
+     "checkDetails": {
+      "length_900_1200": "775 words",
+      "signals": "{\"words\":775,\"sentences\":49,\"meanSentenceWords\":15.8,\"sentenceLengthCV\":0.45,\"paragraphLengthCV\":0.34,\"emDashesPer1000Words\":6.5,\"formulaicContrasts\":2,\"stockPhrases\":0,\"stockPhraseList\":[],\"rhetoricalQuestions\":0,\"tripletLists\":0}"
+     }
+    }
+   ],
+   "glm47-think": [
+    {
+     "ok": true,
+     "ms": 92324,
+     "ttft": 4445,
+     "in": 2494,
+     "out": 3598,
+     "reasoning": 2291,
+     "tps": 40.9,
+     "finish": "stop",
+     "checks": {
+      "finished": true,
+      "has_headline": true,
+      "length_900_1200": true,
+      "no_unsupported_numbers": true,
+      "no_invented_quotes": false,
+      "no_raw_tokens": true,
+      "no_probabilities": true,
+      "signals": null
+     },
+     "checkDetails": {
+      "no_invented_quotes": " scenario assumes that the pain of high prices is manageable because wages are high. The data suggests the pain is conce",
+      "signals": "{\"words\":965,\"sentences\":72,\"meanSentenceWords\":13.4,\"sentenceLengthCV\":0.63,\"paragraphLengthCV\":0.19,\"emDashesPer1000Words\":2.1,\"formulaicContrasts\":2,\"stockPhrases\":0,\"stockPhraseList\":[],\"rhetoricalQuestions\":1,\"tripletLists\":2}"
+     }
+    }
+   ]
+  }
+ }
+}

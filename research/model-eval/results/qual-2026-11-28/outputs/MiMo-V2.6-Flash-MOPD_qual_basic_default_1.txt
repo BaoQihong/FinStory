@@ -1,0 +1,5 @@
+<<<REASONING (reasoning)>>>
+The user wants exactly the word "pong".
+<<<END REASONING>>>
+
+pong

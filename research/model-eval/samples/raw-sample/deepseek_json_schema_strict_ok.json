@@ -1,0 +1,45 @@
+{
+ "id": "chatcmpl-997de3b7d24af1c1",
+ "object": "chat.completion",
+ "created": 1795870683,
+ "model": "DeepSeek-V4.1-Flash-1017",
+ "choices": [
+  {
+   "index": 0,
+   "message": {
+    "role": "assistant",
+    "content": "{\"items\":[{\"name\":\"CPI\",\"category\":\"prices\",\"note\":\"Measures consumer inflation via changes in a basket of goods and services.\"},{\"name\":\"Unemployment rate\",\"category\":\"labour\",\"note\":\"Share of the labour force that is unemployed and actively seeking work.\"},{\"name\":\"10-year Treasury yield\",\"category\":\"rates\",\"note\":\"Benchmark long-term interest rate reflecting Treasury borrowing costs and market expectations.\"}]}",
+    "refusal": null,
+    "annotations": null,
+    "audio": null,
+    "function_call": null,
+    "reasoning": "We need answer classify three indicators with category and short note. Need concise. CPI -> prices. unemployment rate -> labour. 10-year Treasury yield -> rates. Short note each. Need maybe note CPI measures consumer inflation; unemployment rate measures share of labor force unemployed; 10-year Treasury yield benchmark long-term borrowing rate / market expectations. Ensure categories exactly. Final."
+   },
+   "logprobs": null,
+   "finish_reason": "stop",
+   "stop_reason": null,
+   "token_ids": null,
+   "routed_experts": null
+  }
+ ],
+ "service_tier": null,
+ "usage": {
+  "prompt_tokens": 64,
+  "total_tokens": 225,
+  "completion_tokens": 161,
+  "prompt_tokens_details": {
+   "cached_tokens": 0,
+   "created_cache_tokens": 0,
+   "multimodal_tokens": null
+  },
+  "completion_tokens_details": {
+   "reasoning_tokens": 73
+  }
+ },
+ "prompt_logprobs": null,
+ "prompt_token_ids": null,
+ "prompt_text": null,
+ "kv_transfer_params": null,
+ "ec_transfer_params": null,
+ "metrics": null
+}

@@ -1,0 +1,47 @@
+{
+ "runId": "f-households",
+ "command": "bench --suites F --configs qwen27b,qwen-novelist,qwen-moxie,glm47,deepseek-flash,gemma-distill,gemma-it,qwen-flash,mimo-flash,gemma-writers --subject households-feel-poorer --run --skip-preflight",
+ "node": "v22.23.5",
+ "provider": "arliai",
+ "host": "api.arliai.com",
+ "keyFingerprint": "e940d5b63d82",
+ "productionModel": "Qwen3.8-27B",
+ "startedAt": "2026-11-28T10:45:07.202Z",
+ "options": {
+  "runDir": "C:\\project\\FinStory\\research\\model-eval\\results\\f-households",
+  "runId": "f-households",
+  "timeoutMs": 300000,
+  "retries": 1,
+  "gapMs": 750,
+  "tokenScale": 1,
+  "retryErrors": false,
+  "dryRun": false
+ },
+ "suites": [
+  "F"
+ ],
+ "configs": [
+  "qwen27b",
+  "qwen-novelist",
+  "qwen-moxie",
+  "glm47",
+  "deepseek-flash",
+  "gemma-distill",
+  "gemma-it",
+  "qwen-flash",
+  "mimo-flash",
+  "gemma-writers"
+ ],
+ "cases": [
+  "F/F-brief",
+  "F/F-plan",
+  "F/F-select",
+  "F/F-synthesize",
+  "F/F-story",
+  "F/F-macro_analytics",
+  "F/F-outlook",
+  "F/F-review",
+  "F/F-repair",
+  "F/F-polish"
+ ]
+}

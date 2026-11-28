@@ -1,0 +1,69 @@
+<!-- B/B1-macro-reasoning · response J · blind sample -->
+
+# Editorial Memo: The Divergence Between Sentiment and Spending
+
+The data presents a puzzling decoupling: consumer sentiment has collapsed from a December peak of 74 to June’s 60.7, yet real consumer spending growth remains positive, albeit volatile. Inflation is cooling, unemployment is stable, and policy rates have eased moderately from 5.33% to 4.33%. Conventional wisdom suggests that falling inflation and lower rates should lift sentiment. Instead, sentiment has cratered while spending persists.
+
+## Competing Explanations
+
+Three competing narratives explain this divergence.
+
+**The Lagged Transmission Hypothesis:** Monetary policy is working as intended but with lags. Spending remains buoyed by pandemic-era excess savings and fixed-rate debt locked in at lower rates. Sentiment, however, is forward-looking and reflects the reality that refinancing is expensive and savings are dwindling. In this view, sentiment is a leading indicator and spending will eventually follow it downward.
+
+**The Cost-of-Living Realignment Hypothesis:** Inflation is falling, but prices are not falling—only growing more slowly. Consumers feel the cumulative price increases of 2021–2023 while seeing few tangible benefits from the Fed’s restrictive stance. Sentiment reflects the permanent loss of purchasing power, while spending persists because essential consumption is inelastic.
+
+**The Sentiment Noise Hypothesis:** The collapse in sentiment reflects psychological factors unrelated to fundamentals—perhaps political polarization or media narratives—rather than economic distress. Spending, the harder metric, shows the real economy is resilient, and sentiment is providing a false signal.
+
+Distinguishing these requires looking at the saving rate. If savings are plummeting alongside sentiment while spending holds, the Lagged Transmission hypothesis gains weight. If savings are stable, the Sentiment Noise hypothesis is more likely.
+
+## Transmission Channels
+
+The data shows policy rates reaching the economy unevenly.
+
+The **mortgage channel** is clearly constrained. Despite the Fed funds rate falling by 100 basis points since July, the 30-year mortgage rate in June (6.82%) is higher than it was in September (6.18%). The mortgage rate is tracking the 10-year Treasury yield rather than the policy rate. This means the Fed’s easing is not reaching homeowners through lower mortgage rates, keeping housing costs high and sentiment depressed.
+
+The **labor channel** appears to be the primary support for spending. Average hourly earnings growth has remained robust, peaking at 4.21% in March. Real spending growth dipped in May and June (2.44% and 2.50%) but remains positive. As long as nominal wage growth exceeds inflation—which it does in every month shown—real disposable income grows, insulating spending from higher rates.
+
+The **savings channel** is leaking. The saving rate fell from 6.2% in July to 5.5% in June. Consumers are funding their spending by drawing down reserves, a sustainable strategy only in the short term.
+
+## Distributional Effects
+
+The burden of this regime is unevenly distributed.
+
+**Renters and low-income households** are squeezed. They cannot refinance debt and rely on hourly wages. While wage growth helps, these households have minimal savings buffers. The saving rate decline likely reflects this group depleting cash reserves to maintain consumption.
+
+**Fixed-rate homeowners** are insulated. They hold mortgages locked in at 3–4% and are largely indifferent to current mortgage rates. This group continues spending because their housing costs are decoupled from current market rates.
+
+**Younger consumers** are hit hardest. They face the highest mortgage rates in a decade, preventing homeownership and depressing sentiment, even if their income growth is strong.
+
+## What the Conventional Reading Misses
+
+A superficial analysis would conclude that "consumers are resilient despite high rates." This misses the fragility in the data.
+
+First, the conventional reading ignores the Treasury-Fed divergence. The Fed has cut rates, but the market (via the 10-year yield) has not fully followed. The real economy feels the market rate, not the policy rate.
+
+Second, the conventional reading treats spending as a monolith. The decline from 3.74% growth in December to 2.50% in June suggests spending is decelerating. The resilience is fading.
+
+Third, the conventional reading overlooks the saving rate trend. Spending is not being funded by income alone; it is being subsidized by savings depletion. This is not resilience—it is a drawdown.
+
+## Further Investigation
+
+To resolve these competing narratives, I want to test the following:
+
+**Hypothesis 1: Spending is being sustained by credit, not income.**
+If credit card balances and delinquency rates are rising alongside spending, the resilience is illusory.
+*Dataset:* Federal Reserve Bank of New York Consumer Credit Panel (credit card balances, delinquency rates).
+
+**Hypothesis 2: Sentiment is driven by housing unaffordability specifically.**
+If sentiment correlates more strongly with mortgage rates than with inflation or unemployment, the narrative is about the housing ladder, not general economic malaise.
+*Dataset:* FHFA House Price Index and affordability indices.
+
+**Hypothesis 3: The spending-sentiment gap is a class divide.**
+If high-income spending is growing while low-income spending is flat or falling, the aggregate data hides a bifurcated economy.
+*Dataset:* Census Bureau Retail Trade Survey (segmented by income bracket if available) or consumer spending by income quintile.
+
+**Hypothesis 4: Savings depletion is concentrated among low-income households.**
+If the saving rate decline is driven by the bottom two income quintiles, the economy is approaching a cliff.
+*Dataset:* Federal Reserve Survey of Consumer Finances (longitudinal panel data).
+
+The story here is not resilience, but a drawdown. Consumers are funding a lifestyle they can no longer afford through wage growth alone, using savings as a bridge. The bridge is shortening.

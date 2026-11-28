@@ -1,0 +1,116 @@
+{
+  "macro": {
+    "title": "The Price Level Has Reset, Not Just The Rate",
+    "intro": "While the story established that inflation is slowing, the macro data reveals a more troubling reality: the price level itself has permanently shifted upward. The disconnect between falling rates and high costs is not a psychological error but a mathematical certainty, driven by the fact that the cumulative price increase over five years has nearly quadrupled the growth in real median household income.",
+    "indicators": [
+      {
+        "key": "cpiHeadline",
+        "note": "The index level, not just the rate of change, is at its highest point in the retrieved data, confirming that the baseline cost of living has structurally reset."
+      },
+      {
+        "key": "realMedianIncome",
+        "note": "Real median household income has recovered from its 2022 trough but remains far below the trajectory needed to offset the cumulative price shock."
+      },
+      {
+        "key": "sp500RealReturn",
+        "note": "The compression in real equity returns signals that traditional wealth-building engines are struggling to outpace the new, higher cost baseline."
+      }
+    ],
+    "charts": [
+      {
+        "chartId": "inflationTrends",
+        "question": "How have headline and core inflation measures diverged from their pre-pandemic norms?",
+        "takeaway": "Both headline CPI and core PCE remain significantly elevated compared to their levels in 2020, with the latest observations marking the highest points in the retrieved history since 2014."
+      }
+    ],
+    "explainers": [
+      {
+        "title": "The Gap Between Rate and Level",
+        "text": "Inflation is a rate of change, but prices are a level. Even when inflation falls from 8% to 3%, prices continue to rise, just more slowly. The data shows that while the rate of increase has moderated, the absolute level of the CPI index has reached its highest point in the data since 2014, meaning the 'cost of living' metric that consumers feel daily is at a peak.",
+        "evidence": "documented"
+      },
+      {
+        "title": "Income Recovery Lags Behind",
+        "text": "Real median household income has risen by {realMedianIncomeChg5y} over the past five years, a figure that pales in comparison to the {cpiCoreChg5y} increase in core CPI. This disparity means that for the median household, purchasing power has effectively shrunk, forcing a reduction in real consumption or savings to maintain the same standard of living.",
+        "evidence": "documented"
+      },
+      {
+        "title": "Sentiment Reflects the Squeeze",
+        "text": "Consumer sentiment has fallen by {consumerSentimentChg5y} over five years, reaching {consumerSentimentLatest}. This decline correlates with the widening gap between price levels and income, suggesting that consumers are accurately pricing in their diminished purchasing power rather than misinterpreting inflation data.",
+        "evidence": "documented"
+      }
+    ],
+    "attention": {
+      "required": false,
+      "reasons": []
+    }
+  },
+  "analytics": {
+    "title": "Why the Squeeze Persists: Sticky Costs and Compressed Returns",
+    "intro": "The persistence of financial stress despite falling inflation rates is driven by two mechanisms: the stickiness of essential service costs, which do not deflate as quickly as goods, and the compression of real returns on assets, which limits the ability of households to offset higher living costs with investment gains.",
+    "chain": {
+      "title": "The Transmission of Cost to Wealth",
+      "steps": [
+        {
+          "title": "Essential Services Defy Deflation",
+          "text": "While goods prices have moderated, services like housing and medical care remain sticky. Monthly increases in these categories continue to outpace the broader index, meaning the costs that dominate household budgets are still rising even as headline inflation falls.",
+          "evidence": "documented"
+        },
+        {
+          "title": "Real Income Erosion Forces Trade-Downs",
+          "text": "With real median income growing slower than core prices, households must either dip into savings or reduce consumption. The data shows a structural shift in behavior, with consumers trading down and cutting discretionary spending to accommodate higher essential costs.",
+          "evidence": "context"
+        },
+        {
+          "title": "Asset Returns Fail to Offset Cost Shock",
+          "text": "Traditional wealth-building strategies rely on real returns exceeding inflation. However, the S&P 500's real return has compressed by {sp500RealReturnChg1y} over the last year, reducing the effectiveness of equities as a hedge against the rising cost of living.",
+          "evidence": "documented"
+        },
+        {
+          "title": "Wealth Accumulation Slows",
+          "text": "The combination of higher essential costs and lower real asset returns creates a double squeeze. Households are spending more on necessities and earning less on their savings, leading to a stagnation in net worth growth for the median family.",
+          "evidence": "interpretation"
+        }
+      ]
+    },
+    "charts": [],
+    "comparisons": [
+      {
+        "title": "The Mortgage Lock-In Effect",
+        "text": "The 30-year fixed mortgage rate is currently {mortgageRateLatest}, significantly higher than the {mortgageRateLow5y} low seen in 2021. This sharp increase in borrowing costs has frozen the housing market, preventing households from downsizing or relocating to lower-cost areas, thereby locking them into high housing expenses.",
+        "evidence": "documented"
+      }
+    ],
+    "implications": {
+      "title": "Who Loses and Who Adapts",
+      "intro": "The divergence between official inflation and lived experience creates distinct winners and losers, primarily determined by asset exposure and income elasticity.",
+      "items": [
+        {
+          "asset": "Household Savings",
+          "icon": "cash",
+          "shows": "Real median income growth of {realMedianIncomeChg5y} has failed to keep pace with core CPI growth of {cpiCoreChg5y}, eroding the real value of cash holdings.",
+          "showsEvidence": "documented",
+          "couldMean": "Cash holders face a persistent 'inflation tax' that reduces their purchasing power over time, making it difficult to rebuild savings buffers."
+        },
+        {
+          "asset": "Equities",
+          "icon": "stocks",
+          "shows": "The S&P 500's real return has fallen to {sp500RealReturnLatest}, the lowest since {sp500RealReturnLowestSince}, indicating a compression in wealth creation.",
+          "showsEvidence": "documented",
+          "couldMean": "Investors relying on equities for retirement growth may need to extend their time horizons or increase savings rates to meet targets, as historical real returns are not currently materializing."
+        },
+        {
+          "asset": "Housing",
+          "icon": "property",
+          "shows": "Mortgage rates remain elevated at {mortgageRateLatest}, far above the {mortgageRateLow5y} low of 2021, while housing costs continue to rise.",
+          "showsEvidence": "documented",
+          "couldMean": "Homeowners are locked into high costs with limited mobility, while renters face rising rents without the benefit of fixed-rate debt, exacerbating wealth inequality."
+        }
+      ]
+    },
+    "attention": {
+      "required": false,
+      "reasons": []
+    }
+  }
+}

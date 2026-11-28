@@ -1,0 +1,39 @@
+{
+ "runId": "bench-households",
+ "command": "bench --suites B,C,D,E --reps 2 --configs mimo-flash,deepseek-flash,deepseek-flash-think,glm47-think,gemma-it --run --skip-preflight --retries 1",
+ "node": "v22.23.5",
+ "provider": "arliai",
+ "host": "api.arliai.com",
+ "keyFingerprint": "e940d5b63d82",
+ "productionModel": "Qwen3.8-27B",
+ "startedAt": "2026-11-28T13:05:36.872Z",
+ "options": {
+  "runDir": "C:\\project\\FinStory\\research\\model-eval\\results\\bench-households",
+  "runId": "bench-households",
+  "timeoutMs": 300000,
+  "retries": 1,
+  "gapMs": 750,
+  "tokenScale": 1,
+  "retryErrors": false,
+  "dryRun": false
+ },
+ "suites": [
+  "B",
+  "C",
+  "D",
+  "E"
+ ],
+ "configs": [
+  "glm47-think",
+  "deepseek-flash",
+  "deepseek-flash-think",
+  "gemma-it",
+  "mimo-flash"
+ ],
+ "cases": [
+  "B/B1-macro-reasoning",
+  "C/C1-quant-claims",
+  "D/D1-market-outlook",
+  "E/E1-feature-households"
+ ]
+}

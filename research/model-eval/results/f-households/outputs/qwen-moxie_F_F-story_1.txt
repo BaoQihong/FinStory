@@ -1,0 +1,48 @@
+{
+  "kicker": "Cost of Living",
+  "headline": "Inflation is falling. Your savings are not.",
+  "dek": "Headline price growth has cooled from its 2022 peaks, but the cumulative cost of the last five years has outpaced real wage growth by a wide margin. The result is a persistent squeeze that official rates no longer capture.",
+  "keyPoints": [
+    "Core prices have risen {cpiCoreChg5y} over the past five years, while real median household income has grown only {realMedianIncomeChg5y}.",
+    "Consumer sentiment has fallen {consumerSentimentChg5y} since 2021, tracking perceptions of high prices more closely than income growth.",
+    "Real equity returns have compressed, with the S&P 500's year-over-year real return falling by {sp500RealReturnChg1y} over the last year."
+  ],
+  "blocks": [
+    {
+      "type": "p",
+      "text": "There is a specific kind of confusion that sets in when you watch the inflation rate drop and then look at your bank account. The official numbers are improving. Headline CPI is running at {cpiHeadlineChg1y} over the past year, and core PCE has settled at {corePCEChg1y}. By the metrics that central banks watch, the emergency is over. But the prices you actually pay have not reset. They have simply stopped climbing as fast. For the median household, that distinction is the difference between relief and a long, quiet erosion."
+    },
+    {
+      "type": "p",
+      "text": "The disconnect is not a matter of perception versus reality. It is a matter of cumulative arithmetic. Over the past five years, core CPI has risen {cpiCoreChg5y}. In the same period, real median household income has grown by {realMedianIncomeChg5y}. That gap is the true measure of the squeeze. It is not that prices are still skyrocketing today. It is that the base of what a normal year costs has been permanently raised, and wages have not climbed the same distance. When you buy a car, rent an apartment, or pay for a doctor's visit, you are paying the five-year total, not the monthly rate."
+    },
+    {
+      "type": "p",
+      "text": "This is why the sentiment data looks so broken relative to the inflation data. University of Michigan consumer sentiment has fallen {consumerSentimentChg5y} over the past five years. It is now sitting at {consumerSentimentLatest}, a level that reflects a deep psychological adjustment to higher costs. The data suggests that people are no longer reacting to the speed of price increases, but to the level of their own financial position. You can have a month where inflation prints low and still feel poorer, because your purchasing power was defined by the years that came before."
+    },
+    {
+      "type": "pullquote",
+      "text": "The base of what a normal year costs has been permanently raised, and wages have not climbed the same distance."
+    },
+    {
+      "type": "p",
+      "text": "The most stubborn drivers of this persistence are the things you cannot easily substitute. Housing and medical care have remained key inflationary forces, with categories like owners' equivalent rent and medical services posting monthly increases that outpace the broader index. These are not discretionary purchases. They are the floor of the budget. When the floor rises, every other item in the household has to shrink to compensate. This is a structural feature of the current cost environment that a falling headline rate does not erase."
+    },
+    {
+      "type": "p",
+      "text": "The consequences for wealth building are showing up in the returns on the assets people actually hold. The S&P 500 is up {sp500Chg1y} over the past year in nominal terms, which sounds healthy. But after adjusting for inflation, the real return has compressed significantly. The year-over-year real return has fallen by {sp500RealReturnChg1y} over the last year, leaving it at {sp500RealReturnLatest}. That is the reality for the person trying to grow a retirement fund: the market is going up, but the money they are buying with it is worth less than it was a year ago. The wealth-building engine is running, but it is moving through a higher-cost landscape."
+    },
+    {
+      "type": "p",
+      "text": "Consumers have responded by changing their behavior in ways that are hard to reverse. There is a documented shift toward trading down and reducing discretionary purchases, a structural move away from pre-inflation consumption norms. This is not just a temporary pause in spending. It is a recalibration of what people consider affordable. When you have been paying a higher base cost for five years, you do not simply return to your old habits when the rate of increase slows. You have already adjusted your expectations, your savings, and your priorities. The return to normal will not be a straight line back to where things were."
+    },
+    {
+      "type": "p",
+      "text": "The question that matters now is not whether inflation will hit two percent. It is whether the cumulative gap between what things cost and what people earn will begin to close. If wages continue to lag behind the new price base, the feeling of being squeezed will persist regardless of what the monthly CPI prints. The official metrics are telling one story. The household balance sheet is telling another. For ordinary people trying to build wealth, the second one is the one that determines whether the next five years are a recovery or a plateau."
+    }
+  ],
+  "attention": {
+    "required": false,
+    "reasons": []
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "series": [
+    {
+      "candidate": "C1",
+      "key": "headlineCPI",
+      "label": "Headline CPI (All Items)"
+    ,
+    "reason": "Matches the need for headline inflation rates to compare with core measures and assess the trend."
+    },
+    {
+      "candidate": "C2",
+      "key": "coreCPI",
+      "label": "Core CPI (Less Food & Energy)"
+    ,
+    "reason": "Matches the need for core inflation measures to compare with headline figures and identify persistent cost drivers."
+    },
+    {
+      "candidate": "C8",
+      "key": "corePCE",
+      "label": "Core PCE Price Index"
+    ,
+    "reason": "Matches the need for the Federal Reserve's preferred inflation measure for comparison."
+    },
+    {
+      "candidate": "C9",
+      "key": "realMedianIncome",
+      "label": "Real Median Household Income"
+    ,
+    "reason": "Matches the need to measure cumulative price increases relative to wage growth for median-income households."
+    },
+    {
+      "candidate": "C18",
+      "key": "us10yYield",
+      "label": "10-Year Treasury Yield"
+    ,
+    "reason": "Matches the need to assess the current state of fixed-income returns and the risk-reward calculus for household portfolios."
+    },
+    {
+      "candidate": "C15",
+      "key": "us10yRealYield",
+      "label": "10-Year TIPS Yield"
+    ,
+    "reason": "Provides the real return on fixed income, essential for evaluating wealth accumulation after inflation."
+    },
+    {
+      "candidate": "C24",
+      "key": "sp500",
+      "label": "S&P 500 Index"
+    ,
+    "reason": "Matches the need to evaluate the performance of equities, a common wealth-building asset."
+    },
+    {
+      "candidate": "C25",
+      "key": "consumerSentiment",
+      "label": "Consumer Sentiment Index"
+    ,
+    "reason": "Matches the need to gauge consumer sentiment and its correlation with spending habits."
+    },
+    {
+      "candidate": "C3",
+      "key": "stickyCPI",
+      "label": "Sticky Price CPI"
+    ,
+    "reason": "Helps identify which specific categories of services are driving the perceived persistence of high costs."
+    },
+    {
+      "candidate": "C4",
+      "key": "medianCPI",
+      "label": "Median CPI"
+    ,
+    "reason": "Provides an alternative measure of inflation to understand the typical price change experienced by households."
+    }
+  ],
+  "derived": [
+    {
+      "key": "sp500RealReturn",
+      "op": "yoy",
+      "inputs": [
+        "sp500"
+      ],
+      "label": "S&P 500 Year-over-Year Return"
+    ,
+    "reason": "Calculates the nominal return of equities to compare against inflation rates."
+    },
+    {
+      "key": "realYieldDiff",
+      "op": "difference",
+      "inputs": [
+        "us10yYield",
+        "us10yRealYield"
+      ],
+      "label": "Implied Inflation (10Y)"
+    ,
+    "reason": "Calculates the market's expectation for average inflation over the next 10 years."
+    }
+  ],
+  "charts": [
+    {
+      "id": "inflationTrends",
+      "seriesKeys": [
+        "headlineCPI",
+        "coreCPI",
+        "corePCE"
+      ],
+      "from": "2019-01-01",
+      "purpose": "Compare headline and core inflation trends to verify the premise that inflation is trending downward."
+    },
+    {
+      "id": "incomeVsInflation",
+      "seriesKeys": [
+        "realMedianIncome",
+        "headlineCPI"
+      ],
+      "from": "2019-01-01",
+      "purpose": "Assess the gap between wage growth and cumulative price increases for median-income households."
+    },
+    {
+      "id": "wealthAssets",
+      "seriesKeys": [
+        "sp500RealReturn",
+        "us10yRealYield"
+      ],
+      "from": "2019-01-01",
+      "purpose": "Evaluate real returns on equities and fixed income to understand the impact on wealth accumulation."
+    },
+    {
+      "id": "consumerSentiment",
+      "seriesKeys": [
+        "consumerSentiment"
+      ],
+      "from": "2019-01-01",
+      "purpose": "Track consumer sentiment to see how it correlates with inflation trends and spending habits."
+    },
+    {
+      "id": "stickyPrices",
+      "seriesKeys": [
+        "stickyCPI",
+        "medianCPI"
+      ],
+      "from": "2019-01-01",
+      "purpose": "Identify which specific categories of goods or services are driving the perceived persistence of high costs."
+    }
+  ],
+  "unmetNeeds": []
+}

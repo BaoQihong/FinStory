@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "name": "CPI",
+      "category": "prices",
+      "note": "Measures the average change in prices paid by consumers for a basket of goods and services, serving as a primary gauge."
+    },
+    {
+      "name": "Unemployment Rate",
+      "category": "labour",
+      "note": "Represents the percentage of the labor force that is jobless and actively seeking employment, indicating the health of."
+    },
+    {
+      "name": "10-Year Treasury Yield",
+      "category": "rates",
+      "note": "Reflects the market's expectation of future interest rates and inflation over a decade, often used as a benchmark for."
+    }
+  ]
+}

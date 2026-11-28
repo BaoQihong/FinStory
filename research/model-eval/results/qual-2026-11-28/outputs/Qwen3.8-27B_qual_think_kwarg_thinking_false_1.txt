@@ -1,0 +1,5 @@
+<<<REASONING (reasoning)>>>
+We need answer number only. Compute 17*23 = 391. Final only 391.
+<<<END REASONING>>>
+
+391

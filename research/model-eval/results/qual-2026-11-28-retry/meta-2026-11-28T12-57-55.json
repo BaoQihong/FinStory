@@ -1,0 +1,31 @@
+{
+ "runId": "qual-2026-11-28-retry",
+ "command": "qual --models DeepSeek-V4.1-Flash-1017 --cases length_truncation,stop_sequence,json_object,json_schema_strict,stream_think_on --run --skip-preflight",
+ "node": "v22.23.5",
+ "provider": "arliai",
+ "host": "api.arliai.com",
+ "keyFingerprint": "e940d5b63d82",
+ "productionModel": "Qwen3.8-27B",
+ "startedAt": "2026-11-28T12:57:55.215Z",
+ "options": {
+  "runDir": "C:\\project\\FinStory\\research\\model-eval\\results\\qual-2026-11-28-retry",
+  "runId": "qual-2026-11-28-retry",
+  "timeoutMs": 300000,
+  "retries": 1,
+  "gapMs": 750,
+  "tokenScale": 1,
+  "retryErrors": false,
+  "dryRun": false
+ },
+ "suite": "qual",
+ "configs": [
+  "DeepSeek-V4.1-Flash-1017"
+ ],
+ "cases": [
+  "length_truncation",
+  "stop_sequence",
+  "json_object",
+  "json_schema_strict",
+  "stream_think_on"
+ ]
+}

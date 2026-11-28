@@ -1,0 +1,144 @@
+{
+  "macro": {
+    "title": "The gap is in the level, not the rate",
+    "intro": "The deceleration is real, but it is the wrong number to stare at if you want to understand household finances. What matters is that the price level itself keeps setting new highs in the retrieved data while the income that has to cover it barely moves in real terms. The evidence below is about that divergence, not about the monthly inflation print.",
+    "indicators": [
+      {
+        "key": "cpiCore",
+        "note": "Core CPI strips out food and energy, the two categories most likely to swing month to month, so it is the cleaner test of whether the underlying cost of living is still climbing. It is."
+      },
+      {
+        "key": "realMedianIncome",
+        "note": "This is the paycheck side of the ledger, already adjusted for prices. It is the number that determines whether the median household is actually getting ahead or just running to stand still."
+      },
+      {
+        "key": "consumerSentiment",
+        "note": "Sentiment is the bridge between the official statistics and the lived experience. Its collapse alongside rising nominal incomes is the puzzle this article is trying to explain."
+      },
+      {
+        "key": "sp500RealReturn",
+        "note": "If wages are lagging prices, households need their savings to do more work. This measures whether the most common wealth-building asset is actually keeping up after inflation."
+      }
+    ],
+    "charts": [
+      {
+        "chartId": "inflationTrends",
+        "question": "How do headline CPI, core CPI and core PCE compare over the past six years?",
+        "takeaway": "All three series have risen to new highs in the retrieved data by October 2026, with core CPI at {cpiCoreLatest} and core PCE at {corePCELatest}, confirming that the price level, not just the rate of change, is what has shifted."
+      }
+    ],
+    "explainers": [
+      {
+        "title": "The rate fell; the level did not",
+        "text": "A slower rate of inflation means prices are rising less quickly, not that they are falling. The CPI index is at {cpiHeadlineLatest}, the highest in the data since 2014, and core CPI is at {cpiCoreLatest}, also the highest in the retrieved history. Households budget against the level, which is why the improvement in the rate has not translated into relief at the till.",
+        "evidence": "documented"
+      },
+      {
+        "title": "Real income is not keeping pace with the cumulative rise",
+        "text": "Over five years, core CPI is up {cpiCoreChg5y} while real median household income is up {realMedianIncomeChg5y}. The gap is the arithmetic behind the squeeze: nominal pay may have risen, but after adjusting for prices the median household has barely more purchasing power than it did five years ago.",
+        "evidence": "documented"
+      },
+      {
+        "title": "The wealth-building asset is losing real ground",
+        "text": "The S&P 500's year-over-year real return has fallen by {sp500RealReturnChg1y} over the past year to {sp500RealReturnLatest}, the lowest in the data since {sp500RealReturnLowestSince}. For households counting on equities to outrun inflation, that is a warning that the traditional hedge is not working as reliably as it once did.",
+        "evidence": "documented"
+      }
+    ],
+    "attention": {
+      "required": false,
+      "reasons": []
+    }
+  },
+  "analytics": {
+    "title": "Why the squeeze persists even as the headline improves",
+    "intro": "The question is not whether inflation has slowed, but why the slowdown has not fed through to how households feel or how their balance sheets look. The answer lies in the composition of the remaining price increases, the lag in real wage adjustment, and the way both interact with the assets people rely on to build wealth.",
+    "chain": {
+      "title": "From sticky prices to a persistent perception gap",
+      "steps": [
+        {
+          "title": "Sticky categories keep the level rising",
+          "text": "Housing and medical care are not discretionary and not easily substituted. When owners' equivalent rent and medical services rise faster than the broader index, the prices households encounter most frequently keep climbing even as headline inflation moderates. This is the mechanical source of the perception gap.",
+          "evidence": "documented"
+        },
+        {
+          "title": "Real wages adjust slowly",
+          "text": "Nominal wage gains take time to be negotiated and to show up in pay packets. Real median household income grew by {realMedianIncomeChg5y} over five years, against a {cpiCoreChg5y} rise in core CPI. The gap is not a one-month anomaly; it is a cumulative shortfall that households feel as a permanent reduction in their standard of living.",
+          "evidence": "documented"
+        },
+        {
+          "title": "Consumers adapt by trading down",
+          "text": "Faced with higher essential costs, households cut discretionary spending and trade down to cheaper alternatives. This is a rational response, but it also feeds back into the economy: weaker demand in discretionary sectors can slow hiring and wage growth, making the adjustment self-reinforcing.",
+          "evidence": "context"
+        },
+        {
+          "title": "Real returns on savings compress",
+          "text": "With the 10-year Treasury yield at {t10yYieldLatest} and core inflation at {corePCEChg1y}, the real return on safe assets is thin. Equities have also lost real ground, with the S&P 500's real return falling to {sp500RealReturnLatest}. Households trying to build a cushion find that neither cash nor stocks are providing the real growth they expected.",
+          "evidence": "documented"
+        },
+        {
+          "title": "The perception gap becomes self-fulfilling",
+          "text": "Consumer sentiment is at {consumerSentimentLatest}, down {consumerSentimentChg5y} over five years. When households believe prices will keep rising, they may demand higher wages or cut spending further, reinforcing the very pressures that keep prices elevated. The causal link is plausible but not proven; the data show correlation, not causation.",
+          "evidence": "interpretation"
+        }
+      ]
+    },
+    "charts": [
+      {
+        "chartId": "incomeVsInflation",
+        "question": "How have real median household incomes in the US, California and North Carolina moved over the past decade?",
+        "takeaway": "Real incomes have risen over the decade but not smoothly: California's real median income fell by {realIncomeCAChg1y} in the latest year, while North Carolina's rose by {realIncomeNCChg1y}, showing that the national squeeze is not evenly distributed."
+      }
+    ],
+    "comparisons": [
+      {
+        "title": "The 2022 peak versus now",
+        "text": "The current real return on the S&P 500 of {sp500RealReturnLatest} is well above the trough of {sp500RealReturnLow5y} in October 2022, but far below the {sp500RealReturnHigh5y} peak in October 2024. The direction of travel has reversed, which matters for households that rebalanced toward equities during the good years."
+      ,
+        "evidence": "documented"
+      },
+      {
+        "title": "Mortgage costs as a structural drag",
+        "text": "The 30-year fixed mortgage rate is {mortgageRateLatest}, up {mortgageRateChg5y} over five years. For homeowners with existing fixed-rate loans, the impact is limited, but for first-time buyers the cost of financing a home has risen sharply, adding to the perception that housing is increasingly unaffordable.",
+        "evidence": "documented"
+      }
+    ],
+    "implications": {
+      "title": "What this means for household wealth",
+      "intro": "The perception gap is not just a sentiment problem; it has real consequences for how households save, spend and invest. The groups below are where the effect is most visible.",
+      "items": [
+        {
+          "asset": "Stocks",
+          "icon": "stocks",
+          "shows": "The S&P 500's year-over-year real return has fallen to {sp500RealReturnLatest}, the lowest since {sp500RealReturnLowestSince}, even as the nominal index sits at {sp500Latest}.",
+          "showsEvidence": "documented",
+          "couldMean": "Equities are still the best long-run hedge against inflation, but the recent compression in real returns means households cannot rely on past performance to outpace rising prices. A diversified portfolio may need to be reassessed for real, not nominal, returns."
+        },
+        {
+          "asset": "Bonds",
+          "icon": "bonds",
+          "shows": "The 10-year Treasury yield is {t10yYieldLatest}, up {t10yYieldChg1y} over the past year, but core PCE inflation is {corePCEChg1y}.",
+          "showsEvidence": "documented",
+          "couldMean": "The real yield on safe government debt is positive but modest. For conservative savers, bonds offer some protection but not enough to rebuild purchasing power quickly, especially after taxes."
+        },
+        {
+          "asset": "Cash",
+          "icon": "cash",
+          "shows": "The personal saving rate is {srcPersonalSavingRate}, according to the source, and core inflation is {corePCEChg1y}.",
+          "showsEvidence": "context",
+          "couldMean": "With inflation running above the return on cash, holding money in savings accounts means losing purchasing power in real terms. Households may need to accept more risk to preserve wealth, or accept a lower standard of living."
+        },
+        {
+          "asset": "Property",
+          "icon": "property",
+          "shows": "The 30-year fixed mortgage rate is {mortgageRateLatest}, up {mortgageRateChg5y} over five years, while house prices have continued to rise.",
+          "showsEvidence": "documented",
+          "couldMean": "For existing homeowners with fixed-rate mortgages, housing remains a hedge against inflation. For renters and first-time buyers, the combination of high prices and high financing costs makes property an increasingly distant goal, widening the wealth gap between owners and non-owners."
+        }
+      ]
+    },
+    "attention": {
+      "required": false,
+      "reasons": []
+    }
+  }
+}

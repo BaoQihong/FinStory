@@ -1,0 +1,45 @@
+# The Confidence Gap: What the Data Can and Cannot Tell Us
+
+## The puzzle, stated precisely
+
+The headline combination is real but less coherent than it sounds. Headline CPI fell from 2.94% to 2.33% between July 2024 and April 2025, then ticked back up to 2.68% in June. Core CPI fell from 3.23% to 2.77% and has since edged up to 2.91%. So "inflation has been declining" is true over the year but not over the last two months. Real consumer spending growth has decelerated from roughly 3.0–3.7% to 2.4–2.5% in the last two months—still positive, but no longer "holding up" in the same way. Sentiment fell from 74.0 in December to 52.2 in April–May, then partially recovered to 60.7. The federal funds rate has been flat at 4.33% since January, while the 30-year mortgage rate has stayed near 6.7–7.0%. The 10-year yield has risen since September, from 3.72% to 4.38%.
+
+## Competing explanations
+
+**Explanation 1: The sentiment collapse is a level shock, not a rate shock.** Sentiment is an index of levels and expectations, not a spending forecast. The drop from 74 to 52 in four months is large enough to suggest a discrete event—tariff announcements, policy uncertainty, or a news-driven shift—rather than gradual rate transmission. What would distinguish this: if sentiment recovers as the news cycle fades while spending and rates are unchanged, the shock was episodic. If sentiment stays depressed while spending decelerates further, the shock has become behavioral.
+
+**Explanation 2: Rates are biting through the housing and credit channel, and sentiment is a symptom.** The 30-year mortgage rate has not fallen with the funds rate; it rose from 6.18% in September to 6.96% in January and remains near 6.8%. The 10-year yield rose over the same period. This is the classic "policy easing without easing financial conditions" pattern. What would distinguish it: mortgage applications, existing-home sales, and delinquency data. If housing activity and credit stress worsened while the funds rate fell, the transmission channel is the long end, not the policy rate.
+
+**Explanation 3: The labor market is looser than the unemployment rate suggests.** Unemployment has moved only from 4.0% to 4.3% and back to 4.1%, but average hourly earnings growth has drifted from 4.21% in March to 3.86% in June. If hiring, quits, and hours are weakening beneath a stable unemployment rate, sentiment may be picking up a labor-market deterioration that the headline rate misses. What would distinguish it: JOLTS hires and quits, the employment-to-population ratio, and temporary-help employment.
+
+**Explanation 4: The sentiment index is measuring something real but not spending-relevant.** The University of Michigan index is sensitive to prices and interest rates in ways that do not map one-to-one onto consumption. A household can feel worse about the economy while maintaining spending by drawing down saving. The personal saving rate fell from 6.2% in July–August to 5.1% in December and 5.5% in June. That is consistent with spending being supported by lower saving rather than by income growth. What would distinguish it: if the saving rate keeps falling while real spending growth slows, the buffer is thinning.
+
+These explanations are not mutually exclusive. The most likely reading is a combination: a sentiment shock layered on a genuine long-rate transmission problem, with a labor market that is softening at the margin.
+
+## Channels
+
+Elevated rates reach households through three main channels. First, the **mortgage and housing channel**: the 30-year rate has stayed near 6.8% even as the funds rate fell, so existing homeowners with low-rate mortgages are locked in, and prospective buyers face high monthly payments. This suppresses mobility and housing turnover. Second, the **credit-card and auto-loan channel**: these rates track the short end and remain high, so revolving balances and vehicle financing are expensive. Third, the **saving and wealth channel**: higher rates raise returns on deposits and bonds, which benefits savers but raises the opportunity cost of spending.
+
+The data show the first channel clearly in the mortgage rate series but do not show household-level borrowing costs. The second and third channels are inferred, not observed here.
+
+## Who is affected differently
+
+The evidence supports only limited distributional claims. Homeowners with fixed low-rate mortgages are insulated; renters and prospective first-time buyers are exposed to high mortgage rates and shelter inflation. Savers benefit from higher deposit rates; borrowers with floating-rate debt do not. The personal saving rate decline suggests some households are spending down buffers, but the table does not identify which households. Sentiment is an aggregate index and cannot be decomposed by income group from this data alone.
+
+## What the conventional reading misses
+
+The conventional story—"inflation is falling, the Fed is restrictive, spending is fine, sentiment is irrational"—misses three things. First, **the long end has not cooperated**: the 10-year yield rose from 3.72% to 4.38% over the period, so financial conditions tightened even as the funds rate was cut. Second, **real spending growth has slowed in the last two months**, from 3.07% in April to 2.44% in May and 2.50% in June; the "holding up" characterization is backward-looking. Third, **core inflation has stopped falling**: it bottomed at 2.77% in May and has edged up since. The disinflation story is less complete than the headline suggests.
+
+## What to test next
+
+1. **Hypothesis: the sentiment drop is news-driven and will mean-revert.** Test with daily or weekly sentiment sub-indices and a text-based measure of economic policy uncertainty; compare the timing of the drop to tariff and fiscal announcements.
+
+2. **Hypothesis: long rates, not the funds rate, are doing the tightening.** Test with mortgage applications, existing-home sales, and the spread between the 30-year mortgage rate and the 10-year yield. If the spread is widening, the transmission is through term premia and mortgage spreads, not the policy rate.
+
+3. **Hypothesis: the labor market is weaker than unemployment suggests.** Test with JOLTS hires and quits, the employment-to-population ratio for prime-age workers, and the share of unemployed who are long-term unemployed.
+
+4. **Hypothesis: spending is being supported by saving drawdown, especially among lower-income households.** Test with the personal saving rate by income quintile (available from the Fed's Survey of Consumer Finances and the Distributional Financial Accounts) and with credit-card delinquency rates by income group.
+
+5. **Hypothesis: shelter inflation is keeping core inflation sticky.** Test with the CPI shelter component and the BLS new-tenant rent index; if shelter is decelerating, core should follow with a lag.
+
+The story I would commission is not "why is sentiment wrong" but "why has the long end refused to ease, and what is it doing to the households least able to absorb it." The data support that question; they do not yet answer it.

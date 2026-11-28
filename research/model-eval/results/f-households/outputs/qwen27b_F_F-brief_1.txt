@@ -1,0 +1,21 @@
+{
+  "angle": "The story investigates the psychological and economic gap between falling headline inflation rates and the persistent perception of high cost-of-living, exploring how this disconnect impacts consumer confidence and long-term wealth accumulation strategies.",
+  "questions": [
+    "What specific components of the Consumer Price Index have declined most sharply, and which categories remain stubbornly high or have recently accelerated?",
+    "How do current real wage growth rates compare to the inflation trajectory over the past two years, and does this suggest a genuine improvement in purchasing power?",
+    "What role do 'sticky' services inflation and housing costs play in maintaining the perception of expense despite lower goods inflation?",
+    "How are households currently adjusting their savings and investment behaviors in response to the changing inflation environment?",
+    "What do recent consumer sentiment surveys indicate about the relationship between reported inflation expectations and actual price experiences?"
+  ],
+  "indicators": [
+    "CPI",
+    "Core PCE",
+    "Real Median Household Income",
+    "10-Year Treasury Yield",
+    "S&P 500",
+    "Consumer Confidence Index",
+    "Housing Price Index"
+  ],
+  "outlook": "The Outlook section should explore how the divergence between goods and services inflation might resolve, and the conditions under which real income growth could finally outpace price increases to sustainably boost household balance sheets.",
+  "premise": "The idea assumes that headline inflation is currently on a downward trend and that there is a significant perceived disconnect between official statistics and consumer experience. Research should first establish the current direction of key inflation metrics and validate the extent of the sentiment gap."
+}

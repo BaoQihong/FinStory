@@ -1,0 +1,39 @@
+{
+ "runId": "pilot-households",
+ "command": "bench --suites A,B,C,D,E --configs qwen27b,qwen27b-think,glm47 --run",
+ "node": "v22.23.5",
+ "provider": "arliai",
+ "host": "api.arliai.com",
+ "keyFingerprint": "e940d5b63d82",
+ "productionModel": "Qwen3.8-27B",
+ "startedAt": "2026-11-28T08:18:31.237Z",
+ "options": {
+  "runDir": "C:\\project\\FinStory\\research\\model-eval\\results\\pilot-households",
+  "runId": "pilot-households",
+  "timeoutMs": 300000,
+  "retries": 1,
+  "gapMs": 750,
+  "tokenScale": 1,
+  "retryErrors": false,
+  "dryRun": false
+ },
+ "suites": [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E"
+ ],
+ "configs": [
+  "qwen27b",
+  "qwen27b-think",
+  "glm47"
+ ],
+ "cases": [
+  "A/A1-data-interpretation",
+  "B/B1-macro-reasoning",
+  "C/C1-quant-claims",
+  "D/D1-market-outlook",
+  "E/E1-feature-households"
+ ]
+}

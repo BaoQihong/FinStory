@@ -1,0 +1,3419 @@
+{
+ "runs": [
+  "f-households"
+ ],
+ "generatedAt": "2026-11-28T13:54:36.316Z",
+ "records": 100,
+ "note": "n = number of observations behind each aggregate. Latency is end-to-end wall time from this machine; output tokens/s = output tokens ÷ (latency − time to first token), streaming requests only. Arli is a flat-rate subscription: no per-token cost applies.",
+ "byConfig": {
+  "qwen27b": {
+   "model": "Qwen3.8-27B",
+   "mode": "off",
+   "all": {
+    "requests": 10,
+    "succeeded": 10,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 10,
+     "mean": 42884,
+     "median": 46505,
+     "min": 5612,
+     "max": 72066
+    },
+    "ttftMs": {
+     "n": 0,
+     "median": null,
+     "min": null,
+     "max": null
+    },
+    "tokens": {
+     "inputMean": 9549,
+     "outputMean": 1245,
+     "reasoningMean": 0,
+     "reasoningReported": 10,
+     "inputTotal": 95489,
+     "outputTotal": 12448
+    },
+    "outputTokensPerSec": {
+     "n": 0,
+     "median": null,
+     "min": null,
+     "max": null
+    },
+    "finishReasons": {
+     "stop": 10
+    },
+    "checksPassed": {
+     "pass": 41,
+     "n": 45
+    },
+    "json": {
+     "bare": {
+      "pass": 10,
+      "n": 10
+     },
+     "parses": {
+      "pass": 10,
+      "n": 10
+     },
+     "schemaFirstAttempt": {
+      "pass": 10,
+      "n": 10
+     },
+     "schemaAfterProductionRepair": {
+      "pass": 10,
+      "n": 10
+     }
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": []
+   },
+   "bySuite": {
+    "F": {
+     "requests": 10,
+     "succeeded": 10,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 10,
+      "mean": 42884,
+      "median": 46505,
+      "min": 5612,
+      "max": 72066
+     },
+     "ttftMs": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+     },
+     "tokens": {
+      "inputMean": 9549,
+      "outputMean": 1245,
+      "reasoningMean": 0,
+      "reasoningReported": 10,
+      "inputTotal": 95489,
+      "outputTotal": 12448
+     },
+     "outputTokensPerSec": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+     },
+     "finishReasons": {
+      "stop": 10
+     },
+     "checksPassed": {
+      "pass": 41,
+      "n": 45
+     },
+     "json": {
+      "bare": {
+       "pass": 10,
+       "n": 10
+      },
+      "parses": {
+       "pass": 10,
+       "n": 10
+      },
+      "schemaFirstAttempt": {
+       "pass": 10,
+       "n": 10
+      },
+      "schemaAfterProductionRepair": {
+       "pass": 10,
+       "n": 10
+      }
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    }
+   }
+  },
+  "qwen-novelist": {
+   "model": "Qwen3.8-27B-Novelist1.0",
+   "mode": "off",
+   "all": {
+    "requests": 10,
+    "succeeded": 10,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 10,
+     "mean": 50030,
+     "median": 50923,
+     "min": 9543,
+     "max": 81207
+    },
+    "ttftMs": {
+     "n": 0,
+     "median": null,
+     "min": null,
+     "max": null
+    },
+    "tokens": {
+     "inputMean": 9549,
+     "outputMean": 1201,
+     "reasoningMean": 0,
+     "reasoningReported": 10,
+     "inputTotal": 95489,
+     "outputTotal": 12010
+    },
+    "outputTokensPerSec": {
+     "n": 0,
+     "median": null,
+     "min": null,
+     "max": null
+    },
+    "finishReasons": {
+     "stop": 10
+    },
+    "checksPassed": {
+     "pass": 42,
+     "n": 45
+    },
+    "json": {
+     "bare": {
+      "pass": 10,
+      "n": 10
+     },
+     "parses": {
+      "pass": 10,
+      "n": 10
+     },
+     "schemaFirstAttempt": {
+      "pass": 10,
+      "n": 10
+     },
+     "schemaAfterProductionRepair": {
+      "pass": 10,
+      "n": 10
+     }
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": []
+   },
+   "bySuite": {
+    "F": {
+     "requests": 10,
+     "succeeded": 10,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 10,
+      "mean": 50030,
+      "median": 50923,
+      "min": 9543,
+      "max": 81207
+     },
+     "ttftMs": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+     },
+     "tokens": {
+      "inputMean": 9549,
+      "outputMean": 1201,
+      "reasoningMean": 0,
+      "reasoningReported": 10,
+      "inputTotal": 95489,
+      "outputTotal": 12010
+     },
+     "outputTokensPerSec": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+     },
+     "finishReasons": {
+      "stop": 10
+     },
+     "checksPassed": {
+      "pass": 42,
+      "n": 45
+     },
+     "json": {
+      "bare": {
+       "pass": 10,
+       "n": 10
+      },
+      "parses": {
+       "pass": 10,
+       "n": 10
+      },
+      "schemaFirstAttempt": {
+       "pass": 10,
+       "n": 10
+      },
+      "schemaAfterProductionRepair": {
+       "pass": 10,
+       "n": 10
+      }
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    }
+   }
+  },
+  "qwen-moxie": {
+   "model": "Qwen3.8-27B-Moxie",
+   "mode": "off",
+   "all": {
+    "requests": 10,
+    "succeeded": 10,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 10,
+     "mean": 49771,
+     "median": 48978,
+     "min": 13114,
+     "max": 79868
+    },
+    "ttftMs": {
+     "n": 0,
+     "median": null,
+     "min": null,
+     "max": null
+    },
+    "tokens": {
+     "inputMean": 9549,
+     "outputMean": 1318,
+     "reasoningMean": 0,
+     "reasoningReported": 10,
+     "inputTotal": 95489,
+     "outputTotal": 13183
+    },
+    "outputTokensPerSec": {
+     "n": 0,
+     "median": null,
+     "min": null,
+     "max": null
+    },
+    "finishReasons": {
+     "stop": 10
+    },
+    "checksPassed": {
+     "pass": 42,
+     "n": 45
+    },
+    "json": {
+     "bare": {
+      "pass": 10,
+      "n": 10
+     },
+     "parses": {
+      "pass": 10,
+      "n": 10
+     },
+     "schemaFirstAttempt": {
+      "pass": 10,
+      "n": 10
+     },
+     "schemaAfterProductionRepair": {
+      "pass": 10,
+      "n": 10
+     }
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": []
+   },
+   "bySuite": {
+    "F": {
+     "requests": 10,
+     "succeeded": 10,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 10,
+      "mean": 49771,
+      "median": 48978,
+      "min": 13114,
+      "max": 79868
+     },
+     "ttftMs": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+     },
+     "tokens": {
+      "inputMean": 9549,
+      "outputMean": 1318,
+      "reasoningMean": 0,
+      "reasoningReported": 10,
+      "inputTotal": 95489,
+      "outputTotal": 13183
+     },
+     "outputTokensPerSec": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+     },
+     "finishReasons": {
+      "stop": 10
+     },
+     "checksPassed": {
+      "pass": 42,
+      "n": 45
+     },
+     "json": {
+      "bare": {
+       "pass": 10,
+       "n": 10
+      },
+      "parses": {
+       "pass": 10,
+       "n": 10
+      },
+      "schemaFirstAttempt": {
+       "pass": 10,
+       "n": 10
+      },
+      "schemaAfterProductionRepair": {
+       "pass": 10,
+       "n": 10
+      }
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    }
+   }
+  },
+  "glm47": {
+   "model": "GLM-4.7",
+   "mode": "off",
+   "all": {
+    "requests": 10,
+    "succeeded": 10,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 10,
+     "mean": 59859,
+     "median": 48382,
+     "min": 14661,
+     "max": 123835
+    },
+    "ttftMs": {
+     "n": 0,
+     "median": null,
+     "min": null,
+     "max": null
+    },
+    "tokens": {
+     "inputMean": 8489,
+     "outputMean": 977,
+     "reasoningMean": 0,
+     "reasoningReported": 10,
+     "inputTotal": 84892,
+     "outputTotal": 9770
+    },
+    "outputTokensPerSec": {
+     "n": 0,
+     "median": null,
+     "min": null,
+     "max": null
+    },
+    "finishReasons": {
+     "stop": 10
+    },
+    "checksPassed": {
+     "pass": 42,
+     "n": 45
+    },
+    "json": {
+     "bare": {
+      "pass": 10,
+      "n": 10
+     },
+     "parses": {
+      "pass": 10,
+      "n": 10
+     },
+     "schemaFirstAttempt": {
+      "pass": 10,
+      "n": 10
+     },
+     "schemaAfterProductionRepair": {
+      "pass": 10,
+      "n": 10
+     }
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": []
+   },
+   "bySuite": {
+    "F": {
+     "requests": 10,
+     "succeeded": 10,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 10,
+      "mean": 59859,
+      "median": 48382,
+      "min": 14661,
+      "max": 123835
+     },
+     "ttftMs": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+     },
+     "tokens": {
+      "inputMean": 8489,
+      "outputMean": 977,
+      "reasoningMean": 0,
+      "reasoningReported": 10,
+      "inputTotal": 84892,
+      "outputTotal": 9770
+     },
+     "outputTokensPerSec": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+     },
+     "finishReasons": {
+      "stop": 10
+     },
+     "checksPassed": {
+      "pass": 42,
+      "n": 45
+     },
+     "json": {
+      "bare": {
+       "pass": 10,
+       "n": 10
+      },
+      "parses": {
+       "pass": 10,
+       "n": 10
+      },
+      "schemaFirstAttempt": {
+       "pass": 10,
+       "n": 10
+      },
+      "schemaAfterProductionRepair": {
+       "pass": 10,
+       "n": 10
+      }
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    }
+   }
+  },
+  "deepseek-flash": {
+   "model": "DeepSeek-V4.1-Flash-1017",
+   "mode": "off",
+   "all": {
+    "requests": 10,
+    "succeeded": 10,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 10,
+     "mean": 38372,
+     "median": 34044,
+     "min": 7887,
+     "max": 99480
+    },
+    "ttftMs": {
+     "n": 0,
+     "median": null,
+     "min": null,
+     "max": null
+    },
+    "tokens": {
+     "inputMean": 8450,
+     "outputMean": 1492,
+     "reasoningMean": 0,
+     "reasoningReported": 10,
+     "inputTotal": 84497,
+     "outputTotal": 14924
+    },
+    "outputTokensPerSec": {
+     "n": 0,
+     "median": null,
+     "min": null,
+     "max": null
+    },
+    "finishReasons": {
+     "stop": 10
+    },
+    "checksPassed": {
+     "pass": 45,
+     "n": 45
+    },
+    "json": {
+     "bare": {
+      "pass": 10,
+      "n": 10
+     },
+     "parses": {
+      "pass": 10,
+      "n": 10
+     },
+     "schemaFirstAttempt": {
+      "pass": 10,
+      "n": 10
+     },
+     "schemaAfterProductionRepair": {
+      "pass": 10,
+      "n": 10
+     }
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": []
+   },
+   "bySuite": {
+    "F": {
+     "requests": 10,
+     "succeeded": 10,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 10,
+      "mean": 38372,
+      "median": 34044,
+      "min": 7887,
+      "max": 99480
+     },
+     "ttftMs": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+     },
+     "tokens": {
+      "inputMean": 8450,
+      "outputMean": 1492,
+      "reasoningMean": 0,
+      "reasoningReported": 10,
+      "inputTotal": 84497,
+      "outputTotal": 14924
+     },
+     "outputTokensPerSec": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+     },
+     "finishReasons": {
+      "stop": 10
+     },
+     "checksPassed": {
+      "pass": 45,
+      "n": 45
+     },
+     "json": {
+      "bare": {
+       "pass": 10,
+       "n": 10
+      },
+      "parses": {
+       "pass": 10,
+       "n": 10
+      },
+      "schemaFirstAttempt": {
+       "pass": 10,
+       "n": 10
+      },
+      "schemaAfterProductionRepair": {
+       "pass": 10,
+       "n": 10
+      }
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    }
+   }
+  },
+  "gemma-distill": {
+   "model": "Gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled",
+   "mode": "off",
+   "all": {
+    "requests": 10,
+    "succeeded": 10,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 10,
+     "mean": 97419,
+     "median": 61289,
+     "min": 16034,
+     "max": 287275
+    },
+    "ttftMs": {
+     "n": 0,
+     "median": null,
+     "min": null,
+     "max": null
+    },
+    "tokens": {
+     "inputMean": 9561,
+     "outputMean": 1109,
+     "reasoningMean": 0,
+     "reasoningReported": 10,
+     "inputTotal": 95609,
+     "outputTotal": 11087
+    },
+    "outputTokensPerSec": {
+     "n": 0,
+     "median": null,
+     "min": null,
+     "max": null
+    },
+    "finishReasons": {
+     "stop": 9,
+     "length": 1
+    },
+    "checksPassed": {
+     "pass": 41,
+     "n": 44
+    },
+    "json": {
+     "bare": {
+      "pass": 9,
+      "n": 10
+     },
+     "parses": {
+      "pass": 9,
+      "n": 10
+     },
+     "schemaFirstAttempt": {
+      "pass": 9,
+      "n": 9
+     },
+     "schemaAfterProductionRepair": {
+      "pass": 9,
+      "n": 10
+     }
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": []
+   },
+   "bySuite": {
+    "F": {
+     "requests": 10,
+     "succeeded": 10,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 10,
+      "mean": 97419,
+      "median": 61289,
+      "min": 16034,
+      "max": 287275
+     },
+     "ttftMs": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+     },
+     "tokens": {
+      "inputMean": 9561,
+      "outputMean": 1109,
+      "reasoningMean": 0,
+      "reasoningReported": 10,
+      "inputTotal": 95609,
+      "outputTotal": 11087
+     },
+     "outputTokensPerSec": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+     },
+     "finishReasons": {
+      "stop": 9,
+      "length": 1
+     },
+     "checksPassed": {
+      "pass": 41,
+      "n": 44
+     },
+     "json": {
+      "bare": {
+       "pass": 9,
+       "n": 10
+      },
+      "parses": {
+       "pass": 9,
+       "n": 10
+      },
+      "schemaFirstAttempt": {
+       "pass": 9,
+       "n": 9
+      },
+      "schemaAfterProductionRepair": {
+       "pass": 9,
+       "n": 10
+      }
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    }
+   }
+  },
+  "gemma-it": {
+   "model": "Gemma-4-31B-it",
+   "mode": "off",
+   "all": {
+    "requests": 10,
+    "succeeded": 10,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 10,
+     "mean": 79878,
+     "median": 80969,
+     "min": 25856,
+     "max": 143904
+    },
+    "ttftMs": {
+     "n": 0,
+     "median": null,
+     "min": null,
+     "max": null
+    },
+    "tokens": {
+     "inputMean": 9561,
+     "outputMean": 972,
+     "reasoningMean": 0,
+     "reasoningReported": 10,
+     "inputTotal": 95609,
+     "outputTotal": 9716
+    },
+    "outputTokensPerSec": {
+     "n": 0,
+     "median": null,
+     "min": null,
+     "max": null
+    },
+    "finishReasons": {
+     "stop": 10
+    },
+    "checksPassed": {
+     "pass": 44,
+     "n": 45
+    },
+    "json": {
+     "bare": {
+      "pass": 10,
+      "n": 10
+     },
+     "parses": {
+      "pass": 10,
+      "n": 10
+     },
+     "schemaFirstAttempt": {
+      "pass": 10,
+      "n": 10
+     },
+     "schemaAfterProductionRepair": {
+      "pass": 10,
+      "n": 10
+     }
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": []
+   },
+   "bySuite": {
+    "F": {
+     "requests": 10,
+     "succeeded": 10,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 10,
+      "mean": 79878,
+      "median": 80969,
+      "min": 25856,
+      "max": 143904
+     },
+     "ttftMs": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+     },
+     "tokens": {
+      "inputMean": 9561,
+      "outputMean": 972,
+      "reasoningMean": 0,
+      "reasoningReported": 10,
+      "inputTotal": 95609,
+      "outputTotal": 9716
+     },
+     "outputTokensPerSec": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+     },
+     "finishReasons": {
+      "stop": 10
+     },
+     "checksPassed": {
+      "pass": 44,
+      "n": 45
+     },
+     "json": {
+      "bare": {
+       "pass": 10,
+       "n": 10
+      },
+      "parses": {
+       "pass": 10,
+       "n": 10
+      },
+      "schemaFirstAttempt": {
+       "pass": 10,
+       "n": 10
+      },
+      "schemaAfterProductionRepair": {
+       "pass": 10,
+       "n": 10
+      }
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    }
+   }
+  },
+  "qwen-flash": {
+   "model": "Qwen3.8-Flash-Next",
+   "mode": "off",
+   "all": {
+    "requests": 10,
+    "succeeded": 10,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 10,
+     "mean": 72705,
+     "median": 69424,
+     "min": 6051,
+     "max": 191344
+    },
+    "ttftMs": {
+     "n": 0,
+     "median": null,
+     "min": null,
+     "max": null
+    },
+    "tokens": {
+     "inputMean": 9549,
+     "outputMean": 1531,
+     "reasoningMean": 0,
+     "reasoningReported": 10,
+     "inputTotal": 95489,
+     "outputTotal": 15310
+    },
+    "outputTokensPerSec": {
+     "n": 0,
+     "median": null,
+     "min": null,
+     "max": null
+    },
+    "finishReasons": {
+     "stop": 9,
+     "length": 1
+    },
+    "checksPassed": {
+     "pass": 37,
+     "n": 41
+    },
+    "json": {
+     "bare": {
+      "pass": 9,
+      "n": 10
+     },
+     "parses": {
+      "pass": 9,
+      "n": 10
+     },
+     "schemaFirstAttempt": {
+      "pass": 9,
+      "n": 9
+     },
+     "schemaAfterProductionRepair": {
+      "pass": 10,
+      "n": 10
+     }
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": []
+   },
+   "bySuite": {
+    "F": {
+     "requests": 10,
+     "succeeded": 10,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 10,
+      "mean": 72705,
+      "median": 69424,
+      "min": 6051,
+      "max": 191344
+     },
+     "ttftMs": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+     },
+     "tokens": {
+      "inputMean": 9549,
+      "outputMean": 1531,
+      "reasoningMean": 0,
+      "reasoningReported": 10,
+      "inputTotal": 95489,
+      "outputTotal": 15310
+     },
+     "outputTokensPerSec": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+     },
+     "finishReasons": {
+      "stop": 9,
+      "length": 1
+     },
+     "checksPassed": {
+      "pass": 37,
+      "n": 41
+     },
+     "json": {
+      "bare": {
+       "pass": 9,
+       "n": 10
+      },
+      "parses": {
+       "pass": 9,
+       "n": 10
+      },
+      "schemaFirstAttempt": {
+       "pass": 9,
+       "n": 9
+      },
+      "schemaAfterProductionRepair": {
+       "pass": 10,
+       "n": 10
+      }
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    }
+   }
+  },
+  "mimo-flash": {
+   "model": "MiMo-V2.6-Flash-MOPD",
+   "mode": "off",
+   "all": {
+    "requests": 10,
+    "succeeded": 10,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 10,
+     "mean": 84716,
+     "median": 56411,
+     "min": 6149,
+     "max": 251407
+    },
+    "ttftMs": {
+     "n": 0,
+     "median": null,
+     "min": null,
+     "max": null
+    },
+    "tokens": {
+     "inputMean": 9390,
+     "outputMean": 1447,
+     "reasoningMean": 0,
+     "reasoningReported": 10,
+     "inputTotal": 93896,
+     "outputTotal": 14473
+    },
+    "outputTokensPerSec": {
+     "n": 0,
+     "median": null,
+     "min": null,
+     "max": null
+    },
+    "finishReasons": {
+     "stop": 10
+    },
+    "checksPassed": {
+     "pass": 44,
+     "n": 45
+    },
+    "json": {
+     "bare": {
+      "pass": 10,
+      "n": 10
+     },
+     "parses": {
+      "pass": 10,
+      "n": 10
+     },
+     "schemaFirstAttempt": {
+      "pass": 10,
+      "n": 10
+     },
+     "schemaAfterProductionRepair": {
+      "pass": 10,
+      "n": 10
+     }
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": []
+   },
+   "bySuite": {
+    "F": {
+     "requests": 10,
+     "succeeded": 10,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 10,
+      "mean": 84716,
+      "median": 56411,
+      "min": 6149,
+      "max": 251407
+     },
+     "ttftMs": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+     },
+     "tokens": {
+      "inputMean": 9390,
+      "outputMean": 1447,
+      "reasoningMean": 0,
+      "reasoningReported": 10,
+      "inputTotal": 93896,
+      "outputTotal": 14473
+     },
+     "outputTokensPerSec": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+     },
+     "finishReasons": {
+      "stop": 10
+     },
+     "checksPassed": {
+      "pass": 44,
+      "n": 45
+     },
+     "json": {
+      "bare": {
+       "pass": 10,
+       "n": 10
+      },
+      "parses": {
+       "pass": 10,
+       "n": 10
+      },
+      "schemaFirstAttempt": {
+       "pass": 10,
+       "n": 10
+      },
+      "schemaAfterProductionRepair": {
+       "pass": 10,
+       "n": 10
+      }
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    }
+   }
+  },
+  "gemma-writers": {
+   "model": "Gemma-4-31B-Writers-V2",
+   "mode": "off",
+   "all": {
+    "requests": 10,
+    "succeeded": 10,
+    "failed": 0,
+    "errors": [],
+    "retries": 0,
+    "latencyMs": {
+     "n": 10,
+     "mean": 84997,
+     "median": 70658,
+     "min": 38059,
+     "max": 183182
+    },
+    "ttftMs": {
+     "n": 0,
+     "median": null,
+     "min": null,
+     "max": null
+    },
+    "tokens": {
+     "inputMean": 9561,
+     "outputMean": 905,
+     "reasoningMean": 0,
+     "reasoningReported": 10,
+     "inputTotal": 95609,
+     "outputTotal": 9045
+    },
+    "outputTokensPerSec": {
+     "n": 0,
+     "median": null,
+     "min": null,
+     "max": null
+    },
+    "finishReasons": {
+     "stop": 10
+    },
+    "checksPassed": {
+     "pass": 43,
+     "n": 45
+    },
+    "json": {
+     "bare": {
+      "pass": 10,
+      "n": 10
+     },
+     "parses": {
+      "pass": 10,
+      "n": 10
+     },
+     "schemaFirstAttempt": {
+      "pass": 10,
+      "n": 10
+     },
+     "schemaAfterProductionRepair": {
+      "pass": 10,
+      "n": 10
+     }
+    },
+    "substitutionSuspected": 0,
+    "reasoningFields": []
+   },
+   "bySuite": {
+    "F": {
+     "requests": 10,
+     "succeeded": 10,
+     "failed": 0,
+     "errors": [],
+     "retries": 0,
+     "latencyMs": {
+      "n": 10,
+      "mean": 84997,
+      "median": 70658,
+      "min": 38059,
+      "max": 183182
+     },
+     "ttftMs": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+     },
+     "tokens": {
+      "inputMean": 9561,
+      "outputMean": 905,
+      "reasoningMean": 0,
+      "reasoningReported": 10,
+      "inputTotal": 95609,
+      "outputTotal": 9045
+     },
+     "outputTokensPerSec": {
+      "n": 0,
+      "median": null,
+      "min": null,
+      "max": null
+     },
+     "finishReasons": {
+      "stop": 10
+     },
+     "checksPassed": {
+      "pass": 43,
+      "n": 45
+     },
+     "json": {
+      "bare": {
+       "pass": 10,
+       "n": 10
+      },
+      "parses": {
+       "pass": 10,
+       "n": 10
+      },
+      "schemaFirstAttempt": {
+       "pass": 10,
+       "n": 10
+      },
+      "schemaAfterProductionRepair": {
+       "pass": 10,
+       "n": 10
+      }
+     },
+     "substitutionSuspected": 0,
+     "reasoningFields": []
+    }
+   }
+  }
+ },
+ "byCase": {
+  "F/F-brief": {
+   "qwen27b": [
+    {
+     "ok": true,
+     "ms": 5612,
+     "ttft": null,
+     "in": 541,
+     "out": 350,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-novelist": [
+    {
+     "ok": true,
+     "ms": 9543,
+     "ttft": null,
+     "in": 541,
+     "out": 319,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-moxie": [
+    {
+     "ok": true,
+     "ms": 13114,
+     "ttft": null,
+     "in": 541,
+     "out": 453,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "glm47": [
+    {
+     "ok": true,
+     "ms": 14661,
+     "ttft": null,
+     "in": 514,
+     "out": 284,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "deepseek-flash": [
+    {
+     "ok": true,
+     "ms": 16714,
+     "ttft": null,
+     "in": 517,
+     "out": 358,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-distill": [
+    {
+     "ok": true,
+     "ms": 22642,
+     "ttft": null,
+     "in": 546,
+     "out": 301,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-it": [
+    {
+     "ok": true,
+     "ms": 25856,
+     "ttft": null,
+     "in": 546,
+     "out": 325,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-flash": [
+    {
+     "ok": true,
+     "ms": 6051,
+     "ttft": null,
+     "in": 541,
+     "out": 342,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "mimo-flash": [
+    {
+     "ok": true,
+     "ms": 6149,
+     "ttft": null,
+     "in": 521,
+     "out": 403,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-writers": [
+    {
+     "ok": true,
+     "ms": 57565,
+     "ttft": null,
+     "in": 546,
+     "out": 241,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "F/F-plan": {
+   "qwen27b": [
+    {
+     "ok": true,
+     "ms": 33334,
+     "ttft": null,
+     "in": 1628,
+     "out": 1438,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-novelist": [
+    {
+     "ok": true,
+     "ms": 34969,
+     "ttft": null,
+     "in": 1628,
+     "out": 1192,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-moxie": [
+    {
+     "ok": true,
+     "ms": 46915,
+     "ttft": null,
+     "in": 1628,
+     "out": 1378,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "glm47": [
+    {
+     "ok": true,
+     "ms": 35808,
+     "ttft": null,
+     "in": 1571,
+     "out": 1184,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "deepseek-flash": [
+    {
+     "ok": true,
+     "ms": 61781,
+     "ttft": null,
+     "in": 1593,
+     "out": 1250,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-distill": [
+    {
+     "ok": true,
+     "ms": 55170,
+     "ttft": null,
+     "in": 1640,
+     "out": 1007,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-it": [
+    {
+     "ok": true,
+     "ms": 58673,
+     "ttft": null,
+     "in": 1640,
+     "out": 1253,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-flash": [
+    {
+     "ok": true,
+     "ms": 25367,
+     "ttft": null,
+     "in": 1628,
+     "out": 1412,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "mimo-flash": [
+    {
+     "ok": true,
+     "ms": 14677,
+     "ttft": null,
+     "in": 1591,
+     "out": 1253,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-writers": [
+    {
+     "ok": true,
+     "ms": 69284,
+     "ttft": null,
+     "in": 1640,
+     "out": 1177,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "F/F-select": {
+   "qwen27b": [
+    {
+     "ok": true,
+     "ms": 53259,
+     "ttft": null,
+     "in": 5134,
+     "out": 1606,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-novelist": [
+    {
+     "ok": true,
+     "ms": 49867,
+     "ttft": null,
+     "in": 5134,
+     "out": 1167,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-moxie": [
+    {
+     "ok": true,
+     "ms": 51041,
+     "ttft": null,
+     "in": 5134,
+     "out": 1117,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "glm47": [
+    {
+     "ok": true,
+     "ms": 44581,
+     "ttft": null,
+     "in": 4507,
+     "out": 1095,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "deepseek-flash": [
+    {
+     "ok": true,
+     "ms": 27887,
+     "ttft": null,
+     "in": 4457,
+     "out": 1283,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-distill": [
+    {
+     "ok": true,
+     "ms": 31062,
+     "ttft": null,
+     "in": 5088,
+     "out": 605,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-it": [
+    {
+     "ok": true,
+     "ms": 64347,
+     "ttft": null,
+     "in": 5088,
+     "out": 1324,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-flash": [
+    {
+     "ok": true,
+     "ms": 67290,
+     "ttft": null,
+     "in": 5134,
+     "out": 1521,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "mimo-flash": [
+    {
+     "ok": true,
+     "ms": 54043,
+     "ttft": null,
+     "in": 5083,
+     "out": 1130,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-writers": [
+    {
+     "ok": true,
+     "ms": 131492,
+     "ttft": null,
+     "in": 5088,
+     "out": 1227,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "F/F-synthesize": {
+   "qwen27b": [
+    {
+     "ok": true,
+     "ms": 71085,
+     "ttft": null,
+     "in": 14689,
+     "out": 1917,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-novelist": [
+    {
+     "ok": true,
+     "ms": 77671,
+     "ttft": null,
+     "in": 14689,
+     "out": 1938,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-moxie": [
+    {
+     "ok": true,
+     "ms": 66442,
+     "ttft": null,
+     "in": 14689,
+     "out": 1485,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "glm47": [
+    {
+     "ok": true,
+     "ms": 44803,
+     "ttft": null,
+     "in": 13079,
+     "out": 1465,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "deepseek-flash": [
+    {
+     "ok": true,
+     "ms": 99480,
+     "ttft": null,
+     "in": 12945,
+     "out": 3464,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-distill": [
+    {
+     "ok": true,
+     "ms": 214339,
+     "ttft": null,
+     "in": 14676,
+     "out": 4200,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "finish_stop": false,
+      "json_bare": false,
+      "json_parses_production": false
+     },
+     "checkDetails": {
+      "finish_stop": "finish=length",
+      "json_bare": "embedded object did not parse: Expected ',' or '}' after property value in JSON at position 3302 (line 72 column 4)",
+      "json_parses_production": "output was cut off at max_tokens"
+     },
+     "repair": {
+      "finish_stop": false,
+      "json_bare": false,
+      "json_parses_production": false
+     }
+    }
+   ],
+   "gemma-it": [
+    {
+     "ok": true,
+     "ms": 88201,
+     "ttft": null,
+     "in": 14676,
+     "out": 1058,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-flash": [
+    {
+     "ok": true,
+     "ms": 191344,
+     "ttft": null,
+     "in": 14689,
+     "out": 1823,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "mimo-flash": [
+    {
+     "ok": true,
+     "ms": 58778,
+     "ttft": null,
+     "in": 14461,
+     "out": 3092,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-writers": [
+    {
+     "ok": true,
+     "ms": 56895,
+     "ttft": null,
+     "in": 14676,
+     "out": 841,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "F/F-story": {
+   "qwen27b": [
+    {
+     "ok": true,
+     "ms": 39750,
+     "ttft": null,
+     "in": 14225,
+     "out": 1070,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": false,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {
+      "no_bare_numbers": "16 percent"
+     }
+    }
+   ],
+   "qwen-novelist": [
+    {
+     "ok": true,
+     "ms": 43093,
+     "ttft": null,
+     "in": 14225,
+     "out": 1379,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-moxie": [
+    {
+     "ok": true,
+     "ms": 39434,
+     "ttft": null,
+     "in": 14225,
+     "out": 1267,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": false,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {
+      "no_bare_numbers": "two percent"
+     }
+    }
+   ],
+   "glm47": [
+    {
+     "ok": true,
+     "ms": 48670,
+     "ttft": null,
+     "in": 12408,
+     "out": 822,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "deepseek-flash": [
+    {
+     "ok": true,
+     "ms": 46639,
+     "ttft": null,
+     "in": 12290,
+     "out": 1468,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-distill": [
+    {
+     "ok": true,
+     "ms": 67408,
+     "ttft": null,
+     "in": 14227,
+     "out": 750,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-it": [
+    {
+     "ok": true,
+     "ms": 73736,
+     "ttft": null,
+     "in": 14227,
+     "out": 822,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": false,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {
+      "no_bare_numbers": "2%"
+     }
+    }
+   ],
+   "qwen-flash": [
+    {
+     "ok": true,
+     "ms": 94653,
+     "ttft": null,
+     "in": 14225,
+     "out": 3600,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "length",
+     "checks": {
+      "finish_stop": false,
+      "json_bare": false,
+      "json_parses_production": false
+     },
+     "checkDetails": {
+      "finish_stop": "finish=length",
+      "json_bare": "embedded object did not parse: Expected ',' or ']' after array element in JSON at position 2932 (line 28 column 6)",
+      "json_parses_production": "output was cut off at max_tokens"
+     },
+     "repair": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": false,
+      "uses_fact_tokens": true
+     }
+    }
+   ],
+   "mimo-flash": [
+    {
+     "ok": true,
+     "ms": 163751,
+     "ttft": null,
+     "in": 13979,
+     "out": 1333,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-writers": [
+    {
+     "ok": true,
+     "ms": 72031,
+     "ttft": null,
+     "in": 14227,
+     "out": 718,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": false,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {
+      "no_bare_numbers": "20.7%, 20.7"
+     }
+    }
+   ]
+  },
+  "F/F-macro_analytics": {
+   "qwen27b": [
+    {
+     "ok": true,
+     "ms": 60911,
+     "ttft": null,
+     "in": 14992,
+     "out": 1832,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-novelist": [
+    {
+     "ok": true,
+     "ms": 72611,
+     "ttft": null,
+     "in": 14992,
+     "out": 1761,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-moxie": [
+    {
+     "ok": true,
+     "ms": 69415,
+     "ttft": null,
+     "in": 14992,
+     "out": 1996,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "glm47": [
+    {
+     "ok": true,
+     "ms": 123835,
+     "ttft": null,
+     "in": 13151,
+     "out": 1411,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "deepseek-flash": [
+    {
+     "ok": true,
+     "ms": 40201,
+     "ttft": null,
+     "in": 13035,
+     "out": 2289,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-distill": [
+    {
+     "ok": true,
+     "ms": 287275,
+     "ttft": null,
+     "in": 14984,
+     "out": 1210,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-it": [
+    {
+     "ok": true,
+     "ms": 143904,
+     "ttft": null,
+     "in": 14984,
+     "out": 1314,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-flash": [
+    {
+     "ok": true,
+     "ms": 49224,
+     "ttft": null,
+     "in": 14992,
+     "out": 1741,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": false,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {
+      "no_bare_numbers": "8%, 3%, quadrupled"
+     }
+    }
+   ],
+   "mimo-flash": [
+    {
+     "ok": true,
+     "ms": 251407,
+     "ttft": null,
+     "in": 14735,
+     "out": 1963,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-writers": [
+    {
+     "ok": true,
+     "ms": 105232,
+     "ttft": null,
+     "in": 14984,
+     "out": 1226,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "F/F-outlook": {
+   "qwen27b": [
+    {
+     "ok": true,
+     "ms": 72066,
+     "ttft": null,
+     "in": 14561,
+     "out": 1411,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": false,
+      "uses_fact_tokens": false
+     },
+     "checkDetails": {
+      "no_bare_numbers": "2%",
+      "uses_fact_tokens": "0 distinct tokens"
+     }
+    }
+   ],
+   "qwen-novelist": [
+    {
+     "ok": true,
+     "ms": 51979,
+     "ttft": null,
+     "in": 14561,
+     "out": 1203,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": false,
+      "uses_fact_tokens": false
+     },
+     "checkDetails": {
+      "no_bare_numbers": "2%, 3%",
+      "uses_fact_tokens": "0 distinct tokens"
+     }
+    }
+   ],
+   "qwen-moxie": [
+    {
+     "ok": true,
+     "ms": 79868,
+     "ttft": null,
+     "in": 14561,
+     "out": 2114,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": false,
+      "uses_fact_tokens": false
+     },
+     "checkDetails": {
+      "no_bare_numbers": "2%",
+      "uses_fact_tokens": "0 distinct tokens"
+     }
+    }
+   ],
+   "glm47": [
+    {
+     "ok": true,
+     "ms": 109984,
+     "ttft": null,
+     "in": 12737,
+     "out": 697,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": false,
+      "uses_fact_tokens": false
+     },
+     "checkDetails": {
+      "no_bare_numbers": "2.6%, 20.7%, 2.6, 20.7",
+      "uses_fact_tokens": "0 distinct tokens"
+     }
+    }
+   ],
+   "deepseek-flash": [
+    {
+     "ok": true,
+     "ms": 47266,
+     "ttft": null,
+     "in": 12611,
+     "out": 1794,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-distill": [
+    {
+     "ok": true,
+     "ms": 128221,
+     "ttft": null,
+     "in": 14564,
+     "out": 739,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": false
+     },
+     "checkDetails": {
+      "uses_fact_tokens": "0 distinct tokens"
+     }
+    }
+   ],
+   "gemma-it": [
+    {
+     "ok": true,
+     "ms": 105885,
+     "ttft": null,
+     "in": 14564,
+     "out": 687,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-flash": [
+    {
+     "ok": true,
+     "ms": 121645,
+     "ttft": null,
+     "in": 14561,
+     "out": 1643,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": false,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {
+      "no_bare_numbers": "3%"
+     }
+    }
+   ],
+   "mimo-flash": [
+    {
+     "ok": true,
+     "ms": 45982,
+     "ttft": null,
+     "in": 14319,
+     "out": 2071,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-writers": [
+    {
+     "ok": true,
+     "ms": 49559,
+     "ttft": null,
+     "in": 14564,
+     "out": 674,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": false,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {
+      "no_bare_numbers": "2%"
+     }
+    }
+   ]
+  },
+  "F/F-review": {
+   "qwen27b": [
+    {
+     "ok": true,
+     "ms": 7551,
+     "ttft": null,
+     "in": 7863,
+     "out": 170,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-novelist": [
+    {
+     "ok": true,
+     "ms": 9957,
+     "ttft": null,
+     "in": 7863,
+     "out": 177,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-moxie": [
+    {
+     "ok": true,
+     "ms": 26051,
+     "ttft": null,
+     "in": 7863,
+     "out": 691,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "glm47": [
+    {
+     "ok": true,
+     "ms": 54703,
+     "ttft": null,
+     "in": 7216,
+     "out": 513,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "deepseek-flash": [
+    {
+     "ok": true,
+     "ms": 7887,
+     "ttft": null,
+     "in": 7286,
+     "out": 607,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-distill": [
+    {
+     "ok": true,
+     "ms": 16034,
+     "ttft": null,
+     "in": 7959,
+     "out": 131,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-it": [
+    {
+     "ok": true,
+     "ms": 42163,
+     "ttft": null,
+     "in": 7959,
+     "out": 363,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-flash": [
+    {
+     "ok": true,
+     "ms": 13108,
+     "ttft": null,
+     "in": 7863,
+     "out": 322,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "mimo-flash": [
+    {
+     "ok": true,
+     "ms": 28018,
+     "ttft": null,
+     "in": 7703,
+     "out": 550,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-writers": [
+    {
+     "ok": true,
+     "ms": 38059,
+     "ttft": null,
+     "in": 7959,
+     "out": 526,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "F/F-repair": {
+   "qwen27b": [
+    {
+     "ok": true,
+     "ms": 53371,
+     "ttft": null,
+     "in": 13706,
+     "out": 1670,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": false,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {
+      "no_bare_numbers": "2%"
+     }
+    }
+   ],
+   "qwen-novelist": [
+    {
+     "ok": true,
+     "ms": 69401,
+     "ttft": null,
+     "in": 13706,
+     "out": 1667,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": false,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {
+      "no_bare_numbers": "2%"
+     }
+    }
+   ],
+   "qwen-moxie": [
+    {
+     "ok": true,
+     "ms": 60804,
+     "ttft": null,
+     "in": 13706,
+     "out": 1693,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "glm47": [
+    {
+     "ok": true,
+     "ms": 73453,
+     "ttft": null,
+     "in": 11911,
+     "out": 1576,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": false,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {
+      "no_bare_numbers": "2%"
+     }
+    }
+   ],
+   "deepseek-flash": [
+    {
+     "ok": true,
+     "ms": 17801,
+     "ttft": null,
+     "in": 11856,
+     "out": 1458,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-distill": [
+    {
+     "ok": true,
+     "ms": 97425,
+     "ttft": null,
+     "in": 13719,
+     "out": 1492,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-it": [
+    {
+     "ok": true,
+     "ms": 90566,
+     "ttft": null,
+     "in": 13719,
+     "out": 1689,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-flash": [
+    {
+     "ok": true,
+     "ms": 71558,
+     "ttft": null,
+     "in": 13706,
+     "out": 1703,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "mimo-flash": [
+    {
+     "ok": true,
+     "ms": 112643,
+     "ttft": null,
+     "in": 13514,
+     "out": 1545,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": false,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {
+      "no_bare_numbers": "2%"
+     }
+    }
+   ],
+   "gemma-writers": [
+    {
+     "ok": true,
+     "ms": 183182,
+     "ttft": null,
+     "in": 13719,
+     "out": 1727,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  },
+  "F/F-polish": {
+   "qwen27b": [
+    {
+     "ok": true,
+     "ms": 31903,
+     "ttft": null,
+     "in": 8150,
+     "out": 984,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-novelist": [
+    {
+     "ok": true,
+     "ms": 81207,
+     "ttft": null,
+     "in": 8150,
+     "out": 1207,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-moxie": [
+    {
+     "ok": true,
+     "ms": 44625,
+     "ttft": null,
+     "in": 8150,
+     "out": 989,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "glm47": [
+    {
+     "ok": true,
+     "ms": 48094,
+     "ttft": null,
+     "in": 7798,
+     "out": 723,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "deepseek-flash": [
+    {
+     "ok": true,
+     "ms": 18065,
+     "ttft": null,
+     "in": 7907,
+     "out": 953,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-distill": [
+    {
+     "ok": true,
+     "ms": 54611,
+     "ttft": null,
+     "in": 8206,
+     "out": 652,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-it": [
+    {
+     "ok": true,
+     "ms": 105448,
+     "ttft": null,
+     "in": 8206,
+     "out": 881,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "qwen-flash": [
+    {
+     "ok": true,
+     "ms": 86814,
+     "ttft": null,
+     "in": 8150,
+     "out": 1203,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "mimo-flash": [
+    {
+     "ok": true,
+     "ms": 111707,
+     "ttft": null,
+     "in": 7990,
+     "out": 1133,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ],
+   "gemma-writers": [
+    {
+     "ok": true,
+     "ms": 86669,
+     "ttft": null,
+     "in": 8206,
+     "out": 688,
+     "reasoning": 0,
+     "tps": null,
+     "finish": "stop",
+     "checks": {
+      "finish_stop": true,
+      "json_bare": true,
+      "json_parses_production": true,
+      "schema_valid": true,
+      "no_unknown_tokens": true,
+      "no_bare_numbers": true,
+      "uses_fact_tokens": true
+     },
+     "checkDetails": {}
+    }
+   ]
+  }
+ }
+}

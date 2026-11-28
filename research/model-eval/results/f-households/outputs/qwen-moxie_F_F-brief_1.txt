@@ -1,0 +1,22 @@
+{
+  "angle": "The story investigates the apparent disconnect between the reported decline in headline inflation and the persistent sense of high cost of living, exploring whether this gap reflects statistical distortion, entrenched price levels, or shifts in household spending patterns that are complicating wealth accumulation for ordinary people.",
+  "questions": [
+    "How do current headline inflation figures compare with the inflation rates for the specific categories of goods and services that dominate household budgets, such as housing, food, and utilities?",
+    "To what extent do structural factors, such as the base effect from previous price spikes or the persistence of high interest rates, explain why consumer prices remain elevated even as the rate of increase slows?",
+    "What do recent surveys of consumer sentiment and household balance sheets indicate about the impact of cumulative price increases on savings rates and debt levels?",
+    "How have shifts in consumer behaviour, such as the 'lipstick effect' or delayed major purchases, altered the trajectory of wealth building for different income groups since the peak of the inflation cycle?",
+    "Are there significant regional or demographic variations in the experience of high costs that are obscured by national-level inflation data?"
+  ],
+  "indicators": [
+    "Headline CPI",
+    "Core CPI",
+    "Shelter inflation",
+    "Food at home index",
+    "Consumer confidence index",
+    "Household savings rate",
+    "Consumer credit growth",
+    "Real median household income"
+  ],
+  "outlook": "The Outlook section should explore the conditions under which the perceived cost-of-living squeeze continues despite falling inflation rates, such as persistent wage-price dynamics or sticky service-sector prices. It should also examine the factors that could reverse this trend, including a significant acceleration in wage growth relative to prices or a structural shift in household spending towards lower-cost categories, and how these developments would affect the pace of wealth accumulation.",
+  "premise": "The idea assumes that headline inflation is currently on a downward trend and that there is a widespread perception among ordinary people that the cost of living remains disproportionately high. Research should first establish whether both conditions are supported by current economic data and consumer sentiment surveys."
+}

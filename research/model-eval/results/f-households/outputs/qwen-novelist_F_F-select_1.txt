@@ -1,0 +1,30 @@
+{
+  "series": [
+    {"candidate": "C1", "key": "cpiHeadline", "label": "US CPI (headline, all items)" , "reason": "Headline inflation measure to test the premise that official inflation is trending down and to compare against core measures."},
+    {"candidate": "C2", "key": "cpiCore", "label": "US CPI (core, ex food & energy)", "reason": "Core inflation to identify which categories are driving perceived persistence of high costs."},
+    {"candidate": "C8", "key": "corePCE", "label": "US Core PCE Price Index", "reason": "Alternative inflation measure preferred by the Federal Reserve for comparison."},
+    {"candidate": "C9", "key": "realMedianIncome", "label": "US Real Median Household Income", "reason": "To measure cumulative price increase relative to wage growth for median-income households."},
+    {"candidate": "C18", "key": "t10y", "label": "10-Year Treasury Yield", "reason": "To assess the current state of fixed-income returns and the risk-reward calculus for household portfolios."},
+    {"candidate": "C24", "key": "sp500", "label": "S&P 500 Index", "reason": "To evaluate the performance of equities after adjusting for inflation."},
+    {"candidate": "C25", "key": "consumerSentiment", "label": "University of Michigan Consumer Sentiment", "reason": "To gauge consumer sentiment and its correlation with spending habits."},
+    {"candidate": "C15", "key": "t10yReal", "label": "10-Year TIPS Real Yield", "reason": "To assess the real return on fixed-income assets after adjusting for inflation."},
+    {"candidate": "C16", "key": "mortgage30y", "label": "30-Year Fixed Mortgage Rate", "reason": "To examine the impact of high borrowing costs on household wealth accumulation and spending habits."},
+    {"candidate": "C26", "key": "usdIndex", "label": "Nominal Broad US Dollar Index", "reason": "To consider the effect of a strong dollar on imported goods prices and consumer purchasing power."}
+  ],
+  "derived": [
+    {"key": "cpiHeadlineYoY", "op": "yoy", "inputs": ["cpiHeadline"], "label": "Headline CPI YoY % change", "reason": "To directly measure the rate of headline inflation."},
+    {"key": "cpiCoreYoY", "op": "yoy", "inputs": ["cpiCore"], "label": "Core CPI YoY % change", "reason": "To directly measure the rate of core inflation."},
+    {"key": "corePCEYoY", "op": "yoy", "inputs": ["corePCE"], "label": "Core PCE YoY % change", "reason": "To directly measure the rate of core PCE inflation."},
+    {"key": "realMedianIncomeYoY", "op": "yoy", "inputs": ["realMedianIncome"], "label": "Real Median Household Income YoY % change", "reason": "To measure the rate of growth in real median household income."}
+  ],
+  "charts": [
+    {"id": "inflationTrend", "seriesKeys": ["cpiHeadlineYoY", "cpiCoreYoY", "corePCEYoY"], "from": "2019-01-01", "purpose": "Compare headline, core CPI, and core PCE inflation rates over time to see if they are trending down and to identify divergence."},
+    {"id": "incomeVsInflation", "seriesKeys": ["realMedianIncomeYoY", "cpiHeadlineYoY"], "from": "2019-01-01", "purpose": "Compare the growth rate of real median household income with headline inflation to see if wages are keeping up with prices."},
+    {"id": "assetReturns", "seriesKeys": ["sp500", "t10y", "t10yReal"], "from": "2019-01-01", "purpose": "Show the performance of equities and the yields on nominal and real fixed-income assets to assess wealth-building opportunities."},
+    {"id": "consumerSentiment", "seriesKeys": ["consumerSentiment", "mortgage30y"], "from": "2019-01-01", "purpose": "Correlate consumer sentiment with mortgage rates to see how borrowing costs affect consumer confidence and spending."},
+    {"id": "dollarEffect", "seriesKeys": ["usdIndex", "cpiHeadlineYoY"], "from": "2019-01-01", "purpose": "Examine the relationship between the strength of the US dollar and headline inflation to see if a strong dollar is contributing to lower prices."}
+  ],
+  "unmetNeeds": [
+    {"need": "Consumer Confidence Index", "why": "No suitable candidate dataset for the Consumer Confidence Index was found. The University of Michigan Consumer Sentiment index is a related but distinct measure."}
+  ]
+}

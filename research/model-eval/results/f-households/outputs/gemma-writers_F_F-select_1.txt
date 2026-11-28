@@ -1,0 +1,153 @@
+{
+  "series": [
+    {
+      "candidate": "C1",
+      "key": "cpi",
+      "label": "Consumer Price Index for All Urban Consumers"
+    ,
+      "reason": "Headline inflation measure."
+    },
+    {
+      "candidate": "C2",
+      "key": "coreCpi",
+      "label": "CPI Less Food and Energy"
+    ,
+      "reason": "Core inflation measure to compare with headline."
+    },
+    {
+      "candidate": "C4",
+      "key": "medianCpi",
+      "label": "Median Consumer Price Index"
+    ,
+      "reason": "Measures inflation for the median consumer, helping explain the perception gap."
+    },
+    {
+      "candidate": "C8",
+      "key": "corePce",
+      "label": "Core PCE Price Index"
+    ,
+      "reason": "Alternative core inflation measure preferred by the Fed."
+    },
+    {
+      "candidate": "C9",
+      "key": "realMedianIncome",
+      "label": "Real Median Household Income"
+    ,
+      "reason": "Measures wage growth relative to inflation for median households."
+    },
+    {
+      "candidate": "C11",
+      "key": "realMedianIncomeCa",
+      "label": "Real Median Household Income (California)"
+    ,
+      "reason": "Regional contrast: real income fell in CA."
+    },
+    {
+      "candidate": "C14",
+      "key": "realMedianIncomeNc",
+      "label": "Real Median Household Income (North Carolina)"
+    ,
+      "reason": "Regional contrast: real income rose significantly in NC."
+    },
+    {
+      "candidate": "C18",
+      "key": "treasury10y",
+      "label": "10-Year Treasury Yield"
+    ,
+      "reason": "Fixed income return benchmark."
+    },
+    {
+      "candidate": "C24",
+      "key": "sp500",
+      "label": "S&P 500 Index"
+    ,
+      "reason": "Equity return benchmark."
+    },
+    {
+      "candidate": "C25",
+      "key": "consumerSentiment",
+      "label": "University of Michigan Consumer Sentiment"
+    ,
+      "reason": "Measures consumer perception and confidence."
+    }
+  ],
+  "derived": [
+    {
+      "key": "cpiYoy",
+      "op": "yoy",
+      "inputs": [
+        "cpi"
+      ]
+    ,
+      "label": "CPI Year-over-Year % Change"
+    ,
+      "reason": "Converts CPI index to inflation rate for comparison."
+    },
+    {
+      "key": "coreCpiYoy",
+      "op": "yoy",
+      "inputs": [
+        "coreCpi"
+      ]
+    ,
+      "label": "Core CPI Year-over-Year % Change"
+    ,
+      "reason": "Converts Core CPI index to inflation rate for comparison."
+    },
+    {
+      "key": "corePceYoy",
+      "op": "yoy",
+      "inputs": [
+        "corePce"
+      ]
+    ,
+      "label": "Core PCE Year-over-Year % Change"
+    ,
+      "reason": "Converts Core PCE index to inflation rate for comparison."
+    }
+  ],
+  "charts": [
+    {
+      "id": "inflationComparison",
+      "seriesKeys": [
+        "cpiYoy",
+        "coreCpiYoy",
+        "corePceYoy"
+      ],
+      "from": "2020-01-01",
+      "purpose": "Compare headline and core inflation trends to verify if inflation is trending downward."
+    },
+    {
+      "id": "medianCpiTrend",
+      "seriesKeys": [
+        "medianCpi"
+      ],
+      "from": "2020-01-01",
+      "purpose": "Analyze the inflation rate experienced by the median consumer versus the average."
+    },
+    {
+      "id": "realIncomeRegional",
+      "seriesKeys": [
+        "realMedianIncome",
+        "realMedianIncomeCa",
+        "realMedianIncomeNc"
+      ],
+      "from": "2015-01-01",
+      "purpose": "Compare national real median income with contrasting regional experiences (CA vs NC)."
+    },
+    {
+      "id": "sentimentVsInflation",
+      "seriesKeys": [
+        "consumerSentiment"
+      ],
+      "from": "2020-01-01",
+      "purpose": "Track consumer sentiment alongside inflation trends to identify the perception gap."
+    }
+  ],
+  "unmetNeeds": [
+    {
+      "need": "S&P 500 Real Return",
+      "why": "No dataset provides the real (inflation-adjusted) return of the S&P 500 directly; only the nominal index is available."
+    }
+  ]
+}

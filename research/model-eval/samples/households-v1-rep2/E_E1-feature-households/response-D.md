@@ -1,0 +1,57 @@
+<!-- E/E1-feature-households · response D · blind sample -->
+
+# The Inflation Rate Fell. The Cost of Living Didn't.
+
+*Households were told prices were coming under control. But the price of borrowing never came back down — and now headline inflation is rising again.*
+
+In January 2026, consumer prices were rising at 2.4% a year, the lowest point of the last year. By September 2026, they were rising at 3.7%, up from 3.0% a year earlier. For anyone tracking the headlines, that is a story about a rate changing direction.
+
+It is not the story households are living.
+
+The price level itself — what things cost, as opposed to how fast those costs are climbing — is up 29.8% since January 2020. That is the number that shows up when someone compares a grocery receipt from 2019 to one from today, or when a renter looks at what a comparable apartment now costs. The rate of inflation falling does not undo it. It only means the climb is slower.
+
+And here is the part that should unsettle anyone who took comfort in the "inflation is falling" narrative: over that same period, from January 2020 to September 2026, average hourly earnings rose 33.2%. On average, pay has more than kept pace with prices. The squeeze people describe is not, on the averages, a story of wages losing to the grocery aisle.
+
+It is a story about the price of borrowing.
+
+## The ladder that moved
+
+A household that took out a 30-year fixed mortgage in January 2021 faced a rate of 2.74%. In October 2026, the rate was 7.33%. In October 2025, it had been 6.25%. The Federal Reserve, meanwhile, held its policy rate at 3.63% through August 2026 and has since raised it to 3.88%.
+
+None of this shows up in the CPI the way a loaf of bread does. But it is the mechanism by which the cost of getting onto the housing ladder — or moving up it — has changed, and it is why the squeeze people describe is less about the grocery bill alone than about the cost of entry. Someone who refinanced at the bottom has little reason to sell. Someone trying to buy now faces a monthly payment that a rate of 2.74% would have made far lighter.
+
+This is the lock-in: past borrowing costs get baked into the price of anything bought on credit, and they do not unbake when the inflation rate falls.
+
+## What the recent numbers say
+
+Core inflation, excluding food and energy, is 2.6%. Headline inflation is 3.7%. The gap matters: the recent rise is concentrated in food and energy, the purchases people notice most often. That is why the re-acceleration feels sharper than the core figure alone would suggest.
+
+Meanwhile, hourly earnings grew 3.2% in the year to September 2026 — slower than prices. After years in which pay kept pace, the average worker's pay is again losing purchasing power. The 33.2% cumulative gain since 2020 still stands, but the direction of travel has turned.
+
+Households are still spending. Real consumer spending is up 2.5% on a year earlier. But the personal saving rate fell from 4.9% in October 2025 to 4.1% in October 2026. Some of that spending is being financed by saving less — a trade-off that cannot continue indefinitely.
+
+Consumer sentiment tells the rest. The University of Michigan index read 48 in October 2026, against 71.7 in January 2025, and hit a low of 44.8 in May 2026 — the lowest reading since at least 2016 in our data. Unemployment is 4.1%. This is not a jobs story.
+
+The University of Michigan Surveys of Consumers has observed that "Since mid-2022, consumer sentiment has been moving more closely with sentiment regarding higher prices than with sentiment regarding income."
+
+## Why the level, not the rate
+
+The mechanism is worth stating plainly, because it is where most coverage of inflation goes wrong. The inflation rate is a derivative — the speed of the climb. The price level is the height already reached. Households live at the height.
+
+When the rate falls from 3.7% to 2.4%, prices are still rising, just more slowly. They do not return to where they were. A household whose pay rose 33.2% while prices rose 29.8% is, on average, ahead. But "on average" conceals the distribution: the brief does not establish which households are hit hardest, and there is no income-group or renter/owner breakdown here to say.
+
+What the evidence does show is that the cost of credit has not followed the cost of goods back down. The mortgage rate of 7.33% is a fact of the present, not a lagging indicator. And it compounds the re-acceleration in headline inflation: food and energy are rising faster again, while the price of borrowing sits where the Fed has put it.
+
+Mark Zandi of Moody's Analytics, quoted by CNBC, said that "Perhaps the largest contributor to the outsized inflation reading in Tuesday's CPI report was housing."
+
+Consumer-behaviour research has tracked how this plays out in practice: "Primarily, consumers started trading down, but as inflation's impact on consumers persisted, broader behaviors started to change; these included less frequent purchases, shifting from restaurants to eating at home."
+
+## What to watch
+
+The argument here is not that households are objectively worse off than in 2020 — on the averages, they are not. It is that the story told to them, that inflation is falling and therefore the pressure is easing, describes a different variable from the one they experience. The rate fell. The level did not. The cost of borrowing did not.
+
+Now the rate is rising again, from 2.4% in January 2026 to 3.7% by September. Whether that persists is not something the data in front of us can settle. Core inflation at 2.6% suggests the recent spike is concentrated in the volatile categories — but food and energy are precisely what people buy weekly, what they notice, what moves sentiment.
+
+Three things would tell us which way this is going. Whether core inflation follows headline up, or headline settles back toward core. Whether the saving rate stabilises at 4.1% or continues to fall, which would mean spending is increasingly funded by drawing down缓冲. And whether the Fed, having raised to 3.88%, holds — because the mortgage rate of 7.33% is downstream of that decision, and it is the mortgage rate that determines whether the ladder is climbable.
+
+The sentiment index at 48, against unemployment at 4.1%, is the contradiction worth sitting with. People are working. They do not feel ahead. The most likely explanation is not in the labour market at all — it is in the price level they cannot wish away and the borrowing costs that never came back.

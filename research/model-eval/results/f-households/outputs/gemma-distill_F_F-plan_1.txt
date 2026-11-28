@@ -1,0 +1,96 @@
+{
+  "workingTitle": "The Inflation Lag: Why Prices Feel High While Inflation Falls",
+  "section": "wealth",
+  "centralQuestion": "Why does the cost of living feel persistently high even as headline inflation declines, and how does this gap erode household wealth accumulation?",
+  "angle": "The disconnect between disinflation (slowing price growth) and price levels (cumulative increases) creates a psychological and financial trap for households whose wages haven't fully recovered real purchasing power.",
+  "whyReadersCare": "Readers see falling inflation headlines but unchanged high prices at the grocery store, leading to confusion about whether their financial strategies — from savings to investing — are still viable.",
+  "questions": [
+    "What is the current trend in headline vs. core inflation, and which categories remain elevated?",
+    "How does cumulative inflation since 2021 compare to cumulative median wage growth?",
+    "What is the current real return on cash savings and equities after inflation adjustment?",
+    "How has consumer sentiment diverged from official inflation prints?",
+    "Are spending patterns showing structural shifts toward discount brands or reduced discretionary spending?"
+  ],
+  "searches": [
+    {
+      "query": "current US headline vs core inflation trends 2025 2026",
+      "purpose": "Establish current inflation trajectory and category drivers",
+      "recent": true
+    },
+    {
+      "query": "cumulative inflation vs median wage growth US 2021-2026",
+      "purpose": "Quantify the real income gap",
+      "recent": true
+    },
+    {
+      "query": "consumer sentiment inflation perception gap survey 2025 2026",
+      "purpose": "Document the disconnect between data and perception",
+      "recent": true
+    },
+    {
+      "query": "real returns on S&P 500 and cash savings 2021-2026",
+      "purpose": "Assess wealth accumulation impact",
+      "recent": true
+    },
+    {
+      "query": "how disinflation differs from deflation explanation",
+      "purpose": "Mechanism explainer for the price level vs inflation rate distinction",
+      "recent": false
+    },
+    {
+      "query": "structural changes in consumer spending habits post-inflation 2024 2025",
+      "purpose": "Identify permanent shifts in consumption",
+      "recent": true
+    }
+  ],
+  "dataNeeds": [
+    {
+      "need": "Headline and Core CPI trends",
+      "why": "Verify inflation is actually falling",
+      "searchText": "Consumer Price Index for All Urban Consumers"
+    },
+    {
+      "need": "Median household income growth",
+      "why": "Compare wage recovery to price increases",
+      "searchText": "Median Weekly Earnings"
+    },
+    {
+      "need": "Real returns on equities",
+      "why": "Assess wealth building effectiveness",
+      "searchText": "S&P 500 real return inflation adjusted"
+    },
+    {
+      "need": "Real interest rates on savings",
+      "why": "Check if cash is still losing real value",
+      "searchText": "Real Interest Rate 10-Year Treasury"
+    },
+    {
+      "need": "Consumer confidence and inflation expectations",
+      "why": "Measure the perception gap",
+      "searchText": "University of Michigan Consumer Sentiment Inflation Expectations"
+    },
+    {
+      "need": "Food and shelter price indices",
+      "why": "Identify categories driving perceived cost of living",
+      "searchText": "CPI Food and CPI Shelter"
+    }
+  ],
+  "counterChecks": [
+    {
+      "premise": "Wages have caught up to inflation",
+      "contradictingEvidence": "Median real wages higher in 2026 than 2021",
+      "searchText": "Real Median Household Income"
+    },
+    {
+      "premise": "Prices are actually falling in key categories",
+      "contradictingEvidence": "Negative inflation in food or energy over recent quarters",
+      "searchText": "CPI Food and Energy monthly"
+    },
+    {
+      "premise": "Wealth accumulation is accelerating",
+      "contradictingEvidence": "Real household net worth increasing faster than pre-2021 trend",
+      "searchText": "Real Household Net Worth"
+    }
+  ],
+  "storyboardConcern": ""
+}

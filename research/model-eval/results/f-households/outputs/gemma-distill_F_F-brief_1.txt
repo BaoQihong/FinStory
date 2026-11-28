@@ -1,0 +1,20 @@
+{
+  "angle": "The disconnect between decelerating inflation rates and the cumulative price levels that erode real income and complicate wealth accumulation for retail investors.",
+  "questions": [
+    "How do cumulative price increases since 2020 compare across essential expenditure categories?",
+    "To what extent have nominal wage growth rates lagged behind cumulative inflation in major economies?",
+    "What is the current real value of median household savings after adjusting for cumulative inflation?",
+    "Which asset classes have historically outpaced cumulative inflation during periods of decelerating price growth?",
+    "How does the current price plateau affect the debt-servicing capacity of average households?"
+  ],
+  "indicators": [
+    "CPI",
+    "Real median household income",
+    "S&P 500 real returns",
+    "10-year Treasury inflation-protected securities",
+    "Global real wage growth",
+    "Housing affordability index"
+  ],
+  "outlook": "Explore scenarios where sustained price plateaus permanently reset living standards versus scenarios where real wage growth recovers purchasing power. Examine how prolonged restrictive monetary policy might either accelerate or hinder the return to affordable price levels.",
+  "premise": "The idea assumes that inflation is decelerating while price levels remain elevated, and that this creates a barrier to wealth building. Research should first establish whether inflation rates are indeed falling and whether cumulative price increases have outpaced income growth."
+}

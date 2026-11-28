@@ -1,0 +1,39 @@
+# Outlook: A Late-Cycle Squeeze
+
+The table describes an economy that has stopped easing. The effective fed funds rate fell from 4.09% in October 2025 to 3.63% by May 2026 and has since edged back up to 3.88%. Over the same twelve months the 2-year yield rose from 3.52% to 4.74% and the 10-year from 4.06% to 5.13%. The 30-year mortgage rate went from 6.25% to 7.33%. Headline CPI inflation, 2.70% in November 2025, reached 4.17% in May 2026 and was 3.72% in September. Core inflation has been far steadier, between 2.45% and 2.82%. Unemployment has drifted down from 4.5% to 4.1%, payrolls have grown in most months, and real consumer spending has held between roughly 1.5% and 2.8%. Consumer sentiment, however, fell from 56.6 in February to 44.8 in May and was 48.0 in October. The saving rate fell from 5.6% in January to 3.6% in September. The S&P 500 rose from 6840 in October 2025 to 7686 in August 2026, then eased to 7580 in October.
+
+The central puzzle is a rise in long yields and mortgage rates while the policy rate is roughly flat and core inflation is contained. The likeliest reading is that markets are repricing term premium and inflation risk, not growth. The scenarios below are conditional, not forecasts.
+
+## Base case: sticky inflation, higher-for-longer long rates
+
+**Conditions.** Headline inflation settles in the 3–4% range as the May spike fades, core stays near 2.5%, payroll growth continues at the recent pace, and unemployment holds near 4.1–4.2%. The Fed leaves the funds rate close to its current level.
+
+**Transmission.** Long yields stay elevated because inflation risk and fiscal supply keep term premium up. Mortgage rates near 7% ration housing demand and slow residential construction. Firms absorb higher wage costs (3.1–3.9% growth) partly through margins. Households keep spending by drawing down saving, which is already at 3.6%.
+
+**Asset implications.** Treasuries: the front end is anchored, the long end stays under pressure and the curve remains steep. Equities: earnings hold up, but higher discount rates cap multiples; sentiment at 48 suggests fragile risk appetite. Housing: activity stays weak, with transactions and refinancing subdued. Dollar: supported by a wide rate differential and a Fed that is not cutting. Cash savers: the clearest winners, with money-market yields near the funds rate.
+
+**What would invalidate it.** Core inflation moving decisively above roughly 3% or below 2%; a sustained break in the payroll trend; a sharp move in the 10-year yield away from the 4–5% band; or a visible collapse in real spending growth.
+
+## Upside scenario: disinflation resumes and the term premium fades
+
+**Conditions.** Headline inflation returns toward the core rate, core drifts to the low end of its recent range, payroll growth continues without a wage acceleration, and the Fed can ease again.
+
+**Transmission.** Falling inflation expectations pull long yields down, mortgage rates follow, and housing turnover and construction recover. Lower discount rates lift equity valuations, and the dollar softens as rate differentials narrow.
+
+**Asset implications.** Treasuries: the long end rallies most, and the curve flattens. Equities: broad gains, with rate-sensitive and small-cap names leading. Housing: the most direct beneficiary, through affordability and refinancing. Dollar: weaker. Cash savers: yields fall, so the advantage of holding cash erodes.
+
+**What would invalidate it.** Core inflation failing to follow headline lower; a renewed rise in the 2-year yield above its recent highs; mortgage rates staying near 7% despite lower long yields; or sentiment failing to recover from its low levels.
+
+## Downside scenario: inflation shock meets a stretched consumer
+
+**Conditions.** Headline inflation stays near or above 4%, core drifts up, and the saving rate near 3.6% proves unsustainable. Real spending growth slows, sentiment stays depressed, and the Fed is caught between inflation and weakening demand.
+
+**Transmission.** If the Fed holds or tightens, long yields rise further and mortgage rates move above 7.3%, deepening the housing slump. If it cuts into inflation, inflation expectations rise and the long end sells off anyway. Either way, the consumer retrenches, and equity earnings estimates come under pressure.
+
+**Asset implications.** Treasuries: the front end may rally on growth fears, but the long end is exposed to inflation risk; the curve steepens sharply. Equities: the most vulnerable asset, with multiple compression and earnings downgrades. Housing: activity falls further, and credit stress among recent buyers rises. Dollar: ambiguous, supported by safe-haven flows but undermined by inflation. Cash savers: real returns are eroded by inflation even as nominal yields rise.
+
+**What would invalidate it.** Core inflation falling back toward 2.5%; the saving rate stabilizing or rising without a spending collapse; payroll growth holding up; or long yields falling despite elevated headline inflation.
+
+## The uncertainties that matter most
+
+First, whether the May headline spike was a one-off or the start of a persistent shift; the gap between headline and core is the single most important signal. Second, the consumer: a 3.6% saving rate with sentiment near 48 is a thin buffer, and the data cannot tell us whether spending is being financed by income or by drawdown. Third, the term premium: the table shows long yields rising while the policy rate is flat, but it cannot tell us whether that reflects inflation risk, fiscal supply, or growth expectations. Fourth, the labor market: unemployment at 4.1% with steady payroll growth looks tight, but the table does not show participation, hours, or the composition of hiring. Finally, the missing October CPI and unemployment readings mean the most recent month is incomplete, and the September-to-October moves should be read with that caveat.

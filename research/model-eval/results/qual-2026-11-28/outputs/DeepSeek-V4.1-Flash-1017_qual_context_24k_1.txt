@@ -1,0 +1,5 @@
+<<<REASONING (reasoning)>>>
+We need answer code only. Need locate note: "archive reference code for this document is MAGENTA-4471." So answer MAGENTA-4471.
+<<<END REASONING>>>
+
+MAGENTA-4471

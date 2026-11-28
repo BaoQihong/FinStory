@@ -1,0 +1,47 @@
+## What the pattern could mean
+
+The combination is real but not self-explanatory: inflation has fallen from around 3% to roughly 2.3–2.7% (headline) and from about 3.3% to 2.8–2.9% (core), the policy rate has settled at 4.33% after cuts in late 2024, real consumer spending growth has decelerated from above 3% to around 2.5%, and the University of Michigan index has dropped from the mid-70s to the low 50s. Unemployment has been broadly stable at 4.0–4.3%. Several distinct stories fit this picture, and the table alone cannot adjudicate among them.
+
+**One explanation is that restrictive policy is working with a lag.** Inflation is falling, spending is slowing, and confidence is weakening—the standard sequence of a disinflation engineered through demand restraint. Under this reading, the labour market's stability is a lagging indicator that will eventually give way. What would distinguish it: rising unemployment claims, widening labour market slack (job openings-to-unemployed ratio falling), slower wage growth, and continued deceleration in real spending over the next two to three quarters.
+
+**A second explanation is that the confidence collapse is not primarily about current economic conditions.** The Michigan series can move sharply on expectations rather than current assessments, and it is known to be politically sensitive—partisans' views diverge around elections and policy announcements. The timing here (a steep fall from January through April 2025, coinciding with a change in US administration and tariff announcements) is consistent with an expectations shock driven by policy uncertainty rather than a deterioration in households' present finances. To distinguish this: examine the Michigan survey's current-conditions versus expectations sub-indices separately, and look at partisan breakdowns. If current conditions remain relatively firm while expectations crater, the confidence data are telling us about anticipated policy, not present hardship.
+
+**A third is that the burden of high rates is unevenly distributed, so aggregate data mask real distress.** Households with fixed-rate mortgages, substantial cash balances, or no debt are insulated—or are earning more on savings. Renters, recent mortgage entrants, small businesses dependent on floating-rate credit, and highly leveraged households face the full brunt. Under this story, the aggregate saving rate (5.5–6.2%) and spending growth can look healthy while particular cohorts are squeezed. Distinguishing evidence: delinquency rates by loan type and credit score, credit card and auto loan arrears, small business lending standards and loan performance, and homeownership-cohort consumption patterns.
+
+**A fourth is that spending is being sustained by wealth and residual pandemic-era buffers rather than income.** Equity and housing wealth have been strong; excess savings may persist for some households. If so, spending growth is being financed by balance sheets that are not visible in the income data, and would be vulnerable to an asset-price correction or to the exhaustion of buffers. Tests: distributional measures of liquid assets by income quintile, household debt-service ratios, and consumption growth split by wealth percentile.
+
+## Channels of transmission
+
+The effective federal funds rate at 4.33% is transmitted through several routes, and the table suggests they are operating unevenly.
+
+The mortgage channel is visibly impaired as a transmission mechanism: the 30-year rate has stayed between 6.18% and 6.96% even as the policy rate fell by a full percentage point. Existing homeowners locked into low rates do not experience tightening; marginal buyers and renters face the full cost. This "lock-in" effect means monetary policy is reaching the housing market through new transactions rather than the stock of outstanding mortgages—so its aggregate bite is smaller than the rate level implies.
+
+The Treasury-yield channel has also partly offset the cuts: the 10-year rose from 3.72% in September 2024 to 4.28–4.63% in early 2025 before easing to 4.38%. Long rates matter more for investment and refinancing than the policy rate does. Their rise while the policy rate fell suggests either term-premium pressures, fiscal concerns, or expectations of stronger growth/inflation—none of which the table can distinguish.
+
+The income channel is working through employment rather than layoffs: unemployment has barely moved, and nominal wage growth remains near 3.9–4.2%. With headline inflation around 2.4–2.7%, real wages are still rising modestly. This supports spending even as confidence falls—which is precisely why the confidence data deserve suspicion as a leading indicator of consumption.
+
+The savings channel is ambiguous. A personal saving rate of 5.5–6.2% is not obviously depressed, but the table does not show its distribution or whether it reflects precautionary behaviour by higher-income households.
+
+## What the conventional reading misses
+
+The standard narrative—"inflation falling, rates high, confidence down, economy slowing"—treats these series as a coherent causal chain. Three cautions.
+
+First, the confidence collapse is large relative to any change in current conditions. Unemployment is flat, real wages are rising, and spending growth, while slower, remains positive at 2.4–2.5%. A confidence fall of this magnitude without corresponding deterioration in labour market or income data suggests the index is capturing expectations about future policy (tariffs, fiscal changes, institutional uncertainty) rather than present economic pain. Reading it as a recession signal risks a false positive.
+
+Second, the inflation decline may not be attributable to demand restraint. Falling goods prices, normalising supply chains, and base effects can all contribute. Core CPI's decline from 3.3% to 2.77% is meaningful, but without decomposition into shelter, services, and goods, we cannot say whether the disinflation reflects the policy rate's work or exogenous factors.
+
+Third, the data do not show whether the economy is at or past the inflection point. Spending growth of 2.44–2.50% in May–June is the slowest in the sample, but a single deceleration is not a trend. The absence of rising unemployment means the "hard landing" interpretation is not yet supported.
+
+## What to test next
+
+**Hypothesis 1: The confidence decline is driven by expectations about policy, not current conditions.** Test with the Michigan survey's current-conditions and expectations components separately, plus partisan sub-indices. If current conditions hold up while expectations fall, the confidence data are not a consumption signal.
+
+**Hypothesis 2: High rates are creating distributional stress invisible in aggregates.** Test with the New York Fed's Household Debt and Credit Report (delinquencies by loan type and vintage), the Fed's Senior Loan Officer Opinion Survey (tightening standards), and the Fed's Distributional Financial Accounts (wealth and debt by percentile).
+
+**Hypothesis 3: Spending is being sustained by wealth effects or buffers, not income growth.** Test with the Financial Accounts of the United States (household wealth), BEA distributional personal income and outlays, and retail sales split by discretionary versus necessity categories.
+
+**Hypothesis 4: The rise in long rates reflects fiscal or term-premium concerns rather than growth expectations.** Test with the Treasury's daily yield curve data decomposed into expected short rates and term premia (using ACM or Kim-Wright estimates), alongside federal deficit and issuance data.
+
+**Hypothesis 5: Disinflation is substantially supply-driven rather than demand-driven.** Test with CPI decomposition (shelter versus goods versus services), the Cleveland Fed's trimmed-mean measure, and import price indices excluding fuels.
+
+The story is not simply "the Fed is holding too tight." It is that aggregate stability may be coexisting with distributional strain, expectations-driven pessimism, and a transmission mechanism partially short-circuited by mortgage lock-in and rising long rates. The next set of data should determine which of these is doing the work.

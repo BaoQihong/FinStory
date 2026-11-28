@@ -1,0 +1,48 @@
+{
+  "kicker": "Inflation",
+  "headline": "The Inflation Rate Is Falling. Your Wallet Is Not.",
+  "dek": "Official metrics suggest prices are cooling, but the cumulative cost of the last five years has outpaced real wage growth, leaving the median household feeling squeezed despite improving nominal figures.",
+  "keyPoints": [
+    "Core inflation has risen far faster than real median household income over the past five years.",
+    "Consumer sentiment has fallen sharply, now tracking price perceptions more closely than income growth.",
+    "Sticky costs in housing and medical care are driving the disconnect between headline rates and daily experience."
+  ],
+  "blocks": [
+    {
+      "type": "p",
+      "text": "The headline numbers tell a story of relief. Inflation is down from its peaks, and the Federal Reserve is watching the decline with cautious optimism. But for the person paying the rent, buying the groceries, or refancing the mortgage, the relief has not arrived. The disconnect is not a matter of perception error; it is a mathematical reality. While the annual rate of price increase has slowed, the cumulative price level is still significantly higher than it was five years ago, and wages have not kept pace."
+    },
+    {
+      "type": "p",
+      "text": "Consider the gap between the official data and the lived experience. Over the past five years, core CPI has risen {cpiCoreChg5y}. In that same period, real median household income grew by only {realMedianIncomeChg5y}. That is a gap of roughly 16 percentage points. For the median household, the cost of living has climbed far faster than their purchasing power. This is not a temporary blip; it is a structural shift in the cost base that no single pay raise can easily offset."
+    },
+    {
+      "type": "p",
+      "text": "This divergence is visible in the behavior of consumers. The University of Michigan Consumer Sentiment Index has fallen {consumerSentimentChg5y} over the same five-year window. It is now at {consumerSentimentLatest}, a level that reflects a deepening pessimism about financial prospects. Notably, sentiment is now more closely correlated with perceptions of high prices than with income growth. When people feel that their money buys less, they stop spending, regardless of what the nominal wage slip says."
+    },
+    {
+      "type": "pullquote",
+      "text": "The cost of living has climbed far faster than purchasing power."
+    },
+    {
+      "type": "p",
+      "text": "Why does the feeling persist even as the headline rate drops? The answer lies in the composition of the inflation basket. Housing and medical care are the two most significant components of the core index, and they are the most sticky. Owners' equivalent rent and medical services have continued to post monthly increases that outpace the broader index. These are not items people can easily trade down on; they are fixed costs that anchor the monthly budget. When the most expensive parts of the basket remain inflated, the average feels inflated, even if the rate of increase is slowing."
+    },
+    {
+      "type": "p",
+      "text": "This has direct consequences for wealth accumulation. Real returns on equities have compressed, with the S&P 500's year-over-year real return falling by {sp500RealReturnChg1y} over the last year. The traditional strategy of saving and investing in stocks is less effective when the hurdle rate of inflation remains elevated. For the median household, the path to building wealth has become steeper, not because the economy is shrinking, but because the cost of entry has risen faster than the returns on the assets used to climb it."
+    },
+    {
+      "type": "p",
+      "text": "The common view that inflation is 'over' or 'under control' misses the point. The rate of change is not the same as the level of prices. A car slowing down is still moving forward. For the household trying to rebuild savings, the cumulative price increase is the relevant metric, not the monthly deceleration. Until real wages catch up to the new price baseline, the feeling of being squeezed will persist, and it will continue to shape spending habits and investment decisions."
+    },
+    {
+      "type": "p",
+      "text": "The question is not whether inflation is falling, but whether it is falling fast enough to close the gap with wage growth. If the gap persists, the structural shift in consumer spending—trading down, delaying purchases, prioritizing essentials over discretionary items—will become the new normal. The next few months will show whether the base effects fade and the perception gap narrows, or if the sticky costs in housing and services keep the median household in a state of financial tension."
+    }
+  ],
+  "attention": {
+    "required": false,
+    "reasons": []
+  }
+}

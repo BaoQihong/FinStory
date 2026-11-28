@@ -1,0 +1,59 @@
+{
+  "kicker": "Inflation",
+  "headline": "Inflation Is Cooling. Your Grocery Bill Didn't Get the Memo.",
+  "dek": "Headline inflation has come down from its 2022 peaks, but five years of cumulative price increases have outrun real wage growth for the median household. That gap, not the monthly rate, is what people are feeling.",
+  "keyPoints": [
+    "Core inflation has moderated but remains above target, and the price level itself has not fallen — it keeps setting new highs.",
+    "Over five years, core consumer prices rose {cpiCoreChg5y} while real median household income grew just {realMedianIncomeChg5y}, leaving households materially behind.",
+    "Consumer sentiment has fallen {consumerSentimentChg5y} over five years, and the gap between official data and lived experience is now the central political and financial fact of the economy.",
+    "Equity real returns have compressed, with the S&P 500's year-over-year real return falling {sp500RealReturnChg1y} over the past year."
+  ],
+  "blocks": [
+    {
+      "type": "p",
+      "text": "The inflation debate has been won by the optimists, and they are right on the narrow question. Headline consumer prices rose {cpiHeadlineChg1y} over the past year, and core PCE — the Federal Reserve's preferred gauge — rose {corePCEChg1y}. Both are down from the double-digit panic of 2022. The monthly data no longer scream. And yet the University of Michigan's consumer sentiment index sits at {consumerSentimentLatest}, down {consumerSentimentChg5y} over five years and {consumerSentimentChg1y} over the past year alone. Something is wrong with the way we are reading the numbers, or with the numbers themselves."
+    },
+    {
+      "type": "p",
+      "text": "The resolution is simpler than it looks. Inflation is a rate of change; prices are a level. The rate has fallen. The level has not. Core CPI has risen {cpiCoreChg5y} over the past five years and core PCE {corePCEChg5y}, and both indices stand at their highest levels in the data we have. A household does not experience a second derivative. It experiences the checkout counter, the rent renewal, the insurance premium. When the rate of increase slows, prices stop rising as fast — they do not fall. The improvement is real but invisible to anyone who is not a bond trader."
+    },
+    {
+      "type": "p",
+      "text": "Now set that against income. Real median household income — inflation-adjusted, so the comparison is fair — rose {realMedianIncomeChg5y} over the same five years. Core prices rose {cpiCoreChg5y}. The gap is not a rounding error. It is the difference between a household that feels it is catching up and one that knows it is not. And the most recent year offers little relief: real median income grew {realMedianIncomeChg1y}, while headline prices rose {cpiHeadlineChg1y}. The median household lost ground again."
+    },
+    {
+      "type": "chart",
+      "chartId": "incomeVsInflation",
+      "question": "Real median household income has grown far more slowly than consumer prices over the past five years.",
+      "takeaway": "The cumulative gap between price increases and real income growth is the source of the persistent squeeze — not the monthly inflation rate."
+    },
+    {
+      "type": "p",
+      "text": "This is where the standard commentary goes wrong. It treats sentiment as a lagging indicator that will snap back once people 'realise' inflation has fallen. But sentiment is not tracking the inflation rate. It is tracking the price level relative to income, and that ratio has not improved. The University of Michigan index has been lower in the past year — it hit {consumerSentimentLow1y} in May — but it has not recovered to anything resembling its five-year high of {consumerSentimentHigh5y}. The public is not irrational. It is doing arithmetic."
+    },
+    {
+      "type": "pullquote",
+      "text": "A household does not experience a second derivative. It experiences the checkout counter."
+    },
+    {
+      "type": "p",
+      "text": "The wealth-building implications are uncomfortable. The S&P 500 has returned {sp500Chg5y} over five years in nominal terms, which sounds like a triumph until you adjust for inflation. The index's year-over-year real return — the return after subtracting inflation — was {sp500RealReturnLatest} in November, down {sp500RealReturnChg1y} from a year earlier and the lowest since {sp500RealReturnLowestSince}. The 10-year Treasury yield has risen {t10yYieldChg5y} over five years to {t10yYieldLatest}, which helps savers in nominal terms but does not undo the cumulative loss of purchasing power. The old advice — buy equities, hold bonds, wait — is not wrong, but it has been less effective than the nominal numbers suggest."
+    },
+    {
+      "type": "p",
+      "text": "There is a complicating fact the pessimists should acknowledge. Real median household income in 2025 stands at {realMedianIncomeLatest}, the highest in our data, and it has risen in four of the past five years. The trajectory is not one of unrelenting decline. The problem is the starting point: the cumulative gap is so large that even a good year like 2025 does not close it. The level matters more than the direction, at least for now."
+    },
+    {
+      "type": "p",
+      "text": "The question for the next few years is whether that gap narrows. It could, if wage growth continues to outpace inflation and the base effects of the 2022 surge finally fade. It might not, if housing and services costs — the stickiest components — keep rising faster than incomes. The answer will determine not just how people feel, but whether the current mood hardens into a permanent shift in how households save, spend and invest. That is the subject of the sections that follow."
+    }
+  ],
+  "attention": {
+    "required": true,
+    "reasons": [
+      "The dataset lacks category-level inflation breakdowns (housing, medical, food) over the full five-year period, so the claim about sticky services driving the perception gap rests on recent monthly data (S8, S10) and context, not long-run tokens.",
+      "No data on consumer saving rates over time, so the shift in saving habits can only be described qualitatively from S2 and S13, not quantified.",
+      "No data on real returns for fixed income, so the bond comparison is limited to nominal yield changes."
+    ]
+  }
+}

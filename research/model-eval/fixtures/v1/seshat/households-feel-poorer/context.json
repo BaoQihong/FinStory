@@ -1,0 +1,429 @@
+{
+ "subject": "households-feel-poorer",
+ "capturedAt": "2026-11-28T07:06:26.429Z",
+ "article": {
+  "id": "cfd2cbb8-435b-45ae-9b96-e90fb1d70bf5",
+  "revision": 3,
+  "workingTitle": "The Inflation Illusion: Why Falling Rates Haven't Fixed Your Budget"
+ },
+ "jobId": "6046c567-2411-4f04-9969-11f890d738ba",
+ "asOf": "2026-11-25",
+ "styleGuideVersion": "2026-11-27.2",
+ "promptSha256": {
+  "plan": "558f4cebeb6832e7",
+  "select": "7ddab107225a9aae",
+  "synthesize": "dc88b6e9040ed2f7",
+  "story": "532a5688e66fd10e",
+  "macro_analytics": "fc293d3735331cd0",
+  "outlook": "63c19e2e4dfa6f7e",
+  "review": "555eb381931d8080",
+  "repair": "9403124b92db3531",
+  "brief": "cf9875bbd642d523",
+  "polish": "3e72c729f39336e3"
+ },
+ "facts": {
+  "sp500Chg1y": {
+   "date": "2026-11-24"
+  },
+  "sp500Chg5y": {
+   "date": "2026-11-24"
+  },
+  "sp500Low1y": {
+   "date": "2026-03-30"
+  },
+  "sp500Low5y": {
+   "date": "2022-10-12"
+  },
+  "sp500High1y": {
+   "date": "2026-10-06"
+  },
+  "sp500High5y": {
+   "date": "2026-10-06"
+  },
+  "sp500Latest": {
+   "date": "2026-11-24"
+  },
+  "sp500LowAll": {
+   "date": "2016-12-01"
+  },
+  "corePCEChg1y": {
+   "date": "2026-10-01"
+  },
+  "corePCEChg5y": {
+   "date": "2026-10-01"
+  },
+  "corePCELow1y": {
+   "date": "2025-10-01"
+  },
+  "corePCELow5y": {
+   "date": "2021-10-01"
+  },
+  "cpiCoreChg1y": {
+   "date": "2026-10-01"
+  },
+  "cpiCoreChg5y": {
+   "date": "2026-10-01"
+  },
+  "cpiCoreLow1y": {
+   "date": "2025-11-01"
+  },
+  "cpiCoreLow5y": {
+   "date": "2021-10-01"
+  },
+  "sp500HighAll": {
+   "date": "2026-10-06"
+  },
+  "sp500YearAgo": {
+   "date": "2025-11-24"
+  },
+  "corePCEHigh1y": {
+   "date": "2026-10-01"
+  },
+  "corePCEHigh5y": {
+   "date": "2026-10-01"
+  },
+  "corePCELatest": {
+   "date": "2026-10-01"
+  },
+  "corePCELowAll": {
+   "date": "2014-01-01"
+  },
+  "cpiCoreHigh1y": {
+   "date": "2026-10-01"
+  },
+  "cpiCoreHigh5y": {
+   "date": "2026-10-01"
+  },
+  "cpiCoreLatest": {
+   "date": "2026-10-01"
+  },
+  "cpiCoreLowAll": {
+   "date": "2014-01-01"
+  },
+  "corePCEHighAll": {
+   "date": "2026-10-01"
+  },
+  "corePCEYearAgo": {
+   "date": "2025-10-01"
+  },
+  "cpiCoreHighAll": {
+   "date": "2026-10-01"
+  },
+  "cpiCoreYearAgo": {
+   "date": "2025-09-01"
+  },
+  "t10yYieldChg1y": {
+   "date": "2026-11-24"
+  },
+  "t10yYieldChg5y": {
+   "date": "2026-11-24"
+  },
+  "t10yYieldLow1y": {
+   "date": "2026-02-27"
+  },
+  "t10yYieldLow5y": {
+   "date": "2021-12-03"
+  },
+  "t10yYieldHigh1y": {
+   "date": "2026-10-05"
+  },
+  "t10yYieldHigh5y": {
+   "date": "2026-10-05"
+  },
+  "t10yYieldLatest": {
+   "date": "2026-11-24"
+  },
+  "t10yYieldLowAll": {
+   "date": "2020-08-04"
+  },
+  "cpiHeadlineChg1y": {
+   "date": "2026-10-01"
+  },
+  "cpiHeadlineChg5y": {
+   "date": "2026-10-01"
+  },
+  "cpiHeadlineLow1y": {
+   "date": "2025-11-01"
+  },
+  "cpiHeadlineLow5y": {
+   "date": "2021-10-01"
+  },
+  "t10yYieldHighAll": {
+   "date": "2026-10-05"
+  },
+  "t10yYieldYearAgo": {
+   "date": "2025-11-24"
+  },
+  "cpiHeadlineHigh1y": {
+   "date": "2026-10-01"
+  },
+  "cpiHeadlineHigh5y": {
+   "date": "2026-10-01"
+  },
+  "cpiHeadlineLatest": {
+   "date": "2026-10-01"
+  },
+  "cpiHeadlineLowAll": {
+   "date": "2015-01-01"
+  },
+  "mortgageRateChg1y": {
+   "date": "2026-11-25"
+  },
+  "mortgageRateChg5y": {
+   "date": "2026-11-25"
+  },
+  "mortgageRateLow1y": {
+   "date": "2026-02-26"
+  },
+  "mortgageRateLow5y": {
+   "date": "2021-12-23"
+  },
+  "realIncomeCAChg1y": {
+   "date": "2025-01-01"
+  },
+  "realIncomeCAChg5y": {
+   "date": "2025-01-01"
+  },
+  "realIncomeCALow1y": {
+   "date": "2025-01-01"
+  },
+  "realIncomeCALow5y": {
+   "date": "2022-01-01"
+  },
+  "realIncomeNCChg1y": {
+   "date": "2025-01-01"
+  },
+  "realIncomeNCChg5y": {
+   "date": "2025-01-01"
+  },
+  "realIncomeNCLow1y": {
+   "date": "2024-01-01"
+  },
+  "realIncomeNCLow5y": {
+   "date": "2024-01-01"
+  },
+  "sp500FiveYearsAgo": {
+   "date": "2021-11-24"
+  },
+  "cpiHeadlineHighAll": {
+   "date": "2026-10-01"
+  },
+  "cpiHeadlineYearAgo": {
+   "date": "2025-09-01"
+  },
+  "mortgageRateHigh1y": {
+   "date": "2026-10-08"
+  },
+  "mortgageRateHigh5y": {
+   "date": "2023-10-26"
+  },
+  "mortgageRateLatest": {
+   "date": "2026-11-25"
+  },
+  "mortgageRateLowAll": {
+   "date": "2021-01-07"
+  },
+  "realIncomeCAHigh1y": {
+   "date": "2024-01-01"
+  },
+  "realIncomeCAHigh5y": {
+   "date": "2024-01-01"
+  },
+  "realIncomeCALatest": {
+   "date": "2025-01-01"
+  },
+  "realIncomeCALowAll": {
+   "date": "2014-01-01"
+  },
+  "realIncomeNCHigh1y": {
+   "date": "2025-01-01"
+  },
+  "realIncomeNCHigh5y": {
+   "date": "2025-01-01"
+  },
+  "realIncomeNCLatest": {
+   "date": "2025-01-01"
+  },
+  "realIncomeNCLowAll": {
+   "date": "2014-01-01"
+  },
+  "corePCEFiveYearsAgo": {
+   "date": "2021-10-01"
+  },
+  "cpiCoreFiveYearsAgo": {
+   "date": "2021-10-01"
+  },
+  "mortgageRateHighAll": {
+   "date": "2023-10-26"
+  },
+  "mortgageRateYearAgo": {
+   "date": "2025-11-20"
+  },
+  "realIncomeCAHighAll": {
+   "date": "2024-01-01"
+  },
+  "realIncomeCAYearAgo": {
+   "date": "2024-01-01"
+  },
+  "realIncomeNCHighAll": {
+   "date": "2025-01-01"
+  },
+  "realIncomeNCYearAgo": {
+   "date": "2024-01-01"
+  },
+  "sp500RealReturnChg1y": {
+   "date": "2026-11-01"
+  },
+  "sp500RealReturnChg5y": {
+   "date": "2026-11-01"
+  },
+  "sp500RealReturnLow1y": {
+   "date": "2026-11-01"
+  },
+  "sp500RealReturnLow5y": {
+   "date": "2022-10-01"
+  },
+  "realMedianIncomeChg1y": {
+   "date": "2025-01-01"
+  },
+  "realMedianIncomeChg5y": {
+   "date": "2025-01-01"
+  },
+  "realMedianIncomeLow1y": {
+   "date": "2024-01-01"
+  },
+  "realMedianIncomeLow5y": {
+   "date": "2022-01-01"
+  },
+  "sp500RealReturnHigh1y": {
+   "date": "2026-04-01"
+  },
+  "sp500RealReturnHigh5y": {
+   "date": "2024-10-01"
+  },
+  "sp500RealReturnLatest": {
+   "date": "2026-11-01"
+  },
+  "sp500RealReturnLowAll": {
+   "date": "2022-10-01"
+  },
+  "t10yYieldFiveYearsAgo": {
+   "date": "2021-11-24"
+  },
+  "consumerSentimentChg1y": {
+   "date": "2026-10-01"
+  },
+  "consumerSentimentChg5y": {
+   "date": "2026-10-01"
+  },
+  "consumerSentimentLow1y": {
+   "date": "2026-05-01"
+  },
+  "consumerSentimentLow5y": {
+   "date": "2026-05-01"
+  },
+  "realMedianIncomeHigh1y": {
+   "date": "2025-01-01"
+  },
+  "realMedianIncomeHigh5y": {
+   "date": "2025-01-01"
+  },
+  "realMedianIncomeLatest": {
+   "date": "2025-01-01"
+  },
+  "realMedianIncomeLowAll": {
+   "date": "2014-01-01"
+  },
+  "sp500RealReturnHighAll": {
+   "date": "2021-04-01"
+  },
+  "sp500RealReturnYearAgo": {
+   "date": "2025-11-01"
+  },
+  "consumerSentimentHigh1y": {
+   "date": "2026-02-01"
+  },
+  "consumerSentimentHigh5y": {
+   "date": "2024-03-01"
+  },
+  "consumerSentimentLatest": {
+   "date": "2026-10-01"
+  },
+  "consumerSentimentLowAll": {
+   "date": "2026-05-01"
+  },
+  "cpiHeadlineFiveYearsAgo": {
+   "date": "2021-10-01"
+  },
+  "realMedianIncomeHighAll": {
+   "date": "2025-01-01"
+  },
+  "realMedianIncomeYearAgo": {
+   "date": "2024-01-01"
+  },
+  "consumerSentimentHighAll": {
+   "date": "2018-03-01"
+  },
+  "consumerSentimentYearAgo": {
+   "date": "2025-10-01"
+  },
+  "mortgageRateFiveYearsAgo": {
+   "date": "2021-11-24"
+  },
+  "realIncomeCAFiveYearsAgo": {
+   "date": "2020-01-01"
+  },
+  "realIncomeNCFiveYearsAgo": {
+   "date": "2020-01-01"
+  },
+  "sp500RealReturnFiveYearsAgo": {
+   "date": "2021-11-01"
+  },
+  "realMedianIncomeFiveYearsAgo": {
+   "date": "2020-01-01"
+  },
+  "consumerSentimentFiveYearsAgo": {
+   "date": "2021-10-01"
+  },
+  "srcCpiYoYSeptember": {
+   "date": null
+  },
+  "srcPcePriceIndexYoY": {
+   "date": null
+  },
+  "srcCpiMonthlyIncrease": {
+   "date": null
+  },
+  "srcPersonalSavingRate": {
+   "date": null
+  },
+  "srcCoreCpiYoYSeptember": {
+   "date": null
+  },
+  "srcCorePcePriceIndexYoY": {
+   "date": null
+  },
+  "srcCoreCpiMonthlyIncrease": {
+   "date": null
+  }
+ },
+ "dateKeys": [
+  "sp500HistoryStart",
+  "corePCEHistoryStart",
+  "cpiCoreHistoryStart",
+  "t10yYieldHistoryStart",
+  "cpiHeadlineHistoryStart",
+  "realIncomeCALowestSince",
+  "realIncomeNCLowestSince",
+  "mortgageRateHistoryStart",
+  "realIncomeCAHighestSince",
+  "realIncomeCAHistoryStart",
+  "realIncomeNCHistoryStart",
+  "sp500RealReturnLowestSince",
+  "realMedianIncomeLowestSince",
+  "sp500RealReturnHistoryStart",
+  "realMedianIncomeHistoryStart",
+  "consumerSentimentHistoryStart"
+ ],
+ "note": "Requests captured from the production stage functions with stored outputs of earlier stages (no model call, no DB write)."
+}

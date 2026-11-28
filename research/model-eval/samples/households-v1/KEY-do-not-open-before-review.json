@@ -1,0 +1,67 @@
+{
+ "A/A1-data-interpretation": {
+  "A": "qwen27b-think (rep 1)",
+  "B": "qwen-moxie (rep 1)",
+  "C": "deepseek-flash-think (rep 1)",
+  "D": "glm47-think (rep 1)",
+  "E": "qwen-novelist (rep 1)",
+  "F": "mimo-flash (rep 1)",
+  "G": "gemma-distill (rep 1)",
+  "H": "qwen27b (rep 1)",
+  "I": "glm47 (rep 1)",
+  "J": "qwen-flash (rep 1)",
+  "K": "gemma-it (rep 1)"
+ },
+ "B/B1-macro-reasoning": {
+  "A": "gemma-it (rep 1)",
+  "B": "glm47 (rep 1)",
+  "C": "qwen-moxie (rep 1)",
+  "D": "mimo-flash (rep 1)",
+  "E": "qwen-flash (rep 1)",
+  "F": "qwen-novelist (rep 1)",
+  "G": "qwen27b (rep 1)",
+  "H": "glm47-think (rep 1)",
+  "I": "qwen27b-think (rep 1)",
+  "J": "gemma-distill (rep 1)",
+  "K": "deepseek-flash-think (rep 1)"
+ },
+ "C/C1-quant-claims": {
+  "A": "qwen27b (rep 1)",
+  "B": "glm47-think (rep 1)",
+  "C": "qwen-moxie (rep 1)",
+  "D": "gemma-it (rep 1)",
+  "E": "qwen27b-think (rep 1)",
+  "F": "mimo-flash (rep 1)",
+  "G": "deepseek-flash-think (rep 1)",
+  "H": "qwen-novelist (rep 1)",
+  "I": "glm47 (rep 1)",
+  "J": "qwen-flash (rep 1)",
+  "K": "gemma-distill (rep 1)"
+ },
+ "D/D1-market-outlook": {
+  "A": "glm47 (rep 1)",
+  "B": "qwen27b-think (rep 1)",
+  "C": "gemma-it (rep 1)",
+  "D": "deepseek-flash-think (rep 1)",
+  "E": "qwen27b (rep 1)",
+  "F": "gemma-distill (rep 1)",
+  "G": "qwen-flash (rep 1)",
+  "H": "qwen-moxie (rep 1)",
+  "I": "glm47-think (rep 1)",
+  "J": "qwen-novelist (rep 1)",
+  "K": "mimo-flash (rep 1)"
+ },
+ "E/E1-feature-households": {
+  "A": "gemma-it (rep 1)",
+  "B": "qwen27b-think (rep 1)",
+  "C": "glm47-think (rep 1)",
+  "D": "gemma-distill (rep 1)",
+  "E": "qwen-flash (rep 1)",
+  "F": "gemma-writers (rep 1)",
+  "G": "qwen27b (rep 1)",
+  "H": "qwen-novelist (rep 1)",
+  "I": "mimo-flash (rep 1)",
+  "J": "glm47 (rep 1)",
+  "K": "qwen-moxie (rep 1)"
+ }
+}

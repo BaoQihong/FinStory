@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "name": "CPI",
+      "category": "prices",
+      "note": "Measures the average change in prices paid by consumers for goods and services."
+    },
+    {
+      "name": "Unemployment Rate",
+      "category": "labour",
+      "note": "Percentage of the labor force that is jobless and actively seeking employment."
+    },
+    {
+      "name": "10-Year Treasury Yield",
+      "category": "rates",
+      "note": "Benchmark interest rate for long-term borrowing, reflecting market expectations for inflation and growth."
+    }
+  ]
+}

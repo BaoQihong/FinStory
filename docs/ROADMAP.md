@@ -59,9 +59,9 @@ Phase 3 builds on.
 **Status: IN PROGRESS — 3A delivered and deployed; 3B and 3C approved 2026-11-27, deployed 2026-11-27. 3C completes Seshat v0.1 (Editorial MVP).** Each sub-phase needs its own approval.
 
 - **3A — Publishing engine** — **done, deployed** (`b1cdb61`). Publication lifecycle (publish, republish, unpublish), immutable published snapshots and revision history, permanent slugs, pre-publication validation, studio publishing controls, RLS-protected public data interface. No public page.
-- **3B.1 — Public article experience** ← **current, implemented and tested locally.** `/story/[slug]` renders the live snapshot through the shared ArticleView (WYSIWYG with preview), real 404s via a proxy slug check, per-request freshness, studio "View published article" (D-047).
-- **3B.2 — Editorial quality and natural writing** ← **current, implemented; editorial evaluation awaiting product-owner judgment.** Versioned style guide, restructured prompts with author argument/voice, whole-article awareness, Editorial Polish with human review and protected-content checks (D-048, D-049).
-- **3C — Public editorial homepage** ← **current, approved 2026-11-27; deployed 2026-11-27.** `/` built from live published snapshots: featured story (editor-chosen, falls back to newest), latest stories, pagination, empty state; studio Feature control (D-053, D-054).
+- **3B.1 — Public article experience** — **done, deployed** (`9c235fc`). `/story/[slug]` renders the live snapshot through the shared ArticleView (WYSIWYG with preview), real 404s via a proxy slug check, per-request freshness, studio "View published article" (D-047).
+- **3B.2 — Editorial quality and natural writing** — **deployed** (`9c235fc`); editorial evaluation awaiting product-owner judgment. Versioned style guide, restructured prompts with author argument/voice, whole-article awareness, Editorial Polish with human review and protected-content checks (D-048, D-049).
+- **3C — Public editorial homepage** ← **current; approved and deployed 2026-11-27** (`50cee01`). `/` built from live published snapshots: featured story (editor-chosen, falls back to newest), latest stories, pagination, empty state; studio Feature control (D-053, D-054).
 - **3D — Production polish and optimisation** — deferred (caching, SEO/social, performance).
 
 ### Milestone: Seshat v0.1 — Editorial MVP (reached with 3C)

@@ -1,0 +1,6 @@
+<<<REASONING (reasoning)>>>
+We need to compute 17 × 23.
+17 × 23 = 17 × (20 + 3) = 340 + 51 = 391.
+<<<END REASONING>>>
+
+391

@@ -1,0 +1,7 @@
+<<<REASONING (reasoning)>>>
+The user wants me to calculate 17 × 23 and reply with just the number.
+
+17 × 23 = 17 × 20 + 17 × 3 = 340 + 51 = 391
+<<<END REASONING>>>
+
+391

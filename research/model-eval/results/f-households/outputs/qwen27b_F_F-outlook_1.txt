@@ -1,0 +1,103 @@
+{
+  "title": "The Great Repricing: Will the Squeeze Ease or Harden?",
+  "intro": "The central tension of the current economic moment is not whether inflation is falling, but whether the gap between official metrics and personal experience will narrow. If the divergence persists, the psychological and financial consequences for households will be structural, not cyclical.",
+  "scenarios": [
+    {
+      "key": "sticky-squeeze",
+      "name": "The Persistent Gap",
+      "role": "central",
+      "summary": "Inflation continues to moderate but remains above target, while real wage growth fails to catch up to the cumulative price increases of the last five years. The perception of high costs remains entrenched, and consumer sentiment stays depressed.",
+      "conditions": [
+        "Core CPI and Core PCE remain above the Federal Reserve's 2% target for an extended period.",
+        "Real median household income growth lags behind the rate of price increases in sticky categories like housing and medical care.",
+        "Consumer sentiment indices remain near their five-year lows, indicating a persistent psychological disconnect from official data."
+      ],
+      "whyItMatters": "For median-income households, this scenario means that the 'recovery' in nominal income figures does not translate into a feeling of financial security. The cost of living remains a dominant stressor, limiting the capacity to save or invest, and potentially leading to a prolonged period of reduced discretionary spending.",
+      "assets": [
+        {
+          "asset": "Equities",
+          "effect": "Real returns may remain compressed as inflation erodes nominal gains, making traditional wealth-building strategies less effective for households."
+        },
+        {
+          "asset": "Fixed Income",
+          "effect": "Higher-for-longer yields may provide better nominal returns, but real returns remain sensitive to inflation surprises."
+        }
+      ],
+      "watch": [
+        "Whether the 10-Year Treasury Yield remains elevated, reflecting persistent inflation expectations.",
+        "Trends in the University of Michigan Consumer Sentiment index, specifically if it remains below its five-year average.",
+        "The divergence between headline CPI and core CPI, with core measures remaining stubbornly high."
+      ],
+      "uncertainties": [
+        "The extent to which wage growth can accelerate to close the gap with price increases.",
+        "Whether structural shifts in consumer spending, such as trading down, will lead to a permanent reduction in demand for discretionary goods."
+      ]
+    },
+    {
+      "key": "wage-catchup",
+      "name": "The Real Income Rebound",
+      "role": "alternative",
+      "summary": "Real wage growth accelerates significantly, outpacing inflation and closing the gap between official metrics and personal experience. Consumer sentiment recovers as households feel the benefits of higher real incomes.",
+      "conditions": [
+        "Real median household income growth exceeds the rate of inflation for several consecutive quarters.",
+        "Consumer sentiment indices rise sharply, reflecting improved confidence in personal financial prospects.",
+        "Sticky costs in housing and medical care begin to moderate, reducing the overall rate of inflation."
+      ],
+      "whyItMatters": "For households, this scenario would mean that the 'squeeze' of the last few years begins to ease. The perception of high costs would become more aligned with the reality of falling inflation, and the capacity to save and invest would improve. This would likely lead to a recovery in discretionary spending and a more optimistic outlook for wealth accumulation.",
+      "assets": [
+        {
+          "asset": "Equities",
+          "effect": "Real returns could improve as inflation moderates and corporate profits benefit from stronger consumer demand."
+        },
+        {
+          "asset": "Fixed Income",
+          "effect": "Yields may fall as inflation expectations decline, potentially providing capital gains for bondholders."
+        }
+      ],
+      "watch": [
+        "A sustained increase in US Real Median Household Income that outpaces the rate of inflation.",
+        "A significant rise in the University of Michigan Consumer Sentiment index, moving away from its five-year lows.",
+        "A decline in the 10-Year Treasury Yield, reflecting lower inflation expectations."
+      ],
+      "uncertainties": [
+        "Whether wage growth can be sustained at a level that outpaces inflation, or if it is a temporary phenomenon.",
+        "The impact of potential economic slowdowns on wage growth and employment."
+      ]
+    },
+    {
+      "key": "structural-shift",
+      "name": "The New Normal",
+      "role": "alternative",
+      "summary": "Consumer behavior shifts permanently, with a sustained move away from discretionary spending and a greater focus on essential goods and services. This structural change complicates the return to pre-inflation consumption norms, even if inflation falls.",
+      "conditions": [
+        "A persistent decline in discretionary spending, even as inflation moderates.",
+        "A sustained increase in the share of household income spent on essentials like housing and medical care.",
+        "A long-term shift in consumer preferences, driven by the experience of high inflation and the desire for financial security."
+      ],
+      "whyItMatters": "For businesses, this scenario means that the demand for discretionary goods and services may not recover as quickly as expected, even if the economy improves. For households, it means that the focus on building wealth may shift from aggressive investment to more conservative strategies, prioritizing stability and security over growth.",
+      "assets": [
+        {
+          "asset": "Equities",
+          "effect": "Sectors focused on essential goods and services may outperform those focused on discretionary spending."
+        },
+        {
+          "asset": "Fixed Income",
+          "effect": "Demand for safe-haven assets may increase as consumers prioritize stability over growth."
+        }
+      ],
+      "watch": [
+        "A sustained divergence between the growth of essential and discretionary spending categories.",
+        "A long-term decline in consumer confidence, even as economic indicators improve.",
+        "A shift in corporate earnings, with essential goods and services outperforming discretionary sectors."
+      ],
+      "uncertainties": [
+        "Whether the shift in consumer behavior is a permanent structural change or a temporary response to high inflation.",
+        "The impact of potential technological or policy changes that could alter the cost of essential goods and services."
+      ]
+    }
+  ],
+  "attention": {
+    "required": false,
+    "reasons": []
+  }
+}
