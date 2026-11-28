@@ -131,7 +131,7 @@ export function PublishPanel({ articleId, revision, dirty, generating, pub, onRe
 
 type Done = (msg?: { kind: 'ok' | 'error'; text: string }) => void;
 
-function Modal({ title, onClose, busy, children }: { title: string; onClose: () => void; busy: boolean; children: React.ReactNode }) {
+export function Modal({ title, onClose, busy, children }: { title: string; onClose: () => void; busy: boolean; children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     ref.current?.focus();

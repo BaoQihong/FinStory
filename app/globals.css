@@ -203,6 +203,36 @@
     color: var(--color-ink);
     background: var(--color-cream-200);
   }
+  /* Destructive actions (D-062): outline in the panel, solid only inside the confirmation. */
+  .studio-btn-danger,
+  .studio-btn-danger-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.95rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: background-color 0.15s;
+  }
+  .studio-btn-danger {
+    background: #9f1239;
+    color: var(--color-cream-50);
+  }
+  .studio-btn-danger:hover:not(:disabled) {
+    background: #881337;
+  }
+  .studio-btn-danger-outline {
+    border: 1px solid #fecdd3;
+    background: var(--color-cream-50);
+    color: #9f1239;
+  }
+  .studio-btn-danger-outline:hover:not(:disabled) {
+    background: #fff1f2;
+  }
+  .studio-btn-danger:disabled,
+  .studio-btn-danger-outline:disabled,
   .studio-btn-primary:disabled,
   .studio-btn:disabled,
   .studio-btn-quiet:disabled {

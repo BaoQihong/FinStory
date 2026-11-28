@@ -8,7 +8,7 @@ import { publicationState } from '@/lib/publishing/rules';
 
 export const metadata = { title: 'Drafts' };
 
-export default function StudioHome() {
+export default function StudioHome({ searchParams }: PageProps<'/admin'>) {
   return (
     <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8">
       <div className="flex flex-wrap items-end justify-between gap-4">
@@ -20,10 +20,30 @@ export default function StudioHome() {
           New story
         </Link>
       </div>
+      <Suspense fallback={null}>
+        <DeletedNotice searchParams={searchParams} />
+      </Suspense>
       <Suspense fallback={<p className="mt-10 text-muted">Loading drafts…</p>}>
         <DraftList />
       </Suspense>
     </div>
+  );
+}
+
+/** Shown once after a draft is deleted from its page (D-062); the title comes from the redirect, never from the database. */
+async function DeletedNotice({ searchParams }: { searchParams: PageProps<'/admin'>['searchParams'] }) {
+  const deleted = (await searchParams).deleted;
+  const title = typeof deleted === 'string' ? deleted.slice(0, 120) : null;
+  if (!title) return null;
+  return (
+    <p role="status" className="studio-card mt-6 flex flex-wrap items-center justify-between gap-3 px-5 py-3 text-sm text-ink-soft">
+      <span>
+        Deleted <span className="font-semibold text-ink">“{title}”</span>. Its revisions and research were removed; usage records are kept.
+      </span>
+      <Link href="/admin" className="studio-btn-quiet">
+        Dismiss
+      </Link>
+    </p>
   );
 }
 

@@ -105,6 +105,12 @@ Check with `npx supabase migration list --remote`. Applied so far:
 - Usage appears in `/admin/usage` as stage `polish` (evaluation runs as `evaluation`). Limit: 40 Polish requests per 24 h; refused while a generation job runs (single Arli concurrency).
 - A Polish request on Vercel can take up to about 2 min; the draft page sets `maxDuration = 300`.
 
+## Deleting drafts (D-062)
+
+- **In the studio:** open the draft, scroll to **Delete draft** at the foot of the page, then confirm. This works only for drafts never published, and not while generating or while Polish/Fix It is running.
+- **What is removed and kept:** revisions, generation jobs, sources, findings and datasets are removed. Usage rows stay (shown as "Deleted draft" in `/admin/usage`).
+- **Published articles:** an article that was ever published cannot be deleted, by the studio or the database. Unpublish it to take it away from readers.
+
 ## Model selection (Phase 3D.1a, interim)
 
 Interim until the Phase 3D.2 model gateway (D-058). Server environment variables only; no UI.

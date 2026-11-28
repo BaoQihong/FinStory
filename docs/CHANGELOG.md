@@ -3,6 +3,16 @@
 Notable changes to this project. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/). Newest entries first.
 
+## 0.6.4 — 2026-11-28 (studio: delete never-published drafts)
+
+- **Delete draft** at the foot of the draft page (D-062).
+  - Available for drafts that have never been published, including failed generations; refused while generating or while Polish/Fix It is running.
+  - The confirmation dialog lists what is removed and focuses Cancel.
+  - Afterwards the drafts list shows a "Deleted" notice.
+  - Published or previously published articles show why they cannot be deleted.
+- Server-side checks and a delete filtered on "never published" (`lib/studio/delete-draft.ts`); the database's publication-history constraint stays the final guard.
+- Tests: `scripts/studio/delete.test.ts` (9).
+
 ## 0.6.3 — 2026-11-28 (FRED duplicate-request reduction; 3D.1 research committed)
 
 - **FRED duplicate-request reduction** (D-060): screening and the fetch stage reuse metadata already retrieved, and identical metadata lookups within a stage share one request (in memory, cleared every stage, never stored). About 45% fewer FRED requests per job (167 → 92) and discover about 1.8× faster (147 → 82 s). Coverage and limits unchanged.

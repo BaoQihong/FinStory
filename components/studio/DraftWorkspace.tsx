@@ -14,6 +14,7 @@ import { FactPalette } from './fields';
 import { StatusBadge } from './StatusBadge';
 import { PublicationBadge, PublishPanel, type PublicationView } from './PublishPanel';
 import { PolishPanel } from './PolishPanel';
+import { DeleteDraftPanel } from './DeleteDraftPanel';
 
 export type SourceView = { ref: string; url: string; title: string; publisher: string; source_type: string; published_at: string | null; stale: boolean; query: string; snippet: string | null };
 export type FindingView = { ref: string; claim: string; evidence_kind: string; source_refs: string[]; quote: string | null; quote_verified: boolean };
@@ -218,6 +219,18 @@ export function DraftWorkspace(props: {
           </div>
         </>
       ) : null}
+
+      <DeleteDraftPanel
+        articleId={props.articleId}
+        title={draft?.story.headline ?? props.title}
+        temporary={props.temporary}
+        firstPublishedAt={props.publication.firstPublishedAt}
+        isLive={props.publication.state === 'live' || props.publication.state === 'live_changed'}
+        generating={generating}
+        dirty={dirty}
+        revisions={revision}
+        hasResearch={!!props.job}
+      />
     </div>
   );
 }
