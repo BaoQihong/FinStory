@@ -1,6 +1,6 @@
 {
   "name": "finstory",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "private": true,
   "description": "Seshat — financial storytelling publication (FinStory repository)",
   "type": "module",
@@ -13,7 +13,7 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
-    "test": "node --test scripts/data/transforms.test.ts scripts/studio/pipeline.test.ts scripts/studio/brief.test.ts scripts/publishing/publishing.test.ts scripts/publishing/home.test.ts scripts/studio/polish.test.ts scripts/studio/fix.test.ts scripts/studio/model-roles.test.ts scripts/studio/fred.test.ts scripts/studio/delete.test.ts",
+    "test": "node --test scripts/data/transforms.test.ts scripts/data/chart-geometry.test.ts scripts/studio/pipeline.test.ts scripts/studio/brief.test.ts scripts/publishing/publishing.test.ts scripts/publishing/home.test.ts scripts/studio/polish.test.ts scripts/studio/fix.test.ts scripts/studio/model-roles.test.ts scripts/studio/fred.test.ts scripts/studio/delete.test.ts",
     "data:fetch": "node scripts/data/fetch-fred.mjs",
     "data:validate": "node scripts/data/validate-fixtures.ts",
     "verify": "npm run test && npm run data:validate && npm run lint && npm run typecheck && npm run build",

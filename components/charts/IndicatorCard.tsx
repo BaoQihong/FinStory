@@ -13,28 +13,46 @@ export function IndicatorCard({ card, note }: { card: Card; note?: string }) {
   const ch = card.change;
   const up = ch && ch.value > 0;
   const flat = ch && ch.value === 0;
+  const number = card.display
+    ? card.value.toLocaleString('en-US', { minimumFractionDigits: card.decimals, maximumFractionDigits: card.decimals })
+    : card.value.toFixed(card.decimals);
+  // Estimated width of the figure in em: Fraunces tabular digits ≈ 0.58em, separators ≈ 0.22em,
+  // prefix/% at 0.58em size. The figure keeps its 2.6rem display size and only scales down
+  // when it would not fit the card's width.
+  const digits = number.replace(/[^0-9]/g, '').length;
+  const ems =
+    digits * 0.58 + (number.length - digits) * 0.22 + (card.display ? (card.display.prefix ? 0.38 : 0) : 0.4);
+  const valueSize = `min(2.6rem, ${(100 / ems).toFixed(1)}cqi)`;
   return (
-    <article className="flex min-w-0 flex-col rounded-xl border border-cream-300 bg-cream-50 p-5 shadow-[0_1px_0_rgba(15,29,56,0.04)]">
+    <article className="@container flex min-w-0 flex-col rounded-xl border border-cream-300 bg-cream-50 p-5 shadow-[0_1px_0_rgba(15,29,56,0.04)]">
       <header>
-        <h3 className="text-sm font-semibold leading-snug text-ink">{card.label}</h3>
+        <h3 className="text-sm font-semibold leading-snug text-ink [overflow-wrap:anywhere]">{card.label}</h3>
         <p className="mt-0.5 text-xs text-muted">{formatDate(card.asOf, card.asOfPrecision)}</p>
       </header>
-      <div className="mt-3 flex items-end justify-between gap-3">
-        <p className="font-display text-[2.6rem] font-semibold leading-none tracking-tight text-navy-900 tabular-nums">
+      {/* The sparkline sits beside the figure when both fit and wraps below it when they do not. */}
+      <div className="mt-3 flex flex-wrap items-end justify-between gap-x-3 gap-y-2.5">
+        <p
+          className="min-w-0 max-w-full font-display font-semibold leading-none tracking-tight text-navy-900 tabular-nums"
+          style={{ fontSize: valueSize }}
+        >
           {card.display ? (
             <>
-              {card.display.prefix ? <span className="mr-0.5 text-2xl">{card.display.prefix}</span> : null}
-              {card.value.toLocaleString('en-US', { minimumFractionDigits: card.decimals, maximumFractionDigits: card.decimals })}
-              {card.display.suffix.trim() ? <span className="ml-1 block text-sm font-normal tracking-normal text-muted">{card.display.suffix.trim()}</span> : null}
+              {card.display.prefix ? <span className="mr-0.5 text-[0.58em]">{card.display.prefix}</span> : null}
+              <span className="whitespace-nowrap">{number}</span>
+              {card.display.suffix.trim() ? (
+                <span className="mt-1 block text-sm font-normal leading-snug tracking-normal text-muted [overflow-wrap:anywhere]">
+                  {card.display.suffix.trim()}
+                </span>
+              ) : null}
             </>
           ) : (
-            <>
-              {card.value.toFixed(card.decimals)}
-              <span className="ml-0.5 text-2xl">%</span>
-            </>
+            <span className="whitespace-nowrap">
+              {number}
+              <span className="ml-0.5 text-[0.58em]">%</span>
+            </span>
           )}
         </p>
-        <Sparkline points={card.spark} color={SPARK_COLOR[card.key] ?? '#243b66'} className="h-10 w-28 shrink-0" />
+        <Sparkline points={card.spark} color={SPARK_COLOR[card.key] ?? '#243b66'} className="h-10 w-28 min-w-16 max-w-full shrink" />
       </div>
       {ch ? (
         <p className="mt-3 text-xs text-ink-soft">

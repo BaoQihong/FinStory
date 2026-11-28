@@ -3,6 +3,13 @@
 Notable changes to this project. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/). Newest entries first.
 
+## 0.6.6 — 2026-11-28 (chart rendering fixes)
+
+- **Multi-series charts** (D-064): each series is drawn from its own observations, so series with different calendars or thinning no longer break into fragments or disappear (the Treasury vs fed funds chart in the weak-dollar article). Genuine gaps still break the line; a lone observation between gaps is a dot. No data is added or changed.
+- **End labels** wrap, never overlap, and fit the right margin instead of being clipped.
+- **Indicator cards**: the sparkline sits beside the figure when it fits and below it when it does not; long figures (14,473.06) and units stay inside the card.
+- Tests: `scripts/data/chart-geometry.test.ts` (11).
+
 ## 0.6.5 — 2026-11-28 (Outlook: scenario count follows the evidence)
 
 - **Outlook scenarios** (D-063): the prompt asks for only distinct, economically meaningful paths (three at most, one or two acceptable), with no bullish / base / bearish template. The generation schema accepts 1-3.

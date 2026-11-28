@@ -141,6 +141,8 @@ Note: during documentation work a shell-quoting mistake ran `publish:home-check`
 | V01-04 | Browser acceptance of Fix It for Me by a signed-in editor | Not started | Assistant may not type passwords; steps in the delivery notes / TESTING.md |
 | V01-05 | Commit, push, deploy | Not started | Awaiting product-owner approval |
 | V01-06 | Outlook scenario flexibility: 1-3 scenarios chosen by the evidence | Done | D-063. Prompt, generation schema, validator and article grid. 134/134 tests and `npm run verify` pass. Not yet deployed: awaiting product-owner approval |
+| V01-07 | Chart rendering fixes: fragmented/missing lines in multi-series charts, clipped end labels, indicator-card sparkline overflow | Done | D-064. Shared renderer only (`TimeSeriesChart`, `IndicatorCard`); no data, content, prompt or model change. 11 new tests (`scripts/data/chart-geometry.test.ts`); browser QA on the weak-dollar article at 1280/768/375 px, the Bond Comeback core CPI gap, and injected long values/units in 170 px cards |
+| V01-08 | Long bare URLs in article references overflow the page at 375 px (seen on the weak-dollar article) | Open | Pre-existing; outside the V01-07 brief |
 
 ## Phase 3D
 
